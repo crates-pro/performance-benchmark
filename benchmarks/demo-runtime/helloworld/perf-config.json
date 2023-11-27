@@ -1,0 +1,5 @@
+{
+	"runtime_test_type": "Example",
+	"example_lst": ["helloworld-example", "example2"],
+	"runtime_args": "HelloWorld -h --help testArg"
+}

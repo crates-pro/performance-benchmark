@@ -1,0 +1,67 @@
+   Compiling collector v0.1.0 (/media/workstation/cc36671e-05f5-48bd-9b40-1b1c1f396fae/home/fxl/Rust_Performance_Benchmark/collector)
+warning: unused import: `Stdio`
+ --> src/perf_analyze/analyze.rs:2:53
+  |
+2 | use std::{path::{Path, PathBuf}, process::{Command, Stdio}, fs::{File, copy}, io::{BufReader, BufRead, BufWriter}, collections::HashMap};
+  |                                                     ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused variable: `event_filter_file`
+  --> src/compile_time/cargo_single_process.rs:82:51
+   |
+82 |     fn run_rustc(&mut self, perf_tool: &PerfTool, event_filter_file: &PathBuf, needs_final: bool) -> anyhow::Result<Option<Stats>> {
+   |                                                   ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_event_filter_file`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: function `rename` is never used
+  --> src/utils/fs.rs:21:8
+   |
+21 | pub fn rename<P: AsRef<Path>, Q: AsRef<Path>>(from: P, to: Q) -> anyhow::Result<()> {
+   |        ^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: function `parse_etw_file` is never used
+   --> src/execute/etw_parser.rs:448:8
+    |
+448 | pub fn parse_etw_file(path: &str) -> anyhow::Result<Counters> {
+    |        ^^^^^^^^^^^^^^
+
+warning: `collector` (bin "collector" test) generated 4 warnings (run `cargo fix --bin "collector" --tests` to apply 2 suggestions)
+    Finished test [unoptimized + debuginfo] target(s) in 1m 16s
+     Running unittests src/main.rs (target/debug/deps/collector-b88546b6bb681062)
+
+running 2 tests
+test perf_analyze::analyze::test_perf_analyze has been running for over 60 seconds
+test perf_analyze::test_perf_analyzer has been running for over 60 seconds
+test perf_analyze::analyze::test_perf_analyze ... ok
+test perf_analyze::test_perf_analyzer ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 14 filtered out; finished in 204306.83s
+
+     Running unittests src/bin/flamegraph-fake.rs (target/debug/deps/flamegraph_fake-cdcb5ea155f28b0e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/muti-rustc-perf.rs (target/debug/deps/muti_rustc_perf-bb9a30405fd100b8)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/runtime-fake.rs (target/debug/deps/runtime_fake-af798da5b745c543)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/rustc-fake.rs (target/debug/deps/rustc_fake-07c2eb51a020adb7)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

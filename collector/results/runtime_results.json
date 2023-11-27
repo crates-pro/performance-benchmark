@@ -1,0 +1,1 @@
+[{"name":"plus","stats":[{"stats":{"task-clock":1281.76,"wall-time":1.229597855,"cpu-clock":1281.56,"context-switches":223.0,"max-rss":125516.0,"faults":24892.0}}]},{"name":"helloworld","stats":[{"stats":{"context-switches":258.0,"cpu-clock":1824.55,"faults":43664.0,"task-clock":1824.38,"max-rss":210952.0,"wall-time":4.861552415}}]}]

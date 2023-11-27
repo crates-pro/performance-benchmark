@@ -1,0 +1,1 @@
+cargo:rustc-link-search=native=C:\Users\18309\.cargo\registry\src\mirrors.ustc.edu.cn-12df342d903acd47\windows_x86_64_msvc-0.42.0\lib

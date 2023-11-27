@@ -1,0 +1,35 @@
+name: Rust CI
+
+on:
+  push:
+    branches:
+      - main
+      - count_mir
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-formatting:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Check formatting
+      run: |
+        cargo fmt --manifest-path collector/Cargo.toml -- --check
+      continue-on-error: false
+
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Build and test
+      run: |
+        cargo build --verbose --manifest-path ./collector/Cargo.toml
+        cargo test --verbose --manifest-path ./collector/Cargo.toml

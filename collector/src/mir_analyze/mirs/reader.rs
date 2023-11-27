@@ -37,7 +37,9 @@ pub fn read_mir(path: PathBuf) -> anyhow::Result<Vec<MIR>> {
 mod test {
 
     use super::MIR;
-    use crate::mir_analyze::mirs::mir::{Assign, Call, Const, Move, Value, Value::VAR, Var};
+    use crate::mir_analyze::mirs::mir::{
+        Assign, Call, Const, Move, Reference, Value, Value::VAR, Var,
+    };
 
     impl PartialEq for MIR {
         fn eq(&self, other: &Self) -> bool {
@@ -54,6 +56,10 @@ mod test {
                     MIR::CALL(o_call) => call == o_call,
                     _ => false,
                 },
+                MIR::REF(reference) => match other {
+                    MIR::REF(o_ref) => reference == o_ref,
+                    _ => false,
+                },
             }
         }
     }
@@ -61,6 +67,12 @@ mod test {
     impl PartialEq for Assign {
         fn eq(&self, other: &Self) -> bool {
             self.left == other.left
+        }
+    }
+
+    impl PartialEq for Reference {
+        fn eq(&self, other: &Self) -> bool {
+            self.src == other.src && self.dst == other.dst
         }
     }
 
@@ -109,7 +121,7 @@ mod test {
 
     #[test]
     fn test_read_mir() {
-        use super::MIR::{ASSIGN, MOVE};
+        use super::MIR::{ASSIGN, MOVE, REF};
         use crate::mir_analyze::mirs::mir::{Assign, Const, Move, Value, Value::VAR, Var};
 
         use crate::mir_analyze::mirs::reader::read_mir;
@@ -118,6 +130,7 @@ mod test {
         let mir_file = PathBuf::from("test/mir_analyze/reader/condvar-9b2e97b194975c57.mir");
 
         let results = read_mir(mir_file).unwrap();
+
         let std_results = vec![
             ASSIGN(Assign {
                 left: VAR(Var { id: 49 }),
@@ -262,6 +275,66 @@ mod test {
             MOVE(Move {
                 left: VAR(Var { id: 2 }),
                 right: VAR(Var { id: 14 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 6 }),
+                dst: VAR(Var { id: 1 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 8 }),
+                dst: VAR(Var { id: 3 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 20 }),
+                dst: VAR(Var { id: 1 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 15 }),
+                dst: VAR(Var { id: 16 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 31 }),
+                dst: VAR(Var { id: 11 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 28 }),
+                dst: VAR(Var { id: 29 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 35 }),
+                dst: VAR(Var { id: 3 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 46 }),
+                dst: VAR(Var { id: 1 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 43 }),
+                dst: VAR(Var { id: 44 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 0 }),
+                dst: VAR(Var { id: 1 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 13 }),
+                dst: VAR(Var { id: 2 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 21 }),
+                dst: VAR(Var { id: 2 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 30 }),
+                dst: VAR(Var { id: 7 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 27 }),
+                dst: VAR(Var { id: 28 }),
+            }),
+            REF(Reference {
+                src: VAR(Var { id: 0 }),
+                dst: VAR(Var { id: 1 }),
             }),
         ];
 

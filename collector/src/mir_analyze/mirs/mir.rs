@@ -3,6 +3,7 @@ use regex::Regex;
 #[derive(Debug)]
 pub enum MIR {
     ASSIGN(Assign),
+    REF(Reference),
     MOVE(Move),
     CALL(Call),
 }
@@ -14,6 +15,12 @@ pub type BlockId = u32;
 pub struct Assign {
     pub left: Value,
     pub right: Value,
+}
+
+#[derive(Debug)]
+pub struct Reference {
+    pub src: Value,
+    pub dst: Value,
 }
 
 #[derive(Debug)]
@@ -67,7 +74,7 @@ impl MIR {
     }
 
     fn get_captures() -> Vec<impl Fn(&String) -> Option<MIR>> {
-        vec![MIR::assignment_capture, MIR::move_capture]
+        vec![MIR::assignment_capture, MIR::move_capture, MIR::ref_capture]
     }
 
     fn assignment_capture(line: &String) -> Option<MIR> {
@@ -115,15 +122,39 @@ impl MIR {
         let move_pattern = Regex::new(r"_(\d+) = move _(\d+)").unwrap();
         if let Some(captures) = move_pattern.captures(line.as_str()) {
             let first_var = captures.get(1).map(|m| m.as_str()).unwrap();
-            let second_var_or_const = captures.get(2).map(|m| m.as_str()).unwrap();
+            let second_var = captures.get(2).map(|m| m.as_str()).unwrap();
 
             Some(Self::MOVE(Move {
                 left: Value::VAR(Var {
                     id: first_var.parse().unwrap(),
                 }),
                 right: Value::VAR(Var {
-                    id: second_var_or_const.parse().unwrap(),
+                    id: second_var.parse().unwrap(),
                 }),
+            }))
+        } else {
+            None
+        }
+    }
+
+    fn ref_capture(line: &String) -> Option<MIR> {
+        let ref_capture = Regex::new(r"_(\d+) = ((&_(\d+))|(&mut _(\d+)))").unwrap();
+        if let Some(captures) = ref_capture.captures(line.as_str()) {
+            let first_var = captures.get(1).map(|m| m.as_str()).unwrap();
+
+            let second_var = if let Some(second_var) = captures.get(6).map(|m| m.as_str()) {
+                second_var
+            } else {
+                captures.get(4).map(|m| m.as_str()).unwrap()
+            };
+
+            Some(Self::REF(Reference {
+                src: (Value::VAR(Var {
+                    id: first_var.parse().unwrap(),
+                })),
+                dst: (Value::VAR(Var {
+                    id: second_var.parse().unwrap(),
+                })),
             }))
         } else {
             None

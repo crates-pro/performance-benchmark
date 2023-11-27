@@ -327,6 +327,23 @@ pub enum Commands {
         #[clap(long = "out", default_value = "morphemes.csv")]
         out_path: PathBuf,
     },
+
+    /// Analyze MIRs generated from benchmarks.
+    MirAnalyze {
+        #[clap(flatten)]
+        local: LocalOptions,
+
+        #[clap(long = "profile", default_value = "debug,release")]
+        profiles: Profiles,
+
+        /// The path of benchmark dir
+        #[clap(long = "bench-dir", default_value = "../benchmarks/compile-time")]
+        bench_dir: PathBuf,
+
+        /// The path of output file
+        #[clap(long = "out-dir", default_value = "results")]
+        out_dir: PathBuf,
+    },
 }
 
 #[derive(Debug)]

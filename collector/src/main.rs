@@ -221,6 +221,23 @@ fn main_result() -> anyhow::Result<i32> {
             run_miners(bench_dir, out_path);
             Ok(0)
         }
+        Commands::MirAnalyze {
+            local,
+            profiles,
+            bench_dir,
+            out_dir,
+        } => {
+            let toolch = get_local_toolchain(
+                &local.rustc,
+                local.cargo.as_deref(),
+                local.id.as_deref(),
+                "",
+            )?;
+
+            mir_analyze::mir_analyze::entry(toolch, profiles, bench_dir, out_dir)?;
+
+            Ok(0)
+        }
     }
 }
 

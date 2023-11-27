@@ -51,13 +51,13 @@ fn get_stats(csv_file: PathBuf) -> anyhow::Result<Stat> {
     while reader.read_line(&mut buf)? != 0 {
         if first_line == true {
             buf.split(',').into_iter().for_each(|s| {
-                stat.push((s.trim().to_string(), 0));
+                stat.push((s.trim().to_string(), 0f64));
             });
             first_line = false;
         } else {
             let mut col_num = 0;
             buf.split(',').into_iter().for_each(|s| {
-                stat[col_num].1 += s.trim().parse::<u128>().unwrap();
+                stat[col_num].1 += s.trim().parse::<f64>().unwrap();
                 col_num += 1;
             });
             line_num += 1;
@@ -69,7 +69,7 @@ fn get_stats(csv_file: PathBuf) -> anyhow::Result<Stat> {
     Ok(Stat {
         data: stat
             .into_iter()
-            .map(|(s, v)| (s, (v / line_num) as f64))
+            .map(|(s, v)| (s, v / line_num as f64))
             .collect(),
         metric: csv_file
             .file_name()
@@ -109,10 +109,10 @@ mod test {
 
         let std_stats = vec![
             (String::from("stacks-blockchain-2.0.11.3.0"), 77662668.0),
-            (String::from("graph-node-0.24.2"), 470974809.0),
-            (String::from("starcoin-1.7.0"), 763275882.0),
-            (String::from("conflux-rust-0.2.0"), 192631689.0),
-            (String::from("diem-diem-core-v1.4.1"), 159944206.0),
+            (String::from("graph-node-0.24.2"), 470974809.6),
+            (String::from("starcoin-1.7.0"), 763275882.6),
+            (String::from("conflux-rust-0.2.0"), 192631689.6),
+            (String::from("diem-diem-core-v1.4.1"), 159944206.2),
             (String::from("cita-20.2.0"), 662885486.0),
         ];
 
@@ -147,17 +147,20 @@ mod test {
         let std_stats = vec![
             (
                 String::from("stacks-blockchain-2.0.11.3.0"),
-                0.29552068549878746,
+                0.2955196493055598,
             ),
-            (String::from("graph-node-0.24.2"), -0.3116770782225563),
-            (String::from("starcoin-1.7.0"), 0.05869893808711376),
+            (String::from("graph-node-0.24.2"), -0.3116770778267317),
+            (String::from("starcoin-1.7.0"), 0.058698911807337606),
             (String::from("conflux-rust-0.2.0"), -0.18588486582409744),
             (String::from("diem-diem-core-v1.4.1"), -0.23109548429019158),
             (String::from("cita-20.2.0"), 0.06178561855019537),
         ];
 
         std_stats.into_iter().for_each(|(n, v)| {
-            assert_eq!(*stats.data.get(&n).unwrap(), v);
+            assert_eq!(
+                format!("{:.2}", *stats.data.get(&n).unwrap()),
+                format!("{:.2}", v)
+            );
         })
     }
 }

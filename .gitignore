@@ -8,6 +8,8 @@ target
 /out
 /collector/.idea
 /collector/.vscode
+/collector/Cargo.lock
+/collector/target
 *.data
 *.old
 *.lock

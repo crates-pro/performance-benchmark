@@ -30,7 +30,7 @@ pub fn write_csv(stat: &Stat, dir: PathBuf) -> anyhow::Result<()> {
     writer.write_all(
         data_sorted
             .iter()
-            .map(|(_, v)| v.to_string())
+            .map(|(_, v)| format!("{:.2}", v))
             .collect::<Vec<String>>()
             .join(",")
             .as_bytes(),

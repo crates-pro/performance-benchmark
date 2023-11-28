@@ -539,28 +539,28 @@ impl Benchamrk {
 
 #[derive(Debug, Clone, serde::Deserialize, Default)]
 pub struct BenchmarkConfig {
-    cargo_opts: Option<String>,
-    cargo_rustc_opts: Option<String>,
-    cargo_toml: Option<String>,
-    compile_time_type: Option<CompileTimeType>,
-    packages: Option<Vec<String>>,
-    runtime_test_type: Option<RuntimeTestType>,
-    example_lst: Option<Vec<String>>,
-    runtime_args: Option<String>,
+    pub cargo_opts: Option<String>,
+    pub cargo_rustc_opts: Option<String>,
+    pub cargo_toml: Option<String>,
+    pub compile_time_type: Option<CompileTimeType>,
+    pub packages: Option<Vec<String>>,
+    pub runtime_test_type: Option<RuntimeTestType>,
+    pub example_lst: Option<Vec<String>>,
+    pub runtime_args: Option<String>,
     /// The file that should be touched to ensure cargo re-checks the leaf crate
     /// we're interested in. Likely, something similar to `src/lib.rs`. The
     /// default if this is not present is to touch all .rs files in the
     /// directory that `Cargo.toml` is in.
     #[serde(default)]
-    touch_file: Option<String>,
+    pub touch_file: Option<String>,
     #[serde(default)]
-    disabled: bool,
+    pub disabled: bool,
     #[serde(default = "default_runs")]
-    runs: usize,
+    pub runs: usize,
 }
 
 #[derive(Debug, Clone, Deserialize, Default)]
-enum RuntimeTestType {
+pub enum RuntimeTestType {
     #[default]
     Test,
     Example,
@@ -569,7 +569,7 @@ enum RuntimeTestType {
 }
 
 #[derive(Debug, Clone, Deserialize, Default)]
-enum CompileTimeType {
+pub enum CompileTimeType {
     #[default]
     Single,
     Packages,

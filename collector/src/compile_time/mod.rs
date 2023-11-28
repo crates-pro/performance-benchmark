@@ -124,7 +124,7 @@ lazy_static::lazy_static! {
     };
 }
 
-fn discover_benchmark_suit(dir: &Path) -> anyhow::Result<Vec<Benchamrk>> {
+pub fn discover_benchmark_suit(dir: &Path) -> anyhow::Result<Vec<Benchamrk>> {
     let mut benchmarks = vec![];
 
     for entry in read_dir(dir)

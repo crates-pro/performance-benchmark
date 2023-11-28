@@ -195,9 +195,10 @@ impl MIR {
 
     /// `_i = domain/type_ascription::func(args) -> [return: bb_x, unwind: bb_y] | return bb_x`
     fn call_capture(line: &String) -> Option<MIR> {
-        let call_pattern =
-            Regex::new(r"_(\d+) = (.*)\((.*)\) -> ((\[return(.*), unwind(.*)\];)|((.*[^;]);))")
-                .unwrap();
+        let call_pattern = Regex::new(
+            r"_(\d+) = (.*)\((.*)\) -> ((\[return(.*), unwind(.*)\];)|(([a-zA-Z]+[^;]);))",
+        )
+        .unwrap();
         if let Some(captures) = call_pattern.captures(line.as_str()) {
             let params = captures.get(3).unwrap().as_str();
 

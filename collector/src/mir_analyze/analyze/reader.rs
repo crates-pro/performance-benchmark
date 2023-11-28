@@ -4,7 +4,7 @@ use std::{
     path::PathBuf,
 };
 
-use super::mir::MIR;
+use crate::mir_analyze::mirs::mir::MIR;
 
 /// `read_mir` will take a mir file as input,
 /// count the mir lines and classify the mirs into:
@@ -35,6 +35,7 @@ pub fn read_mir(path: PathBuf) -> anyhow::Result<Vec<MIR>> {
     Ok(mirs)
 }
 
+#[cfg(test)]
 mod test {
 
     use super::MIR;
@@ -178,7 +179,7 @@ mod test {
             Assign, Call, Const, Move, Param, Value, Value::VAR, Var,
         };
 
-        use crate::mir_analyze::mirs::reader::read_mir;
+        use crate::mir_analyze::analyze::reader::read_mir;
         use std::path::PathBuf;
 
         let mir_file = PathBuf::from("test/mir_analyze/reader/condvar-9b2e97b194975c57.mir");
@@ -670,7 +671,7 @@ mod test {
         use super::MIR::{ASSIGN, CALL, REF};
         use crate::mir_analyze::mirs::mir::{Assign, Call, Const, Param, Value, Value::VAR, Var};
 
-        use crate::mir_analyze::mirs::reader::read_mir;
+        use crate::mir_analyze::analyze::reader::read_mir;
         use std::path::PathBuf;
 
         let mir_file = PathBuf::from("test/mir_analyze/reader/field-access.mir");

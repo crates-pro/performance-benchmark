@@ -31,11 +31,18 @@ pub struct Move {
 
 #[derive(Debug)]
 pub struct Call {
-    pub ret: VarId,
+    pub ret: Var,
     pub label: String,
-    pub params: Vec<Value>,
-    pub next_block: BlockId,
-    pub unwind_block: BlockId,
+    pub params: Vec<Param>,
+    pub next_block: String,
+    pub unwind_block: Option<String>,
+}
+
+#[derive(Debug)]
+pub enum Param {
+    MOVE(Var),
+    VAR(Var),
+    COSNT(Const),
 }
 
 #[derive(Debug)]
@@ -60,7 +67,8 @@ impl MIR {
     /// * assignment `_i = _j` or `_i = cosnt xxx`
     /// * move `_i = move _j`
     /// * ref `_i = &_j` or `_i = &mut _j`
-    /// * function/method call `_i = domain/type_ascription::func(args) -> [return: bb_x, unwind: bb_y]`, e.g. _5 = <Arc<Mutex<i32>> as Deref>::deref(move _6)
+    /// * type-cast `_i = _j as xxx`
+    /// * function/method call `_i = domain/type_ascription::func(args) -> [return: bb_x, unwind: bb_y] | return bb_x`, e.g. _5 = <Arc<Mutex<i32>> as Deref>::deref(move _6)
     /// * switch `_i = discriminant(_j); switchInt(move _i) -> [blocks]`
     /// * field access `_i.x`
     pub fn new(line: &String) -> Option<Self> {
@@ -74,7 +82,12 @@ impl MIR {
     }
 
     fn get_captures() -> Vec<impl Fn(&String) -> Option<MIR>> {
-        vec![MIR::assignment_capture, MIR::move_capture, MIR::ref_capture]
+        vec![
+            MIR::assignment_capture,
+            MIR::move_capture,
+            MIR::ref_capture,
+            MIR::call_capture,
+        ]
     }
 
     fn assignment_capture(line: &String) -> Option<MIR> {
@@ -155,6 +168,76 @@ impl MIR {
                 dst: (Value::VAR(Var {
                     id: second_var.parse().unwrap(),
                 })),
+            }))
+        } else {
+            None
+        }
+    }
+
+    fn call_capture(line: &String) -> Option<MIR> {
+        let call_pattern =
+            Regex::new(r"_(\d+) = (.*)\((.*)\) -> ((\[return(.*), unwind(.*)\];)|((.*[^;]);))")
+                .unwrap();
+        if let Some(captures) = call_pattern.captures(line.as_str()) {
+            let params = captures.get(3).unwrap().as_str();
+
+            let get_block = |s| {
+                let bb_pattern = Regex::new(r"(: (.*))|( (.*))|(.*)").unwrap();
+                let captures = bb_pattern.captures(s).unwrap();
+
+                if let Some(bb) = captures.get(2).map(|m| m.as_str()) {
+                    Some(bb.to_string())
+                } else if let Some(bb) = captures.get(4).map(|m| m.as_str()) {
+                    Some(bb.to_string())
+                } else if let Some(bb) = captures.get(5).map(|m| m.as_str()) {
+                    Some(bb.to_string())
+                } else {
+                    None
+                }
+            };
+
+            Some(MIR::CALL(Call {
+                ret: Var {
+                    id: captures.get(1).unwrap().as_str().parse().unwrap(),
+                },
+                label: captures.get(2).unwrap().as_str().to_string(),
+                params: if params.is_empty() {
+                    vec![]
+                } else {
+                    params
+                        .split(", ")
+                        .into_iter()
+                        .map(|param| {
+                            let param_pattern =
+                                Regex::new(r"(move _(\d+))|(_(\d+))|(const .*)").unwrap();
+                            if let Some(captures) = param_pattern.captures(param) {
+                                if let Some(c) = captures.get(5).map(|m| m.as_str()) {
+                                    Param::COSNT(Const { val: c.to_string() })
+                                } else if let Some(p) = captures.get(2).map(|m| m.as_str()) {
+                                    Param::MOVE(Var {
+                                        id: p.parse().unwrap(),
+                                    })
+                                } else {
+                                    Param::VAR(Var {
+                                        id: captures.get(4).unwrap().as_str().parse().unwrap(),
+                                    })
+                                }
+                            } else {
+                                panic!();
+                            }
+                        })
+                        .collect()
+                },
+                next_block: if let Some(s) = captures.get(6).map(|m| m.as_str()) {
+                    get_block(s).unwrap()
+                } else {
+                    get_block(captures.get(8).unwrap().as_str()).unwrap()
+                },
+                unwind_block: if let Some(s) = captures.get(7).map(|m| m.as_str()) {
+                    get_block(s)
+                } else {
+                    None
+                },
             }))
         } else {
             None

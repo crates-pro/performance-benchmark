@@ -13,7 +13,8 @@ use super::mir::MIR;
 /// * assignment `_i = _j` or `_i = cosnt xxx`
 /// * move `_i = move _j`
 /// * ref `_i = &_j` or `_i = &mut _j`
-/// * function/method call `_i = domain/type_ascription::func(args) -> [return: bb_x, unwind: bb_y]`, e.g. _5 = <Arc<Mutex<i32>> as Deref>::deref(move _6)
+/// * type-cast `_i = _j as xxx`
+/// * function/method call `_i = domain/type_ascription::func(args) -> [return: bb_x, unwind: bb_y] | return bb_x`, e.g. _5 = <Arc<Mutex<i32>> as Deref>::deref(move _6)
 /// * switch `_i = discriminant(_j); switchInt(move _i) -> [blocks]`
 /// * field access `_i.x`
 pub fn read_mir(path: PathBuf) -> anyhow::Result<Vec<MIR>> {
@@ -38,7 +39,7 @@ mod test {
 
     use super::MIR;
     use crate::mir_analyze::mirs::mir::{
-        Assign, Call, Const, Move, Reference, Value, Value::VAR, Var,
+        Assign, Call, Const, Move, Param, Reference, Value, Value::VAR, Var,
     };
 
     impl PartialEq for MIR {
@@ -92,6 +93,25 @@ mod test {
         }
     }
 
+    impl PartialEq for Param {
+        fn eq(&self, other: &Self) -> bool {
+            match self {
+                Param::MOVE(m) => match other {
+                    Param::MOVE(o) => m == o,
+                    _ => false,
+                },
+                Param::VAR(v) => match other {
+                    Param::VAR(o) => v == o,
+                    _ => false,
+                },
+                Param::COSNT(c) => match other {
+                    Param::COSNT(o) => c == o,
+                    _ => false,
+                },
+            }
+        }
+    }
+
     impl PartialEq for Value {
         fn eq(&self, other: &Self) -> bool {
             match self {
@@ -121,8 +141,10 @@ mod test {
 
     #[test]
     fn test_read_mir() {
-        use super::MIR::{ASSIGN, MOVE, REF};
-        use crate::mir_analyze::mirs::mir::{Assign, Const, Move, Value, Value::VAR, Var};
+        use super::MIR::{ASSIGN, CALL, MOVE, REF};
+        use crate::mir_analyze::mirs::mir::{
+            Assign, Call, Const, Move, Param, Value, Value::VAR, Var,
+        };
 
         use crate::mir_analyze::mirs::reader::read_mir;
         use std::path::PathBuf;
@@ -335,6 +357,251 @@ mod test {
             REF(Reference {
                 src: VAR(Var { id: 0 }),
                 dst: VAR(Var { id: 1 }),
+            }),
+            CALL(Call {
+                ret: Var { id: 2 },
+                label: "Mutex::<bool>::new".to_string(),
+                params: vec![Param::COSNT(Const {
+                    val: "const false".to_string(),
+                })],
+                next_block: "bb1;".to_string(),
+                unwind_block: None,
+            }),
+            CALL(Call {
+                ret: Var { id: 1 },
+                label: "Arc::<Mutex<bool>>::new".to_string(),
+                params: vec![Param::MOVE(Var { id: 2 })],
+                next_block: "bb2;".to_string(),
+                unwind_block: None,
+            }),
+            CALL(Call {
+                ret: Var { id: 4 },
+                label: "Condvar::new".to_string(),
+                params: vec![],
+                next_block: "bb3".to_string(),
+                unwind_block: Some("bb32".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 3 },
+                label: "Arc::<Condvar>::new".to_string(),
+                params: vec![Param::MOVE(Var { id: 4 })],
+                next_block: "bb4".to_string(),
+                unwind_block: Some("bb32".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 5 },
+                label: "<Arc<Mutex<bool>> as Clone>::clone".to_string(),
+                params: vec![Param::MOVE(Var { id: 6 })],
+                next_block: "bb5".to_string(),
+                unwind_block: Some("bb31".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 7 },
+                label: "<Arc<Condvar> as Clone>::clone".to_string(),
+                params: vec![Param::MOVE(Var { id: 8 })],
+                next_block: "bb6".to_string(),
+                unwind_block: Some("bb37".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 9 },
+                label: "spawn::<[closure@src/main.rs:11:21: 11:28], ()>".to_string(),
+                params: vec![Param::MOVE(Var { id: 10 })],
+                next_block: "bb7".to_string(),
+                unwind_block: Some("bb37".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 13 },
+                label: "Duration::from_millis".to_string(),
+                params: vec![Param::COSNT(Const {
+                    val: "const 1000_u64".to_string(),
+                })],
+                next_block: "bb9".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 12 },
+                label: "sleep".to_string(),
+                params: vec![Param::MOVE(Var { id: 13 })],
+                next_block: "bb10".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 19 },
+                label: "<Arc<Mutex<bool>> as Deref>::deref".to_string(),
+                params: vec![Param::MOVE(Var { id: 20 })],
+                next_block: "bb11".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 17 },
+                label: "Mutex::<bool>::lock".to_string(),
+                params: vec![Param::MOVE(Var { id: 18 })],
+                next_block: "bb12".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 16 },
+                label: "Result::<MutexGuard<'_, bool>, PoisonError<MutexGuard<'_, bool>>>::unwrap"
+                    .to_string(),
+                params: vec![Param::MOVE(Var { id: 17 })],
+                next_block: "bb13".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 14 },
+                label: "<MutexGuard<'_, bool> as DerefMut>::deref_mut".to_string(),
+                params: vec![Param::MOVE(Var { id: 15 })],
+                next_block: "bb14".to_string(),
+                unwind_block: Some("bb30".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 37 },
+                label: "JoinHandle::<()>::join".to_string(),
+                params: vec![Param::MOVE(Var { id: 38 })],
+                next_block: "bb23".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 30 },
+                label: "core::fmt::ArgumentV1::<'_>::new_display::<i32>".to_string(),
+                params: vec![Param::VAR(Var { id: 31 })],
+                next_block: "bb19".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 25 },
+                label: "Arguments::<'_>::new_v1".to_string(),
+                params: vec![Param::MOVE(Var { id: 26 }), Param::MOVE(Var { id: 27 })],
+                next_block: "bb20".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 24 },
+                label: "_print".to_string(),
+                params: vec![Param::MOVE(Var { id: 25 })],
+                next_block: "bb21".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 34 },
+                label: "<Arc<Condvar> as Deref>::deref".to_string(),
+                params: vec![Param::MOVE(Var { id: 35 })],
+                next_block: "bb22".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 32 },
+                label: "Condvar::notify_one".to_string(),
+                params: vec![Param::MOVE(Var { id: 33 })],
+                next_block: "bb38".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 36 },
+                label: "Result::<(), Box<dyn Any + Send>>::unwrap".to_string(),
+                params: vec![Param::MOVE(Var { id: 37 })],
+                next_block: "bb24".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 45 },
+                label: "core::fmt::ArgumentV1::<'_>::new_debug::<Arc<Mutex<bool>>>".to_string(),
+                params: vec![Param::VAR(Var { id: 46 })],
+                next_block: "bb25".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 40 },
+                label: "Arguments::<'_>::new_v1".to_string(),
+                params: vec![Param::MOVE(Var { id: 41 }), Param::MOVE(Var { id: 42 })],
+                next_block: "bb26".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 39 },
+                label: "_print".to_string(),
+                params: vec![Param::MOVE(Var { id: 40 })],
+                next_block: "bb27".to_string(),
+                unwind_block: Some("bb35".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 5 },
+                label: "<Arc<Mutex<bool>> as Deref>::deref".to_string(),
+                params: vec![Param::MOVE(Var { id: 6 })],
+                next_block: "bb1".to_string(),
+                unwind_block: Some("bb19".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 3 },
+                label: "Mutex::<bool>::lock".to_string(),
+                params: vec![Param::MOVE(Var { id: 4 })],
+                next_block: "bb2".to_string(),
+                unwind_block: Some("bb19".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 2 },
+                label: "Result::<MutexGuard<'_, bool>, PoisonError<MutexGuard<'_, bool>>>::unwrap"
+                    .to_string(),
+                params: vec![Param::MOVE(Var { id: 3 })],
+                next_block: "bb3".to_string(),
+                unwind_block: Some("bb19".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 12 },
+                label: "<MutexGuard<'_, bool> as Deref>::deref".to_string(),
+                params: vec![Param::MOVE(Var { id: 13 })],
+                next_block: "bb6".to_string(),
+                unwind_block: Some("bb22".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 17 },
+                label: "<Arc<Condvar> as Deref>::deref".to_string(),
+                params: vec![Param::MOVE(Var { id: 18 })],
+                next_block: "bb8".to_string(),
+                unwind_block: Some("bb22".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 15 },
+                label: "Condvar::wait::<bool>".to_string(),
+                params: vec![Param::MOVE(Var { id: 16 }), Param::MOVE(Var { id: 19 })],
+                next_block: "bb9".to_string(),
+                unwind_block: Some("bb22".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 14 },
+                label: "Result::<MutexGuard<'_, bool>, PoisonError<MutexGuard<'_, bool>>>::unwrap"
+                    .to_string(),
+                params: vec![Param::MOVE(Var { id: 15 })],
+                next_block: "bb10".to_string(),
+                unwind_block: Some("bb22".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 20 },
+                label: "<MutexGuard<'_, bool> as DerefMut>::deref_mut".to_string(),
+                params: vec![Param::MOVE(Var { id: 21 })],
+                next_block: "bb12".to_string(),
+                unwind_block: Some("bb22".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 29 },
+                label: "core::fmt::ArgumentV1::<'_>::new_display::<i32>".to_string(),
+                params: vec![Param::VAR(Var { id: 30 })],
+                next_block: "bb14".to_string(),
+                unwind_block: Some("bb22".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 24 },
+                label: "Arguments::<'_>::new_v1".to_string(),
+                params: vec![Param::MOVE(Var { id: 25 }), Param::MOVE(Var { id: 26 })],
+                next_block: "bb15".to_string(),
+                unwind_block: Some("bb22".to_string()),
+            }),
+            CALL(Call {
+                ret: Var { id: 23 },
+                label: "_print".to_string(),
+                params: vec![Param::MOVE(Var { id: 24 })],
+                next_block: "bb23".to_string(),
+                unwind_block: Some("bb22".to_string()),
             }),
         ];
 

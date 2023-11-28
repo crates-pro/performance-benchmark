@@ -9,8 +9,35 @@ pub enum MIR {
     FIELDACCESS(FIELDACCESS),
 }
 
+pub static ASSIGN_TYPE: &str = "assignment";
+pub static REF_TYPE: &str = "reference";
+pub static MOVE_TYPE: &str = "move";
+pub static CALL_TYPE: &str = "call";
+pub static FIELD_ACCESS_TYPE: &str = "field acess";
+
+impl MIR {
+    pub fn get_all_types() -> Vec<String> {
+        vec![
+            ASSIGN_TYPE.to_string(),
+            REF_TYPE.to_string(),
+            MOVE_TYPE.to_string(),
+            CALL_TYPE.to_string(),
+            FIELD_ACCESS_TYPE.to_string(),
+        ]
+    }
+
+    pub fn get_type(&self) -> String {
+        match self {
+            MIR::ASSIGN(_) => ASSIGN_TYPE.to_string(),
+            MIR::REF(_) => REF_TYPE.to_string(),
+            MIR::MOVE(_) => MOVE_TYPE.to_string(),
+            MIR::CALL(_) => CALL_TYPE.to_string(),
+            MIR::FIELDACCESS(_) => FIELD_ACCESS_TYPE.to_string(),
+        }
+    }
+}
+
 pub type VarId = u32;
-pub type BlockId = u32;
 
 #[derive(Debug)]
 pub struct Assign {

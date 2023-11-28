@@ -223,7 +223,6 @@ fn main_result() -> anyhow::Result<i32> {
         }
         Commands::MirAnalyze {
             local,
-            profiles,
             bench_dir,
             out_dir,
         } => {
@@ -234,7 +233,7 @@ fn main_result() -> anyhow::Result<i32> {
                 "",
             )?;
 
-            mir_analyze::mir_analyze::entry(toolch, profiles, bench_dir, out_dir)?;
+            mir_analyze::mir_analyze::entry(toolch, bench_dir, out_dir)?;
 
             Ok(0)
         }

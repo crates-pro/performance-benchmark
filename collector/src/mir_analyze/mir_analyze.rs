@@ -1,17 +1,15 @@
 use std::{
     fs::read_dir,
-    mem::ManuallyDrop,
     path::{Path, PathBuf},
     process::{Command, Stdio},
 };
 
 use anyhow::bail;
-use tempfile::TempDir;
 
 use crate::{
     benchmark::{benchmark::Benchamrk, profile::Profiles},
     compile_time::discover_benchmark_suit,
-    mir_analyze::analyze::reader::read_mir,
+    mir_analyze::analyze::{count::count_mir_entry, reader::read_mir},
     toolchain::LocalToolchain,
 };
 
@@ -22,12 +20,13 @@ use super::mirs::mir::MIR;
 /// on the generated mir file.
 pub(crate) fn entry(
     ltc: LocalToolchain,
-    profiles: Profiles,
     benchmarks_dir: PathBuf,
     out_dir: PathBuf,
 ) -> anyhow::Result<()> {
     for benchmark in discover_benchmark_suit(&benchmarks_dir)? {
         let mirs = generate_mir(&benchmark, &ltc)?;
+
+        do_analyze(mirs, &out_dir)?;
     }
 
     Ok(())
@@ -96,8 +95,10 @@ fn generate_mir(benchmark: &Benchamrk, ltc: &LocalToolchain) -> anyhow::Result<V
     }
 }
 
-fn do_analyze() {
-    unimplemented!()
+fn do_analyze(mirs: Vec<MIR>, out_dir: &PathBuf) -> anyhow::Result<()> {
+    count_mir_entry(&mirs, out_dir)?;
+
+    Ok(())
 }
 
 #[cfg(test)]

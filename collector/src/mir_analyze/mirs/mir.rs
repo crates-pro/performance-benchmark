@@ -6,6 +6,7 @@ pub enum MIR {
     REF(Reference),
     MOVE(Move),
     CALL(Call),
+    FIELDACCESS(FIELDACCESS),
 }
 
 pub type VarId = u32;
@@ -15,6 +16,20 @@ pub type BlockId = u32;
 pub struct Assign {
     pub left: Value,
     pub right: Value,
+}
+
+#[derive(Debug)]
+pub enum FIELDACCESS {
+    MOVE(FieldAccess),
+    REF(FieldAccess),
+    REFMUT(FieldAccess),
+}
+
+#[derive(Debug)]
+pub struct FieldAccess {
+    pub left: Var,
+    pub struct_var: Var,
+    pub field_num: u32,
 }
 
 #[derive(Debug)]
@@ -68,9 +83,9 @@ impl MIR {
     /// * move `_i = move _j`
     /// * ref `_i = &_j` or `_i = &mut _j`
     /// * type-cast `_i = _j as xxx`
-    /// * function/method call `_i = domain/type_ascription::func(args) -> [return: bb_x, unwind: bb_y] | return bb_x`, e.g. _5 = <Arc<Mutex<i32>> as Deref>::deref(move _6)
+    /// * function/method call `_i = domain/type_ascription::func(args) -> [return: bb_x, unwind: bb_y] | return bb_x`
     /// * switch `_i = discriminant(_j); switchInt(move _i) -> [blocks]`
-    /// * field access `_i.x`
+    /// * field access `_i = move (_j.x type) | &mut (_j.x type)| &(_j.x type)`
     pub fn new(line: &String) -> Option<Self> {
         for capture in MIR::get_captures() {
             if let Some(mir) = capture(line) {
@@ -87,9 +102,11 @@ impl MIR {
             MIR::move_capture,
             MIR::ref_capture,
             MIR::call_capture,
+            MIR::field_access_capture,
         ]
     }
 
+    /// `_i = _j` or `_i = cosnt xxx`
     fn assignment_capture(line: &String) -> Option<MIR> {
         let assignment_pattern = Regex::new(r"(_(\d+) = (_(\d+)|(const) (.*));.*)").unwrap();
         if let Some(captures) = assignment_pattern.captures(line.as_str()) {
@@ -131,6 +148,7 @@ impl MIR {
         }
     }
 
+    /// `_i = move _j`
     fn move_capture(line: &String) -> Option<MIR> {
         let move_pattern = Regex::new(r"_(\d+) = move _(\d+)").unwrap();
         if let Some(captures) = move_pattern.captures(line.as_str()) {
@@ -150,6 +168,7 @@ impl MIR {
         }
     }
 
+    /// `_i = &_j` or `_i = &mut _j`
     fn ref_capture(line: &String) -> Option<MIR> {
         let ref_capture = Regex::new(r"_(\d+) = ((&_(\d+))|(&mut _(\d+)))").unwrap();
         if let Some(captures) = ref_capture.captures(line.as_str()) {
@@ -174,6 +193,7 @@ impl MIR {
         }
     }
 
+    /// `_i = domain/type_ascription::func(args) -> [return: bb_x, unwind: bb_y] | return bb_x`
     fn call_capture(line: &String) -> Option<MIR> {
         let call_pattern =
             Regex::new(r"_(\d+) = (.*)\((.*)\) -> ((\[return(.*), unwind(.*)\];)|((.*[^;]);))")
@@ -239,6 +259,36 @@ impl MIR {
                     None
                 },
             }))
+        } else {
+            None
+        }
+    }
+
+    /// `_i = move (_j.x type) | &mut (_j.x type)| &(_j.x type)`
+    fn field_access_capture(line: &String) -> Option<MIR> {
+        let field_access_pattern =
+            Regex::new(r"_(\d+) = ((move )|(&mut )|(&))\(_(\d+)\.(\d+): .*\);.*").unwrap();
+
+        if let Some(captures) = field_access_pattern.captures(line) {
+            let field_access = FieldAccess {
+                left: Var {
+                    id: captures.get(1).unwrap().as_str().parse().unwrap(),
+                },
+                struct_var: Var {
+                    id: captures.get(6).unwrap().as_str().parse().unwrap(),
+                },
+                field_num: captures.get(7).unwrap().as_str().parse().unwrap(),
+            };
+
+            if captures.get(3).is_some() {
+                Some(MIR::FIELDACCESS(FIELDACCESS::MOVE(field_access)))
+            } else if captures.get(4).is_some() {
+                Some(MIR::FIELDACCESS(FIELDACCESS::REFMUT(field_access)))
+            } else if captures.get(5).is_some() {
+                Some(MIR::FIELDACCESS(FIELDACCESS::REF(field_access)))
+            } else {
+                panic!("Fail to capture {} as field access statement.", line);
+            }
         } else {
             None
         }

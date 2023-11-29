@@ -1,14 +1,10 @@
-use std::{collections::HashMap, path::PathBuf};
+use std::collections::HashMap;
 
 use crate::mir_analyze::mirs::mir::{MIR, MOVE_TYPE, REF_TYPE};
 
-pub fn count_mir_entry(mirs: &Vec<MIR>, out_dir: &PathBuf) -> anyhow::Result<()> {
-    count_mir(mirs)?;
+type MirCount = HashMap<String, u32>;
 
-    Ok(())
-}
-
-fn count_mir(mirs: &Vec<MIR>) -> anyhow::Result<HashMap<String, u32>> {
+pub fn count_mir(mirs: &Vec<MIR>) -> anyhow::Result<MirCount> {
     let mut mir_number = MIR::get_all_types()
         .into_iter()
         .map(|s| (s, 0))
@@ -42,7 +38,7 @@ fn count_mir(mirs: &Vec<MIR>) -> anyhow::Result<HashMap<String, u32>> {
 
 #[cfg(test)]
 mod test {
-    use std::{collections::HashMap, path::PathBuf};
+    use std::path::PathBuf;
 
     use crate::mir_analyze::{
         analyze::reader::read_mir,
@@ -53,16 +49,15 @@ mod test {
 
     #[test]
     fn test_count_mir() {
-        // let mir_file = PathBuf::from("test/mir_analyze/count/condvar-83823257d08c42e7.mir");
-        let mir_file = PathBuf::from("test/mir_analyze/reader/condvar-9b2e97b194975c57.mir");
+        let mir_file = PathBuf::from("test/mir_analyze/count/condvar-83823257d08c42e7.mir");
 
         let numbers = count_mir(&read_mir(mir_file).unwrap()).unwrap();
 
         let std_numbers = vec![
-            (ASSIGN_TYPE.to_string(), 24u32),
-            (MOVE_TYPE.to_string(), 37),
-            (CALL_TYPE.to_string(), 34),
-            (FIELD_ACCESS_TYPE.to_string(), 4),
+            (ASSIGN_TYPE.to_string(), 23u32),
+            (MOVE_TYPE.to_string(), 43),
+            (CALL_TYPE.to_string(), 24),
+            (FIELD_ACCESS_TYPE.to_string(), 3),
             (REF_TYPE.to_string(), 18),
         ]
         .into_iter()

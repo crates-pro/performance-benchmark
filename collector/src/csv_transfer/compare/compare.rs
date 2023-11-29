@@ -102,6 +102,7 @@ fn find_file_pairs(dir: PathBuf) -> anyhow::Result<Vec<FilePair>> {
         .collect())
 }
 
+#[cfg(test)]
 mod test {
 
     use std::path::PathBuf;
@@ -115,7 +116,6 @@ mod test {
         }
     }
 
-    #[allow(dead_code)]
     fn assert_file_eq(path: &PathBuf, std_path: &PathBuf) {
         use std::fs::File;
         use std::io::{BufRead, BufReader};

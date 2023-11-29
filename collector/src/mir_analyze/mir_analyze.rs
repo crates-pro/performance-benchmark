@@ -25,11 +25,13 @@ pub(crate) fn entry(
         do_analyze(mirs, benchmark, &mut data)?;
     }
 
+    data.write_all(out_dir.as_path())?;
+
     Ok(())
 }
 
 fn do_analyze(mirs: Vec<MIR>, benchmark: &Benchamrk, data: &mut Data) -> anyhow::Result<()> {
-    count_mir(&mirs)?;
+    data.add_mir_count(&benchmark.name, count_mir(&mirs)?);
 
     Ok(())
 }

@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use crate::mir_analyze::mirs::mir::{MIR, MOVE_TYPE, REF_TYPE};
 
-type MirCount = HashMap<String, u32>;
+pub type MirCount = HashMap<String, u32>;
 
 pub fn count_mir(mirs: &Vec<MIR>) -> anyhow::Result<MirCount> {
     let mut mir_number = MIR::get_all_types()

@@ -333,9 +333,6 @@ pub enum Commands {
         #[clap(flatten)]
         local: LocalOptions,
 
-        #[clap(long = "profile", default_value = "debug,release")]
-        profiles: Profiles,
-
         /// The path of benchmark dir
         #[clap(long = "bench-dir", default_value = "../benchmarks/compile-time")]
         bench_dir: PathBuf,

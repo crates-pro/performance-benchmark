@@ -1,0 +1,19 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+% \usepackage{xcolor}
+\begin{table}[]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lll@{}}
+\toprule
+ & column\_a & column\_b \\\midrule
+row\_a & 1 & 4\\
+row\_b & 2 & 5\\
+row\_c & 3 & 6\\
+\bottomrule
+\end{tabular}%
+}
+\caption{test\_tex\_writer}
+\label{tab:test_tex_writer}
+\end{table}

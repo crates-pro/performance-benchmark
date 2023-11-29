@@ -102,6 +102,7 @@ fn find_file_pairs(dir: PathBuf) -> anyhow::Result<Vec<FilePair>> {
         .collect())
 }
 
+#[cfg(test)]
 mod test {
 
     use std::path::PathBuf;

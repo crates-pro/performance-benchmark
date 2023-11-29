@@ -1,2 +1,1 @@
-pub(self) mod mir;
-mod reader;
+pub(super) mod mir;

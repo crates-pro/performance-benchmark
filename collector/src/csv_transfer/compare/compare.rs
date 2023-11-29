@@ -116,6 +116,7 @@ mod test {
         }
     }
 
+    #[allow(dead_code)]
     fn assert_file_eq(path: &PathBuf, std_path: &PathBuf) {
         use std::fs::File;
         use std::io::{BufRead, BufReader};

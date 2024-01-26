@@ -28,8 +28,8 @@ impl Data {
         write_tex_table(
             self.mir_count,
             out_dir,
-            "MIR Count".to_string(),
-            "MIR Count".to_string(),
+            "MIR Count.tex".to_string(),
+            "MIR Count.tex".to_string(),
         )?;
 
         Ok(())

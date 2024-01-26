@@ -1,0 +1,19 @@
+use std::str::FromStr;
+use crate::mir_analyze::mir::mir::*;
+
+grammar;
+
+pub BB: BasicBlock = {
+    "bb" <bbid:Uid> ": {" <s:statements> "}" => BasicBlock {bbid, statements: s, terminator: None},
+};
+
+statements: Vec<Statement> = {
+    <mut ss: statements> <s: statement> => {ss.push(s); ss},
+    <s: statement> => vec![s],
+};
+
+statement: Statement = {
+    "bb" => Statement::BinaryOp(BinaryOp{}),
+};
+
+Uid: u32 = <s:r"[0-9]+"> => u32::from_str(s).unwrap();

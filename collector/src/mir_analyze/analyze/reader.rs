@@ -40,9 +40,14 @@ mod test {
 
     use super::MIR;
     use crate::mir_analyze::mirs::mir::{
-        Assign, Call, Const, FieldAccess, Move, Param, Reference, Value, Value::VAR, Var,
+        Assign, Call, Const, FieldAccess, Memory, Move, Param, Reference, Value, Value::VAR, Var,
         FIELDACCESS,
     };
+
+    use super::MIR::{ASSIGN, CALL, MEMORY, MOVE, REF};
+
+    use crate::mir_analyze::analyze::reader::read_mir;
+    use std::path::PathBuf;
 
     impl PartialEq for MIR {
         fn eq(&self, other: &Self) -> bool {
@@ -65,6 +70,10 @@ mod test {
                 },
                 MIR::FIELDACCESS(field_access) => match other {
                     MIR::FIELDACCESS(o_field_access) => field_access == o_field_access,
+                    _ => false,
+                },
+                MIR::MEMORY(m) => match other {
+                    MIR::MEMORY(o_m) => m == o_m,
                     _ => false,
                 },
             }
@@ -141,6 +150,10 @@ mod test {
                     Param::COSNT(o) => c == o,
                     _ => false,
                 },
+                Param::FUNCPTR(f) => match other {
+                    Param::FUNCPTR(o) => f == o,
+                    _ => false,
+                },
             }
         }
     }
@@ -172,16 +185,23 @@ mod test {
         }
     }
 
+    impl PartialEq for Memory {
+        fn eq(&self, other: &Self) -> bool {
+            match self {
+                Memory::StorageLive(v) => match other {
+                    Memory::StorageLive(o_v) => v == o_v,
+                    _ => false,
+                },
+                Memory::SotrageDead(v) => match other {
+                    Memory::SotrageDead(o_v) => v == o_v,
+                    _ => false,
+                },
+            }
+        }
+    }
+
     #[test]
     fn test_read_mir_condvar() {
-        use super::MIR::{ASSIGN, CALL, MOVE, REF};
-        use crate::mir_analyze::mirs::mir::{
-            Assign, Call, Const, Move, Param, Value, Value::VAR, Var,
-        };
-
-        use crate::mir_analyze::analyze::reader::read_mir;
-        use std::path::PathBuf;
-
         let mir_file = PathBuf::from("test/mir_analyze/reader/condvar-9b2e97b194975c57.mir");
 
         let results = read_mir(mir_file).unwrap();
@@ -668,12 +688,6 @@ mod test {
 
     #[test]
     fn test_read_mir_field_access() {
-        use super::MIR::{ASSIGN, CALL, REF};
-        use crate::mir_analyze::mirs::mir::{Assign, Call, Const, Param, Value, Value::VAR, Var};
-
-        use crate::mir_analyze::analyze::reader::read_mir;
-        use std::path::PathBuf;
-
         let mir_file = PathBuf::from("test/mir_analyze/reader/field-access.mir");
 
         let results = read_mir(mir_file).unwrap();
@@ -768,6 +782,64 @@ mod test {
             REF(Reference {
                 src: VAR(Var { id: 0 }),
                 dst: VAR(Var { id: 1 }),
+            }),
+        ];
+
+        results
+            .iter()
+            .for_each(|r| assert!(std_results.contains(r)));
+        std_results
+            .iter()
+            .for_each(|r| assert!(results.contains(r)));
+    }
+
+    #[test]
+    fn test_read_mir_storage() {
+        let mir_file = PathBuf::from("test/mir_analyze/reader/storage.mir");
+
+        let results = read_mir(mir_file).unwrap();
+
+        let std_results = vec![
+            MEMORY(Memory::StorageLive(Var { id: 1 })),
+            MEMORY(Memory::StorageLive(Var { id: 2 })),
+            MEMORY(Memory::StorageLive(Var { id: 48 })),
+            MEMORY(Memory::StorageLive(Var { id: 51 })),
+            MEMORY(Memory::StorageLive(Var { id: 52 })),
+            ASSIGN(Assign {
+                left: VAR(Var { id: 52 }),
+                right: Value::CONST(Const {
+                    val: "UnsafeCell::<u32> {{ value: 0_u32 }}".to_string(),
+                }),
+            }),
+            MEMORY(Memory::SotrageDead(Var { id: 52 })),
+            MEMORY(Memory::SotrageDead(Var { id: 51 })),
+            MEMORY(Memory::StorageLive(Var { id: 49 })),
+            MEMORY(Memory::StorageLive(Var { id: 53 })),
+            MEMORY(Memory::StorageLive(Var { id: 54 })),
+            ASSIGN(Assign {
+                left: VAR(Var { id: 54 }),
+                right: Value::CONST(Const {
+                    val: "UnsafeCell::<u8> {{ value: 0_u8 }}".to_string(),
+                }),
+            }),
+            MEMORY(Memory::SotrageDead(Var { id: 54 })),
+            MEMORY(Memory::SotrageDead(Var { id: 53 })),
+            MEMORY(Memory::StorageLive(Var { id: 50 })),
+            ASSIGN(Assign {
+                left: VAR(Var { id: 50 }),
+                right: Value::CONST(Const {
+                    val: "UnsafeCell::<bool> {{ value: false }}".to_string(),
+                }),
+            }),
+            MEMORY(Memory::SotrageDead(Var { id: 50 })),
+            MEMORY(Memory::SotrageDead(Var { id: 49 })),
+            MEMORY(Memory::SotrageDead(Var { id: 48 })),
+            CALL(Call {
+                ret: Var { id: 1 },
+                label: "Arc::<Mutex<bool>>::new".to_string(),
+                params: vec![Param::MOVE(Var { id: 2 })],
+                next_block: "bb1".to_string(),
+                unwind_block: Some("continue".to_string()),
             }),
         ];
 

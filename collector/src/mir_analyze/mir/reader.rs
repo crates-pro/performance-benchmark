@@ -5,17 +5,17 @@ use std::{
 
 use lalrpop_util::lalrpop_mod;
 
-use super::mir::BasicBlock;
+use super::mir::MIRs;
 
 lalrpop_mod!(pub mir_parser, "/mir_analyze/mir/mir.rs");
 
-pub fn parse_mir(mir_file: File) -> anyhow::Result<BasicBlock> {
+pub fn parse_mir(mir_file: File) -> anyhow::Result<MIRs> {
     let mut reader = BufReader::new(mir_file);
     let mut buf = String::new();
     reader.read_to_string(&mut buf)?;
 
-    match mir_parser::BBParser::new().parse(buf.as_str()) {
-        Ok(bb) => Ok(bb),
+    match mir_parser::mirsParser::new().parse(buf.as_str()) {
+        Ok(bbs) => Ok(bbs),
         Err(e) => panic!("{}", e),
     }
 }

@@ -1,10 +1,68 @@
 use std::str::FromStr;
 use crate::mir_analyze::mir::mir::*;
+use crate::mir_analyze::mir::ty::*;
 
 grammar;
 
-pub BB: BasicBlock = {
-    "bb" <bbid:Uid> ": {" <s:statements> "}" => BasicBlock {bbid, statements: s, terminator: None},
+pub mirs: MIRs = {
+    <mut mirs: mirs> <function: function> => {mirs.functions.push(function); mirs},
+    <mut mirs: mirs> <s: any_string> => {mirs.unrecognized_lines.push(s); mirs},
+    <function: function> => MIRs {functions: vec![function], unrecognized_lines: vec![],},
+    <s: any_string> => MIRs {functions: vec![], unrecognized_lines: vec![s],},
+}
+
+function: Function = {
+    "fn " <label: moduled_indentifier> "(" <params: params> ") -> " <ret_ty: ty> "{" <unrecognized_lines: unrecognized_lines> <bbs: BBs> "}" 
+        => Function{
+            label,
+            bbs,
+            params,
+            ret_ty,
+            unrecognized_lines,
+        },
+    "fn " <label: moduled_indentifier> "() -> " <ret_ty: ty> "{" <unrecognized_lines: unrecognized_lines> <bbs: BBs> "}" 
+        => Function{
+            label,
+            bbs,
+            params: vec![],
+            ret_ty,
+            unrecognized_lines,
+        },
+    
+    "fn " <label: moduled_indentifier> "(" <params: params> ") -> " <ret_ty: ty> "{" <bbs: BBs> "}" 
+        => Function{
+            label,
+            bbs,
+            params,
+            ret_ty,
+            unrecognized_lines: vec![],
+        },
+    "fn " <label: moduled_indentifier> "() -> " <ret_ty: ty> "{" <bbs: BBs> "}" 
+        => Function{
+            label,
+            bbs,
+            params: vec![],
+            ret_ty,
+            unrecognized_lines: vec![],
+        },
+};
+
+params: Vec<Local> = {
+    <mut params: params> ", " <param: param> => {params.push(param); params},
+    <param: param> => vec![param],
+};
+
+param: Local = {
+    <mut local: local> ":" <s: ".+"> => {local.ty = Ty::from_str(s).unwrap(); local}
+};
+
+BBs: BasicBlocks = {
+    <mut bbs: BBs> <bb: BB> => {bbs.push(bb); bbs},
+    <bb: BB> => vec![bb],
+}
+
+BB: BasicBlock = {
+    <bbid: bb_id> ": {" <s:statements> "}" => BasicBlock {bbid, statements: s, terminator: None},
 };
 
 statements: Vec<Statement> = {
@@ -16,4 +74,27 @@ statement: Statement = {
     "bb" => Statement::BinaryOp(BinaryOp{}),
 };
 
-Uid: u32 = <s:r"[0-9]+"> => u32::from_str(s).unwrap();
+local: Local = "_" <s:r"[0-9]+"> => Local{local_id: u32::from_str(s).unwrap(), ty: Ty::default(),};
+bb_id: u32 = "bb" <s:r"[0-9]+"> => u32::from_str(s).unwrap();
+
+ty: Ty = {
+    "()" => Ty::Unit,  
+};
+
+moduled_indentifier: ModuledIdentifier = {
+    <mut moduled_indentifier: moduled_indentifier> "::" <identifier: identifier> => {moduled_indentifier.push(identifier); moduled_indentifier},
+    <identifier: identifier> => vec![identifier],
+};
+
+unrecognized_lines: Vec<String> = {
+    <mut unrecognized_lines: unrecognized_lines> <s: any_string> => {unrecognized_lines.push(s); unrecognized_lines},
+    <s: any_string> => vec![s],
+};
+
+identifier: String = <s: r"[a-zA-Z_][a-zA-Z0-9_]*"> => String::from(s);
+
+
+
+any_string: String = {
+    <s: r"[^a-zA-Z0-9_\s]+"> => String::from(s),
+};

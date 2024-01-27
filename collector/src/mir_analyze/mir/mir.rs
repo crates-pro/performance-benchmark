@@ -36,7 +36,21 @@ pub enum Statement {
 pub enum Terminator {}
 
 #[derive(Debug)]
-pub struct BinaryOp();
+pub enum BinaryOp {
+    CheckedAdd(CheckedAdd),
+}
+
+#[derive(Debug)]
+pub struct CheckedAdd {
+    pub res: Operand,
+    pub lhs: Operand,
+    pub rhs: Operand,
+}
+
+#[derive(Debug)]
+pub enum Operand {
+    LOCAL(Local),
+}
 
 #[derive(Debug)]
 pub struct Local {

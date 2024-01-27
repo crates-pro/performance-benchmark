@@ -71,11 +71,22 @@ statements: Vec<Statement> = {
 };
 
 statement: Statement = {
-    "bb" => Statement::BinaryOp(BinaryOp{}),
+    <binary_op: binaryOp> => Statement::BinaryOp(binary_op),
 };
 
-local: Local = "_" <s:r"[0-9]+"> => Local{local_id: u32::from_str(s).unwrap(), ty: Ty::default(),};
-bb_id: u32 = "bb" <s:r"[0-9]+"> => u32::from_str(s).unwrap();
+binaryOp: BinaryOp = {
+    <checked_add: checkedAdd> => BinaryOp::CheckedAdd(checked_add),
+};
+
+checkedAdd: CheckedAdd = <res: operand> "= CheckedAdd(" <lhs: operand> ", " <rhs: operand> ");" => CheckedAdd{res, lhs, rhs};
+
+operand: Operand = {
+    <local: local> => Operand::LOCAL(local),
+};
+
+local: Local = <identifier: identifier> => Local{local_id: u32::from_str(&identifier.as_str()[1..]).unwrap(), ty: Ty::default(),};
+bb_id: u32 = <identifier: identifier> => u32::from_str(&identifier.as_str()[2..]).unwrap();
+
 
 ty: Ty = {
     "()" => Ty::Unit,  
@@ -92,8 +103,6 @@ unrecognized_lines: Vec<String> = {
 };
 
 identifier: String = <s: r"[a-zA-Z_][a-zA-Z0-9_]*"> => String::from(s);
-
-
 
 any_string: String = {
     <s: r"[^a-zA-Z0-9_\s]+"> => String::from(s),

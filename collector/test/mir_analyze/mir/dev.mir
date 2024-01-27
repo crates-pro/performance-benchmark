@@ -1,0 +1,5 @@
+fn main() -> () {
+    bb1: {
+        _1 = CheckedAdd(_2, _3);
+    }
+}

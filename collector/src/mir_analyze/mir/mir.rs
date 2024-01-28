@@ -16,6 +16,27 @@ pub struct Function {
     pub unrecognized_lines: Vec<String>,
 }
 
+pub type DebugStmts = Vec<DebugStmt>;
+
+#[derive(Debug)] 
+pub struct DebugStmt {
+
+}
+
+pub type LocalDefs = Vec<LocalDef>;
+
+#[derive(Debug)] 
+pub struct LocalDef {
+
+}
+
+pub type Scopes = Vec<Scope>;
+
+#[derive(Debug)] 
+pub struct Scope {
+    pub sub_scopes: Scopes,
+}
+
 pub type ModuledIdentifier = Vec<String>;
 
 pub type BasicBlocks = Vec<BasicBlock>;
@@ -56,4 +77,5 @@ pub enum Operand {
 pub struct Local {
     pub local_id: u32,
     pub ty: Ty,
+    pub mutability: bool,
 }

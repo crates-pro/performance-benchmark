@@ -9,6 +9,7 @@ pub mirs: MIRs = {
     <mut mirs: mirs> <s: any_string> => {mirs.unrecognized_lines.push(s); mirs},
     <function: function> => MIRs {functions: vec![function], unrecognized_lines: vec![],},
     <s: any_string> => MIRs {functions: vec![], unrecognized_lines: vec![s],},
+    <c: comments> => MIRs{functions: vec![], unrecognized_lines: vec![],},
 }
 
 function: Function = {
@@ -63,7 +64,7 @@ BBs: BasicBlocks = {
 
 BB: BasicBlock = {
     <bbid: bb_id> ": {" <s:statements> "}" => BasicBlock {bbid, statements: s, terminator: None},
-};
+}; 
 
 statements: Vec<Statement> = {
     <mut ss: statements> <s: statement> => {ss.push(s); ss},
@@ -84,7 +85,7 @@ operand: Operand = {
     <local: local> => Operand::LOCAL(local),
 };
 
-local: Local = <identifier: identifier> => Local{local_id: u32::from_str(&identifier.as_str()[1..]).unwrap(), ty: Ty::default(),};
+local: Local = <identifier: identifier> => Local{local_id: u32::from_str(&identifier.as_str()[1..]).unwrap(), ty: Ty::default(), mutability: false};
 bb_id: u32 = <identifier: identifier> => u32::from_str(&identifier.as_str()[2..]).unwrap();
 
 
@@ -104,6 +105,16 @@ unrecognized_lines: Vec<String> = {
 
 identifier: String = <s: r"[a-zA-Z_][a-zA-Z0-9_]*"> => String::from(s);
 
+comments: () = {
+    <comment: comment> => (),
+    <comments: comments> <comment: comment> => (),
+};
+
+comment: () = {
+    r"// .*" => (),
+};
+
 any_string: String = {
     <s: r"[^a-zA-Z0-9_\s]+"> => String::from(s),
 };
+

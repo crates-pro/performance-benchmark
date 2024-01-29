@@ -1,69 +1,188 @@
 use std::str::FromStr;
+use crate::mir_analyze::mir::basic_block::*;
 use crate::mir_analyze::mir::mir::*;
+use crate::mir_analyze::mir::place::*;
+use crate::mir_analyze::mir::rvalue::*;
+use crate::mir_analyze::mir::scope::*;
+use crate::mir_analyze::mir::statement::*;
+use crate::mir_analyze::mir::terminator::*;
 use crate::mir_analyze::mir::ty::*;
 
 grammar;
 
 pub mirs: MIRs = {
     <mut mirs: mirs> <function: function> => {mirs.functions.push(function); mirs},
-    <mut mirs: mirs> <s: any_string> => {mirs.unrecognized_lines.push(s); mirs},
-    <function: function> => MIRs {functions: vec![function], unrecognized_lines: vec![],},
-    <s: any_string> => MIRs {functions: vec![], unrecognized_lines: vec![s],},
-    <c: comments> => MIRs{functions: vec![], unrecognized_lines: vec![],},
+    <function: function> => MIRs {functions: vec![function]},
+    <c: comments> => MIRs{functions: vec![]},
 }
 
 function: Function = {
-    "fn " <label: moduled_indentifier> "(" <params: params> ") -> " <ret_ty: ty> "{" <unrecognized_lines: unrecognized_lines> <bbs: BBs> "}" 
+    "fn " <label: moduled_indentifier> 
+        <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> 
+        <left_brace: left_brace> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace>
         => Function{
             label,
             bbs,
             params,
+            var_debug_infos: vec![],
+            local_defs,
+            scopes: vec![],
             ret_ty,
-            unrecognized_lines,
         },
-    "fn " <label: moduled_indentifier> "() -> " <ret_ty: ty> "{" <unrecognized_lines: unrecognized_lines> <bbs: BBs> "}" 
+
+        
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace> 
         => Function{
             label,
             bbs,
-            params: vec![],
+            params,
+            var_debug_infos: vec![],
+            local_defs,
+            scopes,
             ret_ty,
-            unrecognized_lines,
+        },
+
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace>
+        => Function{
+            label,
+            bbs,
+            params,
+            var_debug_infos,
+            local_defs,
+            scopes: vec![],
+            ret_ty,
         },
     
-    "fn " <label: moduled_indentifier> "(" <params: params> ") -> " <ret_ty: ty> "{" <bbs: BBs> "}" 
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace>
         => Function{
             label,
             bbs,
             params,
+            var_debug_infos,
+            local_defs,
+            scopes,
             ret_ty,
-            unrecognized_lines: vec![],
         },
-    "fn " <label: moduled_indentifier> "() -> " <ret_ty: ty> "{" <bbs: BBs> "}" 
+
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace> 
         => Function{
             label,
             bbs,
             params: vec![],
+            var_debug_infos: vec![],
+            local_defs,
+            scopes: vec![],
             ret_ty,
-            unrecognized_lines: vec![],
+        },
+
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace>
+        => Function{
+            label,
+            bbs,
+            params: vec![],
+            var_debug_infos: vec![],
+            local_defs,
+            scopes,
+            ret_ty,
+        },
+
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace> 
+        => Function{
+            label,
+            bbs,
+            params: vec![],
+            var_debug_infos,
+            local_defs,
+            scopes: vec![],
+            ret_ty,
+        },
+
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace> 
+        => Function{
+            label,
+            bbs,
+            params: vec![],
+            var_debug_infos,
+            local_defs,
+            scopes,
+            ret_ty,
         },
 };
 
-params: Vec<Local> = {
-    <mut params: params> ", " <param: param> => {params.push(param); params},
+params: Params = {
+    <mut params: params> <comma: comma> <param: param> => {params.push(param); params},
     <param: param> => vec![param],
 };
 
-param: Local = {
-    <mut local: local> ":" <s: ".+"> => {local.ty = Ty::from_str(s).unwrap(); local}
+param: Param = {
+    <local_id: local_id> ":" <ty: ty> => Param{local_id, ty,},
+};
+
+scopes: Scopes = {
+    <mut scopes: scopes> <scope: scope> => {scopes.push(scope); scopes},
+    <scope: scope> => vec![scope],
+};
+
+scope: Scope = {
+    <scope_id: scope_id> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos,
+            local_defs,
+            sub_scopes: vec![],
+        },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <scopes: scopes> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos,
+            local_defs,
+            sub_scopes: scopes,
+        },
+};
+
+var_debug_infos: VarDebugInfos = {
+    <mut var_debug_infos: var_debug_infos> <var_debug_info: var_debug_info> => {var_debug_infos.push(var_debug_info); var_debug_infos},
+    <var_debug_info: var_debug_info> => vec![var_debug_info],
+};
+
+var_debug_info: VarDebugInfo = {
+    "debug" <name: identifier> "=>" <local_id: local_id> ";" => VarDebugInfo{name: name.to_string(), local_id},
+    "debug" <name: identifier> "=>" <local_id: local_id> ";" <comment: comment> => VarDebugInfo{name: name.to_string(), local_id},
+};
+
+local_defs: LocalDefs = {
+    <mut local_defs: local_defs> <local_def: local_def> => {local_defs.push(local_def); local_defs},
+    <local_def: local_def> => vec![local_def],
+};
+
+local_def: LocalDef = {
+    "let mut " <local_id: local_id> ":" <ty: ty> <semicolon: semicolon>
+        => LocalDef {
+            local_id,
+            ty,
+            mutability: true,
+        },
+    "let " <local_id: local_id> ":" <ty: ty> <semicolon: semicolon>
+        => LocalDef {
+            local_id,
+            ty,
+            mutability: false,
+        },
 };
 
 BBs: BasicBlocks = {
     <mut bbs: BBs> <bb: BB> => {bbs.push(bb); bbs},
     <bb: BB> => vec![bb],
-}
+};
 
 BB: BasicBlock = {
-    <bbid: bb_id> ": {" <s:statements> "}" => BasicBlock {bbid, statements: s, terminator: None},
+    <bbid: bb_id> ":" <left_brace: left_brace> <s:statements> <right_brace: right_brace> => BasicBlock {bbid, statements: s, terminator: None},
+    <bbid: bb_id> ":" <left_brace: left_brace> <terminator: terminator> <right_brace: right_brace> => BasicBlock {bbid, statements: vec![], terminator: Some(terminator),},
+    <bbid: bb_id> ":" <left_brace: left_brace> <s:statements> <terminator: terminator> <right_brace: right_brace> => BasicBlock {bbid, statements: s, terminator: Some(terminator),},
 }; 
 
 statements: Vec<Statement> = {
@@ -72,25 +191,78 @@ statements: Vec<Statement> = {
 };
 
 statement: Statement = {
-    <binary_op: binaryOp> => Statement::BinaryOp(binary_op),
+    <assignment: assignment> => Statement::Assign(assignment),
 };
+
+assignment: Assign = {
+    <place: place> <assign: assign> <rvalue: rvalue> <semicolon: semicolon> => Assign { place, rvalue },
+};
+
+place: Place = {
+    <local_id: local_id> => Place::Local(local_id),
+};
+
+rvalue: Rvalue = {
+    <operand: operand> => Rvalue::Use(operand),
+    <binary_op: binaryOp> => Rvalue::BinaryOp(binary_op),
+};
+
+terminator: Terminator = {
+    "return;" => Terminator::Return,
+    <assert: assert> => Terminator::Assert(assert),
+};
+
+assert: Assert = {
+    "assert" <left_parenthesis: left_parenthesis> <operand: operand> <c: comma> <msg: r#""([^"]+)"(, _\d+)*"#> <right_parenthesis: right_parenthesis> 
+        "->" <left_bracket: left_bracket> "success" <success: bb_id> <cc: comma> "unwind" <unwind: bb_id> <right_bracket: right_bracket> <semicolon: semicolon> =>
+        Assert {
+            operand,
+            expected: true,
+            msg: msg.to_string(),
+            success,
+            unwind, 
+        },
+        
+    "assert" <left_parenthesis: left_parenthesis> <logic_negate: logic_negate> <operand: operand> <c: comma> <msg: r#""([^"]+)"(, _\d+)*"#> <right_parenthesis: right_parenthesis> 
+        "->" <left_bracket: left_bracket> "success" <success: bb_id> <cc: comma> "unwind" <unwind: bb_id> <right_bracket: right_bracket> <semicolon: semicolon> =>
+        Assert {
+            operand,
+            expected: false,
+            msg: msg.to_string(),
+            success,
+            unwind, 
+        },
+}
 
 binaryOp: BinaryOp = {
     <checked_add: checkedAdd> => BinaryOp::CheckedAdd(checked_add),
 };
 
-checkedAdd: CheckedAdd = <res: operand> "= CheckedAdd(" <lhs: operand> ", " <rhs: operand> ");" => CheckedAdd{res, lhs, rhs};
+
+checkedAdd: CheckedAdd = "CheckedAdd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+ => CheckedAdd{ lhs, rhs };
 
 operand: Operand = {
-    <local: local> => Operand::LOCAL(local),
+    <local_id: local_id> => Operand::LOCAL(local_id),
 };
 
-local: Local = <identifier: identifier> => Local{local_id: u32::from_str(&identifier.as_str()[1..]).unwrap(), ty: Ty::default(), mutability: false};
-bb_id: u32 = <identifier: identifier> => u32::from_str(&identifier.as_str()[2..]).unwrap();
+scope_id: ScopeID = <s: r"scope [0-9]+"> => u32::from_str(&s[6..]).unwrap();
+local_id: LocalID = <identifier: identifier> =>  u32::from_str(&identifier.as_str()[1..]).unwrap();
+bb_id: BasicBlockID = {
+    <identifier: identifier> => BasicBlockID::from_str(identifier.as_str()).unwrap(),
+    <colon: colon> <identifier: identifier> => BasicBlockID::from_str(identifier.as_str()).unwrap(),
+}
 
+tys: Vec<Ty> = {
+    <mut tys: tys> <comma: comma> <ty: ty> => {tys.push(ty); tys},
+    <ty: ty> => vec![ty],
+};
 
 ty: Ty = {
-    "()" => Ty::Unit,  
+    <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> => Ty::Unit,
+    "i32" => Ty::I32,
+    <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> => Ty::Tuple(tys),
+    <moduled_indentifier: moduled_indentifier> => Ty::from(moduled_indentifier),
 };
 
 moduled_indentifier: ModuledIdentifier = {
@@ -98,12 +270,25 @@ moduled_indentifier: ModuledIdentifier = {
     <identifier: identifier> => vec![identifier],
 };
 
-unrecognized_lines: Vec<String> = {
-    <mut unrecognized_lines: unrecognized_lines> <s: any_string> => {unrecognized_lines.push(s); unrecognized_lines},
-    <s: any_string> => vec![s],
-};
-
 identifier: String = <s: r"[a-zA-Z_][a-zA-Z0-9_]*"> => String::from(s);
+
+left_brace: () = "{" => ();
+right_brace: () = "}" => ();
+
+left_bracket: () = "[" => ();
+right_bracket: () = "]" => ();
+
+left_parenthesis: () = "(" => ();
+right_parenthesis: () = ")" => ();
+
+comma: () = "," => ();
+semicolon: () = ";" => ();
+
+colon: () = ":" => ();
+
+assign: () = "=" => ();
+
+logic_negate: () = "!" => ();
 
 comments: () = {
     <comment: comment> => (),
@@ -112,9 +297,5 @@ comments: () = {
 
 comment: () = {
     r"// .*" => (),
-};
-
-any_string: String = {
-    <s: r"[^a-zA-Z0-9_\s]+"> => String::from(s),
 };
 

@@ -1,9 +1,14 @@
 use std::str::FromStr;
 
+use super::mir::ModuledIdentifier;
+
 #[derive(Debug)]
 pub enum Ty {
     Unit,
-    UserDef(String),
+    Bool,
+    I32,
+    SelfDef(ModuledIdentifier),
+    Tuple(Vec<Ty>),
     UND,
 }
 
@@ -19,7 +24,17 @@ impl FromStr for Ty {
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {
             "()" => Ok(Self::Unit),
-            _ => Ok(Self::UserDef(s.to_string())),
+            "i32" => Ok(Self::I32),
+            "bool" => Ok(Self::Bool),
+            _ => Ok(Self::SelfDef(
+                s.split("::").map(|s| s.to_string()).collect(),
+            )),
         }
+    }
+}
+
+impl From<ModuledIdentifier> for Ty {
+    fn from(value: ModuledIdentifier) -> Self {
+        Self::SelfDef(value)
     }
 }

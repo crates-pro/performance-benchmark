@@ -1,3 +1,9 @@
-mod mir;
+pub(super) mod basic_block;
+pub(super) mod mir;
+pub(super) mod place;
 pub(super) mod reader;
-mod ty;
+pub(super) mod rvalue;
+pub(super) mod scope;
+pub(super) mod statement;
+pub(super) mod terminator;
+pub(super) mod ty;

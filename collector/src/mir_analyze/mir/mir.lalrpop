@@ -1,0 +1,443 @@
+use std::str::FromStr;
+use crate::mir_analyze::mir::basic_block::*;
+use crate::mir_analyze::mir::mir::*;
+use crate::mir_analyze::mir::operand::*;
+use crate::mir_analyze::mir::place::*;
+use crate::mir_analyze::mir::rvalue::*;
+use crate::mir_analyze::mir::scope::*;
+use crate::mir_analyze::mir::statement::*;
+use crate::mir_analyze::mir::terminator::*;
+use crate::mir_analyze::mir::ty::*;
+
+grammar;
+
+pub mirs: MIRs = {
+    <mut mirs: mirs> <function: function> => {mirs.functions.push(function); mirs},
+    <function: function> => MIRs {functions: vec![function]},
+    <c: comments> => MIRs{functions: vec![]},
+}
+
+function: Function = {
+    "fn " <label: moduled_indentifier> 
+        <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> 
+        <left_brace: left_brace> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace>
+        => Function{
+            label,
+            bbs,
+            params,
+            var_debug_infos: vec![],
+            local_defs,
+            scopes: vec![],
+            ret_ty,
+        },
+
+        
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace> 
+        => Function{
+            label,
+            bbs,
+            params,
+            var_debug_infos: vec![],
+            local_defs,
+            scopes,
+            ret_ty,
+        },
+
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace>
+        => Function{
+            label,
+            bbs,
+            params,
+            var_debug_infos,
+            local_defs,
+            scopes: vec![],
+            ret_ty,
+        },
+    
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace>
+        => Function{
+            label,
+            bbs,
+            params,
+            var_debug_infos,
+            local_defs,
+            scopes,
+            ret_ty,
+        },
+
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace> 
+        => Function{
+            label,
+            bbs,
+            params: vec![],
+            var_debug_infos: vec![],
+            local_defs,
+            scopes: vec![],
+            ret_ty,
+        },
+
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace>
+        => Function{
+            label,
+            bbs,
+            params: vec![],
+            var_debug_infos: vec![],
+            local_defs,
+            scopes,
+            ret_ty,
+        },
+
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace> 
+        => Function{
+            label,
+            bbs,
+            params: vec![],
+            var_debug_infos,
+            local_defs,
+            scopes: vec![],
+            ret_ty,
+        },
+
+    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace> 
+        => Function{
+            label,
+            bbs,
+            params: vec![],
+            var_debug_infos,
+            local_defs,
+            scopes,
+            ret_ty,
+        },
+};
+
+params: Params = {
+    <mut params: params> <comma: comma> <param: param> => {params.push(param); params},
+    <param: param> => vec![param],
+};
+
+param: Param = {
+    <local_id: local_id> ":" <ty: ty> => Param{local_id, ty,},
+};
+
+scopes: Scopes = {
+    <mut scopes: scopes> <scope: scope> => {scopes.push(scope); scopes},
+    <scope: scope> => vec![scope],
+};
+
+scope: Scope = {
+    <scope_id: scope_id> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos,
+            local_defs,
+            sub_scopes: vec![],
+        },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <scopes: scopes> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos,
+            local_defs,
+            sub_scopes: scopes,
+        },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <local_defs: local_defs> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos: vec![],
+            local_defs,
+            sub_scopes: vec![],
+        },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <local_defs: local_defs> <scopes: scopes> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos: vec![],
+            local_defs,
+            sub_scopes: scopes,
+        },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos,
+            local_defs: vec![],
+            sub_scopes: vec![],
+        },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <scopes: scopes> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos,
+            local_defs: vec![],
+            sub_scopes: scopes,
+        },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos: vec![],
+            local_defs: vec![],
+            sub_scopes: vec![],
+        },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <scopes: scopes> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos: vec![],
+            local_defs: vec![],
+            sub_scopes: scopes,
+        },
+};
+
+var_debug_infos: VarDebugInfos = {
+    <mut var_debug_infos: var_debug_infos> <var_debug_info: var_debug_info> => {var_debug_infos.push(var_debug_info); var_debug_infos},
+    <var_debug_info: var_debug_info> => vec![var_debug_info],
+};
+
+var_debug_info: VarDebugInfo = {
+    "debug" <name: identifier> "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" <name: identifier> "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" <name: identifier> "=>" <const_: const_> <semicolon: semicolon> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Const(const_)},
+    "debug" <name: identifier> "=>" <const_: const_> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Const(const_)},
+};
+
+local_defs: LocalDefs = {
+    <mut local_defs: local_defs> <local_def: local_def> => {local_defs.push(local_def); local_defs},
+    <local_def: local_def> => vec![local_def],
+};
+
+local_def: LocalDef = {
+    "let mut " <local_id: local_id> ":" <ty: ty> <semicolon: semicolon>
+        => LocalDef {
+            local_id,
+            ty,
+            mutability: true,
+        },
+    "let " <local_id: local_id> ":" <ty: ty> <semicolon: semicolon>
+        => LocalDef {
+            local_id,
+            ty,
+            mutability: false,
+        },
+};
+
+BBs: BasicBlocks = {
+    <mut bbs: BBs> <bb: BB> => {bbs.push(bb); bbs},
+    <bb: BB> => vec![bb],
+};
+
+BB: BasicBlock = {
+    <bbid: bb_id> ":" <left_brace: left_brace> <s:statements> <right_brace: right_brace> => BasicBlock {bbid, statements: s, terminator: None},
+    <bbid: bb_id> ":" <left_brace: left_brace> <terminator: terminator> <right_brace: right_brace> => BasicBlock {bbid, statements: vec![], terminator: Some(terminator),},
+    <bbid: bb_id> ":" <left_brace: left_brace> <s:statements> <terminator: terminator> <right_brace: right_brace> => BasicBlock {bbid, statements: s, terminator: Some(terminator),},
+}; 
+
+statements: Vec<Statement> = {
+    <mut ss: statements> <s: statement> => {ss.push(s); ss},
+    <s: statement> => vec![s],
+};
+
+statement: Statement = {
+    <assignment: assignment> => Statement::Assign(assignment),
+};
+
+assignment: Assign = {
+    <place: place> <assign: assign> <rvalue: rvalue> <semicolon: semicolon> => Assign { place, rvalue },
+};
+
+place: Place = {
+    <local_id: local_id> => Place::Local(local_id),
+    <field_access: field_access> => Place::Field(field_access),
+};
+
+field_access: Field = <left_parenthesis: left_parenthesis> 
+        <local_id: local_id> <dot: dot> <field_idx: r"[\d]+"> <colon: colon> <ty: ty> 
+    <right_parenthesis: right_parenthesis>
+    => Field {
+        local_id,
+        field_idx: u32::from_str(field_idx).unwrap(),
+        field_type: ty,
+    };
+
+rvalue: Rvalue = {
+    <operand: operand> => Rvalue::Use(operand),
+    <binary_op: binaryOp> => Rvalue::BinaryOp(binary_op),
+};
+
+terminator: Terminator = {
+    "return;" => Terminator::Return,
+    <assert: assert> => Terminator::Assert(assert),
+    <call: call> => Terminator::Call(call),
+};
+
+assert: Assert = {
+    "assert" <left_parenthesis: left_parenthesis> <operand: operand> <c: comma> <msg: r#""([^"]+)"[^\)]*"#> <right_parenthesis: right_parenthesis> 
+        "->" <left_bracket: left_bracket> "success" <success: bb_id> <cc: comma> "unwind" <unwind: unwind_action> <right_bracket: right_bracket> <semicolon: semicolon> =>
+        Assert {
+            operand,
+            expected: true,
+            msg: msg.to_string(),
+            success,
+            unwind, 
+        },
+        
+    "assert" <left_parenthesis: left_parenthesis> <logic_negate: logic_negate> <operand: operand> <c: comma> <msg: r#""([^"]+)"[^\)]*"#> <right_parenthesis: right_parenthesis> 
+        "->" <left_bracket: left_bracket> "success" <success: bb_id> <cc: comma> "unwind" <unwind: unwind_action> <right_bracket: right_bracket> <semicolon: semicolon> =>
+        Assert {
+            operand,
+            expected: false,
+            msg: msg.to_string(),
+            success,
+            unwind, 
+        },
+};
+
+call: Call = {
+    <recv: place> <assign: assign> <callee: moduled_indentifier> 
+    <left_parenthesis: left_parenthesis> <params: call_params> <right_parenthesis: right_parenthesis> 
+    "->" <left_bracket: left_bracket> "return" <success: bb_id> <cc: comma> "unwind" <unwind: unwind_action> <right_bracket: right_bracket> <semicolon: semicolon> =>
+        Call {
+            callee,
+            params,
+            recv,
+            success: Some(success),
+            unwind,
+        },
+        
+    <recv: place> <assign: assign> <callee: moduled_indentifier> 
+    <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> 
+    "->" <left_bracket: left_bracket> "return" <success: bb_id> <cc: comma> "unwind" <unwind: unwind_action> <right_bracket: right_bracket> <semicolon: semicolon> =>
+        Call {
+            callee,
+            params: vec![],
+            recv,
+            success: Some(success),
+            unwind,
+        },
+
+    <recv: place> <assign: assign> <callee: moduled_indentifier> 
+    <left_parenthesis: left_parenthesis> <params: call_params> <right_parenthesis: right_parenthesis> 
+    "->" "unwind" <unwind: unwind_action> <semicolon: semicolon> =>
+        Call {
+            callee,
+            params,
+            recv,
+            success: None,
+            unwind,
+        },
+        
+    <recv: place> <assign: assign> <callee: moduled_indentifier> 
+    <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> 
+    "->" "unwind" <unwind: unwind_action> <semicolon: semicolon> =>
+        Call {
+            callee,
+            params: vec![],
+            recv,
+            success: None,
+            unwind,
+        },
+};
+
+call_params: Vec<Operand> = {
+    <operand: operand> => vec![operand],
+    <mut call_params: call_params> <comma: comma> <operand: operand> => { call_params.push(operand); call_params },
+};
+
+binaryOp: BinaryOp = {
+    <checked_add: checkedAdd> => BinaryOp::CheckedAdd(checked_add),
+};
+
+
+checkedAdd: CheckedAdd = "CheckedAdd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+ => CheckedAdd{ lhs, rhs };
+
+operand: Operand = {
+    <place: place> => Operand::COPY(place),
+    "move" <place: place> => Operand::MOVE(place),
+    <const_: const_> => Operand::CONST(const_),
+};
+
+const_: Const = {
+    <val: r#"const [^"\]\);]+"#> => Const { val: val[6..].to_string(), },
+    <val: r#"const "[^"]+"#> => Const { val: val[6..].to_string(), },
+};
+
+scope_id: ScopeID = <s: r"scope [0-9]+"> => u32::from_str(&s[6..]).unwrap();
+local_id: LocalID = <identifier: identifier> =>  u32::from_str(&identifier.as_str()[1..]).unwrap();
+bb_id: BasicBlockID = {
+    <identifier: identifier> => u32::from_str(&identifier.as_str()[2..]).unwrap(),
+    <colon: colon> <identifier: identifier> => u32::from_str(&identifier.as_str()[2..]).unwrap(),
+}
+unwind_action: UnwindAction = {
+    <identifier: identifier> => UnwindAction::from_str(identifier.as_str()).unwrap(),
+    <colon: colon> <identifier: identifier> => UnwindAction::from_str(identifier.as_str()).unwrap(),
+}
+
+tys: Vec<Ty> = {
+    <mut tys: tys> <comma: comma> <ty: ty> => {tys.push(ty); tys},
+    <ty: ty> => vec![ty],
+};
+
+ty: Ty = {
+    <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> => Ty::Unit,
+    "i32" => Ty::I32,
+    <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> => Ty::Tuple(tys),
+    <moduled_indentifier: moduled_indentifier> => Ty::from(moduled_indentifier),
+};
+
+moduled_indentifier: ModuledIdentifier = {
+    <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <identifier: identifier> => {moduled_indentifier.push(identifier); moduled_indentifier},
+    <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <s: r"<[^>]+>"> => {moduled_indentifier.push(s.to_string()); moduled_indentifier},
+    <identifier: identifier> => vec![identifier],
+    <s: r"<[^>]+>"> => vec![s.to_string()],
+};
+
+identifier: String = <s: r"[a-zA-Z_][a-zA-Z0-9_]*"> => String::from(s);
+
+left_brace: () = "{" => ();
+right_brace: () = "}" => ();
+
+left_bracket: () = "[" => ();
+right_bracket: () = "]" => ();
+
+left_parenthesis: () = "(" => ();
+right_parenthesis: () = ")" => ();
+
+dot: () = "." => ();
+comma: () = "," => ();
+semicolon: () = ";" => ();
+
+colon: () = ":" => ();
+path_separator: () = "::" => ();
+
+assign: () = "=" => ();
+
+ref: () = "&" => ();
+
+logic_negate: () = "!" => ();
+
+comments: () = {
+    <comment: comment> => (),
+    <comments: comments> <comment: comment> => (),
+};
+
+comment: () = {
+    r"// .*" => (),
+};
+

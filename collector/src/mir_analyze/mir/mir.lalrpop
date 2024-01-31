@@ -287,7 +287,7 @@ terminator: Terminator = {
 };
 
 assert: Assert = {
-    "assert" <left_parenthesis: left_parenthesis> <operand: operand> <c: comma> <msg: r#""([^"]+)"(, _\d+)*"#> <right_parenthesis: right_parenthesis> 
+    "assert" <left_parenthesis: left_parenthesis> <operand: operand> <c: comma> <msg: r#""([^"]+)"[^\)]*"#> <right_parenthesis: right_parenthesis> 
         "->" <left_bracket: left_bracket> "success" <success: bb_id> <cc: comma> "unwind" <unwind: unwind_action> <right_bracket: right_bracket> <semicolon: semicolon> =>
         Assert {
             operand,
@@ -297,7 +297,7 @@ assert: Assert = {
             unwind, 
         },
         
-    "assert" <left_parenthesis: left_parenthesis> <logic_negate: logic_negate> <operand: operand> <c: comma> <msg: r#""([^"]+)"(, _\d+)*"#> <right_parenthesis: right_parenthesis> 
+    "assert" <left_parenthesis: left_parenthesis> <logic_negate: logic_negate> <operand: operand> <c: comma> <msg: r#""([^"]+)"[^\)]*"#> <right_parenthesis: right_parenthesis> 
         "->" <left_bracket: left_bracket> "success" <success: bb_id> <cc: comma> "unwind" <unwind: unwind_action> <right_bracket: right_bracket> <semicolon: semicolon> =>
         Assert {
             operand,
@@ -374,7 +374,8 @@ operand: Operand = {
 };
 
 const_: Const = {
-    <val: r"const [^;]+"> => Const { val: val[6..].to_string(), },
+    <val: r#"const [^"\]\);]+"#> => Const { val: val[6..].to_string(), },
+    <val: r#"const "[^"]+"#> => Const { val: val[6..].to_string(), },
 };
 
 scope_id: ScopeID = <s: r"scope [0-9]+"> => u32::from_str(&s[6..]).unwrap();
@@ -401,8 +402,10 @@ ty: Ty = {
 };
 
 moduled_indentifier: ModuledIdentifier = {
-    <mut moduled_indentifier: moduled_indentifier> "::" <identifier: identifier> => {moduled_indentifier.push(identifier); moduled_indentifier},
+    <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <identifier: identifier> => {moduled_indentifier.push(identifier); moduled_indentifier},
+    <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <s: r"<[^>]+>"> => {moduled_indentifier.push(s.to_string()); moduled_indentifier},
     <identifier: identifier> => vec![identifier],
+    <s: r"<[^>]+>"> => vec![s.to_string()],
 };
 
 identifier: String = <s: r"[a-zA-Z_][a-zA-Z0-9_]*"> => String::from(s);
@@ -421,8 +424,11 @@ comma: () = "," => ();
 semicolon: () = ";" => ();
 
 colon: () = ":" => ();
+path_separator: () = "::" => ();
 
 assign: () = "=" => ();
+
+ref: () = "&" => ();
 
 logic_negate: () = "!" => ();
 

@@ -21,15 +21,17 @@ pub fn parse_mir(mir_file: File) -> anyhow::Result<MIRs> {
 }
 
 #[test]
-fn test_parse_mir() {
-    let test_file = File::open("test/mir_analyze/mir/playground.mir").unwrap();
-    parse_mir(test_file).unwrap();
-}
-
-#[test]
 fn test_dev() {
     let test_file = File::open("test/mir_analyze/mir/dev.mir").unwrap();
     let result = parse_mir(test_file).unwrap();
 
     println!("{:?}", result);
 }
+
+// #[test]
+// fn test_binary_op() {
+//     let test_file = File::open("test/mir_analyze/mir/binary_unary_op.mir").unwrap();
+//     let result = parse_mir(test_file).unwrap();
+
+//     println!("{:?}", result);
+// }

@@ -1,7 +1,5 @@
 use super::{
-    basic_block::BasicBlocks,
-    scope::{LocalDefs, Scopes, VarDebugInfos},
-    ty::Ty,
+    basic_block::BasicBlocks, place::Place, scope::{LocalDefs, Scopes, VarDebugInfos}, ty::Ty
 };
 
 /// MIRs represent the structured MIR code of a project.
@@ -33,7 +31,14 @@ pub type ModuledIdentifier = Vec<String>;
 
 #[derive(Debug)]
 pub enum Operand {
-    LOCAL(LocalID),
+    COPY(Place),
+    MOVE(Place),
+    CONST(Const),
+}
+
+#[derive(Debug)]
+pub struct Const {
+    pub val: String,
 }
 
 #[derive(Debug)]

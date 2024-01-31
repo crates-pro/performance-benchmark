@@ -142,6 +142,66 @@ scope: Scope = {
             local_defs,
             sub_scopes: scopes,
         },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <local_defs: local_defs> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos: vec![],
+            local_defs,
+            sub_scopes: vec![],
+        },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <local_defs: local_defs> <scopes: scopes> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos: vec![],
+            local_defs,
+            sub_scopes: scopes,
+        },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos,
+            local_defs: vec![],
+            sub_scopes: vec![],
+        },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <scopes: scopes> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos,
+            local_defs: vec![],
+            sub_scopes: scopes,
+        },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos: vec![],
+            local_defs: vec![],
+            sub_scopes: vec![],
+        },
+
+    
+    <scope_id: scope_id> <left_brace: left_brace> <scopes: scopes> <right_brace: right_brace>
+        => Scope {
+            scope_id,
+            inlined_func: None,
+            var_debug_infos: vec![],
+            local_defs: vec![],
+            sub_scopes: scopes,
+        },
 };
 
 var_debug_infos: VarDebugInfos = {
@@ -150,8 +210,10 @@ var_debug_infos: VarDebugInfos = {
 };
 
 var_debug_info: VarDebugInfo = {
-    "debug" <name: identifier> "=>" <local_id: local_id> ";" => VarDebugInfo{name: name.to_string(), local_id},
-    "debug" <name: identifier> "=>" <local_id: local_id> ";" <comment: comment> => VarDebugInfo{name: name.to_string(), local_id},
+    "debug" <name: identifier> "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" <name: identifier> "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" <name: identifier> "=>" <const_: const_> <semicolon: semicolon> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Const(const_)},
+    "debug" <name: identifier> "=>" <const_: const_> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Const(const_)},
 };
 
 local_defs: LocalDefs = {
@@ -200,7 +262,17 @@ assignment: Assign = {
 
 place: Place = {
     <local_id: local_id> => Place::Local(local_id),
+    <field_access: field_access> => Place::Field(field_access),
 };
+
+field_access: Field = <left_parenthesis: left_parenthesis> 
+        <local_id: local_id> <dot: dot> <field_idx: r"[\d]+"> <colon: colon> <ty: ty> 
+    <right_parenthesis: right_parenthesis>
+    => Field {
+        local_id,
+        field_idx: u32::from_str(field_idx).unwrap(),
+        field_type: ty,
+    };
 
 rvalue: Rvalue = {
     <operand: operand> => Rvalue::Use(operand),
@@ -243,7 +315,13 @@ checkedAdd: CheckedAdd = "CheckedAdd" <left_parenthesis: left_parenthesis> <lhs:
  => CheckedAdd{ lhs, rhs };
 
 operand: Operand = {
-    <local_id: local_id> => Operand::LOCAL(local_id),
+    <place: place> => Operand::COPY(place),
+    "move" <place: place> => Operand::MOVE(place),
+    <const_: const_> => Operand::CONST(const_),
+};
+
+const_: Const = {
+    <val: r"const [^;]+"> => Const { val: val[6..].to_string(), },
 };
 
 scope_id: ScopeID = <s: r"scope [0-9]+"> => u32::from_str(&s[6..]).unwrap();
@@ -281,6 +359,7 @@ right_bracket: () = "]" => ();
 left_parenthesis: () = "(" => ();
 right_parenthesis: () = ")" => ();
 
+dot: () = "." => ();
 comma: () = "," => ();
 semicolon: () = ";" => ();
 

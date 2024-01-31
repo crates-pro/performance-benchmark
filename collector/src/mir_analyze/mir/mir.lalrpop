@@ -1,6 +1,7 @@
 use std::str::FromStr;
 use crate::mir_analyze::mir::basic_block::*;
 use crate::mir_analyze::mir::mir::*;
+use crate::mir_analyze::mir::operand::*;
 use crate::mir_analyze::mir::place::*;
 use crate::mir_analyze::mir::rvalue::*;
 use crate::mir_analyze::mir::scope::*;
@@ -282,11 +283,12 @@ rvalue: Rvalue = {
 terminator: Terminator = {
     "return;" => Terminator::Return,
     <assert: assert> => Terminator::Assert(assert),
+    <call: call> => Terminator::Call(call),
 };
 
 assert: Assert = {
     "assert" <left_parenthesis: left_parenthesis> <operand: operand> <c: comma> <msg: r#""([^"]+)"(, _\d+)*"#> <right_parenthesis: right_parenthesis> 
-        "->" <left_bracket: left_bracket> "success" <success: bb_id> <cc: comma> "unwind" <unwind: bb_id> <right_bracket: right_bracket> <semicolon: semicolon> =>
+        "->" <left_bracket: left_bracket> "success" <success: bb_id> <cc: comma> "unwind" <unwind: unwind_action> <right_bracket: right_bracket> <semicolon: semicolon> =>
         Assert {
             operand,
             expected: true,
@@ -296,7 +298,7 @@ assert: Assert = {
         },
         
     "assert" <left_parenthesis: left_parenthesis> <logic_negate: logic_negate> <operand: operand> <c: comma> <msg: r#""([^"]+)"(, _\d+)*"#> <right_parenthesis: right_parenthesis> 
-        "->" <left_bracket: left_bracket> "success" <success: bb_id> <cc: comma> "unwind" <unwind: bb_id> <right_bracket: right_bracket> <semicolon: semicolon> =>
+        "->" <left_bracket: left_bracket> "success" <success: bb_id> <cc: comma> "unwind" <unwind: unwind_action> <right_bracket: right_bracket> <semicolon: semicolon> =>
         Assert {
             operand,
             expected: false,
@@ -304,7 +306,58 @@ assert: Assert = {
             success,
             unwind, 
         },
-}
+};
+
+call: Call = {
+    <recv: place> <assign: assign> <callee: moduled_indentifier> 
+    <left_parenthesis: left_parenthesis> <params: call_params> <right_parenthesis: right_parenthesis> 
+    "->" <left_bracket: left_bracket> "return" <success: bb_id> <cc: comma> "unwind" <unwind: unwind_action> <right_bracket: right_bracket> <semicolon: semicolon> =>
+        Call {
+            callee,
+            params,
+            recv,
+            success: Some(success),
+            unwind,
+        },
+        
+    <recv: place> <assign: assign> <callee: moduled_indentifier> 
+    <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> 
+    "->" <left_bracket: left_bracket> "return" <success: bb_id> <cc: comma> "unwind" <unwind: unwind_action> <right_bracket: right_bracket> <semicolon: semicolon> =>
+        Call {
+            callee,
+            params: vec![],
+            recv,
+            success: Some(success),
+            unwind,
+        },
+
+    <recv: place> <assign: assign> <callee: moduled_indentifier> 
+    <left_parenthesis: left_parenthesis> <params: call_params> <right_parenthesis: right_parenthesis> 
+    "->" "unwind" <unwind: unwind_action> <semicolon: semicolon> =>
+        Call {
+            callee,
+            params,
+            recv,
+            success: None,
+            unwind,
+        },
+        
+    <recv: place> <assign: assign> <callee: moduled_indentifier> 
+    <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> 
+    "->" "unwind" <unwind: unwind_action> <semicolon: semicolon> =>
+        Call {
+            callee,
+            params: vec![],
+            recv,
+            success: None,
+            unwind,
+        },
+};
+
+call_params: Vec<Operand> = {
+    <operand: operand> => vec![operand],
+    <mut call_params: call_params> <comma: comma> <operand: operand> => { call_params.push(operand); call_params },
+};
 
 binaryOp: BinaryOp = {
     <checked_add: checkedAdd> => BinaryOp::CheckedAdd(checked_add),
@@ -327,8 +380,12 @@ const_: Const = {
 scope_id: ScopeID = <s: r"scope [0-9]+"> => u32::from_str(&s[6..]).unwrap();
 local_id: LocalID = <identifier: identifier> =>  u32::from_str(&identifier.as_str()[1..]).unwrap();
 bb_id: BasicBlockID = {
-    <identifier: identifier> => BasicBlockID::from_str(identifier.as_str()).unwrap(),
-    <colon: colon> <identifier: identifier> => BasicBlockID::from_str(identifier.as_str()).unwrap(),
+    <identifier: identifier> => u32::from_str(&identifier.as_str()[2..]).unwrap(),
+    <colon: colon> <identifier: identifier> => u32::from_str(&identifier.as_str()[2..]).unwrap(),
+}
+unwind_action: UnwindAction = {
+    <identifier: identifier> => UnwindAction::from_str(identifier.as_str()).unwrap(),
+    <colon: colon> <identifier: identifier> => UnwindAction::from_str(identifier.as_str()).unwrap(),
 }
 
 tys: Vec<Ty> = {

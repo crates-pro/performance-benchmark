@@ -1,5 +1,6 @@
 pub(super) mod basic_block;
 pub(super) mod mir;
+pub(super) mod operand;
 pub(super) mod place;
 pub(super) mod reader;
 pub(super) mod rvalue;

@@ -1,4 +1,4 @@
-use super::mir::Operand;
+use super::operand::Operand;
 
 #[derive(Debug)]
 

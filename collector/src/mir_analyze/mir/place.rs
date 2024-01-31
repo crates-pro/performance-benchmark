@@ -3,7 +3,7 @@ use super::{mir::LocalID, ty::Ty};
 #[derive(Debug)]
 pub enum Place {
     Local(LocalID),
-    Field(Field)
+    Field(Field),
 }
 
 #[derive(Debug)]
@@ -14,4 +14,3 @@ pub struct Field {
 }
 
 pub type FieldIdx = u32;
-

@@ -1,4 +1,4 @@
-use super::{mir::{Const, LocalID}, ty::Ty};
+use super::{mir::LocalID, operand::Const, ty::Ty};
 
 pub type Scopes = Vec<Scope>;
 
@@ -24,7 +24,7 @@ pub struct VarDebugInfo {
 #[derive(Debug)]
 pub enum VarDebugInfoContent {
     Local(LocalID),
-    Const(Const)
+    Const(Const),
 }
 
 pub type LocalDefs = Vec<LocalDef>;

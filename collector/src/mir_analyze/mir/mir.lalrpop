@@ -279,6 +279,9 @@ field_access: Field = <left_parenthesis: left_parenthesis>
 rvalue: Rvalue = {
     <operand: operand> => Rvalue::Use(operand),
     <binary_op: binaryOp> => Rvalue::BinaryOp(binary_op),
+    <cast: cast> => Rvalue::Cast(cast),
+    <aggregate: aggregate> => Rvalue::Aggregate(aggregate),
+    <reference: reference> => Rvalue::Ref(reference),
 };
 
 deref: Deref = {
@@ -368,9 +371,43 @@ binaryOp: BinaryOp = {
     <checked_add: checkedAdd> => BinaryOp::CheckedAdd(checked_add),
 };
 
-
 checkedAdd: CheckedAdd = "CheckedAdd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
  => CheckedAdd{ lhs, rhs };
+
+cast: Cast = {
+    <operand: operand> "as" <ty: ty> <left_parenthesis: left_parenthesis> <cast_kind: cast_kind> <right_parenthesis: right_parenthesis> => Cast { cast_kind, operand, ty, },
+};
+
+cast_kind: CastKind = {
+    "PointerCoercion" <left_parenthesis: left_parenthesis> <pointer_coercion: pointer_coercion> <right_parenthesis: right_parenthesis> => CastKind::PointerCoercion(pointer_coercion),
+};
+
+pointer_coercion: PointerCoercion = {
+    "Unsize" => PointerCoercion::Unsize,
+};
+
+aggregate: Aggregate = {
+    <aggregate_array: aggregate_array> => aggregate_array,
+    <aggregate_tuple: aggregate_tuple> => aggregate_tuple,
+};
+
+aggregate_array: Aggregate = {
+    <left_bracket: left_bracket> <elements: aggregate_anonymous_elements> <right_bracket: right_bracket> => Aggregate { aggregate_kind: AggregateKind::Array, elements, },
+};
+
+aggregate_tuple: Aggregate = {
+    <left_parenthesis: left_parenthesis> <elements: aggregate_anonymous_elements> <right_parenthesis: right_parenthesis> => Aggregate { aggregate_kind: AggregateKind::Tuple, elements, },
+};
+
+aggregate_anonymous_elements: Vec<Operand> = {
+    <operand: operand> => vec![operand],
+    <mut elements: aggregate_anonymous_elements> <comma: comma> <operand: operand> => { elements.push(operand); elements },
+};
+
+reference: Ref = {
+    <bitwise_and: bitwise_and> <place: place> => Ref { place, borrow_kind: BorrowKind::Shared, },
+    <bitwise_and: bitwise_and> "mut" <place: place> => Ref { place, borrow_kind: BorrowKind::Mut, },
+}
 
 operand: Operand = {
     <place: place> => Operand::COPY(place),
@@ -402,14 +439,18 @@ tys: Vec<Ty> = {
 ty: Ty = {
     <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> => Ty::Unit,
     "i32" => Ty::I32,
+    "str" => Ty::Str,
     <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> => Ty::Tuple(tys),
     <moduled_indentifier: moduled_indentifier> => Ty::from(moduled_indentifier),
-    <reference: reference> <ty: ty> => Ty::Ref(Box::new(ty)),
+    <bitwise_and: bitwise_and> <ty: ty> => Ty::Ref(Box::new(ty)),
+    <left_bracket: left_bracket> <ty: ty> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(ty), len: None, }),
+    <left_bracket: left_bracket> <ty: ty> <semicolon: semicolon> <len: r"[\d]+"> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(ty), len: Some(u32::from_str(len).unwrap()), }),
 };
 
 moduled_indentifier: ModuledIdentifier = {
     <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <identifier: identifier> => {moduled_indentifier.push(identifier); moduled_indentifier},
     <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <s: r"<[^>]+>"> => {moduled_indentifier.push(s.to_string()); moduled_indentifier},
+    <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <identifier: identifier> <s: r"<[^>]+>"> => {moduled_indentifier.push((identifier + s).to_string()); moduled_indentifier},
     <identifier: identifier> => vec![identifier],
     <s: r"<[^>]+>"> => vec![s.to_string()],
 };
@@ -434,7 +475,7 @@ path_separator: () = "::" => ();
 
 assign: () = "=" => ();
 
-reference: () = "&" => ();
+bitwise_and: () = "&" => ();
 star: () = "*" => ();
 
 logic_negate: () = "!" => ();

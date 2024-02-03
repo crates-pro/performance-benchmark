@@ -18,5 +18,5 @@ pub type FieldIdx = u32;
 
 #[derive(Debug)]
 pub struct Deref {
-    pub place: Box<Place>
+    pub place: Box<Place>,
 }

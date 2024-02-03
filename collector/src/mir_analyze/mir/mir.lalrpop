@@ -264,13 +264,14 @@ assignment: Assign = {
 place: Place = {
     <local_id: local_id> => Place::Local(local_id),
     <field_access: field_access> => Place::Field(field_access),
+    <deref: deref> => Place::Deref(deref),
 };
 
 field_access: Field = <left_parenthesis: left_parenthesis> 
-        <local_id: local_id> <dot: dot> <field_idx: r"[\d]+"> <colon: colon> <ty: ty> 
+        <place: place> <dot: dot> <field_idx: r"[\d]+"> <colon: colon> <ty: ty> 
     <right_parenthesis: right_parenthesis>
     => Field {
-        local_id,
+        place: Box::new(place),
         field_idx: u32::from_str(field_idx).unwrap(),
         field_type: ty,
     };
@@ -278,6 +279,10 @@ field_access: Field = <left_parenthesis: left_parenthesis>
 rvalue: Rvalue = {
     <operand: operand> => Rvalue::Use(operand),
     <binary_op: binaryOp> => Rvalue::BinaryOp(binary_op),
+};
+
+deref: Deref = {
+    <left_parenthesis: left_parenthesis> <star: star> <place: place> <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
 };
 
 terminator: Terminator = {
@@ -399,6 +404,7 @@ ty: Ty = {
     "i32" => Ty::I32,
     <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> => Ty::Tuple(tys),
     <moduled_indentifier: moduled_indentifier> => Ty::from(moduled_indentifier),
+    <reference: reference> <ty: ty> => Ty::Ref(Box::new(ty)),
 };
 
 moduled_indentifier: ModuledIdentifier = {
@@ -428,7 +434,8 @@ path_separator: () = "::" => ();
 
 assign: () = "=" => ();
 
-ref: () = "&" => ();
+reference: () = "&" => ();
+star: () = "*" => ();
 
 logic_negate: () = "!" => ();
 

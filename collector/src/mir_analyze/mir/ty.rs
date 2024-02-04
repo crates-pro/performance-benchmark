@@ -10,7 +10,7 @@ pub enum Ty {
     SelfDef(ModuledIdentifier),
     Tuple(Vec<Ty>),
     UND,
-    U32,
+    U32, 
 }
 
 impl Default for Ty {

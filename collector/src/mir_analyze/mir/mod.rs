@@ -8,3 +8,4 @@ pub(super) mod scope;
 pub(super) mod statement;
 pub(super) mod terminator;
 pub(super) mod ty;
+pub(super) mod casttype;

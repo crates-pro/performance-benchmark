@@ -10,6 +10,7 @@ pub enum Ty {
     SelfDef(ModuledIdentifier),
     Tuple(Vec<Ty>),
     UND,
+    U32, 
 }
 
 impl Default for Ty {
@@ -25,6 +26,7 @@ impl FromStr for Ty {
         match s {
             "()" => Ok(Self::Unit),
             "i32" => Ok(Self::I32),
+            "u32" => Ok(Self::U32),
             "bool" => Ok(Self::Bool),
             _ => Ok(Self::SelfDef(
                 s.split("::").map(|s| s.to_string()).collect(),

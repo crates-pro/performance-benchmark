@@ -13,7 +13,6 @@ pub fn parse_mir(mir_file: File) -> anyhow::Result<MIRs> {
     let mut reader = BufReader::new(mir_file);
     let mut buf = String::new();
     reader.read_to_string(&mut buf)?;
-
     match mir_parser::mirsParser::new().parse(buf.as_str()) {
         Ok(bbs) => Ok(bbs),
         Err(e) => panic!("{}", e),
@@ -28,10 +27,10 @@ fn test_dev() {
     println!("{:?}", result);
 }
 
-// #[test]
-// fn test_binary_op() {
-//     let test_file = File::open("test/mir_analyze/mir/binary_unary_op.mir").unwrap();
-//     let result = parse_mir(test_file).unwrap();
+#[test]
+fn test_binary_op() {
+     let test_file = File::open("test/mir_analyze/mir/binary_unary_op.mir").unwrap();
+     let result = parse_mir(test_file).unwrap();
 
-//     println!("{:?}", result);
-// }
+     println!("{:?}", result);
+}

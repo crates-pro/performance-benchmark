@@ -2,7 +2,7 @@ use std::str::FromStr;
 
 use super::mir::ModuledIdentifier;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum Ty {
     Unit,
     Bool,
@@ -13,6 +13,7 @@ pub enum Ty {
     Tuple(Vec<Ty>),
     Array(Array),
     Ref(Box<Ty>),
+    Placeholder,
     UND,
 }
 
@@ -50,11 +51,19 @@ impl FromStr for Ty {
 
 impl From<ModuledIdentifier> for Ty {
     fn from(value: ModuledIdentifier) -> Self {
-        Self::SelfDef(value)
+        if value.len() == 1 {
+            if let Ok(t) = Self::from_str(value.get(0).unwrap()) {
+                t
+            } else {
+                Self::SelfDef(value)
+            }
+        } else {
+            Self::SelfDef(value)
+        }
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Array {
     pub elem_ty: Box<Ty>,
     pub len: Option<u32>,

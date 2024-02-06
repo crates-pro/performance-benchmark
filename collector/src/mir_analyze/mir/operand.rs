@@ -1,4 +1,4 @@
-use super::place::Place;
+use super::{place::Place, ty::Ty};
 
 #[derive(Debug)]
 pub enum Operand {
@@ -9,5 +9,6 @@ pub enum Operand {
 
 #[derive(Debug)]
 pub struct Const {
+    pub ty: Ty,
     pub val: String,
 }

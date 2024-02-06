@@ -26,18 +26,17 @@ fn test_dev() {
 
     println!("{:?}", result);
 }
-
 #[test]
-fn test_aggregate() {
-    let test_file = File::open("test/mir_analyze/mir/aggregate.mir").unwrap();
+fn test_binary_op() {
+    let test_file = File::open("test/mir_analyze/mir/binary_unary_op.mir").unwrap();
     let result = parse_mir(test_file).unwrap();
 
     println!("{:?}", result);
 }
 
 #[test]
-fn test_binary_op() {
-    let test_file = File::open("test/mir_analyze/mir/binary_unary_op.mir").unwrap();
+fn test_aggregate() {
+    let test_file = File::open("test/mir_analyze/mir/aggregate.mir").unwrap();
     let result = parse_mir(test_file).unwrap();
 
     println!("{:?}", result);

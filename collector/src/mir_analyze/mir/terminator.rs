@@ -13,7 +13,7 @@ pub enum Terminator {
 pub struct Assert {
     pub operand: Operand,
     pub expected: bool,
-    pub msg: String,
+    pub msg: FormatStr,
     pub success: BasicBlockID,
     pub unwind: UnwindAction,
 }
@@ -48,4 +48,10 @@ impl FromStr for UnwindAction {
             Err(format!("Fail to convert {} into a BasicBlockID.", s))
         }
     }
+}
+
+#[derive(Debug)]
+pub struct FormatStr {
+    pub msg: String,
+    pub args: Vec<Operand>,
 }

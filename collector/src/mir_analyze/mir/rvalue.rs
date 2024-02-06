@@ -1,4 +1,4 @@
-use super::{operand::Operand, place::Place, ty::Ty};
+use super::{mir::ModuledIdentifier, operand::Operand, place::Place, ty::Ty};
 
 #[derive(Debug)]
 pub enum Rvalue {
@@ -136,6 +136,7 @@ pub struct Aggregate {
 pub enum AggregateKind {
     Array,
     Tuple,
+    Struct(ModuledIdentifier),
 }
 
 #[derive(Debug)]

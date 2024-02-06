@@ -24,106 +24,29 @@ pub struct Not {
 }
 
 #[derive(Debug)]
-pub enum BinaryOp {
-    CheckedAdd(CheckedAdd),
-    CheckedSub(CheckedSub),
-    CheckedMul(CheckedMul),
-    Eq(Eq),
-    BitAnd(BitAnd),
-    Div(Div),
-    Ge(Ge),
-    Gt(Gt),
-    Le(Le),
-    BitXor(BitXor),
-    BitOr(BitOr),
-    Rem(Rem),
-    Lt(Lt),
-    Shl(Shl),
-    Shr(Shr),
-}
-#[derive(Debug)]
-pub struct CheckedAdd {
+pub struct BinaryOp {
+    pub op_kind: BinaryOpKind,
     pub lhs: Operand,
     pub rhs: Operand,
 }
 
 #[derive(Debug)]
-pub struct CheckedSub {
-    pub lhs: Operand,
-    pub rhs: Operand,
-}
-#[derive(Debug)]
-pub struct CheckedMul {
-    pub lhs: Operand,
-    pub rhs: Operand,
-}
-#[derive(Debug)]
-pub struct Eq {
-    pub lhs: Operand,
-    pub rhs: Operand,
-}
-#[derive(Debug)]
-pub struct BitAnd {
-    pub lhs: Operand,
-    pub rhs: Operand,
-}
-#[derive(Debug)]
-pub struct Div {
-    pub lhs: Operand,
-    pub rhs: Operand,
-}
-#[derive(Debug)]
-pub struct Rem {
-    pub lhs: Operand,
-    pub rhs: Operand,
-}
-
-#[derive(Debug)]
-pub struct Lt {
-    pub lhs: Operand,
-    pub rhs: Operand,
-}
-
-#[derive(Debug)]
-pub struct Shl {
-    pub lhs: Operand,
-    pub rhs: Operand,
-}
-
-#[derive(Debug)]
-pub struct Shr {
-    pub lhs: Operand,
-    pub rhs: Operand,
-}
-
-#[derive(Debug)]
-pub struct BitXor {
-    pub lhs: Operand,
-    pub rhs: Operand,
-}
-
-#[derive(Debug)]
-pub struct BitOr {
-    pub lhs: Operand,
-    pub rhs: Operand,
-}
-
-#[derive(Debug)]
-pub struct Gt {
-    pub lhs: Operand,
-    pub rhs: Operand,
-}
-
-#[derive(Debug)]
-pub struct Le {
-    pub lhs: Operand,
-    pub rhs: Operand,
-}
-
-#[derive(Debug)]
-pub struct Ge {
-    pub lhs: Operand,
-    pub rhs: Operand,
+pub enum BinaryOpKind {
+    CheckedAdd,
+    CheckedSub,
+    CheckedMul,
+    Eq,
+    BitAnd,
+    Div,
+    Ge,
+    Gt,
+    Le,
+    BitXor,
+    BitOr,
+    Rem,
+    Lt,
+    Shl,
+    Shr,
 }
 
 #[derive(Debug)]

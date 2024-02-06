@@ -279,6 +279,7 @@ field_access: Field = <left_parenthesis: left_parenthesis>
 rvalue: Rvalue = {
     <operand: operand> => Rvalue::Use(operand),
     <binary_op: binaryOp> => Rvalue::BinaryOp(binary_op),
+    <unary_op: unaryOp> => Rvalue::UnaryOp(unary_op),
     <cast: cast> => Rvalue::Cast(cast),
     <aggregate: aggregate> => Rvalue::Aggregate(aggregate),
     <reference: reference> => Rvalue::Ref(reference),
@@ -367,19 +368,13 @@ call_params: Vec<Operand> = {
     <mut call_params: call_params> <comma: comma> <operand: operand> => { call_params.push(operand); call_params },
 };
 
-binaryOp: BinaryOp = {
-    <checked_add: checkedAdd> => BinaryOp::CheckedAdd(checked_add),
-};
-
-checkedAdd: CheckedAdd = "CheckedAdd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
- => CheckedAdd{ lhs, rhs };
-
 cast: Cast = {
     <operand: operand> "as" <ty: ty> <left_parenthesis: left_parenthesis> <cast_kind: cast_kind> <right_parenthesis: right_parenthesis> => Cast { cast_kind, operand, ty, },
 };
 
 cast_kind: CastKind = {
     "PointerCoercion" <left_parenthesis: left_parenthesis> <pointer_coercion: pointer_coercion> <right_parenthesis: right_parenthesis> => CastKind::PointerCoercion(pointer_coercion),
+    "IntToInt" => CastKind::IntToInt,
 };
 
 pointer_coercion: PointerCoercion = {
@@ -409,6 +404,53 @@ reference: Ref = {
     <bitwise_and: bitwise_and> "mut" <place: place> => Ref { place, borrow_kind: BorrowKind::Mut, },
 }
 
+unaryOp: UnaryOp = {
+    <neg: neg> => UnaryOp::Neg(neg),
+    <not: not> => UnaryOp::Not(not),
+};
+neg: Neg = "Neg" <left_parenthesis: left_parenthesis> <operand: operand> <right_parenthesis: right_parenthesis>
+ => Neg{ operand };
+not: Not = "Not" <left_parenthesis: left_parenthesis> <operand: operand> <right_parenthesis: right_parenthesis>
+ => Not{ operand };
+
+binaryOp: BinaryOp = {
+    <checked_add: checkedAdd> => BinaryOp::CheckedAdd(checked_add),
+    <checked_sub: checkedSub> => BinaryOp::CheckedSub(checked_sub),
+    <checked_mul: checkedMul> => BinaryOp::CheckedMul(checked_mul),
+    <eq: eq> => BinaryOp::Eq(eq),
+    <bitand: bitand> => BinaryOp::BitAnd(bitand),
+    <div: div> => BinaryOp::Div(div),
+    <rem:rem>=> BinaryOp::Rem(rem),
+    <lt:lt>=> BinaryOp::Lt(lt),
+    <shl:shl>=> BinaryOp::Shl(shl),
+    <shr:shr>=> BinaryOp::Shr(shr),
+    <bitxor:bitxor>=> BinaryOp::BitXor(bitxor),
+    <bitor:bitor>=> BinaryOp::BitOr(bitor),
+    <gt:gt>=> BinaryOp::Gt(gt),
+    <le:le>=> BinaryOp::Le(le),
+    <ge:ge>=> BinaryOp::Ge(ge),
+};
+
+
+checkedAdd: CheckedAdd = "CheckedAdd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+ => CheckedAdd{ lhs, rhs };
+checkedSub: CheckedSub = "CheckedSub" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+ => CheckedSub{ lhs, rhs };
+checkedMul: CheckedMul = "CheckedMul" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+ => CheckedMul{ lhs, rhs };
+div: Div = "Div" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+ => Div{ lhs, rhs };
+eq: Eq = "Eq" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Eq{ lhs, rhs };   
+rem: Rem = "Rem" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Rem { lhs, rhs };
+lt: Lt = "Lt" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Lt { lhs, rhs };
+shl: Shl = "Shl" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Shl { lhs, rhs };
+shr: Shr = "Shr" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Shr { lhs, rhs };
+bitxor: BitXor = "BitXor" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => BitXor { lhs, rhs };
+bitand: BitAnd = "BitAnd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => BitAnd { lhs, rhs };
+bitor: BitOr = "BitOr" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => BitOr { lhs, rhs };
+gt: Gt = "Gt" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Gt { lhs, rhs };
+le: Le = "Le" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Le { lhs, rhs };
+ge: Ge = "Ge" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Ge { lhs, rhs };
 operand: Operand = {
     <place: place> => Operand::COPY(place),
     "move" <place: place> => Operand::MOVE(place),
@@ -416,8 +458,8 @@ operand: Operand = {
 };
 
 const_: Const = {
-    <val: r#"const [^"\]\);]+"#> => Const { val: val[6..].to_string(), },
-    <val: r#"const "[^"]+"#> => Const { val: val[6..].to_string(), },
+    <val: r#"const [^," \]\);]+"#> => Const { val: val[6..].to_string(), },
+    <val: r#"const "[^," ]+"#> => Const { val: val[6..].to_string(), },
 };
 
 scope_id: ScopeID = <s: r"scope [0-9]+"> => u32::from_str(&s[6..]).unwrap();
@@ -439,6 +481,7 @@ tys: Vec<Ty> = {
 ty: Ty = {
     <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> => Ty::Unit,
     "i32" => Ty::I32,
+    "u32" => Ty::U32,
     "str" => Ty::Str,
     <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> => Ty::Tuple(tys),
     <moduled_indentifier: moduled_indentifier> => Ty::from(moduled_indentifier),

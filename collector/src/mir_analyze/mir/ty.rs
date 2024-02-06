@@ -7,6 +7,7 @@ pub enum Ty {
     Unit,
     Bool,
     I32,
+    U32,
     Str,
     SelfDef(ModuledIdentifier),
     Tuple(Vec<Ty>),
@@ -36,6 +37,7 @@ impl FromStr for Ty {
         match s {
             "()" => Ok(Self::Unit),
             "i32" => Ok(Self::I32),
+            "u32" => Ok(Self::U32),
             "bool" => Ok(Self::Bool),
             "undef" => Ok(Self::UND),
             "str" => Ok(Self::Str),

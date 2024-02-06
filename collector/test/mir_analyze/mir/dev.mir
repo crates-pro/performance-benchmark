@@ -1,12 +1,63 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn _1() -> () {
+    let mut _0: ();
+
+    bb0: {
+        return;
+    }
+}
+
+fn <impl at src\main.rs:10:1: 10:7>::add(_1: i32, _2: i32) -> i32 {
+    debug x => _1;
+    debug y => _2;
+    let mut _0: i32;
+    let mut _3: (i32, bool);
+
+    bb0: {
+        _3 = CheckedAdd(_1, _2);
+        assert(!move (_3.1: bool), "attempt to compute `{} + {}`, which would overflow", _1, _2) -> [success: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = move (_3.0: i32);
+        return;
+    }
+}
+
 fn main() -> () {
     let mut _0: ();
     let _1: i32;
-    let mut _2: (i32, bool);
+    let mut _4: (i32, bool);
     scope 1 {
-        debug x => _1;
+        debug x => const 1_i32;
+        let _2: i32;
+        scope 2 {
+            debug y => const 2_i32;
+            let _3: i32;
+            scope 3 {
+                debug _z => _3;
+                let _5: i32;
+                scope 4 {
+                    debug _z => _5;
+                }
+            }
+        }
     }
 
     bb0: {
-        _2 = CheckedAdd(const 1_i32, const 2_i32);
+        _1 = const 1_i32;
+        _2 = const 2_i32;
+        _4 = CheckedAdd(_1, _2);
+        assert(!move (_4.1: bool), "attempt to compute `{} + {}`, which would overflow", _1, _2) -> [success: bb1, unwind continue];
+    }
+
+    bb1: {
+        _3 = move (_4.0: i32);
+        _5 = add(_1, _2) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
     }
 }

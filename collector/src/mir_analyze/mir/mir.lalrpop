@@ -430,43 +430,55 @@ not: Not = "Not" <left_parenthesis: left_parenthesis> <operand: operand> <right_
  => Not{ operand };
 
 binaryOp: BinaryOp = {
-    <checked_add: checkedAdd> => BinaryOp::CheckedAdd(checked_add),
-    <checked_sub: checkedSub> => BinaryOp::CheckedSub(checked_sub),
-    <checked_mul: checkedMul> => BinaryOp::CheckedMul(checked_mul),
-    <eq: eq> => BinaryOp::Eq(eq),
-    <bitand: bitand> => BinaryOp::BitAnd(bitand),
-    <div: div> => BinaryOp::Div(div),
-    <rem:rem>=> BinaryOp::Rem(rem),
-    <lt:lt>=> BinaryOp::Lt(lt),
-    <shl:shl>=> BinaryOp::Shl(shl),
-    <shr:shr>=> BinaryOp::Shr(shr),
-    <bitxor:bitxor>=> BinaryOp::BitXor(bitxor),
-    <bitor:bitor>=> BinaryOp::BitOr(bitor),
-    <gt:gt>=> BinaryOp::Gt(gt),
-    <le:le>=> BinaryOp::Le(le),
-    <ge:ge>=> BinaryOp::Ge(ge),
+    <checked_add: checkedAdd> => checked_add,
+    <checked_sub: checkedSub> => checked_sub,
+    <checked_mul: checkedMul> => checked_mul,
+    <eq: eq> => eq,
+    <bitand: bitand> => bitand,
+    <div: div> => div,
+    <rem:rem>=> rem,
+    <lt:lt>=> lt,
+    <shl:shl>=> shl,
+    <shr:shr>=> shr,
+    <bitxor:bitxor>=> bitxor,
+    <bitor:bitor>=> bitor,
+    <gt:gt>=> gt,
+    <le:le>=> le,
+    <ge:ge>=> ge,
 };
 
 
-checkedAdd: CheckedAdd = "CheckedAdd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
- => CheckedAdd{ lhs, rhs };
-checkedSub: CheckedSub = "CheckedSub" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
- => CheckedSub{ lhs, rhs };
-checkedMul: CheckedMul = "CheckedMul" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
- => CheckedMul{ lhs, rhs };
-div: Div = "Div" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
- => Div{ lhs, rhs };
-eq: Eq = "Eq" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Eq{ lhs, rhs };   
-rem: Rem = "Rem" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Rem { lhs, rhs };
-lt: Lt = "Lt" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Lt { lhs, rhs };
-shl: Shl = "Shl" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Shl { lhs, rhs };
-shr: Shr = "Shr" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Shr { lhs, rhs };
-bitxor: BitXor = "BitXor" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => BitXor { lhs, rhs };
-bitand: BitAnd = "BitAnd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => BitAnd { lhs, rhs };
-bitor: BitOr = "BitOr" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => BitOr { lhs, rhs };
-gt: Gt = "Gt" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Gt { lhs, rhs };
-le: Le = "Le" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Le { lhs, rhs };
-ge: Ge = "Ge" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Ge { lhs, rhs };
+checkedAdd: BinaryOp = "CheckedAdd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+    => BinaryOp { op_kind: BinaryOpKind::CheckedAdd, lhs, rhs };
+checkedSub: BinaryOp = "CheckedSub" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+    => BinaryOp{ op_kind: BinaryOpKind::CheckedSub, lhs, rhs };
+checkedMul: BinaryOp = "CheckedMul" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+    => BinaryOp{ op_kind: BinaryOpKind::CheckedMul, lhs, rhs };
+div: BinaryOp = "Div" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+    => BinaryOp{ op_kind: BinaryOpKind::Div, lhs, rhs };
+eq: BinaryOp = "Eq" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp{ op_kind: BinaryOpKind::Eq, lhs, rhs };   
+rem: BinaryOp = "Rem" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Rem, lhs, rhs };
+lt: BinaryOp = "Lt" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Lt, lhs, rhs };
+shl: BinaryOp = "Shl" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Shl, lhs, rhs };
+shr: BinaryOp = "Shr" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Shr, lhs, rhs };
+bitxor: BinaryOp = "BitXor" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::BitXor, lhs, rhs };
+bitand: BinaryOp = "BitAnd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::BitAnd, lhs, rhs };
+bitor: BinaryOp = "BitOr" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => 
+    BinaryOp { op_kind: BinaryOpKind::BitOr, lhs, rhs };
+gt: BinaryOp = "Gt" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Gt, lhs, rhs };
+le: BinaryOp = "Le" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Le, lhs, rhs };
+ge: BinaryOp = "Ge" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Ge, lhs, rhs };
+
 operand: Operand = {
     <place: place> => Operand::COPY(place),
     "move" <place: place> => Operand::MOVE(place),

@@ -8,108 +8,113 @@ use crate::mir_analyze::mir::scope::*;
 use crate::mir_analyze::mir::statement::*;
 use crate::mir_analyze::mir::terminator::*;
 use crate::mir_analyze::mir::ty::*;
-use crate::mir_analyze::mir::casttype::*;
+use crate::mir_analyze::mir::function::*;
 
 grammar;
 
 pub mirs: MIRs = {
     <mut mirs: mirs> <function: function> => {mirs.functions.push(function); mirs},
-    <function: function> => MIRs {functions: vec![function]},
-    <c: comments> => MIRs{functions: vec![]},
+    <mut mirs: mirs> <promoted_function: promoted_function> => {mirs.promoted_functions.push(promoted_function); mirs},
+    <mut mirs: mirs> <const_block: const_block> => {mirs.const_blocks.push(const_block); mirs},
+    <function: function> => MIRs {functions: vec![function], promoted_functions: vec![], const_blocks: vec![],},
+    <c: comments> => MIRs{functions: vec![], promoted_functions: vec![], const_blocks: vec![],},
 }
 
 function: Function = {
-    "fn " <label: moduled_indentifier> 
-        <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> 
-        <left_brace: left_brace> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace>
+    "fn " <signature: function_signature> <body: function_body>
         => Function{
-            label,
-            bbs,
-            params,
-            var_debug_infos: vec![],
-            local_defs,
-            scopes: vec![],
-            ret_ty,
-        },
-
-        
-    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace> 
-        => Function{
-            label,
-            bbs,
-            params,
-            var_debug_infos: vec![],
-            local_defs,
-            scopes,
-            ret_ty,
-        },
-
-    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace>
-        => Function{
-            label,
-            bbs,
-            params,
-            var_debug_infos,
-            local_defs,
-            scopes: vec![],
-            ret_ty,
-        },
-    
-    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace>
-        => Function{
-            label,
-            bbs,
-            params,
-            var_debug_infos,
-            local_defs,
-            scopes,
-            ret_ty,
-        },
-
-    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace> 
-        => Function{
-            label,
-            bbs,
-            params: vec![],
-            var_debug_infos: vec![],
-            local_defs,
-            scopes: vec![],
-            ret_ty,
-        },
-
-    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace>
-        => Function{
-            label,
-            bbs,
-            params: vec![],
-            var_debug_infos: vec![],
-            local_defs,
-            scopes,
-            ret_ty,
-        },
-
-    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace> 
-        => Function{
-            label,
-            bbs,
-            params: vec![],
-            var_debug_infos,
-            local_defs,
-            scopes: vec![],
-            ret_ty,
-        },
-
-    "fn " <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace> 
-        => Function{
-            label,
-            bbs,
-            params: vec![],
-            var_debug_infos,
-            local_defs,
-            scopes,
-            ret_ty,
+            label: signature.0,
+            params: signature.1,
+            ret_ty: signature.2,
+            var_debug_infos: body.0,
+            local_defs: body.1,
+            scopes: body.2,
+            bbs: body.3,
         },
 };
+
+promoted_function: PromotedFunction = {
+    "promoted" <left_bracket: left_bracket> <id: unsinged_digit> <right_bracket: right_bracket> "in" <label: moduled_indentifier> <colon: colon> <ret_ty: ty> <assign: assign> <body: function_body> 
+        =>  PromotedFunction {
+            promoted_id: u32::from_str(id.as_str()).unwrap(),
+            body: Function {
+                label, 
+                params: vec![],
+                ret_ty,
+                var_debug_infos: body.0,
+                local_defs: body.1,
+                scopes: body.2,
+                bbs: body.3,
+            }
+        },
+};
+
+const_block: ConstBlock = {
+    "const"  <const_var: moduled_indentifier> <colon: colon> <ty: ty> <assign: assign> <body: function_body>
+        => ConstBlock {
+            const_var: const_var.clone(),
+            ty: ty.clone(),
+            body: Function {
+                label: const_var, 
+                params: vec![],
+                ret_ty: ty,
+                var_debug_infos: body.0,
+                local_defs: body.1,
+                scopes: body.2,
+                bbs: body.3,
+            },
+        }
+};
+
+function_signature: (ModuledIdentifier, Params, Ty) = {
+    <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty>
+        => (
+            label,
+            params,
+            ret_ty,
+        ),
+
+    <label: moduled_indentifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty>
+        => (
+            label,
+            vec![],
+            ret_ty,
+        ),
+}
+
+function_body: (VarDebugInfos, LocalDefs, Scopes, BasicBlocks) = {
+    <left_brace: left_brace> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace>
+        =>  (
+            vec![],
+            local_defs,
+            vec![],
+            bbs,
+        ),
+    
+    <left_brace: left_brace> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace> 
+        => (
+            vec![],
+            local_defs,
+            scopes,
+            bbs,
+        ),
+
+    <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <bbs: BBs> <right_brace: right_brace>
+        => (
+            var_debug_infos,
+            local_defs,
+            vec![],
+            bbs,
+        ),
+    
+    <left_brace: left_brace> <var_debug_infos: var_debug_infos> <local_defs: local_defs> <scopes: scopes> <bbs: BBs> <right_brace: right_brace>
+        => (
+            var_debug_infos,
+            local_defs,
+            scopes,
+            bbs,
+        ),
+}
 
 params: Params = {
     <mut params: params> <comma: comma> <param: param> => {params.push(param); params},
@@ -214,8 +219,8 @@ var_debug_infos: VarDebugInfos = {
 var_debug_info: VarDebugInfo = {
     "debug" <name: identifier> "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Local(local_id)},
     "debug" <name: identifier> "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Local(local_id)},
-    "debug" <name: identifier> "=>" <const_: const_> <semicolon: semicolon> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Const(const_)},
-    "debug" <name: identifier> "=>" <const_: const_> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Const(const_)},
+    "debug" <name: identifier> "=>" <const_val: const_val> <semicolon: semicolon> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Const(const_val)},
+    "debug" <name: identifier> "=>" <const_val: const_val> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Const(const_val)},
 };
 
 local_defs: LocalDefs = {
@@ -265,33 +270,29 @@ assignment: Assign = {
 place: Place = {
     <local_id: local_id> => Place::Local(local_id),
     <field_access: field_access> => Place::Field(field_access),
+    <deref: deref> => Place::Deref(deref),
 };
 
 field_access: Field = <left_parenthesis: left_parenthesis> 
-        <local_id: local_id> <dot: dot> <field_idx: r"[\d]+"> <colon: colon> <ty: ty> 
+        <place: place> <dot: dot> <field_idx: unsinged_digit> <colon: colon> <ty: ty> 
     <right_parenthesis: right_parenthesis>
     => Field {
-        local_id,
-        field_idx: u32::from_str(field_idx).unwrap(),
+        place: Box::new(place),
+        field_idx: u32::from_str(field_idx.as_str()).unwrap(),
         field_type: ty,
     };
 
 rvalue: Rvalue = {
     <operand: operand> => Rvalue::Use(operand),
     <binary_op: binaryOp> => Rvalue::BinaryOp(binary_op),
-    <cast: cast> => Rvalue::Cast(cast),
     <unary_op: unaryOp> => Rvalue::UnaryOp(unary_op),
-};
-cast: Cast = {<lhs: operand> "as" <ty:ty> <left_parenthesis: left_parenthesis> <casttype:casttype> <right_parenthesis: right_parenthesis> =>
-Cast {
-    lhs,
-    ty,
-    casttype,
-},
+    <cast: cast> => Rvalue::Cast(cast),
+    <aggregate: aggregate> => Rvalue::Aggregate(aggregate),
+    <reference: reference> => Rvalue::Ref(reference),
 };
 
-casttype: Casttype = {
-    "IntToInt" => Casttype::IntToInt,
+deref: Deref = {
+    <left_parenthesis: left_parenthesis> <star: star> <place: place> <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
 };
 
 terminator: Terminator = {
@@ -301,22 +302,22 @@ terminator: Terminator = {
 };
 
 assert: Assert = {
-    "assert" <left_parenthesis: left_parenthesis> <operand: operand> <c: comma> <msg: r#""([^"]+)"[^\)]*"#> <right_parenthesis: right_parenthesis> 
+    "assert" <left_parenthesis: left_parenthesis> <operand: operand> <c: comma> <format_str: format_str> <right_parenthesis: right_parenthesis> 
         "->" <left_bracket: left_bracket> "success" <success: bb_id> <cc: comma> "unwind" <unwind: unwind_action> <right_bracket: right_bracket> <semicolon: semicolon> =>
         Assert {
             operand,
             expected: true,
-            msg: msg.to_string(),
+            msg: format_str,
             success,
             unwind, 
         },
         
-    "assert" <left_parenthesis: left_parenthesis> <logic_negate: logic_negate> <operand: operand> <c: comma> <msg: r#""([^"]+)"[^\)]*"#> <right_parenthesis: right_parenthesis> 
+    "assert" <left_parenthesis: left_parenthesis> <logic_negate: logic_negate> <operand: operand> <c: comma> <format_str: format_str> <right_parenthesis: right_parenthesis> 
         "->" <left_bracket: left_bracket> "success" <success: bb_id> <cc: comma> "unwind" <unwind: unwind_action> <right_bracket: right_bracket> <semicolon: semicolon> =>
         Assert {
             operand,
             expected: false,
-            msg: msg.to_string(),
+            msg: format_str,
             success,
             unwind, 
         },
@@ -373,6 +374,52 @@ call_params: Vec<Operand> = {
     <mut call_params: call_params> <comma: comma> <operand: operand> => { call_params.push(operand); call_params },
 };
 
+cast: Cast = {
+    <operand: operand> "as" <ty: ty> <left_parenthesis: left_parenthesis> <cast_kind: cast_kind> <right_parenthesis: right_parenthesis> => Cast { cast_kind, operand, ty, },
+};
+
+cast_kind: CastKind = {
+    "PointerCoercion" <left_parenthesis: left_parenthesis> <pointer_coercion: pointer_coercion> <right_parenthesis: right_parenthesis> => CastKind::PointerCoercion(pointer_coercion),
+    "IntToInt" => CastKind::IntToInt,
+};
+
+pointer_coercion: PointerCoercion = {
+    "Unsize" => PointerCoercion::Unsize,
+};
+
+aggregate: Aggregate = {
+    <aggregate_array: aggregate_array> => aggregate_array,
+    <aggregate_tuple: aggregate_tuple> => aggregate_tuple,
+    <aggregate_struct: aggregate_struct> => aggregate_struct,
+};
+aggregate_array: Aggregate = {
+    <left_bracket: left_bracket> <elements: aggregate_anonymous_elements> <right_bracket: right_bracket> => Aggregate { aggregate_kind: AggregateKind::Array, elements, },
+};
+aggregate_tuple: Aggregate = {
+    <left_parenthesis: left_parenthesis> <elements: aggregate_anonymous_elements> <right_parenthesis: right_parenthesis> => Aggregate { aggregate_kind: AggregateKind::Tuple, elements, },
+};
+aggregate_struct: Aggregate = {
+    <moduled_indentifier: moduled_indentifier> <left_brace: left_brace> <elements: struct_fields> <right_brace: right_brace>
+        => Aggregate { aggregate_kind: AggregateKind::Struct(moduled_indentifier), elements, }
+}
+struct_fields: Vec<Operand> = {
+    <struct_field: struct_field> => vec![struct_field],
+    <mut struct_fields: struct_fields> <struct_field: struct_field> => { struct_fields.push(struct_field); struct_fields },
+};
+struct_field: Operand = {
+    <identifier: identifier> <colon: colon> <operand: operand> => operand,
+};
+
+aggregate_anonymous_elements: Vec<Operand> = {
+    <operand: operand> => vec![operand],
+    <mut elements: aggregate_anonymous_elements> <comma: comma> <operand: operand> => { elements.push(operand); elements },
+};
+
+reference: Ref = {
+    <bitwise_and: bitwise_and> <place: place> => Ref { place, borrow_kind: BorrowKind::Shared, },
+    <bitwise_and: bitwise_and> "mut" <place: place> => Ref { place, borrow_kind: BorrowKind::Mut, },
+}
+
 unaryOp: UnaryOp = {
     <neg: neg> => UnaryOp::Neg(neg),
     <not: not> => UnaryOp::Not(not),
@@ -383,52 +430,71 @@ not: Not = "Not" <left_parenthesis: left_parenthesis> <operand: operand> <right_
  => Not{ operand };
 
 binaryOp: BinaryOp = {
-    <checked_add: checkedAdd> => BinaryOp::CheckedAdd(checked_add),
-    <checked_sub: checkedSub> => BinaryOp::CheckedSub(checked_sub),
-    <checked_mul: checkedMul> => BinaryOp::CheckedMul(checked_mul),
-    <eq: eq> => BinaryOp::Eq(eq),
-    <bitand: bitand> => BinaryOp::BitAnd(bitand),
-    <div: div> => BinaryOp::Div(div),
-    <rem:rem>=> BinaryOp::Rem(rem),
-    <lt:lt>=> BinaryOp::Lt(lt),
-    <shl:shl>=> BinaryOp::Shl(shl),
-    <shr:shr>=> BinaryOp::Shr(shr),
-    <bitxor:bitxor>=> BinaryOp::BitXor(bitxor),
-    <bitor:bitor>=> BinaryOp::BitOr(bitor),
-    <gt:gt>=> BinaryOp::Gt(gt),
-    <le:le>=> BinaryOp::Le(le),
-    <ge:ge>=> BinaryOp::Ge(ge),
+    <checked_add: checkedAdd> => checked_add,
+    <checked_sub: checkedSub> => checked_sub,
+    <checked_mul: checkedMul> => checked_mul,
+    <eq: eq> => eq,
+    <bitand: bitand> => bitand,
+    <div: div> => div,
+    <rem:rem>=> rem,
+    <lt:lt>=> lt,
+    <shl:shl>=> shl,
+    <shr:shr>=> shr,
+    <bitxor:bitxor>=> bitxor,
+    <bitor:bitor>=> bitor,
+    <gt:gt>=> gt,
+    <le:le>=> le,
+    <ge:ge>=> ge,
 };
 
 
-checkedAdd: CheckedAdd = "CheckedAdd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
- => CheckedAdd{ lhs, rhs };
-checkedSub: CheckedSub = "CheckedSub" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
- => CheckedSub{ lhs, rhs };
-checkedMul: CheckedMul = "CheckedMul" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
- => CheckedMul{ lhs, rhs };
-div: Div = "Div" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
- => Div{ lhs, rhs };
-eq: Eq = "Eq" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Eq{ lhs, rhs };   
-rem: Rem = "Rem" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Rem { lhs, rhs };
-lt: Lt = "Lt" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Lt { lhs, rhs };
-shl: Shl = "Shl" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Shl { lhs, rhs };
-shr: Shr = "Shr" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Shr { lhs, rhs };
-bitxor: BitXor = "BitXor" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => BitXor { lhs, rhs };
-bitand: BitAnd = "BitAnd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => BitAnd { lhs, rhs };
-bitor: BitOr = "BitOr" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => BitOr { lhs, rhs };
-gt: Gt = "Gt" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Gt { lhs, rhs };
-le: Le = "Le" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Le { lhs, rhs };
-ge: Ge = "Ge" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => Ge { lhs, rhs };
+checkedAdd: BinaryOp = "CheckedAdd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+    => BinaryOp { op_kind: BinaryOpKind::CheckedAdd, lhs, rhs };
+checkedSub: BinaryOp = "CheckedSub" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+    => BinaryOp{ op_kind: BinaryOpKind::CheckedSub, lhs, rhs };
+checkedMul: BinaryOp = "CheckedMul" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+    => BinaryOp{ op_kind: BinaryOpKind::CheckedMul, lhs, rhs };
+div: BinaryOp = "Div" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis>
+    => BinaryOp{ op_kind: BinaryOpKind::Div, lhs, rhs };
+eq: BinaryOp = "Eq" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp{ op_kind: BinaryOpKind::Eq, lhs, rhs };   
+rem: BinaryOp = "Rem" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Rem, lhs, rhs };
+lt: BinaryOp = "Lt" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Lt, lhs, rhs };
+shl: BinaryOp = "Shl" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Shl, lhs, rhs };
+shr: BinaryOp = "Shr" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Shr, lhs, rhs };
+bitxor: BinaryOp = "BitXor" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::BitXor, lhs, rhs };
+bitand: BinaryOp = "BitAnd" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::BitAnd, lhs, rhs };
+bitor: BinaryOp = "BitOr" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> => 
+    BinaryOp { op_kind: BinaryOpKind::BitOr, lhs, rhs };
+gt: BinaryOp = "Gt" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Gt, lhs, rhs };
+le: BinaryOp = "Le" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Le, lhs, rhs };
+ge: BinaryOp = "Ge" <left_parenthesis: left_parenthesis> <lhs: operand> <comma: comma> <rhs: operand> <right_parenthesis: right_parenthesis> 
+    => BinaryOp { op_kind: BinaryOpKind::Ge, lhs, rhs };
+
 operand: Operand = {
     <place: place> => Operand::COPY(place),
     "move" <place: place> => Operand::MOVE(place),
-    <const_: const_> => Operand::CONST(const_),
+    <const_val: const_val> => Operand::CONST(const_val),
 };
 
-const_: Const = {
-    <val: r#"const [^," \]\);]+"#> => Const { val: val[6..].to_string(), },
-    <val: r#"const "[^," ]+"#> => Const { val: val[6..].to_string(), },
+const_val: Const = {
+    "const" <val: moduled_indentifier> => Const { ty: Ty::UND, val: val.into_iter().map(|s| s).collect(), },
+    "const" <val: string> => Const { ty: Ty::Str, val: val.to_string(), },
+    "const" <val: literal_sined_digit> => Const { ty: val.0, val: val.1, },
+    "const" <val: place_holder> => Const { ty: Ty::Placeholder, val: String::from("_"), },
+};
+
+literal_sined_digit: (Ty, String) = {
+    <unsinged_digit: unsinged_digit> <identifier: identifier> => (Ty::from_str(&identifier.as_str()[1..]).unwrap(), unsinged_digit),
+    <negative_digit: negative_digit> <identifier: identifier> => (Ty::from_str(&identifier.as_str()[1..]).unwrap(), negative_digit),
 };
 
 scope_id: ScopeID = <s: r"scope [0-9]+"> => u32::from_str(&s[6..]).unwrap();
@@ -449,20 +515,25 @@ tys: Vec<Ty> = {
 
 ty: Ty = {
     <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> => Ty::Unit,
-    "i32" => Ty::I32,
-    "u32" => Ty::U32,
+    // "i32" => Ty::I32,
+    // "u32" => Ty::U32,
+    // "str" => Ty::Str,
     <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> => Ty::Tuple(tys),
     <moduled_indentifier: moduled_indentifier> => Ty::from(moduled_indentifier),
+    <bitwise_and: bitwise_and> <ty: ty> => Ty::Ref(Box::new(ty)),
+    <left_bracket: left_bracket> <ty: ty> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(ty), len: None, }),
+    <left_bracket: left_bracket> <ty: ty> <semicolon: semicolon> <len: unsinged_digit> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(ty), len: Some(u32::from_str(len.as_str()).unwrap()), }),
 };
 
 moduled_indentifier: ModuledIdentifier = {
     <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <identifier: identifier> => {moduled_indentifier.push(identifier); moduled_indentifier},
     <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <s: r"<[^>]+>"> => {moduled_indentifier.push(s.to_string()); moduled_indentifier},
+    <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <identifier: identifier> <s: r"<[^>]+>"> => {moduled_indentifier.push((identifier + s).to_string()); moduled_indentifier},
     <identifier: identifier> => vec![identifier],
     <s: r"<[^>]+>"> => vec![s.to_string()],
 };
 
-identifier: String = <s: r"[a-zA-Z_][a-zA-Z0-9_]*"> => String::from(s);
+identifier: String = <s: r"([a-zA-Z][a-zA-Z0-9_]*)|(_[a-zA-Z0-9_]+)"> => String::from(s);
 
 left_brace: () = "{" => ();
 right_brace: () = "}" => ();
@@ -482,7 +553,8 @@ path_separator: () = "::" => ();
 
 assign: () = "=" => ();
 
-ref: () = "&" => ();
+bitwise_and: () = "&" => ();
+star: () = "*" => ();
 
 logic_negate: () = "!" => ();
 
@@ -490,6 +562,17 @@ comments: () = {
     <comment: comment> => (),
     <comments: comments> <comment: comment> => (),
 };
+
+place_holder: () = "_" => ();
+
+unsinged_digit: String = <s: r"[\d]+"> => s.to_string();
+negative_digit: String = <s: r"-[\d]+"> => s.to_string();
+
+format_str: FormatStr = {
+    <string: string> => FormatStr { msg: string, args: vec![] },
+    <mut format_str: format_str> <comma: comma> <operand: operand> => { format_str.args.push(operand); format_str },
+};
+string: String = <s: r#""[^"]+""#> => s.to_string();
 
 comment: () = {
     r"// .*" => (),

@@ -293,6 +293,7 @@ rvalue: Rvalue = {
 
 deref: Deref = {
     <left_parenthesis: left_parenthesis> <star: star> <place: place> <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    "deref_copy" <field_access: field_access> => Deref { place: field_access.place, },
 };
 
 terminator: Terminator = {
@@ -376,6 +377,7 @@ call_params: Vec<Operand> = {
 
 cast: Cast = {
     <operand: operand> "as" <ty: ty> <left_parenthesis: left_parenthesis> <cast_kind: cast_kind> <right_parenthesis: right_parenthesis> => Cast { cast_kind, operand, ty, },
+
 };
 
 cast_kind: CastKind = {
@@ -404,7 +406,7 @@ aggregate_struct: Aggregate = {
 }
 struct_fields: Vec<Operand> = {
     <struct_field: struct_field> => vec![struct_field],
-    <mut struct_fields: struct_fields> <struct_field: struct_field> => { struct_fields.push(struct_field); struct_fields },
+    <mut struct_fields: struct_fields> <comma: comma> <struct_field: struct_field> => { struct_fields.push(struct_field); struct_fields },
 };
 struct_field: Operand = {
     <identifier: identifier> <colon: colon> <operand: operand> => operand,
@@ -490,6 +492,8 @@ const_val: Const = {
     "const" <val: string> => Const { ty: Ty::Str, val: val.to_string(), },
     "const" <val: literal_sined_digit> => Const { ty: val.0, val: val.1, },
     "const" <val: place_holder> => Const { ty: Ty::Placeholder, val: String::from("_"), },
+    "const" "ZeroSized" <colon: colon>  <val: zero_string> => Const { ty: Ty::Str, val: val.to_string(), },
+    "const" <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> => Const {ty: Ty::UND, val: String::from(""), },
 };
 
 literal_sined_digit: (Ty, String) = {
@@ -521,17 +525,23 @@ ty: Ty = {
     <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> => Ty::Tuple(tys),
     <moduled_indentifier: moduled_indentifier> => Ty::from(moduled_indentifier),
     <bitwise_and: bitwise_and> <ty: ty> => Ty::Ref(Box::new(ty)),
+    <bitwise_and: bitwise_and> "mut" <ty: ty> => Ty::Ref(Box::new(ty)),
     <left_bracket: left_bracket> <ty: ty> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(ty), len: None, }),
     <left_bracket: left_bracket> <ty: ty> <semicolon: semicolon> <len: unsinged_digit> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(ty), len: Some(u32::from_str(len.as_str()).unwrap()), }),
 };
 
 moduled_indentifier: ModuledIdentifier = {
     <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <identifier: identifier> => {moduled_indentifier.push(identifier); moduled_indentifier},
+    <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <zero_string: zero_string> => {moduled_indentifier.push(zero_string); moduled_indentifier},
     <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <s: r"<[^>]+>"> => {moduled_indentifier.push(s.to_string()); moduled_indentifier},
     <mut moduled_indentifier: moduled_indentifier> <path_separator: path_separator> <identifier: identifier> <s: r"<[^>]+>"> => {moduled_indentifier.push((identifier + s).to_string()); moduled_indentifier},
     <identifier: identifier> => vec![identifier],
     <s: r"<[^>]+>"> => vec![s.to_string()],
+    <s: r"<[^>]+>>"> => vec![s.to_string()+ ">"],
+    <zero_string: zero_string> => vec![zero_string.to_string()],
 };
+
+
 
 identifier: String = <s: r"([a-zA-Z][a-zA-Z0-9_]*)|(_[a-zA-Z0-9_]+)"> => String::from(s);
 
@@ -573,6 +583,8 @@ format_str: FormatStr = {
     <mut format_str: format_str> <comma: comma> <operand: operand> => { format_str.args.push(operand); format_str },
 };
 string: String = <s: r#""[^"]+""#> => s.to_string();
+
+zero_string: String = <s: r"\{closure[^}]*\}"> => s.to_string();
 
 comment: () = {
     r"// .*" => (),

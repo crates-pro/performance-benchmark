@@ -14,8 +14,7 @@ pub enum Ty {
     Array(Array),
     Ref(Box<Ty>),
     Placeholder,
-    UND,
-    U32, 
+    UND, 
 }
 
 impl Default for Ty {

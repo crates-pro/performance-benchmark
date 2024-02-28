@@ -1,0 +1,48 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn main() -> () {
+    let mut _0: ();
+    let _1: Homura;
+    let mut _4: &Homura;
+    let mut _5: &Madoka;
+    let _6: (&Homura, &Madoka);
+    let mut _7: &{closure@src/main.rs:10:17: 10:19};
+    scope 1 {
+        debug homu => const Homura;
+        let _2: Madoka;
+        scope 2 {
+            debug mado => const Madoka;
+            let _3: {closure@src/main.rs:10:17: 10:19};
+            scope 3 {
+                debug marry => _3;
+            }
+        }
+    }
+
+    bb0: {
+        _4 = &_1;
+        _5 = &_2;
+        _3 = {closure@src/main.rs:10:17: 10:19} { homu: move _4, mado: move _5 };
+        _7 = &_3;
+        _6 = <{closure@src/main.rs:10:17: 10:19} as Fn<()>>::call(move _7, const ()) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn main::{closure#0}(_1: &{closure@src/main.rs:10:17: 10:19}) -> (&Homura, &Madoka) {
+    debug homu => const Homura;
+    debug mado => const Madoka;
+    let mut _0: (&Homura, &Madoka);
+    let mut _2: &Homura;
+    let mut _3: &Madoka;
+
+    bb0: {
+        _2 = deref_copy ((*_1).0: &Homura);
+        _3 = deref_copy ((*_1).1: &Madoka);
+        _0 = (_2, _3);
+        return;
+    }
+}

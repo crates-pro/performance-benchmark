@@ -8,6 +8,7 @@ pub enum Rvalue {
     Cast(Cast),
     Ref(Ref),
     UnaryOp(UnaryOp),
+    //CopyForDeref(Place),
 }
 #[derive(Debug)]
 pub enum UnaryOp {
@@ -88,7 +89,7 @@ pub enum CastKind {
 pub enum PointerCoercion {
     // ReifyFnPointer,
     // UnsafeFnPointer,
-    // ClosureFnPointer(Unsafety),
+    //ClosureFnPointer(Unsafety),
     // MutToConstPointer,
     // ArrayToPointer,
     Unsize,
@@ -96,9 +97,9 @@ pub enum PointerCoercion {
 
 // #[derive(Debug)]
 // pub enum Unsafety {
-//     Unsafe,
-//     Normal,
-// }
+//    Unsafe,
+//    Normal,
+//}
 
 #[derive(Debug)]
 pub struct Ref {

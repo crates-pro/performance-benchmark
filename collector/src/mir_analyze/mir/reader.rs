@@ -41,3 +41,10 @@ fn test_aggregate() {
 
     println!("{:?}", result);
 }
+#[test]
+fn test_closure() {
+    let test_file = File::open("test/mir_analyze/mir/closure.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}

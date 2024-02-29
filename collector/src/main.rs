@@ -23,6 +23,7 @@ mod csv_transfer;
 mod execute;
 mod mir_analyze;
 mod morpheme_miner;
+mod pca_analysis;
 mod perf_analyze;
 mod runtime;
 mod statistics;

@@ -27,7 +27,6 @@ cargo_metadata = "0.18.1"
 csv = "1.1"
 rayon = "1.7"
 regex = "1.10.2"
-pca = "0.1.4"
 nalgebra = "0.32.4"
 
 [target.'cfg(windows)'.dependencies]

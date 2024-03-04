@@ -1,5 +1,8 @@
+use std::vec::IntoIter;
+
 use nalgebra::{DMatrix, SymmetricEigen};
 
+/// `PcaRawData`
 pub trait PcaRawData {
     // `check` will verify whether the raw data can be transformed into a matrix or not.
     fn check(&self) -> Result<(), String> {
@@ -9,11 +12,16 @@ pub trait PcaRawData {
     /// `get_row_numbers` will return the number of rows
     fn get_row_numbers(&self) -> usize;
 
+    /// `get_row_labels` will return the label of each row.
+    /// The order of labels will be the same with the order
+    /// of rows in raw data.
+    fn iter_with_row_labels(&self) -> IntoIter<(Vec<f64>, String)>;
+
     /// `get_feature_numbers` will return the number of features
     fn get_feature_numbers(&self) -> usize;
 
     /// `into_arrays` will transform raw data into an matrix with data grouped by different features.
-    /// The order of features shall remain the same with raw data.
+    /// The order of features shall remain the same with that of the raw data.
     /// Each column in the matrix represents a group of data with one specific feature.
     fn into_matrix(&self) -> DMatrix<f64>;
 }
@@ -29,7 +37,7 @@ pub trait PcaRawData {
 /// Step4. Calculate the eigenvalue and eigenvectors of the matrix
 ///
 /// Step5. Sort the eigenvectors by the corresponding eigenvalue.
-pub fn get_principal_comonents(raw_data: &dyn PcaRawData) -> Vec<Vec<f64>> {
+pub fn get_principle_components(raw_data: &dyn PcaRawData) -> Vec<Vec<f64>> {
     let data = raw_data.into_matrix();
 
     // normalize
@@ -106,7 +114,7 @@ mod cfg_test {
 
     use crate::mir_analyze::data::table_data::TableDatas;
 
-    use super::{get_principal_comonents, normalize};
+    use super::{get_principle_components, normalize};
 
     fn generate_table_data() -> TableDatas<String, String, i32> {
         vec![
@@ -166,7 +174,7 @@ mod cfg_test {
     #[test]
     fn test_pca() {
         assert_eq!(
-            get_principal_comonents(&generate_table_data()),
+            get_principle_components(&generate_table_data()),
             vec![
                 vec![0.8164965809277261, -0.4082482904638633, -0.408248290463863],
                 vec![0.0, -0.7071067811865475, 0.7071067811865477],

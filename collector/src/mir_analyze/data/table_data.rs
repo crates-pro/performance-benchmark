@@ -4,6 +4,7 @@ use std::{
     fs::File,
     io::{BufWriter, Write},
     path::Path,
+    vec::IntoIter,
 };
 
 use nalgebra::DMatrix;
@@ -101,8 +102,8 @@ pub fn write_tex_table<
 }
 
 /// row label is of type Y
-impl<X: Debug + Clone + Ord, Y: Debug + Clone + Ord, T: Debug + Copy + Into<f64>> PcaRawData
-    for TableDatas<X, Y, T>
+impl<X: Debug + Clone + Ord, Y: Debug + Clone + Ord + Display, T: Debug + Copy + Into<f64>>
+    PcaRawData for TableDatas<X, Y, T>
 {
     fn check(&self) -> Result<(), String> {
         let mut feature_number = 0;
@@ -140,6 +141,8 @@ impl<X: Debug + Clone + Ord, Y: Debug + Clone + Ord, T: Debug + Copy + Into<f64>
     }
 
     fn into_matrix(&self) -> DMatrix<f64> {
+        self.check().unwrap();
+
         let matrix = DMatrix::from_vec(
             self.get_row_numbers(),
             self.get_feature_numbers() as usize,
@@ -147,6 +150,26 @@ impl<X: Debug + Clone + Ord, Y: Debug + Clone + Ord, T: Debug + Copy + Into<f64>
         );
 
         matrix
+    }
+
+    fn iter_with_row_labels(&self) -> IntoIter<(Vec<f64>, String)> {
+        let sorted_table = sort(self);
+
+        let mut row_vecs: Vec<(Vec<f64>, String)> = Vec::new();
+        sorted_table
+            .first()
+            .unwrap()
+            .1
+            .iter()
+            .for_each(|s| row_vecs.push((vec![], s.0.to_string())));
+
+        sorted_table.into_iter().for_each(|(_, y_t)| {
+            let mut iter_row_vecs = row_vecs.iter_mut();
+            y_t.into_iter()
+                .for_each(|(_, t)| iter_row_vecs.next().unwrap().0.push(t.into()));
+        });
+
+        row_vecs.into_iter()
     }
 }
 
@@ -297,5 +320,25 @@ mod test {
             }
         }
         assert_eq!(iter_matrix.next(), None);
+    }
+
+    /// A test for `iter_with_row_labels` implemented by TableData
+    ///
+    /// Step1. Get the iterator of a table data
+    ///
+    /// Step2. Verify the iterator.
+    #[test]
+    fn test_iter_with_row_labels_table_data() {
+        assert_eq!(
+            generate_table_data()
+                .iter_with_row_labels()
+                .map(|x| x)
+                .collect::<Vec<(Vec<f64>, String)>>(),
+            vec![
+                (vec![1.0, 4.0], String::from("row_a")),
+                (vec![2.0, 5.0], String::from("row_b")),
+                (vec![3.0, 6.0], String::from("row_c"))
+            ]
+        );
     }
 }

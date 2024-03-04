@@ -17,6 +17,17 @@ https://blog.eastonman.com/blog/2021/02/use-perf/
 > cargo install flamegraph
 ```
 
+3. Relative dependancies
+python3
+kaleido (can be installed with pip...
+```
+pip install -U kaleido
+```
+or with conda...)
+```
+conda install -c conda-forge python-kaleido
+```
+
 **Attention:** The harness & flamegraph will fail to collect some of the specific data we need if you are going to run it in a virtual environment.
 
 ## Build up

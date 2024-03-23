@@ -17,9 +17,16 @@ https://blog.eastonman.com/blog/2021/02/use-perf/
 > cargo install flamegraph
 ```
 
-3. Relative dependancies
-python3
-kaleido (can be installed with pip...
+3. Related dependancies
+
+- libfontconfig1-dev
+```
+apt install libfontconfig1-dev
+```
+
+- python3
+
+- kaleido (can be installed with pip...
 ```
 pip install -U kaleido
 ```

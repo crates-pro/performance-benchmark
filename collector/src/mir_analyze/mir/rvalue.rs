@@ -8,7 +8,11 @@ pub enum Rvalue {
     Cast(Cast),
     Ref(Ref),
     UnaryOp(UnaryOp),
-    //CopyForDeref(Place),
+    Discriminant(Place),
+    CopyForDeref(Place),
+    Len(Place),
+    ShallowInitBox(ShallowInitBox),
+    //Repeat(Repeat),
 }
 #[derive(Debug)]
 pub enum UnaryOp {
@@ -36,6 +40,7 @@ pub enum BinaryOpKind {
     CheckedAdd,
     CheckedSub,
     CheckedMul,
+    Sub,
     Eq,
     BitAnd,
     Div,
@@ -48,6 +53,7 @@ pub enum BinaryOpKind {
     Lt,
     Shl,
     Shr,
+    Mul,
 }
 
 #[derive(Debug)]
@@ -78,11 +84,11 @@ pub enum CastKind {
     // PointerFromExposedAddress,
     // DynStar,
     // FloatToInt,
-    // FloatToFloat,
-    // IntToFloat,
-    // PtrToPtr,
+    FloatToFloat,
+    IntToFloat,
+    PtrToPtr,
     // FnPtrToPtr,
-    // Transmute,
+    Transmute,
 }
 
 #[derive(Debug)]
@@ -111,4 +117,16 @@ pub struct Ref {
 pub enum BorrowKind {
     Shared,
     Mut,
+}
+
+/*#[derive(Debug)]
+pub struct Repeat {
+    pub operand: Operand,
+    pub size: LocalID,
+}*/
+
+#[derive(Debug)]
+pub struct ShallowInitBox {
+    pub operand: Operand,
+    pub ty: Ty,
 }

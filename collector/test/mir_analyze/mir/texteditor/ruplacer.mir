@@ -1,0 +1,3232 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out. 
+fn <impl at src/main.rs:9:10: 9:15>::fmt(_1: &ColorWhen, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug f => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let mut _3: &str;
+    let mut _4: isize;
+    let _5: &str;
+    let _6: &str;
+    let _7: &str;
+
+    bb0: {
+        _4 = discriminant((*_1));
+        switchInt(move _4) -> [0: bb3, 1: bb4, 2: bb1, otherwise: bb2];
+    }
+
+    bb1: {
+        _7 = const "Auto";
+        _3 = _7;
+        goto -> bb5;
+    }
+
+    bb2: {
+        unreachable;
+    }
+
+    bb3: {
+        _5 = const "Always";
+        _3 = _5;
+        goto -> bb5;
+    }
+
+    bb4: {
+        _6 = const "Never";
+        _3 = _6;
+        goto -> bb5;
+    }
+
+    bb5: {
+        _0 = Formatter::<'_>::write_str(_2, move _3) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:16:1: 16:37>::from_str(_1: &str) -> Result<ColorWhen, anyhow::Error> {
+    debug s => _1;
+    let mut _0: std::result::Result<ColorWhen, anyhow::Error>;
+    let mut _2: bool;
+    let mut _3: bool;
+    let mut _4: bool;
+    let mut _5: ColorWhen;
+    let mut _6: ColorWhen;
+    let mut _7: ColorWhen;
+    let mut _8: anyhow::Error;
+
+    bb0: {
+        _4 = <str as PartialEq>::eq(_1, const "always") -> [return: bb9, unwind continue];
+    }
+
+    bb1: {
+        _5 = ColorWhen::Always;
+        _0 = Result::<ColorWhen, anyhow::Error>::Ok(move _5);
+        goto -> bb11;
+    }
+
+    bb2: {
+        _3 = <str as PartialEq>::eq(_1, const "auto") -> [return: bb8, unwind continue];
+    }
+
+    bb3: {
+        _6 = ColorWhen::Auto;
+        _0 = Result::<ColorWhen, anyhow::Error>::Ok(move _6);
+        goto -> bb11;
+    }
+
+    bb4: {
+        _2 = <str as PartialEq>::eq(_1, const "never") -> [return: bb7, unwind continue];
+    }
+
+    bb5: {
+        _7 = ColorWhen::Never;
+        _0 = Result::<ColorWhen, anyhow::Error>::Ok(move _7);
+        goto -> bb11;
+    }
+
+    bb6: {
+        _8 = new_adhoc::<&str>(const "Choose between 'always', 'auto', or 'never'") -> [return: bb10, unwind continue];
+    }
+
+    bb7: {
+        switchInt(move _2) -> [0: bb6, otherwise: bb5];
+    }
+
+    bb8: {
+        switchInt(move _3) -> [0: bb4, otherwise: bb3];
+    }
+
+    bb9: {
+        switchInt(move _4) -> [0: bb2, otherwise: bb1];
+    }
+
+    bb10: {
+        _0 = Result::<ColorWhen, anyhow::Error>::Err(move _8);
+        goto -> bb11;
+    }
+
+    bb11: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:10: 29:15>::fmt(_1: &Options, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug f => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let _4: &[&dyn std::fmt::Debug; 13];
+    let _5: [&dyn std::fmt::Debug; 13];
+    let mut _6: &dyn std::fmt::Debug;
+    let _7: &bool;
+    let mut _8: &dyn std::fmt::Debug;
+    let _9: &std::string::String;
+    let mut _10: &dyn std::fmt::Debug;
+    let _11: &std::string::String;
+    let mut _12: &dyn std::fmt::Debug;
+    let _13: &std::option::Option<std::path::PathBuf>;
+    let mut _14: &dyn std::fmt::Debug;
+    let _15: &bool;
+    let mut _16: &dyn std::fmt::Debug;
+    let _17: &bool;
+    let mut _18: &dyn std::fmt::Debug;
+    let _19: &bool;
+    let mut _20: &dyn std::fmt::Debug;
+    let _21: &bool;
+    let mut _22: &dyn std::fmt::Debug;
+    let _23: &bool;
+    let mut _24: &dyn std::fmt::Debug;
+    let _25: &std::vec::Vec<std::string::String>;
+    let mut _26: &dyn std::fmt::Debug;
+    let _27: &std::vec::Vec<std::string::String>;
+    let mut _28: &dyn std::fmt::Debug;
+    let _29: &bool;
+    let mut _30: &dyn std::fmt::Debug;
+    let _31: &&std::option::Option<ColorWhen>;
+    let _32: &std::option::Option<ColorWhen>;
+    let _33: &str;
+    let mut _34: &[&str];
+    let mut _35: &[&str; 13];
+    scope 1 {
+        debug names => const _;
+        let _3: &[&dyn std::fmt::Debug];
+        scope 2 {
+            debug values => _3;
+        }
+    }
+
+    bb0: {
+        _35 = const _;
+        _7 = &((*_1).0: bool);
+        _6 = _7 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _9 = &((*_1).1: std::string::String);
+        _8 = _9 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _11 = &((*_1).2: std::string::String);
+        _10 = _11 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _13 = &((*_1).3: std::option::Option<std::path::PathBuf>);
+        _12 = _13 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _15 = &((*_1).4: bool);
+        _14 = _15 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _17 = &((*_1).5: bool);
+        _16 = _17 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _19 = &((*_1).6: bool);
+        _18 = _19 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _21 = &((*_1).7: bool);
+        _20 = _21 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _23 = &((*_1).8: bool);
+        _22 = _23 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _25 = &((*_1).9: std::vec::Vec<std::string::String>);
+        _24 = _25 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _27 = &((*_1).10: std::vec::Vec<std::string::String>);
+        _26 = _27 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _29 = &((*_1).11: bool);
+        _28 = _29 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _32 = &((*_1).12: std::option::Option<ColorWhen>);
+        _31 = &_32;
+        _30 = _31 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _5 = [move _6, move _8, move _10, move _12, move _14, move _16, move _18, move _20, move _22, move _24, move _26, move _28, move _30];
+        _4 = &_5;
+        _3 = _4 as &[&dyn std::fmt::Debug] (PointerCoercion(Unsize));
+        _33 = const "Options";
+        _34 = _35 as &[&str] (PointerCoercion(Unsize));
+        _0 = Formatter::<'_>::debug_struct_fields_finish(_2, _33, move _34, _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+promoted[0] in <impl at src/main.rs:29:10: 29:15>::fmt: &[&str; 13] = {
+    let mut _0: &[&str; 13];
+    let mut _1: [&str; 13];
+    let mut _2: &str;
+    let mut _3: &str;
+    let mut _4: &str;
+    let mut _5: &str;
+    let mut _6: &str;
+    let mut _7: &str;
+    let mut _8: &str;
+    let mut _9: &str;
+    let mut _10: &str;
+    let mut _11: &str;
+    let mut _12: &str;
+    let mut _13: &str;
+    let mut _14: &str;
+    let mut _15: &str;
+    let mut _16: &str;
+    let mut _17: &str;
+    let mut _18: &str;
+    let mut _19: &str;
+    let mut _20: &str;
+    let mut _21: &str;
+    let mut _22: &str;
+    let mut _23: &str;
+    let mut _24: &str;
+    let mut _25: &str;
+
+    bb0: {
+        _3 = const "pattern";
+        _2 = &(*_3);
+        _5 = const "replacement";
+        _4 = &(*_5);
+        _7 = const "path";
+        _6 = &(*_7);
+        _9 = const "no_regex";
+        _8 = &(*_9);
+        _11 = const "hidden";
+        _10 = &(*_11);
+        _13 = const "ignored";
+        _12 = &(*_13);
+        _15 = const "word_regex";
+        _14 = &(*_15);
+        _17 = const "subvert";
+        _16 = &(*_17);
+        _19 = const "selected_file_types";
+        _18 = &(*_19);
+        _21 = const "ignored_file_types";
+        _20 = &(*_21);
+        _23 = const "file_type_list";
+        _22 = &(*_23);
+        _25 = const "color_when";
+        _24 = &(*_25);
+        _1 = [const "go", move _2, move _4, move _6, move _8, move _10, move _12, move _14, move _16, move _18, move _20, move _22, move _24];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::clap() -> App<'_, '_> {
+    let mut _0: structopt::clap::App<'_, '_>;
+    let _1: structopt::clap::App<'_, '_>;
+    let mut _2: structopt::clap::App<'_, '_>;
+    let mut _3: structopt::clap::App<'_, '_>;
+    let mut _4: structopt::clap::App<'_, '_>;
+    let mut _5: structopt::clap::App<'_, '_>;
+    scope 1 {
+        debug app => _1;
+    }
+
+    bb0: {
+        _5 = App::<'_, '_>::new::<&str>(const "ruplacer") -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _4 = App::<'_, '_>::version::<&str>(move _5, const "0.6.2") -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _3 = App::<'_, '_>::about::<&str>(move _4, const "Find and replace text in source files") -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _2 = App::<'_, '_>::author::<&str>(move _3, const "Dimitri Merejkowsky <dimitri@dmerej.info>") -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _1 = App::<'_, '_>::after_help::<&str>(move _2, const "\nEXAMPLES:\n    Replace 'foo' with 'bar'\n    $ ruplacer foo bar\n\n    Replace 'LastName, FirstName' with 'FirstName LastName'\n    $ ruplacer '(\\w+), (\\w+)' '$2 $1'\n\n    Replace '--foo-bar' with '--spam-eggs':\n    Note the use of '--' because the pattern and the replacement\n    start with two dashes:\n    $ ruplacer -- --foo-bar --spam-eggs\n\n    Replace 'FooBar' with 'SpamEggs', 'foo_bar' with 'spam_eggs', ...\n    $ ruplacer --subvert FooBar SpamEggs\n") -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        _0 = Options::augment_clap(move _1) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::from_clap(_1: &ArgMatches<'_>) -> Options {
+    debug matches => _1;
+    let mut _0: Options;
+    let mut _2: bool;
+    let mut _3: std::string::String;
+    let mut _4: std::option::Option<std::string::String>;
+    let mut _5: std::option::Option<&str>;
+    let mut _6: std::string::String;
+    let mut _7: std::option::Option<std::string::String>;
+    let mut _8: std::option::Option<&str>;
+    let mut _9: std::option::Option<std::path::PathBuf>;
+    let mut _10: std::option::Option<&&std::ffi::OsStr>;
+    let mut _11: &std::option::Option<&std::ffi::OsStr>;
+    let _12: std::option::Option<&std::ffi::OsStr>;
+    let mut _13: bool;
+    let mut _14: bool;
+    let mut _15: bool;
+    let mut _16: bool;
+    let mut _17: bool;
+    let mut _18: std::vec::Vec<std::string::String>;
+    let mut _19: std::option::Option<std::vec::Vec<std::string::String>>;
+    let mut _20: std::option::Option<structopt::clap::Values<'_>>;
+    let mut _21: std::vec::Vec<std::string::String>;
+    let mut _22: std::option::Option<std::vec::Vec<std::string::String>>;
+    let mut _23: std::option::Option<structopt::clap::Values<'_>>;
+    let mut _24: bool;
+    let mut _25: std::option::Option<ColorWhen>;
+    let mut _26: std::option::Option<&&str>;
+    let mut _27: &std::option::Option<&str>;
+    let _28: std::option::Option<&str>;
+
+    bb0: {
+        _2 = ArgMatches::<'_>::is_present::<&str>(_1, const "go") -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _5 = ArgMatches::<'_>::value_of::<&str>(_1, const "pattern") -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _4 = Option::<&str>::map::<String, {closure@src/main.rs:29:17: 29:26}>(move _5, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _3 = Option::<String>::unwrap(move _4) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _8 = ArgMatches::<'_>::value_of::<&str>(_1, const "replacement") -> [return: bb5, unwind: bb30];
+    }
+
+    bb5: {
+        _7 = Option::<&str>::map::<String, {closure@src/main.rs:29:17: 29:26}>(move _8, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb6, unwind: bb30];
+    }
+
+    bb6: {
+        _6 = Option::<String>::unwrap(move _7) -> [return: bb7, unwind: bb30];
+    }
+
+    bb7: {
+        _12 = ArgMatches::<'_>::value_of_os::<&str>(_1, const "path") -> [return: bb8, unwind: bb29];
+    }
+
+    bb8: {
+        _11 = &_12;
+        _10 = Option::<&OsStr>::as_ref(move _11) -> [return: bb9, unwind: bb29];
+    }
+
+    bb9: {
+        _9 = Option::<&&OsStr>::map::<PathBuf, fn(&&OsStr) -> PathBuf {<PathBuf as From<&&OsStr>>::from}>(move _10, <PathBuf as From<&&OsStr>>::from) -> [return: bb10, unwind: bb29];
+    }
+
+    bb10: {
+        _13 = ArgMatches::<'_>::is_present::<&str>(_1, const "no_regex") -> [return: bb11, unwind: bb28];
+    }
+
+    bb11: {
+        _14 = ArgMatches::<'_>::is_present::<&str>(_1, const "hidden") -> [return: bb12, unwind: bb28];
+    }
+
+    bb12: {
+        _15 = ArgMatches::<'_>::is_present::<&str>(_1, const "ignored") -> [return: bb13, unwind: bb28];
+    }
+
+    bb13: {
+        _16 = ArgMatches::<'_>::is_present::<&str>(_1, const "word_regex") -> [return: bb14, unwind: bb28];
+    }
+
+    bb14: {
+        _17 = ArgMatches::<'_>::is_present::<&str>(_1, const "subvert") -> [return: bb15, unwind: bb28];
+    }
+
+    bb15: {
+        _20 = ArgMatches::<'_>::values_of::<&str>(_1, const "selected_file_types") -> [return: bb16, unwind: bb28];
+    }
+
+    bb16: {
+        _19 = Option::<structopt::clap::Values<'_>>::map::<Vec<String>, {closure@src/main.rs:29:17: 29:26}>(move _20, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb17, unwind: bb28];
+    }
+
+    bb17: {
+        _18 = Option::<Vec<String>>::unwrap_or_else::<fn() -> Vec<String> {Vec::<String>::new}>(move _19, Vec::<String>::new) -> [return: bb18, unwind: bb28];
+    }
+
+    bb18: {
+        _23 = ArgMatches::<'_>::values_of::<&str>(_1, const "ignored_file_types") -> [return: bb19, unwind: bb27];
+    }
+
+    bb19: {
+        _22 = Option::<structopt::clap::Values<'_>>::map::<Vec<String>, {closure@src/main.rs:29:17: 29:26}>(move _23, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb20, unwind: bb27];
+    }
+
+    bb20: {
+        _21 = Option::<Vec<String>>::unwrap_or_else::<fn() -> Vec<String> {Vec::<String>::new}>(move _22, Vec::<String>::new) -> [return: bb21, unwind: bb27];
+    }
+
+    bb21: {
+        _24 = ArgMatches::<'_>::is_present::<&str>(_1, const "file_type_list") -> [return: bb22, unwind: bb26];
+    }
+
+    bb22: {
+        _28 = ArgMatches::<'_>::value_of::<&str>(_1, const "color_when") -> [return: bb23, unwind: bb26];
+    }
+
+    bb23: {
+        _27 = &_28;
+        _26 = Option::<&str>::as_ref(move _27) -> [return: bb24, unwind: bb26];
+    }
+
+    bb24: {
+        _25 = Option::<&&str>::map::<ColorWhen, {closure@src/main.rs:29:17: 29:26}>(move _26, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb25, unwind: bb26];
+    }
+
+    bb25: {
+        _0 = Options { go: move _2, pattern: move _3, replacement: move _6, path: move _9, no_regex: move _13, hidden: move _14, ignored: move _15, word_regex: move _16, subvert: move _17, selected_file_types: move _18, ignored_file_types: move _21, file_type_list: move _24, color_when: move _25 };
+        return;
+    }
+
+    bb26 (cleanup): {
+        drop(_21) -> [return: bb27, unwind terminate(cleanup)];
+    }
+
+    bb27 (cleanup): {
+        drop(_18) -> [return: bb28, unwind terminate(cleanup)];
+    }
+
+    bb28 (cleanup): {
+        drop(_9) -> [return: bb29, unwind terminate(cleanup)];
+    }
+
+    bb29 (cleanup): {
+        drop(_6) -> [return: bb30, unwind terminate(cleanup)];
+    }
+
+    bb30 (cleanup): {
+        drop(_3) -> [return: bb31, unwind terminate(cleanup)];
+    }
+
+    bb31 (cleanup): {
+        resume;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::from_clap::{closure#0}(_1: {closure@src/main.rs:29:17: 29:26}, _2: &str) -> String {
+    debug s => _2;
+    let mut _0: std::string::String;
+    let mut _3: std::result::Result<std::string::String, std::convert::Infallible>;
+
+    bb0: {
+        _3 = <String as FromStr>::from_str(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = Result::<String, Infallible>::unwrap(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::from_clap::{closure#1}(_1: {closure@src/main.rs:29:17: 29:26}, _2: &str) -> String {
+    debug s => _2;
+    let mut _0: std::string::String;
+    let mut _3: std::result::Result<std::string::String, std::convert::Infallible>;
+
+    bb0: {
+        _3 = <String as FromStr>::from_str(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = Result::<String, Infallible>::unwrap(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::from_clap::{closure#2}(_1: {closure@src/main.rs:29:17: 29:26}, _2: structopt::clap::Values<'_>) -> Vec<String> {
+    debug v => _2;
+    let mut _0: std::vec::Vec<std::string::String>;
+    let mut _3: std::iter::Map<structopt::clap::Values<'_>, {closure@src/main.rs:29:17: 29:26}>;
+
+    bb0: {
+        _3 = <structopt::clap::Values<'_> as Iterator>::map::<String, {closure@src/main.rs:29:17: 29:26}>(move _2, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = <Map<structopt::clap::Values<'_>, {closure@src/main.rs:29:17: 29:26}> as Iterator>::collect::<Vec<String>>(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::from_clap::{closure#2}::{closure#0}(_1: &mut {closure@src/main.rs:29:17: 29:26}, _2: &str) -> String {
+    debug s => _2;
+    let mut _0: std::string::String;
+    let mut _3: std::result::Result<std::string::String, std::convert::Infallible>;
+
+    bb0: {
+        _3 = <String as FromStr>::from_str(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = Result::<String, Infallible>::unwrap(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::from_clap::{closure#3}(_1: {closure@src/main.rs:29:17: 29:26}, _2: structopt::clap::Values<'_>) -> Vec<String> {
+    debug v => _2;
+    let mut _0: std::vec::Vec<std::string::String>;
+    let mut _3: std::iter::Map<structopt::clap::Values<'_>, {closure@src/main.rs:29:17: 29:26}>;
+
+    bb0: {
+        _3 = <structopt::clap::Values<'_> as Iterator>::map::<String, {closure@src/main.rs:29:17: 29:26}>(move _2, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = <Map<structopt::clap::Values<'_>, {closure@src/main.rs:29:17: 29:26}> as Iterator>::collect::<Vec<String>>(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::from_clap::{closure#3}::{closure#0}(_1: &mut {closure@src/main.rs:29:17: 29:26}, _2: &str) -> String {
+    debug s => _2;
+    let mut _0: std::string::String;
+    let mut _3: std::result::Result<std::string::String, std::convert::Infallible>;
+
+    bb0: {
+        _3 = <String as FromStr>::from_str(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = Result::<String, Infallible>::unwrap(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::from_clap::{closure#4}(_1: {closure@src/main.rs:29:17: 29:26}, _2: &&str) -> ColorWhen {
+    debug s => _2;
+    let mut _0: ColorWhen;
+    let mut _3: std::result::Result<ColorWhen, anyhow::Error>;
+    let mut _4: &str;
+
+    bb0: {
+        _4 = deref_copy (*_2);
+        _3 = <ColorWhen as FromStr>::from_str(_4) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = Result::<ColorWhen, anyhow::Error>::unwrap(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap(_1: App<'_, '_>) -> App<'_, '_> {
+    debug app => _1;
+    let mut _0: structopt::clap::App<'_, '_>;
+    let _2: structopt::clap::App<'_, '_>;
+    let mut _3: structopt::clap::App<'_, '_>;
+    let mut _4: structopt::clap::Arg<'_, '_>;
+    let mut _5: structopt::clap::Arg<'_, '_>;
+    let mut _6: structopt::clap::Arg<'_, '_>;
+    let mut _7: structopt::clap::Arg<'_, '_>;
+    let mut _8: structopt::clap::Arg<'_, '_>;
+    let _9: &str;
+    let _10: &str;
+    let _11: &str;
+    let mut _13: structopt::clap::App<'_, '_>;
+    let mut _14: structopt::clap::Arg<'_, '_>;
+    let mut _15: structopt::clap::Arg<'_, '_>;
+    let mut _16: structopt::clap::Arg<'_, '_>;
+    let mut _17: structopt::clap::Arg<'_, '_>;
+    let mut _18: structopt::clap::Arg<'_, '_>;
+    let mut _19: structopt::clap::Arg<'_, '_>;
+    let _20: &str;
+    let _21: &str;
+    let mut _23: structopt::clap::App<'_, '_>;
+    let mut _24: structopt::clap::Arg<'_, '_>;
+    let mut _25: structopt::clap::Arg<'_, '_>;
+    let mut _26: structopt::clap::Arg<'_, '_>;
+    let mut _27: structopt::clap::Arg<'_, '_>;
+    let mut _28: structopt::clap::Arg<'_, '_>;
+    let mut _29: structopt::clap::Arg<'_, '_>;
+    let _30: &str;
+    let _31: &str;
+    let mut _33: structopt::clap::App<'_, '_>;
+    let mut _34: structopt::clap::Arg<'_, '_>;
+    let mut _35: structopt::clap::Arg<'_, '_>;
+    let mut _36: structopt::clap::Arg<'_, '_>;
+    let mut _37: structopt::clap::Arg<'_, '_>;
+    let _38: &str;
+    let _39: &str;
+    let mut _41: structopt::clap::App<'_, '_>;
+    let mut _42: structopt::clap::Arg<'_, '_>;
+    let mut _43: structopt::clap::Arg<'_, '_>;
+    let mut _44: structopt::clap::Arg<'_, '_>;
+    let mut _45: structopt::clap::Arg<'_, '_>;
+    let mut _46: structopt::clap::Arg<'_, '_>;
+    let _47: &str;
+    let _48: &str;
+    let _49: &str;
+    let mut _51: structopt::clap::App<'_, '_>;
+    let mut _52: structopt::clap::Arg<'_, '_>;
+    let mut _53: structopt::clap::Arg<'_, '_>;
+    let mut _54: structopt::clap::Arg<'_, '_>;
+    let mut _55: structopt::clap::Arg<'_, '_>;
+    let mut _56: structopt::clap::Arg<'_, '_>;
+    let _57: &str;
+    let _58: &str;
+    let _59: &str;
+    let mut _61: structopt::clap::App<'_, '_>;
+    let mut _62: structopt::clap::Arg<'_, '_>;
+    let mut _63: structopt::clap::Arg<'_, '_>;
+    let mut _64: structopt::clap::Arg<'_, '_>;
+    let mut _65: structopt::clap::Arg<'_, '_>;
+    let mut _66: structopt::clap::Arg<'_, '_>;
+    let _67: &str;
+    let _68: &str;
+    let _69: &str;
+    let mut _71: structopt::clap::App<'_, '_>;
+    let mut _72: structopt::clap::Arg<'_, '_>;
+    let mut _73: structopt::clap::Arg<'_, '_>;
+    let mut _74: structopt::clap::Arg<'_, '_>;
+    let mut _75: structopt::clap::Arg<'_, '_>;
+    let mut _76: structopt::clap::Arg<'_, '_>;
+    let mut _77: structopt::clap::Arg<'_, '_>;
+    let _78: &str;
+    let _79: &str;
+    let _80: &str;
+    let mut _82: structopt::clap::App<'_, '_>;
+    let mut _83: structopt::clap::Arg<'_, '_>;
+    let mut _84: structopt::clap::Arg<'_, '_>;
+    let mut _85: structopt::clap::Arg<'_, '_>;
+    let mut _86: structopt::clap::Arg<'_, '_>;
+    let mut _87: structopt::clap::Arg<'_, '_>;
+    let _88: &str;
+    let _89: &str;
+    let _90: &str;
+    let mut _92: structopt::clap::App<'_, '_>;
+    let mut _93: structopt::clap::Arg<'_, '_>;
+    let mut _94: structopt::clap::Arg<'_, '_>;
+    let mut _95: structopt::clap::Arg<'_, '_>;
+    let mut _96: structopt::clap::Arg<'_, '_>;
+    let mut _97: structopt::clap::Arg<'_, '_>;
+    let mut _98: structopt::clap::Arg<'_, '_>;
+    let mut _99: structopt::clap::Arg<'_, '_>;
+    let mut _100: structopt::clap::Arg<'_, '_>;
+    let mut _101: structopt::clap::Arg<'_, '_>;
+    let _102: &str;
+    let _103: &str;
+    let _104: &str;
+    let mut _106: structopt::clap::App<'_, '_>;
+    let mut _107: structopt::clap::Arg<'_, '_>;
+    let mut _108: structopt::clap::Arg<'_, '_>;
+    let mut _109: structopt::clap::Arg<'_, '_>;
+    let mut _110: structopt::clap::Arg<'_, '_>;
+    let mut _111: structopt::clap::Arg<'_, '_>;
+    let mut _112: structopt::clap::Arg<'_, '_>;
+    let mut _113: structopt::clap::Arg<'_, '_>;
+    let mut _114: structopt::clap::Arg<'_, '_>;
+    let mut _115: structopt::clap::Arg<'_, '_>;
+    let _116: &str;
+    let _117: &str;
+    let _118: &str;
+    let mut _120: structopt::clap::App<'_, '_>;
+    let mut _121: structopt::clap::Arg<'_, '_>;
+    let mut _122: structopt::clap::Arg<'_, '_>;
+    let mut _123: structopt::clap::Arg<'_, '_>;
+    let mut _124: structopt::clap::Arg<'_, '_>;
+    let mut _125: structopt::clap::Arg<'_, '_>;
+    let _126: &str;
+    let _127: &str;
+    let _128: &str;
+    let mut _129: structopt::clap::App<'_, '_>;
+    let mut _130: structopt::clap::Arg<'_, '_>;
+    let mut _131: structopt::clap::Arg<'_, '_>;
+    let mut _132: structopt::clap::Arg<'_, '_>;
+    let mut _133: structopt::clap::Arg<'_, '_>;
+    let mut _134: structopt::clap::Arg<'_, '_>;
+    let mut _135: structopt::clap::Arg<'_, '_>;
+    let _136: &str;
+    let _137: &str;
+    let _138: &str;
+    let mut _139: bool;
+    let mut _140: bool;
+    let mut _141: bool;
+    let mut _142: bool;
+    let mut _143: bool;
+    let mut _144: bool;
+    let mut _145: bool;
+    let mut _146: bool;
+    let mut _147: bool;
+    let mut _148: bool;
+    let mut _149: bool;
+    let mut _150: bool;
+    let mut _151: bool;
+    scope 1 {
+        debug app => _2;
+        let _12: structopt::clap::App<'_, '_>;
+        scope 2 {
+            debug app => _12;
+            let _22: structopt::clap::App<'_, '_>;
+            scope 3 {
+                debug app => _22;
+                let _32: structopt::clap::App<'_, '_>;
+                scope 4 {
+                    debug app => _32;
+                    let _40: structopt::clap::App<'_, '_>;
+                    scope 5 {
+                        debug app => _40;
+                        let _50: structopt::clap::App<'_, '_>;
+                        scope 6 {
+                            debug app => _50;
+                            let _60: structopt::clap::App<'_, '_>;
+                            scope 7 {
+                                debug app => _60;
+                                let _70: structopt::clap::App<'_, '_>;
+                                scope 8 {
+                                    debug app => _70;
+                                    let _81: structopt::clap::App<'_, '_>;
+                                    scope 9 {
+                                        debug app => _81;
+                                        let _91: structopt::clap::App<'_, '_>;
+                                        scope 10 {
+                                            debug app => _91;
+                                            let _105: structopt::clap::App<'_, '_>;
+                                            scope 11 {
+                                                debug app => _105;
+                                                let _119: structopt::clap::App<'_, '_>;
+                                                scope 12 {
+                                                    debug app => _119;
+                                                    scope 13 {
+                                                        debug app => _0;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _151 = const false;
+        _150 = const false;
+        _149 = const false;
+        _148 = const false;
+        _147 = const false;
+        _146 = const false;
+        _145 = const false;
+        _144 = const false;
+        _143 = const false;
+        _142 = const false;
+        _141 = const false;
+        _140 = const false;
+        _139 = const false;
+        _151 = const true;
+        _3 = move _1;
+        _9 = const "go";
+        _8 = Arg::<'_, '_>::with_name(_9) -> [return: bb1, unwind: bb116];
+    }
+
+    bb1: {
+        _7 = Arg::<'_, '_>::takes_value(move _8, const false) -> [return: bb2, unwind: bb116];
+    }
+
+    bb2: {
+        _6 = Arg::<'_, '_>::multiple(move _7, const false) -> [return: bb3, unwind: bb116];
+    }
+
+    bb3: {
+        _10 = const "go";
+        _5 = Arg::<'_, '_>::long(move _6, _10) -> [return: bb4, unwind: bb116];
+    }
+
+    bb4: {
+        _11 = const "Write the changes to the filesystem";
+        _4 = Arg::<'_, '_>::help(move _5, _11) -> [return: bb5, unwind: bb116];
+    }
+
+    bb5: {
+        _151 = const false;
+        _2 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _3, move _4) -> [return: bb6, unwind: bb116];
+    }
+
+    bb6: {
+        _151 = const false;
+        _150 = const true;
+        _13 = move _2;
+        _20 = const "pattern";
+        _19 = Arg::<'_, '_>::with_name(_20) -> [return: bb7, unwind: bb114];
+    }
+
+    bb7: {
+        _18 = Arg::<'_, '_>::takes_value(move _19, const true) -> [return: bb8, unwind: bb114];
+    }
+
+    bb8: {
+        _17 = Arg::<'_, '_>::multiple(move _18, const false) -> [return: bb9, unwind: bb114];
+    }
+
+    bb9: {
+        _16 = Arg::<'_, '_>::required(move _17, const true) -> [return: bb10, unwind: bb114];
+    }
+
+    bb10: {
+        _15 = Arg::<'_, '_>::validator::<{closure@src/main.rs:29:17: 29:26}>(move _16, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb11, unwind: bb114];
+    }
+
+    bb11: {
+        _21 = const "The pattern to search for";
+        _14 = Arg::<'_, '_>::help(move _15, _21) -> [return: bb12, unwind: bb114];
+    }
+
+    bb12: {
+        _150 = const false;
+        _12 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _13, move _14) -> [return: bb13, unwind: bb114];
+    }
+
+    bb13: {
+        _150 = const false;
+        _149 = const true;
+        _23 = move _12;
+        _30 = const "replacement";
+        _29 = Arg::<'_, '_>::with_name(_30) -> [return: bb14, unwind: bb112];
+    }
+
+    bb14: {
+        _28 = Arg::<'_, '_>::takes_value(move _29, const true) -> [return: bb15, unwind: bb112];
+    }
+
+    bb15: {
+        _27 = Arg::<'_, '_>::multiple(move _28, const false) -> [return: bb16, unwind: bb112];
+    }
+
+    bb16: {
+        _26 = Arg::<'_, '_>::required(move _27, const true) -> [return: bb17, unwind: bb112];
+    }
+
+    bb17: {
+        _25 = Arg::<'_, '_>::validator::<{closure@src/main.rs:29:17: 29:26}>(move _26, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb18, unwind: bb112];
+    }
+
+    bb18: {
+        _31 = const "The replacement";
+        _24 = Arg::<'_, '_>::help(move _25, _31) -> [return: bb19, unwind: bb112];
+    }
+
+    bb19: {
+        _149 = const false;
+        _22 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _23, move _24) -> [return: bb20, unwind: bb112];
+    }
+
+    bb20: {
+        _149 = const false;
+        _148 = const true;
+        _33 = move _22;
+        _38 = const "path";
+        _37 = Arg::<'_, '_>::with_name(_38) -> [return: bb21, unwind: bb110];
+    }
+
+    bb21: {
+        _36 = Arg::<'_, '_>::takes_value(move _37, const true) -> [return: bb22, unwind: bb110];
+    }
+
+    bb22: {
+        _35 = Arg::<'_, '_>::multiple(move _36, const false) -> [return: bb23, unwind: bb110];
+    }
+
+    bb23: {
+        _39 = const "The source path. Defaults to the working directory";
+        _34 = Arg::<'_, '_>::help(move _35, _39) -> [return: bb24, unwind: bb110];
+    }
+
+    bb24: {
+        _148 = const false;
+        _32 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _33, move _34) -> [return: bb25, unwind: bb110];
+    }
+
+    bb25: {
+        _148 = const false;
+        _147 = const true;
+        _41 = move _32;
+        _47 = const "no_regex";
+        _46 = Arg::<'_, '_>::with_name(_47) -> [return: bb26, unwind: bb108];
+    }
+
+    bb26: {
+        _45 = Arg::<'_, '_>::takes_value(move _46, const false) -> [return: bb27, unwind: bb108];
+    }
+
+    bb27: {
+        _44 = Arg::<'_, '_>::multiple(move _45, const false) -> [return: bb28, unwind: bb108];
+    }
+
+    bb28: {
+        _48 = const "--no-regex";
+        _43 = Arg::<'_, '_>::long(move _44, _48) -> [return: bb29, unwind: bb108];
+    }
+
+    bb29: {
+        _49 = const "Interpret pattern as a raw string. Default is: regex";
+        _42 = Arg::<'_, '_>::help(move _43, _49) -> [return: bb30, unwind: bb108];
+    }
+
+    bb30: {
+        _147 = const false;
+        _40 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _41, move _42) -> [return: bb31, unwind: bb108];
+    }
+
+    bb31: {
+        _147 = const false;
+        _146 = const true;
+        _51 = move _40;
+        _57 = const "hidden";
+        _56 = Arg::<'_, '_>::with_name(_57) -> [return: bb32, unwind: bb106];
+    }
+
+    bb32: {
+        _55 = Arg::<'_, '_>::takes_value(move _56, const false) -> [return: bb33, unwind: bb106];
+    }
+
+    bb33: {
+        _54 = Arg::<'_, '_>::multiple(move _55, const false) -> [return: bb34, unwind: bb106];
+    }
+
+    bb34: {
+        _58 = const "--hidden";
+        _53 = Arg::<'_, '_>::long(move _54, _58) -> [return: bb35, unwind: bb106];
+    }
+
+    bb35: {
+        _59 = const "Also patch hidden files";
+        _52 = Arg::<'_, '_>::help(move _53, _59) -> [return: bb36, unwind: bb106];
+    }
+
+    bb36: {
+        _146 = const false;
+        _50 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _51, move _52) -> [return: bb37, unwind: bb106];
+    }
+
+    bb37: {
+        _146 = const false;
+        _145 = const true;
+        _61 = move _50;
+        _67 = const "ignored";
+        _66 = Arg::<'_, '_>::with_name(_67) -> [return: bb38, unwind: bb104];
+    }
+
+    bb38: {
+        _65 = Arg::<'_, '_>::takes_value(move _66, const false) -> [return: bb39, unwind: bb104];
+    }
+
+    bb39: {
+        _64 = Arg::<'_, '_>::multiple(move _65, const false) -> [return: bb40, unwind: bb104];
+    }
+
+    bb40: {
+        _68 = const "--ignored";
+        _63 = Arg::<'_, '_>::long(move _64, _68) -> [return: bb41, unwind: bb104];
+    }
+
+    bb41: {
+        _69 = const "Also patch ignored files";
+        _62 = Arg::<'_, '_>::help(move _63, _69) -> [return: bb42, unwind: bb104];
+    }
+
+    bb42: {
+        _145 = const false;
+        _60 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _61, move _62) -> [return: bb43, unwind: bb104];
+    }
+
+    bb43: {
+        _145 = const false;
+        _144 = const true;
+        _71 = move _60;
+        _78 = const "word_regex";
+        _77 = Arg::<'_, '_>::with_name(_78) -> [return: bb44, unwind: bb102];
+    }
+
+    bb44: {
+        _76 = Arg::<'_, '_>::takes_value(move _77, const false) -> [return: bb45, unwind: bb102];
+    }
+
+    bb45: {
+        _75 = Arg::<'_, '_>::multiple(move _76, const false) -> [return: bb46, unwind: bb102];
+    }
+
+    bb46: {
+        _79 = const "--word-regex";
+        _74 = Arg::<'_, '_>::long(move _75, _79) -> [return: bb47, unwind: bb102];
+    }
+
+    bb47: {
+        _73 = Arg::<'_, '_>::short::<&str>(move _74, const "-w") -> [return: bb48, unwind: bb102];
+    }
+
+    bb48: {
+        _80 = const "Interpret pattern as a 'word' regex";
+        _72 = Arg::<'_, '_>::help(move _73, _80) -> [return: bb49, unwind: bb102];
+    }
+
+    bb49: {
+        _144 = const false;
+        _70 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _71, move _72) -> [return: bb50, unwind: bb102];
+    }
+
+    bb50: {
+        _144 = const false;
+        _143 = const true;
+        _82 = move _70;
+        _88 = const "subvert";
+        _87 = Arg::<'_, '_>::with_name(_88) -> [return: bb51, unwind: bb100];
+    }
+
+    bb51: {
+        _86 = Arg::<'_, '_>::takes_value(move _87, const false) -> [return: bb52, unwind: bb100];
+    }
+
+    bb52: {
+        _85 = Arg::<'_, '_>::multiple(move _86, const false) -> [return: bb53, unwind: bb100];
+    }
+
+    bb53: {
+        _89 = const "--subvert";
+        _84 = Arg::<'_, '_>::long(move _85, _89) -> [return: bb54, unwind: bb100];
+    }
+
+    bb54: {
+        _90 = const "Replace all variants of the pattern (snake_case, CamelCase and so on)";
+        _83 = Arg::<'_, '_>::help(move _84, _90) -> [return: bb55, unwind: bb100];
+    }
+
+    bb55: {
+        _143 = const false;
+        _81 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _82, move _83) -> [return: bb56, unwind: bb100];
+    }
+
+    bb56: {
+        _143 = const false;
+        _142 = const true;
+        _92 = move _81;
+        _102 = const "selected_file_types";
+        _101 = Arg::<'_, '_>::with_name(_102) -> [return: bb57, unwind: bb98];
+    }
+
+    bb57: {
+        _100 = Arg::<'_, '_>::takes_value(move _101, const true) -> [return: bb58, unwind: bb98];
+    }
+
+    bb58: {
+        _99 = Arg::<'_, '_>::multiple(move _100, const true) -> [return: bb59, unwind: bb98];
+    }
+
+    bb59: {
+        _98 = Arg::<'_, '_>::validator::<{closure@src/main.rs:29:17: 29:26}>(move _99, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb60, unwind: bb98];
+    }
+
+    bb60: {
+        _97 = Arg::<'_, '_>::short::<&str>(move _98, const "t") -> [return: bb61, unwind: bb98];
+    }
+
+    bb61: {
+        _103 = const "type";
+        _96 = Arg::<'_, '_>::long(move _97, _103) -> [return: bb62, unwind: bb98];
+    }
+
+    bb62: {
+        _104 = const "Only search files matching <file_type> or glob pattern.";
+        _95 = Arg::<'_, '_>::help(move _96, _104) -> [return: bb63, unwind: bb98];
+    }
+
+    bb63: {
+        _94 = Arg::<'_, '_>::multiple(move _95, const true) -> [return: bb64, unwind: bb98];
+    }
+
+    bb64: {
+        _93 = Arg::<'_, '_>::number_of_values(move _94, const 1_u64) -> [return: bb65, unwind: bb98];
+    }
+
+    bb65: {
+        _142 = const false;
+        _91 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _92, move _93) -> [return: bb66, unwind: bb98];
+    }
+
+    bb66: {
+        _142 = const false;
+        _141 = const true;
+        _106 = move _91;
+        _116 = const "ignored_file_types";
+        _115 = Arg::<'_, '_>::with_name(_116) -> [return: bb67, unwind: bb96];
+    }
+
+    bb67: {
+        _114 = Arg::<'_, '_>::takes_value(move _115, const true) -> [return: bb68, unwind: bb96];
+    }
+
+    bb68: {
+        _113 = Arg::<'_, '_>::multiple(move _114, const true) -> [return: bb69, unwind: bb96];
+    }
+
+    bb69: {
+        _112 = Arg::<'_, '_>::validator::<{closure@src/main.rs:29:17: 29:26}>(move _113, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb70, unwind: bb96];
+    }
+
+    bb70: {
+        _111 = Arg::<'_, '_>::short::<&str>(move _112, const "T") -> [return: bb71, unwind: bb96];
+    }
+
+    bb71: {
+        _117 = const "type-not";
+        _110 = Arg::<'_, '_>::long(move _111, _117) -> [return: bb72, unwind: bb96];
+    }
+
+    bb72: {
+        _118 = const "Ignore files matching <file_type> or glob pattern.";
+        _109 = Arg::<'_, '_>::help(move _110, _118) -> [return: bb73, unwind: bb96];
+    }
+
+    bb73: {
+        _108 = Arg::<'_, '_>::multiple(move _109, const true) -> [return: bb74, unwind: bb96];
+    }
+
+    bb74: {
+        _107 = Arg::<'_, '_>::number_of_values(move _108, const 1_u64) -> [return: bb75, unwind: bb96];
+    }
+
+    bb75: {
+        _141 = const false;
+        _105 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _106, move _107) -> [return: bb76, unwind: bb96];
+    }
+
+    bb76: {
+        _141 = const false;
+        _140 = const true;
+        _120 = move _105;
+        _126 = const "file_type_list";
+        _125 = Arg::<'_, '_>::with_name(_126) -> [return: bb77, unwind: bb94];
+    }
+
+    bb77: {
+        _124 = Arg::<'_, '_>::takes_value(move _125, const false) -> [return: bb78, unwind: bb94];
+    }
+
+    bb78: {
+        _123 = Arg::<'_, '_>::multiple(move _124, const false) -> [return: bb79, unwind: bb94];
+    }
+
+    bb79: {
+        _127 = const "type-list";
+        _122 = Arg::<'_, '_>::long(move _123, _127) -> [return: bb80, unwind: bb94];
+    }
+
+    bb80: {
+        _128 = const "List the known file types";
+        _121 = Arg::<'_, '_>::help(move _122, _128) -> [return: bb81, unwind: bb94];
+    }
+
+    bb81: {
+        _140 = const false;
+        _119 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _120, move _121) -> [return: bb82, unwind: bb94];
+    }
+
+    bb82: {
+        _140 = const false;
+        _139 = const true;
+        _129 = move _119;
+        _136 = const "color_when";
+        _135 = Arg::<'_, '_>::with_name(_136) -> [return: bb83, unwind: bb92];
+    }
+
+    bb83: {
+        _134 = Arg::<'_, '_>::takes_value(move _135, const true) -> [return: bb84, unwind: bb92];
+    }
+
+    bb84: {
+        _133 = Arg::<'_, '_>::multiple(move _134, const false) -> [return: bb85, unwind: bb92];
+    }
+
+    bb85: {
+        _132 = Arg::<'_, '_>::validator::<{closure@src/main.rs:29:17: 29:26}>(move _133, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb86, unwind: bb92];
+    }
+
+    bb86: {
+        _137 = const "--color";
+        _131 = Arg::<'_, '_>::long(move _132, _137) -> [return: bb87, unwind: bb92];
+    }
+
+    bb87: {
+        _138 = const "Whether to enable colorful output. Choose between 'always', 'auto', or 'never'. Default is 'auto'";
+        _130 = Arg::<'_, '_>::help(move _131, _138) -> [return: bb88, unwind: bb92];
+    }
+
+    bb88: {
+        _139 = const false;
+        _0 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _129, move _130) -> [return: bb89, unwind: bb92];
+    }
+
+    bb89: {
+        _139 = const false;
+        return;
+    }
+
+    bb90 (cleanup): {
+        resume;
+    }
+
+    bb91 (cleanup): {
+        drop(_129) -> [return: bb90, unwind terminate(cleanup)];
+    }
+
+    bb92 (cleanup): {
+        switchInt(_139) -> [0: bb90, otherwise: bb91];
+    }
+
+    bb93 (cleanup): {
+        drop(_120) -> [return: bb90, unwind terminate(cleanup)];
+    }
+
+    bb94 (cleanup): {
+        switchInt(_140) -> [0: bb90, otherwise: bb93];
+    }
+
+    bb95 (cleanup): {
+        drop(_106) -> [return: bb90, unwind terminate(cleanup)];
+    }
+
+    bb96 (cleanup): {
+        switchInt(_141) -> [0: bb90, otherwise: bb95];
+    }
+
+    bb97 (cleanup): {
+        drop(_92) -> [return: bb90, unwind terminate(cleanup)];
+    }
+
+    bb98 (cleanup): {
+        switchInt(_142) -> [0: bb90, otherwise: bb97];
+    }
+
+    bb99 (cleanup): {
+        drop(_82) -> [return: bb90, unwind terminate(cleanup)];
+    }
+
+    bb100 (cleanup): {
+        switchInt(_143) -> [0: bb90, otherwise: bb99];
+    }
+
+    bb101 (cleanup): {
+        drop(_71) -> [return: bb90, unwind terminate(cleanup)];
+    }
+
+    bb102 (cleanup): {
+        switchInt(_144) -> [0: bb90, otherwise: bb101];
+    }
+
+    bb103 (cleanup): {
+        drop(_61) -> [return: bb90, unwind terminate(cleanup)];
+    }
+
+    bb104 (cleanup): {
+        switchInt(_145) -> [0: bb90, otherwise: bb103];
+    }
+
+    bb105 (cleanup): {
+        drop(_51) -> [return: bb90, unwind terminate(cleanup)];
+    }
+
+    bb106 (cleanup): {
+        switchInt(_146) -> [0: bb90, otherwise: bb105];
+    }
+
+    bb107 (cleanup): {
+        drop(_41) -> [return: bb90, unwind terminate(cleanup)];
+    }
+
+    bb108 (cleanup): {
+        switchInt(_147) -> [0: bb90, otherwise: bb107];
+    }
+
+    bb109 (cleanup): {
+        drop(_33) -> [return: bb90, unwind terminate(cleanup)];
+    }
+
+    bb110 (cleanup): {
+        switchInt(_148) -> [0: bb90, otherwise: bb109];
+    }
+
+    bb111 (cleanup): {
+        drop(_23) -> [return: bb90, unwind terminate(cleanup)];
+    }
+
+    bb112 (cleanup): {
+        switchInt(_149) -> [0: bb90, otherwise: bb111];
+    }
+
+    bb113 (cleanup): {
+        drop(_13) -> [return: bb90, unwind terminate(cleanup)];
+    }
+
+    bb114 (cleanup): {
+        switchInt(_150) -> [0: bb90, otherwise: bb113];
+    }
+
+    bb115 (cleanup): {
+        drop(_3) -> [return: bb90, unwind terminate(cleanup)];
+    }
+
+    bb116 (cleanup): {
+        switchInt(_151) -> [0: bb90, otherwise: bb115];
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#0}(_1: &{closure@src/main.rs:29:17: 29:26}, _2: String) -> Result<(), String> {
+    debug s => _2;
+    let mut _0: std::result::Result<(), std::string::String>;
+    let mut _3: std::result::Result<(), std::convert::Infallible>;
+    let mut _4: std::result::Result<std::string::String, std::convert::Infallible>;
+    let _5: &str;
+    let _6: &std::string::String;
+
+    bb0: {
+        _6 = &_2;
+        _5 = <String as Deref>::deref(_6) -> [return: bb1, unwind: bb6];
+    }
+
+    bb1: {
+        _4 = <String as FromStr>::from_str(_5) -> [return: bb2, unwind: bb6];
+    }
+
+    bb2: {
+        _3 = Result::<String, Infallible>::map::<(), {closure@src/main.rs:29:17: 29:26}>(move _4, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb3, unwind: bb6];
+    }
+
+    bb3: {
+        _0 = Result::<(), Infallible>::map_err::<String, {closure@src/main.rs:29:17: 29:26}>(const Result::<(), Infallible>::Ok(()), const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb4, unwind: bb6];
+    }
+
+    bb4: {
+        drop(_2) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        return;
+    }
+
+    bb6 (cleanup): {
+        drop(_2) -> [return: bb7, unwind terminate(cleanup)];
+    }
+
+    bb7 (cleanup): {
+        resume;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#0}::{closure#0}(_1: {closure@src/main.rs:29:17: 29:26}, _2: String) -> () {
+    let mut _0: ();
+
+    bb0: {
+        drop(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#0}::{closure#1}(_1: {closure@src/main.rs:29:17: 29:26}, _2: Infallible) -> String {
+    debug e => const ZeroSized: Infallible;
+    let mut _0: std::string::String;
+    let mut _3: &std::convert::Infallible;
+
+    bb0: {
+        _3 = &_2;
+        _0 = <Infallible as ToString>::to_string(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#1}(_1: &{closure@src/main.rs:29:17: 29:26}, _2: String) -> Result<(), String> {
+    debug s => _2;
+    let mut _0: std::result::Result<(), std::string::String>;
+    let mut _3: std::result::Result<(), std::convert::Infallible>;
+    let mut _4: std::result::Result<std::string::String, std::convert::Infallible>;
+    let _5: &str;
+    let _6: &std::string::String;
+
+    bb0: {
+        _6 = &_2;
+        _5 = <String as Deref>::deref(_6) -> [return: bb1, unwind: bb6];
+    }
+
+    bb1: {
+        _4 = <String as FromStr>::from_str(_5) -> [return: bb2, unwind: bb6];
+    }
+
+    bb2: {
+        _3 = Result::<String, Infallible>::map::<(), {closure@src/main.rs:29:17: 29:26}>(move _4, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb3, unwind: bb6];
+    }
+
+    bb3: {
+        _0 = Result::<(), Infallible>::map_err::<String, {closure@src/main.rs:29:17: 29:26}>(const Result::<(), Infallible>::Ok(()), const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb4, unwind: bb6];
+    }
+
+    bb4: {
+        drop(_2) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        return;
+    }
+
+    bb6 (cleanup): {
+        drop(_2) -> [return: bb7, unwind terminate(cleanup)];
+    }
+
+    bb7 (cleanup): {
+        resume;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#1}::{closure#0}(_1: {closure@src/main.rs:29:17: 29:26}, _2: String) -> () {
+    let mut _0: ();
+
+    bb0: {
+        drop(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#1}::{closure#1}(_1: {closure@src/main.rs:29:17: 29:26}, _2: Infallible) -> String {
+    debug e => const ZeroSized: Infallible;
+    let mut _0: std::string::String;
+    let mut _3: &std::convert::Infallible;
+
+    bb0: {
+        _3 = &_2;
+        _0 = <Infallible as ToString>::to_string(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#2}(_1: &{closure@src/main.rs:29:17: 29:26}, _2: String) -> Result<(), String> {
+    debug s => _2;
+    let mut _0: std::result::Result<(), std::string::String>;
+    let mut _3: std::result::Result<(), std::convert::Infallible>;
+    let mut _4: std::result::Result<std::string::String, std::convert::Infallible>;
+    let _5: &str;
+    let _6: &std::string::String;
+
+    bb0: {
+        _6 = &_2;
+        _5 = <String as Deref>::deref(_6) -> [return: bb1, unwind: bb6];
+    }
+
+    bb1: {
+        _4 = <String as FromStr>::from_str(_5) -> [return: bb2, unwind: bb6];
+    }
+
+    bb2: {
+        _3 = Result::<String, Infallible>::map::<(), {closure@src/main.rs:29:17: 29:26}>(move _4, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb3, unwind: bb6];
+    }
+
+    bb3: {
+        _0 = Result::<(), Infallible>::map_err::<String, {closure@src/main.rs:29:17: 29:26}>(const Result::<(), Infallible>::Ok(()), const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb4, unwind: bb6];
+    }
+
+    bb4: {
+        drop(_2) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        return;
+    }
+
+    bb6 (cleanup): {
+        drop(_2) -> [return: bb7, unwind terminate(cleanup)];
+    }
+
+    bb7 (cleanup): {
+        resume;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#2}::{closure#0}(_1: {closure@src/main.rs:29:17: 29:26}, _2: String) -> () {
+    let mut _0: ();
+
+    bb0: {
+        drop(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#2}::{closure#1}(_1: {closure@src/main.rs:29:17: 29:26}, _2: Infallible) -> String {
+    debug e => const ZeroSized: Infallible;
+    let mut _0: std::string::String;
+    let mut _3: &std::convert::Infallible;
+
+    bb0: {
+        _3 = &_2;
+        _0 = <Infallible as ToString>::to_string(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#3}(_1: &{closure@src/main.rs:29:17: 29:26}, _2: String) -> Result<(), String> {
+    debug s => _2;
+    let mut _0: std::result::Result<(), std::string::String>;
+    let mut _3: std::result::Result<(), std::convert::Infallible>;
+    let mut _4: std::result::Result<std::string::String, std::convert::Infallible>;
+    let _5: &str;
+    let _6: &std::string::String;
+
+    bb0: {
+        _6 = &_2;
+        _5 = <String as Deref>::deref(_6) -> [return: bb1, unwind: bb6];
+    }
+
+    bb1: {
+        _4 = <String as FromStr>::from_str(_5) -> [return: bb2, unwind: bb6];
+    }
+
+    bb2: {
+        _3 = Result::<String, Infallible>::map::<(), {closure@src/main.rs:29:17: 29:26}>(move _4, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb3, unwind: bb6];
+    }
+
+    bb3: {
+        _0 = Result::<(), Infallible>::map_err::<String, {closure@src/main.rs:29:17: 29:26}>(const Result::<(), Infallible>::Ok(()), const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb4, unwind: bb6];
+    }
+
+    bb4: {
+        drop(_2) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        return;
+    }
+
+    bb6 (cleanup): {
+        drop(_2) -> [return: bb7, unwind terminate(cleanup)];
+    }
+
+    bb7 (cleanup): {
+        resume;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#3}::{closure#0}(_1: {closure@src/main.rs:29:17: 29:26}, _2: String) -> () {
+    let mut _0: ();
+
+    bb0: {
+        drop(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#3}::{closure#1}(_1: {closure@src/main.rs:29:17: 29:26}, _2: Infallible) -> String {
+    debug e => const ZeroSized: Infallible;
+    let mut _0: std::string::String;
+    let mut _3: &std::convert::Infallible;
+
+    bb0: {
+        _3 = &_2;
+        _0 = <Infallible as ToString>::to_string(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#4}(_1: &{closure@src/main.rs:29:17: 29:26}, _2: String) -> Result<(), String> {
+    debug s => _2;
+    let mut _0: std::result::Result<(), std::string::String>;
+    let mut _3: std::result::Result<(), anyhow::Error>;
+    let mut _4: std::result::Result<ColorWhen, anyhow::Error>;
+    let _5: &str;
+    let _6: &std::string::String;
+
+    bb0: {
+        _6 = &_2;
+        _5 = <String as Deref>::deref(_6) -> [return: bb1, unwind: bb6];
+    }
+
+    bb1: {
+        _4 = <ColorWhen as FromStr>::from_str(_5) -> [return: bb2, unwind: bb6];
+    }
+
+    bb2: {
+        _3 = Result::<ColorWhen, anyhow::Error>::map::<(), {closure@src/main.rs:29:17: 29:26}>(move _4, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb3, unwind: bb6];
+    }
+
+    bb3: {
+        _0 = Result::<(), anyhow::Error>::map_err::<String, {closure@src/main.rs:29:17: 29:26}>(move _3, const ZeroSized: {closure@src/main.rs:29:17: 29:26}) -> [return: bb4, unwind: bb6];
+    }
+
+    bb4: {
+        drop(_2) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        return;
+    }
+
+    bb6 (cleanup): {
+        drop(_2) -> [return: bb7, unwind terminate(cleanup)];
+    }
+
+    bb7 (cleanup): {
+        resume;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#4}::{closure#0}(_1: {closure@src/main.rs:29:17: 29:26}, _2: ColorWhen) -> () {
+    let mut _0: ();
+
+    bb0: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::augment_clap::{closure#4}::{closure#1}(_1: {closure@src/main.rs:29:17: 29:26}, _2: anyhow::Error) -> String {
+    debug e => _2;
+    let mut _0: std::string::String;
+    let mut _3: &anyhow::Error;
+
+    bb0: {
+        _3 = &_2;
+        _0 = <anyhow::Error as ToString>::to_string(move _3) -> [return: bb1, unwind: bb3];
+    }
+
+    bb1: {
+        drop(_2) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+
+    bb3 (cleanup): {
+        drop(_2) -> [return: bb4, unwind terminate(cleanup)];
+    }
+
+    bb4 (cleanup): {
+        resume;
+    }
+}
+
+fn <impl at src/main.rs:29:17: 29:26>::is_subcommand() -> bool {
+    let mut _0: bool;
+
+    bb0: {
+        _0 = const false;
+        return;
+    }
+}
+
+fn regex_query_or_die(_1: &str, _2: &str, _3: bool) -> Query {
+    debug pattern => _1;
+    debug replacement => _2;
+    debug word => _3;
+    let mut _0: ruplacer::Query;
+    let _4: std::string::String;
+    let _5: std::string::String;
+    let mut _6: std::fmt::Arguments<'_>;
+    let mut _7: &[&str];
+    let mut _8: &[core::fmt::rt::Argument<'_>];
+    let _9: &[core::fmt::rt::Argument<'_>; 1];
+    let _10: [core::fmt::rt::Argument<'_>; 1];
+    let mut _11: core::fmt::rt::Argument<'_>;
+    let _12: &&str;
+    let mut _13: &str;
+    let _15: &str;
+    let _16: &std::string::String;
+    let mut _17: isize;
+    let _19: ();
+    let mut _20: std::fmt::Arguments<'_>;
+    let mut _21: &[&str];
+    let mut _22: &[core::fmt::rt::Argument<'_>];
+    let _23: &[core::fmt::rt::Argument<'_>; 2];
+    let _24: [core::fmt::rt::Argument<'_>; 2];
+    let mut _25: core::fmt::rt::Argument<'_>;
+    let _26: &colored::ColoredString;
+    let _27: colored::ColoredString;
+    let mut _28: colored::ColoredString;
+    let _29: &str;
+    let mut _30: core::fmt::rt::Argument<'_>;
+    let _31: &regex::Error;
+    let _32: !;
+    let mut _34: std::result::Result<regex::Regex, regex::Error>;
+    let mut _36: &[&str; 2];
+    let mut _37: bool;
+    let mut _38: isize;
+    scope 1 {
+        debug actual_pattern => _4;
+        let _14: std::result::Result<regex::Regex, regex::Error>;
+        scope 3 {
+            debug re => _14;
+            let _33: regex::Regex;
+            scope 4 {
+                debug e => _18;
+                let _18: regex::Error;
+                let mut _35: &[&str; 3];
+            }
+            scope 5 {
+                debug re => _33;
+            }
+        }
+    }
+    scope 2 {
+        debug res => _5;
+    }
+
+    bb0: {
+        _37 = const false;
+        switchInt(_3) -> [0: bb5, otherwise: bb1];
+    }
+
+    bb1: {
+        _36 = const _;
+        _7 = _36 as &[&str] (PointerCoercion(Unsize));
+        _12 = &_1;
+        _11 = core::fmt::rt::Argument::<'_>::new_display::<&str>(_12) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _10 = [move _11];
+        _9 = &_10;
+        _8 = _9 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _6 = Arguments::<'_>::new_v1(move _7, move _8) -> [return: bb3, unwind continue];
+    }
+
+     bb3: {
+        _5 = format(move _6) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _4 = move _5;
+        goto -> bb6;
+    }
+
+    bb5: {
+        _13 = _1;
+        _4 = <str as ToString>::to_string(move _13) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _16 = &_4;
+        _15 = <String as Deref>::deref(_16) -> [return: bb7, unwind: bb23];
+    }
+
+    bb7: {
+        _14 = regex::Regex::new(_15) -> [return: bb8, unwind: bb23];
+    }
+
+    bb8: {
+        _37 = const true;
+        _17 = discriminant(_14);
+        switchInt(move _17) -> [1: bb9, otherwise: bb17];
+    }
+
+    bb9: {
+        _18 = move ((_14 as Err).0: regex::Error);
+        _35 = const _;
+        _21 = _35 as &[&str] (PointerCoercion(Unsize));
+        _29 = const "Invalid regex";
+        _28 = <&str as colored::Colorize>::bold(_29) -> [return: bb10, unwind: bb22];
+    }
+
+    bb10: {
+        _27 = <ColoredString as colored::Colorize>::red(move _28) -> [return: bb11, unwind: bb22];
+    }
+
+    bb11: {
+        _26 = &_27;
+        _25 = core::fmt::rt::Argument::<'_>::new_display::<ColoredString>(_26) -> [return: bb12, unwind: bb21];
+    }
+
+    bb12: {
+        _31 = &_18;
+        _30 = core::fmt::rt::Argument::<'_>::new_display::<regex::Error>(_31) -> [return: bb13, unwind: bb21];
+    }
+
+    bb13: {
+        _24 = [move _25, move _30];
+        _23 = &_24;
+        _22 = _23 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _20 = Arguments::<'_>::new_v1(move _21, move _22) -> [return: bb14, unwind: bb21];
+    }
+
+    bb14: {
+        _19 = _eprint(move _20) -> [return: bb15, unwind: bb21];
+    }
+
+    bb15: {
+        drop(_27) -> [return: bb16, unwind: bb22];
+    }
+
+    bb16: {
+        _32 = exit(const 1_i32) -> bb22;
+    }
+
+    bb17: {
+        _37 = const false;
+        _34 = move _14;
+        _33 = Result::<regex::Regex, regex::Error>::unwrap(move _34) -> [return: bb18, unwind: bb27];
+    }
+
+    bb18: {
+        _0 = Query::regex(move _33, _2) -> [return: bb19, unwind: bb27];
+    }
+
+    bb19: {
+        _37 = const false;
+        drop(_4) -> [return: bb20, unwind continue];
+    }
+
+    bb20: {
+        return;
+    }
+
+    bb21 (cleanup): {
+        drop(_27) -> [return: bb22, unwind terminate(cleanup)];
+    }
+
+    bb22 (cleanup): {
+        drop(_18) -> [return: bb27, unwind terminate(cleanup)];
+    }
+
+    bb23 (cleanup): {
+        drop(_4) -> [return: bb24, unwind terminate(cleanup)];
+    }
+
+    bb24 (cleanup): {
+        resume;
+    }
+
+    bb25 (cleanup): {
+        drop(_14) -> [return: bb23, unwind terminate(cleanup)];
+    }
+
+    bb26 (cleanup): {
+        _38 = discriminant(_14);
+        switchInt(move _38) -> [1: bb23, otherwise: bb25];
+    }
+
+    bb27 (cleanup): {
+        switchInt(_37) -> [0: bb23, otherwise: bb26];
+    }
+}
+
+promoted[0] in regex_query_or_die: &[&str; 3] = {
+    let mut _0: &[&str; 3];
+    let mut _1: [&str; 3];
+
+    bb0: {
+        _1 = [const "", const ": ", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in regex_query_or_die: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "\\b(", const ")\\b"];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn configure_color(_1: &ColorWhen) -> () {
+    debug when => _1;
+    let mut _0: ();
+    let mut _2: isize;
+    let mut _3: bool;
+
+    bb0: {
+        _2 = discriminant((*_1));
+        switchInt(move _2) -> [0: bb3, 1: bb4, 2: bb1, otherwise: bb2];
+    }
+
+    bb1: {
+        _3 = stdout_isatty() -> [return: bb5, unwind continue];
+    }
+
+    bb2: {
+        unreachable;
+    }
+
+    bb3: {
+        _0 = set_var::<&str, &str>(const "CLICOLOR_FORCE", const "1") -> [return: bb8, unwind continue];
+    }
+
+    bb4: {
+        _0 = set_var::<&str, &str>(const "CLICOLOR", const "0") -> [return: bb8, unwind continue];
+    }
+
+    bb5: {
+        switchInt(move _3) -> [0: bb7, otherwise: bb6];
+    }
+
+    bb6: {
+        _0 = set_var::<&str, &str>(const "CLICOLOR", const "1") -> [return: bb8, unwind continue];
+    }
+
+    bb7: {
+        _0 = set_var::<&str, &str>(const "CLICOLOR", const "0") -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        return;
+    }
+}
+
+fn print_stats(_1: &Stats, _2: bool) -> () {
+    debug stats => _1;
+    debug dry_run => _2;
+    let mut _0: ();
+    let _3: ();
+    let mut _4: std::fmt::Arguments<'_>;
+    let mut _5: &[&str];
+    let _6: ();
+    let mut _7: std::fmt::Arguments<'_>;
+    let mut _8: &[&str];
+    let _9: ();
+    let mut _10: std::fmt::Arguments<'_>;
+    let mut _11: &[&str];
+    let mut _12: &[core::fmt::rt::Argument<'_>];
+    let _13: &[core::fmt::rt::Argument<'_>; 1];
+    let _14: [core::fmt::rt::Argument<'_>; 1];
+    let mut _15: core::fmt::rt::Argument<'_>;
+    let _16: &&ruplacer::Stats;
+    let mut _17: &[&str; 2];
+    let mut _18: &[&str; 1];
+    let mut _19: &[&str; 1];
+
+    bb0: {
+        switchInt(_2) -> [0: bb3, otherwise: bb1];
+    }
+
+    bb1: {
+        _18 = const _;
+        _5 = _18 as &[&str] (PointerCoercion(Unsize));
+        _4 = Arguments::<'_>::new_const(move _5) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _3 = _print(move _4) -> [return: bb5, unwind continue];
+    }
+
+    bb3: {
+        _19 = const _;
+        _8 = _19 as &[&str] (PointerCoercion(Unsize));
+        _7 = Arguments::<'_>::new_const(move _8) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _6 = _print(move _7) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        _17 = const _;
+        _11 = _17 as &[&str] (PointerCoercion(Unsize));
+        _16 = &_1;
+        _15 = core::fmt::rt::Argument::<'_>::new_display::<&Stats>(_16) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _14 = [move _15];
+        _13 = &_14;
+        _12 = _13 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _10 = Arguments::<'_>::new_v1(move _11, move _12) -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        _9 = _print(move _10) -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        return;
+    }
+}
+
+promoted[0] in print_stats: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in print_stats: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "Would perform "];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[2] in print_stats: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "Performed "];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn on_type_list() -> () {
+    let mut _0: ();
+    let _1: ();
+    let mut _2: std::fmt::Arguments<'_>;
+    let mut _3: &[&str];
+    let mut _4: ignore::types::TypesBuilder;
+    let _5: &mut ignore::types::TypesBuilder;
+    let mut _6: &mut ignore::types::TypesBuilder;
+    let mut _7: std::vec::IntoIter<ignore::types::FileTypeDef>;
+    let mut _8: std::vec::Vec<ignore::types::FileTypeDef>;
+    let mut _9: &ignore::types::TypesBuilder;
+    let mut _11: std::option::Option<ignore::types::FileTypeDef>;
+    let mut _12: &mut std::vec::IntoIter<ignore::types::FileTypeDef>;
+    let mut _13: isize;
+    let mut _16: &ignore::types::FileTypeDef;
+    let mut _18: &ignore::types::FileTypeDef;
+    let _19: ();
+    let mut _20: std::fmt::Arguments<'_>;
+    let mut _21: &[&str];
+    let mut _22: &[core::fmt::rt::Argument<'_>];
+    let _23: &[core::fmt::rt::Argument<'_>; 2];
+    let _24: [core::fmt::rt::Argument<'_>; 2];
+    let mut _25: core::fmt::rt::Argument<'_>;
+    let _26: &colored::ColoredString;
+    let _27: colored::ColoredString;
+    let mut _28: core::fmt::rt::Argument<'_>;
+    let _29: &std::string::String;
+    let _30: std::string::String;
+    let _31: &str;
+    let mut _33: &[&str; 1];
+    scope 1 {
+        debug types_builder => _4;
+        let mut _10: std::vec::IntoIter<ignore::types::FileTypeDef>;
+        scope 2 {
+            debug iter => _10;
+            let _14: ignore::types::FileTypeDef;
+            scope 3 {
+                debug def => _14;
+                let _15: &str;
+                scope 4 {
+                    debug name => _15;
+                    let _17: &[std::string::String];
+                    scope 5 {
+                        debug globs => _17;
+                        let mut _32: &[&str; 3];
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _33 = const _;
+        _3 = _33 as &[&str] (PointerCoercion(Unsize));
+        _2 = Arguments::<'_>::new_const(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _1 = _print(move _2) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _4 = TypesBuilder::new() -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _6 = &mut _4;
+        _5 = TypesBuilder::add_defaults(move _6) -> [return: bb4, unwind: bb28];
+    }
+
+    bb4: {
+        _9 = &_4;
+        _8 = TypesBuilder::definitions(move _9) -> [return: bb5, unwind: bb28];
+    }
+
+    bb5: {
+        _7 = <Vec<FileTypeDef> as IntoIterator>::into_iter(move _8) -> [return: bb6, unwind: bb28];
+    }
+
+    bb6: {
+        _10 = move _7;
+        goto -> bb7;
+    }
+
+    bb7: {
+        _12 = &mut _10;
+        _11 = <std::vec::IntoIter<FileTypeDef> as Iterator>::next(_12) -> [return: bb8, unwind: bb27];
+    }
+
+    bb8: {
+        _13 = discriminant(_11);
+        switchInt(move _13) -> [0: bb11, 1: bb9, otherwise: bb10];
+    }
+
+    bb9: {
+        _14 = move ((_11 as Some).0: ignore::types::FileTypeDef);
+        _16 = &_14;
+        _15 = FileTypeDef::name(move _16) -> [return: bb12, unwind: bb26];
+    }
+
+    bb10: {
+        unreachable;
+    }
+
+    bb11: {
+        drop(_10) -> [return: bb22, unwind: bb28];
+    }
+
+    bb12: {
+        _18 = &_14;
+        _17 = FileTypeDef::globs(move _18) -> [return: bb13, unwind: bb26];
+    }
+
+    bb13: {
+        _32 = const _;
+        _21 = _32 as &[&str] (PointerCoercion(Unsize));
+        _27 = <&str as colored::Colorize>::bold(_15) -> [return: bb14, unwind: bb26];
+    }
+
+    bb14: {
+        _26 = &_27;
+        _25 = core::fmt::rt::Argument::<'_>::new_display::<ColoredString>(_26) -> [return: bb15, unwind: bb25];
+    }
+
+    bb15: {
+        _31 = const ", ";
+        _30 = slice::<impl [String]>::join::<&str>(_17, _31) -> [return: bb16, unwind: bb25];
+    }
+
+    bb16: {
+        _29 = &_30;
+        _28 = core::fmt::rt::Argument::<'_>::new_display::<String>(_29) -> [return: bb17, unwind: bb24];
+    }
+
+    bb17: {
+        _24 = [move _25, move _28];
+        _23 = &_24;
+        _22 = _23 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _20 = Arguments::<'_>::new_v1(move _21, move _22) -> [return: bb18, unwind: bb24];
+    }
+
+    bb18: {
+        _19 = _print(move _20) -> [return: bb19, unwind: bb24];
+    }
+
+    bb19: {
+        drop(_30) -> [return: bb20, unwind: bb25];
+    }
+
+    bb20: {
+        drop(_27) -> [return: bb21, unwind: bb26];
+    }
+
+    bb21: {
+        drop(_14) -> [return: bb7, unwind: bb27];
+    }
+
+    bb22: {
+        drop(_4) -> [return: bb23, unwind continue];
+    }
+
+    bb23: {
+        return;
+    }
+
+    bb24 (cleanup): {
+        drop(_30) -> [return: bb25, unwind terminate(cleanup)];
+    }
+
+    bb25 (cleanup): {
+        drop(_27) -> [return: bb26, unwind terminate(cleanup)];
+    }
+
+    bb26 (cleanup): {
+        drop(_14) -> [return: bb27, unwind terminate(cleanup)];
+    }
+
+    bb27 (cleanup): {
+        drop(_10) -> [return: bb28, unwind terminate(cleanup)];
+    }
+
+    bb28 (cleanup): {
+        drop(_4) -> [return: bb29, unwind terminate(cleanup)];
+    }
+
+    bb29 (cleanup): {
+        resume;
+    }
+}
+
+promoted[0] in on_type_list: &[&str; 3] = {
+    let mut _0: &[&str; 3];
+    let mut _1: [&str; 3];
+
+    bb0: {
+        _1 = [const "", const ": ", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in on_type_list: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "Known file types:\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn main() -> Result<(), anyhow::Error> {
+    let mut _0: std::result::Result<(), anyhow::Error>;
+    let _1: Options;
+    let _15: ();
+    let _18: ColorWhen;
+    let mut _19: ColorWhen;
+    let _20: ();
+    let _21: &&ColorWhen;
+    let _23: &str;
+    let _24: &std::string::String;
+    let _25: &str;
+    let _26: &std::string::String;
+    let _27: &str;
+    let _28: &std::string::String;
+    let _29: &str;
+    let _30: &std::string::String;
+    let _31: &str;
+    let _32: &std::string::String;
+    let _33: &str;
+    let _34: &std::string::String;
+    let mut _36: std::vec::Vec<std::string::String>;
+    let mut _37: std::vec::Vec<std::string::String>;
+    let mut _39: std::option::Option<std::path::PathBuf>;
+    let mut _40: bool;
+    let mut _41: &std::path::PathBuf;
+    let mut _42: &std::path::PathBuf;
+    let _43: std::path::PathBuf;
+    let mut _44: ruplacer::Query;
+    let mut _45: std::path::PathBuf;
+    let mut _46: ruplacer::Settings;
+    let mut _47: ruplacer::Query;
+    let mut _48: &ColorWhen;
+    let mut _49: bool;
+    let mut _50: bool;
+    let mut _51: bool;
+    let mut _52: bool;
+    let mut _53: bool;
+    let mut _54: bool;
+    scope 1 {
+        debug opt => _1;
+        let _2: std::option::Option<ColorWhen>;
+        let _3: bool;
+        let _4: bool;
+        let _5: bool;
+        let _6: bool;
+        let _7: std::vec::Vec<std::string::String>;
+        let _8: bool;
+        let _9: std::option::Option<std::path::PathBuf>;
+        let _10: std::string::String;
+        let _11: std::string::String;
+        let _12: std::vec::Vec<std::string::String>;
+        let _13: bool;
+        let _14: bool;
+        scope 2 {
+            debug color_when => _2;
+            debug file_type_list => _3;
+            debug go => _4;
+            debug hidden => _5;
+            debug ignored => _6;
+            debug ignored_file_types => _7;
+            debug no_regex => _8;
+            debug path => _9;
+            debug pattern => _10;
+            debug replacement => _11;
+            debug selected_file_types => _12;
+            debug subvert => _13;
+            debug word_regex => _14;
+            let _16: bool;
+            scope 3 {
+                debug dry_run => _16;
+                let _17: &ColorWhen;
+                scope 4 {
+                    debug color_when => _17;
+                    let _22: ruplacer::Query;
+                    scope 5 {
+                        debug query => _22;
+                        let _35: ruplacer::Settings;
+                        scope 6 {
+                            debug settings => _35;
+                            let _38: std::path::PathBuf;
+                            scope 7 {
+                                debug path => _38;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _54 = const false;
+        _53 = const false;
+        _52 = const false;
+        _51 = const false;
+        _50 = const false;
+        _49 = const false;
+        _1 = <Options as StructOpt>::from_args() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = move (_1.12: std::option::Option<ColorWhen>);
+        _3 = (_1.11: bool);
+        _4 = (_1.0: bool);
+        _5 = (_1.5: bool);
+        _6 = (_1.6: bool);
+        _54 = const true;
+        _7 = move (_1.10: std::vec::Vec<std::string::String>);
+        _8 = (_1.4: bool);
+        _53 = const true;
+        _9 = move (_1.3: std::option::Option<std::path::PathBuf>);
+        _10 = move (_1.1: std::string::String);
+        _11 = move (_1.2: std::string::String);
+        _52 = const true;
+        _12 = move (_1.9: std::vec::Vec<std::string::String>);
+        _13 = (_1.8: bool);
+        _14 = (_1.7: bool);
+        switchInt(_3) -> [0: bb4, otherwise: bb2];
+    }
+
+    bb2: {
+        _15 = on_type_list() -> [return: bb3, unwind: bb52];
+    }
+
+    bb3: {
+        _0 = Result::<(), anyhow::Error>::Ok(const ());
+        drop(_12) -> [return: bb33, unwind: bb41];
+    }
+
+    bb4: {
+        _16 = Not(_4);
+        _19 = ColorWhen::Auto;
+        _18 = Option::<ColorWhen>::unwrap_or(move _2, move _19) -> [return: bb5, unwind: bb52];
+    }
+
+    bb5: {
+        _17 = &_18;
+        _21 = &_17;
+        _48 = deref_copy (*_21);
+        _20 = configure_color(_48) -> [return: bb6, unwind: bb52];
+    }
+
+    bb6: {
+        switchInt(_8) -> [0: bb11, otherwise: bb7];
+    }
+
+    bb7: {
+        _24 = &_10;
+        _23 = <String as Deref>::deref(_24) -> [return: bb8, unwind: bb52];
+    }
+
+    bb8: {
+        _26 = &_11;
+        _25 = <String as Deref>::deref(_26) -> [return: bb9, unwind: bb52];
+    }
+
+    bb9: {
+        _22 = Query::substring(_23, _25) -> [return: bb10, unwind: bb52];
+    }
+
+    bb10: {
+        _51 = const true;
+        goto -> bb20;
+    }
+
+    bb11: {
+        switchInt(_13) -> [0: bb16, otherwise: bb12];
+    }
+
+    bb12: {
+        _28 = &_10;
+        _27 = <String as Deref>::deref(_28) -> [return: bb13, unwind: bb52];
+    }
+
+    bb13: {
+        _30 = &_11;
+        _29 = <String as Deref>::deref(_30) -> [return: bb14, unwind: bb52];
+    }
+
+    bb14: {
+        _22 = Query::subvert(_27, _29) -> [return: bb15, unwind: bb52];
+    }
+
+    bb15: {
+        _51 = const true;
+        goto -> bb20;
+    }
+
+    bb16: {
+        _32 = &_10;
+        _31 = <String as Deref>::deref(_32) -> [return: bb17, unwind: bb52];
+    }
+
+    bb17: {
+        _34 = &_11;
+        _33 = <String as Deref>::deref(_34) -> [return: bb18, unwind: bb52];
+    }
+
+    bb18: {
+        _22 = regex_query_or_die(_31, _33, _14) -> [return: bb19, unwind: bb52];
+    }
+
+    bb19: {
+        _51 = const true;
+        goto -> bb20;
+    }
+
+    bb20: {
+        _52 = const false;
+        _36 = move _12;
+        _54 = const false;
+        _37 = move _7;
+        _50 = const true;
+        _35 = Settings { dry_run: _16, hidden: _5, ignored: _6, selected_file_types: move _36, ignored_file_types: move _37 };
+        _53 = const false;
+        _39 = move _9;
+        _38 = Option::<PathBuf>::unwrap_or_else::<{closure@src/main.rs:213:36: 213:38}>(move _39, const ZeroSized: {closure@src/main.rs:213:36: 213:38}) -> [return: bb21, unwind: bb49];
+    }
+
+    bb21: {
+        _49 = const true;
+        _41 = &_38;
+        _43 = <PathBuf as From<&str>>::from(const "-") -> [return: bb22, unwind: bb47];
+    }
+
+    bb22: {
+        _42 = &_43;
+        _40 = <PathBuf as PartialEq>::eq(move _41, move _42) -> [return: bb23, unwind: bb39];
+    }
+
+    bb23: {
+        switchInt(move _40) -> [0: bb26, otherwise: bb24];
+    }
+
+    bb24: {
+        drop(_43) -> [return: bb25, unwind: bb47];
+    }
+
+    bb25: {
+        _51 = const false;
+        _44 = move _22;
+        _0 = run_on_stdin(move _44) -> [return: bb57, unwind: bb47];
+    }
+
+    bb26: {
+        drop(_43) -> [return: bb27, unwind: bb47];
+    }
+
+    bb27: {
+        _49 = const false;
+        _45 = move _38;
+        _50 = const false;
+        _46 = move _35;
+        _51 = const false;
+        _47 = move _22;
+        _0 = run_on_directory(move _45, move _46, move _47) -> [return: bb58, unwind: bb47];
+    }
+
+    bb28: {
+        switchInt(_49) -> [0: bb29, otherwise: bb44];
+    }
+
+    bb29: {
+        _49 = const false;
+        switchInt(_50) -> [0: bb30, otherwise: bb45];
+    }
+
+    bb30: {
+        _50 = const false;
+        _51 = const false;
+        _52 = const false;
+        drop(_11) -> [return: bb31, unwind: bb42];
+    }
+
+    bb31: {
+        drop(_10) -> [return: bb32, unwind: bb54];
+    }
+
+    bb32: {
+        _53 = const false;
+        _54 = const false;
+        goto -> bb38;
+    }
+
+    bb33: {
+        _52 = const false;
+        drop(_11) -> [return: bb34, unwind: bb42];
+    }
+
+    bb34: {
+        drop(_10) -> [return: bb35, unwind: bb54];
+    }
+
+    bb35: {
+        drop(_9) -> [return: bb36, unwind: bb56];
+    }
+
+    bb36: {
+        _53 = const false;
+        drop(_7) -> [return: bb37, unwind continue];
+    }
+
+    bb37: {
+        _54 = const false;
+        goto -> bb38;
+    }
+
+    bb38: {
+        return;
+    }
+
+    bb39 (cleanup): {
+        drop(_43) -> [return: bb47, unwind terminate(cleanup)];
+    }
+
+    bb40 (cleanup): {
+        switchInt(_51) -> [0: bb52, otherwise: bb50];
+    }
+
+    bb41 (cleanup): {
+        drop(_11) -> [return: bb42, unwind terminate(cleanup)];
+    }
+
+    bb42 (cleanup): {
+        drop(_10) -> [return: bb54, unwind terminate(cleanup)];
+    }
+
+    bb43 (cleanup): {
+        resume;
+    }
+
+    bb44: {
+        drop(_38) -> [return: bb29, unwind: bb49];
+    }
+
+    bb45: {
+        drop(_35) -> [return: bb30, unwind: bb40];
+    }
+
+    bb46 (cleanup): {
+        drop(_38) -> [return: bb49, unwind terminate(cleanup)];
+    }
+
+    bb47 (cleanup): {
+        switchInt(_49) -> [0: bb49, otherwise: bb46];
+    }
+
+    bb48 (cleanup): {
+        drop(_35) -> [return: bb40, unwind terminate(cleanup)];
+    }
+
+    bb49 (cleanup): {
+        switchInt(_50) -> [0: bb40, otherwise: bb48];
+    }
+
+    bb50 (cleanup): {
+        drop(_22) -> [return: bb52, unwind terminate(cleanup)];
+    }
+
+    bb51 (cleanup): {
+        drop(_12) -> [return: bb41, unwind terminate(cleanup)];
+    }
+
+    bb52 (cleanup): {
+        switchInt(_52) -> [0: bb41, otherwise: bb51];
+    }
+
+    bb53 (cleanup): {
+        drop(_9) -> [return: bb56, unwind terminate(cleanup)];
+    }
+
+    bb54 (cleanup): {
+        switchInt(_53) -> [0: bb56, otherwise: bb53];
+    }
+
+    bb55 (cleanup): {
+        drop(_7) -> [return: bb43, unwind terminate(cleanup)];
+    }
+
+    bb56 (cleanup): {
+        switchInt(_54) -> [0: bb43, otherwise: bb55];
+    }
+
+    bb57: {
+        goto -> bb28;
+    }
+
+    bb58: {
+        goto -> bb28;
+    }
+}
+
+fn main::{closure#0}(_1: {closure@src/main.rs:213:36: 213:38}) -> PathBuf {
+    let mut _0: std::path::PathBuf;
+    let _2: &std::path::Path;
+    let _3: &str;
+
+    bb0: {
+        _3 = const ".";
+        _2 = Path::new::<str>(_3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = Path::to_path_buf(_2) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn run_on_stdin(_1: Query) -> Result<(), anyhow::Error> {
+    debug query => _1;
+    let mut _0: std::result::Result<(), anyhow::Error>;
+    let _2: std::io::Stdin;
+    let mut _3: std::io::Lines<std::io::StdinLock<'_>>;
+    let mut _4: std::io::Lines<std::io::StdinLock<'_>>;
+    let mut _5: std::io::StdinLock<'_>;
+    let mut _6: &std::io::Stdin;
+    let mut _8: std::option::Option<std::result::Result<std::string::String, std::io::Error>>;
+    let mut _9: &mut std::io::Lines<std::io::StdinLock<'_>>;
+    let mut _10: isize;
+    let mut _13: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>, std::string::String>;
+    let mut _14: isize;
+    let _18: &str;
+    let _19: &std::string::String;
+    let _20: &ruplacer::Query;
+    let mut _21: isize;
+    let _23: ();
+    let mut _24: std::fmt::Arguments<'_>;
+    let mut _25: &[&str];
+    let mut _26: &[core::fmt::rt::Argument<'_>];
+    let _27: &[core::fmt::rt::Argument<'_>; 1];
+    let _28: [core::fmt::rt::Argument<'_>; 1];
+    let mut _29: core::fmt::rt::Argument<'_>;
+    let _30: &&str;
+    let _31: &str;
+    let mut _32: &ruplacer::Replacement<'_>;
+    let _33: ();
+    let mut _34: std::fmt::Arguments<'_>;
+    let mut _35: &[&str];
+    let mut _36: &[core::fmt::rt::Argument<'_>];
+    let _37: &[core::fmt::rt::Argument<'_>; 1];
+    let _38: [core::fmt::rt::Argument<'_>; 1];
+    let mut _39: core::fmt::rt::Argument<'_>;
+    let _40: &std::string::String;
+    let mut _43: bool;
+    let mut _44: isize;
+    let mut _45: isize;
+    scope 1 {
+        debug stdin => _2;
+        let mut _7: std::io::Lines<std::io::StdinLock<'_>>;
+        scope 2 {
+            debug iter => _7;
+            let _11: std::result::Result<std::string::String, std::io::Error>;
+            scope 3 {
+                debug line => _11;
+                let _12: std::string::String;
+                let _15: std::result::Result<std::convert::Infallible, std::io::Error>;
+                let _16: std::string::String;
+                scope 4 {
+                    debug line => _12;
+                    let _17: std::option::Option<ruplacer::Replacement<'_>>;
+                    scope 9 {
+                        debug replacement => _17;
+                        let mut _41: &[&str; 2];
+                        scope 10 {
+                            debug replacement => _22;
+                            let _22: ruplacer::Replacement<'_>;
+                            let mut _42: &[&str; 2];
+                        }
+                    }
+                }
+                scope 5 {
+                    debug residual => _15;
+                    scope 6 {
+                    }
+                }
+                scope 7 {
+                    debug val => _16;
+                    scope 8 {
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _43 = const false;
+        _2 = stdin() -> [return: bb1, unwind: bb30];
+    }
+
+    bb1: {
+        _6 = &_2;
+        _5 = Stdin::lock(move _6) -> [return: bb2, unwind: bb30];
+    }
+
+    bb2: {
+        _4 = <StdinLock<'_> as std::io::BufRead>::lines(move _5) -> [return: bb3, unwind: bb30];
+    }
+
+    bb3: {
+        _3 = <std::io::Lines<StdinLock<'_>> as IntoIterator>::into_iter(move _4) -> [return: bb4, unwind: bb30];
+    }
+
+    bb4: {
+        _7 = move _3;
+        goto -> bb5;
+    }
+
+    bb5: {
+        _9 = &mut _7;
+        _8 = <std::io::Lines<StdinLock<'_>> as Iterator>::next(_9) -> [return: bb6, unwind: bb29];
+    }
+
+    bb6: {
+        _10 = discriminant(_8);
+        switchInt(move _10) -> [0: bb9, 1: bb7, otherwise: bb8];
+    }
+
+    bb7: {
+        _11 = move ((_8 as Some).0: std::result::Result<std::string::String, std::io::Error>);
+        _13 = <Result<String, std::io::Error> as Try>::branch(move _11) -> [return: bb10, unwind: bb29];
+    }
+
+    bb8: {
+        unreachable;
+    }
+
+    bb9: {
+        drop(_7) -> [return: bb24, unwind: bb30];
+    }
+
+    bb10: {
+        _14 = discriminant(_13);
+        switchInt(move _14) -> [0: bb11, 1: bb12, otherwise: bb8];
+    }
+
+    bb11: {
+        _16 = move ((_13 as Continue).0: std::string::String);
+        _12 = move _16;
+        _19 = &_12;
+        _18 = <String as Deref>::deref(_19) -> [return: bb14, unwind: bb28];
+    }
+
+    bb12: {
+        _15 = move ((_13 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<(), anyhow::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _15) -> [return: bb13, unwind: bb29];
+    }
+
+    bb13: {
+        drop(_7) -> [return: bb25, unwind: bb30];
+    }
+
+    bb14: {
+        _20 = &_1;
+        _17 = ruplacer::replace(_18, _20) -> [return: bb15, unwind: bb28];
+    }
+
+    bb15: {
+        _43 = const true;
+        _21 = discriminant(_17);
+        switchInt(move _21) -> [1: bb16, otherwise: bb21];
+    }
+
+    bb16: {
+        _43 = const false;
+        _22 = move ((_17 as Some).0: ruplacer::Replacement<'_>);
+        _42 = const _;
+        _25 = _42 as &[&str] (PointerCoercion(Unsize));
+        _32 = &_22;
+        _31 = Replacement::<'_>::output(move _32) -> [return: bb17, unwind: bb27];
+    }
+
+    bb17: {
+        _30 = &_31;
+        _29 = core::fmt::rt::Argument::<'_>::new_display::<&str>(_30) -> [return: bb18, unwind: bb27];
+    }
+
+    bb18: {
+        _28 = [move _29];
+        _27 = &_28;
+        _26 = _27 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _24 = Arguments::<'_>::new_v1(move _25, move _26) -> [return: bb19, unwind: bb27];
+    }
+
+    bb19: {
+        _23 = _print(move _24) -> [return: bb20, unwind: bb27];
+    }
+
+    bb20: {
+        drop(_22) -> [return: bb35, unwind: bb38];
+    }
+
+    bb21: {
+        _41 = const _;
+        _35 = _41 as &[&str] (PointerCoercion(Unsize));
+        _40 = &_12;
+        _39 = core::fmt::rt::Argument::<'_>::new_display::<String>(_40) -> [return: bb22, unwind: bb38];
+    }
+
+    bb22: {
+        _38 = [move _39];
+        _37 = &_38;
+        _36 = _37 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _34 = Arguments::<'_>::new_v1(move _35, move _36) -> [return: bb23, unwind: bb38];
+    }
+
+    bb23: {
+        _33 = _print(move _34) -> [return: bb39, unwind: bb38];
+    }
+
+    bb24: {
+        _0 = Result::<(), anyhow::Error>::Ok(const ());
+        drop(_1) -> [return: bb26, unwind continue];
+    }
+
+    bb25: {
+        drop(_1) -> [return: bb26, unwind continue];
+    }
+
+    bb26: {
+        return;
+    }
+
+    bb27 (cleanup): {
+        drop(_22) -> [return: bb38, unwind terminate(cleanup)];
+    }
+
+    bb28 (cleanup): {
+        drop(_12) -> [return: bb29, unwind terminate(cleanup)];
+    }
+
+    bb29 (cleanup): {
+        drop(_7) -> [return: bb30, unwind terminate(cleanup)];
+    }
+
+    bb30 (cleanup): {
+        drop(_1) -> [return: bb31, unwind terminate(cleanup)];
+    }
+
+    bb31 (cleanup): {
+        resume;
+    }
+
+    bb32: {
+        _43 = const false;
+        drop(_12) -> [return: bb5, unwind: bb29];
+    }
+
+    bb33: {
+        switchInt(_43) -> [0: bb32, otherwise: bb34];
+    }
+
+    bb34: {
+        drop(((_17 as Some).0: ruplacer::Replacement<'_>)) -> [return: bb32, unwind: bb28];
+    }
+
+    bb35: {
+        _44 = discriminant(_17);
+        switchInt(move _44) -> [1: bb33, otherwise: bb32];
+    }
+
+    bb36 (cleanup): {
+        switchInt(_43) -> [0: bb28, otherwise: bb37];
+    }
+
+    bb37 (cleanup): {
+        drop(((_17 as Some).0: ruplacer::Replacement<'_>)) -> [return: bb28, unwind terminate(cleanup)];
+    }
+
+    bb38 (cleanup): {
+        _45 = discriminant(_17);
+        switchInt(move _45) -> [1: bb36, otherwise: bb28];
+    }
+
+    bb39: {
+        goto -> bb35;
+    }
+}
+
+promoted[0] in run_on_stdin: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in run_on_stdin: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn run_on_directory(_1: PathBuf, _2: Settings, _3: Query) -> Result<(), anyhow::Error> {
+    debug path => _1;
+    debug settings => _2;
+    debug query => _3;
+    let mut _0: std::result::Result<(), anyhow::Error>;
+    let _4: bool;
+    let _6: &std::path::Path;
+    let _7: &std::path::PathBuf;
+    let _8: &ruplacer::Settings;
+    let mut _9: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, anyhow::Error>>;
+    let mut _10: std::result::Result<(), anyhow::Error>;
+    let mut _11: &mut ruplacer::DirectoryPatcher<'_>;
+    let _12: &ruplacer::Query;
+    let mut _13: isize;
+    let mut _16: ruplacer::DirectoryPatcher<'_>;
+    let mut _17: usize;
+    let mut _18: &ruplacer::Stats;
+    let _19: ();
+    let mut _20: std::fmt::Arguments<'_>;
+    let mut _21: &[&str];
+    let mut _22: &[core::fmt::rt::Argument<'_>];
+    let _23: &[core::fmt::rt::Argument<'_>; 1];
+    let _24: [core::fmt::rt::Argument<'_>; 1];
+    let mut _25: core::fmt::rt::Argument<'_>;
+    let _26: &colored::ColoredString;
+    let _27: colored::ColoredString;
+    let mut _28: colored::ColoredString;
+    let _29: &str;
+    let _30: !;
+    let _31: ();
+    let _32: &ruplacer::Stats;
+    let _33: ();
+    let mut _34: std::fmt::Arguments<'_>;
+    let mut _35: &[&str];
+    scope 1 {
+        debug dry_run => _4;
+        let mut _5: ruplacer::DirectoryPatcher<'_>;
+        scope 2 {
+            debug directory_patcher => _5;
+            let _14: std::result::Result<std::convert::Infallible, anyhow::Error>;
+            let _15: ruplacer::Stats;
+            scope 3 {
+                debug residual => _14;
+                scope 4 {
+                }
+            }
+            scope 5 {
+                debug val => const ();
+                scope 6 {
+                }
+            }
+            scope 7 {
+                debug stats => _15;
+                let mut _37: &[&str; 1];
+                scope 8 {
+                    let mut _36: &[&str; 2];
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _4 = (_2.0: bool);
+        _7 = &_1;
+        _6 = <PathBuf as Deref>::deref(_7) -> [return: bb1, unwind: bb29];
+    }
+
+    bb1: {
+        _8 = &_2;
+        _5 = DirectoryPatcher::<'_>::new(_6, _8) -> [return: bb2, unwind: bb29];
+    }
+
+    bb2: {
+        _11 = &mut _5;
+        _12 = &_3;
+        _10 = DirectoryPatcher::<'_>::run(move _11, _12) -> [return: bb3, unwind: bb29];
+    }
+
+    bb3: {
+        _9 = <Result<(), anyhow::Error> as Try>::branch(move _10) -> [return: bb4, unwind: bb29];
+    }
+
+    bb4: {
+        _13 = discriminant(_9);
+        switchInt(move _13) -> [0: bb5, 1: bb7, otherwise: bb6];
+    }
+
+    bb5: {
+        _16 = move _5;
+        _15 = DirectoryPatcher::<'_>::stats(move _16) -> [return: bb9, unwind: bb29];
+    }
+
+    bb6: {
+        unreachable;
+    }
+
+    bb7: {
+        _14 = move ((_9 as Break).0: std::result::Result<std::convert::Infallible, anyhow::Error>);
+        _0 = <Result<(), anyhow::Error> as FromResidual<Result<Infallible, anyhow::Error>>>::from_residual(move _14) -> [return: bb8, unwind: bb29];
+    }
+
+    bb8: {
+        drop(_3) -> [return: bb25, unwind: bb30];
+    }
+
+    bb9: {
+        _18 = &_15;
+        _17 = Stats::total_replacements(move _18) -> [return: bb10, unwind: bb29];
+    }
+
+    bb10: {
+        switchInt(move _17) -> [0: bb11, otherwise: bb18];
+    }
+
+    bb11: {
+        _36 = const _;
+        _21 = _36 as &[&str] (PointerCoercion(Unsize));
+        _29 = const "Error";
+        _28 = <&str as colored::Colorize>::bold(_29) -> [return: bb12, unwind: bb29];
+    }
+
+    bb12: {
+        _27 = <ColoredString as colored::Colorize>::red(move _28) -> [return: bb13, unwind: bb29];
+    }
+
+    bb13: {
+        _26 = &_27;
+        _25 = core::fmt::rt::Argument::<'_>::new_display::<ColoredString>(_26) -> [return: bb14, unwind: bb28];
+    }
+
+    bb14: {
+        _24 = [move _25];
+        _23 = &_24;
+        _22 = _23 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _20 = Arguments::<'_>::new_v1(move _21, move _22) -> [return: bb15, unwind: bb28];
+    }
+
+    bb15: {
+        _19 = _eprint(move _20) -> [return: bb16, unwind: bb28];
+    }
+
+    bb16: {
+        drop(_27) -> [return: bb17, unwind: bb29];
+    }
+
+    bb17: {
+        _30 = exit(const 2_i32) -> bb29;
+    }
+
+    bb18: {
+        _32 = &_15;
+        _31 = print_stats(_32, _4) -> [return: bb19, unwind: bb29];
+    }
+
+    bb19: {
+        switchInt(_4) -> [0: bb22, otherwise: bb20];
+    }
+
+    bb20: {
+        _37 = const _;
+        _35 = _37 as &[&str] (PointerCoercion(Unsize));
+        _34 = Arguments::<'_>::new_const(move _35) -> [return: bb21, unwind: bb29];
+    }
+
+    bb21: {
+        _33 = _print(move _34) -> [return: bb33, unwind: bb29];
+    }
+
+    bb22: {
+        _0 = Result::<(), anyhow::Error>::Ok(const ());
+        drop(_3) -> [return: bb23, unwind: bb30];
+    }
+
+    bb23: {
+        drop(_2) -> [return: bb24, unwind: bb31];
+    }
+
+    bb24: {
+        drop(_1) -> [return: bb27, unwind continue];
+    }
+
+    bb25: {
+        drop(_2) -> [return: bb26, unwind: bb31];
+    }
+
+    bb26: {
+        drop(_1) -> [return: bb27, unwind continue];
+    }
+
+    bb27: {
+        return;
+    }
+
+    bb28 (cleanup): {
+        drop(_27) -> [return: bb29, unwind terminate(cleanup)];
+    }
+
+    bb29 (cleanup): {
+        drop(_3) -> [return: bb30, unwind terminate(cleanup)];
+    }
+
+    bb30 (cleanup): {
+        drop(_2) -> [return: bb31, unwind terminate(cleanup)];
+    }
+
+    bb31 (cleanup): {
+        drop(_1) -> [return: bb32, unwind terminate(cleanup)];
+    }
+
+    bb32 (cleanup): {
+        resume;
+    }
+
+    bb33: {
+        goto -> bb22;
+    }
+}
+
+promoted[0] in run_on_directory: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "", const ": nothing found to replace\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in run_on_directory: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "Re-run ruplacer with --go to write these changes to the filesystem\n"];
+        _0 = &_1;
+        return;
+    }
+}

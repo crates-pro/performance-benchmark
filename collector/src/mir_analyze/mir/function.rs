@@ -3,6 +3,7 @@ use super::{
     mir::{LocalID, ModuledIdentifier},
     scope::{LocalDefs, Scopes, VarDebugInfos},
     ty::Ty,
+    operand::Operand,
 };
 
 #[derive(Debug)]
@@ -30,11 +31,27 @@ pub struct PromotedFunction {
     pub body: Function,
 }
 
+#[derive(Debug)]
+pub struct NofnFunction {
+    pub body: Function,
+}
+
 pub type PromotedID = u32;
 
 #[derive(Debug)]
 pub struct ConstBlock {
     pub const_var: ModuledIdentifier,
     pub ty: Ty,
+    pub body: Function,
+}
+
+#[derive(Debug)]
+pub struct FunctionName {
+    pub name: String,
+    pub params: Vec<Operand>,
+}
+
+#[derive(Debug)]
+pub struct StaticStruct {
     pub body: Function,
 }

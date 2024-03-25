@@ -48,3 +48,31 @@ fn test_closure() {
 
     println!("{:?}", result);
 }
+#[test]
+fn test_instance() {
+    let test_file = File::open("test/mir_analyze/mir/texteditor/runiq.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_two() {
+    let test_file = File::open("test/mir_analyze/mir/texteditor/ruplacer.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_xsv() {
+    let test_file = File::open("test/mir_analyze/mir/texteditor/xsv.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_now() {
+    let test_file = File::open("test/mir_analyze/mir/now.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}

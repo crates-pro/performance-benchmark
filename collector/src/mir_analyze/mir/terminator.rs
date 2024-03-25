@@ -7,6 +7,22 @@ pub enum Terminator {
     Return,
     Assert(Assert),
     Call(Call),
+    SwitchInt(SwitchInt),
+    Goto(BasicBlockID),
+    Drop(Drop),
+    UnReachable,
+    UnwindResume,
+}
+
+#[derive(Debug)]
+pub struct SwitchInt {
+    pub operand: Operand,
+    pub success: Vec<Target>,
+}
+
+#[derive(Debug)]
+pub struct Target {
+    pub line: u32,
 }
 
 #[derive(Debug)]
@@ -19,12 +35,20 @@ pub struct Assert {
 }
 
 #[derive(Debug)]
+pub struct Drop {
+    pub place: Place,
+    pub replace: bool,
+    pub success: BasicBlockID,
+    pub unwind: UnwindAction,
+}
+
+#[derive(Debug)]
 pub struct Call {
     pub callee: ModuledIdentifier,
     pub params: Vec<Operand>,
     pub recv: Place,
     pub success: Option<BasicBlockID>,
-    pub unwind: UnwindAction,
+    pub unwind: Option<UnwindAction>,
 }
 
 #[derive(Debug)]
@@ -32,6 +56,13 @@ pub enum UnwindAction {
     CleanUp(u32),
     Continue,
     UnReachable,
+    Terminate(UnwindTerminateReason),
+}
+
+#[derive(Debug)]
+pub enum UnwindTerminateReason {
+    Abi,
+    Incleanup,
 }
 
 impl FromStr for UnwindAction {
@@ -44,6 +75,8 @@ impl FromStr for UnwindAction {
             Ok(Self::Continue)
         } else if s == "unreachable" {
             Ok(Self::UnReachable)
+        } else if s == "cleanup" {
+            Ok(Self::Terminate(UnwindTerminateReason::Incleanup))
         } else {
             Err(format!("Fail to convert {} into a BasicBlockID.", s))
         }

@@ -1,8 +1,10 @@
-use super::{place::Place, rvalue::Rvalue};
+use super::{place::Place, rvalue::Rvalue,mir::LocalID};
 
 #[derive(Debug)]
 pub enum Statement {
     Assign(Assign),
+    StorageLive(LocalID),
+    StorageDead(LocalID),
 }
 
 #[derive(Debug)]

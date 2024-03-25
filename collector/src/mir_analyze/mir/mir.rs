@@ -1,5 +1,5 @@
 use super::{
-    function::{ConstBlock, Function, PromotedFunction},
+    function::{ConstBlock, Function, PromotedFunction,NofnFunction,StaticStruct},
     ty::Ty,
 };
 
@@ -9,6 +9,8 @@ pub struct MIRs {
     pub functions: Vec<Function>,
     pub promoted_functions: Vec<PromotedFunction>,
     pub const_blocks: Vec<ConstBlock>,
+    pub nofn_functions: Vec<NofnFunction>,
+    pub static_structs: Vec<StaticStruct>,
 }
 
 pub type ModuledIdentifier = Vec<String>;

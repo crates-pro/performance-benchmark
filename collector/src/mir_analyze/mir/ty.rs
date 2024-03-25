@@ -9,11 +9,14 @@ pub enum Ty {
     I32,
     U32,
     Str,
+    Float64,
+    Float32,
     SelfDef(ModuledIdentifier),
     Tuple(Vec<Ty>),
     Array(Array),
     Ref(Box<Ty>),
     Placeholder,
+    Result,
     UND, 
 }
 
@@ -34,14 +37,19 @@ impl FromStr for Ty {
                 return Ok(Self::Array(Array::from_str(s)?));
             }
         }
-
+        if s.contains("Result") {
+            return Ok(Self::Result);
+        }
         match s {
+            "f32" => Ok(Self::Float32),
+            "f64" => Ok(Self::Float64),
             "()" => Ok(Self::Unit),
             "i32" => Ok(Self::I32),
             "u32" => Ok(Self::U32),
             "bool" => Ok(Self::Bool),
             "undef" => Ok(Self::UND),
             "str" => Ok(Self::Str),
+
             _ => Ok(Self::SelfDef(
                 s.split("::").map(|s| s.to_string()).collect(),
             )),

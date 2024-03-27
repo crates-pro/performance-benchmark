@@ -1,5 +1,5 @@
 use super::{
-    function::{ConstBlock, Function, PromotedFunction,NofnFunction,StaticStruct},
+    function::{ConstBlock, Function, NofnFunction, PromotedFunction, StaticStruct},
     ty::Ty,
 };
 

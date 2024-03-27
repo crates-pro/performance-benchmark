@@ -23,7 +23,6 @@ pub fn parse_mir(mir_file: File) -> anyhow::Result<MIRs> {
 fn test_dev() {
     let test_file = File::open("test/mir_analyze/mir/dev.mir").unwrap();
     let result = parse_mir(test_file).unwrap();
-
     println!("{:?}", result);
 }
 #[test]

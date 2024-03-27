@@ -20,6 +20,7 @@ pub mirs: MIRs = {
     <mut mirs: mirs> <static_struct: static_struct> => {mirs.static_structs.push(static_struct); mirs},
     <function: function> => MIRs {functions: vec![function], promoted_functions: vec![], const_blocks: vec![], nofn_functions: vec![],static_structs: vec![],},
     <c: comments> => MIRs{functions: vec![], promoted_functions: vec![], const_blocks: vec![], nofn_functions: vec![],static_structs: vec![],},
+    <mut mirs: mirs> <alloc_block: alloc_block> => mirs,
 }
 
 function: Function = {
@@ -148,6 +149,41 @@ function_body: (VarDebugInfos, LocalDefs, Scopes, BasicBlocks) = {
         ),
 }
 
+alloc_block: String = {
+    <identifier: identifier> <lp: left_parenthesis> 
+    "static:" <static_info: moduled_identifier> <c1: comma> 
+    "size:" <size_info: unsinged_digit> <c2: comma>
+    "align:" <align_info: unsinged_digit> <rp: right_parenthesis>
+    <lb: left_brace> <alloc_block_lines: alloc_block_lines> <rb: right_brace>
+     => identifier + " (static: " + static_info.join("::").as_str() 
+     + ", size:" + size_info.as_str() + ", " + align_info.as_str() + ") {"
+     + alloc_block_lines.as_str() + "}",
+     
+    <identifier: identifier> <lp: left_parenthesis> 
+    "size:" <size_info: unsinged_digit> <c2: comma>
+    "align:" <align_info: unsinged_digit> <rp: right_parenthesis>
+    <lb: left_brace> <alloc_block_lines: alloc_block_lines> <rb: right_brace>
+     => identifier + " (" + "size:" + size_info.as_str() + ", " 
+     + align_info.as_str() + ") {"
+     + alloc_block_lines.as_str() + "}",
+     
+    <identifier: identifier> <lp: left_parenthesis> 
+    "size:" <size_info: unsinged_digit> <c2: comma>
+    "align:" <align_info: unsinged_digit> <rp: right_parenthesis>
+    <lb: left_brace> <rb: right_brace>
+     => identifier + " (" + "size:" + size_info.as_str() + ", " 
+     + align_info.as_str() + ") {" + "}",
+}
+
+alloc_block_lines: String = {
+    <alloc_block_lines: alloc_block_lines> <s: r"╾────.*╾──────╼.*"> => alloc_block_lines + s,
+    <alloc_block_lines: alloc_block_lines> <s: r"[a-z0-9 ]+│.+"> => alloc_block_lines + s,
+    <alloc_block_lines: alloc_block_lines> <unsinged_digit: unsinged_digit> <identifier: identifier> <s: r"│.+│.+"> => alloc_block_lines + unsinged_digit.as_str() + identifier.as_str() + s,
+    <s: r"╾────.*╾──────╼.*"> => s.to_string(),
+    <unsinged_digit: unsinged_digit> <identifier: identifier> <s: r"│.+│.+"> => unsinged_digit + identifier.as_str() + s,
+    <s: r"[a-z0-9 ]+│.+"> => s.to_string(),
+}
+
 params: Params = {
     <mut params: params> <comma: comma> <param: param> => {params.push(param); params},
     <param: param> => vec![param],
@@ -253,7 +289,8 @@ var_debug_info: VarDebugInfo = {
     "debug" <name: identifier> "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Local(local_id)},
     "debug" <name: identifier> "=>" <const_val: const_val> <semicolon: semicolon> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Const(const_val)},
     "debug" <name: identifier> "=>" <const_val: const_val> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Const(const_val)},
-    "debug" <name: identifier> "=>" <left_angle_brackets: left_parenthesis> <star: star> <field_access: field_access> <right_parenthesis: right_parenthesis> <semicolon: semicolon> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Field(field_access)},
+    "debug" <name: identifier> "=>" <left_parenthesis: left_parenthesis> <star: star> <field_access: field_access> <right_parenthesis: right_parenthesis> <semicolon: semicolon> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Field(field_access)},
+    "debug" <name: identifier> "=>" <field_access: field_access> <semicolon: semicolon> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Field(field_access)},
 };
 
 local_defs: LocalDefs = {
@@ -347,7 +384,7 @@ field_access: Field = <left_parenthesis: left_parenthesis>
 
 deref: Deref = {
     <left_parenthesis: left_parenthesis> <star: star> <place: place> <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
-    <left_parenthesis: left_parenthesis> <place: place> "as" <ty: ty> <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    <left_parenthesis: left_parenthesis> <place: place> " as " <ty: ty> <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
 };
 copyderef: Deref = {
     "deref_copy" <field_access: field_access> => Deref { place: field_access.place, },
@@ -508,7 +545,7 @@ shallow: ShallowInitBox ={
 };
 
 cast: Cast = {
-    <operand: operand> "as" <ty: ty> <left_parenthesis: left_parenthesis> <cast_kind: cast_kind> <right_parenthesis: right_parenthesis> => Cast { cast_kind, operand, ty, },
+    <operand: operand> " as " <ty: ty> <left_parenthesis: left_parenthesis> <cast_kind: cast_kind> <right_parenthesis: right_parenthesis> => Cast { cast_kind, operand, ty, },
 };
 
 cast_kind: CastKind = {
@@ -629,8 +666,11 @@ operand: Operand = {
 };
 
 const_val: Const = {
-    "const" <val: moduled_identifier> => Const { ty: Ty::UND, val: val.into_iter().map(|s| s).collect(), },
-    "const" <val: moduled_identifier> "(())" => Const { ty: Ty::UND, val: val.into_iter().map(|s| s).collect(), }, //const Result::<(), Infallible>::Ok(())
+    "const" <val: moduled_identifier> => Const { ty: Ty::UND, val: val.join("::"), },
+    "const" <val: moduled_identifier> "(())" => Const { ty: Ty::UND, val: val.join("::"), }, //const Result::<(), Infallible>::Ok(())
+    "const" <val: moduled_identifier> <lb1: left_brace> <lb2: left_brace> 
+     <const_type_notations: const_type_notations> <rb1: right_brace> <rb2: right_brace> 
+     => Const { ty: Ty::UND, val: val.join("::") + "{{" + const_type_notations.as_str() + "}}"},
     "const" <val: string> => Const { ty: Ty::Str, val: val.to_string(), },
     "const" <val: single_string> => Const { ty: Ty::Str, val: val.to_string(), },
     "const" <val: literal_sined_digit> => Const { ty: val.0, val: val.1, },
@@ -639,9 +679,15 @@ const_val: Const = {
     "const" "ZeroSized" <colon: colon>  <val: identifier> => Const { ty: Ty::Str, val: val.to_string(), },
     "const" <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> => Const {ty: Ty::UND, val: String::from(""), },
     "const" <floatnum: floatnum> <identifier: identifier> => Const {ty: Ty::from_str(&identifier.as_str()).unwrap(), val: floatnum + &identifier, },
+    "const" <lb: left_brace> <alloc_id: identifier> <colon: colon> <ty: ty> <rb: right_brace> => Const {ty: Ty::AllocTy(alloc_id.clone(), Box::new(ty)), val: alloc_id},
     "const core::fmt::rt::UnsafeArg {{ _private: () }}" => Const { ty: Ty::UND, val: String::from("_"), },
     " const cat::_IMPL_DESERIALIZE_FOR_Args::<impl serde::Deserialize<'de> for cat::Args>::deserialize::__Visitor::<'_> {{ marker: PhantomData::<cat::Args>, lifetime: PhantomData::<&()> }}" => Const { ty: Ty::UND, val: String::from("_"), },
 };
+
+const_type_notations: String = {
+    <const_type_notations: const_type_notations> <comma: comma > <identifier: identifier> <colon: colon> <ty: ty> => const_type_notations + ", " + identifier.as_str() + ": " + ty.to_string().as_str(),
+    <identifier: identifier> <colon: colon> <ty: ty> => identifier + ": " + ty.to_string().as_str(),
+}
 
 literal_sined_digit: (Ty, String) = {
     <unsinged_digit: unsinged_digit> <identifier: identifier> => (Ty::from_str(&identifier.as_str()[1..]).unwrap(), unsinged_digit),
@@ -678,52 +724,147 @@ tys: Vec<Ty> = {
 
 ty: Ty = {
     <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> => Ty::Unit,
-    // "i32" => Ty::I32,
-    // "u32" => Ty::U32,
-    // "str" => Ty::Str,
     <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> => Ty::Tuple(tys),
     <moduled_identifier: moduled_identifier> => Ty::from(moduled_identifier),
+    "dyn" <ty: ty> => Ty::Dyn(Box::new(ty)),
+    "mut" <ty: ty> => ty,
+    "const" <ty: ty> => ty,
     <bitwise_and: bitwise_and> <ty: ty> => Ty::Ref(Box::new(ty)),
-    <bitwise_and: bitwise_and> "mut" <ty: ty> => Ty::Ref(Box::new(ty)),
-    <bitwise_and: bitwise_and> "dyn" <ty: ty> => Ty::Ref(Box::new(ty)),
-    <bitwise_and: bitwise_and> "mut" "dyn" <ty: ty> => Ty::Ref(Box::new(ty)),
-    <star: star> "mut" <ty: ty> => Ty::Ref(Box::new(ty)),
-    <star: star> "const" <ty: ty> => Ty::Ref(Box::new(ty)),
-    <star: star> "const" "dyn" <ty: ty> => Ty::Ref(Box::new(ty)),
+    <star: star> <ty: ty> => Ty::Ref(Box::new(ty)),
     <left_bracket: left_bracket> <ty: ty> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(ty), len: None, }),
     <left_bracket: left_bracket> <ty: ty> <semicolon: semicolon> <len: unsinged_digit> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(ty), len: Some(u32::from_str(len.as_str()).unwrap()), }),
+    <closure_ty: closure_ty> => Ty::Closure(Box::new(closure_ty)),
     <logic_negate: logic_negate> => Ty::Unit,
 };
 
+closure_ty: Closure = {
+    "fn" <lp: left_parenthesis> <params: tys> <rp: right_parenthesis>
+    "->" <ret_ty: ty> <lb: left_brace> <opeartion: moduled_identifier> <rb: right_brace>
+    => Closure {
+        closure_ty: ClosureTy::from_str("fn").unwrap(),
+        params,
+        ret_ty,
+        opeartion,
+    },
+    
+    "fn" <lp: left_parenthesis> <rp: right_parenthesis>
+    "->" <ret_ty: ty> <lb: left_brace> <opeartion: moduled_identifier> <rb: right_brace>
+    => Closure {
+        closure_ty: ClosureTy::from_str("fn").unwrap(),
+        params: vec![],
+        ret_ty,
+        opeartion,
+    },
+}
+
 moduled_identifier: ModuledIdentifier = {
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <identifier: identifier> => {moduled_identifier.push(identifier); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "drop" => {moduled_identifier.push("drop".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <identifier: identifier> <angle_brackets:angle_brackets> => {moduled_identifier.push(identifier + angle_brackets.as_str()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <zero_string: zero_string> => {moduled_identifier.push(zero_string); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <angle_brackets: angle_brackets> => {moduled_identifier.push(angle_brackets.to_string()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => {moduled_identifier.push("constant".to_string() + &unsinged_digit); moduled_identifier},
     <identifier: identifier> => vec![identifier],
+    <identifier: identifier> <angle_brackets:angle_brackets> => vec![identifier + angle_brackets.as_str()],
     <zero_string: zero_string> => vec![zero_string.to_string()],
     <angle_brackets: angle_brackets> => vec![angle_brackets.to_string()],
 };
 
 angle_brackets: String = {
-    <identifier: identifier> <angle_brackets: angle_brackets> => (identifier + &angle_brackets).to_string(),
-    <s: r"<[^>]+>"> => s.to_string(),
-    <s: r"<[^<>]+<[^<>]+>[^>]*>"> => s.to_string(),
+    <ls: left_angle_bracket> <tys: tys> <rs: right_angle_bracket> => {
+        "<".to_string() + tys.into_iter().map(|t| t.to_string()).collect::<Vec<String>>().join(", ").as_str() + ">"
+    },
+    
+    <ls: left_angle_bracket> <life_cycle_parameters: life_cycle_parameters> <rs: right_angle_bracket> => {
+        "<".to_string() + life_cycle_parameters.as_str() + ">"
+    },
+    
+    <ls: left_angle_bracket> <lcps: life_cycle_parameters> <comma: comma> <tys: tys> <rs: right_angle_bracket> => {
+        "<".to_string() +lcps.as_str() + ", " + tys.into_iter().map(|t| t.to_string()).collect::<Vec<String>>().join(", ").as_str() + ">"
+    },
 
-    <s: r"<[^<>]+<[^<>]+>[^<>]+<[^<>]+>[^>]*>"> => s.to_string(),
-    <s: r"<[^<>]+<[^<>]+<[^<>]+>[^<>]*>[^>]*>"> => s.to_string(),
+    <ls: left_angle_bracket> <impl_trait: impl_trait> <rs: right_angle_bracket> => {
+        "<".to_string() + impl_trait.as_str() + ">"
+    },
 
-    <s: r"<[^<>]+<[^<>]+<[^<>]+>>[^<>]+<[^<>]+<[^<>]+<[^<>]+>>>>"> => s.to_string(),
-    <s: r"<[^<>]+<[^<>]+>[^<>]+<[^<>]+<[^<>]+>[^>]*>[^>]*>"> => s.to_string(), //<Result<(), std::io::Error> as FromResidual<Result<Infallible, std::io::Error>>>
-    <s: r"<[^<>]+<[^<>]+<[^<>]+>[^<>]*>[^<>]+<[^>]*>[^>]*>"> => s.to_string(), //<cat::_IMPL_DESERIALIZE_FOR_Args::<impl serde::Deserialize<'de> for cat::Args>::deserialize::__Visitor<'_>>
-    <s: r"<[^<>]+<[^<>]+<[^<>]+>[^<>]*>[^<>]+<[^>]+<[^>]*>[^>]*>[^>]*>"> => s.to_string(), //<cat::_IMPL_DESERIALIZE_FOR_Args::<impl serde::Deserialize<'de> for cat::Args>::deserialize::__Field, <__D as serde::Deserializer<'_>>::Error>
-    "<PathBuf, fn(&&OsStr) -> PathBuf {<PathBuf as From<&&OsStr>>::from}>" => "<PathBuf, fn(&&OsStr) -> PathBuf {<PathBuf as From<&&OsStr>>::from}>".to_string(),
-    "<fn() -> Vec<String> {Vec::<String>::new}>" => "<fn() -> Vec<String> {Vec::<String>::new}>".to_string(),
-};
+    <ls: left_angle_bracket> <impl_path: impl_path> <rs: right_angle_bracket> => {
+        "<".to_string() + impl_path.as_str() + ">"
+    },
 
-identifier: String = <s: r"([a-zA-Z][a-zA-Z0-9_]*)|(_[a-zA-Z0-9_]+)"> => String::from(s);
+    <ls: left_angle_bracket> <impl_for: impl_for> <rs: right_angle_bracket> => {
+        "<".to_string() + impl_for.as_str() + ">"
+    },
+    
+    // Use " as " instead of "as" to avoid ambiguity.
+    <ls: left_angle_bracket> <a: ty> " as " <b: ty> <rs: right_angle_bracket> => {
+        let s = "<".to_string() + a.to_string().as_str() + " as " + b.to_string().as_str() + ">";
+        s
+    },
+    
+    <ls: left_angle_bracket> <zero_string: zero_string> "as" <ty: ty> <rs: right_angle_bracket> => {
+        let s: String = zero_string + " as " + ty.to_string().as_str();
+        "<".to_string() + s.as_str() + ">"
+    },
+}
 
-single_string: String = <s: r#"'[^']*'"#> => s.to_string();
+impl_trait: String = {
+    <imp: "impl "> <a: ty> => imp.to_string() + a.to_string().as_str(),
+}
+
+impl_for: String = {
+    <imp: "impl "> <a: ty> <fo: " for "> <b: ty>
+     => imp.to_string() + a.to_string().as_str() + fo + b.to_string().as_str(),
+}
+
+impl_path: String = {
+    <imp: "impl at "> <file_path: file_path> 
+    <c1: colon> <row1: unsinged_digit> <c2: colon> <col1: unsinged_digit>
+    <c3: colon> <row2: unsinged_digit> <c4: colon> <col2: unsinged_digit> 
+     => {
+        imp.to_string() + file_path.as_str() + ":" + row1.as_str() + ":" + col1.as_str()  + ":" + row2.as_str() + ":" + col2.as_str()
+    },
+}
+
+file_path: String = {
+    <file_path: file_path> <s: r"/"> <file_name: file_name> => {
+        file_path + s + file_name.as_str()
+    },
+    <file_path: file_path> <s: r"\\"> <file_name: file_name> => {
+        file_path + s + file_name.as_str()
+    },
+    <file_name: file_name> => {
+        file_name
+    },
+    <s: r"/"> <file_name: file_name> => s.to_string() + file_name.as_str(),
+}
+
+file_name: String = {
+    <file_name: file_name> <dot: dot> => file_name + ".",
+    <file_name: file_name> <negative: negative> => file_name + negative.as_str(),
+    <file_name: file_name> <identifier: identifier> => file_name + identifier.as_str(),
+    <file_name: file_name> <unsinged_digit: unsinged_digit> => file_name + unsinged_digit.as_str(),
+    <s: negative> => s,
+    <dot: dot> => ".".to_string(),
+    <identifier: identifier> => identifier,
+    <unsinged_digit: unsinged_digit> => unsinged_digit,
+}
+
+life_cycle_parameters: String = {
+    <life_cycle_parameter: life_cycle_parameter> => life_cycle_parameter,
+    <life_cycle_parameters: life_cycle_parameters> <comma: comma> <life_cycle_parameter: life_cycle_parameter>
+     => life_cycle_parameters + ", " + life_cycle_parameter.as_str(),
+}
+
+life_cycle_parameter: String = {
+    <apostrophe: apostrophe> <identifier: identifier> => "'".to_string() + identifier.as_str(),
+    <apostrophe: apostrophe> <place_holder: place_holder> => "'_".to_string(),
+}
+
+identifier: String = {
+    <s: r"([a-zA-Z][a-zA-Z0-9_]*)|(_[a-zA-Z0-9_]+)"> => s.to_string(),
+}
+
+single_string: String = <s: r#"'[^'<>_]*'"#> => s.to_string();
 
 left_brace: () = "{" => ();
 right_brace: () = "}" => ();
@@ -734,8 +875,8 @@ right_bracket: () = "]" => ();
 left_parenthesis: () = "(" => ();
 right_parenthesis: () = ")" => ();
 
-left_angle_brackets: () = "<" =>();
-right_angle_brackets: () = ">" =>();
+left_angle_bracket: () = "<" =>();
+right_angle_bracket: () = ">" =>();
 
 dot: () = "." => ();
 comma: () = "," => ();
@@ -749,18 +890,24 @@ assign: () = "=" => ();
 bitwise_and: () = "&" => ();
 star: () = "*" => ();
 
+apostrophe: () = "'" => ();
+
 logic_negate: () = "!" => ();
 
 place_holder: () = "_" => ();
 
+negative: String = <s: r"-"> => "-".to_string();
 unsinged_digit: String = <s: r"[\d]+"> => s.to_string();
-negative_digit: String = <s: r"-[\d]+"> => s.to_string();
+negative_digit: String = <negative: negative> <unsinged_digit: unsinged_digit> => negative + unsinged_digit.as_str();
 
 format_str: FormatStr = {
     <string: string> => FormatStr { msg: string, args: vec![] },
     <mut format_str: format_str> <comma: comma> <operand: operand> => { format_str.args.push(operand); format_str },
 };
-string: String = <s: r#""[^"]*""#> => s.to_string();
+string: String = {
+    <s: r#""[^\\"]*(?:\\.[^\\"]*)*""#> => s.to_string(),
+    <s: r#"b"[^"]*""#> => s.to_string(),
+}
 
 zero_string: String = <s: r"\{closure[^}]*\}"> => s.to_string();
 

@@ -17,6 +17,7 @@ pub enum Ty {
     Ref(Box<Ty>),
     Placeholder,
     Result,
+    Alloc,
     UND, 
 }
 

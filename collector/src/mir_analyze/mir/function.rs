@@ -1,9 +1,9 @@
 use super::{
     basic_block::BasicBlocks,
     mir::{LocalID, ModuledIdentifier},
+    operand::Operand,
     scope::{LocalDefs, Scopes, VarDebugInfos},
     ty::Ty,
-    operand::Operand,
 };
 
 #[derive(Debug)]

@@ -12,7 +12,8 @@ pub enum Rvalue {
     CopyForDeref(Place),
     Len(Place),
     ShallowInitBox(ShallowInitBox),
-    //Repeat(Repeat),
+    Repeat(Repeat),
+    AddressOf(AddressOf),
 }
 #[derive(Debug)]
 pub enum UnaryOp {
@@ -119,14 +120,26 @@ pub enum BorrowKind {
     Mut,
 }
 
-/*#[derive(Debug)]
+#[derive(Debug)]
 pub struct Repeat {
     pub operand: Operand,
-    pub size: LocalID,
-}*/
+    pub size: String,
+}
 
 #[derive(Debug)]
 pub struct ShallowInitBox {
     pub operand: Operand,
     pub ty: Ty,
+}
+
+#[derive(Debug)]
+pub struct AddressOf {
+    pub place: Place,
+    pub mutability: Option<Mutability>,
+}
+
+#[derive(Debug)]
+pub enum Mutability {
+    Not,
+    Mut,
 }

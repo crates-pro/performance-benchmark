@@ -1,5 +1,5 @@
 // WARNING: This output format is intended for human consumers only
-// and is subject to change without notice. Knock yourself out.
+// and is subject to change without notice. Knock yourself out
 static cat::USAGE: &str = {
     let mut _0: &str;
 
@@ -2309,7 +2309,7 @@ fn cat::run(_1: &[&str]) -> Result<(), CliError> {
     }
 
     bb0: {
-        _5 = const {alloc1: &&str};
+        
         _14 = deref_copy (*_5);
         _4 = get_args::<cat::Args>(_14, _1) -> [return: bb1, unwind continue];
     }
@@ -2382,105 +2382,7 @@ fn cat::run(_1: &[&str]) -> Result<(), CliError> {
         goto -> bb10;
     }
 }
-
-alloc1 (static: cat::USAGE, size: 16, align: 8) {
-    ╾────alloc124<imm>────╼ bd 05 00 00 00 00 00 00 │ ╾──────╼........
-}
-
-alloc124 (size: 1469, align: 1) {
-    0x000 │ 0a 43 6f 6e 63 61 74 65 6e 61 74 65 73 20 43 53 │ .Concatenates CS
-    0x010 │ 56 20 64 61 74 61 20 62 79 20 63 6f 6c 75 6d 6e │ V data by column
-    0x020 │ 20 6f 72 20 62 79 20 72 6f 77 2e 0a 0a 57 68 65 │  or by row...Whe
-    0x030 │ 6e 20 63 6f 6e 63 61 74 65 6e 61 74 69 6e 67 20 │ n concatenating 
-    0x040 │ 62 79 20 63 6f 6c 75 6d 6e 2c 20 74 68 65 20 63 │ by column, the c
-    0x050 │ 6f 6c 75 6d 6e 73 20 77 69 6c 6c 20 62 65 20 77 │ olumns will be w
-    0x060 │ 72 69 74 74 65 6e 20 69 6e 20 74 68 65 20 73 61 │ ritten in the sa
-    0x070 │ 6d 65 20 6f 72 64 65 72 20 61 73 0a 74 68 65 20 │ me order as.the 
-    0x080 │ 69 6e 70 75 74 73 20 67 69 76 65 6e 2e 20 54 68 │ inputs given. Th
-    0x090 │ 65 20 6e 75 6d 62 65 72 20 6f 66 20 72 6f 77 73 │ e number of rows
-    0x0a0 │ 20 69 6e 20 74 68 65 20 72 65 73 75 6c 74 20 69 │  in the result i
-    0x0b0 │ 73 20 61 6c 77 61 79 73 20 65 71 75 69 76 61 6c │ s always equival
-    0x0c0 │ 65 6e 74 20 74 6f 20 74 6f 0a 74 68 65 20 6d 69 │ ent to to.the mi
-    0x0d0 │ 6e 69 6d 75 6d 20 6e 75 6d 62 65 72 20 6f 66 20 │ nimum number of 
-    0x0e0 │ 72 6f 77 73 20 61 63 72 6f 73 73 20 61 6c 6c 20 │ rows across all 
-    0x0f0 │ 67 69 76 65 6e 20 43 53 56 20 64 61 74 61 2e 20 │ given CSV data. 
-    0x100 │ 28 54 68 69 73 20 62 65 68 61 76 69 6f 72 20 63 │ (This behavior c
-    0x110 │ 61 6e 20 62 65 0a 72 65 76 65 72 73 65 64 20 77 │ an be.reversed w
-    0x120 │ 69 74 68 20 74 68 65 20 27 2d 2d 70 61 64 27 20 │ ith the '--pad' 
-    0x130 │ 66 6c 61 67 2e 29 0a 0a 57 68 65 6e 20 63 6f 6e │ flag.)..When con
-    0x140 │ 63 61 74 65 6e 61 74 69 6e 67 20 62 79 20 72 6f │ catenating by ro
-    0x150 │ 77 2c 20 61 6c 6c 20 43 53 56 20 64 61 74 61 20 │ w, all CSV data 
-    0x160 │ 6d 75 73 74 20 68 61 76 65 20 74 68 65 20 73 61 │ must have the sa
-    0x170 │ 6d 65 20 6e 75 6d 62 65 72 20 6f 66 20 63 6f 6c │ me number of col
-    0x180 │ 75 6d 6e 73 2e 0a 49 66 20 79 6f 75 20 6e 65 65 │ umns..If you nee
-    0x190 │ 64 20 74 6f 20 72 65 61 72 72 61 6e 67 65 20 74 │ d to rearrange t
-    0x1a0 │ 68 65 20 63 6f 6c 75 6d 6e 73 20 6f 72 20 66 69 │ he columns or fi
-    0x1b0 │ 78 20 74 68 65 20 6c 65 6e 67 74 68 73 20 6f 66 │ x the lengths of
-    0x1c0 │ 20 72 65 63 6f 72 64 73 2c 20 75 73 65 20 74 68 │  records, use th
-    0x1d0 │ 65 0a 27 73 65 6c 65 63 74 27 20 6f 72 20 27 66 │ e.'select' or 'f
-    0x1e0 │ 69 78 6c 65 6e 67 74 68 73 27 20 63 6f 6d 6d 61 │ ixlengths' comma
-    0x1f0 │ 6e 64 73 2e 20 41 6c 73 6f 2c 20 6f 6e 6c 79 20 │ nds. Also, only 
-    0x200 │ 74 68 65 20 68 65 61 64 65 72 73 20 6f 66 20 74 │ the headers of t
-    0x210 │ 68 65 20 2a 66 69 72 73 74 2a 20 43 53 56 0a 64 │ he *first* CSV.d
-    0x220 │ 61 74 61 20 67 69 76 65 6e 20 61 72 65 20 75 73 │ ata given are us
-    0x230 │ 65 64 2e 20 48 65 61 64 65 72 73 20 69 6e 20 73 │ ed. Headers in s
-    0x240 │ 75 62 73 65 71 75 65 6e 74 20 69 6e 70 75 74 73 │ ubsequent inputs
-    0x250 │ 20 61 72 65 20 69 67 6e 6f 72 65 64 2e 20 28 54 │  are ignored. (T
-    0x260 │ 68 69 73 20 62 65 68 61 76 69 6f 72 0a 63 61 6e │ his behavior.can
-    0x270 │ 20 62 65 20 64 69 73 61 62 6c 65 64 20 77 69 74 │  be disabled wit
-    0x280 │ 68 20 2d 2d 6e 6f 2d 68 65 61 64 65 72 73 2e 29 │ h --no-headers.)
-    0x290 │ 0a 0a 55 73 61 67 65 3a 0a 20 20 20 20 78 73 76 │ ..Usage:.    xsv
-    0x2a0 │ 20 63 61 74 20 72 6f 77 73 20 20 20 20 5b 6f 70 │  cat rows    [op
-    0x2b0 │ 74 69 6f 6e 73 5d 20 5b 3c 69 6e 70 75 74 3e 2e │ tions] [<input>.
-    0x2c0 │ 2e 2e 5d 0a 20 20 20 20 78 73 76 20 63 61 74 20 │ ..].    xsv cat 
-    0x2d0 │ 63 6f 6c 75 6d 6e 73 20 5b 6f 70 74 69 6f 6e 73 │ columns [options
-    0x2e0 │ 5d 20 5b 3c 69 6e 70 75 74 3e 2e 2e 2e 5d 0a 20 │ ] [<input>...]. 
-    0x2f0 │ 20 20 20 78 73 76 20 63 61 74 20 2d 2d 68 65 6c │    xsv cat --hel
-    0x300 │ 70 0a 0a 63 61 74 20 6f 70 74 69 6f 6e 73 3a 0a │ p..cat options:.
-    0x310 │ 20 20 20 20 2d 70 2c 20 2d 2d 70 61 64 20 20 20 │     -p, --pad   
-    0x320 │ 20 20 20 20 20 20 20 20 20 20 20 57 68 65 6e 20 │            When 
-    0x330 │ 63 6f 6e 63 61 74 65 6e 61 74 69 6e 67 20 63 6f │ concatenating co
-    0x340 │ 6c 75 6d 6e 73 2c 20 74 68 69 73 20 66 6c 61 67 │ lumns, this flag
-    0x350 │ 20 77 69 6c 6c 20 63 61 75 73 65 0a 20 20 20 20 │  will cause.    
-    0x360 │ 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 │                 
-    0x370 │ 20 20 20 20 20 20 20 61 6c 6c 20 72 65 63 6f 72 │        all recor
-    0x380 │ 64 73 20 74 6f 20 61 70 70 65 61 72 2e 20 49 74 │ ds to appear. It
-    0x390 │ 20 77 69 6c 6c 20 70 61 64 20 65 61 63 68 20 72 │  will pad each r
-    0x3a0 │ 6f 77 20 69 66 0a 20 20 20 20 20 20 20 20 20 20 │ ow if.          
-    0x3b0 │ 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 │                 
-    0x3c0 │ 20 6f 74 68 65 72 20 43 53 56 20 64 61 74 61 20 │  other CSV data 
-    0x3d0 │ 69 73 6e 27 74 20 6c 6f 6e 67 20 65 6e 6f 75 67 │ isn't long enoug
-    0x3e0 │ 68 2e 0a 0a 43 6f 6d 6d 6f 6e 20 6f 70 74 69 6f │ h...Common optio
-    0x3f0 │ 6e 73 3a 0a 20 20 20 20 2d 68 2c 20 2d 2d 68 65 │ ns:.    -h, --he
-    0x400 │ 6c 70 20 20 20 20 20 20 20 20 20 20 20 20 20 44 │ lp             D
-    0x410 │ 69 73 70 6c 61 79 20 74 68 69 73 20 6d 65 73 73 │ isplay this mess
-    0x420 │ 61 67 65 0a 20 20 20 20 2d 6f 2c 20 2d 2d 6f 75 │ age.    -o, --ou
-    0x430 │ 74 70 75 74 20 3c 66 69 6c 65 3e 20 20 20 20 57 │ tput <file>    W
-    0x440 │ 72 69 74 65 20 6f 75 74 70 75 74 20 74 6f 20 3c │ rite output to <
-    0x450 │ 66 69 6c 65 3e 20 69 6e 73 74 65 61 64 20 6f 66 │ file> instead of
-    0x460 │ 20 73 74 64 6f 75 74 2e 0a 20 20 20 20 2d 6e 2c │  stdout..    -n,
-    0x470 │ 20 2d 2d 6e 6f 2d 68 65 61 64 65 72 73 20 20 20 │  --no-headers   
-    0x480 │ 20 20 20 20 57 68 65 6e 20 73 65 74 2c 20 74 68 │     When set, th
-    0x490 │ 65 20 66 69 72 73 74 20 72 6f 77 20 77 69 6c 6c │ e first row will
-    0x4a0 │ 20 4e 4f 54 20 62 65 20 69 6e 74 65 72 70 72 65 │  NOT be interpre
-    0x4b0 │ 74 65 64 0a 20 20 20 20 20 20 20 20 20 20 20 20 │ ted.            
-    0x4c0 │ 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 61 │                a
-    0x4d0 │ 73 20 63 6f 6c 75 6d 6e 20 6e 61 6d 65 73 2e 20 │ s column names. 
-    0x4e0 │ 4e 6f 74 65 20 74 68 61 74 20 74 68 69 73 20 68 │ Note that this h
-    0x4f0 │ 61 73 20 6e 6f 20 65 66 66 65 63 74 20 77 68 65 │ as no effect whe
-    0x500 │ 6e 0a 20 20 20 20 20 20 20 20 20 20 20 20 20 20 │ n.              
-    0x510 │ 20 20 20 20 20 20 20 20 20 20 20 20 20 63 6f 6e │              con
-    0x520 │ 63 61 74 65 6e 61 74 69 6e 67 20 63 6f 6c 75 6d │ catenating colum
-    0x530 │ 6e 73 2e 0a 20 20 20 20 2d 64 2c 20 2d 2d 64 65 │ ns..    -d, --de
-    0x540 │ 6c 69 6d 69 74 65 72 20 3c 61 72 67 3e 20 20 54 │ limiter <arg>  T
-    0x550 │ 68 65 20 66 69 65 6c 64 20 64 65 6c 69 6d 69 74 │ he field delimit
-    0x560 │ 65 72 20 66 6f 72 20 72 65 61 64 69 6e 67 20 43 │ er for reading C
-    0x570 │ 53 56 20 64 61 74 61 2e 0a 20 20 20 20 20 20 20 │ SV data..       
-    0x580 │ 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 │                 
-    0x590 │ 20 20 20 20 4d 75 73 74 20 62 65 20 61 20 73 69 │     Must be a si
-    0x5a0 │ 6e 67 6c 65 20 63 68 61 72 61 63 74 65 72 2e 20 │ ngle character. 
-    0x5b0 │ 28 64 65 66 61 75 6c 74 3a 20 2c 29 0a          │ (default: ,).
-}
+ 
 
 fn cat::<impl at src/cmd/cat.rs:63:1: 63:10>::configs(_1: &cat::Args) -> Result<Vec<Config>, CliError> {
     debug self => _1;
@@ -2503,7 +2405,7 @@ fn cat::<impl at src/cmd/cat.rs:63:1: 63:10>::configs(_1: &cat::Args) -> Result<
     }
 
     bb2: {
-        _0 = Result::<Vec<Config>, std::string::String>::map_err::<CliError, fn(std::string::String) -> CliError {<CliError as From<std::string::String>>::from}>(move _2, <CliError as From<std::string::String>>::from) -> [return: bb3, unwind continue];
+        return;
     }
 
     bb3: {
@@ -72523,7 +72425,7 @@ fn table::run(_1: &[&str]) -> Result<(), CliError> {
     }
 }
 
-alloc32 (static: table::USAGE, size: 16, align: 8) {
+32 (static: table::USAGE, size: 16, align: 8) {
     ╾───alloc2028<imm>────╼ 83 04 00 00 00 00 00 00 │ ╾──────╼........
 }
 
@@ -77648,7 +77550,7 @@ fn select::<impl at src/select.rs:240:1: 240:14>::indices(_1: &Selector, _2: &By
     bb15: {
         _27 = SizeOf([usize; 1]);
         _28 = AlignOf([usize; 1]);
-        _29 = alloc::alloc::exchange_malloc(move _27, move _28) -> [return: bb16, unwind continue];
+        _29 = alloc::::exchange_malloc(move _27, move _28) -> [return: bb16, unwind continue];
     }
 
     bb16: {
@@ -77732,7 +77634,7 @@ fn select::<impl at src/select.rs:240:1: 240:14>::indices(_1: &Selector, _2: &By
     bb29: {
         (*_48) = [move _31];
         _26 = move _30 as std::boxed::Box<[usize]> (PointerCoercion(Unsize));
-        _21 = std::slice::<impl [usize]>::into_vec::<std::alloc::Global>(move _26) -> [return: bb25, unwind continue];
+        _21 = std::slice::<impl [usize]>::into_vec::<std::::Global>(move _26) -> [return: bb25, unwind continue];
     }
 
     bb30: {
@@ -77761,7 +77663,7 @@ fn select::<impl at src/select.rs:240:1: 240:14>::indices::{closure#0}(_1: {clos
     bb0: {
         _4 = SizeOf([usize; 1]);
         _5 = AlignOf([usize; 1]);
-        _6 = alloc::alloc::exchange_malloc(move _4, move _5) -> [return: bb1, unwind continue];
+        _6 = alloc::alloc::exchange_m(move _4, move _5) -> [return: bb1, unwind continue];
     }
 
     bb1: {
@@ -79902,7 +79804,7 @@ fn condense(_1: Cow<'_, [u8]>, _2: std::option::Option<usize>) -> Cow<'_, [u8]> 
     }
 }
 
-alloc33 (size: 3, align: 1) {
+33 (size: 3, align: 1) {
     2e 2e 2e                                        │ ...
 }
 
@@ -82034,7 +81936,7 @@ alloc34 (static: USAGE, size: 16, align: 8) {
     ╾───alloc2497<imm>────╼ 28 04 00 00 00 00 00 00 │ ╾──────╼(.......
 }
 
-alloc2497 (size: 1064, align: 1) {
+2497 (size: 1064, align: 1) {
     0x000 │ 0a 55 73 61 67 65 3a 0a 20 20 20 20 78 73 76 20 │ .Usage:.    xsv 
     0x010 │ 3c 63 6f 6d 6d 61 6e 64 3e 20 5b 3c 61 72 67 73 │ <command> [<args
     0x020 │ 3e 2e 2e 2e 5d 0a 20 20 20 20 78 73 76 20 5b 6f │ >...].    xsv [o

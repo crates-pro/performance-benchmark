@@ -18,8 +18,9 @@ pub mirs: MIRs = {
     <mut mirs: mirs> <const_block: const_block> => {mirs.const_blocks.push(const_block); mirs}, 
     <mut mirs: mirs> <nofn_function: nofn_function> => {mirs.nofn_functions.push(nofn_function); mirs},
     <mut mirs: mirs> <static_struct: static_struct> => {mirs.static_structs.push(static_struct); mirs},
-    <function: function> => MIRs {functions: vec![function], promoted_functions: vec![], const_blocks: vec![], nofn_functions: vec![],static_structs: vec![],},
-    <c: comments> => MIRs{functions: vec![], promoted_functions: vec![], const_blocks: vec![], nofn_functions: vec![],static_structs: vec![],},
+    <mut mirs: mirs> <alloc_struct: alloc_struct> => {mirs.alloc_structs.push(alloc_struct); mirs},
+    <function: function> => MIRs {functions: vec![function], promoted_functions: vec![], const_blocks: vec![], nofn_functions: vec![],static_structs: vec![],alloc_structs: vec![],},
+    <c: comments> => MIRs{functions: vec![], promoted_functions: vec![], const_blocks: vec![], nofn_functions: vec![],static_structs: vec![],alloc_structs: vec![],},
 }
 
 function: Function = {
@@ -66,6 +67,13 @@ static_struct: StaticStruct = {
         },
 };
 
+alloc_struct: AllocStruct = {
+    <identifier: identifier> <left_parenthesis: left_parenthesis> <alloc_params: alloc_params> <right_parenthesis: right_parenthesis> <body: alloc_body> 
+        =>  AllocStruct {
+            label: identifier,
+        },
+};
+
 nofn_function: NofnFunction = {
     <label: moduled_identifier> <colon: colon> <ret_ty: ty> <assign: assign> <body: function_body> 
         =>  NofnFunction {
@@ -95,7 +103,21 @@ const_block: ConstBlock = {
                 scopes: body.2,
                 bbs: body.3,
             },
-        }
+        },
+    "const"  <place_holder: place_holder> <colon: colon> <ty: ty> <assign: assign> <body: function_body>
+        => ConstBlock {
+            const_var: vec!["_".to_string()],
+            ty: ty.clone(),
+            body: Function {
+                label: vec!["_".to_string()], 
+                params: vec![],
+                ret_ty: ty,
+                var_debug_infos: body.0,
+                local_defs: body.1,
+                scopes: body.2,
+                bbs: body.3,
+            },
+        },
 };
 
 function_signature: (ModuledIdentifier, Params, Ty) = {
@@ -147,6 +169,9 @@ function_body: (VarDebugInfos, LocalDefs, Scopes, BasicBlocks) = {
             bbs,
         ),
 }
+alloc_body: () = {
+    <left_brace: left_brace> <right_brace: right_brace> =>  (),
+}
 
 params: Params = {
     <mut params: params> <comma: comma> <param: param> => {params.push(param); params},
@@ -155,6 +180,22 @@ params: Params = {
 
 param: Param = {
     <local_id: local_id> ":" <ty: ty> => Param{local_id, ty,},
+};
+
+alloc_params: AllocParams = {
+    <mut alloc_params: alloc_params> <comma: comma> <alloc_param: alloc_param> => {alloc_params.push(alloc_param); alloc_params},
+    <alloc_param: alloc_param> => vec![alloc_param],
+};
+
+alloc_param: AllocParam ={
+    "static" ":" <moduled_identifier: moduled_identifier> => AllocParam{
+        name: "static".to_string(), 
+        val: moduled_identifier,
+    },
+    <identifier: identifier> ":" <unsinged_digit: unsinged_digit> => AllocParam{
+        name: identifier.to_string(), 
+        val: vec![unsinged_digit.to_string()],
+    },
 };
 
 scopes: Scopes = {
@@ -336,17 +377,25 @@ dis_place: Place = {
     <disderef: disderef> => Place::Deref(disderef),
 };
 
-field_access: Field = <left_parenthesis: left_parenthesis> 
-        <place: place> <dot: dot> <field_idx: unsinged_digit> <colon: colon> <ty: ty> 
-    <right_parenthesis: right_parenthesis>
+field_access: Field ={ 
+    <left_parenthesis: left_parenthesis> <place: place> <dot: dot> <field_idx: unsinged_digit> <colon: colon> <ty: ty> <right_parenthesis: right_parenthesis>
     => Field {
         place: Box::new(place),
         field_idx: u32::from_str(field_idx.as_str()).unwrap(),
         field_type: ty,
-    };
+    },
+    <left_parenthesis: left_parenthesis> <place: place> <dot: dot> <field_idx: unsinged_digit> <colon: colon> <ty: ty> <right_parenthesis: right_parenthesis> <left_bracket: left_bracket> <num_place: place> <right_bracket: right_bracket>
+    => Field {
+        place: Box::new(place),
+        field_idx: u32::from_str(field_idx.as_str()).unwrap(),
+        field_type: ty,
+    }, 
+};
+
 
 deref: Deref = {
     <left_parenthesis: left_parenthesis> <star: star> <place: place> <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    <left_parenthesis: left_parenthesis> <star: star> <place: place> <right_parenthesis: right_parenthesis> <le:left_bracket> <mynum: unsinged_digit> "of" <allnum:unsinged_digit><ri: right_bracket> => Deref { place: Box::new(place), },
     <left_parenthesis: left_parenthesis> <place: place> "as" <ty: ty> <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
 };
 copyderef: Deref = {
@@ -472,13 +521,7 @@ switch: SwitchInt = {
         SwitchInt {
             operand,
             success: targerts, 
-        }, 
-    "switchInt" <left_parenthesis: left_parenthesis> <operand: operand> <le:left_bracket> <mynum: unsinged_digit> "of" <allnum:unsinged_digit><ri: right_bracket>  <right_parenthesis: right_parenthesis> 
-        "->" <left_bracket: left_bracket> <targerts: targerts>  <right_bracket: right_bracket> <semicolon: semicolon> =>
-        SwitchInt {
-            operand,
-            success: targerts, 
-        },
+        },  
 };
 
 call_params: Vec<Operand> = {
@@ -497,7 +540,26 @@ rvalue: Rvalue = {
     <copy_place: copy_place> => Rvalue::CopyForDeref(copy_place),
     <subslice: subslice> => Rvalue::Len(subslice),
     <shallow: shallow> => Rvalue::ShallowInitBox(shallow),
-    //<repeat: repeat> => Rvalue::Repeat(repeat),
+    <repeat: repeat> => Rvalue::Repeat(repeat),
+    <addressof: addressof> => Rvalue::AddressOf(addressof),
+};
+
+addressof: AddressOf = {
+    <bitwise_and: bitwise_and> "raw" "mut" <place: place> => AddressOf{
+        place,
+        mutability: Some(Mutability::Mut),
+    },
+    <bitwise_and: bitwise_and> "raw" "const" <place: place> => AddressOf{
+        place,
+        mutability: None,
+    },
+};
+
+repeat: Repeat = {
+    <left_bracket: left_bracket> <operand: operand> <semicolon:semicolon> <unsinged_digit: unsinged_digit> <right_bracket: right_bracket> =>  Repeat{
+        operand,
+        size: unsinged_digit,
+    }
 };
 
 shallow: ShallowInitBox ={
@@ -639,8 +701,9 @@ const_val: Const = {
     "const" "ZeroSized" <colon: colon>  <val: identifier> => Const { ty: Ty::Str, val: val.to_string(), },
     "const" <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> => Const {ty: Ty::UND, val: String::from(""), },
     "const" <floatnum: floatnum> <identifier: identifier> => Const {ty: Ty::from_str(&identifier.as_str()).unwrap(), val: floatnum + &identifier, },
+    "const" <left_brace: left_brace> <identifier: identifier> <colon: colon> <ty: ty> <right_brace: right_brace> =>  Const { ty: Ty::Alloc, val: identifier, },
     "const core::fmt::rt::UnsafeArg {{ _private: () }}" => Const { ty: Ty::UND, val: String::from("_"), },
-    " const cat::_IMPL_DESERIALIZE_FOR_Args::<impl serde::Deserialize<'de> for cat::Args>::deserialize::__Visitor::<'_> {{ marker: PhantomData::<cat::Args>, lifetime: PhantomData::<&()> }}" => Const { ty: Ty::UND, val: String::from("_"), },
+    "const cat::_IMPL_DESERIALIZE_FOR_Args::<impl serde::Deserialize<'de> for cat::Args>::deserialize::__Visitor::<'_> {{ marker: PhantomData::<cat::Args>, lifetime: PhantomData::<&()> }}" => Const { ty: Ty::UND, val: String::from("_"), },
 };
 
 literal_sined_digit: (Ty, String) = {
@@ -693,14 +756,18 @@ ty: Ty = {
     <left_bracket: left_bracket> <ty: ty> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(ty), len: None, }),
     <left_bracket: left_bracket> <ty: ty> <semicolon: semicolon> <len: unsinged_digit> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(ty), len: Some(u32::from_str(len.as_str()).unwrap()), }),
     <logic_negate: logic_negate> => Ty::Unit,
+
+    "fn(pepper::Args, UnixListener) -> Result<(), AnyError>" => Ty::Unit,
+    "fn(pepper::Args, UnixStream)" => Ty::Unit,
 };
 
 moduled_identifier: ModuledIdentifier = {
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <identifier: identifier> => {moduled_identifier.push(identifier); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "drop" => {moduled_identifier.push("drop".to_string()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <zero_string: zero_string> => {moduled_identifier.push(zero_string); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <angle_brackets: angle_brackets> => {moduled_identifier.push(angle_brackets.to_string()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => {moduled_identifier.push("constant".to_string() + &unsinged_digit); moduled_identifier},
-    <identifier: identifier> => vec![identifier],
+    <identifier: identifier> => vec![identifier.to_string()],
     <zero_string: zero_string> => vec![zero_string.to_string()],
     <angle_brackets: angle_brackets> => vec![angle_brackets.to_string()],
 };
@@ -711,14 +778,19 @@ angle_brackets: String = {
     <s: r"<[^<>]+<[^<>]+>[^>]*>"> => s.to_string(),
 
     <s: r"<[^<>]+<[^<>]+>[^<>]+<[^<>]+>[^>]*>"> => s.to_string(),
-    <s: r"<[^<>]+<[^<>]+<[^<>]+>[^<>]*>[^>]*>"> => s.to_string(),
+    <s: r"<[^<>]*<[^<>]*<[^<>]*>[^<>]*>[^>]*>"> => s.to_string(),
 
     <s: r"<[^<>]+<[^<>]+<[^<>]+>>[^<>]+<[^<>]+<[^<>]+<[^<>]+>>>>"> => s.to_string(),
     <s: r"<[^<>]+<[^<>]+>[^<>]+<[^<>]+<[^<>]+>[^>]*>[^>]*>"> => s.to_string(), //<Result<(), std::io::Error> as FromResidual<Result<Infallible, std::io::Error>>>
     <s: r"<[^<>]+<[^<>]+<[^<>]+>[^<>]*>[^<>]+<[^>]*>[^>]*>"> => s.to_string(), //<cat::_IMPL_DESERIALIZE_FOR_Args::<impl serde::Deserialize<'de> for cat::Args>::deserialize::__Visitor<'_>>
     <s: r"<[^<>]+<[^<>]+<[^<>]+>[^<>]*>[^<>]+<[^>]+<[^>]*>[^>]*>[^>]*>"> => s.to_string(), //<cat::_IMPL_DESERIALIZE_FOR_Args::<impl serde::Deserialize<'de> for cat::Args>::deserialize::__Field, <__D as serde::Deserializer<'_>>::Error>
+    <s: r"<[^<>]+<[^<>]+<[^<>]+<[^<>]+>[^>]*>[^>]*>[^>]*>"> => s.to_string(),//<Map<std::io::Lines<StdinLock<'_>>, {closure@src/main.rs:289:22: 289:28}> as Itertools>
     "<PathBuf, fn(&&OsStr) -> PathBuf {<PathBuf as From<&&OsStr>>::from}>" => "<PathBuf, fn(&&OsStr) -> PathBuf {<PathBuf as From<&&OsStr>>::from}>".to_string(),
     "<fn() -> Vec<String> {Vec::<String>::new}>" => "<fn() -> Vec<String> {Vec::<String>::new}>".to_string(),
+    "<Vec<String>, fn() -> Vec<String> {Vec::<String>::new}, {closure@src/main.rs:44:12: 44:15}>" => "<Vec<String>, fn() -> Vec<String> {Vec::<String>::new}, {closure@src/main.rs:44:12: 44:15}>".to_string(),
+    "<PathBuf, fn(&OsStr) -> PathBuf {<PathBuf as From<&OsStr>>::from}>" => "<PathBuf, fn(&OsStr) -> PathBuf {<PathBuf as From<&OsStr>>::from}>".to_string(),
+    "<fn(String) -> Result<(), String> {repetition_options_validator}>" => "<fn(String) -> Result<(), String> {repetition_options_validator}>".to_string(),
+    "Result<std::option::Option<cmd::cat::_IMPL_DESERIALIZE_FOR_Args::<impl serde::Deserialize<'de> for cmd::cat::Args>::deserialize::__Field>, <__A as serde::de::MapAccess<'_>>::Error>" => "Result<std::option::Option<cmd::cat::_IMPL_DESERIALIZE_FOR_Args::<impl serde::Deserialize<'de> for cmd::cat::Args>::deserialize::__Field>, <__A as serde::de::MapAccess<'_>>::Error>".to_string(),
 };
 
 identifier: String = <s: r"([a-zA-Z][a-zA-Z0-9_]*)|(_[a-zA-Z0-9_]+)"> => String::from(s);
@@ -773,7 +845,3 @@ comments: () = {
     <comment: comment> => (),
     <comments: comments> <comment: comment> => (),
 };
-
-
-
-

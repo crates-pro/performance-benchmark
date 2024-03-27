@@ -70,6 +70,55 @@ fn test_xsv() {
     println!("{:?}", result);
 }
 #[test]
+fn test_amp() {
+    let test_file = File::open("test/mir_analyze/mir/texteditor/amp.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_grex() {
+    let test_file = File::open("test/mir_analyze/mir/texteditor/grex.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_kibi() {
+    let test_file = File::open("test/mir_analyze/mir/texteditor/kibi.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_kiro() {
+    let test_file = File::open("test/mir_analyze/mir/texteditor/kiro.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_pepper() {
+    let test_file = File::open("test/mir_analyze/mir/texteditor/pepper.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_rust_systemd() {
+    let test_file = File::open("test/mir_analyze/mir/system_programing/rust_systemd.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_system76_power() {
+    let test_file = File::open("test/mir_analyze/mir/system_programing/system76_power.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
 fn test_now() {
     let test_file = File::open("test/mir_analyze/mir/now.mir").unwrap();
     let result = parse_mir(test_file).unwrap();

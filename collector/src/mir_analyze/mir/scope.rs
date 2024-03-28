@@ -1,4 +1,4 @@
-use super::{mir::LocalID, operand::Const, ty::Ty, place::Field};
+use super::{mir::LocalID, operand::Const, place::Field, ty::Ty};
 
 pub type Scopes = Vec<Scope>;
 

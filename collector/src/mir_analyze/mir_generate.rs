@@ -53,16 +53,6 @@ fn single_genrate_mir(benchmark: &Benchamrk, ltc: &LocalToolchain) -> anyhow::Re
                 .clone()
                 .unwrap_or_else(|| String::from("Cargo.toml")),
         )
-        .args(
-            benchmark
-                .config
-                .cargo_opts
-                .clone()
-                .unwrap_or_default()
-                .split_whitespace()
-                .map(String::from)
-                .collect::<Vec<_>>(),
-        )
         .arg("--")
         .arg("--emit=mir");
 
@@ -124,16 +114,6 @@ fn package_generate_mir(benchmark: &Benchamrk, ltc: &LocalToolchain) -> anyhow::
             )
             .arg("--package")
             .arg(package)
-            .args(
-                benchmark
-                    .config
-                    .cargo_opts
-                    .clone()
-                    .unwrap_or_default()
-                    .split_whitespace()
-                    .map(String::from)
-                    .collect::<Vec<_>>(),
-            )
             .arg("--")
             .arg("--emit=mir");
 

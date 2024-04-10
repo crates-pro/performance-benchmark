@@ -57,16 +57,15 @@ impl<'a> BinaryProcess for BinaryPackageProcess<'a> {
 
         let mut binary_size = 0;
 
-        
         let target_dir = if let Some(target_path) = &self.target_path {
             PathBuf::from(self.cwd)
-            .join(target_path)
-            .join("target")
-            .join(self.profile.to_string())
+                .join(target_path)
+                .join("target")
+                .join(self.profile.to_string())
         } else {
             PathBuf::from(self.cwd)
-            .join("target")
-            .join(self.profile.to_string())
+                .join("target")
+                .join(self.profile.to_string())
         };
 
         let dir = read_dir(target_dir)?;

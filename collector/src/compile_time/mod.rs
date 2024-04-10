@@ -17,6 +17,7 @@ use crate::{
 
 use self::result::CompileTimeBenchResult;
 
+pub mod binary_size;
 pub mod cargo_package_process;
 pub mod cargo_single_process;
 pub mod result;

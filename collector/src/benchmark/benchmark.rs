@@ -547,6 +547,7 @@ pub struct BenchmarkConfig {
     pub runtime_test_type: Option<RuntimeTestType>,
     pub example_lst: Option<Vec<String>>,
     pub runtime_args: Option<String>,
+    pub target_path: Option<PathBuf>,
     /// The file that should be touched to ensure cargo re-checks the leaf crate
     /// we're interested in. Likely, something similar to `src/lib.rs`. The
     /// default if this is not present is to touch all .rs files in the

@@ -31,7 +31,14 @@ pub trait BinaryProcess {
     /// Files with ".d" suffix or directorys that are not relevant to the
     /// binary target should be filtered out.
     fn is_filtered_file_name(&self, file_name: OsString) -> bool {
-        let filted_names = vec!["build", "deps", "examples", "incremental"];
+        let filted_names = vec![
+            "build",
+            "deps",
+            "examples",
+            "incremental",
+            ".fingerprint",
+            ".cargo-lock",
+        ];
         if let Some(file_name) = file_name.to_str() {
             filted_names.contains(&file_name) | file_name.ends_with(".d")
         } else {
@@ -149,6 +156,7 @@ impl Benchamrk {
                     .map(String::from)
                     .collect(),
                 touch_file: self.config.touch_file.clone(),
+                target_path: self.config.target_path.clone(),
             }),
             CompileTimeType::Packages => Box::new(BinaryPackageProcess {
                 compiler,
@@ -180,6 +188,7 @@ impl Benchamrk {
                     .collect(),
                 touch_file: self.config.touch_file.clone(),
                 packages: self.config.packages.clone().unwrap(),
+                target_path: self.config.target_path.clone(),
             }),
         }
     }

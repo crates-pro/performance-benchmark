@@ -169,6 +169,7 @@ mod test {
                 touch_file: None,
                 disabled: false,
                 runs: 0,
+                target_path: None,
             },
         };
 

@@ -8,7 +8,7 @@ use crate::{
     statistics::statistic::Statistics,
 };
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct CompileTimeResult {
     benchmark: String,
     iteration: usize,
@@ -35,7 +35,7 @@ impl CompileTimeResult {
     }
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct CompileTimeBenchResult {
     benchmark: String,
     iterations: usize,

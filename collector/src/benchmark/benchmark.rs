@@ -63,7 +63,7 @@ impl Benchamrk {
         out_dir: &Path,
     ) -> anyhow::Result<CompileTimeBenchResult> {
         if self.config.disabled {
-            eprintln!("Skipping {}: disabled", self.name);
+            println!("Skipping {}: disabled", self.name);
             bail!("disabled benchmark");
         }
 
@@ -72,11 +72,11 @@ impl Benchamrk {
         let mut bench_result = CompileTimeBenchResult::new(self.name.clone(), iterations);
 
         if profiles.is_empty() {
-            eprintln!("Skipping {}: no profiles selected", self.name);
+            println!("Skipping {}: no profiles selected", self.name);
             return Ok(bench_result);
         }
 
-        eprintln!("Preparing {}...", self.name);
+        println!("Preparing {}...", self.name);
 
         let profile_dirs = profiles
             .iter()

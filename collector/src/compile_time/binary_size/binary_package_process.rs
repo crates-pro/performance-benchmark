@@ -19,6 +19,7 @@ pub struct BinaryPackageProcess<'a> {
     pub rustc_args: Vec<String>,
     pub touch_file: Option<String>,
     pub packages: Vec<String>,
+    pub target_path: Option<PathBuf>,
 }
 
 impl<'a> BinaryProcess for BinaryPackageProcess<'a> {
@@ -32,11 +33,20 @@ impl<'a> BinaryProcess for BinaryPackageProcess<'a> {
                 .arg("rustc")
                 .arg("--manifest-path")
                 .arg(&self.manifest_path)
-                .arg("--profile")
-                .arg(self.profile.to_string())
                 .arg("--package")
                 .arg(package)
                 .args(&self.cargo_args);
+
+            match self.profile {
+                Profile::Check => {
+                    cmd.arg("--profile").arg("check");
+                }
+                Profile::Debug => (),
+                Profile::Doc => unimplemented!(),
+                Profile::Release => {
+                    cmd.arg("--release");
+                }
+            }
 
             cmd.stdout(Stdio::null()).stderr(Stdio::null());
 
@@ -47,17 +57,16 @@ impl<'a> BinaryProcess for BinaryPackageProcess<'a> {
 
         let mut binary_size = 0;
 
-        let mut target_dir = PathBuf::from(self.cwd);
-        if self.manifest_path.contains('/') {
-            let segment = self.manifest_path.split('/');
-            let toml = segment.clone().last().unwrap();
-            segment.for_each(|s| {
-                if s != toml {
-                    target_dir = target_dir.join(s);
-                }
-            });
-        }
-        target_dir = target_dir.join("target").join(self.profile.to_string());
+        let target_dir = if let Some(target_path) = &self.target_path {
+            PathBuf::from(self.cwd)
+                .join(target_path)
+                .join("target")
+                .join(self.profile.to_string())
+        } else {
+            PathBuf::from(self.cwd)
+                .join("target")
+                .join(self.profile.to_string())
+        };
 
         let dir = read_dir(target_dir)?;
         for entry in dir {

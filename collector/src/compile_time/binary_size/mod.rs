@@ -1,5 +1,6 @@
 use std::{
     ffi::OsString,
+    fs::read_dir,
     mem::ManuallyDrop,
     path::{Path, PathBuf},
 };
@@ -24,6 +25,9 @@ use super::result::CompileTimeBenchResult;
 
 pub mod binary_package_process;
 pub mod binary_single_process;
+pub mod plotter;
+
+const BINARY_SIZE_LABEL: &str = "binary_size";
 
 pub trait BinaryProcess {
     fn run_rustc(&self) -> anyhow::Result<Option<Stats>>;
@@ -38,12 +42,32 @@ pub trait BinaryProcess {
             "incremental",
             ".fingerprint",
             ".cargo-lock",
+            "CACHEDIR.TAG",
+            ".rustc_info.json",
         ];
         if let Some(file_name) = file_name.to_str() {
             filted_names.contains(&file_name) | file_name.ends_with(".d")
         } else {
             true
         }
+    }
+
+    /// Calculate the binary size of compiled target.
+    fn get_binary_size(&self, target_dir: PathBuf) -> anyhow::Result<u64> {
+        let mut binary_size = 0;
+        let dir = read_dir(target_dir)?;
+        for entry in dir {
+            let entry = entry?;
+            if !self.is_filtered_file_name(entry.file_name()) {
+                let md = entry.metadata()?;
+                if md.is_file() {
+                    binary_size += entry.metadata()?.len();
+                } else if md.is_dir() {
+                    binary_size += self.get_binary_size(entry.path())?;
+                }
+            }
+        }
+        Ok(binary_size)
     }
 }
 
@@ -196,11 +220,18 @@ impl Benchamrk {
 
 #[cfg(test)]
 mod test_binary_size {
-    use std::{path::PathBuf, process::Command};
+    use std::{
+        path::{Path, PathBuf},
+        process::Command,
+    };
 
     use anyhow::Context;
 
-    use crate::{benchmark::profile::Profile, toolchain::LocalToolchain};
+    use crate::{
+        benchmark::profile::Profile,
+        compile_time::binary_size::{binary_single_process::BinarySingleProcess, BinaryProcess},
+        toolchain::{Compiler, LocalToolchain},
+    };
 
     use super::bench_binary_size;
 
@@ -254,5 +285,32 @@ mod test_binary_size {
             r.iter()
                 .for_each(|s| s.stats.values().for_each(|v| assert!(*v > 0.)));
         })
+    }
+
+    /// Test for BinaryProcess::get_binary_size
+    ///
+    /// Step1: Get the binary size of `./collector`.
+    ///
+    /// Step2: Verify the size of binary size (>15MB).
+    #[test]
+    fn test_get_binary_size() {
+        let binary_process = BinarySingleProcess {
+            compiler: Compiler {
+                rustc: Path::new("null"),
+                cargo: Path::new("null"),
+                is_nightly: false,
+            },
+            processor_name: "test".to_string(),
+            cwd: Path::new("null"),
+            profile: Profile::Check,
+            incremental: false,
+            manifest_path: String::new(),
+            cargo_args: vec![],
+            rustc_args: vec![],
+            touch_file: None,
+            target_path: None,
+        };
+        let binary_size = binary_process.get_binary_size(PathBuf::from(".")).unwrap();
+        assert!((binary_size as f64 / (1 << 20) as f64) > 15.);
     }
 }

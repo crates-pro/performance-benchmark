@@ -8,7 +8,7 @@ use std::{
 use anyhow::{Context, Ok};
 use benchmark::scenario::Scenario;
 use clap::Parser;
-use compile_time::bench_compile_time;
+use compile_time::{bench_compile_time, binary_size::plotter::plot};
 use runtime::bench_runtime;
 use toolchain::{Cli, Commands, ResultWriter};
 
@@ -270,6 +270,17 @@ fn main_result() -> anyhow::Result<i32> {
 
             result_writer.write(serde_json::to_string(&results)?)?;
 
+            Ok(0)
+        }
+        Commands::BinaryPlot {
+            data1,
+            data2,
+            data1_label,
+            data2_label,
+            profile,
+            out_path,
+        } => {
+            plot(data1, data2, data1_label, data2_label, out_path, profile)?;
             Ok(0)
         }
     }

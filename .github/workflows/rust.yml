@@ -36,6 +36,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -U kaleido
+        pip install -U matplotlib
 
     - name: Build and test
       run: |

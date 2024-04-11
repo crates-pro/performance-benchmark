@@ -10,7 +10,7 @@ use std::{
 use anyhow::{Context, Ok};
 use log::debug;
 
-use crate::benchmark::profile::Profiles;
+use crate::benchmark::profile::{Profile, Profiles};
 
 #[derive(Debug, Copy, Clone)]
 pub struct Compiler<'a> {
@@ -284,6 +284,28 @@ pub enum Commands {
         /// The path of output file
         #[clap(long = "out-dir", default_value = "results")]
         out_dir: PathBuf,
+    },
+
+    /// Boxplot and scatterplot for a pair of compiled_binary_size data for comparsion.
+    BinaryPlot {
+        /// The path of compiled_binary_size data 1
+        #[clap(long = "data1")]
+        data1: PathBuf,
+        /// The path of compiled_binary_size data 2
+        #[clap(long = "data2")]
+        data2: PathBuf,
+        /// The label of compiled_binary_size data 1
+        #[clap(long = "data1-label")]
+        data1_label: String,
+        /// The label of compiled_binary_size data 2
+        #[clap(long = "data2-label")]
+        data2_label: String,
+        /// The profile of data collected
+        #[clap(long = "profile")]
+        profile: Profile,
+        /// The path of output figure
+        #[clap(long = "out-path")]
+        out_path: PathBuf,
     },
 
     /// Trasfer Json outpu to csv output.

@@ -76,7 +76,7 @@ impl CompileTimeBenchResult {
             .collect()
     }
 
-    fn get_stats_with_profile_scenario(&self) -> HashMap<(Profile, Scenario), Vec<Stats>> {
+    pub fn get_stats_with_profile_scenario(&self) -> HashMap<(Profile, Scenario), Vec<Stats>> {
         let mut map = HashMap::<(Profile, Scenario), Vec<Stats>>::new();
         self.result_vec.iter().for_each(|r| {
             if map.contains_key(&(r.profile, r.scenario)) {

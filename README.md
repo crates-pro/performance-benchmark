@@ -19,13 +19,13 @@ https://blog.eastonman.com/blog/2021/02/use-perf/
 
 3. Relative dependancies
 python3
-kaleido (can be installed with pip...
+kaleido, matplotlib (can be installed with pip...
 ```
-pip install -U kaleido
+pip install -U kaleido matplotlib
 ```
 or with conda...)
 ```
-conda install -c conda-forge python-kaleido
+conda install -c conda-forge python-kaleido matplotlib
 ```
 
 **Attention:** The harness & flamegraph will fail to collect some of the specific data we need if you are going to run it in a virtual environment.

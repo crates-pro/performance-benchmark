@@ -1,0 +1,1039 @@
+[
+    {
+        "benchmark": "ctfe-stress-5",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "ctfe-stress-5",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 26.04607391357422
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "ucd",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "ucd",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 18.70567512512207
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "futures",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "futures",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.8275794982910156
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "issue-88862",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "issue-88862",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.40187835693359375
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "many-assoc-items",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "many-assoc-items",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 2.3654041290283203
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "regression-31157",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "regression-31157",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.8491115570068359
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "html5ever",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "html5ever",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 5.238502502441406
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "ripgrep-13.0.0",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "ripgrep-13.0.0",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 24.35394287109375
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "clap-3.1.6",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "clap-3.1.6",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 3.2185802459716797
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "diesel-1.4.8",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "diesel-1.4.8",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 12.728710174560547
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "hyper-0.14.18",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "hyper-0.14.18",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 5.403436660766602
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "ripgrep-13.0.0-tiny",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "ripgrep-13.0.0-tiny",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 2.4720382690429688
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "helloworld",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "helloworld",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.405914306640625
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "regex-1.5.5",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "regex-1.5.5",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 14.181493759155273
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "exa-0.10.1",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "exa-0.10.1",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 1.628173828125
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "externs",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "externs",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.8133316040039062
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "issue-46449",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "issue-46449",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.03149223327636719
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "serde_derive-1.0.136",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "serde_derive-1.0.136",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 2.9304428100585938
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "cargo-0.60.0",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "cargo-0.60.0",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.01171875
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "token-stream-stress",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "token-stream-stress",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.3966522216796875
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "unused-warnings",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "unused-warnings",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.3966522216796875
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "coercions",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "coercions",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.39667510986328125
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "deep-vector",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "deep-vector",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.3966522216796875
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "serde-1.0.136",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "serde-1.0.136",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 5.329566955566406
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "tt-muncher",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "tt-muncher",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.6299209594726562
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "piston-image",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "piston-image",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 3.7456798553466797
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "stm32f4-0.14.0",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "stm32f4-0.14.0",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 19.777273178100586
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "unicode-normalization-0.1.19",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "unicode-normalization-0.1.19",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 2.5967369079589844
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "deeply-nested-multi",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "deeply-nested-multi",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.11229515075683594
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "inflate",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "inflate",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.23044776916503906
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "unify-linearly",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "unify-linearly",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.39669036865234375
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "helloworld-tiny",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "helloworld-tiny",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.3030548095703125
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "wg-grammar",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "wg-grammar",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.8433094024658203
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "bitmaps-3.1.0",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "bitmaps-3.1.0",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 1.4259166717529297
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "syn",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "syn",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 1.597574234008789
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "derive",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "derive",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 2.305318832397461
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "match-stress",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "match-stress",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 4.009849548339844
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "typenum-1.17.0",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "typenum-1.17.0",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 2.80706787109375
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "await-call-tree",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "await-call-tree",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.04027557373046875
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "tuple-stress",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "tuple-stress",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.396636962890625
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "image-0.24.1",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "image-0.24.1",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 9.363557815551758
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "projection-caching",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "projection-caching",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.39664459228515625
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "issue-58319",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "issue-58319",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.39662933349609375
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "encoding",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "encoding",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 1.2482852935791016
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "libc-0.2.124",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "libc-0.2.124",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 2.406045913696289
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "syn-1.0.89",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "syn-1.0.89",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 4.206142425537109
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "wf-projection-stress-65510",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "wf-projection-stress-65510",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.06485557556152344
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "regex",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "regex",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 1.9128227233886719
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "tokio-webpush-simple",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "tokio-webpush-simple",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 1.5120849609375
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "html5ever-0.26.0",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "html5ever-0.26.0",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 1.4248485565185547
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "cranelift-codegen-0.82.1",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "cranelift-codegen-0.82.1",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 13.071401596069336
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "css",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "css",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 6.1483001708984375
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "nes",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "nes",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.00390625
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "bufreader",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "bufreader",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 2.1915664672851562
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "compression",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "compression",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.00390625
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "nbody",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "nbody",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 2.153961181640625
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "text-search",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "text-search",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.00390625
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "fmt",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "fmt",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 2.1597061157226562
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "svg",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "svg",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 8.448875427246094
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "parsing",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "parsing",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 2.4241561889648438
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "raytracer",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "raytracer",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 2.5742950439453125
+                    }
+                }
+            }
+        ]
+    }
+]

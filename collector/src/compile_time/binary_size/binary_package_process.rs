@@ -6,7 +6,7 @@ use std::{
 
 use crate::{benchmark::profile::Profile, execute::Stats, toolchain::Compiler};
 
-use super::BinaryProcess;
+use super::{BinaryProcess, BINARY_SIZE_LABEL};
 
 pub struct BinaryPackageProcess<'a> {
     pub compiler: Compiler<'a>,
@@ -81,7 +81,7 @@ impl<'a> BinaryProcess for BinaryPackageProcess<'a> {
         } else {
             let mut stats = Stats::new();
             stats.stats.insert(
-                "binary_size".to_string(),
+                BINARY_SIZE_LABEL.to_string(),
                 binary_size as f64 / (1 << 20) as f64,
             );
 

@@ -31,7 +31,7 @@ pub struct Assert {
     pub expected: bool,
     pub msg: FormatStr,
     pub success: BasicBlockID,
-    pub unwind: UnwindAction,
+    pub unwind: Option<UnwindAction>,
 }
 
 #[derive(Debug)]
@@ -39,14 +39,14 @@ pub struct Drop {
     pub place: Place,
     pub replace: bool,
     pub success: BasicBlockID,
-    pub unwind: UnwindAction,
+    pub unwind: Option<UnwindAction>,
 }
 
 #[derive(Debug)]
 pub struct Call {
     pub callee: ModuledIdentifier,
     pub params: Vec<Operand>,
-    pub recv: Place,
+    pub recv: Option<Place>,
     pub success: Option<BasicBlockID>,
     pub unwind: Option<UnwindAction>,
 }
@@ -76,6 +76,8 @@ impl FromStr for UnwindAction {
         } else if s == "unreachable" {
             Ok(Self::UnReachable)
         } else if s == "cleanup" {
+            Ok(Self::Terminate(UnwindTerminateReason::Incleanup))
+        } else if s == "terminate" {
             Ok(Self::Terminate(UnwindTerminateReason::Incleanup))
         } else {
             Err(format!("Fail to convert {} into a BasicBlockID.", s))

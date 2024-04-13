@@ -1,27 +1,3 @@
-bb0: {
-        StorageLive(_1);
-        StorageLive(_2);
-        StorageLive(_48);
-        StorageLive(_51);
-        StorageLive(_52);
-        _52 = const UnsafeCell::<u32> {{ value: 0_u32 }};
-        _51 = AtomicU32 { v: move _52 };
-        StorageDead(_52);
-        _48 = std::sys::unix::locks::futex_mutex::Mutex { futex: move _51 };
-        StorageDead(_51);
-        StorageLive(_49);
-        StorageLive(_53);
-        StorageLive(_54);
-        _54 = const UnsafeCell::<u8> {{ value: 0_u8 }};
-        _53 = AtomicBool { v: move _54 };
-        StorageDead(_54);
-        _49 = sync::poison::Flag { failed: move _53 };
-        StorageDead(_53);
-        StorageLive(_50);
-        _50 = const UnsafeCell::<bool> {{ value: false }};
-        _2 = Mutex::<bool> { inner: move _48, poison: move _49, data: move _50 };
-        StorageDead(_50);
-        StorageDead(_49);
-        StorageDead(_48);
-        _1 = Arc::<Mutex<bool>>::new(move _2) -> [return: bb1, unwind continue];
-    }
+version https://git-lfs.github.com/spec/v1
+oid sha256:38e76e48264f4ed05cdc5d4a232439332f640ec819f13b61f0fe4ea6d31be00e
+size 977

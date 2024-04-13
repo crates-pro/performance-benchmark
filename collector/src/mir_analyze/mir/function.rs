@@ -4,7 +4,6 @@ use super::{
     operand::Operand,
     scope::{LocalDefs, Scopes, VarDebugInfos},
     ty::Ty,
-    operand::Operand,
 };
 
 #[derive(Debug)]

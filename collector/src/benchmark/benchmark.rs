@@ -273,7 +273,7 @@ impl Benchamrk {
         use std::process::Command;
 
         let mut cmd = Command::new("cp");
-        cmd.arg("-pLR").arg(from).arg(to);
+        cmd.arg("-pLRa").arg(from).arg(to);
         command_output(&mut cmd)?;
         Ok(())
     }

@@ -1,5 +1,4 @@
 use std::{
-    fs::read_dir,
     path::{Path, PathBuf},
     process::{Command, Stdio},
 };
@@ -62,17 +61,13 @@ impl<'a> BinaryProcess for BinarySingleProcess<'a> {
                 .join(self.profile.to_string())
         };
 
-        let mut binary_size = 0;
-        let dir = read_dir(target_dir)?;
-        for entry in dir {
-            let entry = entry?;
-            if !self.is_filtered_file_name(entry.file_name()) {
-                binary_size += entry.metadata()?.len();
-            }
-        }
+        let binary_size = self.get_binary_size(&target_dir).unwrap();
 
         if binary_size == 0 {
-            Ok(None)
+            Result::Err(anyhow::Error::msg(format!(
+                "Build target not found in `{}`.",
+                target_dir.to_str().unwrap()
+            )))
         } else {
             let mut stats = Stats::new();
             stats.stats.insert(

@@ -429,7 +429,7 @@ impl ResultWriter {
         create_dir_all(&dir).with_context(|| format!("fail to create dir for {:?}", dir))?;
         let rw = ResultWriter {
             fptr: File::create(&dir.join(file_name))
-                .with_context(|| format!("Faile to create output file {:?}.", dir))?,
+                .with_context(|| format!("Fail to create output file {:?}.", dir))?,
         };
         Ok(rw)
     }

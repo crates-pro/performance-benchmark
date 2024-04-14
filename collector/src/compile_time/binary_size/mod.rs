@@ -53,7 +53,7 @@ pub trait BinaryProcess {
     }
 
     /// Calculate the binary size of compiled target.
-    fn get_binary_size(&self, target_dir: PathBuf) -> anyhow::Result<u64> {
+    fn get_binary_size(&self, target_dir: &PathBuf) -> anyhow::Result<u64> {
         let mut binary_size = 0;
         let dir = read_dir(target_dir)?;
         for entry in dir {
@@ -63,7 +63,7 @@ pub trait BinaryProcess {
                 if md.is_file() {
                     binary_size += entry.metadata()?.len();
                 } else if md.is_dir() {
-                    binary_size += self.get_binary_size(entry.path())?;
+                    binary_size += self.get_binary_size(&entry.path())?;
                 }
             }
         }
@@ -90,7 +90,7 @@ pub fn bench_binary_size(
 
         match b.bench_binary_size(ltc, profiles) {
             Ok(result) => results.push(result),
-            Err(e) => eprintln!("Faile to bench '{}'! {}", b.name, e),
+            Err(e) => eprintln!("Fail to bench '{}'! {}", b.name, e),
         };
     });
 
@@ -310,7 +310,7 @@ mod test_binary_size {
             touch_file: None,
             target_path: None,
         };
-        let binary_size = binary_process.get_binary_size(PathBuf::from(".")).unwrap();
+        let binary_size = binary_process.get_binary_size(&PathBuf::from(".")).unwrap();
         assert!((binary_size as f64 / (1 << 20) as f64) > 15.);
     }
 }

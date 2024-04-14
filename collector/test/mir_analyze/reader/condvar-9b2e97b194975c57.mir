@@ -1,3 +1,608 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:624d290a62bf3b64f54dd80edce1fb7eea139b4a07f42132fde3a2ffe49285eb
-size 40218
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn main() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:5:11: 5:11
+    let _1: std::sync::Arc<std::sync::Mutex<bool>>; // in scope 0 at src/main.rs:6:9: 6:13
+    let mut _2: std::sync::Mutex<bool>;  // in scope 0 at src/main.rs:6:25: 6:42
+    let mut _4: std::sync::Condvar;      // in scope 0 at src/main.rs:7:25: 7:39
+    let mut _6: &std::sync::Arc<std::sync::Mutex<bool>>; // in scope 0 at src/main.rs:8:17: 8:29
+    let mut _8: &std::sync::Arc<std::sync::Condvar>; // in scope 0 at src/main.rs:9:17: 9:29
+    let mut _10: [closure@src/main.rs:11:21: 11:28]; // in scope 0 at src/main.rs:11:21: 27:6
+    let _12: ();                         // in scope 0 at src/main.rs:31:9: 31:43
+    let mut _13: std::time::Duration;    // in scope 0 at src/main.rs:31:15: 31:42
+    let mut _14: &mut bool;              // in scope 0 at src/main.rs:32:9: 32:30
+    let mut _15: &mut std::sync::MutexGuard<'_, bool>; // in scope 0 at src/main.rs:32:10: 32:30
+    let mut _16: std::sync::MutexGuard<'_, bool>; // in scope 0 at src/main.rs:32:10: 32:30
+    let mut _17: std::result::Result<std::sync::MutexGuard<'_, bool>, std::sync::PoisonError<std::sync::MutexGuard<'_, bool>>>; // in scope 0 at src/main.rs:32:10: 32:21
+    let mut _18: &std::sync::Mutex<bool>; // in scope 0 at src/main.rs:32:10: 32:21
+    let _19: &std::sync::Mutex<bool>;    // in scope 0 at src/main.rs:32:10: 32:21
+    let mut _20: &std::sync::Arc<std::sync::Mutex<bool>>; // in scope 0 at src/main.rs:32:10: 32:21
+    let mut _21: (i32, bool);            // in scope 0 at src/main.rs:33:9: 33:21
+    let mut _22: bool;                   // in scope 0 at src/main.rs:34:12: 34:23
+    let mut _23: i32;                    // in scope 0 at src/main.rs:34:12: 34:19
+    let _24: ();                         // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:9: 137:62
+    let mut _25: std::fmt::Arguments<'_>; // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+    let mut _26: &[&str];                // in scope 0 at src/main.rs:37:18: 37:39
+    let mut _27: &[core::fmt::ArgumentV1<'_>]; // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+    let _28: &[core::fmt::ArgumentV1<'_>; 1]; // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+    let _29: [core::fmt::ArgumentV1<'_>; 1]; // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+    let mut _30: core::fmt::ArgumentV1<'_>; // in scope 0 at src/main.rs:37:36: 37:38
+    let _31: &i32;                       // in scope 0 at src/main.rs:37:41: 37:48
+    let _32: ();                         // in scope 0 at src/main.rs:38:9: 38:26
+    let mut _33: &std::sync::Condvar;    // in scope 0 at src/main.rs:38:9: 38:26
+    let _34: &std::sync::Condvar;        // in scope 0 at src/main.rs:38:9: 38:26
+    let mut _35: &std::sync::Arc<std::sync::Condvar>; // in scope 0 at src/main.rs:38:9: 38:26
+    let _36: ();                         // in scope 0 at src/main.rs:40:5: 40:24
+    let mut _37: std::result::Result<(), std::boxed::Box<dyn std::any::Any + std::marker::Send>>; // in scope 0 at src/main.rs:40:5: 40:15
+    let mut _38: std::thread::JoinHandle<()>; // in scope 0 at src/main.rs:40:5: 40:8
+    let _39: ();                         // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:9: 137:62
+    let mut _40: std::fmt::Arguments<'_>; // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+    let mut _41: &[&str];                // in scope 0 at src/main.rs:41:14: 41:20
+    let mut _42: &[core::fmt::ArgumentV1<'_>]; // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+    let _43: &[core::fmt::ArgumentV1<'_>; 1]; // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+    let _44: [core::fmt::ArgumentV1<'_>; 1]; // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+    let mut _45: core::fmt::ArgumentV1<'_>; // in scope 0 at src/main.rs:41:15: 41:19
+    let _46: &std::sync::Arc<std::sync::Mutex<bool>>; // in scope 0 at src/main.rs:41:22: 41:26
+    let mut _49: bool;                   // in scope 0 at src/main.rs:42:1: 42:2
+    let mut _50: bool;                   // in scope 0 at src/main.rs:42:1: 42:2
+    scope 1 {
+        debug flag => _1;                // in scope 1 at src/main.rs:6:9: 6:13
+        let _3: std::sync::Arc<std::sync::Condvar>; // in scope 1 at src/main.rs:7:9: 7:13
+        scope 2 {
+            debug cond => _3;            // in scope 2 at src/main.rs:7:9: 7:13
+            let _5: std::sync::Arc<std::sync::Mutex<bool>>; // in scope 2 at src/main.rs:8:9: 8:14
+            scope 3 {
+                debug cflag => _5;       // in scope 3 at src/main.rs:8:9: 8:14
+                let _7: std::sync::Arc<std::sync::Condvar>; // in scope 3 at src/main.rs:9:9: 9:14
+                scope 4 {
+                    debug ccond => _7;   // in scope 4 at src/main.rs:9:9: 9:14
+                    let _9: std::thread::JoinHandle<()>; // in scope 4 at src/main.rs:11:9: 11:12
+                    scope 5 {
+                        debug hdl => _9; // in scope 5 at src/main.rs:11:9: 11:12
+                        let mut _11: i32; // in scope 5 at src/main.rs:29:9: 29:20
+                        scope 6 {
+                            debug counter => _11; // in scope 6 at src/main.rs:29:9: 29:20
+                            let mut _47: &[&str; 2]; // in scope 6 at src/main.rs:37:18: 37:39
+                            let mut _48: &[&str; 2]; // in scope 6 at src/main.rs:41:14: 41:20
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _49 = const false;               // scope 0 at src/main.rs:6:9: 6:13
+        _50 = const false;               // scope 0 at src/main.rs:6:9: 6:13
+        _2 = Mutex::<bool>::new(const false) -> bb1; // scope 0 at src/main.rs:6:25: 6:42
+                                         // mir::Constant
+                                         // + span: src/main.rs:6:25: 6:35
+                                         // + user_ty: UserType(1)
+                                         // + literal: Const { ty: fn(bool) -> Mutex<bool> {Mutex::<bool>::new}, val: Value(<ZST>) }
+    }
+
+    bb1: {
+        _1 = Arc::<Mutex<bool>>::new(move _2) -> bb2; // scope 0 at src/main.rs:6:16: 6:43
+                                         // mir::Constant
+                                         // + span: src/main.rs:6:16: 6:24
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn(Mutex<bool>) -> Arc<Mutex<bool>> {Arc::<Mutex<bool>>::new}, val: Value(<ZST>) }
+    }
+
+    bb2: {
+        _4 = Condvar::new() -> [return: bb3, unwind: bb32]; // scope 1 at src/main.rs:7:25: 7:39
+                                         // mir::Constant
+                                         // + span: src/main.rs:7:25: 7:37
+                                         // + literal: Const { ty: fn() -> Condvar {Condvar::new}, val: Value(<ZST>) }
+    }
+
+    bb3: {
+        _3 = Arc::<Condvar>::new(move _4) -> [return: bb4, unwind: bb32]; // scope 1 at src/main.rs:7:16: 7:40
+                                         // mir::Constant
+                                         // + span: src/main.rs:7:16: 7:24
+                                         // + user_ty: UserType(2)
+                                         // + literal: Const { ty: fn(Condvar) -> Arc<Condvar> {Arc::<Condvar>::new}, val: Value(<ZST>) }
+    }
+
+    bb4: {
+        _6 = &_1;                        // scope 2 at src/main.rs:8:17: 8:29
+        _5 = <Arc<Mutex<bool>> as Clone>::clone(move _6) -> [return: bb5, unwind: bb31]; // scope 2 at src/main.rs:8:17: 8:29
+                                         // mir::Constant
+                                         // + span: src/main.rs:8:22: 8:27
+                                         // + literal: Const { ty: for<'a> fn(&'a Arc<Mutex<bool>>) -> Arc<Mutex<bool>> {<Arc<Mutex<bool>> as Clone>::clone}, val: Value(<ZST>) }
+    }
+
+    bb5: {
+        _50 = const true;                // scope 2 at src/main.rs:8:28: 8:29
+        _8 = &_3;                        // scope 3 at src/main.rs:9:17: 9:29
+        _7 = <Arc<Condvar> as Clone>::clone(move _8) -> [return: bb6, unwind: bb37]; // scope 3 at src/main.rs:9:17: 9:29
+                                         // mir::Constant
+                                         // + span: src/main.rs:9:22: 9:27
+                                         // + literal: Const { ty: for<'a> fn(&'a Arc<Condvar>) -> Arc<Condvar> {<Arc<Condvar> as Clone>::clone}, val: Value(<ZST>) }
+    }
+
+    bb6: {
+        _50 = const false;               // scope 4 at src/main.rs:11:21: 27:6
+        _10 = [closure@src/main.rs:11:21: 11:28] { cflag: move _5, ccond: move _7 }; // scope 4 at src/main.rs:11:21: 27:6
+                                         // closure
+                                         // + def_id: DefId(0:12 ~ condvar[5cb6]::main::{closure#0})
+                                         // + substs: [
+                                         //     i32,
+                                         //     extern "rust-call" fn(()),
+                                         //     (std::sync::Arc<std::sync::Mutex<bool>>, std::sync::Arc<std::sync::Condvar>),
+                                         // ]
+        _9 = spawn::<[closure@src/main.rs:11:21: 11:28], ()>(move _10) -> [return: bb7, unwind: bb37]; // scope 4 at src/main.rs:11:15: 27:7
+                                         // mir::Constant
+                                         // + span: src/main.rs:11:15: 11:20
+                                         // + literal: Const { ty: fn([closure@src/main.rs:11:21: 11:28]) -> JoinHandle<()> {spawn::<[closure@src/main.rs:11:21: 11:28], ()>}, val: Value(<ZST>) }
+    }
+
+    bb7: {
+        _49 = const true;                // scope 4 at src/main.rs:27:6: 27:7
+        _11 = const 0_i32;               // scope 5 at src/main.rs:29:23: 29:24
+        goto -> bb8;                     // scope 6 at src/main.rs:30:5: 39:6
+    }
+
+    bb8: {
+        _13 = Duration::from_millis(const 1000_u64) -> [return: bb9, unwind: bb35]; // scope 6 at src/main.rs:31:15: 31:42
+                                         // mir::Constant
+                                         // + span: src/main.rs:31:15: 31:36
+                                         // + literal: Const { ty: fn(u64) -> Duration {Duration::from_millis}, val: Value(<ZST>) }
+    }
+
+    bb9: {
+        _12 = sleep(move _13) -> [return: bb10, unwind: bb35]; // scope 6 at src/main.rs:31:9: 31:43
+                                         // mir::Constant
+                                         // + span: src/main.rs:31:9: 31:14
+                                         // + literal: Const { ty: fn(Duration) {sleep}, val: Value(<ZST>) }
+    }
+
+    bb10: {
+        _20 = &_1;                       // scope 6 at src/main.rs:32:10: 32:21
+        _19 = <Arc<Mutex<bool>> as Deref>::deref(move _20) -> [return: bb11, unwind: bb35]; // scope 6 at src/main.rs:32:10: 32:21
+                                         // mir::Constant
+                                         // + span: src/main.rs:32:10: 32:21
+                                         // + literal: Const { ty: for<'a> fn(&'a Arc<Mutex<bool>>) -> &'a <Arc<Mutex<bool>> as Deref>::Target {<Arc<Mutex<bool>> as Deref>::deref}, val: Value(<ZST>) }
+    }
+
+    bb11: {
+        _18 = _19;                       // scope 6 at src/main.rs:32:10: 32:21
+        _17 = Mutex::<bool>::lock(move _18) -> [return: bb12, unwind: bb35]; // scope 6 at src/main.rs:32:10: 32:21
+                                         // mir::Constant
+                                         // + span: src/main.rs:32:15: 32:19
+                                         // + literal: Const { ty: for<'a> fn(&'a Mutex<bool>) -> Result<MutexGuard<'a, bool>, PoisonError<MutexGuard<'a, bool>>> {Mutex::<bool>::lock}, val: Value(<ZST>) }
+    }
+
+    bb12: {
+        _16 = Result::<MutexGuard<'_, bool>, PoisonError<MutexGuard<'_, bool>>>::unwrap(move _17) -> [return: bb13, unwind: bb35]; // scope 6 at src/main.rs:32:10: 32:30
+                                         // mir::Constant
+                                         // + span: src/main.rs:32:22: 32:28
+                                         // + literal: Const { ty: fn(Result<MutexGuard<'_, bool>, PoisonError<MutexGuard<'_, bool>>>) -> MutexGuard<'_, bool> {Result::<MutexGuard<'_, bool>, PoisonError<MutexGuard<'_, bool>>>::unwrap}, val: Value(<ZST>) }
+    }
+
+    bb13: {
+        _15 = &mut _16;                  // scope 6 at src/main.rs:32:10: 32:30
+        _14 = <MutexGuard<'_, bool> as DerefMut>::deref_mut(move _15) -> [return: bb14, unwind: bb30]; // scope 6 at src/main.rs:32:9: 32:30
+                                         // mir::Constant
+                                         // + span: src/main.rs:32:9: 32:30
+                                         // + literal: Const { ty: for<'a> fn(&'a mut MutexGuard<'_, bool>) -> &'a mut <MutexGuard<'_, bool> as Deref>::Target {<MutexGuard<'_, bool> as DerefMut>::deref_mut}, val: Value(<ZST>) }
+    }
+
+    bb14: {
+        (*_14) = const true;             // scope 6 at src/main.rs:32:9: 32:37
+        drop(_16) -> [return: bb15, unwind: bb35]; // scope 6 at src/main.rs:32:37: 32:38
+    }
+
+    bb15: {
+        _21 = CheckedAdd(_11, const 1_i32); // scope 6 at src/main.rs:33:9: 33:21
+        assert(!move (_21.1: bool), "attempt to compute `{} + {}`, which would overflow", _11, const 1_i32) -> [success: bb16, unwind: bb35]; // scope 6 at src/main.rs:33:9: 33:21
+    }
+
+    bb16: {
+        _11 = move (_21.0: i32);         // scope 6 at src/main.rs:33:9: 33:21
+        _23 = _11;                       // scope 6 at src/main.rs:34:12: 34:19
+        _22 = Gt(move _23, const 3_i32); // scope 6 at src/main.rs:34:12: 34:23
+        switchInt(move _22) -> [0: bb18, otherwise: bb17]; // scope 6 at src/main.rs:34:12: 34:23
+    }
+
+    bb17: {
+        _49 = const false;               // scope 6 at src/main.rs:40:5: 40:8
+        _38 = move _9;                   // scope 6 at src/main.rs:40:5: 40:8
+        _37 = JoinHandle::<()>::join(move _38) -> [return: bb23, unwind: bb35]; // scope 6 at src/main.rs:40:5: 40:15
+                                         // mir::Constant
+                                         // + span: src/main.rs:40:9: 40:13
+                                         // + literal: Const { ty: fn(JoinHandle<()>) -> Result<(), Box<(dyn Any + Send + 'static)>> {JoinHandle::<()>::join}, val: Value(<ZST>) }
+    }
+
+    bb18: {
+        _47 = const _;                   // scope 6 at src/main.rs:37:18: 37:39
+                                         // mir::Constant
+                                         // + span: src/main.rs:37:18: 37:39
+                                         // + literal: Const { ty: &[&str; 2], val: Unevaluated(main, [], Some(promoted[0])) }
+        _26 = _47 as &[&str] (Pointer(Unsize)); // scope 6 at src/main.rs:37:18: 37:39
+        _31 = &_11;                      // scope 6 at src/main.rs:37:41: 37:48
+        _30 = core::fmt::ArgumentV1::<'_>::new_display::<i32>(_31) -> [return: bb19, unwind: bb35]; // scope 6 at src/main.rs:37:36: 37:38
+                                         // mir::Constant
+                                         // + span: src/main.rs:37:36: 37:38
+                                         // + user_ty: UserType(4)
+                                         // + literal: Const { ty: for<'b> fn(&'b i32) -> core::fmt::ArgumentV1<'b> {core::fmt::ArgumentV1::<'_>::new_display::<i32>}, val: Value(<ZST>) }
+    }
+
+    bb19: {
+        _29 = [move _30];                // scope 6 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+        _28 = &_29;                      // scope 6 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+        _27 = _28 as &[core::fmt::ArgumentV1<'_>] (Pointer(Unsize)); // scope 6 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+        _25 = Arguments::<'_>::new_v1(move _26, move _27) -> [return: bb20, unwind: bb35]; // scope 6 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+                                         // mir::Constant
+                                         // + span: /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+                                         // + user_ty: UserType(3)
+                                         // + literal: Const { ty: fn(&[&'static str], &[core::fmt::ArgumentV1<'_>]) -> Arguments<'_> {Arguments::<'_>::new_v1}, val: Value(<ZST>) }
+    }
+
+    bb20: {
+        _24 = _print(move _25) -> [return: bb21, unwind: bb35]; // scope 6 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:9: 137:62
+                                         // mir::Constant
+                                         // + span: /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:9: 137:27
+                                         // + literal: Const { ty: for<'a> fn(Arguments<'a>) {_print}, val: Value(<ZST>) }
+    }
+
+    bb21: {
+        _35 = &_3;                       // scope 6 at src/main.rs:38:9: 38:26
+        _34 = <Arc<Condvar> as Deref>::deref(move _35) -> [return: bb22, unwind: bb35]; // scope 6 at src/main.rs:38:9: 38:26
+                                         // mir::Constant
+                                         // + span: src/main.rs:38:9: 38:26
+                                         // + literal: Const { ty: for<'a> fn(&'a Arc<Condvar>) -> &'a <Arc<Condvar> as Deref>::Target {<Arc<Condvar> as Deref>::deref}, val: Value(<ZST>) }
+    }
+
+    bb22: {
+        _33 = _34;                       // scope 6 at src/main.rs:38:9: 38:26
+        _32 = Condvar::notify_one(move _33) -> [return: bb38, unwind: bb35]; // scope 6 at src/main.rs:38:9: 38:26
+                                         // mir::Constant
+                                         // + span: src/main.rs:38:14: 38:24
+                                         // + literal: Const { ty: for<'a> fn(&'a Condvar) {Condvar::notify_one}, val: Value(<ZST>) }
+    }
+
+    bb23: {
+        _36 = Result::<(), Box<dyn Any + Send>>::unwrap(move _37) -> [return: bb24, unwind: bb35]; // scope 6 at src/main.rs:40:5: 40:24
+                                         // mir::Constant
+                                         // + span: src/main.rs:40:16: 40:22
+                                         // + literal: Const { ty: fn(Result<(), Box<dyn Any + Send>>) {Result::<(), Box<dyn Any + Send>>::unwrap}, val: Value(<ZST>) }
+    }
+
+    bb24: {
+        _48 = const _;                   // scope 6 at src/main.rs:41:14: 41:20
+                                         // mir::Constant
+                                         // + span: src/main.rs:41:14: 41:20
+                                         // + literal: Const { ty: &[&str; 2], val: Unevaluated(main, [], Some(promoted[1])) }
+        _41 = _48 as &[&str] (Pointer(Unsize)); // scope 6 at src/main.rs:41:14: 41:20
+        _46 = &_1;                       // scope 6 at src/main.rs:41:22: 41:26
+        _45 = core::fmt::ArgumentV1::<'_>::new_debug::<Arc<Mutex<bool>>>(_46) -> [return: bb25, unwind: bb35]; // scope 6 at src/main.rs:41:15: 41:19
+                                         // mir::Constant
+                                         // + span: src/main.rs:41:15: 41:19
+                                         // + user_ty: UserType(6)
+                                         // + literal: Const { ty: for<'b> fn(&'b Arc<Mutex<bool>>) -> core::fmt::ArgumentV1<'b> {core::fmt::ArgumentV1::<'_>::new_debug::<Arc<Mutex<bool>>>}, val: Value(<ZST>) }
+    }
+
+    bb25: {
+        _44 = [move _45];                // scope 6 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+        _43 = &_44;                      // scope 6 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+        _42 = _43 as &[core::fmt::ArgumentV1<'_>] (Pointer(Unsize)); // scope 6 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+        _40 = Arguments::<'_>::new_v1(move _41, move _42) -> [return: bb26, unwind: bb35]; // scope 6 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+                                         // mir::Constant
+                                         // + span: /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+                                         // + user_ty: UserType(5)
+                                         // + literal: Const { ty: fn(&[&'static str], &[core::fmt::ArgumentV1<'_>]) -> Arguments<'_> {Arguments::<'_>::new_v1}, val: Value(<ZST>) }
+    }
+
+    bb26: {
+        _39 = _print(move _40) -> [return: bb27, unwind: bb35]; // scope 6 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:9: 137:62
+                                         // mir::Constant
+                                         // + span: /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:9: 137:27
+                                         // + literal: Const { ty: for<'a> fn(Arguments<'a>) {_print}, val: Value(<ZST>) }
+    }
+
+    bb27: {
+        _49 = const false;               // scope 4 at src/main.rs:42:1: 42:2
+        _50 = const false;               // scope 2 at src/main.rs:42:1: 42:2
+        drop(_3) -> [return: bb28, unwind: bb32]; // scope 1 at src/main.rs:42:1: 42:2
+    }
+
+    bb28: {
+        drop(_1) -> bb29;                // scope 0 at src/main.rs:42:1: 42:2
+    }
+
+    bb29: {
+        return;                          // scope 0 at src/main.rs:42:2: 42:2
+    }
+
+    bb30 (cleanup): {
+        drop(_16) -> [return: bb35, unwind terminate]; // scope 6 at src/main.rs:32:37: 32:38
+    }
+
+    bb31 (cleanup): {
+        drop(_3) -> [return: bb32, unwind terminate]; // scope 1 at src/main.rs:42:1: 42:2
+    }
+
+    bb32 (cleanup): {
+        drop(_1) -> [return: bb33, unwind terminate]; // scope 0 at src/main.rs:42:1: 42:2
+    }
+
+    bb33 (cleanup): {
+        resume;                          // scope 0 at src/main.rs:5:1: 42:2
+    }
+
+    bb34 (cleanup): {
+        drop(_9) -> [return: bb37, unwind terminate]; // scope 4 at src/main.rs:42:1: 42:2
+    }
+
+    bb35 (cleanup): {
+        switchInt(_49) -> [0: bb37, otherwise: bb34]; // scope 4 at src/main.rs:42:1: 42:2
+    }
+
+    bb36 (cleanup): {
+        drop(_5) -> [return: bb31, unwind terminate]; // scope 2 at src/main.rs:42:1: 42:2
+    }
+
+    bb37 (cleanup): {
+        switchInt(_50) -> [0: bb31, otherwise: bb36]; // scope 2 at src/main.rs:42:1: 42:2
+    }
+
+    bb38: {
+        goto -> bb8;                     // scope 6 at src/main.rs:38:9: 38:26
+    }
+}
+
+promoted[0] in main: &[&str; 2] = {
+    let mut _0: &[&str; 2];              // return place in scope 0 at src/main.rs:37:18: 37:39
+    let mut _1: [&str; 2];               // in scope 0 at src/main.rs:37:18: 37:39
+
+    bb0: {
+        _1 = [const "outside counter: ", const "\n"]; // scope 0 at src/main.rs:37:18: 37:39
+                                         // mir::Constant
+                                         // + span: src/main.rs:37:18: 37:39
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+                                         // mir::Constant
+                                         // + span: src/main.rs:37:18: 37:39
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _0 = &_1;                        // scope 0 at src/main.rs:37:18: 37:39
+        return;                          // scope 0 at src/main.rs:37:18: 37:39
+    }
+}
+
+promoted[1] in main: &[&str; 2] = {
+    let mut _0: &[&str; 2];              // return place in scope 0 at src/main.rs:41:14: 41:20
+    let mut _1: [&str; 2];               // in scope 0 at src/main.rs:41:14: 41:20
+
+    bb0: {
+        _1 = [const "", const "\n"];     // scope 0 at src/main.rs:41:14: 41:20
+                                         // mir::Constant
+                                         // + span: src/main.rs:41:14: 41:20
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+                                         // mir::Constant
+                                         // + span: src/main.rs:41:14: 41:20
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _0 = &_1;                        // scope 0 at src/main.rs:41:14: 41:20
+        return;                          // scope 0 at src/main.rs:41:14: 41:20
+    }
+}
+
+fn main::{closure#0}(_1: [closure@src/main.rs:11:21: 11:28]) -> () {
+    debug cflag => (_1.0: std::sync::Arc<std::sync::Mutex<bool>>); // in scope 0 at src/main.rs:8:9: 8:14
+    debug ccond => (_1.1: std::sync::Arc<std::sync::Condvar>); // in scope 0 at src/main.rs:9:9: 9:14
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:11:29: 11:29
+    let mut _2: std::sync::MutexGuard<'_, bool>; // in scope 0 at src/main.rs:12:13: 12:21
+    let mut _3: std::result::Result<std::sync::MutexGuard<'_, bool>, std::sync::PoisonError<std::sync::MutexGuard<'_, bool>>>; // in scope 0 at src/main.rs:12:24: 12:36
+    let mut _4: &std::sync::Mutex<bool>; // in scope 0 at src/main.rs:12:24: 12:36
+    let _5: &std::sync::Mutex<bool>;     // in scope 0 at src/main.rs:12:24: 12:36
+    let mut _6: &std::sync::Arc<std::sync::Mutex<bool>>; // in scope 0 at src/main.rs:12:24: 12:36
+    let mut _8: bool;                    // in scope 0 at src/main.rs:15:15: 15:26
+    let mut _9: i32;                     // in scope 0 at src/main.rs:15:15: 15:22
+    let mut _10: bool;                   // in scope 0 at src/main.rs:16:19: 16:25
+    let mut _11: bool;                   // in scope 0 at src/main.rs:16:20: 16:25
+    let mut _12: &bool;                  // in scope 0 at src/main.rs:16:20: 16:25
+    let mut _13: &std::sync::MutexGuard<'_, bool>; // in scope 0 at src/main.rs:16:21: 16:25
+    let mut _14: std::sync::MutexGuard<'_, bool>; // in scope 0 at src/main.rs:19:24: 19:49
+    let mut _15: std::result::Result<std::sync::MutexGuard<'_, bool>, std::sync::PoisonError<std::sync::MutexGuard<'_, bool>>>; // in scope 0 at src/main.rs:19:24: 19:40
+    let mut _16: &std::sync::Condvar;    // in scope 0 at src/main.rs:19:24: 19:40
+    let _17: &std::sync::Condvar;        // in scope 0 at src/main.rs:19:24: 19:40
+    let mut _18: &std::sync::Arc<std::sync::Condvar>; // in scope 0 at src/main.rs:19:24: 19:40
+    let mut _19: std::sync::MutexGuard<'_, bool>; // in scope 0 at src/main.rs:19:35: 19:39
+    let mut _20: &mut bool;              // in scope 0 at src/main.rs:22:13: 22:18
+    let mut _21: &mut std::sync::MutexGuard<'_, bool>; // in scope 0 at src/main.rs:22:14: 22:18
+    let mut _22: (i32, bool);            // in scope 0 at src/main.rs:24:13: 24:25
+    let _23: ();                         // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:9: 137:62
+    let mut _24: std::fmt::Arguments<'_>; // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+    let mut _25: &[&str];                // in scope 0 at src/main.rs:25:22: 25:41
+    let mut _26: &[core::fmt::ArgumentV1<'_>]; // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+    let _27: &[core::fmt::ArgumentV1<'_>; 1]; // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+    let _28: [core::fmt::ArgumentV1<'_>; 1]; // in scope 0 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+    let mut _29: core::fmt::ArgumentV1<'_>; // in scope 0 at src/main.rs:25:38: 25:40
+    let _30: &i32;                       // in scope 0 at src/main.rs:25:43: 25:50
+    let mut _32: bool;                   // in scope 0 at src/main.rs:27:5: 27:6
+    scope 1 {
+        debug lock => _2;                // in scope 1 at src/main.rs:12:13: 12:21
+        let mut _7: i32;                 // in scope 1 at src/main.rs:13:13: 13:24
+        scope 2 {
+            debug counter => _7;         // in scope 2 at src/main.rs:13:13: 13:24
+            let mut _31: &[&str; 2];     // in scope 2 at src/main.rs:25:22: 25:41
+        }
+    }
+
+    bb0: {
+        _32 = const false;               // scope 0 at src/main.rs:12:13: 12:21
+        _6 = &(_1.0: std::sync::Arc<std::sync::Mutex<bool>>); // scope 0 at src/main.rs:12:24: 12:36
+        _5 = <Arc<Mutex<bool>> as Deref>::deref(move _6) -> [return: bb1, unwind: bb19]; // scope 0 at src/main.rs:12:24: 12:36
+                                         // mir::Constant
+                                         // + span: src/main.rs:12:24: 12:36
+                                         // + literal: Const { ty: for<'a> fn(&'a Arc<Mutex<bool>>) -> &'a <Arc<Mutex<bool>> as Deref>::Target {<Arc<Mutex<bool>> as Deref>::deref}, val: Value(<ZST>) }
+    }
+
+    bb1: {
+        _4 = _5;                         // scope 0 at src/main.rs:12:24: 12:36
+        _3 = Mutex::<bool>::lock(move _4) -> [return: bb2, unwind: bb19]; // scope 0 at src/main.rs:12:24: 12:36
+                                         // mir::Constant
+                                         // + span: src/main.rs:12:30: 12:34
+                                         // + literal: Const { ty: for<'a> fn(&'a Mutex<bool>) -> Result<MutexGuard<'a, bool>, PoisonError<MutexGuard<'a, bool>>> {Mutex::<bool>::lock}, val: Value(<ZST>) }
+    }
+
+    bb2: {
+        _2 = Result::<MutexGuard<'_, bool>, PoisonError<MutexGuard<'_, bool>>>::unwrap(move _3) -> [return: bb3, unwind: bb19]; // scope 0 at src/main.rs:12:24: 12:45
+                                         // mir::Constant
+                                         // + span: src/main.rs:12:37: 12:43
+                                         // + literal: Const { ty: fn(Result<MutexGuard<'_, bool>, PoisonError<MutexGuard<'_, bool>>>) -> MutexGuard<'_, bool> {Result::<MutexGuard<'_, bool>, PoisonError<MutexGuard<'_, bool>>>::unwrap}, val: Value(<ZST>) }
+    }
+
+    bb3: {
+        _32 = const true;                // scope 0 at src/main.rs:12:44: 12:45
+        _7 = const 0_i32;                // scope 1 at src/main.rs:13:27: 13:28
+        goto -> bb4;                     // scope 2 at src/main.rs:15:9: 26:10
+    }
+
+    bb4: {
+        _9 = _7;                         // scope 2 at src/main.rs:15:15: 15:22
+        _8 = Lt(move _9, const 3_i32);   // scope 2 at src/main.rs:15:15: 15:26
+        switchInt(move _8) -> [0: bb16, otherwise: bb5]; // scope 2 at src/main.rs:15:15: 15:26
+    }
+
+    bb5: {
+        _13 = &_2;                       // scope 2 at src/main.rs:16:21: 16:25
+        _12 = <MutexGuard<'_, bool> as Deref>::deref(move _13) -> [return: bb6, unwind: bb22]; // scope 2 at src/main.rs:16:20: 16:25
+                                         // mir::Constant
+                                         // + span: src/main.rs:16:20: 16:25
+                                         // + literal: Const { ty: for<'a> fn(&'a MutexGuard<'_, bool>) -> &'a <MutexGuard<'_, bool> as Deref>::Target {<MutexGuard<'_, bool> as Deref>::deref}, val: Value(<ZST>) }
+    }
+
+    bb6: {
+        _11 = (*_12);                    // scope 2 at src/main.rs:16:20: 16:25
+        _10 = Not(move _11);             // scope 2 at src/main.rs:16:19: 16:25
+        switchInt(move _10) -> [0: bb11, otherwise: bb7]; // scope 2 at src/main.rs:16:19: 16:25
+    }
+
+    bb7: {
+        _18 = &(_1.1: std::sync::Arc<std::sync::Condvar>); // scope 2 at src/main.rs:19:24: 19:40
+        _17 = <Arc<Condvar> as Deref>::deref(move _18) -> [return: bb8, unwind: bb22]; // scope 2 at src/main.rs:19:24: 19:40
+                                         // mir::Constant
+                                         // + span: src/main.rs:19:24: 19:40
+                                         // + literal: Const { ty: for<'a> fn(&'a Arc<Condvar>) -> &'a <Arc<Condvar> as Deref>::Target {<Arc<Condvar> as Deref>::deref}, val: Value(<ZST>) }
+    }
+
+    bb8: {
+        _16 = _17;                       // scope 2 at src/main.rs:19:24: 19:40
+        _32 = const false;               // scope 2 at src/main.rs:19:35: 19:39
+        _19 = move _2;                   // scope 2 at src/main.rs:19:35: 19:39
+        _15 = Condvar::wait::<bool>(move _16, move _19) -> [return: bb9, unwind: bb22]; // scope 2 at src/main.rs:19:24: 19:40
+                                         // mir::Constant
+                                         // + span: src/main.rs:19:30: 19:34
+                                         // + literal: Const { ty: for<'b, 'a> fn(&'b Condvar, MutexGuard<'a, bool>) -> Result<MutexGuard<'a, bool>, PoisonError<MutexGuard<'a, bool>>> {Condvar::wait::<bool>}, val: Value(<ZST>) }
+    }
+
+    bb9: {
+        _14 = Result::<MutexGuard<'_, bool>, PoisonError<MutexGuard<'_, bool>>>::unwrap(move _15) -> [return: bb10, unwind: bb22]; // scope 2 at src/main.rs:19:24: 19:49
+                                         // mir::Constant
+                                         // + span: src/main.rs:19:41: 19:47
+                                         // + literal: Const { ty: fn(Result<MutexGuard<'_, bool>, PoisonError<MutexGuard<'_, bool>>>) -> MutexGuard<'_, bool> {Result::<MutexGuard<'_, bool>, PoisonError<MutexGuard<'_, bool>>>::unwrap}, val: Value(<ZST>) }
+    }
+
+    bb10: {
+        _32 = const true;                // scope 2 at src/main.rs:19:17: 19:21
+        _2 = move _14;                   // scope 2 at src/main.rs:19:17: 19:21
+        goto -> bb5;                     // scope 2 at src/main.rs:16:13: 20:14
+    }
+
+    bb11: {
+        _21 = &mut _2;                   // scope 2 at src/main.rs:22:14: 22:18
+        _20 = <MutexGuard<'_, bool> as DerefMut>::deref_mut(move _21) -> [return: bb12, unwind: bb22]; // scope 2 at src/main.rs:22:13: 22:18
+                                         // mir::Constant
+                                         // + span: src/main.rs:22:13: 22:18
+                                         // + literal: Const { ty: for<'a> fn(&'a mut MutexGuard<'_, bool>) -> &'a mut <MutexGuard<'_, bool> as Deref>::Target {<MutexGuard<'_, bool> as DerefMut>::deref_mut}, val: Value(<ZST>) }
+    }
+
+    bb12: {
+        (*_20) = const false;            // scope 2 at src/main.rs:22:13: 22:26
+        _22 = CheckedAdd(_7, const 1_i32); // scope 2 at src/main.rs:24:13: 24:25
+        assert(!move (_22.1: bool), "attempt to compute `{} + {}`, which would overflow", _7, const 1_i32) -> [success: bb13, unwind: bb22]; // scope 2 at src/main.rs:24:13: 24:25
+    }
+
+    bb13: {
+        _7 = move (_22.0: i32);          // scope 2 at src/main.rs:24:13: 24:25
+        _31 = const _;                   // scope 2 at src/main.rs:25:22: 25:41
+                                         // mir::Constant
+                                         // + span: src/main.rs:25:22: 25:41
+                                         // + literal: Const { ty: &[&str; 2], val: Unevaluated(main::{closure#0}, [<closure_kind>, <closure_signature>, <upvars>], Some(promoted[0])) }
+        _25 = _31 as &[&str] (Pointer(Unsize)); // scope 2 at src/main.rs:25:22: 25:41
+        _30 = &_7;                       // scope 2 at src/main.rs:25:43: 25:50
+        _29 = core::fmt::ArgumentV1::<'_>::new_display::<i32>(_30) -> [return: bb14, unwind: bb22]; // scope 2 at src/main.rs:25:38: 25:40
+                                         // mir::Constant
+                                         // + span: src/main.rs:25:38: 25:40
+                                         // + user_ty: UserType(1)
+                                         // + literal: Const { ty: for<'b> fn(&'b i32) -> core::fmt::ArgumentV1<'b> {core::fmt::ArgumentV1::<'_>::new_display::<i32>}, val: Value(<ZST>) }
+    }
+
+    bb14: {
+        _28 = [move _29];                // scope 2 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+        _27 = &_28;                      // scope 2 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+        _26 = _27 as &[core::fmt::ArgumentV1<'_>] (Pointer(Unsize)); // scope 2 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+        _24 = Arguments::<'_>::new_v1(move _25, move _26) -> [return: bb15, unwind: bb22]; // scope 2 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+                                         // mir::Constant
+                                         // + span: /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:28: 137:61
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn(&[&'static str], &[core::fmt::ArgumentV1<'_>]) -> Arguments<'_> {Arguments::<'_>::new_v1}, val: Value(<ZST>) }
+    }
+
+    bb15: {
+        _23 = _print(move _24) -> [return: bb23, unwind: bb22]; // scope 2 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:9: 137:62
+                                         // mir::Constant
+                                         // + span: /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:9: 137:27
+                                         // + literal: Const { ty: for<'a> fn(Arguments<'a>) {_print}, val: Value(<ZST>) }
+    }
+
+    bb16: {
+        drop(_2) -> [return: bb17, unwind: bb19]; // scope 0 at src/main.rs:27:5: 27:6
+    }
+
+    bb17: {
+        _32 = const false;               // scope 0 at src/main.rs:27:5: 27:6
+        drop(_1) -> bb18;                // scope 0 at src/main.rs:27:5: 27:6
+    }
+
+    bb18: {
+        return;                          // scope 0 at src/main.rs:27:6: 27:6
+    }
+
+    bb19 (cleanup): {
+        drop(_1) -> [return: bb20, unwind terminate]; // scope 0 at src/main.rs:27:5: 27:6
+    }
+
+    bb20 (cleanup): {
+        resume;                          // scope 0 at src/main.rs:11:21: 27:6
+    }
+
+    bb21 (cleanup): {
+        drop(_2) -> [return: bb19, unwind terminate]; // scope 0 at src/main.rs:27:5: 27:6
+    }
+
+    bb22 (cleanup): {
+        switchInt(_32) -> [0: bb19, otherwise: bb21]; // scope 0 at src/main.rs:27:5: 27:6
+    }
+
+    bb23: {
+        goto -> bb4;                     // scope 2 at /rustc/90c541806f23a127002de5b4038be731ba1458ca/library/std/src/macros.rs:137:9: 137:62
+    }
+}
+
+promoted[0] in main::{closure#0}: &[&str; 2] = {
+    let mut _0: &[&str; 2];              // return place in scope 0 at src/main.rs:25:22: 25:41
+    let mut _1: [&str; 2];               // in scope 0 at src/main.rs:25:22: 25:41
+
+    bb0: {
+        _1 = [const "inner counter: ", const "\n"]; // scope 0 at src/main.rs:25:22: 25:41
+                                         // mir::Constant
+                                         // + span: src/main.rs:25:22: 25:41
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+                                         // mir::Constant
+                                         // + span: src/main.rs:25:22: 25:41
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _0 = &_1;                        // scope 0 at src/main.rs:25:22: 25:41
+        return;                          // scope 0 at src/main.rs:25:22: 25:41
+    }
+}

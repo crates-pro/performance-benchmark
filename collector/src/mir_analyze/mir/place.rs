@@ -9,7 +9,6 @@ pub enum Place {
     Downcast(Downcast),
     Subslice(Subslice),
     Empty,
-    Index(Index),
 }
 
 #[derive(Debug)]
@@ -24,12 +23,6 @@ pub type FieldIdx = u32;
 #[derive(Debug)]
 pub struct Deref {
     pub place: Box<Place>,
-}
-
-#[derive(Debug)]
-pub struct Index {
-    pub place: Box<Place>,
-    //pub id: String,
 }
 
 #[derive(Debug)]

@@ -1,3 +1,96 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7fbe6d5bd9ce2773403108cb4f2d6bf2e27368439412833b2efa572b4408e0c7
-size 2423
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn main() -> () {
+    let mut _0: ();
+    let _1: A;
+    let mut _2: std::string::String;
+    let _3: ();
+    let mut _4: std::fmt::Arguments<'_>;
+    let mut _5: &[&str];
+    let mut _6: &[core::fmt::rt::Argument<'_>];
+    let _7: &[core::fmt::rt::Argument<'_>; 1];
+    let _8: [core::fmt::rt::Argument<'_>; 1];
+    let mut _9: core::fmt::rt::Argument<'_>;
+    let _10: &std::string::String;
+    let mut _12: std::string::String;
+    let _13: ();
+    let mut _14: &mut std::string::String;
+    let mut _16: bool;
+    scope 1 {
+        debug a => _1;
+        let mut _11: A;
+        let mut _15: &[&str; 2];
+        scope 2 {
+            debug b => _11;
+        }
+    }
+
+    bb0: {
+        _16 = const false;
+        _2 = <String as From<&str>>::from(const "string") -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _16 = const true;
+        _1 = A { field: move _2 };
+        _15 = const _;
+        _5 = _15 as &[&str] (PointerCoercion(Unsize));
+        _10 = &(_1.0: std::string::String);
+        _9 = core::fmt::rt::Argument::<'_>::new_display::<String>(_10) -> [return: bb2, unwind: bb10];
+    }
+
+    bb2: {
+        _8 = [move _9];
+        _7 = &_8;
+        _6 = _7 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _4 = Arguments::<'_>::new_v1(move _5, move _6) -> [return: bb3, unwind: bb10];
+    }
+
+    bb3: {
+        _3 = _print(move _4) -> [return: bb4, unwind: bb10];
+    }
+
+    bb4: {
+        _16 = const false;
+        _12 = move (_1.0: std::string::String);
+        _11 = A { field: move _12 };
+        _14 = &mut (_11.0: std::string::String);
+        _13 = String::clear(move _14) -> [return: bb5, unwind: bb7];
+    }
+
+    bb5: {
+        drop(_11) -> [return: bb6, unwind: bb10];
+    }
+
+    bb6: {
+        _16 = const false;
+        return;
+    }
+
+    bb7 (cleanup): {
+        drop(_11) -> [return: bb10, unwind terminate];
+    }
+
+    bb8 (cleanup): {
+        resume;
+    }
+
+    bb9 (cleanup): {
+        drop((_1.0: std::string::String)) -> [return: bb8, unwind terminate];
+    }
+
+    bb10 (cleanup): {
+        switchInt(_16) -> [0: bb8, otherwise: bb9];
+    }
+}
+
+promoted[0] in main: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}

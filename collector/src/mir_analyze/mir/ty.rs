@@ -14,6 +14,7 @@ pub enum Ty {
     SelfDef(ModuledIdentifier),
     Tuple(Vec<Ty>),
     Array(Array),
+    Slice(Slice),
     Ref(Box<Ty>),
     Placeholder,
     Dyn(Box<Ty>),
@@ -21,6 +22,8 @@ pub enum Ty {
     Closure(Box<Closure>),
     AllocTy(String, Box<Ty>),
     UND,
+    CoroutineClosure(Box<CoroutineClosure>),
+    ForeignType(Box<Ty>),
 }
 
 impl Default for Ty {
@@ -54,7 +57,10 @@ impl FromStr for Ty {
                 }
                 i += 1;
             }
-
+            if i == s.len() {
+                let s = s.split("::").map(|s| s.to_string()).collect();
+                return Ok(Self::SelfDef(s));
+            }
             return Ok(Self::Result(
                 s.get(0..begin + 6)
                     .unwrap()
@@ -72,6 +78,13 @@ impl FromStr for Ty {
                 )?)));
             }
         }
+        if let Some(dy) = s.get(0..6) {
+            if dy == "extern" {
+                return Ok(Self::Dyn(Box::new(Self::from_str(
+                    s.get(12..s.len()).unwrap(),
+                )?)));
+            }
+        }
         match s {
             "f32" => Ok(Self::Float32),
             "f64" => Ok(Self::Float64),
@@ -81,6 +94,7 @@ impl FromStr for Ty {
             "bool" => Ok(Self::Bool),
             "undef" => Ok(Self::UND),
             "str" => Ok(Self::Str),
+            "_" => Ok(Self::Placeholder),
 
             _ => {
                 let s = s.split("::").map(|s| s.to_string()).collect();
@@ -123,13 +137,16 @@ impl ToString for Ty {
                     + ")"
             }
             Ty::Array(a) => a.to_string(),
+            Ty::Slice(dt) => dt.to_string(),
             Ty::Ref(r) => "&".to_string() + r.to_string().as_str(),
             Ty::Placeholder => "()".to_string(),
             Ty::Result(m, a, b) => {
                 m.join("::") + "<" + a.to_string().as_str() + ", " + b.to_string().as_str() + ">"
             }
             Ty::Dyn(t) => format!("dyn {}", t.to_string()),
+            Ty::ForeignType(ft) => format!("extern C {}", ft.to_string()),
             Ty::Closure(fp) => fp.to_string(),
+            Ty::CoroutineClosure(po) => po.to_string(),
             Ty::UND => "UND".to_string(),
             Ty::AllocTy(p, t) => format!("{{{}: {}}}", p, t.to_string()),
         }
@@ -140,6 +157,11 @@ impl ToString for Ty {
 pub struct Array {
     pub elem_ty: Box<Ty>,
     pub len: Option<u32>,
+}
+
+#[derive(Debug, Clone)]
+pub struct Slice {
+    pub elem_ty: Box<Ty>,
 }
 
 impl FromStr for Array {
@@ -168,12 +190,24 @@ impl ToString for Array {
     }
 }
 
+impl ToString for Slice {
+    fn to_string(&self) -> String {
+        "[".to_string() + self.elem_ty.to_string().as_str() + "]"
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct Closure {
     pub closure_ty: ClosureTy,
     pub params: Vec<Ty>,
     pub ret_ty: Ty,
     pub opeartion: ModuledIdentifier,
+}
+
+#[derive(Debug, Clone)]
+pub struct CoroutineClosure {
+    pub life_cycle_parameters: String,
+    pub closure: Closure,
 }
 
 #[derive(Debug, Clone)]
@@ -225,5 +259,15 @@ impl ToString for ClosureTy {
             ClosureTy::FnOnce => "fn_once".to_string(),
             ClosureTy::FnMut => "fn_mut".to_string(),
         }
+    }
+}
+
+impl ToString for CoroutineClosure {
+    fn to_string(&self) -> String {
+        format!(
+            "for<{}> {}",
+            self.life_cycle_parameters.to_string(),
+            self.closure.to_string()
+        )
     }
 }

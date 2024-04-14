@@ -12,8 +12,18 @@ pub enum Rvalue {
     CopyForDeref(Place),
     Len(Place),
     ShallowInitBox(ShallowInitBox),
-    //Repeat(Repeat),
+    Repeat(Repeat),
+    AddressOf(AddressOf),
+    NULL,
+    BoxArray(BoxArray)
 }
+
+#[derive(Debug)]
+pub struct  BoxArray {
+    pub ty: Ty,
+    pub array_size: String
+}
+
 #[derive(Debug)]
 pub enum UnaryOp {
     Neg(Neg),
@@ -67,6 +77,7 @@ pub enum AggregateKind {
     Array,
     Tuple,
     Struct(ModuledIdentifier),
+    Coroutine(String),
 }
 
 #[derive(Debug)]
@@ -80,32 +91,33 @@ pub struct Cast {
 pub enum CastKind {
     PointerCoercion(PointerCoercion),
     IntToInt,
-    // PointerExposeAddress,
-    // PointerFromExposedAddress,
+    PointerExposeAddress,
+    PointerFromExposedAddress,
     // DynStar,
-    // FloatToInt,
+    FloatToInt,
     FloatToFloat,
     IntToFloat,
     PtrToPtr,
-    // FnPtrToPtr,
+    FnPtrToPtr,
     Transmute,
+    Misc,
 }
 
 #[derive(Debug)]
 pub enum PointerCoercion {
-    // ReifyFnPointer,
-    // UnsafeFnPointer,
-    //ClosureFnPointer(Unsafety),
-    // MutToConstPointer,
+    ReifyFnPointer,
+    UnsafeFnPointer,
+    ClosureFnPointer(Unsafety),
+    MutToConstPointer,
     // ArrayToPointer,
     Unsize,
 }
 
-// #[derive(Debug)]
-// pub enum Unsafety {
-//    Unsafe,
-//    Normal,
-//}
+ #[derive(Debug)]
+pub enum Unsafety {
+    Unsafe,
+    Normal,
+}
 
 #[derive(Debug)]
 pub struct Ref {
@@ -119,14 +131,26 @@ pub enum BorrowKind {
     Mut,
 }
 
-/*#[derive(Debug)]
+#[derive(Debug)]
 pub struct Repeat {
-    pub operand: Operand,
-    pub size: LocalID,
-}*/
+    pub operand: Option<Operand>,
+    pub size: String,
+}
 
 #[derive(Debug)]
 pub struct ShallowInitBox {
     pub operand: Operand,
     pub ty: Ty,
+}
+
+#[derive(Debug)]
+pub struct AddressOf {
+    pub place: Place,
+    pub mutability: Option<Mutability>,
+}
+
+#[derive(Debug)]
+pub enum Mutability {
+    Not,
+    Mut,
 }

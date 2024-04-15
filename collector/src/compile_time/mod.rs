@@ -85,7 +85,7 @@ pub fn bench<'a>(
                 flamegraph_flag,
                 out_dir,
             )
-            .with_context(|| format!("Faile to bench '{}'!", b.name));
+            .with_context(|| format!("Fail to bench '{}'!", b.name));
         match result {
             core::result::Result::Ok(r) => result_vec.push(r),
             Err(s) => {

@@ -46,23 +46,30 @@ if __name__ == '__main__':
     data_pair_1.sort(key=lambda d: d[1])
     data_pair_2.sort(key=lambda d: d[1])
 
-    data_1 = [np.log(item[1]) for item in data_pair_1]
-    data_2 = [np.log(item[1]) for item in data_pair_2]
-    interval_1 = annotate_interval(data_1, scale)
-    interval_2 = annotate_interval(data_2, scale)
+    data_1 = [item[1] for item in data_pair_1]
+    data_2 = [item[1] for item in data_pair_2]
+
+    geo_mean_1 = np.prod(data_1) ** (1 / len(data_1))
+    geo_mean_2 = np.prod(data_2) ** (1 / len(data_2))
+    print(f"geomean: {geo_mean_1} | {geo_mean_2}")
+
+    log_data_1 = [np.log(item) for item in data_1]
+    log_data_2 = [np.log(item) for item in data_2]
+    interval_1 = annotate_interval(log_data_1, scale)
+    interval_2 = annotate_interval(log_data_2, scale)
     annotate_1 = [item[0] for item in data_pair_1]
     annotate_2 = [item[0] for item in data_pair_2]
 
     plt.figure(dpi=500,  figsize=[scale, scale])
     plt.xticks([1, 2], [label_1, label_2])
-    plt.violinplot([data_1, data_2], showmeans=False, showmedians=True)
+    plt.violinplot([log_data_1, log_data_2], showmeans=False, showmedians=True)
 
-    plt.scatter([1]*len(data_1), data_1, color='green', marker='o', s=2)
-    plt.scatter([2]*len(data_2), data_2, color='green', marker='o', s=2)
+    plt.scatter([1]*len(log_data_1), log_data_1, color='green', marker='o', s=2)
+    plt.scatter([2]*len(log_data_2), log_data_2, color='green', marker='o', s=2)
 
-    for i, d1 in enumerate(data_1):
+    for i, d1 in enumerate(log_data_1):
         plt.annotate(annotate_1[i], (1, d1), textcoords="offset points", xytext=(interval_1[i][0], interval_1[i][1]), arrowprops=dict(headlength = 0.1, width = 0.15, headwidth = 0.1, shrink=0.99, linewidth=0.2, mutation_scale=0.1), fontsize=9)
-    for i, d2 in enumerate(data_2):
+    for i, d2 in enumerate(log_data_2):
         plt.annotate(annotate_2[i], (2, d2), textcoords="offset points", xytext=(interval_2[i][0], interval_2[i][1]), arrowprops=dict(headlength = 0.1, width = 0.15, headwidth = 0.1, shrink=0.99, linewidth=0.2, mutation_scale=0.1), fontsize=9)
 
     plt.ylabel('log (Binary Size (MB))')

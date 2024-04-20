@@ -288,24 +288,27 @@ pub enum Commands {
 
     /// Boxplot and scatterplot for a pair of compiled_binary_size data for comparsion.
     BinaryPlot {
-        /// The path of compiled_binary_size data 1
+        /// The path of compiled_binary_size data 1.
         #[clap(long = "data1")]
         data1: PathBuf,
-        /// The path of compiled_binary_size data 2
+        /// The path of compiled_binary_size data 2.
         #[clap(long = "data2")]
         data2: PathBuf,
-        /// The label of compiled_binary_size data 1
-        #[clap(long = "data1-label")]
+        /// The label of compiled_binary_size data 1. Deprecated when mode is `cmp`.
+        #[clap(long = "data1-label", default_value = "")]
         data1_label: String,
-        /// The label of compiled_binary_size data 2
-        #[clap(long = "data2-label")]
+        /// The label of compiled_binary_size data 2. Deprecated when mode is `cmp`.
+        #[clap(long = "data2-label", default_value = "")]
         data2_label: String,
-        /// The profile of data collected
+        /// The profile of data collected.
         #[clap(long = "profile")]
         profile: Profile,
-        /// The path of output figure
+        /// The path of output figure.
         #[clap(long = "out-path")]
         out_path: PathBuf,
+        /// The mode of plotter. Either be `default` or be `cmp`(compare).
+        #[clap(long = "mode", default_value = "default")]
+        mode: BinaryPlotMode,
     },
 
     /// Trasfer Json outpu to csv output.
@@ -416,6 +419,23 @@ impl FromStr for PerfTool {
             "perf-stat" => std::result::Result::Ok(PerfTool::BenchTool(Bencher::PerfStat)),
             "perf-record" => std::result::Result::Ok(PerfTool::BenchTool(Bencher::PerfRecord)),
             _ => Err(format!("Unrecognized PerfTool {}", s)),
+        }
+    }
+}
+
+#[derive(Debug)]
+pub enum BinaryPlotMode {
+    DefaultMode,
+    CompareMode,
+}
+
+impl FromStr for BinaryPlotMode {
+    type Err = String;
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s {
+            "default" => std::result::Result::Ok(Self::DefaultMode),
+            "cmp" => std::result::Result::Ok(Self::CompareMode),
+            _ => Err(format!("Unrecognized BinaryPlotMode {}. BinaryPlotMode should be either `default` or `cmp`", s)),
         }
     }
 }

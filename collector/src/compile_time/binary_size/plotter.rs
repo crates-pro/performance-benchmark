@@ -1,4 +1,5 @@
 use std::{
+    collections::HashMap,
     fs::File,
     io::BufReader,
     path::PathBuf,
@@ -46,7 +47,7 @@ pub fn plot(
     let benchmark_binary_size_b = get_benchmark_binary_size(&data_b);
 
     let mut cmd = Command::new("python");
-    cmd.arg("src/compile_time/binary_size/plotter.py")
+    cmd.arg("src/compile_time/binary_size/plot/plotter.py")
         .arg(benchmark_binary_size_a)
         .arg(benchmark_binary_size_b)
         .arg(label_a)
@@ -58,6 +59,22 @@ pub fn plot(
     Ok(())
 }
 
+pub fn plot_compare(data: &HashMap<String, f64>, out_path: PathBuf) -> anyhow::Result<PathBuf> {
+    let mut cmd = Command::new("python");
+    cmd.arg("src/compile_time/binary_size/plot/plotter_cmp.py")
+        .arg(
+            data.into_iter()
+                .map(|(k, v)| format!("{},{}", k, v))
+                .collect::<Vec<String>>()
+                .join(";"),
+        )
+        .arg(&out_path);
+    cmd.stdout(Stdio::inherit());
+    cmd.spawn().unwrap().wait().unwrap();
+
+    Ok(out_path)
+}
+
 #[cfg(test)]
 mod test_binary_size_plotter {
     use std::{
@@ -65,9 +82,11 @@ mod test_binary_size_plotter {
         path::PathBuf,
     };
 
-    use crate::benchmark::profile::Profile;
+    use crate::{
+        benchmark::profile::Profile, compile_time::binary_size::compare::compare_binary_size,
+    };
 
-    use super::plot;
+    use super::{plot, plot_compare};
 
     #[test]
     fn test_plotter() {
@@ -88,5 +107,21 @@ mod test_binary_size_plotter {
 
         fs::metadata(&file_path).unwrap();
         remove_file(file_path).unwrap();
+    }
+
+    #[test]
+    fn test_plotter_cmp() {
+        let binary_size_a = PathBuf::from("test/binary_size/compare/binary_size_1.json");
+        let binary_size_b = PathBuf::from("test/binary_size/compare/binary_size_2.json");
+        let out_path = PathBuf::from("test/binary_size/compare/compare.jpg");
+
+        plot_compare(
+            &compare_binary_size(&binary_size_a, &binary_size_b, Profile::Release),
+            out_path.clone(),
+        )
+        .unwrap();
+
+        fs::metadata(&out_path).unwrap();
+        remove_file(out_path).unwrap();
     }
 }

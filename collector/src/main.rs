@@ -8,7 +8,13 @@ use std::{
 use anyhow::{Context, Ok};
 use benchmark::scenario::Scenario;
 use clap::Parser;
-use compile_time::{bench_compile_time, binary_size::plotter::plot};
+use compile_time::{
+    bench_compile_time,
+    binary_size::{
+        compare::compare_binary_size,
+        plotter::{plot, plot_compare},
+    },
+};
 use runtime::bench_runtime;
 use toolchain::{Cli, Commands, ResultWriter};
 
@@ -279,10 +285,17 @@ fn main_result() -> anyhow::Result<i32> {
             data2_label,
             profile,
             out_path,
-        } => {
-            plot(data1, data2, data1_label, data2_label, out_path, profile)?;
-            Ok(0)
-        }
+            mode,
+        } => match mode {
+            toolchain::BinaryPlotMode::DefaultMode => {
+                plot(data1, data2, data1_label, data2_label, out_path, profile)?;
+                Ok(0)
+            }
+            toolchain::BinaryPlotMode::CompareMode => {
+                plot_compare(&compare_binary_size(&data1, &data2, profile), out_path)?;
+                Ok(0)
+            }
+        },
     }
 }
 

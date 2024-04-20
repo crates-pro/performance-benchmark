@@ -25,6 +25,7 @@ use super::result::CompileTimeBenchResult;
 
 pub mod binary_package_process;
 pub mod binary_single_process;
+pub mod compare;
 pub mod plotter;
 
 const BINARY_SIZE_LABEL: &str = "binary_size";

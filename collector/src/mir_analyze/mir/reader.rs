@@ -5,7 +5,7 @@ use std::{
 
 use lalrpop_util::lalrpop_mod;
 
-use super::mir::MIRs;
+use super::{basic_block, mir::{MIRs, ModuledIdentifier}, terminator::Terminator,scope::Scope, function_pattern::*, io_function::*, parallelism::*, oop_pattern::*};
 
 lalrpop_mod!(pub mir_parser, "/mir_analyze/mir/mir.rs");
 
@@ -18,6 +18,8 @@ pub fn parse_mir(mir_file: File) -> anyhow::Result<MIRs> {
         Err(e) => panic!("{}", e),
     }
 }
+
+
 
 #[test]
 fn test_dev() {
@@ -46,6 +48,8 @@ fn test_closure() {
     let result = parse_mir(test_file).unwrap();
 
     println!("{:?}", result);
+
+
 }
 #[test]
 fn test_runiq() {
@@ -353,3 +357,5 @@ fn test_chain_executor_mock() {
     let result = parse_mir(test_file).unwrap();
     println!("{:?}", result);
 }
+
+

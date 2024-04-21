@@ -24,6 +24,9 @@ pub enum Ty {
     UND,
     CoroutineClosure(Box<CoroutineClosure>),
     ForeignType(Box<Ty>),
+    Mut(Box<Ty>),
+    Trait,
+    ClosureDefault,
 }
 
 impl Default for Ty {
@@ -119,6 +122,8 @@ impl From<ModuledIdentifier> for Ty {
 impl ToString for Ty {
     fn to_string(&self) -> String {
         match self {
+            Ty::ClosureDefault => "closure".to_string(),
+            Ty::Trait => "trait".to_string(),
             Ty::Unit => "()".to_string(),
             Ty::Bool => "bool".to_string(),
             Ty::I32 => "i32".to_string(),
@@ -144,6 +149,7 @@ impl ToString for Ty {
                 m.join("::") + "<" + a.to_string().as_str() + ", " + b.to_string().as_str() + ">"
             }
             Ty::Dyn(t) => format!("dyn {}", t.to_string()),
+            Ty::Mut(t) => format!("mut {}", t.to_string()),
             Ty::ForeignType(ft) => format!("extern C {}", ft.to_string()),
             Ty::Closure(fp) => fp.to_string(),
             Ty::CoroutineClosure(po) => po.to_string(),

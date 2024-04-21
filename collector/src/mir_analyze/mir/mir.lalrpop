@@ -224,16 +224,17 @@ param: Param = {
 impl_closure: Ty = {
     <bitwise_and: bitwise_and> <impl_closure: impl_closure> => impl_closure,
     <life_cycle_parameter: life_cycle_parameter> <impl_closure: impl_closure> => impl_closure,
-    <imp: "impl "> <life_cycle_parameter: life_cycle_parameter> "+" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: trait_bounds_ty> => Ty::Unit,
-    <imp: "impl "> <life_cycle_parameter: life_cycle_parameter> "+" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> <trait_bounds: trait_bounds> => Ty::Unit,
-    <imp: "impl "> <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> => Ty::Unit,
-    "dyn" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> => Ty::Unit,
-    "dyn" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> => Ty::Unit,
+    <imp: "impl "> <life_cycle_parameter: life_cycle_parameter> "+" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: trait_bounds_ty> => Ty::Trait,
+    <imp: "impl "> <life_cycle_parameter: life_cycle_parameter> "+" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> <trait_bounds: trait_bounds> => Ty::Trait,
+    <imp: "impl "> <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> => Ty::Trait,
+    "dyn" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> => Ty::Trait,
+    "dyn" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> => Ty::Trait,
 }
 
 fn_ty: Ty = {
     "unsafe" <fn_ty: fn_ty> => fn_ty,
-    "mut" <fn_ty: fn_ty> => fn_ty,
+    "*mut" <fn_ty: fn_ty> => Ty::Mut(Box::new(fn_ty)),
+    "&mut" <fn_ty: fn_ty> => Ty::Mut(Box::new(fn_ty)),
     "const" <fn_ty: fn_ty> => fn_ty,
     <star: star> <fn_ty: fn_ty> => Ty::Ref(Box::new(fn_ty)),
     "dyn" <fn_ty: fn_ty> => Ty::Dyn(Box::new(fn_ty)),
@@ -626,7 +627,7 @@ dis_place: Place = {
     <disderef: disderef> => Place::Deref(disderef),
 };
 
-field_access: Field ={ 
+field_access: Field ={
     <left_parenthesis: left_parenthesis> <place: place> <dot: dot> <field_idx: unsinged_digit> <colon: colon> <ty: ty> <right_parenthesis: right_parenthesis>
     => Field {
         place: Box::new(place),
@@ -1047,7 +1048,7 @@ aggregate_anonymous_elements: Vec<Operand> = {
 
 reference: Ref = {
     <bitwise_and: bitwise_and> <place: place> => Ref { place, borrow_kind: BorrowKind::Shared, },
-    <bitwise_and: bitwise_and> "mut" <place: place> => Ref { place, borrow_kind: BorrowKind::Mut, },
+    "&mut" <place: place> => Ref { place, borrow_kind: BorrowKind::Mut, },
 }
 
 unaryOp: UnaryOp = {
@@ -1143,7 +1144,7 @@ const_val: Const = {
 
     "const" <val: string> => Const { ty: Ty::Str, val: val.to_string(), },
     "const" <val: literal_sined_digit> => Const { ty: val.0, val: val.1, },
-    "const" "ZeroSized" <colon: colon>  <val: moduled_identifier> => Const { ty: Ty::Str, val: val.join("::"), },
+    "const" "ZeroSized" <colon: colon>  <val: moduled_identifier> => Const { ty: Ty::ClosureDefault, val: val.join("::"), },
     "const" <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> => Const {ty: Ty::UND, val: String::from("()"), },
     "const" <left_bracket: left_bracket> <right_bracket: right_bracket> => Const {ty: Ty::UND, val: String::from("[]"), },
     "const" <floatnum: floatnum> <identifier: identifier> => Const {ty: Ty::from_str(&identifier.as_str()).unwrap(), val: floatnum + &identifier, },
@@ -1265,10 +1266,12 @@ ty: Ty = {
     <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> => Ty::Unit,
     <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> => Ty::Tuple(tys),
     <moduled_identifier: moduled_identifier> => Ty::from(moduled_identifier),
-    "dyn" <moduled_identifier: moduled_identifier> => Ty::from(moduled_identifier),
+    "dyn" <moduled_identifier: moduled_identifier> => Ty::Trait,
     "mut" <ty: ty> => ty,
     "const" <ty: ty> => ty,
     "unsafe" <ty: ty> => ty,
+    "*mut" <ty: ty> => Ty::Mut(Box::new(ty)),
+    "&mut" <ty: ty> => Ty::Mut(Box::new(ty)),
     <life_cycle_parameter:life_cycle_parameter> <ty: ty> => ty,
     <bitwise_and: bitwise_and> <ty: ty> => Ty::Ref(Box::new(ty)),
     <star: star> <ty: ty> => Ty::Ref(Box::new(ty)),
@@ -1278,13 +1281,13 @@ ty: Ty = {
     <logic_negate: logic_negate> => Ty::Unit,
     <closure_ty: closure_ty> => Ty::Closure(Box::new(closure_ty)),
     <life_closure_ty_body: life_closure_ty_body> => Ty::CoroutineClosure(Box::new(life_closure_ty_body)),
-    "ZeroSized" <colon: colon> <closure_description: closure_description> => Ty::Unit,
+    "ZeroSized" <colon: colon> <closure_description: closure_description> => Ty::ClosureDefault,
     "false" => Ty::Bool,
-    <impl_trait: impl_trait> => Ty::Unit,
+    <imp: "impl "> <a: ty> => Ty::Trait,
 };
 
 trait_bounds_ty :Ty = {
-    <ty: ty> <trait_bounds: trait_bounds> => Ty::Unit,
+    <ty: ty> <trait_bounds: trait_bounds> => ty,
 }
 
 life_closure_ty_body: CoroutineClosure = {
@@ -1388,14 +1391,14 @@ moduled_identifier: ModuledIdentifier = {
 
 muti_trait_struct: String = {
     "dyn" <closure_ty_location: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <trait_bounds: trait_bounds> => {
-        "closure_struct".to_string()
+        "dyn".to_string() + &closure_ty_location.join("::") + "()" + " -> "  + &ret_ty.to_string() + &trait_bounds 
     },//std::boxed::Box<dyn std::ops::Fn() -> std::result::Result<data::CPULoad, std::io::Error> + std::marker::Send>;//need to perfect
     "dyn" <closure_ty_location: moduled_identifier> <left_parenthesis: left_parenthesis> <tys:tys> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> <trait_bounds: trait_bounds> => {
-        "closure_struct".to_string()
+        "dyn".to_string() + &closure_ty_location.join("::") + "(" + tys.into_iter().map(|t| t.to_string()).collect::<Vec<String>>().join(", ").as_str() + ")" + " -> "  + &ret_ty.to_string() + &trait_bounds
     },//Box<dyn FnMut(Result<ignore::DirEntry, ignore::Error>) -> WalkState + Send>
 
     "dyn" <closure_ty_location: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> <trait_bounds: trait_bounds> => {
-        "closure_struct".to_string()
+        "dyn".to_string() + &closure_ty_location.join("::") + "()" + &trait_bounds
     },
 }
 
@@ -1434,7 +1437,7 @@ angle_brackets: String = {
     },
 
     <ls: left_angle_bracket> "static" <left_parenthesis: left_parenthesis> "DefId" <le: left_parenthesis> <defid: unsinged_digit> <colon: colon> <id_num: unsinged_digit> "~" <index: index> <path_separator: path_separator> <moduled_identifier: moduled_identifier> <ri: right_parenthesis> <right_parenthesis: right_parenthesis> <rs: right_angle_bracket> => {
-        "<".to_string() +  ">"
+        "<".to_string() + "static"  + "(DefId(" + &defid + ":" + &id_num + "~" + &moduled_identifier.join("::") + ")"  + ")" + ">"
     },
 
     <ls: left_angle_bracket> <impl_path: impl_path> <rs: right_angle_bracket> => {

@@ -124,7 +124,7 @@ impl CompileTimeResultSet {
                     statistic_vec.push((label.clone(), Statistics::from(vals.clone())));
                 });
 
-                statistics.0.push(CompileTimeStatistic {
+                statistics.push(CompileTimeStatistic {
                     name: result.benchmark.clone(),
                     profile: profile.clone(),
                     scenario: scenario.clone(),
@@ -142,20 +142,12 @@ impl CompileTimeResultSet {
 }
 
 #[derive(Serialize, Deserialize)]
-struct CompileTimeStatistic {
-    name: String,
-    profile: Profile,
-    scenario: Scenario,
-    iterations: u32,
-    statistic_vec: Vec<(String, Statistics)>,
+pub struct CompileTimeStatistic {
+    pub name: String,
+    pub profile: Profile,
+    pub scenario: Scenario,
+    pub iterations: u32,
+    pub statistic_vec: Vec<(String, Statistics)>,
 }
 
-impl CompileTimeStatistic {}
-
-#[derive(Serialize, Deserialize)]
-pub struct CompileTimeStatistics(Vec<CompileTimeStatistic>);
-impl CompileTimeStatistics {
-    fn new() -> Self {
-        Self(vec![])
-    }
-}
+pub type CompileTimeStatistics = Vec<CompileTimeStatistic>;

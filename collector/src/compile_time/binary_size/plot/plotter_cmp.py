@@ -6,6 +6,7 @@ if __name__ == '__main__':
     assert(len(args) > 2)
 
     raw_data = args[1].split(";")
+    raw_data.sort(key=lambda x: x.split(',')[0].lower())
     out_file = args[2]
 
     names = [item.split(',')[0] for item in raw_data]
@@ -16,7 +17,7 @@ if __name__ == '__main__':
     plt.bar(names, values, color=colors)
     plt.ylabel('Change rate of binary size (%)', fontsize=7)
     plt.yticks(fontsize=7)
-    plt.xticks(rotation=90, fontsize=7)
+    plt.xticks(rotation=90, fontsize=6.5)
 
     plt.tight_layout()
     plt.savefig(out_file)

@@ -17,12 +17,12 @@ use crate::{
 
 use self::result::CompileTimeBenchResult;
 
-pub mod binary_size;
-pub mod cargo_package_process;
-pub mod cargo_single_process;
+pub(crate) mod binary_size;
+pub(crate) mod cargo_package_process;
+pub(crate) mod cargo_single_process;
 pub mod result;
 
-pub fn bench_compile_time(
+pub(crate) fn bench_compile_time(
     ltc: &LocalToolchain,
     perf_tool: &PerfTool,
     event_filter_file: &PathBuf,
@@ -54,7 +54,7 @@ pub fn bench_compile_time(
     Ok(result)
 }
 
-pub fn bench<'a>(
+pub(crate) fn bench<'a>(
     perf_tool: &PerfTool,
     event_filter_file: &PathBuf,
     profiles: &[Profile],
@@ -97,7 +97,7 @@ pub fn bench<'a>(
     Ok(result_vec)
 }
 
-pub trait CompileTimeProcessor {
+pub(crate) trait CompileTimeProcessor {
     fn run_rustc(
         &mut self,
         perf_tool: &PerfTool,
@@ -125,7 +125,7 @@ lazy_static::lazy_static! {
     };
 }
 
-pub fn discover_benchmark_suit(dir: &Path) -> anyhow::Result<Vec<Benchamrk>> {
+pub(crate) fn discover_benchmark_suit(dir: &Path) -> anyhow::Result<Vec<Benchamrk>> {
     let mut benchmarks = vec![];
 
     for entry in read_dir(dir)

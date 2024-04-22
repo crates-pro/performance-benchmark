@@ -332,20 +332,6 @@ pub enum Commands {
     /// Analyze perf.data from a local directory.
     AnalyzeLocal {
         /// The path of dir contains perf.data.
-        /// The data-dir should has struct like this:
-        ///
-        /// + data-dir
-        ///
-        ///     |----rustc_commit_1
-        ///
-        ///         |----benchmark_group_x
-        ///             |----benchmark_x
-        ///                 |----x_perf.data
-        ///                 |---- ...
-        ///             |---- ...
-        ///         |---- ...
-        ///      |----rustc_commit_2
-        ///          |---- ...
         #[clap(long = "data-dir", default_value = "../perf_analyze")]
         data_dir: PathBuf,
 

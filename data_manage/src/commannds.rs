@@ -30,4 +30,23 @@ pub enum Commands {
         #[clap(long = "out-path", default_value = "results")]
         out_path: PathBuf,
     },
+
+    /// Compare 2 different stats and plot their change rate on geometric mean.
+    StatsCompare {
+        /// The first stats.
+        #[clap(long = "stats-1")]
+        stats_a: PathBuf,
+
+        /// The second stats.
+        #[clap(long = "stats-2")]
+        stats_b: PathBuf,
+
+        /// The metric that needs comparison.
+        #[clap(long = "metric")]
+        metric: String,
+
+        /// The path of output file
+        #[clap(long = "out-path", default_value = "results")]
+        out_path: PathBuf,
+    },
 }

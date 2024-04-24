@@ -5,7 +5,7 @@ use std::{
 
 use lalrpop_util::lalrpop_mod;
 
-use super::mir::MIRs;
+use super::{basic_block, mir::{MIRs, ModuledIdentifier}, terminator::Terminator,scope::Scope, function_pattern::*, io_function::*, parallelism::*, oop_pattern::*};
 
 lalrpop_mod!(pub mir_parser, "/mir_analyze/mir/mir.rs");
 
@@ -18,6 +18,8 @@ pub fn parse_mir(mir_file: File) -> anyhow::Result<MIRs> {
         Err(e) => panic!("{}", e),
     }
 }
+
+
 
 #[test]
 fn test_dev() {
@@ -46,6 +48,8 @@ fn test_closure() {
     let result = parse_mir(test_file).unwrap();
 
     println!("{:?}", result);
+
+
 }
 #[test]
 fn test_runiq() {
@@ -71,6 +75,70 @@ fn test_xsv() {
 #[test]
 fn test_amp() {
     let test_file = File::open("test/mir_analyze/mir/texteditor/amp.mir").unwrap();
+
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_grex() {
+    let test_file = File::open("test/mir_analyze/mir/texteditor/grex.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_kibi() {
+    let test_file = File::open("test/mir_analyze/mir/texteditor/kibi.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_kiro() {
+    let test_file = File::open("test/mir_analyze/mir/texteditor/kiro.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_pepper() {
+    let test_file = File::open("test/mir_analyze/mir/texteditor/pepper.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_systemstat() {
+    let test_file = File::open("test/mir_analyze/mir/system_programing/systemstat.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_system76() {
+    let test_file = File::open("test/mir_analyze/mir/system_programing/system76-power.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_systemd() {
+    let test_file = File::open("test/mir_analyze/mir/system_programing/systemd.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_coreutils() {
+    let test_file = File::open("test/mir_analyze/mir/system_programing/coreutils.mir").unwrap();
+    let result = parse_mir(test_file).unwrap();
+
+    println!("{:?}", result);
+}
+#[test]
+fn test_bat() {
+    let test_file = File::open("test/mir_analyze/mir/fs/bat.mir").unwrap();
     let result = parse_mir(test_file).unwrap();
 
     println!("{:?}", result);

@@ -3,11 +3,10 @@ name: Rust CI
 on:
   push:
     branches:
-      - main
-      - mir-analyze
+      - '*'
   pull_request:
     branches:
-      - main
+      - '*'
 
 jobs:
   check-formatting:
@@ -28,8 +27,18 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install -U kaleido
+        pip install -U matplotlib
 
     - name: Build and test
       run: |
-        cargo build --verbose --manifest-path ./collector/Cargo.toml
-        cargo test --verbose --manifest-path ./collector/Cargo.toml
+        cargo build --verbose --manifest-path collector/Cargo.toml
+        cargo test --verbose --manifest-path collector/Cargo.toml

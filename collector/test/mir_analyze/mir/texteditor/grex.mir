@@ -1,3 +1,2964 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1f46d575cd01ae4fe173c930151d00b479d522500bb1c0f15ac87a09e7cdd317
-size 91536
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn <impl at src/main.rs:24:10: 24:19>::clap() -> App<'_, '_> {
+    let mut _0: structopt::clap::App<'_, '_>;
+    let _1: structopt::clap::App<'_, '_>;
+    scope 1 {
+        debug app => _1;
+    }
+
+    bb0: {
+        _1 = App::<'_, '_>::new::<&str>(const "grex") -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = <Cli as StructOptInternal>::augment_clap(move _1) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::from_clap(_1: &ArgMatches<'_>) -> Cli {
+    debug matches => _1;
+    let mut _0: Cli;
+    let mut _2: std::vec::Vec<std::string::String>;
+    let mut _3: std::option::Option<structopt::clap::Values<'_>>;
+    let mut _4: bool;
+    let mut _5: bool;
+    let mut _6: bool;
+    let mut _7: bool;
+    let mut _8: bool;
+    let mut _9: bool;
+    let mut _10: bool;
+    let mut _11: bool;
+    let mut _12: bool;
+    let mut _13: bool;
+    let mut _14: bool;
+    let mut _15: bool;
+    let mut _16: bool;
+    let mut _17: bool;
+    let mut _18: bool;
+    let mut _19: bool;
+    let mut _20: std::option::Option<std::path::PathBuf>;
+    let mut _21: std::option::Option<&std::ffi::OsStr>;
+    let mut _22: u32;
+    let mut _23: std::option::Option<u32>;
+    let mut _24: std::option::Option<&str>;
+    let mut _25: u32;
+    let mut _26: std::option::Option<u32>;
+    let mut _27: std::option::Option<&str>;
+
+    bb0: {
+        _3 = ArgMatches::<'_>::values_of::<&str>(_1, const "input") -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = Option::<structopt::clap::Values<'_>>::map_or_else::<Vec<String>, fn() -> Vec<String> {Vec::<String>::new}, {closure@src/main.rs:44:12: 44:15}>(move _3, Vec::<String>::new, const ZeroSized: {closure@src/main.rs:44:12: 44:15}) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _4 = ArgMatches::<'_>::is_present::<&str>(_1, const "digits") -> [return: bb3, unwind: bb28];
+    }
+
+    bb3: {
+        _5 = ArgMatches::<'_>::is_present::<&str>(_1, const "non-digits") -> [return: bb4, unwind: bb28];
+    }
+
+    bb4: {
+        _6 = ArgMatches::<'_>::is_present::<&str>(_1, const "spaces") -> [return: bb5, unwind: bb28];
+    }
+
+    bb5: {
+        _7 = ArgMatches::<'_>::is_present::<&str>(_1, const "non-spaces") -> [return: bb6, unwind: bb28];
+    }
+
+    bb6: {
+        _8 = ArgMatches::<'_>::is_present::<&str>(_1, const "words") -> [return: bb7, unwind: bb28];
+    }
+
+    bb7: {
+        _9 = ArgMatches::<'_>::is_present::<&str>(_1, const "non-words") -> [return: bb8, unwind: bb28];
+    }
+
+    bb8: {
+        _10 = ArgMatches::<'_>::is_present::<&str>(_1, const "repetitions") -> [return: bb9, unwind: bb28];
+    }
+
+    bb9: {
+        _11 = ArgMatches::<'_>::is_present::<&str>(_1, const "escape") -> [return: bb10, unwind: bb28];
+    }
+
+    bb10: {
+        _12 = ArgMatches::<'_>::is_present::<&str>(_1, const "with-surrogates") -> [return: bb11, unwind: bb28];
+    }
+
+    bb11: {
+        _13 = ArgMatches::<'_>::is_present::<&str>(_1, const "ignore-case") -> [return: bb12, unwind: bb28];
+    }
+
+    bb12: {
+        _14 = ArgMatches::<'_>::is_present::<&str>(_1, const "capture-groups") -> [return: bb13, unwind: bb28];
+    }
+
+    bb13: {
+        _15 = ArgMatches::<'_>::is_present::<&str>(_1, const "verbose") -> [return: bb14, unwind: bb28];
+    }
+
+    bb14: {
+        _16 = ArgMatches::<'_>::is_present::<&str>(_1, const "no-start-anchor") -> [return: bb15, unwind: bb28];
+    }
+
+    bb15: {
+        _17 = ArgMatches::<'_>::is_present::<&str>(_1, const "no-end-anchor") -> [return: bb16, unwind: bb28];
+    }
+
+    bb16: {
+        _18 = ArgMatches::<'_>::is_present::<&str>(_1, const "no-anchors") -> [return: bb17, unwind: bb28];
+    }
+
+    bb17: {
+        _19 = ArgMatches::<'_>::is_present::<&str>(_1, const "colorize") -> [return: bb18, unwind: bb28];
+    }
+
+    bb18: {
+        _21 = ArgMatches::<'_>::value_of_os::<&str>(_1, const "file") -> [return: bb19, unwind: bb28];
+    }
+
+    bb19: {
+        _20 = Option::<&OsStr>::map::<PathBuf, fn(&OsStr) -> PathBuf {<PathBuf as From<&OsStr>>::from}>(move _21, <PathBuf as From<&OsStr>>::from) -> [return: bb20, unwind: bb28];
+    }
+
+    bb20: {
+        _24 = ArgMatches::<'_>::value_of::<&str>(_1, const "min-repetitions") -> [return: bb21, unwind: bb27];
+    }
+
+    bb21: {
+        _23 = Option::<&str>::map::<u32, {closure@src/main.rs:250:5: 250:6}>(move _24, const ZeroSized: {closure@src/main.rs:250:5: 250:6}) -> [return: bb22, unwind: bb27];
+    }
+
+    bb22: {
+        _22 = Option::<u32>::unwrap(move _23) -> [return: bb23, unwind: bb27];
+    }
+
+    bb23: {
+        _27 = ArgMatches::<'_>::value_of::<&str>(_1, const "min-substring-length") -> [return: bb24, unwind: bb27];
+    }
+
+    bb24: {
+        _26 = Option::<&str>::map::<u32, {closure@src/main.rs:261:5: 261:6}>(move _27, const ZeroSized: {closure@src/main.rs:261:5: 261:6}) -> [return: bb25, unwind: bb27];
+    }
+
+    bb25: {
+        _25 = Option::<u32>::unwrap(move _26) -> [return: bb26, unwind: bb27];
+    }
+
+    bb26: {
+        _0 = Cli { input: move _2, is_digit_converted: move _4, is_non_digit_converted: move _5, is_space_converted: move _6, is_non_space_converted: move _7, is_word_converted: move _8, is_non_word_converted: move _9, is_repetition_converted: move _10, is_non_ascii_char_escaped: move _11, is_astral_code_point_converted_to_surrogate: move _12, is_case_ignored: move _13, is_group_captured: move _14, is_verbose_mode_enabled: move _15, is_caret_anchor_disabled: move _16, is_dollar_sign_anchor_disabled: move _17, are_anchors_disabled: move _18, is_output_colorized: move _19, file_path: move _20, minimum_repetitions: move _22, minimum_substring_length: move _25 };
+        return;
+    }
+
+    bb27 (cleanup): {
+        drop(_20) -> [return: bb28, unwind terminate(cleanup)];
+    }
+
+    bb28 (cleanup): {
+        drop(_2) -> [return: bb29, unwind terminate(cleanup)];
+    }
+
+    bb29 (cleanup): {
+        resume;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::from_clap::{closure#0}(_1: {closure@src/main.rs:44:12: 44:15}, _2: structopt::clap::Values<'_>) -> Vec<String> {
+    debug v => _2;
+    let mut _0: std::vec::Vec<std::string::String>;
+    let mut _3: std::iter::Map<structopt::clap::Values<'_>, {closure@src/main.rs:38:5: 38:6}>;
+
+    bb0: {
+        _3 = <structopt::clap::Values<'_> as Iterator>::map::<String, {closure@src/main.rs:38:5: 38:6}>(move _2, const ZeroSized: {closure@src/main.rs:38:5: 38:6}) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = <Map<structopt::clap::Values<'_>, {closure@src/main.rs:38:5: 38:6}> as Iterator>::collect::<Vec<String>>(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::from_clap::{closure#0}::{closure#0}(_1: &mut {closure@src/main.rs:38:5: 38:6}, _2: &str) -> String {
+    debug s => _2;
+    let mut _0: std::string::String;
+    let mut _3: std::result::Result<std::string::String, std::convert::Infallible>;
+
+    bb0: {
+        _3 = <String as FromStr>::from_str(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = Result::<String, Infallible>::unwrap(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::from_clap::{closure#1}(_1: {closure@src/main.rs:250:5: 250:6}, _2: &str) -> u32 {
+    debug s => _2;
+    let mut _0: u32;
+    let mut _3: std::result::Result<u32, std::num::ParseIntError>;
+
+    bb0: {
+        _3 = <u32 as FromStr>::from_str(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = Result::<u32, ParseIntError>::unwrap(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::from_clap::{closure#2}(_1: {closure@src/main.rs:261:5: 261:6}, _2: &str) -> u32 {
+    debug s => _2;
+    let mut _0: u32;
+    let mut _3: std::result::Result<u32, std::num::ParseIntError>;
+
+    bb0: {
+        _3 = <u32 as FromStr>::from_str(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = Result::<u32, ParseIntError>::unwrap(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::augment_clap(_1: App<'_, '_>) -> App<'_, '_> {
+    debug app => _1;
+    let mut _0: structopt::clap::App<'_, '_>;
+    let _2: structopt::clap::App<'_, '_>;
+    let mut _3: structopt::clap::App<'_, '_>;
+    let mut _4: structopt::clap::App<'_, '_>;
+    let mut _5: structopt::clap::App<'_, '_>;
+    let mut _6: &[structopt::clap::AppSettings];
+    let mut _8: structopt::clap::App<'_, '_>;
+    let mut _9: structopt::clap::Arg<'_, '_>;
+    let mut _10: structopt::clap::Arg<'_, '_>;
+    let mut _11: structopt::clap::Arg<'_, '_>;
+    let mut _12: structopt::clap::Arg<'_, '_>;
+    let mut _13: structopt::clap::Arg<'_, '_>;
+    let mut _14: structopt::clap::Arg<'_, '_>;
+    let mut _15: structopt::clap::Arg<'_, '_>;
+    let mut _16: structopt::clap::Arg<'_, '_>;
+    let _17: &str;
+    let _18: &str;
+    let _19: &str;
+    let _20: &str;
+    let _21: &str;
+    let mut _23: structopt::clap::App<'_, '_>;
+    let mut _24: structopt::clap::Arg<'_, '_>;
+    let mut _25: structopt::clap::Arg<'_, '_>;
+    let mut _26: structopt::clap::Arg<'_, '_>;
+    let mut _27: structopt::clap::Arg<'_, '_>;
+    let mut _28: structopt::clap::Arg<'_, '_>;
+    let mut _29: structopt::clap::Arg<'_, '_>;
+    let mut _30: structopt::clap::Arg<'_, '_>;
+    let mut _31: structopt::clap::Arg<'_, '_>;
+    let _32: &str;
+    let _33: &str;
+    let _34: &str;
+    let _35: &str;
+    let mut _37: structopt::clap::App<'_, '_>;
+    let mut _38: structopt::clap::Arg<'_, '_>;
+    let mut _39: structopt::clap::Arg<'_, '_>;
+    let mut _40: structopt::clap::Arg<'_, '_>;
+    let mut _41: structopt::clap::Arg<'_, '_>;
+    let mut _42: structopt::clap::Arg<'_, '_>;
+    let mut _43: structopt::clap::Arg<'_, '_>;
+    let mut _44: structopt::clap::Arg<'_, '_>;
+    let mut _45: structopt::clap::Arg<'_, '_>;
+    let _46: &str;
+    let _47: &str;
+    let _48: &str;
+    let _49: &str;
+    let mut _51: structopt::clap::App<'_, '_>;
+    let mut _52: structopt::clap::Arg<'_, '_>;
+    let mut _53: structopt::clap::Arg<'_, '_>;
+    let mut _54: structopt::clap::Arg<'_, '_>;
+    let mut _55: structopt::clap::Arg<'_, '_>;
+    let mut _56: structopt::clap::Arg<'_, '_>;
+    let mut _57: structopt::clap::Arg<'_, '_>;
+    let mut _58: structopt::clap::Arg<'_, '_>;
+    let mut _59: structopt::clap::Arg<'_, '_>;
+    let _60: &str;
+    let _61: &str;
+    let _62: &str;
+    let _63: &str;
+    let mut _65: structopt::clap::App<'_, '_>;
+    let mut _66: structopt::clap::Arg<'_, '_>;
+    let mut _67: structopt::clap::Arg<'_, '_>;
+    let mut _68: structopt::clap::Arg<'_, '_>;
+    let mut _69: structopt::clap::Arg<'_, '_>;
+    let mut _70: structopt::clap::Arg<'_, '_>;
+    let mut _71: structopt::clap::Arg<'_, '_>;
+    let mut _72: structopt::clap::Arg<'_, '_>;
+    let _73: &str;
+    let _74: &str;
+    let _75: &str;
+    let mut _77: structopt::clap::App<'_, '_>;
+    let mut _78: structopt::clap::Arg<'_, '_>;
+    let mut _79: structopt::clap::Arg<'_, '_>;
+    let mut _80: structopt::clap::Arg<'_, '_>;
+    let mut _81: structopt::clap::Arg<'_, '_>;
+    let mut _82: structopt::clap::Arg<'_, '_>;
+    let mut _83: structopt::clap::Arg<'_, '_>;
+    let mut _84: structopt::clap::Arg<'_, '_>;
+    let mut _85: structopt::clap::Arg<'_, '_>;
+    let _86: &str;
+    let _87: &str;
+    let _88: &str;
+    let _89: &str;
+    let mut _91: structopt::clap::App<'_, '_>;
+    let mut _92: structopt::clap::Arg<'_, '_>;
+    let mut _93: structopt::clap::Arg<'_, '_>;
+    let mut _94: structopt::clap::Arg<'_, '_>;
+    let mut _95: structopt::clap::Arg<'_, '_>;
+    let mut _96: structopt::clap::Arg<'_, '_>;
+    let mut _97: structopt::clap::Arg<'_, '_>;
+    let mut _98: structopt::clap::Arg<'_, '_>;
+    let mut _99: structopt::clap::Arg<'_, '_>;
+    let _100: &str;
+    let _101: &str;
+    let _102: &str;
+    let _103: &str;
+    let mut _105: structopt::clap::App<'_, '_>;
+    let mut _106: structopt::clap::Arg<'_, '_>;
+    let mut _107: structopt::clap::Arg<'_, '_>;
+    let mut _108: structopt::clap::Arg<'_, '_>;
+    let mut _109: structopt::clap::Arg<'_, '_>;
+    let mut _110: structopt::clap::Arg<'_, '_>;
+    let mut _111: structopt::clap::Arg<'_, '_>;
+    let mut _112: structopt::clap::Arg<'_, '_>;
+    let _113: &str;
+    let _114: &str;
+    let _115: &str;
+    let mut _117: structopt::clap::App<'_, '_>;
+    let mut _118: structopt::clap::Arg<'_, '_>;
+    let mut _119: structopt::clap::Arg<'_, '_>;
+    let mut _120: structopt::clap::Arg<'_, '_>;
+    let mut _121: structopt::clap::Arg<'_, '_>;
+    let mut _122: structopt::clap::Arg<'_, '_>;
+    let mut _123: structopt::clap::Arg<'_, '_>;
+    let mut _124: structopt::clap::Arg<'_, '_>;
+    let _125: &str;
+    let _126: &str;
+    let _127: &str;
+    let mut _129: structopt::clap::App<'_, '_>;
+    let mut _130: structopt::clap::Arg<'_, '_>;
+    let mut _131: structopt::clap::Arg<'_, '_>;
+    let mut _132: structopt::clap::Arg<'_, '_>;
+    let mut _133: structopt::clap::Arg<'_, '_>;
+    let mut _134: structopt::clap::Arg<'_, '_>;
+    let mut _135: structopt::clap::Arg<'_, '_>;
+    let mut _136: structopt::clap::Arg<'_, '_>;
+    let _137: &str;
+    let _138: &str;
+    let _139: &str;
+    let _140: &str;
+    let mut _142: structopt::clap::App<'_, '_>;
+    let mut _143: structopt::clap::Arg<'_, '_>;
+    let mut _144: structopt::clap::Arg<'_, '_>;
+    let mut _145: structopt::clap::Arg<'_, '_>;
+    let mut _146: structopt::clap::Arg<'_, '_>;
+    let mut _147: structopt::clap::Arg<'_, '_>;
+    let mut _148: structopt::clap::Arg<'_, '_>;
+    let mut _149: structopt::clap::Arg<'_, '_>;
+    let _150: &str;
+    let _151: &str;
+    let _152: &str;
+    let mut _154: structopt::clap::App<'_, '_>;
+    let mut _155: structopt::clap::Arg<'_, '_>;
+    let mut _156: structopt::clap::Arg<'_, '_>;
+    let mut _157: structopt::clap::Arg<'_, '_>;
+    let mut _158: structopt::clap::Arg<'_, '_>;
+    let mut _159: structopt::clap::Arg<'_, '_>;
+    let mut _160: structopt::clap::Arg<'_, '_>;
+    let mut _161: structopt::clap::Arg<'_, '_>;
+    let _162: &str;
+    let _163: &str;
+    let _164: &str;
+    let mut _166: structopt::clap::App<'_, '_>;
+    let mut _167: structopt::clap::Arg<'_, '_>;
+    let mut _168: structopt::clap::Arg<'_, '_>;
+    let mut _169: structopt::clap::Arg<'_, '_>;
+    let mut _170: structopt::clap::Arg<'_, '_>;
+    let mut _171: structopt::clap::Arg<'_, '_>;
+    let mut _172: structopt::clap::Arg<'_, '_>;
+    let mut _173: structopt::clap::Arg<'_, '_>;
+    let _174: &str;
+    let _175: &str;
+    let _176: &str;
+    let mut _178: structopt::clap::App<'_, '_>;
+    let mut _179: structopt::clap::Arg<'_, '_>;
+    let mut _180: structopt::clap::Arg<'_, '_>;
+    let mut _181: structopt::clap::Arg<'_, '_>;
+    let mut _182: structopt::clap::Arg<'_, '_>;
+    let mut _183: structopt::clap::Arg<'_, '_>;
+    let mut _184: structopt::clap::Arg<'_, '_>;
+    let mut _185: structopt::clap::Arg<'_, '_>;
+    let _186: &str;
+    let _187: &str;
+    let _188: &str;
+    let _189: &str;
+    let mut _191: structopt::clap::App<'_, '_>;
+    let mut _192: structopt::clap::Arg<'_, '_>;
+    let mut _193: structopt::clap::Arg<'_, '_>;
+    let mut _194: structopt::clap::Arg<'_, '_>;
+    let mut _195: structopt::clap::Arg<'_, '_>;
+    let mut _196: structopt::clap::Arg<'_, '_>;
+    let mut _197: structopt::clap::Arg<'_, '_>;
+    let mut _198: structopt::clap::Arg<'_, '_>;
+    let _199: &str;
+    let _200: &str;
+    let _201: &str;
+    let _202: &str;
+    let mut _204: structopt::clap::App<'_, '_>;
+    let mut _205: structopt::clap::Arg<'_, '_>;
+    let mut _206: structopt::clap::Arg<'_, '_>;
+    let mut _207: structopt::clap::Arg<'_, '_>;
+    let mut _208: structopt::clap::Arg<'_, '_>;
+    let mut _209: structopt::clap::Arg<'_, '_>;
+    let mut _210: structopt::clap::Arg<'_, '_>;
+    let mut _211: structopt::clap::Arg<'_, '_>;
+    let _212: &str;
+    let _213: &str;
+    let _214: &str;
+    let _215: &str;
+    let mut _217: structopt::clap::App<'_, '_>;
+    let mut _218: structopt::clap::Arg<'_, '_>;
+    let mut _219: structopt::clap::Arg<'_, '_>;
+    let mut _220: structopt::clap::Arg<'_, '_>;
+    let mut _221: structopt::clap::Arg<'_, '_>;
+    let mut _222: structopt::clap::Arg<'_, '_>;
+    let mut _223: structopt::clap::Arg<'_, '_>;
+    let mut _224: structopt::clap::Arg<'_, '_>;
+    let _225: &str;
+    let _226: &str;
+    let _227: &str;
+    let mut _229: structopt::clap::App<'_, '_>;
+    let mut _230: structopt::clap::Arg<'_, '_>;
+    let mut _231: structopt::clap::Arg<'_, '_>;
+    let mut _232: structopt::clap::Arg<'_, '_>;
+    let mut _233: structopt::clap::Arg<'_, '_>;
+    let mut _234: structopt::clap::Arg<'_, '_>;
+    let mut _235: structopt::clap::Arg<'_, '_>;
+    let mut _236: structopt::clap::Arg<'_, '_>;
+    let mut _237: structopt::clap::Arg<'_, '_>;
+    let mut _238: structopt::clap::Arg<'_, '_>;
+    let _239: &str;
+    let _240: &str;
+    let _241: &str;
+    let _242: &str;
+    let _243: &str;
+    let _244: &str;
+    let mut _246: structopt::clap::App<'_, '_>;
+    let mut _247: structopt::clap::Arg<'_, '_>;
+    let mut _248: structopt::clap::Arg<'_, '_>;
+    let mut _249: structopt::clap::Arg<'_, '_>;
+    let mut _250: structopt::clap::Arg<'_, '_>;
+    let mut _251: structopt::clap::Arg<'_, '_>;
+    let mut _252: structopt::clap::Arg<'_, '_>;
+    let mut _253: structopt::clap::Arg<'_, '_>;
+    let mut _254: structopt::clap::Arg<'_, '_>;
+    let mut _255: structopt::clap::Arg<'_, '_>;
+    let mut _256: structopt::clap::Arg<'_, '_>;
+    let _257: &str;
+    let _258: &str;
+    let _259: &str;
+    let _260: &str;
+    let _261: &str;
+    let mut _263: structopt::clap::App<'_, '_>;
+    let mut _264: structopt::clap::Arg<'_, '_>;
+    let mut _265: structopt::clap::Arg<'_, '_>;
+    let mut _266: structopt::clap::Arg<'_, '_>;
+    let mut _267: structopt::clap::Arg<'_, '_>;
+    let mut _268: structopt::clap::Arg<'_, '_>;
+    let mut _269: structopt::clap::Arg<'_, '_>;
+    let mut _270: structopt::clap::Arg<'_, '_>;
+    let mut _271: structopt::clap::Arg<'_, '_>;
+    let mut _272: structopt::clap::Arg<'_, '_>;
+    let mut _273: structopt::clap::Arg<'_, '_>;
+    let _274: &str;
+    let _275: &str;
+    let _276: &str;
+    let _277: &str;
+    let _278: &str;
+    let mut _279: &[structopt::clap::AppSettings; 2];
+    let mut _280: bool;
+    let mut _281: bool;
+    let mut _282: bool;
+    let mut _283: bool;
+    let mut _284: bool;
+    let mut _285: bool;
+    let mut _286: bool;
+    let mut _287: bool;
+    let mut _288: bool;
+    let mut _289: bool;
+    let mut _290: bool;
+    let mut _291: bool;
+    let mut _292: bool;
+    let mut _293: bool;
+    let mut _294: bool;
+    let mut _295: bool;
+    let mut _296: bool;
+    let mut _297: bool;
+    let mut _298: bool;
+    let mut _299: bool;
+    scope 1 {
+        debug app => _2;
+        let _7: structopt::clap::App<'_, '_>;
+        scope 2 {
+            debug app => _7;
+            let _22: structopt::clap::App<'_, '_>;
+            scope 3 {
+                debug app => _22;
+                let _36: structopt::clap::App<'_, '_>;
+                scope 4 {
+                    debug app => _36;
+                    let _50: structopt::clap::App<'_, '_>;
+                    scope 5 {
+                        debug app => _50;
+                        let _64: structopt::clap::App<'_, '_>;
+                        scope 6 {
+                            debug app => _64;
+                            let _76: structopt::clap::App<'_, '_>;
+                            scope 7 {
+                                debug app => _76;
+                                let _90: structopt::clap::App<'_, '_>;
+                                scope 8 {
+                                    debug app => _90;
+                                    let _104: structopt::clap::App<'_, '_>;
+                                    scope 9 {
+                                        debug app => _104;
+                                        let _116: structopt::clap::App<'_, '_>;
+                                        scope 10 {
+                                            debug app => _116;
+                                            let _128: structopt::clap::App<'_, '_>;
+                                            scope 11 {
+                                                debug app => _128;
+                                                let _141: structopt::clap::App<'_, '_>;
+                                                scope 12 {
+                                                    debug app => _141;
+                                                    let _153: structopt::clap::App<'_, '_>;
+                                                    scope 13 {
+                                                        debug app => _153;
+                                                        let _165: structopt::clap::App<'_, '_>;
+                                                        scope 14 {
+                                                            debug app => _165;
+                                                            let _177: structopt::clap::App<'_, '_>;
+                                                            scope 15 {
+                                                                debug app => _177;
+                                                                let _190: structopt::clap::App<'_, '_>;
+                                                                scope 16 {
+                                                                    debug app => _190;
+                                                                    let _203: structopt::clap::App<'_, '_>;
+                                                                    scope 17 {
+                                                                        debug app => _203;
+                                                                        let _216: structopt::clap::App<'_, '_>;
+                                                                        scope 18 {
+                                                                            debug app => _216;
+                                                                            let _228: structopt::clap::App<'_, '_>;
+                                                                            scope 19 {
+                                                                                debug app => _228;
+                                                                                let _245: structopt::clap::App<'_, '_>;
+                                                                                scope 20 {
+                                                                                    debug app => _245;
+                                                                                    let _262: structopt::clap::App<'_, '_>;
+                                                                                    scope 21 {
+                                                                                        debug app => _262;
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _299 = const false;
+        _298 = const false;
+        _297 = const false;
+        _296 = const false;
+        _295 = const false;
+        _294 = const false;
+        _293 = const false;
+        _292 = const false;
+        _291 = const false;
+        _290 = const false;
+        _289 = const false;
+        _288 = const false;
+        _287 = const false;
+        _286 = const false;
+        _285 = const false;
+        _284 = const false;
+        _283 = const false;
+        _282 = const false;
+        _281 = const false;
+        _280 = const false;
+        _5 = App::<'_, '_>::author::<&str>(move _1, const "© 2019-today Peter M. Stahl <pemistahl@gmail.com>") -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _4 = App::<'_, '_>::about::<&str>(move _5, const "Licensed under the Apache License, Version 2.0\nDownloadable from https://crates.io/crates/grex\nSource code at https://github.com/pemistahl/grex\n\ngrex generates regular expressions from user-provided test cases.") -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _3 = App::<'_, '_>::version_short::<&str>(move _4, const "v") -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _279 = const _;
+        _6 = _279 as &[structopt::clap::AppSettings] (PointerCoercion(Unsize));
+        _2 = App::<'_, '_>::global_settings(move _3, move _6) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _299 = const true;
+        _8 = move _2;
+        _17 = const "input";
+        _16 = Arg::<'_, '_>::with_name(_17) -> [return: bb5, unwind: bb220];
+    }
+
+    bb5: {
+        _15 = Arg::<'_, '_>::takes_value(move _16, const true) -> [return: bb6, unwind: bb220];
+    }
+
+    bb6: {
+        _14 = Arg::<'_, '_>::multiple(move _15, const true) -> [return: bb7, unwind: bb220];
+    }
+
+    bb7: {
+        _13 = Arg::<'_, '_>::validator::<{closure@src/main.rs:38:5: 38:6}>(move _14, const ZeroSized: {closure@src/main.rs:38:5: 38:6}) -> [return: bb8, unwind: bb220];
+    }
+
+    bb8: {
+        _18 = const "INPUT";
+        _12 = Arg::<'_, '_>::value_name(move _13, _18) -> [return: bb9, unwind: bb220];
+    }
+
+    bb9: {
+        _19 = const "file";
+        _11 = Arg::<'_, '_>::required_unless(move _12, _19) -> [return: bb10, unwind: bb220];
+    }
+
+    bb10: {
+        _20 = const "file";
+        _10 = Arg::<'_, '_>::conflicts_with(move _11, _20) -> [return: bb11, unwind: bb220];
+    }
+
+    bb11: {
+        _21 = const "One or more test cases separated by blank space";
+        _9 = Arg::<'_, '_>::help(move _10, _21) -> [return: bb12, unwind: bb220];
+    }
+
+    bb12: {
+        _299 = const false;
+        _7 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _8, move _9) -> [return: bb13, unwind: bb220];
+    }
+
+    bb13: {
+        _299 = const false;
+        _298 = const true;
+        _23 = move _7;
+        _32 = const "digits";
+        _31 = Arg::<'_, '_>::with_name(_32) -> [return: bb14, unwind: bb218];
+    }
+
+    bb14: {
+        _30 = Arg::<'_, '_>::takes_value(move _31, const false) -> [return: bb15, unwind: bb218];
+    }
+
+    bb15: {
+        _29 = Arg::<'_, '_>::multiple(move _30, const false) -> [return: bb16, unwind: bb218];
+    }
+
+    bb16: {
+        _28 = Arg::<'_, '_>::short::<&str>(move _29, const "digits") -> [return: bb17, unwind: bb218];
+    }
+
+    bb17: {
+        _33 = const "digits";
+        _27 = Arg::<'_, '_>::long(move _28, _33) -> [return: bb18, unwind: bb218];
+    }
+
+    bb18: {
+        _34 = const "Converts any Unicode decimal digit to \\d";
+        _26 = Arg::<'_, '_>::help(move _27, _34) -> [return: bb19, unwind: bb218];
+    }
+
+    bb19: {
+        _35 = const "Converts any Unicode decimal digit to \\d.\n\nTakes precedence over --words if both are set.\nDecimal digits are converted to \\d, remaining word characters to \\w.\n\nTakes precedence over --non-spaces if both are set.\nDecimal digits are converted to \\d, remaining non-space characters to \\S.";
+        _25 = Arg::<'_, '_>::long_help(move _26, _35) -> [return: bb20, unwind: bb218];
+    }
+
+    bb20: {
+        _24 = Arg::<'_, '_>::display_order(move _25, const 1_usize) -> [return: bb21, unwind: bb218];
+    }
+
+    bb21: {
+        _298 = const false;
+        _22 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _23, move _24) -> [return: bb22, unwind: bb218];
+    }
+
+    bb22: {
+        _298 = const false;
+        _297 = const true;
+        _37 = move _22;
+        _46 = const "non-digits";
+        _45 = Arg::<'_, '_>::with_name(_46) -> [return: bb23, unwind: bb216];
+    }
+
+    bb23: {
+        _44 = Arg::<'_, '_>::takes_value(move _45, const false) -> [return: bb24, unwind: bb216];
+    }
+
+    bb24: {
+        _43 = Arg::<'_, '_>::multiple(move _44, const false) -> [return: bb25, unwind: bb216];
+    }
+
+    bb25: {
+        _42 = Arg::<'_, '_>::short::<&str>(move _43, const "D") -> [return: bb26, unwind: bb216];
+    }
+
+    bb26: {
+        _47 = const "non-digits";
+        _41 = Arg::<'_, '_>::long(move _42, _47) -> [return: bb27, unwind: bb216];
+    }
+
+    bb27: {
+        _48 = const "Converts any character which is not a Unicode decimal digit to \\D";
+        _40 = Arg::<'_, '_>::help(move _41, _48) -> [return: bb28, unwind: bb216];
+    }
+
+    bb28: {
+        _49 = const "Converts any character which is not a Unicode decimal digit to \\D.\n\nTakes precedence over --non-words if both are set.\nNon-digits which are also non-word characters are converted to \\D.\n\nTakes precedence over --non-spaces if both are set.\nNon-digits which are also non-space characters are converted to \\D.";
+        _39 = Arg::<'_, '_>::long_help(move _40, _49) -> [return: bb29, unwind: bb216];
+    }
+
+    bb29: {
+        _38 = Arg::<'_, '_>::display_order(move _39, const 2_usize) -> [return: bb30, unwind: bb216];
+    }
+
+    bb30: {
+        _297 = const false;
+        _36 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _37, move _38) -> [return: bb31, unwind: bb216];
+    }
+
+    bb31: {
+        _297 = const false;
+        _296 = const true;
+        _51 = move _36;
+        _60 = const "spaces";
+        _59 = Arg::<'_, '_>::with_name(_60) -> [return: bb32, unwind: bb214];
+    }
+
+    bb32: {
+        _58 = Arg::<'_, '_>::takes_value(move _59, const false) -> [return: bb33, unwind: bb214];
+    }
+
+    bb33: {
+        _57 = Arg::<'_, '_>::multiple(move _58, const false) -> [return: bb34, unwind: bb214];
+    }
+
+    bb34: {
+        _56 = Arg::<'_, '_>::short::<&str>(move _57, const "spaces") -> [return: bb35, unwind: bb214];
+    }
+
+    bb35: {
+        _61 = const "spaces";
+        _55 = Arg::<'_, '_>::long(move _56, _61) -> [return: bb36, unwind: bb214];
+    }
+
+    bb36: {
+        _62 = const "Converts any Unicode whitespace character to \\s";
+        _54 = Arg::<'_, '_>::help(move _55, _62) -> [return: bb37, unwind: bb214];
+    }
+
+    bb37: {
+        _63 = const "Converts any Unicode whitespace character to \\s.\n\nTakes precedence over --non-digits if both are set.\nWhitespace is converted to \\s, remaining non-digits to \\D.\n\nTakes precedence over --non-words if both are set.\nWhitespace is converted to \\s, remaining non-word characters to \\W.";
+        _53 = Arg::<'_, '_>::long_help(move _54, _63) -> [return: bb38, unwind: bb214];
+    }
+
+    bb38: {
+        _52 = Arg::<'_, '_>::display_order(move _53, const 3_usize) -> [return: bb39, unwind: bb214];
+    }
+
+    bb39: {
+        _296 = const false;
+        _50 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _51, move _52) -> [return: bb40, unwind: bb214];
+    }
+
+    bb40: {
+        _296 = const false;
+        _295 = const true;
+        _65 = move _50;
+        _73 = const "non-spaces";
+        _72 = Arg::<'_, '_>::with_name(_73) -> [return: bb41, unwind: bb212];
+    }
+
+    bb41: {
+        _71 = Arg::<'_, '_>::takes_value(move _72, const false) -> [return: bb42, unwind: bb212];
+    }
+
+    bb42: {
+        _70 = Arg::<'_, '_>::multiple(move _71, const false) -> [return: bb43, unwind: bb212];
+    }
+
+    bb43: {
+        _69 = Arg::<'_, '_>::short::<&str>(move _70, const "S") -> [return: bb44, unwind: bb212];
+    }
+
+    bb44: {
+        _74 = const "non-spaces";
+        _68 = Arg::<'_, '_>::long(move _69, _74) -> [return: bb45, unwind: bb212];
+    }
+
+    bb45: {
+        _75 = const "Converts any character which is not a Unicode whitespace character to \\S";
+        _67 = Arg::<'_, '_>::help(move _68, _75) -> [return: bb46, unwind: bb212];
+    }
+
+    bb46: {
+        _66 = Arg::<'_, '_>::display_order(move _67, const 4_usize) -> [return: bb47, unwind: bb212];
+    }
+
+    bb47: {
+        _295 = const false;
+        _64 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _65, move _66) -> [return: bb48, unwind: bb212];
+    }
+
+    bb48: {
+        _295 = const false;
+        _294 = const true;
+        _77 = move _64;
+        _86 = const "words";
+        _85 = Arg::<'_, '_>::with_name(_86) -> [return: bb49, unwind: bb210];
+    }
+
+    bb49: {
+        _84 = Arg::<'_, '_>::takes_value(move _85, const false) -> [return: bb50, unwind: bb210];
+    }
+
+    bb50: {
+        _83 = Arg::<'_, '_>::multiple(move _84, const false) -> [return: bb51, unwind: bb210];
+    }
+
+    bb51: {
+        _82 = Arg::<'_, '_>::short::<&str>(move _83, const "words") -> [return: bb52, unwind: bb210];
+    }
+
+    bb52: {
+        _87 = const "words";
+        _81 = Arg::<'_, '_>::long(move _82, _87) -> [return: bb53, unwind: bb210];
+    }
+
+    bb53: {
+        _88 = const "Converts any Unicode word character to \\w";
+        _80 = Arg::<'_, '_>::help(move _81, _88) -> [return: bb54, unwind: bb210];
+    }
+
+    bb54: {
+        _89 = const "Converts any Unicode word character to \\w.\n\nTakes precedence over --non-digits if both are set.\nWord characters are converted to \\w, remaining non-digits to \\D.\n\nTakes precedence over --non-spaces if both are set.\nWord characters are converted to \\w, remaining non-whitespace to \\S.";
+        _79 = Arg::<'_, '_>::long_help(move _80, _89) -> [return: bb55, unwind: bb210];
+    }
+
+    bb55: {
+        _78 = Arg::<'_, '_>::display_order(move _79, const 5_usize) -> [return: bb56, unwind: bb210];
+    }
+
+    bb56: {
+        _294 = const false;
+        _76 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _77, move _78) -> [return: bb57, unwind: bb210];
+    }
+
+    bb57: {
+        _294 = const false;
+        _293 = const true;
+        _91 = move _76;
+        _100 = const "non-words";
+        _99 = Arg::<'_, '_>::with_name(_100) -> [return: bb58, unwind: bb208];
+    }
+
+    bb58: {
+        _98 = Arg::<'_, '_>::takes_value(move _99, const false) -> [return: bb59, unwind: bb208];
+    }
+
+    bb59: {
+        _97 = Arg::<'_, '_>::multiple(move _98, const false) -> [return: bb60, unwind: bb208];
+    }
+
+    bb60: {
+        _96 = Arg::<'_, '_>::short::<&str>(move _97, const "W") -> [return: bb61, unwind: bb208];
+    }
+
+    bb61: {
+        _101 = const "non-words";
+        _95 = Arg::<'_, '_>::long(move _96, _101) -> [return: bb62, unwind: bb208];
+    }
+
+    bb62: {
+        _102 = const "Converts any character which is not a Unicode word character to \\W";
+        _94 = Arg::<'_, '_>::help(move _95, _102) -> [return: bb63, unwind: bb208];
+    }
+
+    bb63: {
+        _103 = const "Converts any character which is not a Unicode word character to \\W.\n\nTakes precedence over --non-spaces if both are set.\nNon-word characters which are also non-whitespace are converted to \\W.";
+        _93 = Arg::<'_, '_>::long_help(move _94, _103) -> [return: bb64, unwind: bb208];
+    }
+
+    bb64: {
+        _92 = Arg::<'_, '_>::display_order(move _93, const 6_usize) -> [return: bb65, unwind: bb208];
+    }
+
+    bb65: {
+        _293 = const false;
+        _90 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _91, move _92) -> [return: bb66, unwind: bb208];
+    }
+
+    bb66: {
+        _293 = const false;
+        _292 = const true;
+        _105 = move _90;
+        _113 = const "repetitions";
+        _112 = Arg::<'_, '_>::with_name(_113) -> [return: bb67, unwind: bb206];
+    }
+
+    bb67: {
+        _111 = Arg::<'_, '_>::takes_value(move _112, const false) -> [return: bb68, unwind: bb206];
+    }
+
+    bb68: {
+        _110 = Arg::<'_, '_>::multiple(move _111, const false) -> [return: bb69, unwind: bb206];
+    }
+
+    bb69: {
+        _109 = Arg::<'_, '_>::short::<&str>(move _110, const "repetitions") -> [return: bb70, unwind: bb206];
+    }
+
+    bb70: {
+        _114 = const "repetitions";
+        _108 = Arg::<'_, '_>::long(move _109, _114) -> [return: bb71, unwind: bb206];
+    }
+
+    bb71: {
+        _115 = const "Detects repeated non-overlapping substrings and\nconverts them to {min,max} quantifier notation";
+        _107 = Arg::<'_, '_>::help(move _108, _115) -> [return: bb72, unwind: bb206];
+    }
+
+    bb72: {
+        _106 = Arg::<'_, '_>::display_order(move _107, const 7_usize) -> [return: bb73, unwind: bb206];
+    }
+
+    bb73: {
+        _292 = const false;
+        _104 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _105, move _106) -> [return: bb74, unwind: bb206];
+    }
+
+    bb74: {
+        _292 = const false;
+        _291 = const true;
+        _117 = move _104;
+        _125 = const "escape";
+        _124 = Arg::<'_, '_>::with_name(_125) -> [return: bb75, unwind: bb204];
+    }
+
+    bb75: {
+        _123 = Arg::<'_, '_>::takes_value(move _124, const false) -> [return: bb76, unwind: bb204];
+    }
+
+    bb76: {
+        _122 = Arg::<'_, '_>::multiple(move _123, const false) -> [return: bb77, unwind: bb204];
+    }
+
+    bb77: {
+        _121 = Arg::<'_, '_>::short::<&str>(move _122, const "escape") -> [return: bb78, unwind: bb204];
+    }
+
+    bb78: {
+        _126 = const "escape";
+        _120 = Arg::<'_, '_>::long(move _121, _126) -> [return: bb79, unwind: bb204];
+    }
+
+    bb79: {
+        _127 = const "Replaces all non-ASCII characters with unicode escape sequences";
+        _119 = Arg::<'_, '_>::help(move _120, _127) -> [return: bb80, unwind: bb204];
+    }
+
+    bb80: {
+        _118 = Arg::<'_, '_>::display_order(move _119, const 8_usize) -> [return: bb81, unwind: bb204];
+    }
+
+    bb81: {
+        _291 = const false;
+        _116 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _117, move _118) -> [return: bb82, unwind: bb204];
+    }
+
+    bb82: {
+        _291 = const false;
+        _290 = const true;
+        _129 = move _116;
+        _137 = const "with-surrogates";
+        _136 = Arg::<'_, '_>::with_name(_137) -> [return: bb83, unwind: bb202];
+    }
+
+    bb83: {
+        _135 = Arg::<'_, '_>::takes_value(move _136, const false) -> [return: bb84, unwind: bb202];
+    }
+
+    bb84: {
+        _134 = Arg::<'_, '_>::multiple(move _135, const false) -> [return: bb85, unwind: bb202];
+    }
+
+    bb85: {
+        _138 = const "with-surrogates";
+        _133 = Arg::<'_, '_>::long(move _134, _138) -> [return: bb86, unwind: bb202];
+    }
+
+    bb86: {
+        _139 = const "escape";
+        _132 = Arg::<'_, '_>::requires(move _133, _139) -> [return: bb87, unwind: bb202];
+    }
+
+    bb87: {
+        _140 = const "Converts astral code points to surrogate pairs if --escape is set";
+        _131 = Arg::<'_, '_>::help(move _132, _140) -> [return: bb88, unwind: bb202];
+    }
+
+    bb88: {
+        _130 = Arg::<'_, '_>::display_order(move _131, const 9_usize) -> [return: bb89, unwind: bb202];
+    }
+
+    bb89: {
+        _290 = const false;
+        _128 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _129, move _130) -> [return: bb90, unwind: bb202];
+    }
+
+    bb90: {
+        _290 = const false;
+        _289 = const true;
+        _142 = move _128;
+        _150 = const "ignore-case";
+        _149 = Arg::<'_, '_>::with_name(_150) -> [return: bb91, unwind: bb200];
+    }
+
+    bb91: {
+        _148 = Arg::<'_, '_>::takes_value(move _149, const false) -> [return: bb92, unwind: bb200];
+    }
+
+    bb92: {
+        _147 = Arg::<'_, '_>::multiple(move _148, const false) -> [return: bb93, unwind: bb200];
+    }
+
+    bb93: {
+        _146 = Arg::<'_, '_>::short::<&str>(move _147, const "ignore-case") -> [return: bb94, unwind: bb200];
+    }
+
+    bb94: {
+        _151 = const "ignore-case";
+        _145 = Arg::<'_, '_>::long(move _146, _151) -> [return: bb95, unwind: bb200];
+    }
+
+    bb95: {
+        _152 = const "Performs case-insensitive matching, letters match both upper and lower case";
+        _144 = Arg::<'_, '_>::help(move _145, _152) -> [return: bb96, unwind: bb200];
+    }
+
+    bb96: {
+        _143 = Arg::<'_, '_>::display_order(move _144, const 10_usize) -> [return: bb97, unwind: bb200];
+    }
+
+    bb97: {
+        _289 = const false;
+        _141 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _142, move _143) -> [return: bb98, unwind: bb200];
+    }
+
+    bb98: {
+        _289 = const false;
+        _288 = const true;
+        _154 = move _141;
+        _162 = const "capture-groups";
+        _161 = Arg::<'_, '_>::with_name(_162) -> [return: bb99, unwind: bb198];
+    }
+
+    bb99: {
+        _160 = Arg::<'_, '_>::takes_value(move _161, const false) -> [return: bb100, unwind: bb198];
+    }
+
+    bb100: {
+        _159 = Arg::<'_, '_>::multiple(move _160, const false) -> [return: bb101, unwind: bb198];
+    }
+
+    bb101: {
+        _158 = Arg::<'_, '_>::short::<&str>(move _159, const "g") -> [return: bb102, unwind: bb198];
+    }
+
+    bb102: {
+        _163 = const "capture-groups";
+        _157 = Arg::<'_, '_>::long(move _158, _163) -> [return: bb103, unwind: bb198];
+    }
+
+    bb103: {
+        _164 = const "Replaces non-capturing groups by capturing ones";
+        _156 = Arg::<'_, '_>::help(move _157, _164) -> [return: bb104, unwind: bb198];
+    }
+
+    bb104: {
+        _155 = Arg::<'_, '_>::display_order(move _156, const 11_usize) -> [return: bb105, unwind: bb198];
+    }
+
+    bb105: {
+        _288 = const false;
+        _153 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _154, move _155) -> [return: bb106, unwind: bb198];
+    }
+
+    bb106: {
+        _288 = const false;
+        _287 = const true;
+        _166 = move _153;
+        _174 = const "verbose";
+        _173 = Arg::<'_, '_>::with_name(_174) -> [return: bb107, unwind: bb196];
+    }
+
+    bb107: {
+        _172 = Arg::<'_, '_>::takes_value(move _173, const false) -> [return: bb108, unwind: bb196];
+    }
+
+    bb108: {
+        _171 = Arg::<'_, '_>::multiple(move _172, const false) -> [return: bb109, unwind: bb196];
+    }
+
+    bb109: {
+        _170 = Arg::<'_, '_>::short::<&str>(move _171, const "x") -> [return: bb110, unwind: bb196];
+    }
+
+    bb110: {
+        _175 = const "verbose";
+        _169 = Arg::<'_, '_>::long(move _170, _175) -> [return: bb111, unwind: bb196];
+    }
+
+    bb111: {
+        _176 = const "Produces a nicer looking regular expression in verbose mode";
+        _168 = Arg::<'_, '_>::help(move _169, _176) -> [return: bb112, unwind: bb196];
+    }
+
+    bb112: {
+        _167 = Arg::<'_, '_>::display_order(move _168, const 12_usize) -> [return: bb113, unwind: bb196];
+    }
+
+    bb113: {
+        _287 = const false;
+        _165 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _166, move _167) -> [return: bb114, unwind: bb196];
+    }
+
+    bb114: {
+        _287 = const false;
+        _286 = const true;
+        _178 = move _165;
+        _186 = const "no-start-anchor";
+        _185 = Arg::<'_, '_>::with_name(_186) -> [return: bb115, unwind: bb194];
+    }
+
+    bb115: {
+        _184 = Arg::<'_, '_>::takes_value(move _185, const false) -> [return: bb116, unwind: bb194];
+    }
+
+    bb116: {
+        _183 = Arg::<'_, '_>::multiple(move _184, const false) -> [return: bb117, unwind: bb194];
+    }
+
+    bb117: {
+        _187 = const "no-start-anchor";
+        _182 = Arg::<'_, '_>::long(move _183, _187) -> [return: bb118, unwind: bb194];
+    }
+
+    bb118: {
+        _188 = const "Removes the caret anchor '^' from the resulting regular expression";
+        _181 = Arg::<'_, '_>::help(move _182, _188) -> [return: bb119, unwind: bb194];
+    }
+
+    bb119: {
+        _189 = const "Removes the caret anchor '^' from the resulting regular expression.\n\nBy default, the caret anchor is added to every generated regular\nexpression which guarantees that the expression matches the test cases\ngiven as input only at the start of a string.\nThis flag removes the anchor, thereby allowing to match the test cases also\nwhen they do not occur at the start of a string.";
+        _180 = Arg::<'_, '_>::long_help(move _181, _189) -> [return: bb120, unwind: bb194];
+    }
+
+    bb120: {
+        _179 = Arg::<'_, '_>::display_order(move _180, const 13_usize) -> [return: bb121, unwind: bb194];
+    }
+
+    bb121: {
+        _286 = const false;
+        _177 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _178, move _179) -> [return: bb122, unwind: bb194];
+    }
+
+    bb122: {
+        _286 = const false;
+        _285 = const true;
+        _191 = move _177;
+        _199 = const "no-end-anchor";
+        _198 = Arg::<'_, '_>::with_name(_199) -> [return: bb123, unwind: bb192];
+    }
+
+    bb123: {
+        _197 = Arg::<'_, '_>::takes_value(move _198, const false) -> [return: bb124, unwind: bb192];
+    }
+
+    bb124: {
+        _196 = Arg::<'_, '_>::multiple(move _197, const false) -> [return: bb125, unwind: bb192];
+    }
+
+    bb125: {
+        _200 = const "no-end-anchor";
+        _195 = Arg::<'_, '_>::long(move _196, _200) -> [return: bb126, unwind: bb192];
+    }
+
+    bb126: {
+        _201 = const "Removes the dollar sign anchor '$' from the resulting regular expression";
+        _194 = Arg::<'_, '_>::help(move _195, _201) -> [return: bb127, unwind: bb192];
+    }
+
+    bb127: {
+        _202 = const "Removes the dollar sign anchor '$' from the resulting regular expression.\n\nBy default, the dollar sign anchor is added to every generated regular\nexpression which guarantees that the expression matches the test cases\ngiven as input only at the end of a string.\nThis flag removes the anchor, thereby allowing to match the test cases also\nwhen they do not occur at the end of a string.";
+        _193 = Arg::<'_, '_>::long_help(move _194, _202) -> [return: bb128, unwind: bb192];
+    }
+
+    bb128: {
+        _192 = Arg::<'_, '_>::display_order(move _193, const 14_usize) -> [return: bb129, unwind: bb192];
+    }
+
+    bb129: {
+        _285 = const false;
+        _190 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _191, move _192) -> [return: bb130, unwind: bb192];
+    }
+
+    bb130: {
+        _285 = const false;
+        _284 = const true;
+        _204 = move _190;
+        _212 = const "no-anchors";
+        _211 = Arg::<'_, '_>::with_name(_212) -> [return: bb131, unwind: bb190];
+    }
+
+    bb131: {
+        _210 = Arg::<'_, '_>::takes_value(move _211, const false) -> [return: bb132, unwind: bb190];
+    }
+
+    bb132: {
+        _209 = Arg::<'_, '_>::multiple(move _210, const false) -> [return: bb133, unwind: bb190];
+    }
+
+    bb133: {
+        _213 = const "no-anchors";
+        _208 = Arg::<'_, '_>::long(move _209, _213) -> [return: bb134, unwind: bb190];
+    }
+
+    bb134: {
+        _214 = const "Removes the caret and dollar sign anchors from the resulting regular expression";
+        _207 = Arg::<'_, '_>::help(move _208, _214) -> [return: bb135, unwind: bb190];
+    }
+
+    bb135: {
+        _215 = const "Removes the caret and dollar sign anchors from the resulting regular expression.\n\nBy default, anchors are added to every generated regular expression\nwhich guarantee that the expression exactly matches only the test cases\ngiven as input and nothing else.\nThis flag removes the anchors, thereby allowing to match the test cases also\nwhen they occur within a larger string that contains other content as well.";
+        _206 = Arg::<'_, '_>::long_help(move _207, _215) -> [return: bb136, unwind: bb190];
+    }
+
+    bb136: {
+        _205 = Arg::<'_, '_>::display_order(move _206, const 15_usize) -> [return: bb137, unwind: bb190];
+    }
+
+    bb137: {
+        _284 = const false;
+        _203 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _204, move _205) -> [return: bb138, unwind: bb190];
+    }
+
+    bb138: {
+        _284 = const false;
+        _283 = const true;
+        _217 = move _203;
+        _225 = const "colorize";
+        _224 = Arg::<'_, '_>::with_name(_225) -> [return: bb139, unwind: bb188];
+    }
+
+    bb139: {
+        _223 = Arg::<'_, '_>::takes_value(move _224, const false) -> [return: bb140, unwind: bb188];
+    }
+
+    bb140: {
+        _222 = Arg::<'_, '_>::multiple(move _223, const false) -> [return: bb141, unwind: bb188];
+    }
+
+    bb141: {
+        _221 = Arg::<'_, '_>::short::<&str>(move _222, const "colorize") -> [return: bb142, unwind: bb188];
+    }
+
+    bb142: {
+        _226 = const "colorize";
+        _220 = Arg::<'_, '_>::long(move _221, _226) -> [return: bb143, unwind: bb188];
+    }
+
+    bb143: {
+        _227 = const "Provides syntax highlighting for the resulting regular expression";
+        _219 = Arg::<'_, '_>::help(move _220, _227) -> [return: bb144, unwind: bb188];
+    }
+
+    bb144: {
+        _218 = Arg::<'_, '_>::display_order(move _219, const 16_usize) -> [return: bb145, unwind: bb188];
+    }
+
+    bb145: {
+        _283 = const false;
+        _216 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _217, move _218) -> [return: bb146, unwind: bb188];
+    }
+
+    bb146: {
+        _283 = const false;
+        _282 = const true;
+        _229 = move _216;
+        _239 = const "file";
+        _238 = Arg::<'_, '_>::with_name(_239) -> [return: bb147, unwind: bb186];
+    }
+
+    bb147: {
+        _237 = Arg::<'_, '_>::takes_value(move _238, const true) -> [return: bb148, unwind: bb186];
+    }
+
+    bb148: {
+        _236 = Arg::<'_, '_>::multiple(move _237, const false) -> [return: bb149, unwind: bb186];
+    }
+
+    bb149: {
+        _240 = const "FILE";
+        _235 = Arg::<'_, '_>::value_name(move _236, _240) -> [return: bb150, unwind: bb186];
+    }
+
+    bb150: {
+        _234 = Arg::<'_, '_>::short::<&str>(move _235, const "file") -> [return: bb151, unwind: bb186];
+    }
+
+    bb151: {
+        _241 = const "file";
+        _233 = Arg::<'_, '_>::long(move _234, _241) -> [return: bb152, unwind: bb186];
+    }
+
+    bb152: {
+        _242 = const "input";
+        _232 = Arg::<'_, '_>::required_unless(move _233, _242) -> [return: bb153, unwind: bb186];
+    }
+
+    bb153: {
+        _243 = const "Reads test cases on separate lines from a file";
+        _231 = Arg::<'_, '_>::help(move _232, _243) -> [return: bb154, unwind: bb186];
+    }
+
+    bb154: {
+        _244 = const "Reads test cases on separate lines from a file.\n\nLines may be ended with either a newline (`\\n`) or\na carriage return with a line feed (`\\r\\n`).\nThe final line ending is optional.";
+        _230 = Arg::<'_, '_>::long_help(move _231, _244) -> [return: bb155, unwind: bb186];
+    }
+
+    bb155: {
+        _282 = const false;
+        _228 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _229, move _230) -> [return: bb156, unwind: bb186];
+    }
+
+    bb156: {
+        _282 = const false;
+        _281 = const true;
+        _246 = move _228;
+        _257 = const "min-repetitions";
+        _256 = Arg::<'_, '_>::with_name(_257) -> [return: bb157, unwind: bb184];
+    }
+
+    bb157: {
+        _255 = Arg::<'_, '_>::takes_value(move _256, const true) -> [return: bb158, unwind: bb184];
+    }
+
+    bb158: {
+        _254 = Arg::<'_, '_>::multiple(move _255, const false) -> [return: bb159, unwind: bb184];
+    }
+
+    bb159: {
+        _253 = Arg::<'_, '_>::required(move _254, const false) -> [return: bb160, unwind: bb184];
+    }
+
+    bb160: {
+        _252 = Arg::<'_, '_>::validator::<{closure@src/main.rs:250:5: 250:6}>(move _253, const ZeroSized: {closure@src/main.rs:250:5: 250:6}) -> [return: bb161, unwind: bb184];
+    }
+
+    bb161: {
+        _258 = const "QUANTITY";
+        _251 = Arg::<'_, '_>::value_name(move _252, _258) -> [return: bb162, unwind: bb184];
+    }
+
+    bb162: {
+        _259 = const "min-repetitions";
+        _250 = Arg::<'_, '_>::long(move _251, _259) -> [return: bb163, unwind: bb184];
+    }
+
+    bb163: {
+        _260 = const "1";
+        _249 = Arg::<'_, '_>::default_value(move _250, _260) -> [return: bb164, unwind: bb184];
+    }
+
+    bb164: {
+        _248 = Arg::<'_, '_>::validator::<fn(String) -> Result<(), String> {repetition_options_validator}>(move _249, repetition_options_validator) -> [return: bb165, unwind: bb184];
+    }
+
+    bb165: {
+        _261 = const "Specifies the minimum quantity of substring repetitions\nto be converted if --repetitions is set";
+        _247 = Arg::<'_, '_>::help(move _248, _261) -> [return: bb166, unwind: bb184];
+    }
+
+    bb166: {
+        _281 = const false;
+        _245 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _246, move _247) -> [return: bb167, unwind: bb184];
+    }
+
+    bb167: {
+        _281 = const false;
+        _280 = const true;
+        _263 = move _245;
+        _274 = const "min-substring-length";
+        _273 = Arg::<'_, '_>::with_name(_274) -> [return: bb168, unwind: bb182];
+    }
+
+    bb168: {
+        _272 = Arg::<'_, '_>::takes_value(move _273, const true) -> [return: bb169, unwind: bb182];
+    }
+
+    bb169: {
+        _271 = Arg::<'_, '_>::multiple(move _272, const false) -> [return: bb170, unwind: bb182];
+    }
+
+    bb170: {
+        _270 = Arg::<'_, '_>::required(move _271, const false) -> [return: bb171, unwind: bb182];
+    }
+
+    bb171: {
+        _269 = Arg::<'_, '_>::validator::<{closure@src/main.rs:261:5: 261:6}>(move _270, const ZeroSized: {closure@src/main.rs:261:5: 261:6}) -> [return: bb172, unwind: bb182];
+    }
+
+    bb172: {
+        _275 = const "LENGTH";
+        _268 = Arg::<'_, '_>::value_name(move _269, _275) -> [return: bb173, unwind: bb182];
+    }
+
+    bb173: {
+        _276 = const "min-substring-length";
+        _267 = Arg::<'_, '_>::long(move _268, _276) -> [return: bb174, unwind: bb182];
+    }
+
+    bb174: {
+        _277 = const "1";
+        _266 = Arg::<'_, '_>::default_value(move _267, _277) -> [return: bb175, unwind: bb182];
+    }
+
+    bb175: {
+        _265 = Arg::<'_, '_>::validator::<fn(String) -> Result<(), String> {repetition_options_validator}>(move _266, repetition_options_validator) -> [return: bb176, unwind: bb182];
+    }
+
+    bb176: {
+        _278 = const "Specifies the minimum length a repeated substring must have\nin order to be converted if --repetitions is set";
+        _264 = Arg::<'_, '_>::help(move _265, _278) -> [return: bb177, unwind: bb182];
+    }
+
+    bb177: {
+        _280 = const false;
+        _262 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _263, move _264) -> [return: bb178, unwind: bb182];
+    }
+
+    bb178: {
+        _280 = const false;
+        _0 = App::<'_, '_>::version::<&str>(move _262, const "1.3.0") -> [return: bb179, unwind continue];
+    }
+
+    bb179: {
+        return;
+    }
+
+    bb180 (cleanup): {
+        resume;
+    }
+
+    bb181 (cleanup): {
+        drop(_263) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb182 (cleanup): {
+        switchInt(_280) -> [0: bb180, otherwise: bb181];
+    }
+
+    bb183 (cleanup): {
+        drop(_246) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb184 (cleanup): {
+        switchInt(_281) -> [0: bb180, otherwise: bb183];
+    }
+
+    bb185 (cleanup): {
+        drop(_229) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb186 (cleanup): {
+        switchInt(_282) -> [0: bb180, otherwise: bb185];
+    }
+
+    bb187 (cleanup): {
+        drop(_217) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb188 (cleanup): {
+        switchInt(_283) -> [0: bb180, otherwise: bb187];
+    }
+
+    bb189 (cleanup): {
+        drop(_204) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb190 (cleanup): {
+        switchInt(_284) -> [0: bb180, otherwise: bb189];
+    }
+
+    bb191 (cleanup): {
+        drop(_191) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb192 (cleanup): {
+        switchInt(_285) -> [0: bb180, otherwise: bb191];
+    }
+
+    bb193 (cleanup): {
+        drop(_178) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb194 (cleanup): {
+        switchInt(_286) -> [0: bb180, otherwise: bb193];
+    }
+
+    bb195 (cleanup): {
+        drop(_166) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb196 (cleanup): {
+        switchInt(_287) -> [0: bb180, otherwise: bb195];
+    }
+
+    bb197 (cleanup): {
+        drop(_154) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb198 (cleanup): {
+        switchInt(_288) -> [0: bb180, otherwise: bb197];
+    }
+
+    bb199 (cleanup): {
+        drop(_142) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb200 (cleanup): {
+        switchInt(_289) -> [0: bb180, otherwise: bb199];
+    }
+
+    bb201 (cleanup): {
+        drop(_129) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb202 (cleanup): {
+        switchInt(_290) -> [0: bb180, otherwise: bb201];
+    }
+
+    bb203 (cleanup): {
+        drop(_117) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb204 (cleanup): {
+        switchInt(_291) -> [0: bb180, otherwise: bb203];
+    }
+
+    bb205 (cleanup): {
+        drop(_105) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb206 (cleanup): {
+        switchInt(_292) -> [0: bb180, otherwise: bb205];
+    }
+
+    bb207 (cleanup): {
+        drop(_91) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb208 (cleanup): {
+        switchInt(_293) -> [0: bb180, otherwise: bb207];
+    }
+
+    bb209 (cleanup): {
+        drop(_77) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb210 (cleanup): {
+        switchInt(_294) -> [0: bb180, otherwise: bb209];
+    }
+
+    bb211 (cleanup): {
+        drop(_65) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb212 (cleanup): {
+        switchInt(_295) -> [0: bb180, otherwise: bb211];
+    }
+
+    bb213 (cleanup): {
+        drop(_51) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb214 (cleanup): {
+        switchInt(_296) -> [0: bb180, otherwise: bb213];
+    }
+
+    bb215 (cleanup): {
+        drop(_37) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb216 (cleanup): {
+        switchInt(_297) -> [0: bb180, otherwise: bb215];
+    }
+
+    bb217 (cleanup): {
+        drop(_23) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb218 (cleanup): {
+        switchInt(_298) -> [0: bb180, otherwise: bb217];
+    }
+
+    bb219 (cleanup): {
+        drop(_8) -> [return: bb180, unwind terminate(cleanup)];
+    }
+
+    bb220 (cleanup): {
+        switchInt(_299) -> [0: bb180, otherwise: bb219];
+    }
+}
+
+promoted[0] in <impl at src/main.rs:24:10: 24:19>::augment_clap: &[AppSettings; 2] = {
+    let mut _0: &[structopt::clap::AppSettings; 2];
+    let mut _1: [structopt::clap::AppSettings; 2];
+    let mut _2: structopt::clap::AppSettings;
+    let mut _3: structopt::clap::AppSettings;
+
+    bb0: {
+        _2 = structopt::clap::AppSettings::AllowLeadingHyphen;
+        _3 = ColoredHelp;
+        _1 = [move _2, move _3];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::augment_clap::{closure#0}(_1: &{closure@src/main.rs:38:5: 38:6}, _2: String) -> Result<(), String> {
+    debug s => _2;
+    let mut _0: std::result::Result<(), std::string::String>;
+    let mut _3: std::result::Result<(), std::convert::Infallible>;
+    let mut _4: std::result::Result<std::string::String, std::convert::Infallible>;
+    let _5: &str;
+    let mut _6: &std::string::String;
+
+    bb0: {
+        _6 = &_2;
+        _5 = String::as_str(move _6) -> [return: bb1, unwind: bb6];
+    }
+
+    bb1: {
+        _4 = <String as FromStr>::from_str(_5) -> [return: bb2, unwind: bb6];
+    }
+
+    bb2: {
+        _3 = Result::<String, Infallible>::map::<(), {closure@src/main.rs:38:5: 38:6}>(move _4, const ZeroSized: {closure@src/main.rs:38:5: 38:6}) -> [return: bb3, unwind: bb6];
+    }
+
+    bb3: {
+        _0 = Result::<(), Infallible>::map_err::<String, {closure@src/main.rs:38:5: 38:6}>(const Result::<(), Infallible>::Ok(()), const ZeroSized: {closure@src/main.rs:38:5: 38:6}) -> [return: bb4, unwind: bb6];
+    }
+
+    bb4: {
+        drop(_2) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        return;
+    }
+
+    bb6 (cleanup): {
+        drop(_2) -> [return: bb7, unwind terminate(cleanup)];
+    }
+
+    bb7 (cleanup): {
+        resume;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::augment_clap::{closure#0}::{closure#0}(_1: {closure@src/main.rs:38:5: 38:6}, _2: String) -> () {
+    let mut _0: ();
+
+    bb0: {
+        drop(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::augment_clap::{closure#0}::{closure#1}(_1: {closure@src/main.rs:38:5: 38:6}, _2: Infallible) -> String {
+    debug e => const ZeroSized: Infallible;
+    let mut _0: std::string::String;
+    let mut _3: &std::convert::Infallible;
+
+    bb0: {
+        _3 = &_2;
+        _0 = <Infallible as ToString>::to_string(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::augment_clap::{closure#1}(_1: &{closure@src/main.rs:250:5: 250:6}, _2: String) -> Result<(), String> {
+    debug s => _2;
+    let mut _0: std::result::Result<(), std::string::String>;
+    let mut _3: std::result::Result<(), std::num::ParseIntError>;
+    let mut _4: std::result::Result<u32, std::num::ParseIntError>;
+    let _5: &str;
+    let mut _6: &std::string::String;
+
+    bb0: {
+        _6 = &_2;
+        _5 = String::as_str(move _6) -> [return: bb1, unwind: bb6];
+    }
+
+    bb1: {
+        _4 = <u32 as FromStr>::from_str(_5) -> [return: bb2, unwind: bb6];
+    }
+
+    bb2: {
+        _3 = Result::<u32, ParseIntError>::map::<(), {closure@src/main.rs:250:5: 250:6}>(move _4, const ZeroSized: {closure@src/main.rs:250:5: 250:6}) -> [return: bb3, unwind: bb6];
+    }
+
+    bb3: {
+        _0 = Result::<(), ParseIntError>::map_err::<String, {closure@src/main.rs:250:5: 250:6}>(move _3, const ZeroSized: {closure@src/main.rs:250:5: 250:6}) -> [return: bb4, unwind: bb6];
+    }
+
+    bb4: {
+        drop(_2) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        return;
+    }
+
+    bb6 (cleanup): {
+        drop(_2) -> [return: bb7, unwind terminate(cleanup)];
+    }
+
+    bb7 (cleanup): {
+        resume;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::augment_clap::{closure#1}::{closure#0}(_1: {closure@src/main.rs:250:5: 250:6}, _2: u32) -> () {
+    let mut _0: ();
+
+    bb0: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::augment_clap::{closure#1}::{closure#1}(_1: {closure@src/main.rs:250:5: 250:6}, _2: ParseIntError) -> String {
+    debug e => _2;
+    let mut _0: std::string::String;
+    let mut _3: &std::num::ParseIntError;
+
+    bb0: {
+        _3 = &_2;
+        _0 = <ParseIntError as ToString>::to_string(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::augment_clap::{closure#2}(_1: &{closure@src/main.rs:261:5: 261:6}, _2: String) -> Result<(), String> {
+    debug s => _2;
+    let mut _0: std::result::Result<(), std::string::String>;
+    let mut _3: std::result::Result<(), std::num::ParseIntError>;
+    let mut _4: std::result::Result<u32, std::num::ParseIntError>;
+    let _5: &str;
+    let mut _6: &std::string::String;
+
+    bb0: {
+        _6 = &_2;
+        _5 = String::as_str(move _6) -> [return: bb1, unwind: bb6];
+    }
+
+    bb1: {
+        _4 = <u32 as FromStr>::from_str(_5) -> [return: bb2, unwind: bb6];
+    }
+
+    bb2: {
+        _3 = Result::<u32, ParseIntError>::map::<(), {closure@src/main.rs:261:5: 261:6}>(move _4, const ZeroSized: {closure@src/main.rs:261:5: 261:6}) -> [return: bb3, unwind: bb6];
+    }
+
+    bb3: {
+        _0 = Result::<(), ParseIntError>::map_err::<String, {closure@src/main.rs:261:5: 261:6}>(move _3, const ZeroSized: {closure@src/main.rs:261:5: 261:6}) -> [return: bb4, unwind: bb6];
+    }
+
+    bb4: {
+        drop(_2) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        return;
+    }
+
+    bb6 (cleanup): {
+        drop(_2) -> [return: bb7, unwind terminate(cleanup)];
+    }
+
+    bb7 (cleanup): {
+        resume;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::augment_clap::{closure#2}::{closure#0}(_1: {closure@src/main.rs:261:5: 261:6}, _2: u32) -> () {
+    let mut _0: ();
+
+    bb0: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::augment_clap::{closure#2}::{closure#1}(_1: {closure@src/main.rs:261:5: 261:6}, _2: ParseIntError) -> String {
+    debug e => _2;
+    let mut _0: std::string::String;
+    let mut _3: &std::num::ParseIntError;
+
+    bb0: {
+        _3 = &_2;
+        _0 = <ParseIntError as ToString>::to_string(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn <impl at src/main.rs:24:10: 24:19>::is_subcommand() -> bool {
+    let mut _0: bool;
+
+    bb0: {
+        _0 = const false;
+        return;
+    }
+}
+
+fn main() -> () {
+    let mut _0: ();
+    let _1: Cli;
+    let _2: ();
+    let _3: &Cli;
+    let mut _4: std::result::Result<std::vec::Vec<std::string::String>, std::io::Error>;
+    let _5: &Cli;
+    scope 1 {
+        debug cli => _1;
+    }
+
+    bb0: {
+        _1 = <Cli as StructOpt>::from_args() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _3 = &_1;
+        _5 = &_1;
+        _4 = obtain_input(_5) -> [return: bb2, unwind: bb5];
+    }
+
+    bb2: {
+        _2 = handle_input(_3, move _4) -> [return: bb3, unwind: bb5];
+    }
+
+    bb3: {
+        drop(_1) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        return;
+    }
+
+    bb5 (cleanup): {
+        drop(_1) -> [return: bb6, unwind terminate(cleanup)];
+    }
+
+    bb6 (cleanup): {
+        resume;
+    }
+}
+
+fn obtain_input(_1: &Cli) -> Result<Vec<String>, std::io::Error> {
+    debug cli => _1;
+    let mut _0: std::result::Result<std::vec::Vec<std::string::String>, std::io::Error>;
+    let _2: bool;
+    let mut _3: atty::Stream;
+    let mut _4: bool;
+    let mut _5: &std::vec::Vec<std::string::String>;
+    let mut _7: usize;
+    let mut _8: &std::vec::Vec<std::string::String>;
+    let mut _10: &&std::string::String;
+    let _11: &std::string::String;
+    let mut _12: std::option::Option<&std::string::String>;
+    let _13: &[std::string::String];
+    let mut _14: &std::vec::Vec<std::string::String>;
+    let mut _15: std::vec::Vec<std::string::String>;
+    let mut _16: std::iter::Map<std::io::Lines<std::io::StdinLock<'_>>, {closure@src/main.rs:289:22: 289:28}>;
+    let mut _17: std::io::Lines<std::io::StdinLock<'_>>;
+    let mut _18: std::io::StdinLock<'_>;
+    let mut _19: &std::io::Stdin;
+    let _20: std::io::Stdin;
+    let mut _21: std::vec::Vec<std::string::String>;
+    let mut _22: &std::vec::Vec<std::string::String>;
+    let mut _23: &std::option::Option<std::path::PathBuf>;
+    let mut _24: isize;
+    let mut _27: &&std::ffi::OsStr;
+    let _28: &std::ffi::OsStr;
+    let _29: &std::path::Path;
+    let mut _32: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>, usize>;
+    let mut _33: std::result::Result<usize, std::io::Error>;
+    let mut _34: &mut std::io::Stdin;
+    let mut _35: std::io::Stdin;
+    let mut _36: &mut std::string::String;
+    let mut _37: isize;
+    let mut _40: &str;
+    let _41: &str;
+    let mut _42: &std::string::String;
+    let _43: &std::path::Path;
+    let mut _44: std::result::Result<std::string::String, std::io::Error>;
+    let mut _45: &std::path::PathBuf;
+    let mut _46: isize;
+    let mut _48: std::vec::Vec<std::string::String>;
+    let mut _49: std::iter::Map<std::str::Lines<'_>, {closure@src/main.rs:304:61: 304:65}>;
+    let mut _50: std::str::Lines<'_>;
+    let _51: &str;
+    let mut _52: &std::string::String;
+    let mut _54: std::io::Error;
+    let mut _55: std::io::ErrorKind;
+    scope 1 {
+        debug is_stdin_available => _2;
+        let _6: bool;
+        scope 2 {
+            debug is_single_item => _6;
+            let _9: bool;
+            let mut _57: &&str;
+            scope 3 {
+                debug is_hyphen => _9;
+            }
+        }
+        scope 4 {
+            debug file_path => _25;
+            let _25: &std::path::PathBuf;
+            let _26: bool;
+            let mut _56: &&str;
+            scope 5 {
+                debug is_hyphen => _26;
+                let _30: std::path::PathBuf;
+                let mut _31: std::string::String;
+                scope 6 {
+                    debug path => _30;
+                    let _47: std::string::String;
+                    let _53: std::io::Error;
+                    scope 12 {
+                        debug file_content => _47;
+                    }
+                    scope 13 {
+                        debug error => _53;
+                    }
+                }
+                scope 7 {
+                    debug stdin_file_path => _31;
+                    let _38: std::result::Result<std::convert::Infallible, std::io::Error>;
+                    let _39: usize;
+                    scope 8 {
+                        debug residual => _38;
+                        scope 9 {
+                        }
+                    }
+                    scope 10 {
+                        debug val => _39;
+                        scope 11 {
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _3 = atty::Stream::Stdin;
+        _2 = isnt(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _5 = &((*_1).0: std::vec::Vec<std::string::String>);
+        _4 = Vec::<String>::is_empty(move _5) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        switchInt(move _4) -> [0: bb4, otherwise: bb3];
+    }
+
+    bb3: {
+        _23 = &((*_1).17: std::option::Option<std::path::PathBuf>);
+        _24 = discriminant((*_23));
+        switchInt(move _24) -> [1: bb21, otherwise: bb20];
+    }
+
+    bb4: {
+        _8 = &((*_1).0: std::vec::Vec<std::string::String>);
+        _7 = Vec::<String>::len(move _8) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        _6 = Eq(move _7, const 1_usize);
+        _14 = &((*_1).0: std::vec::Vec<std::string::String>);
+        _13 = <Vec<String> as Deref>::deref(move _14) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _12 = core::slice::<impl [String]>::get::<usize>(_13, const 0_usize) -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        _11 = Option::<&String>::unwrap(move _12) -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        _10 = &_11;
+        _57 = const _;
+        _9 = <&String as PartialEq<&str>>::eq(move _10, _57) -> [return: bb9, unwind continue];
+    }
+
+    bb9: {
+        switchInt(_6) -> [0: bb18, otherwise: bb10];
+    }
+
+    bb10: {
+        switchInt(_9) -> [0: bb18, otherwise: bb11];
+    }
+
+    bb11: {
+        switchInt(_2) -> [0: bb18, otherwise: bb12];
+    }
+
+    bb12: {
+        _20 = stdin() -> [return: bb13, unwind continue];
+    }
+
+    bb13: {
+        _19 = &_20;
+        _18 = std::io::Stdin::lock(move _19) -> [return: bb14, unwind continue];
+    }
+
+    bb14: {
+        _17 = <StdinLock<'_> as BufRead>::lines(move _18) -> [return: bb15, unwind continue];
+    }
+
+    bb15: {
+        _16 = <std::io::Lines<StdinLock<'_>> as Iterator>::map::<String, {closure@src/main.rs:289:22: 289:28}>(move _17, const ZeroSized: {closure@src/main.rs:289:22: 289:28}) -> [return: bb16, unwind continue];
+    }
+
+    bb16: {
+        _15 = <Map<std::io::Lines<StdinLock<'_>>, {closure@src/main.rs:289:22: 289:28}> as Itertools>::collect_vec(move _16) -> [return: bb17, unwind continue];
+    }
+
+    bb17: {
+        _0 = Result::<Vec<String>, std::io::Error>::Ok(move _15);
+        goto -> bb50;
+    }
+
+    bb18: {
+        _22 = &((*_1).0: std::vec::Vec<std::string::String>);
+        _21 = <Vec<String> as Clone>::clone(move _22) -> [return: bb19, unwind continue];
+    }
+
+    bb19: {
+        _0 = Result::<Vec<String>, std::io::Error>::Ok(move _21);
+        goto -> bb50;
+    }
+
+    bb20: {
+        _55 = InvalidInput;
+        _54 = std::io::Error::new::<&str>(move _55, const "error: no valid input could be found whatsoever") -> [return: bb49, unwind continue];
+    }
+
+    bb21: {
+        _25 = &(((*_23) as Some).0: std::path::PathBuf);
+        _29 = <PathBuf as Deref>::deref(_25) -> [return: bb22, unwind continue];
+    }
+
+    bb22: {
+        _28 = Path::as_os_str(_29) -> [return: bb23, unwind continue];
+    }
+
+    bb23: {
+        _27 = &_28;
+        _56 = const _;
+        _26 = <&OsStr as PartialEq<&str>>::eq(move _27, _56) -> [return: bb24, unwind continue];
+    }
+
+    bb24: {
+        switchInt(_26) -> [0: bb38, otherwise: bb25];
+    }
+
+    bb25: {
+        switchInt(_2) -> [0: bb38, otherwise: bb26];
+    }
+
+    bb26: {
+        _31 = String::new() -> [return: bb27, unwind continue];
+    }
+
+    bb27: {
+        _35 = stdin() -> [return: bb28, unwind: bb54];
+    }
+
+    bb28: {
+        _34 = &mut _35;
+        _36 = &mut _31;
+        _33 = <std::io::Stdin as std::io::Read>::read_to_string(move _34, _36) -> [return: bb29, unwind: bb54];
+    }
+
+    bb29: {
+        _32 = <Result<usize, std::io::Error> as Try>::branch(move _33) -> [return: bb30, unwind: bb54];
+    }
+
+    bb30: {
+        _37 = discriminant(_32);
+        switchInt(move _37) -> [0: bb31, 1: bb33, otherwise: bb32];
+    }
+
+    bb31: {
+        _39 = ((_32 as Continue).0: usize);
+        _42 = &_31;
+        _41 = <String as Deref>::deref(move _42) -> [return: bb35, unwind: bb54];
+    }
+
+    bb32: {
+        unreachable;
+    }
+
+    bb33: {
+        _38 = move ((_32 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<Vec<String>, std::io::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _38) -> [return: bb34, unwind: bb54];
+    }
+
+    bb34: {
+        drop(_31) -> [return: bb50, unwind continue];
+    }
+
+    bb35: {
+        _40 = core::str::<impl str>::trim(_41) -> [return: bb36, unwind: bb54];
+    }
+
+    bb36: {
+        _30 = <PathBuf as From<&str>>::from(move _40) -> [return: bb37, unwind: bb54];
+    }
+
+    bb37: {
+        drop(_31) -> [return: bb40, unwind continue];
+    }
+
+    bb38: {
+        _43 = <PathBuf as Deref>::deref(_25) -> [return: bb39, unwind continue];
+    }
+
+    bb39: {
+        _30 = Path::to_path_buf(_43) -> [return: bb40, unwind continue];
+    }
+
+    bb40: {
+        _45 = &_30;
+        _44 = std::fs::read_to_string::<&PathBuf>(move _45) -> [return: bb41, unwind: bb53];
+    }
+
+    bb41: {
+        _46 = discriminant(_44);
+        switchInt(move _46) -> [0: bb43, 1: bb42, otherwise: bb32];
+    }
+
+    bb42: {
+        _53 = move ((_44 as Err).0: std::io::Error);
+        _0 = Result::<Vec<String>, std::io::Error>::Err(move _53);
+        goto -> bb48;
+    }
+
+    bb43: {
+        _47 = move ((_44 as Ok).0: std::string::String);
+        _52 = &_47;
+        _51 = <String as Deref>::deref(move _52) -> [return: bb44, unwind: bb51];
+    }
+
+    bb44: {
+        _50 = core::str::<impl str>::lines(_51) -> [return: bb45, unwind: bb51];
+    }
+
+    bb45: {
+        _49 = <std::str::Lines<'_> as Iterator>::map::<String, {closure@src/main.rs:304:61: 304:65}>(move _50, const ZeroSized: {closure@src/main.rs:304:61: 304:65}) -> [return: bb46, unwind: bb51];
+    }
+
+    bb46: {
+        _48 = <Map<std::str::Lines<'_>, {closure@src/main.rs:304:61: 304:65}> as Itertools>::collect_vec(move _49) -> [return: bb47, unwind: bb51];
+    }
+
+    bb47: {
+        _0 = Result::<Vec<String>, std::io::Error>::Ok(move _48);
+        drop(_47) -> [return: bb48, unwind: bb52];
+    }
+
+    bb48: {
+        drop(_30) -> [return: bb50, unwind continue];
+    }
+
+    bb49: {
+        _0 = Result::<Vec<String>, std::io::Error>::Err(move _54);
+        goto -> bb50;
+    }
+
+    bb50: {
+        return;
+    }
+
+    bb51 (cleanup): {
+        drop(_47) -> [return: bb52, unwind terminate(cleanup)];
+    }
+
+    bb52 (cleanup): {
+        drop(_30) -> [return: bb55, unwind terminate(cleanup)];
+    }
+
+    bb53 (cleanup): {
+        drop(_30) -> [return: bb55, unwind terminate(cleanup)];
+    }
+
+    bb54 (cleanup): {
+        drop(_31) -> [return: bb55, unwind terminate(cleanup)];
+    }
+
+    bb55 (cleanup): {
+        resume;
+    }
+}
+
+promoted[0] in obtain_input: &&str = {
+    let mut _0: &&str;
+    let mut _1: &str;
+
+    bb0: {
+        _1 = const "-";
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in obtain_input: &&str = {
+    let mut _0: &&str;
+    let mut _1: &str;
+
+    bb0: {
+        _1 = const "-";
+        _0 = &_1;
+        return;
+    }
+}
+
+fn obtain_input::{closure#0}(_1: &mut {closure@src/main.rs:289:22: 289:28}, _2: Result<String, std::io::Error>) -> String {
+    debug line => _2;
+    let mut _0: std::string::String;
+
+    bb0: {
+        _0 = Result::<String, std::io::Error>::unwrap(move _2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn obtain_input::{closure#1}(_1: &mut {closure@src/main.rs:304:61: 304:65}, _2: &str) -> String {
+    debug it => _2;
+    let mut _0: std::string::String;
+
+    bb0: {
+        _0 = <str as ToString>::to_string(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn handle_input(_1: &Cli, _2: Result<Vec<String>, std::io::Error>) -> () {
+    debug cli => _1;
+    debug input => _2;
+    let mut _0: ();
+    let mut _3: isize;
+    let _4: std::vec::Vec<std::string::String>;
+    let _6: &[std::string::String];
+    let _7: &std::vec::Vec<std::string::String>;
+    let mut _8: bool;
+    let _9: &mut grex::RegExpBuilder;
+    let mut _10: &mut grex::RegExpBuilder;
+    let mut _11: bool;
+    let _12: &mut grex::RegExpBuilder;
+    let mut _13: &mut grex::RegExpBuilder;
+    let mut _14: bool;
+    let _15: &mut grex::RegExpBuilder;
+    let mut _16: &mut grex::RegExpBuilder;
+    let mut _17: bool;
+    let _18: &mut grex::RegExpBuilder;
+    let mut _19: &mut grex::RegExpBuilder;
+    let mut _20: bool;
+    let _21: &mut grex::RegExpBuilder;
+    let mut _22: &mut grex::RegExpBuilder;
+    let mut _23: bool;
+    let _24: &mut grex::RegExpBuilder;
+    let mut _25: &mut grex::RegExpBuilder;
+    let mut _26: bool;
+    let _27: &mut grex::RegExpBuilder;
+    let mut _28: &mut grex::RegExpBuilder;
+    let mut _29: bool;
+    let _30: &mut grex::RegExpBuilder;
+    let mut _31: &mut grex::RegExpBuilder;
+    let mut _32: bool;
+    let _33: &mut grex::RegExpBuilder;
+    let mut _34: &mut grex::RegExpBuilder;
+    let mut _35: bool;
+    let _36: &mut grex::RegExpBuilder;
+    let mut _37: &mut grex::RegExpBuilder;
+    let mut _38: bool;
+    let mut _39: bool;
+    let _40: &mut grex::RegExpBuilder;
+    let mut _41: &mut grex::RegExpBuilder;
+    let mut _42: bool;
+    let _43: &mut grex::RegExpBuilder;
+    let mut _44: &mut grex::RegExpBuilder;
+    let mut _45: bool;
+    let _46: &mut grex::RegExpBuilder;
+    let mut _47: &mut grex::RegExpBuilder;
+    let mut _48: bool;
+    let _49: &mut grex::RegExpBuilder;
+    let mut _50: &mut grex::RegExpBuilder;
+    let mut _51: bool;
+    let _52: &mut grex::RegExpBuilder;
+    let mut _53: &mut grex::RegExpBuilder;
+    let _54: &mut grex::RegExpBuilder;
+    let mut _55: &mut grex::RegExpBuilder;
+    let mut _56: &mut grex::RegExpBuilder;
+    let mut _57: u32;
+    let mut _58: u32;
+    let mut _60: &mut grex::RegExpBuilder;
+    let _61: ();
+    let mut _62: std::fmt::Arguments<'_>;
+    let mut _63: &[&str];
+    let mut _64: &[core::fmt::rt::Argument<'_>];
+    let _65: &[core::fmt::rt::Argument<'_>; 1];
+    let _66: [core::fmt::rt::Argument<'_>; 1];
+    let mut _67: core::fmt::rt::Argument<'_>;
+    let _68: &std::string::String;
+    let _69: std::io::Error;
+    let mut _70: std::io::ErrorKind;
+    let mut _71: &std::io::Error;
+    let mut _72: isize;
+    let _73: ();
+    let mut _74: std::fmt::Arguments<'_>;
+    let mut _75: &[&str];
+    let _76: ();
+    let mut _77: std::fmt::Arguments<'_>;
+    let mut _78: &[&str];
+    let _79: ();
+    let mut _80: std::fmt::Arguments<'_>;
+    let mut _81: &[&str];
+    let _82: ();
+    let mut _83: std::fmt::Arguments<'_>;
+    let mut _84: &[&str];
+    let mut _85: &[core::fmt::rt::Argument<'_>];
+    let _86: &[core::fmt::rt::Argument<'_>; 1];
+    let _87: [core::fmt::rt::Argument<'_>; 1];
+    let mut _88: core::fmt::rt::Argument<'_>;
+    let _89: &std::io::Error;
+    scope 1 {
+        debug test_cases => _4;
+        let mut _5: grex::RegExpBuilder;
+        scope 2 {
+            debug builder => _5;
+            let _59: std::string::String;
+            scope 3 {
+                debug regexp => _59;
+                let mut _94: &[&str; 2];
+            }
+        }
+    }
+    scope 4 {
+        debug error => _69;
+        let mut _90: &[&str; 2];
+        let mut _91: &[&str; 1];
+        let mut _92: &[&str; 1];
+        let mut _93: &[&str; 1];
+    }
+
+    bb0: {
+        _3 = discriminant(_2);
+        switchInt(move _3) -> [0: bb3, 1: bb1, otherwise: bb2];
+    }
+
+    bb1: {
+        _69 = move ((_2 as Err).0: std::io::Error);
+        _71 = &_69;
+        _70 = std::io::Error::kind(move _71) -> [return: bb44, unwind: bb55];
+    }
+
+    bb2: {
+        unreachable;
+    }
+
+    bb3: {
+        _4 = move ((_2 as Ok).0: std::vec::Vec<std::string::String>);
+        _7 = &_4;
+        _6 = <Vec<String> as Deref>::deref(_7) -> [return: bb4, unwind: bb58];
+    }
+
+    bb4: {
+        _5 = RegExpBuilder::from::<String>(_6) -> [return: bb5, unwind: bb58];
+    }
+
+    bb5: {
+        _8 = ((*_1).1: bool);
+        switchInt(move _8) -> [0: bb7, otherwise: bb6];
+    }
+
+    bb6: {
+        _10 = &mut _5;
+        _9 = RegExpBuilder::with_conversion_of_digits(move _10) -> [return: bb61, unwind: bb57];
+    }
+
+    bb7: {
+        _11 = ((*_1).2: bool);
+        switchInt(move _11) -> [0: bb9, otherwise: bb8];
+    }
+
+    bb8: {
+        _13 = &mut _5;
+        _12 = RegExpBuilder::with_conversion_of_non_digits(move _13) -> [return: bb62, unwind: bb57];
+    }
+
+    bb9: {
+        _14 = ((*_1).3: bool);
+        switchInt(move _14) -> [0: bb11, otherwise: bb10];
+    }
+
+    bb10: {
+        _16 = &mut _5;
+        _15 = RegExpBuilder::with_conversion_of_whitespace(move _16) -> [return: bb63, unwind: bb57];
+    }
+
+    bb11: {
+        _17 = ((*_1).4: bool);
+        switchInt(move _17) -> [0: bb13, otherwise: bb12];
+    }
+
+    bb12: {
+        _19 = &mut _5;
+        _18 = RegExpBuilder::with_conversion_of_non_whitespace(move _19) -> [return: bb64, unwind: bb57];
+    }
+
+    bb13: {
+        _20 = ((*_1).5: bool);
+        switchInt(move _20) -> [0: bb15, otherwise: bb14];
+    }
+
+    bb14: {
+        _22 = &mut _5;
+        _21 = RegExpBuilder::with_conversion_of_words(move _22) -> [return: bb65, unwind: bb57];
+    }
+
+    bb15: {
+        _23 = ((*_1).6: bool);
+        switchInt(move _23) -> [0: bb17, otherwise: bb16];
+    }
+
+    bb16: {
+        _25 = &mut _5;
+        _24 = RegExpBuilder::with_conversion_of_non_words(move _25) -> [return: bb66, unwind: bb57];
+    }
+
+    bb17: {
+        _26 = ((*_1).7: bool);
+        switchInt(move _26) -> [0: bb19, otherwise: bb18];
+    }
+
+    bb18: {
+        _28 = &mut _5;
+        _27 = RegExpBuilder::with_conversion_of_repetitions(move _28) -> [return: bb67, unwind: bb57];
+    }
+
+    bb19: {
+        _29 = ((*_1).10: bool);
+        switchInt(move _29) -> [0: bb21, otherwise: bb20];
+    }
+
+    bb20: {
+        _31 = &mut _5;
+        _30 = RegExpBuilder::with_case_insensitive_matching(move _31) -> [return: bb68, unwind: bb57];
+    }
+
+    bb21: {
+        _32 = ((*_1).11: bool);
+        switchInt(move _32) -> [0: bb23, otherwise: bb22];
+    }
+
+    bb22: {
+        _34 = &mut _5;
+        _33 = RegExpBuilder::with_capturing_groups(move _34) -> [return: bb69, unwind: bb57];
+    }
+
+    bb23: {
+        _35 = ((*_1).8: bool);
+        switchInt(move _35) -> [0: bb25, otherwise: bb24];
+    }
+
+    bb24: {
+        _37 = &mut _5;
+        _38 = ((*_1).9: bool);
+        _36 = RegExpBuilder::with_escaping_of_non_ascii_chars(move _37, move _38) -> [return: bb70, unwind: bb57];
+    }
+
+    bb25: {
+        _39 = ((*_1).12: bool);
+        switchInt(move _39) -> [0: bb27, otherwise: bb26];
+    }
+
+    bb26: {
+        _41 = &mut _5;
+        _40 = RegExpBuilder::with_verbose_mode(move _41) -> [return: bb71, unwind: bb57];
+    }
+
+    bb27: {
+        _42 = ((*_1).13: bool);
+        switchInt(move _42) -> [0: bb29, otherwise: bb28];
+    }
+
+    bb28: {
+        _44 = &mut _5;
+        _43 = RegExpBuilder::without_start_anchor(move _44) -> [return: bb72, unwind: bb57];
+    }
+
+    bb29: {
+        _45 = ((*_1).14: bool);
+        switchInt(move _45) -> [0: bb31, otherwise: bb30];
+    }
+
+    bb30: {
+        _47 = &mut _5;
+        _46 = RegExpBuilder::without_end_anchor(move _47) -> [return: bb73, unwind: bb57];
+    }
+
+    bb31: {
+        _48 = ((*_1).15: bool);
+        switchInt(move _48) -> [0: bb33, otherwise: bb32];
+    }
+
+    bb32: {
+        _50 = &mut _5;
+        _49 = RegExpBuilder::without_anchors(move _50) -> [return: bb74, unwind: bb57];
+    }
+
+    bb33: {
+        _51 = ((*_1).16: bool);
+        switchInt(move _51) -> [0: bb35, otherwise: bb34];
+    }
+
+    bb34: {
+        _53 = &mut _5;
+        _52 = RegExpBuilder::with_syntax_highlighting(move _53) -> [return: bb75, unwind: bb57];
+    }
+
+    bb35: {
+        _56 = &mut _5;
+        _57 = ((*_1).18: u32);
+        _55 = RegExpBuilder::with_minimum_repetitions(move _56, move _57) -> [return: bb36, unwind: bb57];
+    }
+
+    bb36: {
+        _58 = ((*_1).19: u32);
+        _54 = RegExpBuilder::with_minimum_substring_length(_55, move _58) -> [return: bb37, unwind: bb57];
+    }
+
+    bb37: {
+        _60 = &mut _5;
+        _59 = RegExpBuilder::build(move _60) -> [return: bb38, unwind: bb57];
+    }
+
+    bb38: {
+        _94 = const _;
+        _63 = _94 as &[&str] (PointerCoercion(Unsize));
+        _68 = &_59;
+        _67 = core::fmt::rt::Argument::<'_>::new_display::<String>(_68) -> [return: bb39, unwind: bb56];
+    }
+
+    bb39: {
+        _66 = [move _67];
+        _65 = &_66;
+        _64 = _65 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _62 = Arguments::<'_>::new_v1(move _63, move _64) -> [return: bb40, unwind: bb56];
+    }
+
+    bb40: {
+        _61 = _print(move _62) -> [return: bb41, unwind: bb56];
+    }
+
+    bb41: {
+        drop(_59) -> [return: bb42, unwind: bb57];
+    }
+
+    bb42: {
+        drop(_5) -> [return: bb43, unwind: bb58];
+    }
+
+    bb43: {
+        drop(_4) -> [return: bb59, unwind continue];
+    }
+
+    bb44: {
+        _72 = discriminant(_70);
+        switchInt(move _72) -> [0: bb46, 1: bb50, 21: bb48, otherwise: bb45];
+    }
+
+    bb45: {
+        _90 = const _;
+        _84 = _90 as &[&str] (PointerCoercion(Unsize));
+        _89 = &_69;
+        _88 = core::fmt::rt::Argument::<'_>::new_display::<std::io::Error>(_89) -> [return: bb52, unwind: bb55];
+    }
+
+    bb46: {
+        _93 = const _;
+        _75 = _93 as &[&str] (PointerCoercion(Unsize));
+        _74 = Arguments::<'_>::new_const(move _75) -> [return: bb47, unwind: bb55];
+    }
+
+    bb47: {
+        _73 = _eprint(move _74) -> [return: bb76, unwind: bb55];
+    }
+
+    bb48: {
+        _92 = const _;
+        _78 = _92 as &[&str] (PointerCoercion(Unsize));
+        _77 = Arguments::<'_>::new_const(move _78) -> [return: bb49, unwind: bb55];
+    }
+
+    bb49: {
+        _76 = _eprint(move _77) -> [return: bb77, unwind: bb55];
+    }
+
+    bb50: {
+        _91 = const _;
+        _81 = _91 as &[&str] (PointerCoercion(Unsize));
+        _80 = Arguments::<'_>::new_const(move _81) -> [return: bb51, unwind: bb55];
+    }
+
+    bb51: {
+        _79 = _eprint(move _80) -> [return: bb78, unwind: bb55];
+    }
+
+    bb52: {
+        _87 = [move _88];
+        _86 = &_87;
+        _85 = _86 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _83 = Arguments::<'_>::new_v1(move _84, move _85) -> [return: bb53, unwind: bb55];
+    }
+
+    bb53: {
+        _82 = _eprint(move _83) -> [return: bb79, unwind: bb55];
+    }
+
+    bb54: {
+        drop(_69) -> [return: bb59, unwind continue];
+    }
+
+    bb55 (cleanup): {
+        drop(_69) -> [return: bb60, unwind terminate(cleanup)];
+    }
+
+    bb56 (cleanup): {
+        drop(_59) -> [return: bb57, unwind terminate(cleanup)];
+    }
+
+    bb57 (cleanup): {
+        drop(_5) -> [return: bb58, unwind terminate(cleanup)];
+    }
+
+    bb58 (cleanup): {
+        drop(_4) -> [return: bb60, unwind terminate(cleanup)];
+    }
+
+    bb59: {
+        return;
+    }
+
+    bb60 (cleanup): {
+        resume;
+    }
+
+    bb61: {
+        goto -> bb7;
+    }
+
+    bb62: {
+        goto -> bb9;
+    }
+
+    bb63: {
+        goto -> bb11;
+    }
+
+    bb64: {
+        goto -> bb13;
+    }
+
+    bb65: {
+        goto -> bb15;
+    }
+
+    bb66: {
+        goto -> bb17;
+    }
+
+    bb67: {
+        goto -> bb19;
+    }
+
+    bb68: {
+        goto -> bb21;
+    }
+
+    bb69: {
+        goto -> bb23;
+    }
+
+    bb70: {
+        goto -> bb25;
+    }
+
+    bb71: {
+        goto -> bb27;
+    }
+
+    bb72: {
+        goto -> bb29;
+    }
+
+    bb73: {
+        goto -> bb31;
+    }
+
+    bb74: {
+        goto -> bb33;
+    }
+
+    bb75: {
+        goto -> bb35;
+    }
+
+    bb76: {
+        goto -> bb54;
+    }
+
+    bb77: {
+        goto -> bb54;
+    }
+
+    bb78: {
+        goto -> bb54;
+    }
+
+    bb79: {
+        goto -> bb54;
+    }
+}
+
+promoted[0] in handle_input: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "error: ", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in handle_input: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "permission denied: the specified file could not be opened\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[2] in handle_input: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "error: the specified file's encoding is not valid UTF-8\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[3] in handle_input: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "error: the specified file could not be found\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[4] in handle_input: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn repetition_options_validator(_1: String) -> Result<(), String> {
+    debug value => _1;
+    let mut _0: std::result::Result<(), std::string::String>;
+    let mut _2: std::result::Result<u32, std::num::ParseIntError>;
+    let _3: &str;
+    let mut _4: &std::string::String;
+    let mut _5: isize;
+    let _6: u32;
+    let mut _7: bool;
+    let mut _8: std::string::String;
+    let mut _9: std::string::String;
+    scope 1 {
+        debug parsed_value => _6;
+    }
+
+    bb0: {
+        _4 = &_1;
+        _3 = <String as Deref>::deref(move _4) -> [return: bb1, unwind: bb12];
+    }
+
+    bb1: {
+        _2 = core::str::<impl str>::parse::<u32>(_3) -> [return: bb2, unwind: bb12];
+    }
+
+    bb2: {
+        _5 = discriminant(_2);
+        switchInt(move _5) -> [0: bb5, 1: bb3, otherwise: bb4];
+    }
+
+    bb3: {
+        _9 = <String as From<&str>>::from(const "Value is not a valid unsigned integer") -> [return: bb9, unwind: bb12];
+    }
+
+    bb4: {
+        unreachable;
+    }
+
+    bb5: {
+        _6 = ((_2 as Ok).0: u32);
+        _7 = Gt(_6, const 0_u32);
+        switchInt(move _7) -> [0: bb7, otherwise: bb6];
+    }
+
+    bb6: {
+        _0 = Result::<(), String>::Ok(const ());
+        goto -> bb10;
+    }
+
+    bb7: {
+        _8 = <String as From<&str>>::from(const "Value must not be zero") -> [return: bb8, unwind: bb12];
+    }
+
+    bb8: {
+        _0 = Result::<(), String>::Err(move _8);
+        goto -> bb10;
+    }
+
+    bb9: {
+        _0 = Result::<(), String>::Err(move _9);
+        goto -> bb10;
+    }
+
+    bb10: {
+        drop(_1) -> [return: bb11, unwind continue];
+    }
+
+    bb11: {
+        return;
+    }
+
+    bb12 (cleanup): {
+        drop(_1) -> [return: bb13, unwind terminate(cleanup)];
+    }
+
+    bb13 (cleanup): {
+        resume;
+    }
+}

@@ -627,7 +627,7 @@ dis_place: Place = {
     <disderef: disderef> => Place::Deref(disderef),
 };
 
-field_access: Field ={ 
+field_access: Field ={
     <left_parenthesis: left_parenthesis> <place: place> <dot: dot> <field_idx: unsinged_digit> <colon: colon> <ty: ty> <right_parenthesis: right_parenthesis>
     => Field {
         place: Box::new(place),

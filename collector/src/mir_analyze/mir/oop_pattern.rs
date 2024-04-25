@@ -12,7 +12,7 @@ use crate::mir_analyze::mir::statement;
 
 use super::{basic_block, function, mir::{MIRs, ModuledIdentifier}, operand::Operand, rvalue::Rvalue, scope::Scope, statement::Statement, terminator::Terminator, ty::Ty, terminator::*};
 
-//LOF
+//LOF 
 pub fn lof(mir_file: MIRs) {
     let mut lof = 0;
     let mut flag = 0;

@@ -1,0 +1,2232 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn <impl at crates/relay-compiler/src/main.rs:14:10: 14:19>::clap() -> App<'_, '_> {
+    let mut _0: structopt::clap::App<'_, '_>; // return place in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let _1: structopt::clap::App<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _2: structopt::clap::App<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    scope 1 {
+        debug app => _1;                 // in scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    }
+
+    bb0: {
+        _1 = App::<'_, '_>::new::<&str>(const "Relay Compiler") -> bb1; // scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn(&str) -> App<'_, '_> {App::<'_, '_>::new::<&str>}, val: Value(<ZST>) }
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:16:12: 16:28
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+    }
+
+    bb1: {
+        _2 = move _1;                    // scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _0 = <Opt as StructOptInternal>::augment_clap(move _2) -> bb2; // scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + literal: Const { ty: for<'a, 'b> fn(App<'a, 'b>) -> App<'a, 'b> {<Opt as StructOptInternal>::augment_clap}, val: Value(<ZST>) }
+    }
+
+    bb2: {
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:14:19: 14:19
+    }
+}
+
+fn <impl at crates/relay-compiler/src/main.rs:14:10: 14:19>::from_clap(_1: &ArgMatches<'_>) -> Opt {
+    debug matches => _1;                 // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _0: Opt;                     // return place in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _2: bool;                    // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _3: std::option::Option<std::path::PathBuf>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _4: std::option::Option<&str>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _5: relay_compiler::config::CliConfig; // in scope 0 at crates/relay-compiler/src/main.rs:30:17: 30:24
+
+    bb0: {
+        _2 = ArgMatches::<'_>::is_present::<&str>(_1, const "watch") -> bb1; // scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:23:12: 23:16
+                                         // + literal: Const { ty: for<'a> fn(&'a ArgMatches<'_>, &str) -> bool {ArgMatches::<'_>::is_present::<&str>}, val: Value(<ZST>) }
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+    }
+
+    bb1: {
+        _4 = ArgMatches::<'_>::value_of::<&str>(_1, const "config") -> bb2; // scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // + literal: Const { ty: for<'a> fn(&'a ArgMatches<'_>, &str) -> Option<&'a str> {ArgMatches::<'_>::value_of::<&str>}, val: Value(<ZST>) }
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+    }
+
+    bb2: {
+        _3 = Option::<&str>::map::<PathBuf, [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]>(move _4, const ZeroSized: [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]) -> bb3; // scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:28:13: 28:19
+                                         // + literal: Const { ty: fn(Option<&str>, [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]) -> Option<PathBuf> {Option::<&str>::map::<PathBuf, [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]>}, val: Value(<ZST>) }
+                                         // mir::Constant
+                                         // + span: no-location
+                                         // + literal: Const { ty: [closure@crates/relay-compiler/src/main.rs:25:5: 25:82], val: Value(<ZST>) }
+    }
+
+    bb3: {
+        _5 = <CliConfig as StructOpt>::from_clap(_1) -> [return: bb4, unwind: bb5]; // scope 0 at crates/relay-compiler/src/main.rs:30:17: 30:24
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:30:17: 30:24
+                                         // + literal: Const { ty: for<'a, 'b> fn(&'a ArgMatches<'b>) -> CliConfig {<CliConfig as StructOpt>::from_clap}, val: Value(<ZST>) }
+    }
+
+    bb4: {
+        _0 = Opt { watch: move _2, config: move _3, cli_config: move _5 }; // scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:14:19: 14:19
+    }
+
+    bb5 (cleanup): {
+        drop(_3) -> [return: bb6, unwind terminate]; // scope 0 at crates/relay-compiler/src/main.rs:14:18: 14:19
+    }
+
+    bb6 (cleanup): {
+        resume;                          // scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    }
+}
+
+fn <impl at crates/relay-compiler/src/main.rs:14:10: 14:19>::from_clap::{closure#0}(_1: [closure@crates/relay-compiler/src/main.rs:25:5: 25:82], _2: &str) -> PathBuf {
+    debug s => _2;                       // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+    let mut _0: std::path::PathBuf;      // return place in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:5
+    let mut _3: std::result::Result<std::path::PathBuf, std::convert::Infallible>; // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+
+    bb0: {
+        _3 = <PathBuf as FromStr>::from_str(_2) -> bb1; // scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // + literal: Const { ty: for<'a> fn(&'a str) -> std::result::Result<PathBuf, <PathBuf as FromStr>::Err> {<PathBuf as FromStr>::from_str}, val: Value(<ZST>) }
+    }
+
+    bb1: {
+        _0 = std::result::Result::<PathBuf, Infallible>::unwrap(move _3) -> bb2; // scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // + literal: Const { ty: fn(std::result::Result<PathBuf, Infallible>) -> PathBuf {std::result::Result::<PathBuf, Infallible>::unwrap}, val: Value(<ZST>) }
+    }
+
+    bb2: {
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:25:82: 25:82
+    }
+}
+
+fn <impl at crates/relay-compiler/src/main.rs:14:10: 14:19>::augment_clap(_1: App<'_, '_>) -> App<'_, '_> {
+    debug app => _1;                     // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _0: structopt::clap::App<'_, '_>; // return place in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let _2: structopt::clap::App<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _4: structopt::clap::App<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _5: structopt::clap::Arg<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _6: structopt::clap::Arg<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _7: structopt::clap::Arg<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _8: structopt::clap::Arg<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:21:5: 23:16
+    let mut _9: structopt::clap::Arg<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:21:5: 23:16
+    let mut _10: structopt::clap::Arg<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:21:5: 21:38
+    let _11: &str;                       // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let _12: &str;                       // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let _13: &str;                       // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _15: structopt::clap::App<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _16: structopt::clap::Arg<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _17: structopt::clap::Arg<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+    let mut _18: structopt::clap::Arg<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 28:19
+    let mut _19: structopt::clap::Arg<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 28:19
+    let mut _20: structopt::clap::Arg<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+    let _21: &str;                       // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let _22: &str;                       // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _24: structopt::clap::App<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _26: bool;                   // in scope 0 at crates/relay-compiler/src/main.rs:30:17: 30:24
+    let mut _27: structopt::clap::App<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _28: structopt::clap::AppSettings; // in scope 0 at crates/relay-compiler/src/main.rs:30:17: 30:24
+    let mut _29: structopt::clap::App<'_, '_>; // in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    let mut _30: bool;                   // in scope 0 at crates/relay-compiler/src/main.rs:14:18: 14:19
+    let mut _31: bool;                   // in scope 0 at crates/relay-compiler/src/main.rs:14:18: 14:19
+    let mut _32: bool;                   // in scope 0 at crates/relay-compiler/src/main.rs:14:18: 14:19
+    scope 1 {
+        debug app => _2;                 // in scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        let _3: structopt::clap::App<'_, '_>; // in scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        scope 2 {
+            debug app => _3;             // in scope 2 at crates/relay-compiler/src/main.rs:14:10: 14:19
+            let _14: structopt::clap::App<'_, '_>; // in scope 2 at crates/relay-compiler/src/main.rs:14:10: 14:19
+            scope 3 {
+                debug app => _14;        // in scope 3 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                let _23: structopt::clap::App<'_, '_>; // in scope 3 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                scope 4 {
+                    debug app => _23;    // in scope 4 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                    let _25: structopt::clap::App<'_, '_>; // in scope 4 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                    scope 5 {
+                        debug app => _25; // in scope 5 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _32 = const false;               // scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _30 = const false;               // scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _31 = const false;               // scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _2 = App::<'_, '_>::about::<&str>(move _1, const "Compiler to produce Relay generated files.") -> bb1; // scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:17:5: 17:10
+                                         // + literal: Const { ty: fn(App<'_, '_>, &str) -> App<'_, '_> {App::<'_, '_>::about::<&str>}, val: Value(<ZST>) }
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:17:13: 17:57
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+    }
+
+    bb1: {
+        _32 = const true;                // scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _4 = move _2;                    // scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _11 = const "watch";             // scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _10 = Arg::<'_, '_>::with_name(_11) -> [return: bb2, unwind: bb27]; // scope 1 at crates/relay-compiler/src/main.rs:21:5: 21:38
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:21:5: 21:38
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn(&str) -> Arg<'_, '_> {Arg::<'_, '_>::with_name}, val: Value(<ZST>) }
+    }
+
+    bb2: {
+        _9 = Arg::<'_, '_>::takes_value(move _10, const false) -> [return: bb3, unwind: bb27]; // scope 1 at crates/relay-compiler/src/main.rs:21:5: 23:16
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:23:12: 23:16
+                                         // + literal: Const { ty: fn(Arg<'_, '_>, bool) -> Arg<'_, '_> {Arg::<'_, '_>::takes_value}, val: Value(<ZST>) }
+    }
+
+    bb3: {
+        _8 = Arg::<'_, '_>::multiple(move _9, const false) -> [return: bb4, unwind: bb27]; // scope 1 at crates/relay-compiler/src/main.rs:21:5: 23:16
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:23:12: 23:16
+                                         // + literal: Const { ty: fn(Arg<'_, '_>, bool) -> Arg<'_, '_> {Arg::<'_, '_>::multiple}, val: Value(<ZST>) }
+    }
+
+    bb4: {
+        _12 = const "Compile and watch for changes"; // scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _7 = Arg::<'_, '_>::help(move _8, _12) -> [return: bb5, unwind: bb27]; // scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + literal: Const { ty: fn(Arg<'_, '_>, &str) -> Arg<'_, '_> {Arg::<'_, '_>::help}, val: Value(<ZST>) }
+    }
+
+    bb5: {
+        _13 = const "watch";             // scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _6 = Arg::<'_, '_>::long(move _7, _13) -> [return: bb6, unwind: bb27]; // scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:22:17: 22:21
+                                         // + literal: Const { ty: fn(Arg<'_, '_>, &str) -> Arg<'_, '_> {Arg::<'_, '_>::long}, val: Value(<ZST>) }
+    }
+
+    bb6: {
+        _5 = Arg::<'_, '_>::short::<&str>(move _6, const "watch") -> [return: bb7, unwind: bb27]; // scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:22:23: 22:28
+                                         // + literal: Const { ty: fn(Arg<'_, '_>, &str) -> Arg<'_, '_> {Arg::<'_, '_>::short::<&str>}, val: Value(<ZST>) }
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+    }
+
+    bb7: {
+        _32 = const false;               // scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _3 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _4, move _5) -> [return: bb8, unwind: bb27]; // scope 1 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:21:5: 21:38
+                                         // + literal: Const { ty: fn(App<'_, '_>, Arg<'_, '_>) -> App<'_, '_> {App::<'_, '_>::arg::<Arg<'_, '_>>}, val: Value(<ZST>) }
+    }
+
+    bb8: {
+        _32 = const false;               // scope 1 at crates/relay-compiler/src/main.rs:14:18: 14:19
+        _31 = const true;                // scope 2 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _15 = move _3;                   // scope 2 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _21 = const "config";            // scope 2 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _20 = Arg::<'_, '_>::with_name(_21) -> [return: bb9, unwind: bb25]; // scope 2 at crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // + user_ty: UserType(1)
+                                         // + literal: Const { ty: fn(&str) -> Arg<'_, '_> {Arg::<'_, '_>::with_name}, val: Value(<ZST>) }
+    }
+
+    bb9: {
+        _19 = Arg::<'_, '_>::takes_value(move _20, const true) -> [return: bb10, unwind: bb25]; // scope 2 at crates/relay-compiler/src/main.rs:25:5: 28:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:28:13: 28:19
+                                         // + literal: Const { ty: fn(Arg<'_, '_>, bool) -> Arg<'_, '_> {Arg::<'_, '_>::takes_value}, val: Value(<ZST>) }
+    }
+
+    bb10: {
+        _18 = Arg::<'_, '_>::multiple(move _19, const false) -> [return: bb11, unwind: bb25]; // scope 2 at crates/relay-compiler/src/main.rs:25:5: 28:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:28:13: 28:19
+                                         // + literal: Const { ty: fn(Arg<'_, '_>, bool) -> Arg<'_, '_> {Arg::<'_, '_>::multiple}, val: Value(<ZST>) }
+    }
+
+    bb11: {
+        _17 = Arg::<'_, '_>::validator::<[closure@crates/relay-compiler/src/main.rs:25:5: 25:82]>(move _18, const ZeroSized: [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]) -> [return: bb12, unwind: bb25]; // scope 2 at crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // + literal: Const { ty: fn(Arg<'_, '_>, [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]) -> Arg<'_, '_> {Arg::<'_, '_>::validator::<[closure@crates/relay-compiler/src/main.rs:25:5: 25:82]>}, val: Value(<ZST>) }
+                                         // mir::Constant
+                                         // + span: no-location
+                                         // + literal: Const { ty: [closure@crates/relay-compiler/src/main.rs:25:5: 25:82], val: Value(<ZST>) }
+    }
+
+    bb12: {
+        _22 = const "Compile using this config file. If not provided, searches for a config in package.json under the `relay` key or `relay.config.json` files among other up from the current working directory"; // scope 2 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _16 = Arg::<'_, '_>::help(move _17, _22) -> [return: bb13, unwind: bb25]; // scope 2 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + literal: Const { ty: fn(Arg<'_, '_>, &str) -> Arg<'_, '_> {Arg::<'_, '_>::help}, val: Value(<ZST>) }
+    }
+
+    bb13: {
+        _31 = const false;               // scope 2 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _14 = App::<'_, '_>::arg::<Arg<'_, '_>>(move _15, move _16) -> [return: bb14, unwind: bb25]; // scope 2 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // + literal: Const { ty: fn(App<'_, '_>, Arg<'_, '_>) -> App<'_, '_> {App::<'_, '_>::arg::<Arg<'_, '_>>}, val: Value(<ZST>) }
+    }
+
+    bb14: {
+        _31 = const false;               // scope 2 at crates/relay-compiler/src/main.rs:14:18: 14:19
+        _24 = move _14;                  // scope 3 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _23 = <CliConfig as StructOptInternal>::augment_clap(move _24) -> bb15; // scope 3 at crates/relay-compiler/src/main.rs:30:17: 30:24
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:30:17: 30:24
+                                         // + literal: Const { ty: for<'a, 'b> fn(App<'a, 'b>) -> App<'a, 'b> {<CliConfig as StructOptInternal>::augment_clap}, val: Value(<ZST>) }
+    }
+
+    bb15: {
+        _30 = const true;                // scope 3 at crates/relay-compiler/src/main.rs:30:23: 30:24
+        _26 = <CliConfig as StructOptInternal>::is_subcommand() -> [return: bb16, unwind: bb23]; // scope 4 at crates/relay-compiler/src/main.rs:30:17: 30:24
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:30:17: 30:24
+                                         // + literal: Const { ty: fn() -> bool {<CliConfig as StructOptInternal>::is_subcommand}, val: Value(<ZST>) }
+    }
+
+    bb16: {
+        switchInt(move _26) -> [0: bb18, otherwise: bb17]; // scope 4 at crates/relay-compiler/src/main.rs:30:17: 30:24
+    }
+
+    bb17: {
+        _30 = const false;               // scope 4 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _27 = move _23;                  // scope 4 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _28 = SubcommandRequiredElseHelp; // scope 4 at crates/relay-compiler/src/main.rs:30:17: 30:24
+        _25 = App::<'_, '_>::setting(move _27, move _28) -> [return: bb28, unwind: bb23]; // scope 4 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:30:17: 30:24
+                                         // + literal: Const { ty: fn(App<'_, '_>, AppSettings) -> App<'_, '_> {App::<'_, '_>::setting}, val: Value(<ZST>) }
+    }
+
+    bb18: {
+        _30 = const false;               // scope 4 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _25 = move _23;                  // scope 4 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        goto -> bb19;                    // scope 4 at crates/relay-compiler/src/main.rs:30:17: 30:24
+    }
+
+    bb19: {
+        _29 = move _25;                  // scope 5 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        _0 = App::<'_, '_>::version::<&str>(move _29, const "0.0.0") -> [return: bb20, unwind: bb23]; // scope 5 at crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + literal: Const { ty: fn(App<'_, '_>, &str) -> App<'_, '_> {App::<'_, '_>::version::<&str>}, val: Value(<ZST>) }
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:14:10: 14:19
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+    }
+
+    bb20: {
+        _30 = const false;               // scope 3 at crates/relay-compiler/src/main.rs:14:18: 14:19
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:14:19: 14:19
+    }
+
+    bb21 (cleanup): {
+        resume;                          // scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    }
+
+    bb22 (cleanup): {
+        drop(_23) -> [return: bb21, unwind terminate]; // scope 3 at crates/relay-compiler/src/main.rs:14:18: 14:19
+    }
+
+    bb23 (cleanup): {
+        switchInt(_30) -> [0: bb21, otherwise: bb22]; // scope 3 at crates/relay-compiler/src/main.rs:14:18: 14:19
+    }
+
+    bb24 (cleanup): {
+        drop(_15) -> [return: bb21, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:14:18: 14:19
+    }
+
+    bb25 (cleanup): {
+        switchInt(_31) -> [0: bb21, otherwise: bb24]; // scope 2 at crates/relay-compiler/src/main.rs:14:18: 14:19
+    }
+
+    bb26 (cleanup): {
+        drop(_4) -> [return: bb21, unwind terminate]; // scope 1 at crates/relay-compiler/src/main.rs:14:18: 14:19
+    }
+
+    bb27 (cleanup): {
+        switchInt(_32) -> [0: bb21, otherwise: bb26]; // scope 1 at crates/relay-compiler/src/main.rs:14:18: 14:19
+    }
+
+    bb28: {
+        goto -> bb19;                    // scope 4 at crates/relay-compiler/src/main.rs:14:10: 14:19
+    }
+}
+
+fn <impl at crates/relay-compiler/src/main.rs:14:10: 14:19>::augment_clap::{closure#0}(_1: &[closure@crates/relay-compiler/src/main.rs:25:5: 25:82], _2: String) -> std::result::Result<(), String> {
+    debug s => _2;                       // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+    let mut _0: std::result::Result<(), std::string::String>; // return place in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:5
+    let mut _3: std::result::Result<(), std::convert::Infallible>; // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+    let mut _4: std::result::Result<std::path::PathBuf, std::convert::Infallible>; // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+    let mut _5: &str;                    // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+    let _6: &str;                        // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+    let mut _7: &std::string::String;    // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+
+    bb0: {
+        _7 = &_2;                        // scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+        _6 = String::as_str(move _7) -> [return: bb1, unwind: bb6]; // scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // + literal: Const { ty: for<'a> fn(&'a String) -> &'a str {String::as_str}, val: Value(<ZST>) }
+    }
+
+    bb1: {
+        _5 = _6;                         // scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+        _4 = <PathBuf as FromStr>::from_str(move _5) -> [return: bb2, unwind: bb6]; // scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // + literal: Const { ty: for<'a> fn(&'a str) -> std::result::Result<PathBuf, <PathBuf as FromStr>::Err> {<PathBuf as FromStr>::from_str}, val: Value(<ZST>) }
+    }
+
+    bb2: {
+        _3 = std::result::Result::<PathBuf, Infallible>::map::<(), [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]>(move _4, const ZeroSized: [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]) -> [return: bb3, unwind: bb6]; // scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // + literal: Const { ty: fn(std::result::Result<PathBuf, Infallible>, [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]) -> std::result::Result<(), Infallible> {std::result::Result::<PathBuf, Infallible>::map::<(), [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]>}, val: Value(<ZST>) }
+                                         // mir::Constant
+                                         // + span: no-location
+                                         // + literal: Const { ty: [closure@crates/relay-compiler/src/main.rs:25:5: 25:82], val: Value(<ZST>) }
+    }
+
+    bb3: {
+        _0 = std::result::Result::<(), Infallible>::map_err::<String, [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]>(const std::result::Result::<(), Infallible>::Ok(()), const ZeroSized: [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]) -> [return: bb4, unwind: bb6]; // scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // + literal: Const { ty: fn(std::result::Result<(), Infallible>, [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]) -> std::result::Result<(), String> {std::result::Result::<(), Infallible>::map_err::<String, [closure@crates/relay-compiler/src/main.rs:25:5: 25:82]>}, val: Value(<ZST>) }
+                                         // mir::Constant
+                                         // + span: no-location
+                                         // + literal: Const { ty: std::result::Result<(), Infallible>, val: Value(<ZST>) }
+                                         // mir::Constant
+                                         // + span: no-location
+                                         // + literal: Const { ty: [closure@crates/relay-compiler/src/main.rs:25:5: 25:82], val: Value(<ZST>) }
+    }
+
+    bb4: {
+        drop(_2) -> bb5;                 // scope 0 at crates/relay-compiler/src/main.rs:25:81: 25:82
+    }
+
+    bb5: {
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:25:82: 25:82
+    }
+
+    bb6 (cleanup): {
+        drop(_2) -> [return: bb7, unwind terminate]; // scope 0 at crates/relay-compiler/src/main.rs:25:81: 25:82
+    }
+
+    bb7 (cleanup): {
+        resume;                          // scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+    }
+}
+
+fn <impl at crates/relay-compiler/src/main.rs:14:10: 14:19>::augment_clap::{closure#0}::{closure#0}(_1: [closure@crates/relay-compiler/src/main.rs:25:5: 25:82], _2: PathBuf) -> () {
+    let mut _0: ();                      // return place in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:5
+
+    bb0: {
+        drop(_2) -> bb1;                 // scope 0 at crates/relay-compiler/src/main.rs:25:81: 25:82
+    }
+
+    bb1: {
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:25:82: 25:82
+    }
+}
+
+fn <impl at crates/relay-compiler/src/main.rs:14:10: 14:19>::augment_clap::{closure#0}::{closure#1}(_1: [closure@crates/relay-compiler/src/main.rs:25:5: 25:82], _2: Infallible) -> String {
+    debug e => const ZeroSized: Infallible; // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+    let mut _0: std::string::String;     // return place in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:5
+    let mut _3: &std::convert::Infallible; // in scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+
+    bb0: {
+        _3 = &_2;                        // scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+        _0 = <Infallible as ToString>::to_string(move _3) -> bb1; // scope 0 at crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:25:5: 25:82
+                                         // + literal: Const { ty: for<'a> fn(&'a Infallible) -> String {<Infallible as ToString>::to_string}, val: Value(<ZST>) }
+    }
+
+    bb1: {
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:25:82: 25:82
+    }
+}
+
+fn <impl at crates/relay-compiler/src/main.rs:14:10: 14:19>::is_subcommand() -> bool {
+    let mut _0: bool;                    // return place in scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+
+    bb0: {
+        _0 = const false;                // scope 0 at crates/relay-compiler/src/main.rs:14:10: 14:19
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:14:19: 14:19
+    }
+}
+
+fn main() -> () {
+    let mut _0: ();                      // return place in scope 0 at crates/relay-compiler/src/main.rs:35:17: 35:17
+    let _1: [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _2: &tokio::runtime::Runtime; // in scope 0 at crates/relay-compiler/src/main.rs:57:5: 72:6
+    let _3: tokio::runtime::Runtime;     // in scope 0 at crates/relay-compiler/src/main.rs:57:5: 72:6
+    let mut _4: std::result::Result<tokio::runtime::Runtime, std::io::Error>; // in scope 0 at crates/relay-compiler/src/main.rs:57:5: 72:6
+    let mut _5: &mut tokio::runtime::Builder; // in scope 0 at crates/relay-compiler/src/main.rs:57:5: 72:6
+    let mut _6: &mut tokio::runtime::Builder; // in scope 0 at crates/relay-compiler/src/main.rs:57:5: 72:6
+    let mut _7: &mut tokio::runtime::Builder; // in scope 0 at crates/relay-compiler/src/main.rs:57:5: 72:6
+    let mut _8: tokio::runtime::Builder; // in scope 0 at crates/relay-compiler/src/main.rs:57:5: 57:7
+    let _9: &str;                        // in scope 0 at crates/relay-compiler/src/main.rs:62:12: 72:6
+    let mut _10: [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _11: bool;                   // in scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    scope 1 {
+        debug body => _1;                // in scope 1 at crates/relay-compiler/src/main.rs:34:1: 34:15
+        scope 2 {
+        }
+    }
+
+    bb0: {
+        _11 = const false;               // scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+        _11 = const true;                // scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+        _1 = [generator@crates/relay-compiler/src/main.rs:34:1: 34:15 (#21)]; // scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+                                         // generator
+                                         // + def_id: DefId(0:36 ~ relay[2a1c]::main::{closure#0})
+                                         // + substs: [
+                                         //     std::future::ResumeTy,
+                                         //     (),
+                                         //     (),
+                                         //     for<'a, 'b, 'c> {std::future::ResumeTy, Opt, std::result::Result<relay_compiler::config::Config, relay_compiler::errors::Error>, relay_compiler::config::Config, relay_compiler::compiler::Compiler<common::NoopPerfLogger>, bool, &'a relay_compiler::compiler::Compiler<common::NoopPerfLogger>, impl std::future::Future<Output = std::result::Result<(), relay_compiler::errors::Error>>, (), impl std::future::Future<Output = std::result::Result<relay_compiler::compiler_state::CompilerState, relay_compiler::errors::Error>>},
+                                         //     (),
+                                         // ]
+                                         // + movability: Static
+        _8 = tokio::runtime::Builder::new_multi_thread() -> [return: bb1, unwind: bb12]; // scope 2 at crates/relay-compiler/src/main.rs:57:5: 57:7
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:57:5: 57:7
+                                         // + literal: Const { ty: fn() -> tokio::runtime::Builder {tokio::runtime::Builder::new_multi_thread}, val: Value(<ZST>) }
+    }
+
+    bb1: {
+        _7 = &mut _8;                    // scope 2 at crates/relay-compiler/src/main.rs:57:5: 72:6
+        _6 = tokio::runtime::Builder::enable_all(move _7) -> [return: bb2, unwind: bb9]; // scope 2 at crates/relay-compiler/src/main.rs:57:5: 72:6
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:62:12: 72:6
+                                         // + literal: Const { ty: for<'a> fn(&'a mut tokio::runtime::Builder) -> &'a mut tokio::runtime::Builder {tokio::runtime::Builder::enable_all}, val: Value(<ZST>) }
+    }
+
+    bb2: {
+        _5 = _6;                         // scope 2 at crates/relay-compiler/src/main.rs:57:5: 72:6
+        _4 = tokio::runtime::Builder::build(move _5) -> [return: bb3, unwind: bb9]; // scope 2 at crates/relay-compiler/src/main.rs:57:5: 72:6
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:62:12: 72:6
+                                         // + literal: Const { ty: for<'a> fn(&'a mut tokio::runtime::Builder) -> std::result::Result<Runtime, std::io::Error> {tokio::runtime::Builder::build}, val: Value(<ZST>) }
+    }
+
+    bb3: {
+        _9 = const "Failed building the Runtime"; // scope 2 at crates/relay-compiler/src/main.rs:62:12: 72:6
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:62:12: 72:6
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _3 = std::result::Result::<Runtime, std::io::Error>::expect(move _4, _9) -> [return: bb4, unwind: bb9]; // scope 2 at crates/relay-compiler/src/main.rs:57:5: 72:6
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:62:12: 72:6
+                                         // + literal: Const { ty: for<'a> fn(std::result::Result<Runtime, std::io::Error>, &'a str) -> Runtime {std::result::Result::<Runtime, std::io::Error>::expect}, val: Value(<ZST>) }
+    }
+
+    bb4: {
+        _2 = &_3;                        // scope 2 at crates/relay-compiler/src/main.rs:57:5: 72:6
+        _11 = const false;               // scope 2 at crates/relay-compiler/src/main.rs:34:1: 34:15
+        _10 = move _1;                   // scope 2 at crates/relay-compiler/src/main.rs:34:1: 34:15
+        _0 = Runtime::block_on::<[async block@crates/relay-compiler/src/main.rs:34:1: 34:15]>(move _2, move _10) -> [return: bb5, unwind: bb8]; // scope 2 at crates/relay-compiler/src/main.rs:57:5: 72:6
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:62:12: 72:6
+                                         // + literal: Const { ty: for<'a> fn(&'a Runtime, [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]) -> <[async block@crates/relay-compiler/src/main.rs:34:1: 34:15] as Future>::Output {Runtime::block_on::<[async block@crates/relay-compiler/src/main.rs:34:1: 34:15]>}, val: Value(<ZST>) }
+    }
+
+    bb5: {
+        drop(_3) -> [return: bb6, unwind: bb9]; // scope 2 at crates/relay-compiler/src/main.rs:72:5: 72:6
+    }
+
+    bb6: {
+        drop(_8) -> [return: bb7, unwind: bb12]; // scope 2 at crates/relay-compiler/src/main.rs:72:5: 72:6
+    }
+
+    bb7: {
+        _11 = const false;               // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:73:2: 73:2
+    }
+
+    bb8 (cleanup): {
+        drop(_3) -> [return: bb9, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:72:5: 72:6
+    }
+
+    bb9 (cleanup): {
+        drop(_8) -> [return: bb12, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:72:5: 72:6
+    }
+
+    bb10 (cleanup): {
+        resume;                          // scope 0 at crates/relay-compiler/src/main.rs:35:7: 73:2
+    }
+
+    bb11 (cleanup): {
+        drop(_1) -> [return: bb10, unwind terminate]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb12 (cleanup): {
+        switchInt(_11) -> [0: bb10, otherwise: bb11]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+}
+
+fn main::{closure#0}(_1: Pin<&mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]>, _2: &mut Context<'_>) -> Poll<()> {
+    debug _task_context => _114;         // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _0: std::task::Poll<()>;     // return place in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let _3: ();                          // in scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:74
+    let mut _4: &mut env_logger::Builder; // in scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:74
+    let mut _5: env_logger::Builder;     // in scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:67
+    let mut _6: env_logger::Env<'_>;     // in scope 0 at crates/relay-compiler/src/main.rs:36:26: 36:66
+    let mut _7: env_logger::Env<'_>;     // in scope 0 at crates/relay-compiler/src/main.rs:36:26: 36:40
+    let mut _9: isize;                   // in scope 0 at crates/relay-compiler/src/main.rs:40:32: 40:49
+    let mut _11: bool;                   // in scope 0 at crates/relay-compiler/src/main.rs:42:15: 42:42
+    let mut _12: &relay_compiler::config::CliConfig; // in scope 0 at crates/relay-compiler/src/main.rs:42:15: 42:42
+    let mut _13: relay_compiler::config::Config; // in scope 0 at crates/relay-compiler/src/main.rs:43:12: 43:40
+    let mut _14: relay_compiler::config::CliConfig; // in scope 0 at crates/relay-compiler/src/main.rs:43:25: 43:39
+    let mut _15: &std::path::Path;       // in scope 0 at crates/relay-compiler/src/main.rs:45:24: 45:89
+    let _16: &std::path::Path;           // in scope 0 at crates/relay-compiler/src/main.rs:45:24: 45:89
+    let _17: &std::path::PathBuf;        // in scope 0 at crates/relay-compiler/src/main.rs:45:24: 45:89
+    let _18: std::path::PathBuf;         // in scope 0 at crates/relay-compiler/src/main.rs:45:25: 45:89
+    let mut _19: std::result::Result<std::path::PathBuf, std::io::Error>; // in scope 0 at crates/relay-compiler/src/main.rs:45:25: 45:38
+    let _20: &str;                       // in scope 0 at crates/relay-compiler/src/main.rs:45:46: 45:88
+    let mut _21: std::result::Result<relay_compiler::config::Config, relay_compiler::errors::Error>; // in scope 0 at crates/relay-compiler/src/main.rs:48:22: 48:35
+    let mut _22: [closure@crates/relay-compiler/src/main.rs:48:51: 48:56]; // in scope 0 at crates/relay-compiler/src/main.rs:48:51: 51:6
+    let mut _23: std::option::Option<std::boxed::Box<dyn relay_compiler::OperationPersister + std::marker::Send + std::marker::Sync>>; // in scope 0 at crates/relay-compiler/src/main.rs:52:34: 52:65
+    let mut _24: std::boxed::Box<dyn relay_compiler::OperationPersister + std::marker::Send + std::marker::Sync>; // in scope 0 at crates/relay-compiler/src/main.rs:52:39: 52:64
+    let mut _25: std::boxed::Box<relay_compiler::RemotePersister>; // in scope 0 at crates/relay-compiler/src/main.rs:52:39: 52:64
+    let mut _26: relay_compiler::RemotePersister; // in scope 0 at crates/relay-compiler/src/main.rs:52:48: 52:63
+    let mut _27: std::sync::Arc<relay_compiler::config::Config>; // in scope 0 at crates/relay-compiler/src/main.rs:55:34: 55:50
+    let mut _28: relay_compiler::config::Config; // in scope 0 at crates/relay-compiler/src/main.rs:55:43: 55:49
+    let mut _29: std::sync::Arc<common::NoopPerfLogger>; // in scope 0 at crates/relay-compiler/src/main.rs:55:52: 55:84
+    let mut _30: common::NoopPerfLogger; // in scope 0 at crates/relay-compiler/src/main.rs:55:61: 55:83
+    let mut _31: bool;                   // in scope 0 at crates/relay-compiler/src/main.rs:57:8: 57:17
+    let mut _32: std::result::Result<(), relay_compiler::errors::Error>; // in scope 0 at crates/relay-compiler/src/main.rs:58:27: 58:49
+    let mut _33: impl std::future::Future<Output = std::result::Result<(), relay_compiler::errors::Error>>; // in scope 0 at crates/relay-compiler/src/main.rs:58:43: 58:49
+    let mut _34: impl std::future::Future<Output = std::result::Result<(), relay_compiler::errors::Error>>; // in scope 0 at crates/relay-compiler/src/main.rs:58:27: 58:43
+    let mut _35: &relay_compiler::compiler::Compiler<common::NoopPerfLogger>; // in scope 0 at crates/relay-compiler/src/main.rs:58:27: 58:43
+    let mut _36: std::task::Poll<std::result::Result<(), relay_compiler::errors::Error>>; // in scope 0 at crates/relay-compiler/src/main.rs:58:43: 58:49
+    let mut _37: std::pin::Pin<&mut impl std::future::Future<Output = std::result::Result<(), relay_compiler::errors::Error>>>; // in scope 0 at crates/relay-compiler/src/main.rs:58:43: 58:49
+    let mut _38: &mut impl std::future::Future<Output = std::result::Result<(), relay_compiler::errors::Error>>; // in scope 0 at crates/relay-compiler/src/main.rs:58:43: 58:49
+    let mut _39: &mut std::task::Context<'_>; // in scope 0 at crates/relay-compiler/src/main.rs:58:43: 58:49
+    let mut _40: isize;                  // in scope 0 at crates/relay-compiler/src/main.rs:58:43: 58:49
+    let mut _42: isize;                  // in scope 0 at crates/relay-compiler/src/main.rs:58:16: 58:24
+    let mut _45: bool;                   // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    let mut _46: bool;                   // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:43
+    let mut _47: &log::Level;            // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:15
+    let mut _48: bool;                   // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:73
+    let mut _49: &log::Level;            // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:50
+    let mut _50: &log::LevelFilter;      // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+    let _51: log::LevelFilter;           // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+    let _52: ();                         // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 39:14
+    let mut _53: std::fmt::Arguments<'_>; // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+    let mut _54: &[&str];                // in scope 0 at crates/relay-compiler/src/main.rs:59:20: 59:24
+    let mut _55: &[core::fmt::ArgumentV1<'_>]; // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+    let _56: &[core::fmt::ArgumentV1<'_>; 1]; // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+    let _57: [core::fmt::ArgumentV1<'_>; 1]; // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+    let mut _58: core::fmt::ArgumentV1<'_>; // in scope 0 at crates/relay-compiler/src/main.rs:59:21: 59:23
+    let _59: &relay_compiler::errors::Error; // in scope 0 at crates/relay-compiler/src/main.rs:59:26: 59:29
+    let _60: !;                          // in scope 0 at crates/relay-compiler/src/main.rs:60:13: 60:34
+    let mut _61: impl std::future::Future<Output = std::result::Result<relay_compiler::compiler_state::CompilerState, relay_compiler::errors::Error>>; // in scope 0 at crates/relay-compiler/src/main.rs:63:33: 63:39
+    let mut _62: impl std::future::Future<Output = std::result::Result<relay_compiler::compiler_state::CompilerState, relay_compiler::errors::Error>>; // in scope 0 at crates/relay-compiler/src/main.rs:63:15: 63:33
+    let mut _63: &relay_compiler::compiler::Compiler<common::NoopPerfLogger>; // in scope 0 at crates/relay-compiler/src/main.rs:63:15: 63:33
+    let mut _64: std::task::Poll<std::result::Result<relay_compiler::compiler_state::CompilerState, relay_compiler::errors::Error>>; // in scope 0 at crates/relay-compiler/src/main.rs:63:33: 63:39
+    let mut _65: std::pin::Pin<&mut impl std::future::Future<Output = std::result::Result<relay_compiler::compiler_state::CompilerState, relay_compiler::errors::Error>>>; // in scope 0 at crates/relay-compiler/src/main.rs:63:33: 63:39
+    let mut _66: &mut impl std::future::Future<Output = std::result::Result<relay_compiler::compiler_state::CompilerState, relay_compiler::errors::Error>>; // in scope 0 at crates/relay-compiler/src/main.rs:63:33: 63:39
+    let mut _67: &mut std::task::Context<'_>; // in scope 0 at crates/relay-compiler/src/main.rs:63:33: 63:39
+    let mut _68: isize;                  // in scope 0 at crates/relay-compiler/src/main.rs:63:33: 63:39
+    let mut _70: isize;                  // in scope 0 at crates/relay-compiler/src/main.rs:64:13: 64:32
+    let mut _73: bool;                   // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    let mut _74: bool;                   // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:43
+    let mut _75: &log::Level;            // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:15
+    let mut _76: bool;                   // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:73
+    let mut _77: &log::Level;            // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:50
+    let mut _78: &log::LevelFilter;      // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+    let _79: log::LevelFilter;           // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+    let _80: ();                         // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 39:14
+    let mut _81: std::fmt::Arguments<'_>; // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+    let mut _82: &[&str];                // in scope 0 at crates/relay-compiler/src/main.rs:65:23: 65:29
+    let mut _85: bool;                   // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    let mut _86: bool;                   // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:43
+    let mut _87: &log::Level;            // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:15
+    let mut _88: bool;                   // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:73
+    let mut _89: &log::Level;            // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:50
+    let mut _90: &log::LevelFilter;      // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+    let _91: log::LevelFilter;           // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+    let _92: ();                         // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 39:14
+    let mut _93: std::fmt::Arguments<'_>; // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+    let mut _94: &[&str];                // in scope 0 at crates/relay-compiler/src/main.rs:68:24: 68:28
+    let mut _95: &[core::fmt::ArgumentV1<'_>]; // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+    let _96: &[core::fmt::ArgumentV1<'_>; 1]; // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+    let _97: [core::fmt::ArgumentV1<'_>; 1]; // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+    let mut _98: core::fmt::ArgumentV1<'_>; // in scope 0 at crates/relay-compiler/src/main.rs:68:25: 68:27
+    let _99: &relay_compiler::errors::Error; // in scope 0 at crates/relay-compiler/src/main.rs:68:30: 68:33
+    let _100: !;                         // in scope 0 at crates/relay-compiler/src/main.rs:69:17: 69:38
+    let mut _110: bool;                  // in scope 0 at crates/relay-compiler/src/main.rs:55:84: 55:85
+    let mut _111: isize;                 // in scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    let mut _112: isize;                 // in scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    let mut _113: ();                    // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _114: &mut std::task::Context<'_>; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _115: u32;                   // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _116: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _117: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _118: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _119: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _120: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _121: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _122: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _123: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _124: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _125: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _126: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _127: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _128: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _129: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _130: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _131: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _132: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _133: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _134: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _135: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _136: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _137: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _138: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _139: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _140: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _141: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _142: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _143: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _144: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _145: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _146: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _147: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _148: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _149: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _150: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _151: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _152: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _153: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _154: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _155: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _156: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _157: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _158: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _159: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _160: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _161: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _162: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _163: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _164: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _165: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _166: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _167: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _168: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _169: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _170: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _171: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _172: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _173: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _174: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _175: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _176: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _177: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _178: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _179: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _180: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _181: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _182: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _183: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _184: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _185: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _186: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _187: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _188: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _189: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _190: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _191: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _192: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _193: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _194: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _195: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _196: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _197: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _198: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _199: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _200: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _201: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _202: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _203: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _204: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _205: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _206: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _207: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _208: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _209: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _210: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _211: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _212: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _213: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _214: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _215: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _216: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _217: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    let mut _218: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]; // in scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    scope 1 {
+        debug opt => (((*(_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15])) as variant#3).0: Opt); // in scope 1 at crates/relay-compiler/src/main.rs:38:9: 38:12
+        let _8: std::result::Result<relay_compiler::config::Config, relay_compiler::errors::Error>; // in scope 1 at crates/relay-compiler/src/main.rs:40:9: 40:22
+        scope 2 {
+            debug config_result => _8;   // in scope 2 at crates/relay-compiler/src/main.rs:40:9: 40:22
+            scope 4 {
+                debug config => (((*(_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15])) as variant#3).1: relay_compiler::config::Config); // in scope 4 at crates/relay-compiler/src/main.rs:48:9: 48:19
+                scope 5 {
+                    debug compiler => (((*(_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15])) as variant#3).2: relay_compiler::compiler::Compiler<common::NoopPerfLogger>); // in scope 5 at crates/relay-compiler/src/main.rs:55:9: 55:17
+                    let _71: relay_compiler::compiler_state::CompilerState; // in scope 5 at crates/relay-compiler/src/main.rs:64:16: 64:31
+                    let _83: relay_compiler::errors::Error; // in scope 5 at crates/relay-compiler/src/main.rs:67:17: 67:20
+                    scope 6 {
+                        debug err => _43; // in scope 6 at crates/relay-compiler/src/main.rs:58:20: 58:23
+                        let _43: relay_compiler::errors::Error; // in scope 6 at crates/relay-compiler/src/main.rs:58:20: 58:23
+                        let _44: log::Level; // in scope 6 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:33:13: 33:16
+                        scope 7 {
+                            debug __awaitee => (((*(_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15])) as variant#3).3: impl std::future::Future<Output = std::result::Result<(), relay_compiler::errors::Error>>); // in scope 7 at crates/relay-compiler/src/main.rs:58:43: 58:49
+                            let _41: std::result::Result<(), relay_compiler::errors::Error>; // in scope 7 at crates/relay-compiler/src/main.rs:58:27: 58:49
+                            scope 8 {
+                            }
+                            scope 9 {
+                                debug result => _41; // in scope 9 at crates/relay-compiler/src/main.rs:58:27: 58:49
+                            }
+                        }
+                        scope 10 {
+                            debug lvl => _44; // in scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:33:13: 33:16
+                            let mut _107: &(&str, &str, &str, u32); // in scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+                            let mut _108: &[&str; 1]; // in scope 10 at crates/relay-compiler/src/main.rs:59:20: 59:24
+                            let mut _109: &log::LevelFilter; // in scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                        }
+                    }
+                    scope 11 {
+                        debug __awaitee => (((*(_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15])) as variant#4).3: impl std::future::Future<Output = std::result::Result<relay_compiler::compiler_state::CompilerState, relay_compiler::errors::Error>>); // in scope 11 at crates/relay-compiler/src/main.rs:63:33: 63:39
+                        let _69: std::result::Result<relay_compiler::compiler_state::CompilerState, relay_compiler::errors::Error>; // in scope 11 at crates/relay-compiler/src/main.rs:63:15: 63:39
+                        scope 12 {
+                        }
+                        scope 13 {
+                            debug result => _69; // in scope 13 at crates/relay-compiler/src/main.rs:63:15: 63:39
+                        }
+                    }
+                    scope 14 {
+                        debug _compiler_state => _71; // in scope 14 at crates/relay-compiler/src/main.rs:64:16: 64:31
+                        let _72: log::Level; // in scope 14 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:33:13: 33:16
+                        scope 15 {
+                            debug lvl => _72; // in scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:33:13: 33:16
+                            let mut _101: &(&str, &str, &str, u32); // in scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+                            let mut _102: &[&str; 1]; // in scope 15 at crates/relay-compiler/src/main.rs:65:23: 65:29
+                            let mut _103: &log::LevelFilter; // in scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                        }
+                    }
+                    scope 16 {
+                        debug err => _83; // in scope 16 at crates/relay-compiler/src/main.rs:67:17: 67:20
+                        let _84: log::Level; // in scope 16 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:33:13: 33:16
+                        scope 17 {
+                            debug lvl => _84; // in scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:33:13: 33:16
+                            let mut _104: &(&str, &str, &str, u32); // in scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+                            let mut _105: &[&str; 1]; // in scope 17 at crates/relay-compiler/src/main.rs:68:24: 68:28
+                            let mut _106: &log::LevelFilter; // in scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                        }
+                    }
+                }
+            }
+        }
+        scope 3 {
+            debug config_path => _10;    // in scope 3 at crates/relay-compiler/src/main.rs:40:37: 40:48
+            let _10: std::path::PathBuf; // in scope 3 at crates/relay-compiler/src/main.rs:40:37: 40:48
+        }
+    }
+
+    bb0: {
+        _116 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+        _115 = discriminant((*_116));    // scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+        switchInt(move _115) -> [0: bb1, 1: bb149, 2: bb148, 3: bb146, 4: bb147, otherwise: bb33]; // scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    }
+
+    bb1: {
+        _114 = move _2;                  // scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+        _117 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:74
+        (((*_117) as variant#3).5: bool) = const false; // scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:74
+        _118 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:74
+        (((*_118) as variant#3).7: bool) = const false; // scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:74
+        _110 = const false;              // scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:74
+        _119 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:74
+        (((*_119) as variant#3).6: bool) = const false; // scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:74
+        _120 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:74
+        (((*_120) as variant#3).4: bool) = const false; // scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:74
+        _7 = <Env<'_> as Default>::default() -> [return: bb2, unwind: bb145]; // scope 0 at crates/relay-compiler/src/main.rs:36:26: 36:40
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:36:26: 36:38
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn() -> Env<'_> {<Env<'_> as Default>::default}, val: Value(<ZST>) }
+    }
+
+    bb2: {
+        _6 = Env::<'_>::default_filter_or::<&str>(move _7, const "info") -> [return: bb3, unwind: bb145]; // scope 0 at crates/relay-compiler/src/main.rs:36:26: 36:66
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:36:41: 36:58
+                                         // + literal: Const { ty: fn(Env<'_>, &str) -> Env<'_> {Env::<'_>::default_filter_or::<&str>}, val: Value(<ZST>) }
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:36:59: 36:65
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+    }
+
+    bb3: {
+        _5 = from_env::<'_, Env<'_>>(move _6) -> [return: bb4, unwind: bb145]; // scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:67
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:36:5: 36:25
+                                         // + literal: Const { ty: fn(Env<'_>) -> env_logger::Builder {from_env::<'_, Env<'_>>}, val: Value(<ZST>) }
+    }
+
+    bb4: {
+        _4 = &mut _5;                    // scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:74
+        _3 = env_logger::Builder::init(move _4) -> [return: bb5, unwind: bb92]; // scope 0 at crates/relay-compiler/src/main.rs:36:5: 36:74
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:36:68: 36:72
+                                         // + literal: Const { ty: for<'a> fn(&'a mut env_logger::Builder) {env_logger::Builder::init}, val: Value(<ZST>) }
+    }
+
+    bb5: {
+        drop(_5) -> [return: bb6, unwind: bb145]; // scope 0 at crates/relay-compiler/src/main.rs:36:74: 36:75
+    }
+
+    bb6: {
+        _121 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:38:15: 38:31
+        (((*_121) as variant#3).0: Opt) = <Opt as StructOpt>::from_args() -> [return: bb7, unwind: bb91]; // scope 0 at crates/relay-compiler/src/main.rs:38:15: 38:31
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:38:15: 38:29
+                                         // + literal: Const { ty: fn() -> Opt {<Opt as StructOpt>::from_args}, val: Value(<ZST>) }
+    }
+
+    bb7: {
+        _122 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 1 at crates/relay-compiler/src/main.rs:40:9: 40:22
+        (((*_122) as variant#3).4: bool) = const true; // scope 1 at crates/relay-compiler/src/main.rs:40:9: 40:22
+        _123 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 1 at crates/relay-compiler/src/main.rs:40:9: 40:22
+        (((*_123) as variant#3).5: bool) = const true; // scope 1 at crates/relay-compiler/src/main.rs:40:9: 40:22
+        _124 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 3 at crates/relay-compiler/src/main.rs:40:32: 40:49
+        _9 = discriminant(((((*_124) as variant#3).0: Opt).1: std::option::Option<std::path::PathBuf>)); // scope 3 at crates/relay-compiler/src/main.rs:40:32: 40:49
+        switchInt(move _9) -> [1: bb8, otherwise: bb9]; // scope 3 at crates/relay-compiler/src/main.rs:40:32: 40:49
+    }
+
+    bb8: {
+        _125 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 3 at crates/relay-compiler/src/main.rs:40:37: 40:48
+        (((*_125) as variant#3).5: bool) = const false; // scope 3 at crates/relay-compiler/src/main.rs:40:37: 40:48
+        _126 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 3 at crates/relay-compiler/src/main.rs:40:37: 40:48
+        _10 = move ((((((*_126) as variant#3).0: Opt).1: std::option::Option<std::path::PathBuf>) as Some).0: std::path::PathBuf); // scope 3 at crates/relay-compiler/src/main.rs:40:37: 40:48
+        _8 = Config::load(move _10) -> [return: bb150, unwind: bb90]; // scope 3 at crates/relay-compiler/src/main.rs:41:9: 41:34
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:41:9: 41:21
+                                         // + literal: Const { ty: fn(PathBuf) -> std::result::Result<Config, relay_compiler::errors::Error> {Config::load}, val: Value(<ZST>) }
+    }
+
+    bb9: {
+        _127 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 1 at crates/relay-compiler/src/main.rs:42:15: 42:42
+        _12 = &((((*_127) as variant#3).0: Opt).2: relay_compiler::config::CliConfig); // scope 1 at crates/relay-compiler/src/main.rs:42:15: 42:42
+        _11 = CliConfig::is_defined(move _12) -> [return: bb10, unwind: bb90]; // scope 1 at crates/relay-compiler/src/main.rs:42:15: 42:42
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:42:30: 42:40
+                                         // + literal: Const { ty: for<'a> fn(&'a CliConfig) -> bool {CliConfig::is_defined}, val: Value(<ZST>) }
+    }
+
+    bb10: {
+        switchInt(move _11) -> [0: bb13, otherwise: bb11]; // scope 1 at crates/relay-compiler/src/main.rs:42:15: 42:42
+    }
+
+    bb11: {
+        _128 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 1 at crates/relay-compiler/src/main.rs:43:25: 43:39
+        (((*_128) as variant#3).4: bool) = const false; // scope 1 at crates/relay-compiler/src/main.rs:43:25: 43:39
+        _129 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 1 at crates/relay-compiler/src/main.rs:43:25: 43:39
+        _14 = move ((((*_129) as variant#3).0: Opt).2: relay_compiler::config::CliConfig); // scope 1 at crates/relay-compiler/src/main.rs:43:25: 43:39
+        _13 = <Config as From<CliConfig>>::from(move _14) -> [return: bb12, unwind: bb90]; // scope 1 at crates/relay-compiler/src/main.rs:43:12: 43:40
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:43:12: 43:24
+                                         // + user_ty: UserType(1)
+                                         // + literal: Const { ty: fn(CliConfig) -> Config {<Config as From<CliConfig>>::from}, val: Value(<ZST>) }
+    }
+
+    bb12: {
+        _8 = std::result::Result::<Config, relay_compiler::errors::Error>::Ok(move _13); // scope 1 at crates/relay-compiler/src/main.rs:43:9: 43:41
+        goto -> bb18;                    // scope 1 at crates/relay-compiler/src/main.rs:42:12: 46:6
+    }
+
+    bb13: {
+        _19 = current_dir() -> [return: bb14, unwind: bb90]; // scope 1 at crates/relay-compiler/src/main.rs:45:25: 45:38
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:45:25: 45:36
+                                         // + literal: Const { ty: fn() -> std::result::Result<PathBuf, std::io::Error> {current_dir}, val: Value(<ZST>) }
+    }
+
+    bb14: {
+        _20 = const "Unable to get current working directory."; // scope 1 at crates/relay-compiler/src/main.rs:45:46: 45:88
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:45:46: 45:88
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _18 = std::result::Result::<PathBuf, std::io::Error>::expect(move _19, _20) -> [return: bb15, unwind: bb90]; // scope 1 at crates/relay-compiler/src/main.rs:45:25: 45:89
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:45:39: 45:45
+                                         // + literal: Const { ty: for<'a> fn(std::result::Result<PathBuf, std::io::Error>, &'a str) -> PathBuf {std::result::Result::<PathBuf, std::io::Error>::expect}, val: Value(<ZST>) }
+    }
+
+    bb15: {
+        _17 = &_18;                      // scope 1 at crates/relay-compiler/src/main.rs:45:24: 45:89
+        _16 = <PathBuf as Deref>::deref(_17) -> [return: bb16, unwind: bb89]; // scope 1 at crates/relay-compiler/src/main.rs:45:24: 45:89
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:45:24: 45:89
+                                         // + literal: Const { ty: for<'a> fn(&'a PathBuf) -> &'a <PathBuf as Deref>::Target {<PathBuf as Deref>::deref}, val: Value(<ZST>) }
+    }
+
+    bb16: {
+        _15 = _16;                       // scope 1 at crates/relay-compiler/src/main.rs:45:24: 45:89
+        _8 = Config::search(move _15) -> [return: bb17, unwind: bb89]; // scope 1 at crates/relay-compiler/src/main.rs:45:9: 45:90
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:45:9: 45:23
+                                         // + literal: Const { ty: for<'a> fn(&'a Path) -> std::result::Result<Config, relay_compiler::errors::Error> {Config::search}, val: Value(<ZST>) }
+    }
+
+    bb17: {
+        drop(_18) -> [return: bb18, unwind: bb90]; // scope 1 at crates/relay-compiler/src/main.rs:46:5: 46:6
+    }
+
+    bb18: {
+        _21 = move _8;                   // scope 2 at crates/relay-compiler/src/main.rs:48:22: 48:35
+        _22 = [closure@crates/relay-compiler/src/main.rs:48:51: 48:56]; // scope 2 at crates/relay-compiler/src/main.rs:48:51: 51:6
+                                         // closure
+                                         // + def_id: DefId(0:37 ~ relay[2a1c]::main::{closure#0}::{closure#0})
+                                         // + substs: [
+                                         //     i32,
+                                         //     extern "rust-call" fn((relay_compiler::errors::Error,)) -> relay_compiler::config::Config,
+                                         //     (),
+                                         // ]
+        _130 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:48:22: 51:7
+        (((*_130) as variant#3).1: relay_compiler::config::Config) = std::result::Result::<Config, relay_compiler::errors::Error>::unwrap_or_else::<[closure@crates/relay-compiler/src/main.rs:48:51: 48:56]>(move _21, move _22) -> [return: bb19, unwind: bb88]; // scope 2 at crates/relay-compiler/src/main.rs:48:22: 51:7
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:48:36: 48:50
+                                         // + literal: Const { ty: fn(std::result::Result<Config, relay_compiler::errors::Error>, [closure@crates/relay-compiler/src/main.rs:48:51: 48:56]) -> Config {std::result::Result::<Config, relay_compiler::errors::Error>::unwrap_or_else::<[closure@crates/relay-compiler/src/main.rs:48:51: 48:56]>}, val: Value(<ZST>) }
+    }
+
+    bb19: {
+        _131 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:51:6: 51:7
+        (((*_131) as variant#3).6: bool) = const true; // scope 2 at crates/relay-compiler/src/main.rs:51:6: 51:7
+        _132 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:51:6: 51:7
+        (((*_132) as variant#3).7: bool) = const true; // scope 2 at crates/relay-compiler/src/main.rs:51:6: 51:7
+        _26 = RemotePersister;           // scope 4 at crates/relay-compiler/src/main.rs:52:48: 52:63
+        _25 = Box::<RemotePersister>::new(move _26) -> [return: bb20, unwind: bb140]; // scope 4 at crates/relay-compiler/src/main.rs:52:39: 52:64
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:52:39: 52:47
+                                         // + user_ty: UserType(2)
+                                         // + literal: Const { ty: fn(RemotePersister) -> Box<RemotePersister> {Box::<RemotePersister>::new}, val: Value(<ZST>) }
+    }
+
+    bb20: {
+        _24 = move _25 as std::boxed::Box<dyn relay_compiler::OperationPersister + std::marker::Send + std::marker::Sync> (Pointer(Unsize)); // scope 4 at crates/relay-compiler/src/main.rs:52:39: 52:64
+        _23 = Option::<Box<dyn OperationPersister + Send + Sync>>::Some(move _24); // scope 4 at crates/relay-compiler/src/main.rs:52:34: 52:65
+        _133 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 4 at crates/relay-compiler/src/main.rs:52:5: 52:31
+        drop(((((*_133) as variant#3).1: relay_compiler::config::Config).18: std::option::Option<std::boxed::Box<dyn relay_compiler::OperationPersister + std::marker::Send + std::marker::Sync>>)) -> [return: bb21, unwind: bb22]; // scope 4 at crates/relay-compiler/src/main.rs:52:5: 52:31
+    }
+
+    bb21: {
+        _134 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 4 at crates/relay-compiler/src/main.rs:52:5: 52:31
+        (((*_134) as variant#3).7: bool) = const true; // scope 4 at crates/relay-compiler/src/main.rs:52:5: 52:31
+        _135 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 4 at crates/relay-compiler/src/main.rs:52:5: 52:31
+        ((((*_135) as variant#3).1: relay_compiler::config::Config).18: std::option::Option<std::boxed::Box<dyn relay_compiler::OperationPersister + std::marker::Send + std::marker::Sync>>) = move _23; // scope 4 at crates/relay-compiler/src/main.rs:52:5: 52:31
+        _138 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 4 at crates/relay-compiler/src/main.rs:55:43: 55:49
+        (((*_138) as variant#3).6: bool) = const false; // scope 4 at crates/relay-compiler/src/main.rs:55:43: 55:49
+        _139 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 4 at crates/relay-compiler/src/main.rs:55:43: 55:49
+        (((*_139) as variant#3).7: bool) = const false; // scope 4 at crates/relay-compiler/src/main.rs:55:43: 55:49
+        _140 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 4 at crates/relay-compiler/src/main.rs:55:43: 55:49
+        _28 = move (((*_140) as variant#3).1: relay_compiler::config::Config); // scope 4 at crates/relay-compiler/src/main.rs:55:43: 55:49
+        _27 = Arc::<Config>::new(move _28) -> [return: bb23, unwind: bb87]; // scope 4 at crates/relay-compiler/src/main.rs:55:34: 55:50
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:55:34: 55:42
+                                         // + user_ty: UserType(4)
+                                         // + literal: Const { ty: fn(Config) -> Arc<Config> {Arc::<Config>::new}, val: Value(<ZST>) }
+    }
+
+    bb22 (cleanup): {
+        _136 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 4 at crates/relay-compiler/src/main.rs:52:5: 52:31
+        (((*_136) as variant#3).7: bool) = const true; // scope 4 at crates/relay-compiler/src/main.rs:52:5: 52:31
+        _137 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 4 at crates/relay-compiler/src/main.rs:52:5: 52:31
+        ((((*_137) as variant#3).1: relay_compiler::config::Config).18: std::option::Option<std::boxed::Box<dyn relay_compiler::OperationPersister + std::marker::Send + std::marker::Sync>>) = move _23; // scope 4 at crates/relay-compiler/src/main.rs:52:5: 52:31
+        goto -> bb140;                   // scope 4 at crates/relay-compiler/src/main.rs:52:5: 52:31
+    }
+
+    bb23: {
+        _110 = const true;               // scope 4 at crates/relay-compiler/src/main.rs:55:49: 55:50
+        _30 = NoopPerfLogger;            // scope 4 at crates/relay-compiler/src/main.rs:55:61: 55:83
+        _29 = Arc::<NoopPerfLogger>::new(move _30) -> [return: bb24, unwind: bb86]; // scope 4 at crates/relay-compiler/src/main.rs:55:52: 55:84
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:55:52: 55:60
+                                         // + user_ty: UserType(5)
+                                         // + literal: Const { ty: fn(NoopPerfLogger) -> Arc<NoopPerfLogger> {Arc::<NoopPerfLogger>::new}, val: Value(<ZST>) }
+    }
+
+    bb24: {
+        _110 = const false;              // scope 4 at crates/relay-compiler/src/main.rs:55:20: 55:85
+        _141 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 4 at crates/relay-compiler/src/main.rs:55:20: 55:85
+        (((*_141) as variant#3).2: relay_compiler::compiler::Compiler<common::NoopPerfLogger>) = Compiler::<NoopPerfLogger>::new(move _27, move _29) -> [return: bb25, unwind: bb86]; // scope 4 at crates/relay-compiler/src/main.rs:55:20: 55:85
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:55:20: 55:33
+                                         // + user_ty: UserType(3)
+                                         // + literal: Const { ty: fn(Arc<Config>, Arc<NoopPerfLogger>) -> Compiler<NoopPerfLogger> {Compiler::<NoopPerfLogger>::new}, val: Value(<ZST>) }
+    }
+
+    bb25: {
+        _110 = const false;              // scope 4 at crates/relay-compiler/src/main.rs:55:84: 55:85
+        _142 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 5 at crates/relay-compiler/src/main.rs:57:8: 57:17
+        _31 = ((((*_142) as variant#3).0: Opt).0: bool); // scope 5 at crates/relay-compiler/src/main.rs:57:8: 57:17
+        switchInt(move _31) -> [0: bb48, otherwise: bb26]; // scope 5 at crates/relay-compiler/src/main.rs:57:8: 57:17
+    }
+
+    bb26: {
+        _143 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 6 at crates/relay-compiler/src/main.rs:58:27: 58:43
+        _35 = &(((*_143) as variant#3).2: relay_compiler::compiler::Compiler<common::NoopPerfLogger>); // scope 6 at crates/relay-compiler/src/main.rs:58:27: 58:43
+        _34 = Compiler::<NoopPerfLogger>::watch(move _35) -> [return: bb27, unwind: bb85]; // scope 6 at crates/relay-compiler/src/main.rs:58:27: 58:43
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:58:36: 58:41
+                                         // + literal: Const { ty: for<'a> fn(&'a Compiler<NoopPerfLogger>) -> impl Future<Output = std::result::Result<(), relay_compiler::errors::Error>> {Compiler::<NoopPerfLogger>::watch}, val: Value(<ZST>) }
+    }
+
+    bb27: {
+        _33 = <impl Future<Output = std::result::Result<(), relay_compiler::errors::Error>> as IntoFuture>::into_future(move _34) -> [return: bb28, unwind: bb85]; // scope 6 at crates/relay-compiler/src/main.rs:58:43: 58:49
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:58:43: 58:49
+                                         // + literal: Const { ty: fn(impl Future<Output = std::result::Result<(), relay_compiler::errors::Error>>) -> <impl Future<Output = std::result::Result<(), relay_compiler::errors::Error>> as IntoFuture>::IntoFuture {<impl Future<Output = std::result::Result<(), relay_compiler::errors::Error>> as IntoFuture>::into_future}, val: Value(<ZST>) }
+    }
+
+    bb28: {
+        _144 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 6 at crates/relay-compiler/src/main.rs:58:43: 58:49
+        (((*_144) as variant#3).3: impl std::future::Future<Output = std::result::Result<(), relay_compiler::errors::Error>>) = move _33; // scope 6 at crates/relay-compiler/src/main.rs:58:43: 58:49
+        goto -> bb29;                    // scope 7 at crates/relay-compiler/src/main.rs:58:43: 58:49
+    }
+
+    bb29: {
+        _145 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 8 at crates/relay-compiler/src/main.rs:58:43: 58:49
+        _38 = &mut (((*_145) as variant#3).3: impl std::future::Future<Output = std::result::Result<(), relay_compiler::errors::Error>>); // scope 8 at crates/relay-compiler/src/main.rs:58:43: 58:49
+        _37 = Pin::<&mut impl Future<Output = std::result::Result<(), relay_compiler::errors::Error>>>::new_unchecked(_38) -> [return: bb30, unwind: bb84]; // scope 8 at crates/relay-compiler/src/main.rs:58:43: 58:49
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:58:43: 58:49
+                                         // + literal: Const { ty: unsafe fn(&mut impl Future<Output = std::result::Result<(), relay_compiler::errors::Error>>) -> Pin<&mut impl Future<Output = std::result::Result<(), relay_compiler::errors::Error>>> {Pin::<&mut impl Future<Output = std::result::Result<(), relay_compiler::errors::Error>>>::new_unchecked}, val: Value(<ZST>) }
+    }
+
+    bb30: {
+        _39 = _114;                      // scope 8 at crates/relay-compiler/src/main.rs:58:43: 58:49
+        _36 = <impl Future<Output = std::result::Result<(), relay_compiler::errors::Error>> as Future>::poll(move _37, _39) -> [return: bb31, unwind: bb84]; // scope 8 at crates/relay-compiler/src/main.rs:58:43: 58:49
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:58:43: 58:49
+                                         // + literal: Const { ty: for<'a, 'b, 'c> fn(Pin<&'a mut impl Future<Output = std::result::Result<(), relay_compiler::errors::Error>>>, &'b mut Context<'c>) -> Poll<<impl Future<Output = std::result::Result<(), relay_compiler::errors::Error>> as Future>::Output> {<impl Future<Output = std::result::Result<(), relay_compiler::errors::Error>> as Future>::poll}, val: Value(<ZST>) }
+    }
+
+    bb31: {
+        _40 = discriminant(_36);         // scope 7 at crates/relay-compiler/src/main.rs:58:43: 58:49
+        switchInt(move _40) -> [0: bb34, 1: bb32, otherwise: bb33]; // scope 7 at crates/relay-compiler/src/main.rs:58:43: 58:49
+    }
+
+    bb32: {
+        _0 = Poll::<()>::Pending;        // scope 7 at crates/relay-compiler/src/main.rs:58:43: 58:49
+        _146 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 7 at crates/relay-compiler/src/main.rs:58:43: 58:49
+        discriminant((*_146)) = 3;       // scope 7 at crates/relay-compiler/src/main.rs:58:43: 58:49
+        return;                          // scope 7 at crates/relay-compiler/src/main.rs:58:43: 58:49
+    }
+
+    bb33: {
+        unreachable;                     // scope 7 at crates/relay-compiler/src/main.rs:58:43: 58:49
+    }
+
+    bb34: {
+        _41 = move ((_36 as Ready).0: std::result::Result<(), relay_compiler::errors::Error>); // scope 7 at crates/relay-compiler/src/main.rs:58:27: 58:49
+        _32 = move _41;                  // scope 9 at crates/relay-compiler/src/main.rs:58:27: 58:49
+        _147 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 6 at crates/relay-compiler/src/main.rs:58:48: 58:49
+        drop((((*_147) as variant#3).3: impl std::future::Future<Output = std::result::Result<(), relay_compiler::errors::Error>>)) -> [return: bb35, unwind: bb85]; // scope 6 at crates/relay-compiler/src/main.rs:58:48: 58:49
+    }
+
+    bb35: {
+        _42 = discriminant(_32);         // scope 6 at crates/relay-compiler/src/main.rs:58:16: 58:24
+        switchInt(move _42) -> [1: bb37, otherwise: bb36]; // scope 6 at crates/relay-compiler/src/main.rs:58:16: 58:24
+    }
+
+    bb36: {
+        _113 = const ();                 // scope 5 at crates/relay-compiler/src/main.rs:61:10: 61:10
+        drop(_32) -> [return: bb78, unwind: bb85]; // scope 5 at crates/relay-compiler/src/main.rs:62:5: 62:6
+    }
+
+    bb37: {
+        _43 = move ((_32 as Err).0: relay_compiler::errors::Error); // scope 6 at crates/relay-compiler/src/main.rs:58:20: 58:23
+        _44 = log::Level::Error;         // scope 6 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:65:14: 65:34
+        _47 = &_44;                      // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:15
+        _109 = const _;                  // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // + literal: Const { ty: &LevelFilter, val: Unevaluated(main::{closure#0}, [<resume_ty>, <yield_ty>, <return_ty>, <witness>, <upvars>], Some(promoted[8])) }
+        _46 = <Level as PartialOrd<LevelFilter>>::le(move _47, _109) -> [return: bb41, unwind: bb83]; // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:43
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:43
+                                         // + literal: Const { ty: for<'a, 'b> fn(&'a Level, &'b LevelFilter) -> bool {<Level as PartialOrd<LevelFilter>>::le}, val: Value(<ZST>) }
+    }
+
+    bb38: {
+        _45 = const false;               // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+        goto -> bb40;                    // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb39: {
+        _49 = &_44;                      // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:50
+        _51 = max_level() -> [return: bb42, unwind: bb83]; // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:71
+                                         // + literal: Const { ty: fn() -> LevelFilter {max_level}, val: Value(<ZST>) }
+    }
+
+    bb40: {
+        switchInt(move _45) -> [0: bb47, otherwise: bb44]; // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb41: {
+        switchInt(move _46) -> [0: bb38, otherwise: bb39]; // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb42: {
+        _50 = &_51;                      // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+        _48 = <Level as PartialOrd<LevelFilter>>::le(move _49, move _50) -> [return: bb43, unwind: bb83]; // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:73
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:73
+                                         // + literal: Const { ty: for<'a, 'b> fn(&'a Level, &'b LevelFilter) -> bool {<Level as PartialOrd<LevelFilter>>::le}, val: Value(<ZST>) }
+    }
+
+    bb43: {
+        _45 = move _48;                  // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+        goto -> bb40;                    // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb44: {
+        _108 = const _;                  // scope 10 at crates/relay-compiler/src/main.rs:59:20: 59:24
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:59:20: 59:24
+                                         // + literal: Const { ty: &[&str; 1], val: Unevaluated(main::{closure#0}, [<resume_ty>, <yield_ty>, <return_ty>, <witness>, <upvars>], Some(promoted[7])) }
+        _54 = _108 as &[&str] (Pointer(Unsize)); // scope 10 at crates/relay-compiler/src/main.rs:59:20: 59:24
+        _59 = &_43;                      // scope 10 at crates/relay-compiler/src/main.rs:59:26: 59:29
+        _58 = core::fmt::ArgumentV1::<'_>::new_display::<relay_compiler::errors::Error>(_59) -> [return: bb45, unwind: bb83]; // scope 10 at crates/relay-compiler/src/main.rs:59:21: 59:23
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:59:21: 59:23
+                                         // + user_ty: UserType(7)
+                                         // + literal: Const { ty: for<'b> fn(&'b relay_compiler::errors::Error) -> core::fmt::ArgumentV1<'b> {core::fmt::ArgumentV1::<'_>::new_display::<relay_compiler::errors::Error>}, val: Value(<ZST>) }
+    }
+
+    bb45: {
+        _57 = [move _58];                // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+        _56 = &_57;                      // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+        _55 = _56 as &[core::fmt::ArgumentV1<'_>] (Pointer(Unsize)); // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+        _53 = Arguments::<'_>::new_v1(move _54, move _55) -> [return: bb46, unwind: bb83]; // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+                                         // + user_ty: UserType(6)
+                                         // + literal: Const { ty: fn(&[&'static str], &[core::fmt::ArgumentV1<'_>]) -> Arguments<'_> {Arguments::<'_>::new_v1}, val: Value(<ZST>) }
+    }
+
+    bb46: {
+        _107 = const _;                  // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+                                         // + literal: Const { ty: &(&str, &str, &str, u32), val: Unevaluated(main::{closure#0}, [<resume_ty>, <yield_ty>, <return_ty>, <witness>, <upvars>], Some(promoted[6])) }
+        _52 = __private_api_log(move _53, _44, _107) -> [return: bb151, unwind: bb83]; // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 39:14
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 35:38
+                                         // + literal: Const { ty: for<'a, 'b, 'c> fn(Arguments<'a>, Level, &'b (&'c str, &'static str, &'static str, u32)) {__private_api_log}, val: Value(<ZST>) }
+    }
+
+    bb47: {
+        _60 = exit(const 1_i32) -> bb83; // scope 6 at crates/relay-compiler/src/main.rs:60:13: 60:34
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:60:13: 60:31
+                                         // + literal: Const { ty: fn(i32) -> ! {exit}, val: Value(<ZST>) }
+    }
+
+    bb48: {
+        _148 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 5 at crates/relay-compiler/src/main.rs:63:15: 63:33
+        _63 = &(((*_148) as variant#3).2: relay_compiler::compiler::Compiler<common::NoopPerfLogger>); // scope 5 at crates/relay-compiler/src/main.rs:63:15: 63:33
+        _62 = Compiler::<NoopPerfLogger>::compile(move _63) -> [return: bb49, unwind: bb85]; // scope 5 at crates/relay-compiler/src/main.rs:63:15: 63:33
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:63:24: 63:31
+                                         // + literal: Const { ty: for<'a> fn(&'a Compiler<NoopPerfLogger>) -> impl Future<Output = std::result::Result<CompilerState, relay_compiler::errors::Error>> {Compiler::<NoopPerfLogger>::compile}, val: Value(<ZST>) }
+    }
+
+    bb49: {
+        _61 = <impl Future<Output = std::result::Result<CompilerState, relay_compiler::errors::Error>> as IntoFuture>::into_future(move _62) -> [return: bb50, unwind: bb85]; // scope 5 at crates/relay-compiler/src/main.rs:63:33: 63:39
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:63:33: 63:39
+                                         // + literal: Const { ty: fn(impl Future<Output = std::result::Result<CompilerState, relay_compiler::errors::Error>>) -> <impl Future<Output = std::result::Result<CompilerState, relay_compiler::errors::Error>> as IntoFuture>::IntoFuture {<impl Future<Output = std::result::Result<CompilerState, relay_compiler::errors::Error>> as IntoFuture>::into_future}, val: Value(<ZST>) }
+    }
+
+    bb50: {
+        _149 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 5 at crates/relay-compiler/src/main.rs:63:33: 63:39
+        (((*_149) as variant#4).3: impl std::future::Future<Output = std::result::Result<relay_compiler::compiler_state::CompilerState, relay_compiler::errors::Error>>) = move _61; // scope 5 at crates/relay-compiler/src/main.rs:63:33: 63:39
+        goto -> bb51;                    // scope 11 at crates/relay-compiler/src/main.rs:63:33: 63:39
+    }
+
+    bb51: {
+        _150 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 12 at crates/relay-compiler/src/main.rs:63:33: 63:39
+        _66 = &mut (((*_150) as variant#4).3: impl std::future::Future<Output = std::result::Result<relay_compiler::compiler_state::CompilerState, relay_compiler::errors::Error>>); // scope 12 at crates/relay-compiler/src/main.rs:63:33: 63:39
+        _65 = Pin::<&mut impl Future<Output = std::result::Result<CompilerState, relay_compiler::errors::Error>>>::new_unchecked(_66) -> [return: bb52, unwind: bb82]; // scope 12 at crates/relay-compiler/src/main.rs:63:33: 63:39
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:63:33: 63:39
+                                         // + literal: Const { ty: unsafe fn(&mut impl Future<Output = std::result::Result<CompilerState, relay_compiler::errors::Error>>) -> Pin<&mut impl Future<Output = std::result::Result<CompilerState, relay_compiler::errors::Error>>> {Pin::<&mut impl Future<Output = std::result::Result<CompilerState, relay_compiler::errors::Error>>>::new_unchecked}, val: Value(<ZST>) }
+    }
+
+    bb52: {
+        _67 = _114;                      // scope 12 at crates/relay-compiler/src/main.rs:63:33: 63:39
+        _64 = <impl Future<Output = std::result::Result<CompilerState, relay_compiler::errors::Error>> as Future>::poll(move _65, _67) -> [return: bb53, unwind: bb82]; // scope 12 at crates/relay-compiler/src/main.rs:63:33: 63:39
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:63:33: 63:39
+                                         // + literal: Const { ty: for<'a, 'b, 'c> fn(Pin<&'a mut impl Future<Output = std::result::Result<CompilerState, relay_compiler::errors::Error>>>, &'b mut Context<'c>) -> Poll<<impl Future<Output = std::result::Result<CompilerState, relay_compiler::errors::Error>> as Future>::Output> {<impl Future<Output = std::result::Result<CompilerState, relay_compiler::errors::Error>> as Future>::poll}, val: Value(<ZST>) }
+    }
+
+    bb53: {
+        _68 = discriminant(_64);         // scope 11 at crates/relay-compiler/src/main.rs:63:33: 63:39
+        switchInt(move _68) -> [0: bb55, 1: bb54, otherwise: bb33]; // scope 11 at crates/relay-compiler/src/main.rs:63:33: 63:39
+    }
+
+    bb54: {
+        _0 = Poll::<()>::Pending;        // scope 11 at crates/relay-compiler/src/main.rs:63:33: 63:39
+        _151 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 11 at crates/relay-compiler/src/main.rs:63:33: 63:39
+        discriminant((*_151)) = 4;       // scope 11 at crates/relay-compiler/src/main.rs:63:33: 63:39
+        return;                          // scope 11 at crates/relay-compiler/src/main.rs:63:33: 63:39
+    }
+
+    bb55: {
+        _69 = move ((_64 as Ready).0: std::result::Result<relay_compiler::compiler_state::CompilerState, relay_compiler::errors::Error>); // scope 11 at crates/relay-compiler/src/main.rs:63:15: 63:39
+        _152 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 5 at crates/relay-compiler/src/main.rs:63:38: 63:39
+        drop((((*_152) as variant#4).3: impl std::future::Future<Output = std::result::Result<relay_compiler::compiler_state::CompilerState, relay_compiler::errors::Error>>)) -> [return: bb56, unwind: bb85]; // scope 5 at crates/relay-compiler/src/main.rs:63:38: 63:39
+    }
+
+    bb56: {
+        _70 = discriminant(_69);         // scope 5 at crates/relay-compiler/src/main.rs:63:15: 63:39
+        switchInt(move _70) -> [0: bb58, 1: bb57, otherwise: bb33]; // scope 5 at crates/relay-compiler/src/main.rs:63:9: 63:39
+    }
+
+    bb57: {
+        _83 = move ((_69 as Err).0: relay_compiler::errors::Error); // scope 5 at crates/relay-compiler/src/main.rs:67:17: 67:20
+        _84 = log::Level::Error;         // scope 16 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:65:14: 65:34
+        _87 = &_84;                      // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:15
+        _106 = const _;                  // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // + literal: Const { ty: &LevelFilter, val: Unevaluated(main::{closure#0}, [<resume_ty>, <yield_ty>, <return_ty>, <witness>, <upvars>], Some(promoted[5])) }
+        _86 = <Level as PartialOrd<LevelFilter>>::le(move _87, _106) -> [return: bb71, unwind: bb80]; // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:43
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:43
+                                         // + literal: Const { ty: for<'a, 'b> fn(&'a Level, &'b LevelFilter) -> bool {<Level as PartialOrd<LevelFilter>>::le}, val: Value(<ZST>) }
+    }
+
+    bb58: {
+        _71 = move ((_69 as Ok).0: relay_compiler::compiler_state::CompilerState); // scope 5 at crates/relay-compiler/src/main.rs:64:16: 64:31
+        _72 = log::Level::Info;          // scope 14 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:115:14: 115:33
+        _75 = &_72;                      // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:15
+        _103 = const _;                  // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // + literal: Const { ty: &LevelFilter, val: Unevaluated(main::{closure#0}, [<resume_ty>, <yield_ty>, <return_ty>, <witness>, <upvars>], Some(promoted[2])) }
+        _74 = <Level as PartialOrd<LevelFilter>>::le(move _75, _103) -> [return: bb62, unwind: bb81]; // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:43
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:43
+                                         // + literal: Const { ty: for<'a, 'b> fn(&'a Level, &'b LevelFilter) -> bool {<Level as PartialOrd<LevelFilter>>::le}, val: Value(<ZST>) }
+    }
+
+    bb59: {
+        _73 = const false;               // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+        goto -> bb61;                    // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb60: {
+        _77 = &_72;                      // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:50
+        _79 = max_level() -> [return: bb63, unwind: bb81]; // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:71
+                                         // + literal: Const { ty: fn() -> LevelFilter {max_level}, val: Value(<ZST>) }
+    }
+
+    bb61: {
+        switchInt(move _73) -> [0: bb67, otherwise: bb65]; // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb62: {
+        switchInt(move _74) -> [0: bb59, otherwise: bb60]; // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb63: {
+        _78 = &_79;                      // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+        _76 = <Level as PartialOrd<LevelFilter>>::le(move _77, move _78) -> [return: bb64, unwind: bb81]; // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:73
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:73
+                                         // + literal: Const { ty: for<'a, 'b> fn(&'a Level, &'b LevelFilter) -> bool {<Level as PartialOrd<LevelFilter>>::le}, val: Value(<ZST>) }
+    }
+
+    bb64: {
+        _73 = move _76;                  // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+        goto -> bb61;                    // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb65: {
+        _102 = const _;                  // scope 15 at crates/relay-compiler/src/main.rs:65:23: 65:29
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:65:23: 65:29
+                                         // + literal: Const { ty: &[&str; 1], val: Unevaluated(main::{closure#0}, [<resume_ty>, <yield_ty>, <return_ty>, <witness>, <upvars>], Some(promoted[1])) }
+        _82 = _102 as &[&str] (Pointer(Unsize)); // scope 15 at crates/relay-compiler/src/main.rs:65:23: 65:29
+        _81 = Arguments::<'_>::new_const(move _82) -> [return: bb66, unwind: bb81]; // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+                                         // + user_ty: UserType(8)
+                                         // + literal: Const { ty: fn(&[&'static str]) -> Arguments<'_> {Arguments::<'_>::new_const}, val: Value(<ZST>) }
+    }
+
+    bb66: {
+        _101 = const _;                  // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+                                         // + literal: Const { ty: &(&str, &str, &str, u32), val: Unevaluated(main::{closure#0}, [<resume_ty>, <yield_ty>, <return_ty>, <witness>, <upvars>], Some(promoted[0])) }
+        _80 = __private_api_log(move _81, _72, _101) -> [return: bb152, unwind: bb81]; // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 39:14
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 35:38
+                                         // + literal: Const { ty: for<'a, 'b, 'c> fn(Arguments<'a>, Level, &'b (&'c str, &'static str, &'static str, u32)) {__private_api_log}, val: Value(<ZST>) }
+    }
+
+    bb67: {
+        _113 = const ();                 // scope 14 at crates/relay-compiler/src/main.rs:64:36: 66:14
+        drop(_71) -> [return: bb78, unwind: bb85]; // scope 5 at crates/relay-compiler/src/main.rs:66:13: 66:14
+    }
+
+    bb68: {
+        _85 = const false;               // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+        goto -> bb70;                    // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb69: {
+        _89 = &_84;                      // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:50
+        _91 = max_level() -> [return: bb72, unwind: bb80]; // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:71
+                                         // + literal: Const { ty: fn() -> LevelFilter {max_level}, val: Value(<ZST>) }
+    }
+
+    bb70: {
+        switchInt(move _85) -> [0: bb77, otherwise: bb74]; // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb71: {
+        switchInt(move _86) -> [0: bb68, otherwise: bb69]; // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb72: {
+        _90 = &_91;                      // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+        _88 = <Level as PartialOrd<LevelFilter>>::le(move _89, move _90) -> [return: bb73, unwind: bb80]; // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:73
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:73
+                                         // + literal: Const { ty: for<'a, 'b> fn(&'a Level, &'b LevelFilter) -> bool {<Level as PartialOrd<LevelFilter>>::le}, val: Value(<ZST>) }
+    }
+
+    bb73: {
+        _85 = move _88;                  // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+        goto -> bb70;                    // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb74: {
+        _105 = const _;                  // scope 17 at crates/relay-compiler/src/main.rs:68:24: 68:28
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:68:24: 68:28
+                                         // + literal: Const { ty: &[&str; 1], val: Unevaluated(main::{closure#0}, [<resume_ty>, <yield_ty>, <return_ty>, <witness>, <upvars>], Some(promoted[4])) }
+        _94 = _105 as &[&str] (Pointer(Unsize)); // scope 17 at crates/relay-compiler/src/main.rs:68:24: 68:28
+        _99 = &_83;                      // scope 17 at crates/relay-compiler/src/main.rs:68:30: 68:33
+        _98 = core::fmt::ArgumentV1::<'_>::new_display::<relay_compiler::errors::Error>(_99) -> [return: bb75, unwind: bb80]; // scope 17 at crates/relay-compiler/src/main.rs:68:25: 68:27
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:68:25: 68:27
+                                         // + user_ty: UserType(10)
+                                         // + literal: Const { ty: for<'b> fn(&'b relay_compiler::errors::Error) -> core::fmt::ArgumentV1<'b> {core::fmt::ArgumentV1::<'_>::new_display::<relay_compiler::errors::Error>}, val: Value(<ZST>) }
+    }
+
+    bb75: {
+        _97 = [move _98];                // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+        _96 = &_97;                      // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+        _95 = _96 as &[core::fmt::ArgumentV1<'_>] (Pointer(Unsize)); // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+        _93 = Arguments::<'_>::new_v1(move _94, move _95) -> [return: bb76, unwind: bb80]; // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+                                         // + user_ty: UserType(9)
+                                         // + literal: Const { ty: fn(&[&'static str], &[core::fmt::ArgumentV1<'_>]) -> Arguments<'_> {Arguments::<'_>::new_v1}, val: Value(<ZST>) }
+    }
+
+    bb76: {
+        _104 = const _;                  // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+                                         // + literal: Const { ty: &(&str, &str, &str, u32), val: Unevaluated(main::{closure#0}, [<resume_ty>, <yield_ty>, <return_ty>, <witness>, <upvars>], Some(promoted[3])) }
+        _92 = __private_api_log(move _93, _84, _104) -> [return: bb153, unwind: bb80]; // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 39:14
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 35:38
+                                         // + literal: Const { ty: for<'a, 'b, 'c> fn(Arguments<'a>, Level, &'b (&'c str, &'static str, &'static str, u32)) {__private_api_log}, val: Value(<ZST>) }
+    }
+
+    bb77: {
+        _100 = exit(const 1_i32) -> bb80; // scope 16 at crates/relay-compiler/src/main.rs:69:17: 69:38
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:69:17: 69:35
+                                         // + literal: Const { ty: fn(i32) -> ! {exit}, val: Value(<ZST>) }
+    }
+
+    bb78: {
+        _153 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 4 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop((((*_153) as variant#3).2: relay_compiler::compiler::Compiler<common::NoopPerfLogger>)) -> [return: bb79, unwind: bb140]; // scope 4 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb79: {
+        _154 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        (((*_154) as variant#3).6: bool) = const false; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        _155 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        (((*_155) as variant#3).7: bool) = const false; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        _172 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        _111 = discriminant(((((*_172) as variant#3).0: Opt).1: std::option::Option<std::path::PathBuf>)); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt(move _111) -> [1: bb98, otherwise: bb97]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb80 (cleanup): {
+        drop(_83) -> [return: bb85, unwind terminate]; // scope 5 at crates/relay-compiler/src/main.rs:70:13: 70:14
+    }
+
+    bb81 (cleanup): {
+        drop(_71) -> [return: bb85, unwind terminate]; // scope 5 at crates/relay-compiler/src/main.rs:66:13: 66:14
+    }
+
+    bb82 (cleanup): {
+        _159 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 5 at crates/relay-compiler/src/main.rs:63:38: 63:39
+        drop((((*_159) as variant#4).3: impl std::future::Future<Output = std::result::Result<relay_compiler::compiler_state::CompilerState, relay_compiler::errors::Error>>)) -> [return: bb85, unwind terminate]; // scope 5 at crates/relay-compiler/src/main.rs:63:38: 63:39
+    }
+
+    bb83 (cleanup): {
+        drop(_43) -> [return: bb85, unwind terminate]; // scope 5 at crates/relay-compiler/src/main.rs:61:9: 61:10
+    }
+
+    bb84 (cleanup): {
+        _160 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 6 at crates/relay-compiler/src/main.rs:58:48: 58:49
+        drop((((*_160) as variant#3).3: impl std::future::Future<Output = std::result::Result<(), relay_compiler::errors::Error>>)) -> [return: bb85, unwind terminate]; // scope 6 at crates/relay-compiler/src/main.rs:58:48: 58:49
+    }
+
+    bb85 (cleanup): {
+        _161 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 4 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop((((*_161) as variant#3).2: relay_compiler::compiler::Compiler<common::NoopPerfLogger>)) -> [return: bb140, unwind terminate]; // scope 4 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb86 (cleanup): {
+        switchInt(_110) -> [0: bb87, otherwise: bb100]; // scope 4 at crates/relay-compiler/src/main.rs:55:84: 55:85
+    }
+
+    bb87 (cleanup): {
+        _110 = const false;              // scope 4 at crates/relay-compiler/src/main.rs:55:84: 55:85
+        goto -> bb140;                   // scope 4 at no-location
+    }
+
+    bb88 (cleanup): {
+        _162 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        (((*_162) as variant#3).6: bool) = const false; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        _163 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        (((*_163) as variant#3).7: bool) = const false; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        goto -> bb90;                    // scope 1 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb89 (cleanup): {
+        drop(_18) -> [return: bb90, unwind terminate]; // scope 1 at crates/relay-compiler/src/main.rs:46:5: 46:6
+    }
+
+    bb90 (cleanup): {
+        _217 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        _112 = discriminant(((((*_217) as variant#3).0: Opt).1: std::option::Option<std::path::PathBuf>)); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt(move _112) -> [1: bb143, otherwise: bb141]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb91 (cleanup): {
+        _164 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        (((*_164) as variant#3).4: bool) = const false; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        _165 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        (((*_165) as variant#3).5: bool) = const false; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        goto -> bb145;                   // scope 0 at no-location
+    }
+
+    bb92 (cleanup): {
+        drop(_5) -> [return: bb145, unwind terminate]; // scope 0 at crates/relay-compiler/src/main.rs:36:74: 36:75
+    }
+
+    bb93: {
+        _156 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        (((*_156) as variant#3).4: bool) = const false; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        _157 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        (((*_157) as variant#3).5: bool) = const false; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        _0 = Poll::<()>::Ready(move _113); // scope 0 at crates/relay-compiler/src/main.rs:34:15: 34:15
+        _158 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:34:15: 34:15
+        discriminant((*_158)) = 1;       // scope 0 at crates/relay-compiler/src/main.rs:34:15: 34:15
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:34:15: 34:15
+    }
+
+    bb94 (cleanup): {
+        _167 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_167) as variant#3).4: bool)) -> [0: bb91, otherwise: bb95]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb95 (cleanup): {
+        _166 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_166) as variant#3).0: Opt).2: relay_compiler::config::CliConfig)) -> [return: bb91, unwind terminate]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb96: {
+        _168 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_168) as variant#3).0: Opt).2: relay_compiler::config::CliConfig)) -> [return: bb93, unwind: bb91]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb97: {
+        _169 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_169) as variant#3).4: bool)) -> [0: bb93, otherwise: bb96]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb98: {
+        _171 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_171) as variant#3).5: bool)) -> [0: bb97, otherwise: bb99]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb99: {
+        _170 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((((*_170) as variant#3).0: Opt).1: std::option::Option<std::path::PathBuf>) as Some).0: std::path::PathBuf)) -> [return: bb97, unwind: bb94]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb100 (cleanup): {
+        drop(_27) -> [return: bb87, unwind terminate]; // scope 4 at crates/relay-compiler/src/main.rs:55:84: 55:85
+    }
+
+    bb101 (cleanup): {
+        _173 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_173) as variant#3).1: relay_compiler::config::Config).22: std::option::Option<std::string::String>)) -> [return: bb88, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb102 (cleanup): {
+        _174 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_174) as variant#3).6: bool)) -> [0: bb88, otherwise: bb101]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb103 (cleanup): {
+        _175 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_175) as variant#3).1: relay_compiler::config::Config).21: std::boxed::Box<dyn relay_compiler::status_reporter::StatusReporter + std::marker::Send + std::marker::Sync>)) -> [return: bb102, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb104 (cleanup): {
+        _176 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_176) as variant#3).6: bool)) -> [0: bb102, otherwise: bb103]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb105 (cleanup): {
+        _177 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_177) as variant#3).1: relay_compiler::config::Config).20: std::option::Option<std::boxed::Box<dyn for<'a> std::ops::Fn(&'a graphql_ir::program::Program) -> std::result::Result<(), std::vec::Vec<common::Diagnostic>> + std::marker::Send + std::marker::Sync>>)) -> [return: bb104, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb106 (cleanup): {
+        _178 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_178) as variant#3).6: bool)) -> [0: bb104, otherwise: bb105]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb107 (cleanup): {
+        _179 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_179) as variant#3).1: relay_compiler::config::Config).19: std::option::Option<std::boxed::Box<dyn for<'a> std::ops::Fn(&'a relay_compiler::config::Config) -> std::result::Result<(), std::boxed::Box<dyn std::error::Error + std::marker::Send + std::marker::Sync>> + std::marker::Send + std::marker::Sync>>)) -> [return: bb106, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb108 (cleanup): {
+        _180 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_180) as variant#3).6: bool)) -> [0: bb106, otherwise: bb107]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb109 (cleanup): {
+        _182 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_182) as variant#3).7: bool)) -> [0: bb108, otherwise: bb110]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb110 (cleanup): {
+        _181 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_181) as variant#3).1: relay_compiler::config::Config).18: std::option::Option<std::boxed::Box<dyn relay_compiler::OperationPersister + std::marker::Send + std::marker::Sync>>)) -> [return: bb108, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb111 (cleanup): {
+        _183 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_183) as variant#3).1: relay_compiler::config::Config).17: std::string::String)) -> [return: bb109, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb112 (cleanup): {
+        _184 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_184) as variant#3).6: bool)) -> [0: bb109, otherwise: bb111]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb113 (cleanup): {
+        _185 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_185) as variant#3).1: relay_compiler::config::Config).16: std::option::Option<std::boxed::Box<dyn relay_compiler::saved_state::SavedStateLoader + std::marker::Send + std::marker::Sync>>)) -> [return: bb112, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb114 (cleanup): {
+        _186 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_186) as variant#3).6: bool)) -> [0: bb112, otherwise: bb113]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb115 (cleanup): {
+        _187 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_187) as variant#3).1: relay_compiler::config::Config).15: std::option::Option<watchman_client::pdu::ScmAwareClockData>)) -> [return: bb114, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb116 (cleanup): {
+        _188 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_188) as variant#3).6: bool)) -> [0: bb114, otherwise: bb115]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb117 (cleanup): {
+        _189 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_189) as variant#3).1: relay_compiler::config::Config).11: std::boxed::Box<dyn relay_compiler::ArtifactWriter + std::marker::Send + std::marker::Sync>)) -> [return: bb116, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb118 (cleanup): {
+        _190 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_190) as variant#3).6: bool)) -> [0: bb116, otherwise: bb117]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb119 (cleanup): {
+        _191 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_191) as variant#3).1: relay_compiler::config::Config).10: std::option::Option<std::boxed::Box<dyn for<'a, 'b, 'c> std::ops::Fn(&'a relay_compiler::config::ProjectConfig, &'b schema::schema::SDLSchema, &'c graphql_ir::ir::OperationDefinition) -> relay_compiler::Artifact + std::marker::Send + std::marker::Sync>>)) -> [return: bb118, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb120 (cleanup): {
+        _192 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_192) as variant#3).6: bool)) -> [0: bb118, otherwise: bb119]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb121 (cleanup): {
+        _193 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_193) as variant#3).1: relay_compiler::config::Config).9: std::option::Option<std::boxed::Box<dyn for<'a, 'b, 'c> std::ops::Fn(&'a relay_compiler::config::ProjectConfig, &'b schema::schema::SDLSchema, &'c graphql_ir::ir::FragmentDefinition) -> relay_compiler::Artifact + std::marker::Send + std::marker::Sync>>)) -> [return: bb120, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb122 (cleanup): {
+        _194 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_194) as variant#3).6: bool)) -> [0: bb120, otherwise: bb121]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb123 (cleanup): {
+        _195 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_195) as variant#3).1: relay_compiler::config::Config).8: std::option::Option<std::boxed::Box<dyn for<'a, 'b, 'c> std::ops::Fn(&'a relay_compiler::config::ProjectConfig, &'b schema::schema::SDLSchema, &'c relay_compiler::Artifact) -> std::vec::Vec<relay_compiler::Artifact> + std::marker::Send + std::marker::Sync>>)) -> [return: bb122, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb124 (cleanup): {
+        _196 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_196) as variant#3).6: bool)) -> [0: bb122, otherwise: bb123]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb125 (cleanup): {
+        _197 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_197) as variant#3).1: relay_compiler::config::Config).7: std::option::Option<std::path::PathBuf>)) -> [return: bb124, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb126 (cleanup): {
+        _198 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_198) as variant#3).6: bool)) -> [0: bb124, otherwise: bb125]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb127 (cleanup): {
+        _199 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_199) as variant#3).1: relay_compiler::config::Config).6: std::option::Option<std::string::String>)) -> [return: bb126, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb128 (cleanup): {
+        _200 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_200) as variant#3).6: bool)) -> [0: bb126, otherwise: bb127]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb129 (cleanup): {
+        _201 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_201) as variant#3).1: relay_compiler::config::Config).5: std::vec::Vec<std::string::String>)) -> [return: bb128, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb130 (cleanup): {
+        _202 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_202) as variant#3).6: bool)) -> [0: bb128, otherwise: bb129]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb131 (cleanup): {
+        _203 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_203) as variant#3).1: relay_compiler::config::Config).4: indexmap::map::IndexMap<interner::bytes::StringKey, relay_compiler::config::ProjectConfig, std::hash::BuildHasherDefault<fnv::FnvHasher>>)) -> [return: bb130, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb132 (cleanup): {
+        _204 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_204) as variant#3).6: bool)) -> [0: bb130, otherwise: bb131]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb133 (cleanup): {
+        _205 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_205) as variant#3).1: relay_compiler::config::Config).3: std::vec::Vec<std::string::String>)) -> [return: bb132, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb134 (cleanup): {
+        _206 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_206) as variant#3).6: bool)) -> [0: bb132, otherwise: bb133]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb135 (cleanup): {
+        _207 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_207) as variant#3).1: relay_compiler::config::Config).2: indexmap::map::IndexMap<std::path::PathBuf, relay_compiler::compiler_state::SourceSet, std::hash::BuildHasherDefault<fnv::FnvHasher>>)) -> [return: bb134, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb136 (cleanup): {
+        _208 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_208) as variant#3).6: bool)) -> [0: bb134, otherwise: bb135]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb137 (cleanup): {
+        _209 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_209) as variant#3).1: relay_compiler::config::Config).1: std::path::PathBuf)) -> [return: bb136, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb138 (cleanup): {
+        _210 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_210) as variant#3).6: bool)) -> [0: bb136, otherwise: bb137]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb139 (cleanup): {
+        _211 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_211) as variant#3).1: relay_compiler::config::Config).0: std::option::Option<std::string::String>)) -> [return: bb138, unwind terminate]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb140 (cleanup): {
+        _212 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_212) as variant#3).6: bool)) -> [0: bb138, otherwise: bb139]; // scope 2 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb141 (cleanup): {
+        _214 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_214) as variant#3).4: bool)) -> [0: bb91, otherwise: bb142]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb142 (cleanup): {
+        _213 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((*_213) as variant#3).0: Opt).2: relay_compiler::config::CliConfig)) -> [return: bb91, unwind terminate]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb143 (cleanup): {
+        _216 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        switchInt((((*_216) as variant#3).5: bool)) -> [0: bb141, otherwise: bb144]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb144 (cleanup): {
+        _215 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+        drop(((((((*_215) as variant#3).0: Opt).1: std::option::Option<std::path::PathBuf>) as Some).0: std::path::PathBuf)) -> [return: bb141, unwind terminate]; // scope 0 at crates/relay-compiler/src/main.rs:73:1: 73:2
+    }
+
+    bb145 (cleanup): {
+        _218 = deref_copy (_1.0: &mut [async block@crates/relay-compiler/src/main.rs:34:1: 34:15]); // scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+        discriminant((*_218)) = 2;       // scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+        resume;                          // scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    }
+
+    bb146: {
+        _114 = move _2;                  // scope 7 at crates/relay-compiler/src/main.rs:58:43: 58:49
+        goto -> bb29;                    // scope 7 at crates/relay-compiler/src/main.rs:58:43: 58:49
+    }
+
+    bb147: {
+        _114 = move _2;                  // scope 11 at crates/relay-compiler/src/main.rs:63:33: 63:39
+        goto -> bb51;                    // scope 11 at crates/relay-compiler/src/main.rs:63:33: 63:39
+    }
+
+    bb148: {
+        assert(const false, "`async fn` resumed after panicking") -> bb148; // scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    }
+
+    bb149: {
+        assert(const false, "`async fn` resumed after completion") -> bb149; // scope 0 at crates/relay-compiler/src/main.rs:34:1: 34:15
+    }
+
+    bb150: {
+        goto -> bb18;                    // scope 3 at crates/relay-compiler/src/main.rs:41:9: 41:34
+    }
+
+    bb151: {
+        goto -> bb47;                    // scope 10 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 39:14
+    }
+
+    bb152: {
+        goto -> bb67;                    // scope 15 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 39:14
+    }
+
+    bb153: {
+        goto -> bb77;                    // scope 17 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 39:14
+    }
+}
+
+promoted[0] in main::{closure#0}: &(&str, &str, &str, u32) = {
+    let mut _0: &(&str, &str, &str, u32); // return place in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+    let mut _1: (&str, &str, &str, u32); // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:18: 38:79
+    let mut _2: &str;                    // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+    let mut _3: &str;                    // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+
+    bb0: {
+        _3 = const "relay";              // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _2 = &(*_3);                     // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+        _1 = (move _2, const "relay", const "crates/relay-compiler/src/main.rs", const 65_u32); // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:18: 38:79
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:65:17: 65:30
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _0 = &_1;                        // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+        return;                          // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+    }
+}
+
+promoted[1] in main::{closure#0}: &[&str; 1] = {
+    let mut _0: &[&str; 1];              // return place in scope 0 at crates/relay-compiler/src/main.rs:65:23: 65:29
+    let mut _1: [&str; 1];               // in scope 0 at crates/relay-compiler/src/main.rs:65:23: 65:29
+
+    bb0: {
+        _1 = [const "Done"];             // scope 0 at crates/relay-compiler/src/main.rs:65:23: 65:29
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:65:23: 65:29
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _0 = &_1;                        // scope 0 at crates/relay-compiler/src/main.rs:65:23: 65:29
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:65:23: 65:29
+    }
+}
+
+promoted[2] in main::{closure#0}: &LevelFilter = {
+    let mut _0: &log::LevelFilter;       // return place in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+    let mut _1: log::LevelFilter;        // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+
+    bb0: {
+        _1 = const _;                    // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // + literal: Const { ty: LevelFilter, val: Unevaluated(STATIC_MAX_LEVEL, [], None) }
+        _0 = &_1;                        // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+        return;                          // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+    }
+}
+
+promoted[3] in main::{closure#0}: &(&str, &str, &str, u32) = {
+    let mut _0: &(&str, &str, &str, u32); // return place in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+    let mut _1: (&str, &str, &str, u32); // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:18: 38:79
+    let mut _2: &str;                    // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+    let mut _3: &str;                    // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+
+    bb0: {
+        _3 = const "relay";              // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _2 = &(*_3);                     // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+        _1 = (move _2, const "relay", const "crates/relay-compiler/src/main.rs", const 68_u32); // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:18: 38:79
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:68:17: 68:34
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _0 = &_1;                        // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+        return;                          // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+    }
+}
+
+promoted[4] in main::{closure#0}: &[&str; 1] = {
+    let mut _0: &[&str; 1];              // return place in scope 0 at crates/relay-compiler/src/main.rs:68:24: 68:28
+    let mut _1: [&str; 1];               // in scope 0 at crates/relay-compiler/src/main.rs:68:24: 68:28
+
+    bb0: {
+        _1 = [const ""];                 // scope 0 at crates/relay-compiler/src/main.rs:68:24: 68:28
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:68:24: 68:28
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _0 = &_1;                        // scope 0 at crates/relay-compiler/src/main.rs:68:24: 68:28
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:68:24: 68:28
+    }
+}
+
+promoted[5] in main::{closure#0}: &LevelFilter = {
+    let mut _0: &log::LevelFilter;       // return place in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+    let mut _1: log::LevelFilter;        // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+
+    bb0: {
+        _1 = const _;                    // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // + literal: Const { ty: LevelFilter, val: Unevaluated(STATIC_MAX_LEVEL, [], None) }
+        _0 = &_1;                        // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+        return;                          // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+    }
+}
+
+promoted[6] in main::{closure#0}: &(&str, &str, &str, u32) = {
+    let mut _0: &(&str, &str, &str, u32); // return place in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+    let mut _1: (&str, &str, &str, u32); // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:18: 38:79
+    let mut _2: &str;                    // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+    let mut _3: &str;                    // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+
+    bb0: {
+        _3 = const "relay";              // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _2 = &(*_3);                     // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+        _1 = (move _2, const "relay", const "crates/relay-compiler/src/main.rs", const 59_u32); // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:18: 38:79
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:59:13: 59:30
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _0 = &_1;                        // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+        return;                          // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+    }
+}
+
+promoted[7] in main::{closure#0}: &[&str; 1] = {
+    let mut _0: &[&str; 1];              // return place in scope 0 at crates/relay-compiler/src/main.rs:59:20: 59:24
+    let mut _1: [&str; 1];               // in scope 0 at crates/relay-compiler/src/main.rs:59:20: 59:24
+
+    bb0: {
+        _1 = [const ""];                 // scope 0 at crates/relay-compiler/src/main.rs:59:20: 59:24
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:59:20: 59:24
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _0 = &_1;                        // scope 0 at crates/relay-compiler/src/main.rs:59:20: 59:24
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:59:20: 59:24
+    }
+}
+
+promoted[8] in main::{closure#0}: &LevelFilter = {
+    let mut _0: &log::LevelFilter;       // return place in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+    let mut _1: log::LevelFilter;        // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+
+    bb0: {
+        _1 = const _;                    // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // + literal: Const { ty: LevelFilter, val: Unevaluated(STATIC_MAX_LEVEL, [], None) }
+        _0 = &_1;                        // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+        return;                          // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+    }
+}
+
+fn main::{closure#0}::{closure#0}(_1: [closure@crates/relay-compiler/src/main.rs:48:51: 48:56], _2: relay_compiler::errors::Error) -> Config {
+    debug err => _2;                     // in scope 0 at crates/relay-compiler/src/main.rs:48:52: 48:55
+    let mut _0: relay_compiler::config::Config; // return place in scope 0 at crates/relay-compiler/src/main.rs:48:57: 48:57
+    let _3: log::Level;                  // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:33:13: 33:16
+    let mut _4: bool;                    // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    let mut _5: bool;                    // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:43
+    let mut _6: &log::Level;             // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:15
+    let mut _7: bool;                    // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:73
+    let mut _8: &log::Level;             // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:50
+    let mut _9: &log::LevelFilter;       // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+    let _10: log::LevelFilter;           // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+    let _11: ();                         // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 39:14
+    let mut _12: std::fmt::Arguments<'_>; // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+    let mut _13: &[&str];                // in scope 0 at crates/relay-compiler/src/main.rs:49:16: 49:20
+    let mut _14: &[core::fmt::ArgumentV1<'_>]; // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+    let _15: &[core::fmt::ArgumentV1<'_>; 1]; // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+    let _16: [core::fmt::ArgumentV1<'_>; 1]; // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+    let mut _17: core::fmt::ArgumentV1<'_>; // in scope 0 at crates/relay-compiler/src/main.rs:49:17: 49:19
+    let _18: &relay_compiler::errors::Error; // in scope 0 at crates/relay-compiler/src/main.rs:49:22: 49:25
+    let _19: !;                          // in scope 0 at crates/relay-compiler/src/main.rs:50:9: 50:30
+    scope 1 {
+        debug lvl => _3;                 // in scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:33:13: 33:16
+        let mut _20: &(&str, &str, &str, u32); // in scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+        let mut _21: &[&str; 1];         // in scope 1 at crates/relay-compiler/src/main.rs:49:16: 49:20
+        let mut _22: &log::LevelFilter;  // in scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+    }
+
+    bb0: {
+        _3 = log::Level::Error;          // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:65:14: 65:34
+        _6 = &_3;                        // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:15
+        _22 = const _;                   // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // + literal: Const { ty: &LevelFilter, val: Unevaluated(main::{closure#0}::{closure#0}, [<closure_kind>, <closure_signature>, <upvars>], Some(promoted[2])) }
+        _5 = <Level as PartialOrd<LevelFilter>>::le(move _6, _22) -> [return: bb4, unwind: bb11]; // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:43
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:43
+                                         // + literal: Const { ty: for<'a, 'b> fn(&'a Level, &'b LevelFilter) -> bool {<Level as PartialOrd<LevelFilter>>::le}, val: Value(<ZST>) }
+    }
+
+    bb1: {
+        _4 = const false;                // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+        goto -> bb3;                     // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb2: {
+        _8 = &_3;                        // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:50
+        _10 = max_level() -> [return: bb5, unwind: bb11]; // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:71
+                                         // + literal: Const { ty: fn() -> LevelFilter {max_level}, val: Value(<ZST>) }
+    }
+
+    bb3: {
+        switchInt(move _4) -> [0: bb10, otherwise: bb7]; // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb4: {
+        switchInt(move _5) -> [0: bb1, otherwise: bb2]; // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb5: {
+        _9 = &_10;                       // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:54: 34:73
+        _7 = <Level as PartialOrd<LevelFilter>>::le(move _8, move _9) -> [return: bb6, unwind: bb11]; // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:73
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:47: 34:73
+                                         // + literal: Const { ty: for<'a, 'b> fn(&'a Level, &'b LevelFilter) -> bool {<Level as PartialOrd<LevelFilter>>::le}, val: Value(<ZST>) }
+    }
+
+    bb6: {
+        _4 = move _7;                    // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+        goto -> bb3;                     // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:12: 34:73
+    }
+
+    bb7: {
+        _21 = const _;                   // scope 1 at crates/relay-compiler/src/main.rs:49:16: 49:20
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:49:16: 49:20
+                                         // + literal: Const { ty: &[&str; 1], val: Unevaluated(main::{closure#0}::{closure#0}, [<closure_kind>, <closure_signature>, <upvars>], Some(promoted[1])) }
+        _13 = _21 as &[&str] (Pointer(Unsize)); // scope 1 at crates/relay-compiler/src/main.rs:49:16: 49:20
+        _18 = &_2;                       // scope 1 at crates/relay-compiler/src/main.rs:49:22: 49:25
+        _17 = core::fmt::ArgumentV1::<'_>::new_display::<relay_compiler::errors::Error>(_18) -> [return: bb8, unwind: bb11]; // scope 1 at crates/relay-compiler/src/main.rs:49:17: 49:19
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:49:17: 49:19
+                                         // + user_ty: UserType(1)
+                                         // + literal: Const { ty: for<'b> fn(&'b relay_compiler::errors::Error) -> core::fmt::ArgumentV1<'b> {core::fmt::ArgumentV1::<'_>::new_display::<relay_compiler::errors::Error>}, val: Value(<ZST>) }
+    }
+
+    bb8: {
+        _16 = [move _17];                // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+        _15 = &_16;                      // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+        _14 = _15 as &[core::fmt::ArgumentV1<'_>] (Pointer(Unsize)); // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+        _12 = Arguments::<'_>::new_v1(move _13, move _14) -> [return: bb9, unwind: bb11]; // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:224:9: 224:32
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn(&[&'static str], &[core::fmt::ArgumentV1<'_>]) -> Arguments<'_> {Arguments::<'_>::new_v1}, val: Value(<ZST>) }
+    }
+
+    bb9: {
+        _20 = const _;                   // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+                                         // + literal: Const { ty: &(&str, &str, &str, u32), val: Unevaluated(main::{closure#0}::{closure#0}, [<closure_kind>, <closure_signature>, <upvars>], Some(promoted[0])) }
+        _11 = __private_api_log(move _12, _3, _20) -> [return: bb13, unwind: bb11]; // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 39:14
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 35:38
+                                         // + literal: Const { ty: for<'a, 'b, 'c> fn(Arguments<'a>, Level, &'b (&'c str, &'static str, &'static str, u32)) {__private_api_log}, val: Value(<ZST>) }
+    }
+
+    bb10: {
+        _19 = exit(const 1_i32) -> bb11; // scope 0 at crates/relay-compiler/src/main.rs:50:9: 50:30
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:50:9: 50:27
+                                         // + literal: Const { ty: fn(i32) -> ! {exit}, val: Value(<ZST>) }
+    }
+
+    bb11 (cleanup): {
+        drop(_2) -> [return: bb12, unwind terminate]; // scope 0 at crates/relay-compiler/src/main.rs:51:5: 51:6
+    }
+
+    bb12 (cleanup): {
+        resume;                          // scope 0 at crates/relay-compiler/src/main.rs:48:51: 51:6
+    }
+
+    bb13: {
+        goto -> bb10;                    // scope 1 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:35:13: 39:14
+    }
+}
+
+promoted[0] in main::{closure#0}::{closure#0}: &(&str, &str, &str, u32) = {
+    let mut _0: &(&str, &str, &str, u32); // return place in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+    let mut _1: (&str, &str, &str, u32); // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:18: 38:79
+    let mut _2: &str;                    // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+    let mut _3: &str;                    // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+
+    bb0: {
+        _3 = const "relay";              // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _2 = &(*_3);                     // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+        _1 = (move _2, const "relay", const "crates/relay-compiler/src/main.rs", const 49_u32); // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:18: 38:79
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:232:9: 232:23
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:49:9: 49:26
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _0 = &_1;                        // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+        return;                          // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:38:17: 38:79
+    }
+}
+
+promoted[1] in main::{closure#0}::{closure#0}: &[&str; 1] = {
+    let mut _0: &[&str; 1];              // return place in scope 0 at crates/relay-compiler/src/main.rs:49:16: 49:20
+    let mut _1: [&str; 1];               // in scope 0 at crates/relay-compiler/src/main.rs:49:16: 49:20
+
+    bb0: {
+        _1 = [const ""];                 // scope 0 at crates/relay-compiler/src/main.rs:49:16: 49:20
+                                         // mir::Constant
+                                         // + span: crates/relay-compiler/src/main.rs:49:16: 49:20
+                                         // + literal: Const { ty: &str, val: Value(Slice(..)) }
+        _0 = &_1;                        // scope 0 at crates/relay-compiler/src/main.rs:49:16: 49:20
+        return;                          // scope 0 at crates/relay-compiler/src/main.rs:49:16: 49:20
+    }
+}
+
+promoted[2] in main::{closure#0}::{closure#0}: &LevelFilter = {
+    let mut _0: &log::LevelFilter;       // return place in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+    let mut _1: log::LevelFilter;        // in scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+
+    bb0: {
+        _1 = const _;                    // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // mir::Constant
+                                         // + span: /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+                                         // + literal: Const { ty: LevelFilter, val: Unevaluated(STATIC_MAX_LEVEL, [], None) }
+        _0 = &_1;                        // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+        return;                          // scope 0 at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/macros.rs:34:19: 34:43
+    }
+}

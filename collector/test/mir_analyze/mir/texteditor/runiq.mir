@@ -2271,7 +2271,7 @@ fn main() -> Result<(), std::io::Error> {
                             scope 7 {
                                 debug stdout => _16;
                                 let mut _20: std::vec::IntoIter<std::boxed::Box<dyn std::io::Read>>;
-                                let _80: std::result::Result<std::convert::Infallible, std::io::Error>; 
+                                let _80: std::result::Result<std::convert::Infallible, std::io::Error>;
                                 scope 8 {
                                     debug iter => _20;
                                     let _24: std::boxed::Box<dyn std::io::Read>;

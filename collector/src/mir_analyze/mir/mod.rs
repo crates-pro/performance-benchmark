@@ -9,3 +9,7 @@ pub(super) mod scope;
 pub(super) mod statement;
 pub(super) mod terminator;
 pub(super) mod ty;
+pub(super) mod function_pattern;
+pub(super) mod io_function;
+pub(super) mod parallelism;
+pub(super) mod oop_pattern;

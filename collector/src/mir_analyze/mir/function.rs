@@ -1,9 +1,9 @@
 use super::{
     basic_block::BasicBlocks,
     mir::{LocalID, ModuledIdentifier},
+    operand::Operand,
     scope::{LocalDefs, Scopes, VarDebugInfos},
     ty::Ty,
-    operand::Operand,
 };
 
 #[derive(Debug)]
@@ -54,22 +54,4 @@ pub struct FunctionName {
 #[derive(Debug)]
 pub struct StaticStruct {
     pub body: Function,
-}
-
-pub type AllocParams = Vec<AllocParam>;
-#[derive(Debug)]
-pub struct AllocParam {
-    pub name: String,
-    pub val: ModuledIdentifier,
-}
-
-/*#[derive(Debug)]
-pub struct AllocStruct {
-    pub label: String,
-    pub align: String,
-    pub size: String,
-}*/
-#[derive(Debug)]
-pub struct AllocStruct{
-    pub label: String,
 }

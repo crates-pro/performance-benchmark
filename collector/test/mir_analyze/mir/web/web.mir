@@ -1,0 +1,55 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn main() -> Result<(), anyhow::Error> {
+    let mut _0: std::result::Result<(), anyhow::Error>;
+    let mut _1: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, anyhow::Error>>;
+    let mut _2: std::result::Result<(), anyhow::Error>;
+    let mut _3: static_web_server::Server;
+    let mut _4: isize;
+    let _5: std::result::Result<std::convert::Infallible, anyhow::Error>;
+    scope 1 {
+        debug residual => _5;
+        scope 2 {
+        }
+    }
+    scope 3 {
+        debug val => const ();
+        scope 4 {
+        }
+    }
+
+    bb0: {
+        _3 = Server::new() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = Server::run(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _1 = <Result<(), anyhow::Error> as Try>::branch(move _2) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _4 = discriminant(_1);
+        switchInt(move _4) -> [0: bb4, 1: bb6, otherwise: bb5];
+    }
+
+    bb4: {
+        _0 = Result::<(), anyhow::Error>::Ok(const ());
+        goto -> bb7;
+    }
+
+    bb5: {
+        unreachable;
+    }
+
+    bb6: {
+        _5 = move ((_1 as Break).0: std::result::Result<std::convert::Infallible, anyhow::Error>);
+        _0 = <Result<(), anyhow::Error> as FromResidual<Result<Infallible, anyhow::Error>>>::from_residual(move _5) -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        return;
+    }
+}

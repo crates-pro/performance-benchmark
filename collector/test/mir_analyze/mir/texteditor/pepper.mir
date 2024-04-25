@@ -2151,7 +2151,7 @@ fn sys::main() -> () {
         return;
     }
 }
-
+ 
 fn errno() -> i32 {
     let mut _0: i32;
     let mut _1: *mut i32;
@@ -2709,7 +2709,7 @@ fn sys::<impl at src/platforms/linux.rs:123:1: 123:11>::remove(_1: &Epoll, _2: i
     }
 }
 
-fn sys::<impl at src/platforms/linux.rs:123:1: 123:11>::wait(_1: &Epoll, _2: &mut EpollEvents, _3: Option<Duration>) -> Map<std::slice::Iter<'_, epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}> {
+ fn sys::<impl at src/platforms/linux.rs:123:1: 123:11>::wait(_1: &Epoll, _2: &mut EpollEvents, _3: Option<Duration>) -> Map<std::slice::Iter<'_, epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}> {
     debug self => _1;
     debug events => _2;
     debug timeout => _3;

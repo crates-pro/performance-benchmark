@@ -186,7 +186,7 @@ fn print_help(_1: &str, _2: Options) -> () {
         _17 = core::fmt::rt::Alignment::Unknown;
         _18 = core::fmt::rt::Count::Implied;
         _19 = core::fmt::rt::Count::Implied;
-        _16 = core::fmt::rt::Placeholder::new(const 0_usize, const ' ', move _17, const 0_u32, move _18, move _19) -> [return: bb3, unwind: bb19];
+         _16 = core::fmt::rt::Placeholder::new(const 0_usize, const ' ', move _17, const 0_u32, move _18, move _19) -> [return: bb3, unwind: bb19];
     }
 
     bb3: {

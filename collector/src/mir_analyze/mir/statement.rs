@@ -1,4 +1,4 @@
-use super::{mir::LocalID, place::Place, rvalue::Rvalue,operand::Operand};
+use super::{mir::LocalID, operand::Operand, place::Place, rvalue::Rvalue};
 
 #[derive(Debug)]
 pub enum Statement {

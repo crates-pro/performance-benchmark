@@ -15,13 +15,13 @@ pub enum Rvalue {
     Repeat(Repeat),
     AddressOf(AddressOf),
     NULL,
-    BoxArray(BoxArray)
+    BoxArray(BoxArray),
 }
 
 #[derive(Debug)]
-pub struct  BoxArray {
+pub struct BoxArray {
     pub ty: Ty,
-    pub array_size: String
+    pub array_size: String,
 }
 
 #[derive(Debug)]
@@ -113,7 +113,7 @@ pub enum PointerCoercion {
     Unsize,
 }
 
- #[derive(Debug)]
+#[derive(Debug)]
 pub enum Unsafety {
     Unsafe,
     Normal,

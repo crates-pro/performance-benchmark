@@ -5,7 +5,16 @@ use std::{
 
 use lalrpop_util::lalrpop_mod;
 
-use super::{basic_block, mir::{MIRs, ModuledIdentifier}, terminator::Terminator,scope::Scope, function_pattern::*, io_function::*, parallelism::*, oop_pattern::*};
+use super::{
+    basic_block,
+    function_pattern::*,
+    io_function::*,
+    mir::{MIRs, ModuledIdentifier},
+    oop_pattern::*,
+    parallelism::*,
+    scope::Scope,
+    terminator::Terminator,
+};
 
 lalrpop_mod!(pub mir_parser, "/mir_analyze/mir/mir.rs");
 
@@ -18,8 +27,6 @@ pub fn parse_mir(mir_file: File) -> anyhow::Result<MIRs> {
         Err(e) => panic!("{}", e),
     }
 }
-
-
 
 #[test]
 fn test_dev() {
@@ -116,7 +123,8 @@ fn test_systemstat() {
 }
 #[test]
 fn test_system76() {
-    let test_file = File::open("test/mir_analyze/mir/system_programing/system76-power.mir").unwrap();
+    let test_file =
+        File::open("test/mir_analyze/mir/system_programing/system76-power.mir").unwrap();
     let result = parse_mir(test_file).unwrap();
 
     println!("{:?}", result);
@@ -275,13 +283,15 @@ fn test_graph() {
 }
 #[test]
 fn test_diem_client() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/diem_core/diem_client.mir").unwrap();
+    let test_file =
+        File::open("test/mir_analyze/mir/blockchain/diem_core/diem_client.mir").unwrap();
     let result = parse_mir(test_file).unwrap();
     println!("{:?}", result);
 }
 #[test]
 fn test_diem_wallet() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/diem_core/diem_wallet.mir").unwrap();
+    let test_file =
+        File::open("test/mir_analyze/mir/blockchain/diem_core/diem_wallet.mir").unwrap();
     let result = parse_mir(test_file).unwrap();
     println!("{:?}", result);
 }
@@ -347,9 +357,8 @@ fn test_create_key_addr() {
 }
 #[test]
 fn test_chain_executor_mock() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/cita/chain_executor_mock.mir").unwrap();
+    let test_file =
+        File::open("test/mir_analyze/mir/blockchain/cita/chain_executor_mock.mir").unwrap();
     let result = parse_mir(test_file).unwrap();
     println!("{:?}", result);
 }
-
-

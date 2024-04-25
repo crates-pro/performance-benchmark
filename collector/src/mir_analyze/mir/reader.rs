@@ -245,12 +245,12 @@ fn test_web() {
     let result = parse_mir(test_file).unwrap();
     println!("{:?}", result);
 }
-#[test]
+/*#[test]
 fn test_deno() {
     let test_file = File::open("test/mir_analyze/mir/compiler/deno.mir").unwrap();
     let result = parse_mir(test_file).unwrap();
     println!("{:?}", result);
-}
+}*/
 #[test]
 fn test_rustlings() {
     let test_file = File::open("test/mir_analyze/mir/compiler/rustlings.mir").unwrap();

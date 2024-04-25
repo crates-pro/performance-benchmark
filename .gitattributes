@@ -1,0 +1,1 @@
+collector/test/mir_analyze/mir/compiler/deno.mir filter=lfs diff=lfs merge=lfs -text

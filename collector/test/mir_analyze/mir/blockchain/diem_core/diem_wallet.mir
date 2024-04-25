@@ -1,3 +1,5219 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:afad25d9b7840e15e59abacf2342eae46475e81842396c527010a10fc37ab119
-size 184689
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn error::<impl at testsuite/cli/diem-wallet/src/error.rs:9:10: 9:15>::fmt(_1: &WalletError, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug f => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let _3: &std::string::String;
+    let _4: &str;
+    let mut _5: &dyn std::fmt::Debug;
+    let _6: &&std::string::String;
+    scope 1 {
+        debug __self_0 => _3;
+    }
+
+    bb0: {
+        _3 = &(((*_1) as DiemWalletGeneric).0: std::string::String);
+        _4 = const "DiemWalletGeneric";
+        _6 = &_3;
+        _5 = _6 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _0 = Formatter::<'_>::debug_tuple_field1_finish(_2, _4, move _5) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn error::<impl at testsuite/cli/diem-wallet/src/error.rs:9:17: 9:22>::fmt(_1: &WalletError, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug __formatter => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let mut _4: std::fmt::Arguments<'_>;
+    let mut _5: &[&str];
+    let mut _6: &[core::fmt::rt::Argument<'_>];
+    let _7: &[core::fmt::rt::Argument<'_>; 1];
+    let _8: [core::fmt::rt::Argument<'_>; 1];
+    let mut _9: core::fmt::rt::Argument<'_>;
+    let _10: &&std::string::String;
+    let _11: &std::string::String;
+    let mut _12: &&std::string::String;
+    scope 1 {
+        let _3: &std::string::String;
+        scope 2 {
+            debug _0 => _3;
+            let mut _13: &[&str; 1];
+        }
+    }
+
+    bb0: {
+        _3 = &(((*_1) as DiemWalletGeneric).0: std::string::String);
+        _13 = const _;
+        _5 = _13 as &[&str] (PointerCoercion(Unsize));
+        _12 = &_3;
+        _11 = <&std::string::String as DisplayAsDisplay>::as_display(move _12) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _10 = &_11;
+        _9 = core::fmt::rt::Argument::<'_>::new_display::<&std::string::String>(_10) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _8 = [move _9];
+        _7 = &_8;
+        _6 = _7 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _4 = Arguments::<'_>::new_v1(move _5, move _6) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _0 = Formatter::<'_>::write_fmt(_2, move _4) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        return;
+    }
+}
+
+promoted[0] in error::<impl at testsuite/cli/diem-wallet/src/error.rs:9:17: 9:22>::fmt: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const ""];
+        _0 = &_1;
+        return;
+    }
+}
+
+const DELIMITER: &str = {
+    let mut _0: &str;
+
+    bb0: {
+        _0 = const ";";
+        return;
+    }
+}
+
+fn recover(_1: &P) -> Result<WalletLibrary, anyhow::Error> {
+    debug path => _1;
+    let mut _0: std::result::Result<wallet_library::WalletLibrary, anyhow::Error>;
+    let _2: std::fs::File;
+    let mut _3: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>, std::fs::File>;
+    let mut _4: std::result::Result<std::fs::File, std::io::Error>;
+    let mut _5: isize;
+    let _6: std::result::Result<std::convert::Infallible, std::io::Error>;
+    let _7: std::fs::File;
+    let mut _9: std::fs::File;
+    let mut _11: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>, usize>;
+    let mut _12: std::result::Result<usize, std::io::Error>;
+    let mut _13: &mut std::io::BufReader<std::fs::File>;
+    let mut _14: &mut std::string::String;
+    let mut _15: isize;
+    let mut _19: std::str::Split<'_, &str>;
+    let _20: &str;
+    let mut _21: &std::string::String;
+    let mut _22: usize;
+    let mut _23: &std::vec::Vec<&str>;
+    let mut _24: anyhow::Error;
+    let mut _26: std::fmt::Arguments<'_>;
+    let mut _27: &[&str];
+    let mut _28: &[core::fmt::rt::Argument<'_>];
+    let _29: &[core::fmt::rt::Argument<'_>; 1];
+    let _30: [core::fmt::rt::Argument<'_>; 1];
+    let mut _31: core::fmt::rt::Argument<'_>;
+    let _32: &std::string::String;
+    let mut _34: anyhow::kind::Adhoc;
+    let mut _35: &&std::string::String;
+    let _36: &std::string::String;
+    let mut _37: std::string::String;
+    let mut _39: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, anyhow::Error>, mnemonic::Mnemonic>;
+    let mut _40: std::result::Result<mnemonic::Mnemonic, anyhow::Error>;
+    let _41: &str;
+    let mut _42: &std::string::String;
+    let _43: std::string::String;
+    let _44: &&str;
+    let mut _45: &std::vec::Vec<&str>;
+    let mut _46: isize;
+    let mut _50: mnemonic::Mnemonic;
+    let mut _51: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, anyhow::Error>>;
+    let mut _52: std::result::Result<(), anyhow::Error>;
+    let mut _53: &mut wallet_library::WalletLibrary;
+    let mut _54: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::num::ParseIntError>, u64>;
+    let mut _55: std::result::Result<u64, std::num::ParseIntError>;
+    let _56: &str;
+    let mut _57: &std::string::String;
+    let _58: std::string::String;
+    let _59: &str;
+    let _60: &&str;
+    let mut _61: &std::vec::Vec<&str>;
+    let mut _62: isize;
+    let mut _65: isize;
+    let mut _67: wallet_library::WalletLibrary;
+    let mut _69: &str;
+    let mut _70: &str;
+    let mut _71: bool;
+    let mut _72: bool;
+    let mut _73: bool;
+    scope 1 {
+        debug input => _2;
+        let mut _8: std::io::BufReader<std::fs::File>;
+        scope 6 {
+            debug buffered => _8;
+            let mut _10: std::string::String;
+            scope 7 {
+                debug line => _10;
+                let _16: std::result::Result<std::convert::Infallible, std::io::Error>;
+                let _17: usize;
+                scope 8 {
+                    let _18: std::vec::Vec<&str>;
+                    scope 13 {
+                        debug parts => _18;
+                        let _25: std::string::String;
+                        let _33: std::string::String;
+                        let _38: mnemonic::Mnemonic;
+                        let _47: std::result::Result<std::convert::Infallible, anyhow::Error>;
+                        let _48: mnemonic::Mnemonic;
+                        let mut _68: &[&str; 2];
+                        scope 14 {
+                            debug res => _25;
+                        }
+                        scope 15 {
+                            debug error => _33;
+                        }
+                        scope 16 {
+                            debug mnemonic => _38;
+                            let mut _49: wallet_library::WalletLibrary;
+                            scope 21 {
+                                debug wallet => _49;
+                                let _63: std::result::Result<std::convert::Infallible, std::num::ParseIntError>;
+                                let _64: u64;
+                                let _66: std::result::Result<std::convert::Infallible, anyhow::Error>;
+                                scope 22 {
+                                    debug residual => _63;
+                                    scope 23 {
+                                    }
+                                }
+                                scope 24 {
+                                    debug val => _64;
+                                    scope 25 {
+                                    }
+                                }
+                                scope 26 {
+                                    debug residual => _66;
+                                    scope 27 {
+                                    }
+                                }
+                                scope 28 {
+                                    debug val => const ();
+                                    scope 29 {
+                                    }
+                                }
+                            }
+                        }
+                        scope 17 {
+                            debug residual => _47;
+                            scope 18 {
+                            }
+                        }
+                        scope 19 {
+                            debug val => _48;
+                            scope 20 {
+                            }
+                        }
+                    }
+                }
+                scope 9 {
+                    debug residual => _16;
+                    scope 10 {
+                    }
+                }
+                scope 11 {
+                    debug val => _17;
+                    scope 12 {
+                    }
+                }
+            }
+        }
+    }
+    scope 2 {
+        debug residual => _6;
+        scope 3 {
+        }
+    }
+    scope 4 {
+        debug val => _7;
+        scope 5 {
+        }
+    }
+
+    bb0: {
+        _73 = const false;
+        _72 = const false;
+        _71 = const false;
+        _4 = File::open::<&P>(_1) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _3 = <Result<File, std::io::Error> as Try>::branch(move _4) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _5 = discriminant(_3);
+        switchInt(move _5) -> [0: bb3, 1: bb5, otherwise: bb4];
+    }
+
+    bb3: {
+        _7 = move ((_3 as Continue).0: std::fs::File);
+        _73 = const true;
+        _2 = move _7;
+        _73 = const false;
+        _9 = move _2;
+        _8 = BufReader::<File>::new(move _9) -> [return: bb6, unwind: bb69];
+    }
+
+    bb4: {
+        unreachable;
+    }
+
+    bb5: {
+        _6 = move ((_3 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<WalletLibrary, anyhow::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _6) -> [return: bb55, unwind continue];
+    }
+
+    bb6: {
+        _10 = std::string::String::new() -> [return: bb7, unwind: bb62];
+    }
+
+    bb7: {
+        _13 = &mut _8;
+        _14 = &mut _10;
+        _12 = <BufReader<File> as BufRead>::read_line(move _13, _14) -> [return: bb8, unwind: bb61];
+    }
+
+    bb8: {
+        _11 = <Result<usize, std::io::Error> as Try>::branch(move _12) -> [return: bb9, unwind: bb61];
+    }
+
+    bb9: {
+        _15 = discriminant(_11);
+        switchInt(move _15) -> [0: bb10, 1: bb11, otherwise: bb4];
+    }
+
+    bb10: {
+        _17 = ((_11 as Continue).0: usize);
+        _21 = &_10;
+        _20 = <std::string::String as Deref>::deref(move _21) -> [return: bb12, unwind: bb61];
+    }
+
+    bb11: {
+        _16 = move ((_11 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<WalletLibrary, anyhow::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _16) -> [return: bb70, unwind: bb61];
+    }
+
+    bb12: {
+        _19 = core::str::<impl str>::split::<'_, &str>(_20, const _) -> [return: bb13, unwind: bb61];
+    }
+
+    bb13: {
+        _18 = <std::str::Split<'_, &str> as Iterator>::collect::<Vec<&str>>(move _19) -> [return: bb14, unwind: bb61];
+    }
+
+    bb14: {
+        _23 = &_18;
+        _22 = Vec::<&str>::len(move _23) -> [return: bb15, unwind: bb60];
+    }
+
+    bb15: {
+        switchInt(move _22) -> [2: bb16, otherwise: bb17];
+    }
+
+    bb16: {
+        _45 = &_18;
+        _44 = <Vec<&str> as Index<usize>>::index(move _45, const 0_usize) -> [return: bb23, unwind: bb60];
+    }
+
+    bb17: {
+        _68 = const _;
+        _27 = _68 as &[&str] (PointerCoercion(Unsize));
+        _32 = &_10;
+        _31 = core::fmt::rt::Argument::<'_>::new_display::<std::string::String>(_32) -> [return: bb18, unwind: bb60];
+    }
+
+    bb18: {
+        _30 = [move _31];
+        _29 = &_30;
+        _28 = _29 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _26 = Arguments::<'_>::new_v1(move _27, move _28) -> [return: bb19, unwind: bb60];
+    }
+
+    bb19: {
+        _25 = format(move _26) -> [return: bb20, unwind: bb60];
+    }
+
+    bb20: {
+        _72 = const true;
+        _33 = move _25;
+        _36 = &_33;
+        _35 = &_36;
+        _34 = <&std::string::String as anyhow::kind::AdhocKind>::anyhow_kind(move _35) -> [return: bb21, unwind: bb67];
+    }
+
+    bb21: {
+        _72 = const false;
+        _37 = move _33;
+        _24 = anyhow::kind::Adhoc::new::<std::string::String>(const anyhow::kind::Adhoc, move _37) -> [return: bb22, unwind: bb67];
+    }
+
+    bb22: {
+        _72 = const false;
+        _0 = Result::<WalletLibrary, anyhow::Error>::Err(move _24);
+        goto -> bb52;
+    }
+
+    bb23: {
+        _69 = deref_copy (*_44);
+        _43 = <str as ToString>::to_string(_69) -> [return: bb24, unwind: bb60];
+    }
+
+    bb24: {
+        _42 = &_43;
+        _41 = <std::string::String as Index<RangeFull>>::index(move _42, const RangeFull) -> [return: bb25, unwind: bb59];
+    }
+
+    bb25: {
+        _40 = Mnemonic::from(_41) -> [return: bb26, unwind: bb59];
+    }
+
+    bb26: {
+        _39 = <Result<Mnemonic, anyhow::Error> as Try>::branch(move _40) -> [return: bb27, unwind: bb59];
+    }
+
+    bb27: {
+        _46 = discriminant(_39);
+        switchInt(move _46) -> [0: bb28, 1: bb29, otherwise: bb4];
+    }
+
+    bb28: {
+        _48 = move ((_39 as Continue).0: mnemonic::Mnemonic);
+        _71 = const true;
+        _38 = move _48;
+        drop(_43) -> [return: bb31, unwind: bb65];
+    }
+
+    bb29: {
+        _47 = move ((_39 as Break).0: std::result::Result<std::convert::Infallible, anyhow::Error>);
+        _0 = <Result<WalletLibrary, anyhow::Error> as FromResidual<Result<Infallible, anyhow::Error>>>::from_residual(move _47) -> [return: bb30, unwind: bb59];
+    }
+
+    bb30: {
+        drop(_43) -> [return: bb51, unwind: bb60];
+    }
+
+    bb31: {
+        _71 = const false;
+        _50 = move _38;
+        _49 = WalletLibrary::new_from_mnemonic(move _50) -> [return: bb32, unwind: bb65];
+    }
+
+    bb32: {
+        _53 = &mut _49;
+        _61 = &_18;
+        _60 = <Vec<&str> as Index<usize>>::index(move _61, const 1_usize) -> [return: bb33, unwind: bb58];
+    }
+
+    bb33: {
+        _70 = deref_copy (*_60);
+        _59 = core::str::<impl str>::trim(_70) -> [return: bb34, unwind: bb58];
+    }
+
+    bb34: {
+        _58 = <str as ToString>::to_string(_59) -> [return: bb35, unwind: bb58];
+    }
+
+    bb35: {
+        _57 = &_58;
+        _56 = <std::string::String as Deref>::deref(move _57) -> [return: bb36, unwind: bb57];
+    }
+
+    bb36: {
+        _55 = core::str::<impl str>::parse::<u64>(_56) -> [return: bb37, unwind: bb57];
+    }
+
+    bb37: {
+        _54 = <Result<u64, std::num::ParseIntError> as Try>::branch(move _55) -> [return: bb38, unwind: bb57];
+    }
+
+    bb38: {
+        _62 = discriminant(_54);
+        switchInt(move _62) -> [0: bb39, 1: bb40, otherwise: bb4];
+    }
+
+    bb39: {
+        _64 = ((_54 as Continue).0: u64);
+        _52 = WalletLibrary::generate_addresses(move _53, _64) -> [return: bb41, unwind: bb57];
+    }
+
+    bb40: {
+        _63 = move ((_54 as Break).0: std::result::Result<std::convert::Infallible, std::num::ParseIntError>);
+        _0 = <Result<WalletLibrary, anyhow::Error> as FromResidual<Result<Infallible, std::num::ParseIntError>>>::from_residual(move _63) -> [return: bb71, unwind: bb57];
+    }
+
+    bb41: {
+        _51 = <Result<(), anyhow::Error> as Try>::branch(move _52) -> [return: bb42, unwind: bb57];
+    }
+
+    bb42: {
+        _65 = discriminant(_51);
+        switchInt(move _65) -> [0: bb43, 1: bb44, otherwise: bb4];
+    }
+
+    bb43: {
+        drop(_58) -> [return: bb45, unwind: bb58];
+    }
+
+    bb44: {
+        _66 = move ((_51 as Break).0: std::result::Result<std::convert::Infallible, anyhow::Error>);
+        _0 = <Result<WalletLibrary, anyhow::Error> as FromResidual<Result<Infallible, anyhow::Error>>>::from_residual(move _66) -> [return: bb72, unwind: bb57];
+    }
+
+    bb45: {
+        _67 = move _49;
+        _0 = Result::<WalletLibrary, anyhow::Error>::Ok(move _67);
+        _71 = const false;
+        drop(_18) -> [return: bb46, unwind: bb61];
+    }
+
+    bb46: {
+        drop(_10) -> [return: bb47, unwind: bb62];
+    }
+
+    bb47: {
+        drop(_8) -> [return: bb48, unwind: bb69];
+    }
+
+    bb48: {
+        _73 = const false;
+        goto -> bb56;
+    }
+
+    bb49: {
+        drop(_58) -> [return: bb50, unwind: bb58];
+    }
+
+    bb50: {
+        drop(_49) -> [return: bb51, unwind: bb65];
+    }
+
+    bb51: {
+        _71 = const false;
+        goto -> bb52;
+    }
+
+    bb52: {
+        drop(_18) -> [return: bb53, unwind: bb61];
+    }
+
+    bb53: {
+        drop(_10) -> [return: bb54, unwind: bb62];
+    }
+
+    bb54: {
+        drop(_8) -> [return: bb55, unwind: bb69];
+    }
+
+    bb55: {
+        _73 = const false;
+        goto -> bb56;
+    }
+
+    bb56: {
+        return;
+    }
+
+    bb57 (cleanup): {
+        drop(_58) -> [return: bb58, unwind terminate(cleanup)];
+    }
+
+    bb58 (cleanup): {
+        drop(_49) -> [return: bb65, unwind terminate(cleanup)];
+    }
+
+    bb59 (cleanup): {
+        drop(_43) -> [return: bb60, unwind terminate(cleanup)];
+    }
+
+    bb60 (cleanup): {
+        drop(_18) -> [return: bb61, unwind terminate(cleanup)];
+    }
+
+    bb61 (cleanup): {
+        drop(_10) -> [return: bb62, unwind terminate(cleanup)];
+    }
+
+    bb62 (cleanup): {
+        drop(_8) -> [return: bb69, unwind terminate(cleanup)];
+    }
+
+    bb63 (cleanup): {
+        resume;
+    }
+
+    bb64 (cleanup): {
+        drop(_38) -> [return: bb60, unwind terminate(cleanup)];
+    }
+
+    bb65 (cleanup): {
+        switchInt(_71) -> [0: bb60, otherwise: bb64];
+    }
+
+    bb66 (cleanup): {
+        drop(_33) -> [return: bb60, unwind terminate(cleanup)];
+    }
+
+    bb67 (cleanup): {
+        switchInt(_72) -> [0: bb60, otherwise: bb66];
+    }
+
+    bb68 (cleanup): {
+        drop(_2) -> [return: bb63, unwind terminate(cleanup)];
+    }
+
+    bb69 (cleanup): {
+        switchInt(_73) -> [0: bb63, otherwise: bb68];
+    }
+
+    bb70: {
+        goto -> bb53;
+    }
+
+    bb71: {
+        goto -> bb49;
+    }
+
+    bb72: {
+        goto -> bb49;
+    }
+}
+
+promoted[0] in recover: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "Invalid entry '", const "'"];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn write_recovery(_1: &WalletLibrary, _2: &P) -> Result<(), anyhow::Error> {
+    debug wallet => _1;
+    debug path => _2;
+    let mut _0: std::result::Result<(), anyhow::Error>;
+    let mut _3: std::fs::File;
+    let mut _4: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>, std::fs::File>;
+    let mut _5: std::result::Result<std::fs::File, std::io::Error>;
+    let mut _6: isize;
+    let _7: std::result::Result<std::convert::Infallible, std::io::Error>;
+    let _8: std::fs::File;
+    let mut _9: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>>;
+    let mut _10: std::result::Result<(), std::io::Error>;
+    let mut _11: &mut std::fs::File;
+    let mut _12: std::fmt::Arguments<'_>;
+    let mut _13: &[&str];
+    let mut _14: &[core::fmt::rt::Argument<'_>];
+    let _15: &[core::fmt::rt::Argument<'_>; 3];
+    let _16: [core::fmt::rt::Argument<'_>; 3];
+    let mut _17: core::fmt::rt::Argument<'_>;
+    let _18: &std::string::String;
+    let _19: std::string::String;
+    let mut _20: core::fmt::rt::Argument<'_>;
+    let mut _21: core::fmt::rt::Argument<'_>;
+    let _22: &u64;
+    let _23: u64;
+    let mut _24: isize;
+    scope 1 {
+        debug output => _3;
+        let _25: std::result::Result<std::convert::Infallible, std::io::Error>;
+        let mut _26: &&str;
+        let mut _27: &[&str; 4];
+        scope 6 {
+            debug residual => _25;
+            scope 7 {
+            }
+        }
+        scope 8 {
+            debug val => const ();
+            scope 9 {
+            }
+        }
+    }
+    scope 2 {
+        debug residual => _7;
+        scope 3 {
+        }
+    }
+    scope 4 {
+        debug val => _8;
+        scope 5 {
+        }
+    }
+
+    bb0: {
+        _5 = File::create::<&P>(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _4 = <Result<File, std::io::Error> as Try>::branch(move _5) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _6 = discriminant(_4);
+        switchInt(move _6) -> [0: bb3, 1: bb5, otherwise: bb4];
+    }
+
+    bb3: {
+        _8 = move ((_4 as Continue).0: std::fs::File);
+        _3 = move _8;
+        _11 = &mut _3;
+        _27 = const _;
+        _13 = _27 as &[&str] (PointerCoercion(Unsize));
+        _19 = WalletLibrary::mnemonic(_1) -> [return: bb6, unwind: bb21];
+    }
+
+    bb4: {
+        unreachable;
+    }
+
+    bb5: {
+        _7 = move ((_4 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<(), anyhow::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _7) -> [return: bb19, unwind continue];
+    }
+
+    bb6: {
+        _18 = &_19;
+        _17 = core::fmt::rt::Argument::<'_>::new_display::<std::string::String>(_18) -> [return: bb7, unwind: bb20];
+    }
+
+    bb7: {
+        _26 = const _;
+        _20 = core::fmt::rt::Argument::<'_>::new_display::<&str>(_26) -> [return: bb8, unwind: bb20];
+    }
+
+    bb8: {
+        _23 = WalletLibrary::key_leaf(_1) -> [return: bb9, unwind: bb20];
+    }
+
+    bb9: {
+        _22 = &_23;
+        _21 = core::fmt::rt::Argument::<'_>::new_display::<u64>(_22) -> [return: bb10, unwind: bb20];
+    }
+
+    bb10: {
+        _16 = [move _17, move _20, move _21];
+        _15 = &_16;
+        _14 = _15 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _12 = Arguments::<'_>::new_v1(move _13, move _14) -> [return: bb11, unwind: bb20];
+    }
+
+    bb11: {
+        _10 = <File as std::io::Write>::write_fmt(move _11, move _12) -> [return: bb12, unwind: bb20];
+    }
+
+    bb12: {
+        _9 = <Result<(), std::io::Error> as Try>::branch(move _10) -> [return: bb13, unwind: bb20];
+    }
+
+    bb13: {
+        _24 = discriminant(_9);
+        switchInt(move _24) -> [0: bb14, 1: bb15, otherwise: bb4];
+    }
+
+    bb14: {
+        drop(_19) -> [return: bb17, unwind: bb21];
+    }
+
+    bb15: {
+        _25 = move ((_9 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<(), anyhow::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _25) -> [return: bb16, unwind: bb20];
+    }
+
+    bb16: {
+        drop(_19) -> [return: bb18, unwind: bb21];
+    }
+
+    bb17: {
+        _0 = Result::<(), anyhow::Error>::Ok(const ());
+        drop(_3) -> [return: bb19, unwind continue];
+    }
+
+    bb18: {
+        drop(_3) -> [return: bb19, unwind continue];
+    }
+
+    bb19: {
+        return;
+    }
+
+    bb20 (cleanup): {
+        drop(_19) -> [return: bb21, unwind terminate(cleanup)];
+    }
+
+    bb21 (cleanup): {
+        drop(_3) -> [return: bb22, unwind terminate(cleanup)];
+    }
+
+    bb22 (cleanup): {
+        resume;
+    }
+}
+
+promoted[0] in write_recovery: &&str = {
+    let mut _0: &&str;
+    let mut _1: &str;
+
+    bb0: {
+        _1 = const _;
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in write_recovery: &[&str; 4] = {
+    let mut _0: &[&str; 4];
+    let mut _1: [&str; 4];
+
+    bb0: {
+        _1 = [const "", const "", const "", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+Main::0::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 32_usize;
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:11:9: 11:44>::from(_1: &[u8]) -> Main {
+    debug data => _1;
+    let mut _0: key_factory::Main;
+    let mut _2: (&usize, &usize);
+    let mut _3: &usize;
+    let _4: usize;
+    let _5: &usize;
+    let _6: &usize;
+    let mut _7: bool;
+    let mut _8: usize;
+    let mut _9: usize;
+    let _11: !;
+    let mut _12: std::option::Option<std::fmt::Arguments<'_>>;
+    let mut _13: [u8; 32];
+    let _14: ();
+    let mut _15: &mut [u8];
+    let mut _16: &mut [u8; 32];
+    let mut _17: [u8; 32];
+    let mut _18: &usize;
+    scope 1 {
+        debug left_val => _5;
+        debug right_val => _6;
+        let _10: core::panicking::AssertKind;
+        scope 2 {
+            debug kind => _10;
+        }
+    }
+    scope 3 {
+        debug ret => _13;
+    }
+
+    bb0: {
+        _4 = Len((*_1));
+        _3 = &_4;
+        _18 = const _;
+        _2 = (move _3, _18);
+        _5 = (_2.0: &usize);
+        _6 = (_2.1: &usize);
+        _8 = (*_5);
+        _9 = (*_6);
+        _7 = Eq(move _8, move _9);
+        switchInt(move _7) -> [0: bb2, otherwise: bb1];
+    }
+
+    bb1: {
+        _13 = [const 0_u8; 32];
+        _16 = &mut _13;
+        _15 = move _16 as &mut [u8] (PointerCoercion(Unsize));
+        _14 = core::slice::<impl [u8]>::copy_from_slice(move _15, _1) -> [return: bb3, unwind continue];
+    }
+
+    bb2: {
+        _10 = core::panicking::AssertKind::Eq;
+        _12 = std::option::Option::<Arguments<'_>>::None;
+        _11 = core::panicking::assert_failed::<usize, usize>(move _10, _5, _6, move _12) -> unwind continue;
+    }
+
+    bb3: {
+        _17 = _13;
+        _0 = Main(move _17);
+        return;
+    }
+}
+
+promoted[0] in key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:11:9: 11:44>::from: &usize = {
+    let mut _0: &usize;
+    let mut _1: usize;
+
+    bb0: {
+        _1 = const 32_usize;
+        _0 = &_1;
+        return;
+    }
+}
+
+key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:11:9: 11:44>::from::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 32_usize;
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:20:9: 20:49>::index(_1: &Main, _2: usize) -> &u8 {
+    debug self => _1;
+    debug index => _2;
+    let mut _0: &u8;
+    let _3: ();
+    let mut _4: bool;
+    let _5: ();
+    let mut _6: bool;
+    let _7: &str;
+    let _8: &[u8; 32];
+    let mut _9: usize;
+    let mut _10: bool;
+    scope 1 {
+        debug dat => _8;
+    }
+
+    bb0: {
+        _4 = const false;
+        switchInt(move _4) -> [0: bb3, otherwise: bb1];
+    }
+
+    bb1: {
+        _5 = mirai_precondition_start() -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _6 = Lt(_2, const 32_usize);
+        _7 = const "unsatisfied precondition";
+        _3 = mirai_precondition(move _6, _7) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _8 = &((*_1).0: [u8; 32]);
+        _9 = const 32_usize;
+        _10 = Lt(_2, _9);
+        assert(move _10, "index out of bounds: the length is {} but the index is {}", move _9, _2) -> [success: bb4, unwind continue];
+    }
+
+    bb4: {
+        _0 = &(*_8)[_2];
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:164:9: 164:68>::index(_1: &Main, _2: std::ops::Range<usize>) -> &[u8] {
+    debug self => _1;
+    debug index => _2;
+    let mut _0: &[u8];
+    let mut _3: &[u8; 32];
+
+    bb0: {
+        _3 = &((*_1).0: [u8; 32]);
+        _0 = <[u8; 32] as Index<std::ops::Range<usize>>>::index(move _3, move _2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:173:9: 173:70>::index(_1: &Main, _2: RangeTo<usize>) -> &[u8] {
+    debug self => _1;
+    debug index => _2;
+    let mut _0: &[u8];
+    let mut _3: &[u8; 32];
+
+    bb0: {
+        _3 = &((*_1).0: [u8; 32]);
+        _0 = <[u8; 32] as Index<RangeTo<usize>>>::index(move _3, _2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:182:9: 182:72>::index(_1: &Main, _2: RangeFrom<usize>) -> &[u8] {
+    debug self => _1;
+    debug index => _2;
+    let mut _0: &[u8];
+    let mut _3: &[u8; 32];
+
+    bb0: {
+        _3 = &((*_1).0: [u8; 32]);
+        _0 = <[u8; 32] as Index<RangeFrom<usize>>>::index(move _3, move _2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:191:9: 191:65>::index(_1: &Main, _2: RangeFull) -> &[u8] {
+    debug self => _1;
+    let mut _0: &[u8];
+    let mut _3: &[u8; 32];
+
+    bb0: {
+        _3 = &((*_1).0: [u8; 32]);
+        _0 = <[u8; 32] as Index<RangeFull>>::index(move _3, const RangeFull) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:33:9: 33:34>::eq(_1: &Main, _2: &Main) -> bool {
+    debug self => _1;
+    debug other => _2;
+    let mut _0: bool;
+    let mut _3: &&[u8];
+    let _4: &[u8];
+    let _5: &[u8];
+    let mut _6: &&[u8];
+    let _7: &[u8];
+    let _8: &[u8];
+
+    bb0: {
+        _5 = <Main as Index<RangeFull>>::index(_1, const RangeFull) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _4 = _5;
+        _3 = &_4;
+        _8 = <Main as Index<RangeFull>>::index(_2, const RangeFull) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _7 = _8;
+        _6 = &_7;
+        _0 = <&[u8] as PartialEq>::eq(move _3, move _6) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:42:9: 42:35>::partial_cmp(_1: &Main, _2: &Main) -> std::option::Option<std::cmp::Ordering> {
+    debug self => _1;
+    debug other => _2;
+    let mut _0: std::option::Option<std::cmp::Ordering>;
+    let mut _3: std::cmp::Ordering;
+    let _4: &&key_factory::Main;
+    let mut _5: &key_factory::Main;
+
+    bb0: {
+        _4 = &_2;
+        _5 = deref_copy (*_4);
+        _3 = <Main as std::cmp::Ord>::cmp(_1, _5) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = std::option::Option::<std::cmp::Ordering>::Some(move _3);
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:49:9: 49:28>::cmp(_1: &Main, _2: &Main) -> std::cmp::Ordering {
+    debug self => _1;
+    debug other => _2;
+    let mut _0: std::cmp::Ordering;
+    let mut _3: std::ops::Range<usize>;
+    let mut _4: std::ops::Range<usize>;
+    let mut _5: std::ops::Range<usize>;
+    let mut _6: std::option::Option<usize>;
+    let mut _7: &mut std::ops::Range<usize>;
+    let mut _8: isize;
+    let mut _10: bool;
+    let mut _11: u8;
+    let mut _12: &u8;
+    let mut _13: usize;
+    let mut _14: usize;
+    let mut _15: (usize, bool);
+    let mut _16: (usize, bool);
+    let mut _17: u8;
+    let mut _18: &u8;
+    let mut _19: usize;
+    let mut _20: usize;
+    let mut _21: (usize, bool);
+    let mut _22: (usize, bool);
+    let mut _23: bool;
+    let mut _24: u8;
+    let mut _25: &u8;
+    let mut _26: usize;
+    let mut _27: usize;
+    let mut _28: (usize, bool);
+    let mut _29: (usize, bool);
+    let mut _30: u8;
+    let mut _31: &u8;
+    let mut _32: usize;
+    let mut _33: usize;
+    let mut _34: (usize, bool);
+    let mut _35: (usize, bool);
+    scope 1 {
+        debug iter => _5;
+        let _9: usize;
+        scope 2 {
+            debug i => _9;
+        }
+    }
+
+    bb0: {
+        _4 = std::ops::Range::<usize> { start: const 0_usize, end: const 32_usize };
+        _3 = <std::ops::Range<usize> as IntoIterator>::into_iter(move _4) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _5 = move _3;
+        goto -> bb2;
+    }
+
+    bb2: {
+        _7 = &mut _5;
+        _6 = <std::ops::Range<usize> as Iterator>::next(_7) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _8 = discriminant(_6);
+        switchInt(move _8) -> [0: bb6, 1: bb4, otherwise: bb5];
+    }
+
+    bb4: {
+        _9 = ((_6 as Some).0: usize);
+        _15 = CheckedSub(const 32_usize, const 1_usize);
+        assert(!move (_15.1: bool), "attempt to compute `{} - {}`, which would overflow", const 32_usize, const 1_usize) -> [success: bb7, unwind continue];
+    }
+
+    bb5: {
+        unreachable;
+    }
+
+    bb6: {
+        _0 = std::cmp::Ordering::Equal;
+        goto -> bb22;
+    }
+
+    bb7: {
+        _14 = move (_15.0: usize);
+        _16 = CheckedSub(_14, _9);
+        assert(!move (_16.1: bool), "attempt to compute `{} - {}`, which would overflow", move _14, _9) -> [success: bb8, unwind continue];
+    }
+
+    bb8: {
+        _13 = move (_16.0: usize);
+        _12 = <Main as Index<usize>>::index(_1, move _13) -> [return: bb9, unwind continue];
+    }
+
+    bb9: {
+        _11 = (*_12);
+        _21 = CheckedSub(const 32_usize, const 1_usize);
+        assert(!move (_21.1: bool), "attempt to compute `{} - {}`, which would overflow", const 32_usize, const 1_usize) -> [success: bb10, unwind continue];
+    }
+
+    bb10: {
+        _20 = move (_21.0: usize);
+        _22 = CheckedSub(_20, _9);
+        assert(!move (_22.1: bool), "attempt to compute `{} - {}`, which would overflow", move _20, _9) -> [success: bb11, unwind continue];
+    }
+
+    bb11: {
+        _19 = move (_22.0: usize);
+        _18 = <Main as Index<usize>>::index(_2, move _19) -> [return: bb12, unwind continue];
+    }
+
+    bb12: {
+        _17 = (*_18);
+        _10 = Lt(move _11, move _17);
+        switchInt(move _10) -> [0: bb14, otherwise: bb13];
+    }
+
+    bb13: {
+        _0 = std::cmp::Ordering::Less;
+        goto -> bb22;
+    }
+
+    bb14: {
+        _28 = CheckedSub(const 32_usize, const 1_usize);
+        assert(!move (_28.1: bool), "attempt to compute `{} - {}`, which would overflow", const 32_usize, const 1_usize) -> [success: bb15, unwind continue];
+    }
+
+    bb15: {
+        _27 = move (_28.0: usize);
+        _29 = CheckedSub(_27, _9);
+        assert(!move (_29.1: bool), "attempt to compute `{} - {}`, which would overflow", move _27, _9) -> [success: bb16, unwind continue];
+    }
+
+    bb16: {
+        _26 = move (_29.0: usize);
+        _25 = <Main as Index<usize>>::index(_1, move _26) -> [return: bb17, unwind continue];
+    }
+
+    bb17: {
+        _24 = (*_25);
+        _34 = CheckedSub(const 32_usize, const 1_usize);
+        assert(!move (_34.1: bool), "attempt to compute `{} - {}`, which would overflow", const 32_usize, const 1_usize) -> [success: bb18, unwind continue];
+    }
+
+    bb18: {
+        _33 = move (_34.0: usize);
+        _35 = CheckedSub(_33, _9);
+        assert(!move (_35.1: bool), "attempt to compute `{} - {}`, which would overflow", move _33, _9) -> [success: bb19, unwind continue];
+    }
+
+    bb19: {
+        _32 = move (_35.0: usize);
+        _31 = <Main as Index<usize>>::index(_2, move _32) -> [return: bb20, unwind continue];
+    }
+
+    bb20: {
+        _30 = (*_31);
+        _23 = Gt(move _24, move _30);
+        switchInt(move _23) -> [0: bb2, otherwise: bb21];
+    }
+
+    bb21: {
+        _0 = std::cmp::Ordering::Greater;
+        goto -> bb22;
+    }
+
+    bb22: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:69:9: 69:30>::clone(_1: &Main) -> Main {
+    debug self => _1;
+    let mut _0: key_factory::Main;
+    let _2: &[u8];
+
+    bb0: {
+        _2 = <Main as Index<RangeFull>>::index(_1, const RangeFull) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = <Main as From<&[u8]>>::from(_2) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:78:9: 78:42>::hash(_1: &Main, _2: &mut H) -> () {
+    debug self => _1;
+    debug state => _2;
+    let mut _0: ();
+    let _3: ();
+    let _4: &[u8];
+
+    bb0: {
+        _4 = <Main as Index<RangeFull>>::index(_1, const RangeFull) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _3 = <[u8] as std::hash::Hash>::hash::<H>(_4, _2) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:78:9: 78:42>::hash_slice(_1: &[Main], _2: &mut H) -> () {
+    debug data => _1;
+    debug state => _2;
+    let mut _0: ();
+    let mut _3: std::slice::Iter<'_, key_factory::Main>;
+    let mut _4: std::slice::Iter<'_, key_factory::Main>;
+    let mut _5: std::slice::Iter<'_, key_factory::Main>;
+    let mut _6: std::option::Option<&key_factory::Main>;
+    let mut _7: &mut std::slice::Iter<'_, key_factory::Main>;
+    let mut _8: isize;
+    let _10: ();
+    let _11: &[u8];
+    scope 1 {
+        debug iter => _5;
+        let _9: &key_factory::Main;
+        scope 2 {
+            debug d => _9;
+        }
+    }
+
+    bb0: {
+        _4 = core::slice::<impl [Main]>::iter(_1) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _3 = <std::slice::Iter<'_, Main> as IntoIterator>::into_iter(move _4) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _5 = move _3;
+        goto -> bb3;
+    }
+
+    bb3: {
+        _7 = &mut _5;
+        _6 = <std::slice::Iter<'_, Main> as Iterator>::next(_7) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _8 = discriminant(_6);
+        switchInt(move _8) -> [0: bb7, 1: bb5, otherwise: bb6];
+    }
+
+    bb5: {
+        _9 = ((_6 as Some).0: &key_factory::Main);
+        _11 = <Main as Index<RangeFull>>::index(_9, const RangeFull) -> [return: bb8, unwind continue];
+    }
+
+    bb6: {
+        unreachable;
+    }
+
+    bb7: {
+        return;
+    }
+
+    bb8: {
+        _10 = <[u8] as std::hash::Hash>::hash::<H>(_11, _2) -> [return: bb3, unwind continue];
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:154:9: 154:42>::fmt(_1: &Main, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug f => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let mut _3: std::fmt::Arguments<'_>;
+    let mut _4: &[&str];
+    let mut _5: &[core::fmt::rt::Argument<'_>];
+    let _6: &[core::fmt::rt::Argument<'_>; 1];
+    let _7: [core::fmt::rt::Argument<'_>; 1];
+    let mut _8: core::fmt::rt::Argument<'_>;
+    let _9: &&[u8];
+    let _10: &[u8];
+    let _11: &[u8];
+    let mut _12: &[&str; 2];
+
+    bb0: {
+        _12 = const _;
+        _4 = _12 as &[&str] (PointerCoercion(Unsize));
+        _11 = <Main as Index<RangeFull>>::index(_1, const RangeFull) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _10 = _11;
+        _9 = &_10;
+        _8 = core::fmt::rt::Argument::<'_>::new_debug::<&[u8]>(_9) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _7 = [move _8];
+        _6 = &_7;
+        _5 = _6 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _3 = Arguments::<'_>::new_v1(move _4, move _5) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _0 = Formatter::<'_>::write_fmt(_2, move _3) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        return;
+    }
+}
+
+promoted[0] in key_factory::<impl at testsuite/cli/diem-wallet/src/internal_macros.rs:154:9: 154:42>::fmt: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "Main(", const ")"];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:10: 42:17>::default() -> ChildNumber {
+    let mut _0: key_factory::ChildNumber;
+    let mut _1: u64;
+
+    bb0: {
+        _1 = <u64 as Default>::default() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = ChildNumber(move _1);
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:25: 42:30>::clone(_1: &ChildNumber) -> ChildNumber {
+    debug self => _1;
+    let mut _0: key_factory::ChildNumber;
+    scope 1 {
+    }
+
+    bb0: {
+        _0 = (*_1);
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:32: 42:41>::eq(_1: &ChildNumber, _2: &ChildNumber) -> bool {
+    debug self => _1;
+    debug other => _2;
+    let mut _0: bool;
+    let mut _3: u64;
+    let mut _4: u64;
+
+    bb0: {
+        _3 = ((*_1).0: u64);
+        _4 = ((*_2).0: u64);
+        _0 = Eq(move _3, move _4);
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:43: 42:45>::assert_receiver_is_total_eq(_1: &ChildNumber) -> () {
+    debug self => _1;
+    let mut _0: ();
+    scope 1 {
+    }
+
+    bb0: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:47: 42:52>::fmt(_1: &ChildNumber, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug f => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let _3: &str;
+    let mut _4: &dyn std::fmt::Debug;
+    let _5: &&u64;
+    let _6: &u64;
+
+    bb0: {
+        _3 = const "ChildNumber";
+        _6 = &((*_1).0: u64);
+        _5 = &_6;
+        _4 = _5 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _0 = Formatter::<'_>::debug_tuple_field1_finish(_2, _3, move _4) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+const key_factory::_: () = {
+    let mut _0: ();
+
+    bb0: {
+        _0 = const ();
+        return;
+    }
+}
+
+fn key_factory::_::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:54: 42:63>::serialize(_1: &ChildNumber, _2: __S) -> Result<<__S as Serializer>::Ok, <__S as Serializer>::Error> {
+    debug self => _1;
+    debug __serializer => _2;
+    let mut _0: std::result::Result<<__S as key_factory::_::_serde::Serializer>::Ok, <__S as key_factory::_::_serde::Serializer>::Error>;
+    let _3: &u64;
+
+    bb0: {
+        _3 = &((*_1).0: u64);
+        _0 = <__S as Serializer>::serialize_newtype_struct::<u64>(move _2, const "ChildNumber", _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+const key_factory::_: () = {
+    let mut _0: ();
+
+    bb0: {
+        _0 = const ();
+        return;
+    }
+}
+
+fn key_factory::_::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:65: 42:76>::deserialize(_1: __D) -> Result<ChildNumber, <__D as Deserializer<'_>>::Error> {
+    debug __deserializer => _1;
+    let mut _0: std::result::Result<key_factory::ChildNumber, <__D as key_factory::_::_serde::Deserializer<'_>>::Error>;
+
+    bb0: {
+        _0 = <__D as Deserializer<'_>>::deserialize_newtype_struct::<__Visitor<'_>>(move _1, const "ChildNumber", const __Visitor::<'_> {{ marker: PhantomData::<ChildNumber>, lifetime: PhantomData::<&()> }}) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn key_factory::_::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:65: 42:76>::deserialize::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:65: 42:76>::expecting(_1: &__Visitor<'_>, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug __formatter => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let _3: &str;
+
+    bb0: {
+        _3 = const "tuple struct ChildNumber";
+        _0 = Formatter::<'_>::write_str(_2, _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn key_factory::_::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:65: 42:76>::deserialize::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:65: 42:76>::visit_newtype_struct(_1: __Visitor<'_>, _2: __E) -> Result<ChildNumber, <__E as Deserializer<'_>>::Error> {
+    debug self => const __Visitor::<'_> {{ marker: PhantomData::<ChildNumber>, lifetime: PhantomData::<&()> }};
+    debug __e => _2;
+    let mut _0: std::result::Result<key_factory::ChildNumber, <__E as key_factory::_::_serde::Deserializer<'_>>::Error>;
+    let mut _3: std::result::Result<u64, <__E as key_factory::_::_serde::Deserializer<'_>>::Error>;
+    let mut _4: isize;
+    let _5: u64;
+    let _6: <__E as key_factory::_::_serde::Deserializer<'_>>::Error;
+    let mut _7: key_factory::ChildNumber;
+    scope 1 {
+        debug __field0 => _5;
+    }
+    scope 2 {
+        debug __val => _5;
+    }
+    scope 3 {
+        debug __err => _6;
+    }
+
+    bb0: {
+        _3 = <u64 as Deserialize<'_>>::deserialize::<__E>(move _2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _4 = discriminant(_3);
+        switchInt(move _4) -> [0: bb4, 1: bb2, otherwise: bb3];
+    }
+
+    bb2: {
+        _6 = move ((_3 as Err).0: <__E as key_factory::_::_serde::Deserializer<'_>>::Error);
+        _0 = Result::<ChildNumber, <__E as Deserializer<'_>>::Error>::Err(move _6);
+        goto -> bb5;
+    }
+
+    bb3: {
+        unreachable;
+    }
+
+    bb4: {
+        _5 = ((_3 as Ok).0: u64);
+        _7 = ChildNumber(_5);
+        _0 = Result::<ChildNumber, <__E as Deserializer<'_>>::Error>::Ok(move _7);
+        goto -> bb5;
+    }
+
+    bb5: {
+        return;
+    }
+}
+
+fn key_factory::_::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:65: 42:76>::deserialize::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:65: 42:76>::visit_seq(_1: __Visitor<'_>, _2: __A) -> Result<ChildNumber, <__A as SeqAccess<'_>>::Error> {
+    debug self => const __Visitor::<'_> {{ marker: PhantomData::<ChildNumber>, lifetime: PhantomData::<&()> }};
+    debug __seq => _2;
+    let mut _0: std::result::Result<key_factory::ChildNumber, <__A as key_factory::_::_serde::de::SeqAccess<'_>>::Error>;
+    let mut _3: std::result::Result<std::option::Option<u64>, <__A as key_factory::_::_serde::de::SeqAccess<'_>>::Error>;
+    let mut _4: &mut __A;
+    let mut _5: isize;
+    let _6: std::option::Option<u64>;
+    let _7: <__A as key_factory::_::_serde::de::SeqAccess<'_>>::Error;
+    let mut _8: isize;
+    let _9: u64;
+    let mut _10: <__A as key_factory::_::_serde::de::SeqAccess<'_>>::Error;
+    let mut _11: &dyn key_factory::_::_serde::de::Expected;
+    let mut _12: key_factory::ChildNumber;
+    let mut _13: &&str;
+    scope 1 {
+        debug __field0 => _9;
+    }
+    scope 2 {
+        debug __val => _6;
+    }
+    scope 3 {
+        debug __err => _7;
+    }
+    scope 4 {
+        debug __value => _9;
+    }
+
+    bb0: {
+        _4 = &mut _2;
+        _3 = <__A as SeqAccess<'_>>::next_element::<u64>(_4) -> [return: bb1, unwind: bb10];
+    }
+
+    bb1: {
+        _5 = discriminant(_3);
+        switchInt(move _5) -> [0: bb4, 1: bb2, otherwise: bb3];
+    }
+
+    bb2: {
+        _7 = move ((_3 as Err).0: <__A as key_factory::_::_serde::de::SeqAccess<'_>>::Error);
+        _0 = Result::<ChildNumber, <__A as SeqAccess<'_>>::Error>::Err(move _7);
+        goto -> bb8;
+    }
+
+    bb3: {
+        unreachable;
+    }
+
+    bb4: {
+        _6 = ((_3 as Ok).0: std::option::Option<u64>);
+        _8 = discriminant(_6);
+        switchInt(move _8) -> [0: bb5, 1: bb6, otherwise: bb3];
+    }
+
+    bb5: {
+        _13 = const _;
+        _11 = _13 as &dyn key_factory::_::_serde::de::Expected (PointerCoercion(Unsize));
+        _10 = <<__A as SeqAccess<'_>>::Error as key_factory::_::_serde::de::Error>::invalid_length(const 0_usize, move _11) -> [return: bb7, unwind: bb10];
+    }
+
+    bb6: {
+        _9 = ((_6 as Some).0: u64);
+        _12 = ChildNumber(_9);
+        _0 = Result::<ChildNumber, <__A as SeqAccess<'_>>::Error>::Ok(move _12);
+        drop(_2) -> [return: bb9, unwind continue];
+    }
+
+    bb7: {
+        _0 = Result::<ChildNumber, <__A as SeqAccess<'_>>::Error>::Err(move _10);
+        goto -> bb8;
+    }
+
+    bb8: {
+        drop(_2) -> [return: bb9, unwind continue];
+    }
+
+    bb9: {
+        return;
+    }
+
+    bb10 (cleanup): {
+        drop(_2) -> [return: bb11, unwind terminate(cleanup)];
+    }
+
+    bb11 (cleanup): {
+        resume;
+    }
+}
+
+promoted[0] in key_factory::_::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:65: 42:76>::deserialize::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:42:65: 42:76>::visit_seq: &&str = {
+    let mut _0: &&str;
+    let mut _1: &str;
+
+    bb0: {
+        _1 = const "tuple struct ChildNumber with 1 element";
+        _0 = &_1;
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:46:1: 46:17>::new(_1: u64) -> ChildNumber {
+    debug child_number => _1;
+    let mut _0: key_factory::ChildNumber;
+
+    bb0: {
+        _0 = ChildNumber(_1);
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:46:1: 46:17>::increment(_1: &mut ChildNumber) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let _2: ();
+    let mut _3: key_factory::ChildNumber;
+
+    bb0: {
+        _3 = ChildNumber(const 1_u64);
+        _2 = <ChildNumber as AddAssign>::add_assign(_1, move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:58:1: 58:41>::add_assign(_1: &mut ChildNumber, _2: ChildNumber) -> () {
+    debug self => _1;
+    debug other => _2;
+    let mut _0: ();
+    let _3: ();
+    let mut _4: bool;
+    let mut _5: bool;
+    let mut _6: u64;
+    let mut _7: u64;
+    let mut _8: u64;
+    let mut _9: bool;
+    let _10: ();
+    let mut _11: bool;
+    let mut _12: bool;
+    let mut _13: u64;
+    let mut _14: u64;
+    let mut _15: u64;
+    let mut _16: bool;
+    let mut _17: key_factory::ChildNumber;
+    let mut _18: u64;
+    let mut _19: u64;
+    let mut _20: u64;
+    let mut _21: (u64, bool);
+
+    bb0: {
+        _4 = const false;
+        switchInt(move _4) -> [0: bb4, otherwise: bb1];
+    }
+
+    bb1: {
+        _6 = ((*_1).0: u64);
+        _8 = core::num::<impl u64>::max_value() -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _9 = Eq(const 2_u64, const 0_u64);
+        assert(!move _9, "attempt to divide `{}` by zero", _8) -> [success: bb3, unwind continue];
+    }
+
+    bb3: {
+        _7 = Div(move _8, const 2_u64);
+        _5 = Le(move _6, move _7);
+        _3 = mirai_assume(move _5) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _11 = const false;
+        switchInt(move _11) -> [0: bb8, otherwise: bb5];
+    }
+
+    bb5: {
+        _13 = (_2.0: u64);
+        _15 = core::num::<impl u64>::max_value() -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _16 = Eq(const 2_u64, const 0_u64);
+        assert(!move _16, "attempt to divide `{}` by zero", _15) -> [success: bb7, unwind continue];
+    }
+
+    bb7: {
+        _14 = Div(move _15, const 2_u64);
+        _12 = Le(move _13, move _14);
+        _10 = mirai_assume(move _12) -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        _19 = ((*_1).0: u64);
+        _20 = (_2.0: u64);
+        _21 = CheckedAdd(_19, _20);
+        assert(!move (_21.1: bool), "attempt to compute `{} + {}`, which would overflow", move _19, move _20) -> [success: bb9, unwind continue];
+    }
+
+    bb9: {
+        _18 = move (_21.0: u64);
+        _17 = ChildNumber(move _18);
+        (*_1) = move _17;
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:66:1: 66:46>::as_ref(_1: &ChildNumber) -> &u64 {
+    debug self => _1;
+    let mut _0: &u64;
+
+    bb0: {
+        _0 = &((*_1).0: u64);
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:72:1: 72:46>::as_mut(_1: &mut ChildNumber) -> &mut u64 {
+    debug self => _1;
+    let mut _0: &mut u64;
+
+    bb0: {
+        _0 = &mut ((*_1).0: u64);
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:86:1: 86:21>::new(_1: ChildNumber, _2: Ed25519PrivateKey) -> ExtendedPrivKey {
+    debug _child_number => _1;
+    debug private_key => _2;
+    let mut _0: key_factory::ExtendedPrivKey;
+
+    bb0: {
+        _0 = ExtendedPrivKey { _child_number: _1, private_key: move _2 };
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:86:1: 86:21>::get_public(_1: &ExtendedPrivKey) -> Ed25519PublicKey {
+    debug self => _1;
+    let mut _0: diem_crypto::ed25519::Ed25519PublicKey;
+    let _2: &diem_crypto::ed25519::Ed25519PrivateKey;
+
+    bb0: {
+        _2 = &((*_1).1: diem_crypto::ed25519::Ed25519PrivateKey);
+        _0 = <&Ed25519PrivateKey as Into<Ed25519PublicKey>>::into(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:86:1: 86:21>::get_address(_1: &ExtendedPrivKey) -> AccountAddress {
+    debug self => _1;
+    let mut _0: diem_types::PeerId;
+    let _2: &diem_crypto::ed25519::Ed25519PublicKey;
+    let _3: diem_crypto::ed25519::Ed25519PublicKey;
+
+    bb0: {
+        _3 = ExtendedPrivKey::get_public(_1) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = &_3;
+        _0 = from_public_key(_2) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:86:1: 86:21>::get_private_key(_1: &ExtendedPrivKey) -> Ed25519PrivateKey {
+    debug self => _1;
+    let mut _0: diem_crypto::ed25519::Ed25519PrivateKey;
+    let mut _2: &diem_crypto::ed25519::Ed25519PrivateKey;
+
+    bb0: {
+        _2 = &((*_1).1: diem_crypto::ed25519::Ed25519PrivateKey);
+        _0 = <Ed25519PrivateKey as Clone>::clone(move _2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:86:1: 86:21>::get_authentication_key(_1: &ExtendedPrivKey) -> AuthenticationKey {
+    debug self => _1;
+    let mut _0: diem_types::transaction::authenticator::AuthenticationKey;
+    let _2: &diem_crypto::ed25519::Ed25519PublicKey;
+    let _3: diem_crypto::ed25519::Ed25519PublicKey;
+
+    bb0: {
+        _3 = ExtendedPrivKey::get_public(_1) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = &_3;
+        _0 = AuthenticationKey::ed25519(_2) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:86:1: 86:21>::sign(_1: &ExtendedPrivKey, _2: &T) -> Ed25519Signature {
+    debug self => _1;
+    debug msg => _2;
+    let mut _0: diem_crypto::ed25519::Ed25519Signature;
+    let mut _3: &diem_crypto::ed25519::Ed25519PrivateKey;
+
+    bb0: {
+        _3 = &((*_1).1: diem_crypto::ed25519::Ed25519PrivateKey);
+        _0 = <Ed25519PrivateKey as SigningKey>::sign::<T>(move _3, _2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+const key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:138:1: 138:16>::MNEMONIC_SALT_PREFIX: &[u8] = {
+    let mut _0: &[u8];
+    let mut _1: &[u8; 34];
+    let _2: &[u8; 34];
+
+    bb0: {
+        StorageLive(_1);
+        StorageLive(_2);
+        _2 = const b"DIEM WALLET: mnemonic salt prefix$";
+        _1 = &(*_2);
+        _0 = move _1 as &[u8] (PointerCoercion(Unsize));
+        StorageDead(_2);
+        StorageDead(_1);
+        return;
+    }
+}
+
+alloc37 (size: 34, align: 1) {
+    0x00 │ 44 49 45 4d 20 57 41 4c 4c 45 54 3a 20 6d 6e 65 │ DIEM WALLET: mne
+    0x10 │ 6d 6f 6e 69 63 20 73 61 6c 74 20 70 72 65 66 69 │ monic salt prefi
+    0x20 │ 78 24                                           │ x$
+}
+
+const key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:138:1: 138:16>::MAIN_KEY_SALT: &[u8] = {
+    let mut _0: &[u8];
+    let mut _1: &[u8; 27];
+    let _2: &[u8; 27];
+
+    bb0: {
+        StorageLive(_1);
+        StorageLive(_2);
+        _2 = const b"DIEM WALLET: main key salt$";
+        _1 = &(*_2);
+        _0 = move _1 as &[u8] (PointerCoercion(Unsize));
+        StorageDead(_2);
+        StorageDead(_1);
+        return;
+    }
+}
+
+alloc38 (size: 27, align: 1) {
+    0x00 │ 44 49 45 4d 20 57 41 4c 4c 45 54 3a 20 6d 61 69 │ DIEM WALLET: mai
+    0x10 │ 6e 20 6b 65 79 20 73 61 6c 74 24                │ n key salt$
+}
+
+const key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:138:1: 138:16>::INFO_PREFIX: &[u8] = {
+    let mut _0: &[u8];
+    let mut _1: &[u8; 25];
+    let _2: &[u8; 25];
+
+    bb0: {
+        StorageLive(_1);
+        StorageLive(_2);
+        _2 = const b"DIEM WALLET: derived key$";
+        _1 = &(*_2);
+        _0 = move _1 as &[u8] (PointerCoercion(Unsize));
+        StorageDead(_2);
+        StorageDead(_1);
+        return;
+    }
+}
+
+alloc39 (size: 25, align: 1) {
+    0x00 │ 44 49 45 4d 20 57 41 4c 4c 45 54 3a 20 64 65 72 │ DIEM WALLET: der
+    0x10 │ 69 76 65 64 20 6b 65 79 24                      │ ived key$
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:138:1: 138:16>::new(_1: &Seed) -> Result<KeyFactory, anyhow::Error> {
+    debug seed => _1;
+    let mut _0: std::result::Result<key_factory::KeyFactory, anyhow::Error>;
+    let _2: std::vec::Vec<u8>;
+    let mut _3: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, diem_crypto::hkdf::HkdfError>, std::vec::Vec<u8>>;
+    let mut _4: std::result::Result<std::vec::Vec<u8>, diem_crypto::hkdf::HkdfError>;
+    let mut _5: std::option::Option<&[u8]>;
+    let _6: &[u8];
+    let mut _7: &[u8];
+    let _8: &[u8; 32];
+    let mut _9: isize;
+    let _10: std::result::Result<std::convert::Infallible, diem_crypto::hkdf::HkdfError>;
+    let _11: std::vec::Vec<u8>;
+    let mut _12: key_factory::KeyFactory;
+    let mut _13: key_factory::Main;
+    let _14: &[u8];
+    let mut _15: &std::vec::Vec<u8>;
+    let mut _16: std::ops::RangeTo<usize>;
+    scope 1 {
+        debug hkdf_extract => _2;
+    }
+    scope 2 {
+        debug residual => _10;
+        scope 3 {
+        }
+    }
+    scope 4 {
+        debug val => _11;
+        scope 5 {
+        }
+    }
+
+    bb0: {
+        _6 = const _;
+        _5 = std::option::Option::<&[u8]>::Some(_6);
+        _8 = &((*_1).0: [u8; 32]);
+        _7 = _8 as &[u8] (PointerCoercion(Unsize));
+        _4 = diem_crypto::hkdf::Hkdf::<Sha3_256>::extract(move _5, move _7) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _3 = <Result<Vec<u8>, HkdfError> as Try>::branch(move _4) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _9 = discriminant(_3);
+        switchInt(move _9) -> [0: bb3, 1: bb5, otherwise: bb4];
+    }
+
+    bb3: {
+        _11 = move ((_3 as Continue).0: std::vec::Vec<u8>);
+        _2 = move _11;
+        _15 = &_2;
+        _16 = RangeTo::<usize> { end: const 32_usize };
+        _14 = <Vec<u8> as Index<RangeTo<usize>>>::index(move _15, move _16) -> [return: bb6, unwind: bb9];
+    }
+
+    bb4: {
+        unreachable;
+    }
+
+    bb5: {
+        _10 = move ((_3 as Break).0: std::result::Result<std::convert::Infallible, diem_crypto::hkdf::HkdfError>);
+        _0 = <Result<KeyFactory, anyhow::Error> as FromResidual<Result<Infallible, HkdfError>>>::from_residual(move _10) -> [return: bb8, unwind continue];
+    }
+
+    bb6: {
+        _13 = <Main as From<&[u8]>>::from(_14) -> [return: bb7, unwind: bb9];
+    }
+
+    bb7: {
+        _12 = KeyFactory { main: move _13 };
+        _0 = Result::<KeyFactory, anyhow::Error>::Ok(move _12);
+        drop(_2) -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        return;
+    }
+
+    bb9 (cleanup): {
+        drop(_2) -> [return: bb10, unwind terminate(cleanup)];
+    }
+
+    bb10 (cleanup): {
+        resume;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:138:1: 138:16>::main(_1: &KeyFactory) -> &[u8] {
+    debug self => _1;
+    let mut _0: &[u8];
+    let mut _2: &[u8; 32];
+
+    bb0: {
+        _2 = &(((*_1).0: key_factory::Main).0: [u8; 32]);
+        _0 = <[u8; 32] as Index<RangeFull>>::index(move _2, const RangeFull) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:138:1: 138:16>::private_child(_1: &KeyFactory, _2: ChildNumber) -> Result<ExtendedPrivKey, anyhow::Error> {
+    debug self => _1;
+    debug child => _2;
+    let mut _0: std::result::Result<key_factory::ExtendedPrivKey, anyhow::Error>;
+    let mut _3: [u8; 8];
+    let _4: ();
+    let mut _5: &mut [u8];
+    let mut _6: &mut [u8; 8];
+    let mut _7: u64;
+    let _9: &[u8];
+    let _10: ();
+    let mut _11: &mut std::vec::Vec<u8>;
+    let mut _12: &[u8];
+    let _13: &[u8; 8];
+    let mut _15: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, diem_crypto::hkdf::HkdfError>, std::vec::Vec<u8>>;
+    let mut _16: std::result::Result<std::vec::Vec<u8>, diem_crypto::hkdf::HkdfError>;
+    let _17: &&[u8];
+    let _18: &[u8];
+    let mut _19: std::option::Option<&[u8]>;
+    let _20: &[u8];
+    let _21: &std::vec::Vec<u8>;
+    let mut _22: isize;
+    let mut _26: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, anyhow::Error>, diem_crypto::ed25519::Ed25519PrivateKey>;
+    let mut _27: std::result::Result<diem_crypto::ed25519::Ed25519PrivateKey, anyhow::Error>;
+    let mut _28: std::result::Result<diem_crypto::ed25519::Ed25519PrivateKey, diem_crypto::CryptoMaterialError>;
+    let mut _29: &[u8];
+    let mut _30: &std::vec::Vec<u8>;
+    let mut _31: isize;
+    let mut _34: key_factory::ExtendedPrivKey;
+    let mut _35: diem_crypto::ed25519::Ed25519PrivateKey;
+    let mut _36: &[u8];
+    let mut _37: bool;
+    scope 1 {
+        debug le_n => _3;
+        let mut _8: std::vec::Vec<u8>;
+        scope 2 {
+            debug info => _8;
+            let _14: std::vec::Vec<u8>;
+            let _23: std::result::Result<std::convert::Infallible, diem_crypto::hkdf::HkdfError>;
+            let _24: std::vec::Vec<u8>;
+            scope 3 {
+                debug hkdf_expand => _14;
+                let _25: diem_crypto::ed25519::Ed25519PrivateKey;
+                let _32: std::result::Result<std::convert::Infallible, anyhow::Error>;
+                let _33: diem_crypto::ed25519::Ed25519PrivateKey;
+                scope 8 {
+                    debug sk => _25;
+                }
+                scope 9 {
+                    debug residual => _32;
+                    scope 10 {
+                    }
+                }
+                scope 11 {
+                    debug val => _33;
+                    scope 12 {
+                    }
+                }
+            }
+            scope 4 {
+                debug residual => _23;
+                scope 5 {
+                }
+            }
+            scope 6 {
+                debug val => _24;
+                scope 7 {
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _37 = const false;
+        _3 = [const 0_u8; 8];
+        _6 = &mut _3;
+        _5 = _6 as &mut [u8] (PointerCoercion(Unsize));
+        _7 = (_2.0: u64);
+        _4 = <LittleEndian as ByteOrder>::write_u64(move _5, move _7) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _9 = const _;
+        _8 = slice::<impl [u8]>::to_vec(_9) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _11 = &mut _8;
+        _13 = &_3;
+        _12 = _13 as &[u8] (PointerCoercion(Unsize));
+        _10 = Vec::<u8>::extend_from_slice(move _11, move _12) -> [return: bb3, unwind: bb23];
+    }
+
+    bb3: {
+        _18 = KeyFactory::main(_1) -> [return: bb4, unwind: bb23];
+    }
+
+    bb4: {
+        _17 = &_18;
+        _36 = deref_copy (*_17);
+        _21 = &_8;
+        _20 = <Vec<u8> as Deref>::deref(_21) -> [return: bb5, unwind: bb23];
+    }
+
+    bb5: {
+        _19 = std::option::Option::<&[u8]>::Some(_20);
+        _16 = diem_crypto::hkdf::Hkdf::<Sha3_256>::expand(_36, move _19, const 32_usize) -> [return: bb6, unwind: bb23];
+    }
+
+    bb6: {
+        _15 = <Result<Vec<u8>, HkdfError> as Try>::branch(move _16) -> [return: bb7, unwind: bb23];
+    }
+
+    bb7: {
+        _22 = discriminant(_15);
+        switchInt(move _22) -> [0: bb8, 1: bb10, otherwise: bb9];
+    }
+
+    bb8: {
+        _24 = move ((_15 as Continue).0: std::vec::Vec<u8>);
+        _14 = move _24;
+        _30 = &_14;
+        _29 = Vec::<u8>::as_slice(move _30) -> [return: bb11, unwind: bb22];
+    }
+
+    bb9: {
+        unreachable;
+    }
+
+    bb10: {
+        _23 = move ((_15 as Break).0: std::result::Result<std::convert::Infallible, diem_crypto::hkdf::HkdfError>);
+        _0 = <Result<ExtendedPrivKey, anyhow::Error> as FromResidual<Result<Infallible, HkdfError>>>::from_residual(move _23) -> [return: bb27, unwind: bb23];
+    }
+
+    bb11: {
+        _28 = <Ed25519PrivateKey as TryFrom<&[u8]>>::try_from(move _29) -> [return: bb12, unwind: bb22];
+    }
+
+    bb12: {
+        _27 = Result::<Ed25519PrivateKey, CryptoMaterialError>::map_err::<anyhow::Error, {closure@testsuite/cli/diem-wallet/src/key_factory.rs:168:78: 168:81}>(move _28, const ZeroSized: {closure@testsuite/cli/diem-wallet/src/key_factory.rs:168:78: 168:81}) -> [return: bb13, unwind: bb22];
+    }
+
+    bb13: {
+        _26 = <Result<Ed25519PrivateKey, anyhow::Error> as Try>::branch(move _27) -> [return: bb14, unwind: bb22];
+    }
+
+    bb14: {
+        _31 = discriminant(_26);
+        switchInt(move _31) -> [0: bb15, 1: bb16, otherwise: bb9];
+    }
+
+    bb15: {
+        _33 = move ((_26 as Continue).0: diem_crypto::ed25519::Ed25519PrivateKey);
+        _37 = const true;
+        _25 = move _33;
+        _37 = const false;
+        _35 = move _25;
+        _34 = ExtendedPrivKey::new(_2, move _35) -> [return: bb18, unwind: bb26];
+    }
+
+    bb16: {
+        _32 = move ((_26 as Break).0: std::result::Result<std::convert::Infallible, anyhow::Error>);
+        _0 = <Result<ExtendedPrivKey, anyhow::Error> as FromResidual<Result<Infallible, anyhow::Error>>>::from_residual(move _32) -> [return: bb17, unwind: bb22];
+    }
+
+    bb17: {
+        _37 = const false;
+        drop(_14) -> [return: bb20, unwind: bb23];
+    }
+
+    bb18: {
+        _0 = Result::<ExtendedPrivKey, anyhow::Error>::Ok(move _34);
+        _37 = const false;
+        drop(_14) -> [return: bb19, unwind: bb23];
+    }
+
+    bb19: {
+        drop(_8) -> [return: bb21, unwind continue];
+    }
+
+    bb20: {
+        drop(_8) -> [return: bb21, unwind continue];
+    }
+
+    bb21: {
+        return;
+    }
+
+    bb22 (cleanup): {
+        drop(_14) -> [return: bb23, unwind terminate(cleanup)];
+    }
+
+    bb23 (cleanup): {
+        drop(_8) -> [return: bb24, unwind terminate(cleanup)];
+    }
+
+    bb24 (cleanup): {
+        resume;
+    }
+
+    bb25 (cleanup): {
+        drop(_25) -> [return: bb22, unwind terminate(cleanup)];
+    }
+
+    bb26 (cleanup): {
+        switchInt(_37) -> [0: bb22, otherwise: bb25];
+    }
+
+    bb27: {
+        goto -> bb20;
+    }
+}
+
+key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:138:1: 138:16>::private_child::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 8_usize;
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:138:1: 138:16>::private_child::{closure#0}(_1: {closure@testsuite/cli/diem-wallet/src/key_factory.rs:168:78: 168:81}, _2: CryptoMaterialError) -> anyhow::Error {
+    debug e => _2;
+    let mut _0: anyhow::Error;
+    let _3: std::string::String;
+    let mut _4: std::fmt::Arguments<'_>;
+    let mut _5: &[&str];
+    let mut _6: &[core::fmt::rt::Argument<'_>];
+    let _7: &[core::fmt::rt::Argument<'_>; 1];
+    let _8: [core::fmt::rt::Argument<'_>; 1];
+    let mut _9: core::fmt::rt::Argument<'_>;
+    let _10: &diem_crypto::CryptoMaterialError;
+    let mut _11: &[&str; 1];
+    scope 1 {
+        debug res => _3;
+    }
+
+    bb0: {
+        _11 = const _;
+        _5 = _11 as &[&str] (PointerCoercion(Unsize));
+        _10 = &_2;
+        _9 = core::fmt::rt::Argument::<'_>::new_display::<CryptoMaterialError>(_10) -> [return: bb1, unwind: bb6];
+    }
+
+    bb1: {
+        _8 = [move _9];
+        _7 = &_8;
+        _6 = _7 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _4 = Arguments::<'_>::new_v1(move _5, move _6) -> [return: bb2, unwind: bb6];
+    }
+
+    bb2: {
+        _3 = format(move _4) -> [return: bb3, unwind: bb6];
+    }
+
+    bb3: {
+        _0 = new_adhoc::<std::string::String>(move _3) -> [return: bb4, unwind: bb6];
+    }
+
+    bb4: {
+        drop(_2) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        return;
+    }
+
+    bb6 (cleanup): {
+        drop(_2) -> [return: bb7, unwind terminate(cleanup)];
+    }
+
+    bb7 (cleanup): {
+        resume;
+    }
+}
+
+promoted[0] in key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:138:1: 138:16>::private_child::{closure#0}: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "Unable to convert hkdf output into private key, met Error:"];
+        _0 = &_1;
+        return;
+    }
+}
+
+Seed::0::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 32_usize;
+        return;
+    }
+}
+
+fn key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:181:1: 181:10>::new(_1: &Mnemonic, _2: &str) -> Seed {
+    debug mnemonic => _1;
+    debug salt => _2;
+    let mut _0: key_factory::Seed;
+    let mut _3: [u8; 32];
+    let _5: &[u8];
+    let _6: ();
+    let mut _7: &mut std::vec::Vec<u8>;
+    let _8: &[u8];
+    let _9: ();
+    let _10: &[u8];
+    let mut _11: &std::string::String;
+    let _12: std::string::String;
+    let _13: &[u8];
+    let _14: &std::vec::Vec<u8>;
+    let mut _15: &mut [u8];
+    let mut _16: &mut [u8; 32];
+    let mut _17: [u8; 32];
+    scope 1 {
+        debug output => _3;
+        let mut _4: std::vec::Vec<u8>;
+        scope 2 {
+            debug msalt => _4;
+        }
+    }
+
+    bb0: {
+        _3 = [const 0_u8; 32];
+        _5 = const _;
+        _4 = slice::<impl [u8]>::to_vec(_5) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _7 = &mut _4;
+        _8 = core::str::<impl str>::as_bytes(_2) -> [return: bb2, unwind: bb11];
+    }
+
+    bb2: {
+        _6 = Vec::<u8>::extend_from_slice(move _7, _8) -> [return: bb3, unwind: bb11];
+    }
+
+    bb3: {
+        _12 = <Mnemonic as ToString>::to_string(_1) -> [return: bb4, unwind: bb11];
+    }
+
+    bb4: {
+        _11 = &_12;
+        _10 = <std::string::String as AsRef<[u8]>>::as_ref(move _11) -> [return: bb5, unwind: bb10];
+    }
+
+    bb5: {
+        _14 = &_4;
+        _13 = <Vec<u8> as Deref>::deref(_14) -> [return: bb6, unwind: bb10];
+    }
+
+    bb6: {
+        _16 = &mut _3;
+        _15 = _16 as &mut [u8] (PointerCoercion(Unsize));
+        _9 = pbkdf2::<Hmac<Sha3_256>>(_10, _13, const 2048_u32, move _15) -> [return: bb7, unwind: bb10];
+    }
+
+    bb7: {
+        drop(_12) -> [return: bb8, unwind: bb11];
+    }
+
+    bb8: {
+        _17 = _3;
+        _0 = Seed(move _17);
+        drop(_4) -> [return: bb9, unwind continue];
+    }
+
+    bb9: {
+        return;
+    }
+
+    bb10 (cleanup): {
+        drop(_12) -> [return: bb11, unwind terminate(cleanup)];
+    }
+
+    bb11 (cleanup): {
+        drop(_4) -> [return: bb12, unwind terminate(cleanup)];
+    }
+
+    bb12 (cleanup): {
+        resume;
+    }
+}
+
+key_factory::<impl at testsuite/cli/diem-wallet/src/key_factory.rs:181:1: 181:10>::new::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 32_usize;
+        return;
+    }
+}
+
+fn mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:44:1: 44:27>::to_string(_1: &Mnemonic) -> std::string::String {
+    debug self => _1;
+    let mut _0: std::string::String;
+    let _2: &[&str];
+    let mut _3: &std::vec::Vec<&str>;
+    let _4: &str;
+
+    bb0: {
+        _3 = &((*_1).0: std::vec::Vec<&str>);
+        _2 = Vec::<&str>::as_slice(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _4 = const " ";
+        _0 = slice::<impl [&str]>::join::<&str>(_2, _4) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:50:1: 50:14>::from(_1: &str) -> Result<Mnemonic, anyhow::Error> {
+    debug s => _1;
+    let mut _0: std::result::Result<mnemonic::Mnemonic, anyhow::Error>;
+    let _2: std::vec::Vec<&str>;
+    let mut _3: std::str::Split<'_, char>;
+    let mut _5: &std::vec::Vec<&str>;
+    let mut _6: bool;
+    let _7: &usize;
+    let mut _8: usize;
+    let mut _9: usize;
+    let mut _10: bool;
+    let mut _11: anyhow::Error;
+    let mut _12: error::WalletError;
+    let mut _13: std::string::String;
+    let _14: &str;
+    let mut _16: usize;
+    let mut _18: usize;
+    let mut _19: std::slice::Iter<'_, &str>;
+    let mut _20: &std::vec::Vec<&str>;
+    let mut _22: std::option::Option<&&str>;
+    let mut _23: &mut std::slice::Iter<'_, &str>;
+    let mut _24: isize;
+    let mut _26: std::result::Result<usize, usize>;
+    let mut _27: &[&str];
+    let mut _28: isize;
+    let _30: ();
+    let mut _31: &mut std::vec::Vec<&str>;
+    let mut _32: &str;
+    let mut _33: [&str; 2048];
+    let mut _34: usize;
+    let mut _35: bool;
+    let _36: ();
+    let mut _37: &mut mnemonic::U11BitWriter;
+    let mut _38: u16;
+    let mut _39: anyhow::Error;
+    let mut _40: error::WalletError;
+    let mut _41: std::string::String;
+    let _42: &str;
+    let _43: ();
+    let mut _44: &mut mnemonic::U11BitWriter;
+    let mut _47: (&u8, &[u8]);
+    let mut _48: std::option::Option<(&u8, &[u8])>;
+    let _49: &[u8];
+    let mut _50: &std::vec::Vec<u8>;
+    let mut _52: u8;
+    let mut _53: &[u8];
+    let mut _54: &sha2::digest::generic_array::GenericArray<u8, sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UTerm, sha2::digest::consts::B1>, sha2::digest::consts::B0>, sha2::digest::consts::B0>, sha2::digest::consts::B0>, sha2::digest::consts::B0>, sha2::digest::consts::B0>>;
+    let _55: sha2::digest::generic_array::GenericArray<u8, sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UTerm, sha2::digest::consts::B1>, sha2::digest::consts::B0>, sha2::digest::consts::B0>, sha2::digest::consts::B0>, sha2::digest::consts::B0>, sha2::digest::consts::B0>>;
+    let _56: usize;
+    let mut _57: usize;
+    let mut _58: bool;
+    let mut _59: usize;
+    let mut _60: usize;
+    let mut _61: usize;
+    let mut _62: bool;
+    let mut _63: (usize, bool);
+    let mut _64: bool;
+    let mut _65: bool;
+    let mut _66: u8;
+    let mut _67: anyhow::Error;
+    let mut _68: error::WalletError;
+    let mut _69: std::string::String;
+    let _70: &str;
+    let mut _71: mnemonic::Mnemonic;
+    let mut _72: std::vec::Vec<&str>;
+    let mut _75: bool;
+    scope 1 {
+        debug words => _2;
+        let _4: usize;
+        scope 2 {
+            debug len => _4;
+            let mut _15: std::vec::Vec<&str>;
+            let mut _74: &std::ops::RangeInclusive<usize>;
+            scope 3 {
+                debug mnemonic => _15;
+                let mut _17: mnemonic::U11BitWriter;
+                scope 4 {
+                    debug bit_writer => _17;
+                    let mut _21: std::slice::Iter<'_, &str>;
+                    let _45: &u8;
+                    let _46: &[u8];
+                    scope 5 {
+                        debug iter => _21;
+                        let _25: &&str;
+                        scope 6 {
+                            debug word => _25;
+                            scope 7 {
+                                debug idx => _29;
+                                let _29: usize;
+                                let mut _73: &[&str; 2048];
+                            }
+                        }
+                    }
+                    scope 8 {
+                        debug checksum => _45;
+                        debug entropy => _46;
+                        let _51: u8;
+                        scope 9 {
+                            debug computed_checksum => _51;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _75 = const false;
+        _3 = core::str::<impl str>::split::<'_, char>(_1, const ' ') -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = <std::str::Split<'_, char> as Iterator>::collect::<Vec<&str>>(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _5 = &_2;
+        _4 = Vec::<&str>::len(move _5) -> [return: bb3, unwind: bb47];
+    }
+
+    bb3: {
+        _74 = const _;
+        _7 = &_4;
+        _6 = RangeInclusive::<usize>::contains::<usize>(_74, _7) -> [return: bb4, unwind: bb47];
+    }
+
+    bb4: {
+        switchInt(move _6) -> [0: bb7, otherwise: bb5];
+    }
+
+    bb5: {
+        _9 = _4;
+        _10 = Eq(const 3_usize, const 0_usize);
+        assert(!move _10, "attempt to calculate the remainder of `{}` with a divisor of zero", _9) -> [success: bb6, unwind: bb47];
+    }
+
+    bb6: {
+        _8 = Rem(move _9, const 3_usize);
+        switchInt(move _8) -> [0: bb10, otherwise: bb7];
+    }
+
+    bb7: {
+        _14 = const "Mnemonic must have a word count of the following lengths: 24, 21, 18, 15, 12";
+        _13 = <str as ToString>::to_string(_14) -> [return: bb8, unwind: bb47];
+    }
+
+    bb8: {
+        _12 = WalletError::DiemWalletGeneric(move _13);
+        _11 = <WalletError as Into<anyhow::Error>>::into(move _12) -> [return: bb9, unwind: bb47];
+    }
+
+    bb9: {
+        _0 = Result::<Mnemonic, anyhow::Error>::Err(move _11);
+        goto -> bb44;
+    }
+
+    bb10: {
+        _16 = _4;
+        _15 = Vec::<&str>::with_capacity(move _16) -> [return: bb11, unwind: bb47];
+    }
+
+    bb11: {
+        _75 = const true;
+        _18 = _4;
+        _17 = U11BitWriter::new(move _18) -> [return: bb12, unwind: bb50];
+    }
+
+    bb12: {
+        _20 = &_2;
+        _19 = <&Vec<&str> as IntoIterator>::into_iter(move _20) -> [return: bb13, unwind: bb46];
+    }
+
+    bb13: {
+        _21 = move _19;
+        goto -> bb14;
+    }
+
+    bb14: {
+        _23 = &mut _21;
+        _22 = <std::slice::Iter<'_, &str> as Iterator>::next(_23) -> [return: bb15, unwind: bb46];
+    }
+
+    bb15: {
+        _24 = discriminant(_22);
+        switchInt(move _24) -> [0: bb18, 1: bb16, otherwise: bb17];
+    }
+
+    bb16: {
+        _25 = ((_22 as Some).0: &&str);
+        _73 = const _;
+        _27 = _73 as &[&str] (PointerCoercion(Unsize));
+        _26 = core::slice::<impl [&str]>::binary_search(move _27, _25) -> [return: bb19, unwind: bb46];
+    }
+
+    bb17: {
+        unreachable;
+    }
+
+    bb18: {
+        _44 = &mut _17;
+        _43 = U11BitWriter::write_buffer(move _44) -> [return: bb26, unwind: bb46];
+    }
+
+    bb19: {
+        _28 = discriminant(_26);
+        switchInt(move _28) -> [0: bb20, otherwise: bb23];
+    }
+
+    bb20: {
+        _29 = ((_26 as Ok).0: usize);
+        _31 = &mut _15;
+        _33 = const _;
+        _34 = const 2048_usize;
+        _35 = Lt(_29, _34);
+        assert(move _35, "index out of bounds: the length is {} but the index is {}", move _34, _29) -> [success: bb21, unwind: bb46];
+    }
+
+    bb21: {
+        _32 = _33[_29];
+        _30 = Vec::<&str>::push(move _31, move _32) -> [return: bb22, unwind: bb46];
+    }
+
+    bb22: {
+        _37 = &mut _17;
+        _38 = _29 as u16 (IntToInt);
+        _36 = U11BitWriter::write_u11(move _37, move _38) -> [return: bb51, unwind: bb46];
+    }
+
+    bb23: {
+        _42 = const "Mnemonic contains an unknown word";
+        _41 = <str as ToString>::to_string(_42) -> [return: bb24, unwind: bb46];
+    }
+
+    bb24: {
+        _40 = WalletError::DiemWalletGeneric(move _41);
+        _39 = <WalletError as Into<anyhow::Error>>::into(move _40) -> [return: bb25, unwind: bb46];
+    }
+
+    bb25: {
+        _0 = Result::<Mnemonic, anyhow::Error>::Err(move _39);
+        goto -> bb41;
+    }
+
+    bb26: {
+        _50 = &(_17.0: std::vec::Vec<u8>);
+        _49 = <Vec<u8> as Deref>::deref(move _50) -> [return: bb27, unwind: bb46];
+    }
+
+    bb27: {
+        _48 = core::slice::<impl [u8]>::split_last(_49) -> [return: bb28, unwind: bb46];
+    }
+
+    bb28: {
+        _47 = std::option::Option::<(&u8, &[u8])>::unwrap_or_else::<{closure@testsuite/cli/diem-wallet/src/mnemonic.rs:83:29: 83:31}>(move _48, const ZeroSized: {closure@testsuite/cli/diem-wallet/src/mnemonic.rs:83:29: 83:31}) -> [return: bb29, unwind: bb46];
+    }
+
+    bb29: {
+        _45 = (_47.0: &u8);
+        _46 = (_47.1: &[u8]);
+        _55 = <Sha256 as Digest>::digest(_46) -> [return: bb30, unwind: bb46];
+    }
+
+    bb30: {
+        _54 = &_55;
+        _53 = <GenericArray<u8, UInt<UInt<UInt<UInt<UInt<UInt<UTerm, B1>, B0>, B0>, B0>, B0>, B0>> as Deref>::deref(move _54) -> [return: bb31, unwind: bb46];
+    }
+
+    bb31: {
+        _56 = const 0_usize;
+        _57 = Len((*_53));
+        _58 = Lt(_56, _57);
+        assert(move _58, "index out of bounds: the length is {} but the index is {}", move _57, _56) -> [success: bb32, unwind: bb46];
+    }
+
+    bb32: {
+        _52 = (*_53)[_56];
+        _61 = _4;
+        _62 = Eq(const 3_usize, const 0_usize);
+        assert(!move _62, "attempt to divide `{}` by zero", _61) -> [success: bb33, unwind: bb46];
+    }
+
+    bb33: {
+        _60 = Div(move _61, const 3_usize);
+        _63 = CheckedSub(const 8_usize, _60);
+        assert(!move (_63.1: bool), "attempt to compute `{} - {}`, which would overflow", const 8_usize, move _60) -> [success: bb34, unwind: bb46];
+    }
+
+    bb34: {
+        _59 = move (_63.0: usize);
+        _64 = Lt(_59, const 8_usize);
+        assert(move _64, "attempt to shift right by `{}`, which would overflow", _59) -> [success: bb35, unwind: bb46];
+    }
+
+    bb35: {
+        _51 = Shr(move _52, move _59);
+        _66 = (*_45);
+        _65 = Ne(move _66, _51);
+        switchInt(move _65) -> [0: bb39, otherwise: bb36];
+    }
+
+    bb36: {
+        _70 = const "Mnemonic checksum failed";
+        _69 = <str as ToString>::to_string(_70) -> [return: bb37, unwind: bb46];
+    }
+
+    bb37: {
+        _68 = WalletError::DiemWalletGeneric(move _69);
+        _67 = <WalletError as Into<anyhow::Error>>::into(move _68) -> [return: bb38, unwind: bb46];
+    }
+
+    bb38: {
+        _0 = Result::<Mnemonic, anyhow::Error>::Err(move _67);
+        goto -> bb41;
+    }
+
+    bb39: {
+        _75 = const false;
+        _72 = move _15;
+        _71 = Mnemonic(move _72);
+        _0 = Result::<Mnemonic, anyhow::Error>::Ok(move _71);
+        drop(_17) -> [return: bb40, unwind: bb50];
+    }
+
+    bb40: {
+        _75 = const false;
+        drop(_2) -> [return: bb45, unwind continue];
+    }
+
+    bb41: {
+        drop(_17) -> [return: bb42, unwind: bb50];
+    }
+
+    bb42: {
+        drop(_15) -> [return: bb43, unwind: bb47];
+    }
+
+    bb43: {
+        _75 = const false;
+        goto -> bb44;
+    }
+
+    bb44: {
+        drop(_2) -> [return: bb45, unwind continue];
+    }
+
+    bb45: {
+        return;
+    }
+
+    bb46 (cleanup): {
+        drop(_17) -> [return: bb50, unwind terminate(cleanup)];
+    }
+
+    bb47 (cleanup): {
+        drop(_2) -> [return: bb48, unwind terminate(cleanup)];
+    }
+
+    bb48 (cleanup): {
+        resume;
+    }
+
+    bb49 (cleanup): {
+        drop(_15) -> [return: bb47, unwind terminate(cleanup)];
+    }
+
+    bb50 (cleanup): {
+        switchInt(_75) -> [0: bb47, otherwise: bb49];
+    }
+
+    bb51: {
+        goto -> bb14;
+    }
+}
+
+promoted[0] in mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:50:1: 50:14>::from: &[&str; 2048] = {
+    let mut _0: &[&str; 2048];
+    let mut _1: [&str; 2048];
+
+    bb0: {
+        _1 = const _;
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:50:1: 50:14>::from: &RangeInclusive<usize> = {
+    let mut _0: &std::ops::RangeInclusive<usize>;
+    let mut _1: std::ops::RangeInclusive<usize>;
+
+    bb0: {
+        _1 = RangeInclusive::<usize>::new(const 12_usize, const 24_usize) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = &_1;
+        return;
+    }
+}
+
+fn mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:50:1: 50:14>::from::{closure#0}(_1: {closure@testsuite/cli/diem-wallet/src/mnemonic.rs:83:29: 83:31}) -> (&u8, &[u8]) {
+    let mut _0: (&u8, &[u8]);
+    let mut _2: !;
+
+    bb0: {
+        _2 = core::panicking::panic(const "internal error: entered unreachable code") -> unwind continue;
+    }
+}
+
+fn mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:50:1: 50:14>::mnemonic(_1: &[u8]) -> Result<Mnemonic, anyhow::Error> {
+    debug entropy => _1;
+    let mut _0: std::result::Result<mnemonic::Mnemonic, anyhow::Error>;
+    let _2: usize;
+    let mut _3: bool;
+    let _4: &usize;
+    let mut _5: usize;
+    let mut _6: usize;
+    let mut _7: bool;
+    let mut _8: anyhow::Error;
+    let mut _9: error::WalletError;
+    let mut _10: std::string::String;
+    let _11: &str;
+    let mut _13: &[u8];
+    let mut _14: &sha2::digest::generic_array::GenericArray<u8, sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UTerm, sha2::digest::consts::B1>, sha2::digest::consts::B0>, sha2::digest::consts::B0>, sha2::digest::consts::B0>, sha2::digest::consts::B0>, sha2::digest::consts::B0>>;
+    let _15: sha2::digest::generic_array::GenericArray<u8, sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UInt<sha2::digest::generic_array::typenum::UTerm, sha2::digest::consts::B1>, sha2::digest::consts::B0>, sha2::digest::consts::B0>, sha2::digest::consts::B0>, sha2::digest::consts::B0>, sha2::digest::consts::B0>>;
+    let _16: usize;
+    let mut _17: usize;
+    let mut _18: bool;
+    let _19: &[u8];
+    let mut _20: &std::vec::Vec<u8>;
+    let _21: std::vec::Vec<u8>;
+    let mut _22: &[&[u8]];
+    let mut _23: &[&[u8]; 2];
+    let _24: [&[u8]; 2];
+    let mut _25: &[u8];
+    let _26: &[u8; 1];
+    let _27: [u8; 1];
+    let mut _30: usize;
+    let mut _31: usize;
+    let mut _32: (usize, bool);
+    let mut _33: bool;
+    let mut _35: std::ops::Range<usize>;
+    let mut _36: std::ops::Range<usize>;
+    let mut _38: std::option::Option<usize>;
+    let mut _39: &mut std::ops::Range<usize>;
+    let mut _40: isize;
+    let _41: ();
+    let mut _42: &mut std::vec::Vec<&str>;
+    let mut _43: &str;
+    let mut _44: [&str; 2048];
+    let _45: usize;
+    let mut _46: u16;
+    let mut _47: &mut mnemonic::U11BitReader<'_>;
+    let mut _48: usize;
+    let mut _49: bool;
+    let mut _50: mnemonic::Mnemonic;
+    let mut _51: std::vec::Vec<&str>;
+    scope 1 {
+        debug len => _2;
+        let _12: u8;
+        let mut _52: &std::ops::RangeInclusive<usize>;
+        scope 2 {
+            debug checksum => _12;
+            scope 3 {
+                debug entropy_and_checksum => _19;
+                let mut _28: mnemonic::U11BitReader<'_>;
+                scope 4 {
+                    debug bit_reader => _28;
+                    let _29: usize;
+                    scope 5 {
+                        debug mnemonic_len => _29;
+                        let mut _34: std::vec::Vec<&str>;
+                        scope 6 {
+                            debug mnemonic => _34;
+                            let mut _37: std::ops::Range<usize>;
+                            scope 7 {
+                                debug iter => _37;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _2 = Len((*_1));
+        _52 = const _;
+        _4 = &_2;
+        _3 = RangeInclusive::<usize>::contains::<usize>(_52, _4) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        switchInt(move _3) -> [0: bb4, otherwise: bb2];
+    }
+
+    bb2: {
+        _6 = _2;
+        _7 = Eq(const 4_usize, const 0_usize);
+        assert(!move _7, "attempt to calculate the remainder of `{}` with a divisor of zero", _6) -> [success: bb3, unwind continue];
+    }
+
+    bb3: {
+        _5 = Rem(move _6, const 4_usize);
+        switchInt(move _5) -> [0: bb7, otherwise: bb4];
+    }
+
+    bb4: {
+        _11 = const "Entropy data for mnemonic must have one of the following byte lengths: 32, 28, 24, 20, 16";
+        _10 = <str as ToString>::to_string(_11) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        _9 = WalletError::DiemWalletGeneric(move _10);
+        _8 = <WalletError as Into<anyhow::Error>>::into(move _9) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _0 = Result::<Mnemonic, anyhow::Error>::Err(move _8);
+        goto -> bb25;
+    }
+
+    bb7: {
+        _15 = <Sha256 as Digest>::digest(_1) -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        _14 = &_15;
+        _13 = <GenericArray<u8, UInt<UInt<UInt<UInt<UInt<UInt<UTerm, B1>, B0>, B0>, B0>, B0>, B0>> as Deref>::deref(move _14) -> [return: bb9, unwind continue];
+    }
+
+    bb9: {
+        _16 = const 0_usize;
+        _17 = Len((*_13));
+        _18 = Lt(_16, _17);
+        assert(move _18, "index out of bounds: the length is {} but the index is {}", move _17, _16) -> [success: bb10, unwind continue];
+    }
+
+    bb10: {
+        _12 = (*_13)[_16];
+        _27 = [_12];
+        _26 = &_27;
+        _25 = _26 as &[u8] (PointerCoercion(Unsize));
+        _24 = [_1, move _25];
+        _23 = &_24;
+        _22 = move _23 as &[&[u8]] (PointerCoercion(Unsize));
+        _21 = slice::<impl [&[u8]]>::concat::<u8>(move _22) -> [return: bb11, unwind continue];
+    }
+
+    bb11: {
+        _20 = &_21;
+        _19 = <Vec<u8> as Index<RangeFull>>::index(move _20, const RangeFull) -> [return: bb12, unwind: bb27];
+    }
+
+    bb12: {
+        _28 = U11BitReader::<'_>::new(_19) -> [return: bb13, unwind: bb27];
+    }
+
+    bb13: {
+        _31 = _2;
+        _32 = CheckedMul(_31, const 3_usize);
+        assert(!move (_32.1: bool), "attempt to compute `{} * {}`, which would overflow", move _31, const 3_usize) -> [success: bb14, unwind: bb27];
+    }
+
+    bb14: {
+        _30 = move (_32.0: usize);
+        _33 = Eq(const 4_usize, const 0_usize);
+        assert(!move _33, "attempt to divide `{}` by zero", _30) -> [success: bb15, unwind: bb27];
+    }
+
+    bb15: {
+        _29 = Div(move _30, const 4_usize);
+        _34 = Vec::<&str>::with_capacity(_29) -> [return: bb16, unwind: bb27];
+    }
+
+    bb16: {
+        _36 = std::ops::Range::<usize> { start: const 0_usize, end: _29 };
+        _35 = <std::ops::Range<usize> as IntoIterator>::into_iter(move _36) -> [return: bb17, unwind: bb26];
+    }
+
+    bb17: {
+        _37 = move _35;
+        goto -> bb18;
+    }
+
+    bb18: {
+        _39 = &mut _37;
+        _38 = <std::ops::Range<usize> as Iterator>::next(_39) -> [return: bb19, unwind: bb26];
+    }
+
+    bb19: {
+        _40 = discriminant(_38);
+        switchInt(move _40) -> [0: bb22, 1: bb20, otherwise: bb21];
+    }
+
+    bb20: {
+        _42 = &mut _34;
+        _44 = const _;
+        _47 = &mut _28;
+        _46 = U11BitReader::<'_>::read_u11(move _47) -> [return: bb23, unwind: bb26];
+    }
+
+    bb21: {
+        unreachable;
+    }
+
+    bb22: {
+        _51 = move _34;
+        _50 = Mnemonic(move _51);
+        _0 = Result::<Mnemonic, anyhow::Error>::Ok(move _50);
+        drop(_21) -> [return: bb25, unwind continue];
+    }
+
+    bb23: {
+        _45 = move _46 as usize (IntToInt);
+        _48 = const 2048_usize;
+        _49 = Lt(_45, _48);
+        assert(move _49, "index out of bounds: the length is {} but the index is {}", move _48, _45) -> [success: bb24, unwind: bb26];
+    }
+
+    bb24: {
+        _43 = _44[_45];
+        _41 = Vec::<&str>::push(move _42, move _43) -> [return: bb29, unwind: bb26];
+    }
+
+    bb25: {
+        return;
+    }
+
+    bb26 (cleanup): {
+        drop(_34) -> [return: bb27, unwind terminate(cleanup)];
+    }
+
+    bb27 (cleanup): {
+        drop(_21) -> [return: bb28, unwind terminate(cleanup)];
+    }
+
+    bb28 (cleanup): {
+        resume;
+    }
+
+    bb29: {
+        goto -> bb18;
+    }
+}
+
+promoted[0] in mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:50:1: 50:14>::mnemonic: &RangeInclusive<usize> = {
+    let mut _0: &std::ops::RangeInclusive<usize>;
+    let mut _1: std::ops::RangeInclusive<usize>;
+
+    bb0: {
+        _1 = RangeInclusive::<usize>::new(const 16_usize, const 32_usize) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = &_1;
+        return;
+    }
+}
+
+fn mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:50:1: 50:14>::write(_1: &Mnemonic, _2: &std::path::Path) -> Result<(), anyhow::Error> {
+    debug self => _1;
+    debug output_file_path => _2;
+    let mut _0: std::result::Result<(), anyhow::Error>;
+    let mut _3: bool;
+    let mut _4: bool;
+    let mut _5: anyhow::Error;
+    let mut _6: error::WalletError;
+    let _7: std::string::String;
+    let mut _8: std::fmt::Arguments<'_>;
+    let mut _9: &[&str];
+    let mut _10: &[core::fmt::rt::Argument<'_>];
+    let _11: &[core::fmt::rt::Argument<'_>; 1];
+    let _12: [core::fmt::rt::Argument<'_>; 1];
+    let mut _13: core::fmt::rt::Argument<'_>;
+    let _14: &std::option::Option<&str>;
+    let _15: std::option::Option<&str>;
+    let mut _16: std::fs::File;
+    let mut _17: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>, std::fs::File>;
+    let mut _18: std::result::Result<std::fs::File, std::io::Error>;
+    let mut _19: isize;
+    let _20: std::result::Result<std::convert::Infallible, std::io::Error>;
+    let _21: std::fs::File;
+    let mut _22: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>>;
+    let mut _23: std::result::Result<(), std::io::Error>;
+    let mut _24: &mut std::fs::File;
+    let _25: &&[u8];
+    let _26: &[u8];
+    let mut _27: &std::string::String;
+    let _28: std::string::String;
+    let mut _29: isize;
+    let mut _31: &[&str; 2];
+    let mut _32: &[u8];
+    scope 1 {
+        debug res => _7;
+    }
+    scope 2 {
+        debug file => _16;
+        let _30: std::result::Result<std::convert::Infallible, std::io::Error>;
+        scope 7 {
+            debug residual => _30;
+            scope 8 {
+            }
+        }
+        scope 9 {
+            debug val => const ();
+            scope 10 {
+            }
+        }
+    }
+    scope 3 {
+        debug residual => _20;
+        scope 4 {
+        }
+    }
+    scope 5 {
+        debug val => _21;
+        scope 6 {
+        }
+    }
+
+    bb0: {
+        _3 = std::path::Path::exists(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        switchInt(move _3) -> [0: bb10, otherwise: bb2];
+    }
+
+    bb2: {
+        _4 = std::path::Path::is_file(_2) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        switchInt(move _4) -> [0: bb4, otherwise: bb10];
+    }
+
+    bb4: {
+        _31 = const _;
+        _9 = _31 as &[&str] (PointerCoercion(Unsize));
+        _15 = std::path::Path::to_str(_2) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        _14 = &_15;
+        _13 = core::fmt::rt::Argument::<'_>::new_debug::<std::option::Option<&str>>(_14) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _12 = [move _13];
+        _11 = &_12;
+        _10 = _11 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _8 = Arguments::<'_>::new_v1(move _9, move _10) -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        _7 = format(move _8) -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        _6 = WalletError::DiemWalletGeneric(move _7);
+        _5 = <WalletError as Into<anyhow::Error>>::into(move _6) -> [return: bb9, unwind continue];
+    }
+
+    bb9: {
+        _0 = Result::<(), anyhow::Error>::Err(move _5);
+        goto -> bb25;
+    }
+
+    bb10: {
+        _18 = File::create::<&std::path::Path>(_2) -> [return: bb11, unwind continue];
+    }
+
+    bb11: {
+        _17 = <Result<File, std::io::Error> as Try>::branch(move _18) -> [return: bb12, unwind continue];
+    }
+
+    bb12: {
+        _19 = discriminant(_17);
+        switchInt(move _19) -> [0: bb13, 1: bb15, otherwise: bb14];
+    }
+
+    bb13: {
+        _21 = move ((_17 as Continue).0: std::fs::File);
+        _16 = move _21;
+        _24 = &mut _16;
+        _28 = <Mnemonic as ToString>::to_string(_1) -> [return: bb16, unwind: bb27];
+    }
+
+    bb14: {
+        unreachable;
+    }
+
+    bb15: {
+        _20 = move ((_17 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<(), anyhow::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _20) -> [return: bb25, unwind continue];
+    }
+
+    bb16: {
+        _27 = &_28;
+        _26 = std::string::String::as_bytes(move _27) -> [return: bb17, unwind: bb26];
+    }
+
+    bb17: {
+        _25 = &_26;
+        _32 = deref_copy (*_25);
+        _23 = <File as std::io::Write>::write_all(move _24, _32) -> [return: bb18, unwind: bb26];
+    }
+
+    bb18: {
+        _22 = <Result<(), std::io::Error> as Try>::branch(move _23) -> [return: bb19, unwind: bb26];
+    }
+
+    bb19: {
+        _29 = discriminant(_22);
+        switchInt(move _29) -> [0: bb20, 1: bb21, otherwise: bb14];
+    }
+
+    bb20: {
+        drop(_28) -> [return: bb23, unwind: bb27];
+    }
+
+    bb21: {
+        _30 = move ((_22 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<(), anyhow::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _30) -> [return: bb22, unwind: bb26];
+    }
+
+    bb22: {
+        drop(_28) -> [return: bb24, unwind: bb27];
+    }
+
+    bb23: {
+        _0 = Result::<(), anyhow::Error>::Ok(const ());
+        drop(_16) -> [return: bb25, unwind continue];
+    }
+
+    bb24: {
+        drop(_16) -> [return: bb25, unwind continue];
+    }
+
+    bb25: {
+        return;
+    }
+
+    bb26 (cleanup): {
+        drop(_28) -> [return: bb27, unwind terminate(cleanup)];
+    }
+
+    bb27 (cleanup): {
+        drop(_16) -> [return: bb28, unwind terminate(cleanup)];
+    }
+
+    bb28 (cleanup): {
+        resume;
+    }
+}
+
+promoted[0] in mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:50:1: 50:14>::write: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "Output file ", const " for mnemonic backup is reserved"];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:50:1: 50:14>::read(_1: &std::path::Path) -> Result<Mnemonic, anyhow::Error> {
+    debug input_file_path => _1;
+    let mut _0: std::result::Result<mnemonic::Mnemonic, anyhow::Error>;
+    let mut _2: bool;
+    let mut _3: bool;
+    let _4: std::string::String;
+    let mut _5: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>, std::string::String>;
+    let mut _6: std::result::Result<std::string::String, std::io::Error>;
+    let mut _7: isize;
+    let _8: std::result::Result<std::convert::Infallible, std::io::Error>;
+    let _9: std::string::String;
+    let _10: &str;
+    let mut _11: &std::string::String;
+    let mut _12: anyhow::Error;
+    let mut _13: error::WalletError;
+    let mut _14: std::string::String;
+    let _15: &str;
+    scope 1 {
+        debug mnemonic_string => _4;
+    }
+    scope 2 {
+        debug residual => _8;
+        scope 3 {
+        }
+    }
+    scope 4 {
+        debug val => _9;
+        scope 5 {
+        }
+    }
+
+    bb0: {
+        _2 = std::path::Path::exists(_1) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        switchInt(move _2) -> [0: bb12, otherwise: bb2];
+    }
+
+    bb2: {
+        _3 = std::path::Path::is_file(_1) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        switchInt(move _3) -> [0: bb12, otherwise: bb4];
+    }
+
+    bb4: {
+        _6 = std::fs::read_to_string::<&std::path::Path>(_1) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        _5 = <Result<std::string::String, std::io::Error> as Try>::branch(move _6) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _7 = discriminant(_5);
+        switchInt(move _7) -> [0: bb7, 1: bb9, otherwise: bb8];
+    }
+
+    bb7: {
+        _9 = move ((_5 as Continue).0: std::string::String);
+        _4 = move _9;
+        _11 = &_4;
+        _10 = <std::string::String as Index<RangeFull>>::index(move _11, const RangeFull) -> [return: bb10, unwind: bb16];
+    }
+
+    bb8: {
+        unreachable;
+    }
+
+    bb9: {
+        _8 = move ((_5 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<Mnemonic, anyhow::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _8) -> [return: bb15, unwind continue];
+    }
+
+    bb10: {
+        _0 = Mnemonic::from(_10) -> [return: bb11, unwind: bb16];
+    }
+
+    bb11: {
+        drop(_4) -> [return: bb15, unwind continue];
+    }
+
+    bb12: {
+        _15 = const "Input file for mnemonic backup does not exist";
+        _14 = <str as ToString>::to_string(_15) -> [return: bb13, unwind continue];
+    }
+
+    bb13: {
+        _13 = WalletError::DiemWalletGeneric(move _14);
+        _12 = <WalletError as Into<anyhow::Error>>::into(move _13) -> [return: bb14, unwind continue];
+    }
+
+    bb14: {
+        _0 = Result::<Mnemonic, anyhow::Error>::Err(move _12);
+        goto -> bb15;
+    }
+
+    bb15: {
+        return;
+    }
+
+    bb16 (cleanup): {
+        drop(_4) -> [return: bb17, unwind terminate(cleanup)];
+    }
+
+    bb17 (cleanup): {
+        resume;
+    }
+}
+
+fn mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:157:1: 157:26>::new(_1: &[u8]) -> U11BitReader<'_> {
+    debug bytes => _1;
+    let mut _0: mnemonic::U11BitReader<'_>;
+
+    bb0: {
+        _0 = U11BitReader::<'_> { bytes: _1, position: const 0_u16 };
+        return;
+    }
+}
+
+fn mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:157:1: 157:26>::read_u11(_1: &mut U11BitReader<'_>) -> u16 {
+    debug self => _1;
+    let mut _0: u16;
+    let _2: u16;
+    let mut _4: (u16, bool);
+    let mut _6: std::ops::Range<u16>;
+    let mut _7: std::ops::Range<u16>;
+    let mut _9: std::option::Option<u16>;
+    let mut _10: &mut std::ops::Range<u16>;
+    let mut _11: isize;
+    let mut _14: u16;
+    let mut _15: bool;
+    let mut _17: usize;
+    let mut _18: bool;
+    let mut _20: u16;
+    let mut _21: bool;
+    let mut _22: (u16, bool);
+    let mut _24: u16;
+    let mut _25: u8;
+    let mut _26: bool;
+    let mut _27: u16;
+    let mut _28: u16;
+    let mut _29: u32;
+    let mut _30: bool;
+    let mut _31: &[u8];
+    let mut _32: &[u8];
+    scope 1 {
+        debug start_position => _2;
+        let _3: u16;
+        scope 2 {
+            debug end_position => _3;
+            let mut _5: u16;
+            scope 3 {
+                debug value => _5;
+                let mut _8: std::ops::Range<u16>;
+                scope 4 {
+                    debug iter => _8;
+                    let _12: u16;
+                    scope 5 {
+                        debug i => _12;
+                        let _13: usize;
+                        scope 6 {
+                            debug byte_index => _13;
+                            let _16: u8;
+                            scope 7 {
+                                debug byte => _16;
+                                let _19: u16;
+                                scope 8 {
+                                    debug shift => _19;
+                                    let _23: u16;
+                                    scope 9 {
+                                        debug bit => _23;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _2 = ((*_1).1: u16);
+        _4 = CheckedAdd(_2, const 11_u16);
+        assert(!move (_4.1: bool), "attempt to compute `{} + {}`, which would overflow", _2, const 11_u16) -> [success: bb1, unwind continue];
+    }
+
+    bb1: {
+        _3 = move (_4.0: u16);
+        _5 = const 0_u16;
+        _7 = std::ops::Range::<u16> { start: _2, end: _3 };
+        _6 = <std::ops::Range<u16> as IntoIterator>::into_iter(move _7) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _8 = move _6;
+        goto -> bb3;
+    }
+
+    bb3: {
+        _10 = &mut _8;
+        _9 = <std::ops::Range<u16> as Iterator>::next(_10) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _11 = discriminant(_9);
+        switchInt(move _11) -> [0: bb7, 1: bb5, otherwise: bb6];
+    }
+
+    bb5: {
+        _12 = ((_9 as Some).0: u16);
+        _15 = Eq(const 8_u16, const 0_u16);
+        assert(!move _15, "attempt to divide `{}` by zero", _12) -> [success: bb8, unwind continue];
+    }
+
+    bb6: {
+        unreachable;
+    }
+
+    bb7: {
+        ((*_1).1: u16) = _3;
+        _0 = _5;
+        return;
+    }
+
+    bb8: {
+        _14 = Div(_12, const 8_u16);
+        _13 = move _14 as usize (IntToInt);
+        _31 = deref_copy ((*_1).0: &[u8]);
+        _17 = Len((*_31));
+        _18 = Lt(_13, _17);
+        assert(move _18, "index out of bounds: the length is {} but the index is {}", move _17, _13) -> [success: bb9, unwind continue];
+    }
+
+    bb9: {
+        _32 = deref_copy ((*_1).0: &[u8]);
+        _16 = (*_32)[_13];
+        _21 = Eq(const 8_u16, const 0_u16);
+        assert(!move _21, "attempt to calculate the remainder of `{}` with a divisor of zero", _12) -> [success: bb10, unwind continue];
+    }
+
+    bb10: {
+        _20 = Rem(_12, const 8_u16);
+        _22 = CheckedSub(const 7_u16, _20);
+        assert(!move (_22.1: bool), "attempt to compute `{} - {}`, which would overflow", const 7_u16, move _20) -> [success: bb11, unwind continue];
+    }
+
+    bb11: {
+        _19 = move (_22.0: u16);
+        _26 = Lt(_19, const 8_u16);
+        assert(move _26, "attempt to shift right by `{}`, which would overflow", _19) -> [success: bb12, unwind continue];
+    }
+
+    bb12: {
+        _25 = Shr(_16, _19);
+        _24 = <u16 as From<u8>>::from(move _25) -> [return: bb13, unwind continue];
+    }
+
+    bb13: {
+        _23 = BitAnd(move _24, const 1_u16);
+        _28 = _5;
+        _29 = const 1_i32 as u32 (IntToInt);
+        _30 = Lt(move _29, const 16_u32);
+        assert(move _30, "attempt to shift left by `{}`, which would overflow", const 1_i32) -> [success: bb14, unwind continue];
+    }
+
+    bb14: {
+        _27 = Shl(move _28, const 1_i32);
+        _5 = BitOr(move _27, _23);
+        goto -> bb3;
+    }
+}
+
+fn mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:190:1: 190:18>::new(_1: usize) -> U11BitWriter {
+    debug mnemonic_len => _1;
+    let mut _0: mnemonic::U11BitWriter;
+    let _2: ();
+    let mut _3: bool;
+    let _4: ();
+    let mut _5: bool;
+    let _6: &str;
+    let mut _7: std::vec::Vec<u8>;
+    let mut _8: usize;
+    let mut _9: usize;
+    let mut _10: usize;
+    let mut _11: (usize, bool);
+    let mut _12: bool;
+    let mut _13: (usize, bool);
+
+    bb0: {
+        _3 = const false;
+        switchInt(move _3) -> [0: bb3, otherwise: bb1];
+    }
+
+    bb1: {
+        _4 = mirai_precondition_start() -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _5 = Le(_1, const 24_usize);
+        _6 = const "unsatisfied precondition";
+        _2 = mirai_precondition(move _5, _6) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _11 = CheckedMul(const 11_usize, _1);
+        assert(!move (_11.1: bool), "attempt to compute `{} * {}`, which would overflow", const 11_usize, _1) -> [success: bb4, unwind continue];
+    }
+
+    bb4: {
+        _10 = move (_11.0: usize);
+        _12 = Eq(const 8_usize, const 0_usize);
+        assert(!move _12, "attempt to divide `{}` by zero", _10) -> [success: bb5, unwind continue];
+    }
+
+    bb5: {
+        _9 = Div(move _10, const 8_usize);
+        _13 = CheckedAdd(_9, const 1_usize);
+        assert(!move (_13.1: bool), "attempt to compute `{} + {}`, which would overflow", move _9, const 1_usize) -> [success: bb6, unwind continue];
+    }
+
+    bb6: {
+        _8 = move (_13.0: usize);
+        _7 = Vec::<u8>::with_capacity(move _8) -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        _0 = U11BitWriter { bytes: move _7, unused: const 8_u16, buffer: const 0_u16 };
+        return;
+    }
+}
+
+fn mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:190:1: 190:18>::write_u11(_1: &mut U11BitWriter, _2: u16) -> () {
+    debug self => _1;
+    debug value => _2;
+    let mut _0: ();
+    let mut _3: u16;
+    let mut _4: bool;
+    let mut _5: u16;
+    let mut _6: u16;
+    let mut _7: bool;
+    let mut _8: u16;
+    let mut _10: u16;
+    let mut _11: u16;
+    let mut _12: (u16, bool);
+    let mut _13: u16;
+    let mut _14: bool;
+    let mut _15: u16;
+    let mut _16: u16;
+    let mut _17: bool;
+    let mut _18: u16;
+    let mut _19: [u16; 8];
+    let _20: usize;
+    let mut _21: u16;
+    let mut _22: usize;
+    let mut _23: bool;
+    let _24: ();
+    let mut _25: &mut std::vec::Vec<u8>;
+    let mut _26: u8;
+    let mut _27: u16;
+    let mut _28: bool;
+    let mut _29: u16;
+    let mut _30: (u16, bool);
+    let _31: ();
+    let mut _32: &mut std::vec::Vec<u8>;
+    let mut _33: u8;
+    let mut _34: u16;
+    let mut _35: u16;
+    let mut _36: bool;
+    let _37: ();
+    let mut _38: bool;
+    let mut _39: bool;
+    let mut _40: u16;
+    let _41: &str;
+    let mut _42: bool;
+    let mut _43: u16;
+    let mut _44: u16;
+    let mut _45: bool;
+    let mut _46: u16;
+    let mut _47: u16;
+    let mut _48: [u16; 8];
+    let _49: usize;
+    let mut _50: u16;
+    let mut _51: usize;
+    let mut _52: bool;
+    let mut _53: u16;
+    let mut _54: (u16, bool);
+    scope 1 {
+        debug nbits_remaining => _3;
+        let _9: u16;
+        scope 2 {
+            debug excess_bits => _9;
+        }
+    }
+
+    bb0: {
+        _3 = const 11_u16;
+        _5 = _3;
+        _6 = ((*_1).1: u16);
+        _4 = Ge(move _5, move _6);
+        switchInt(move _4) -> [0: bb8, otherwise: bb1];
+    }
+
+    bb1: {
+        _8 = ((*_1).1: u16);
+        _7 = Lt(move _8, const 8_u16);
+        switchInt(move _7) -> [0: bb8, otherwise: bb2];
+    }
+
+    bb2: {
+        _10 = _3;
+        _11 = ((*_1).1: u16);
+        _12 = CheckedSub(_10, _11);
+        assert(!move (_12.1: bool), "attempt to compute `{} - {}`, which would overflow", move _10, move _11) -> [success: bb3, unwind continue];
+    }
+
+    bb3: {
+        _9 = move (_12.0: u16);
+        _13 = ((*_1).1: u16);
+        _14 = Lt(_13, const 16_u16);
+        assert(move _14, "attempt to shift left by `{}`, which would overflow", _13) -> [success: bb4, unwind continue];
+    }
+
+    bb4: {
+        ((*_1).2: u16) = Shl(((*_1).2: u16), move _13);
+        _17 = Lt(_9, const 16_u16);
+        assert(move _17, "attempt to shift right by `{}`, which would overflow", _9) -> [success: bb5, unwind continue];
+    }
+
+    bb5: {
+        _16 = Shr(_2, _9);
+        _19 = const _;
+        _21 = ((*_1).1: u16);
+        _20 = move _21 as usize (IntToInt);
+        _22 = const 8_usize;
+        _23 = Lt(_20, _22);
+        assert(move _23, "index out of bounds: the length is {} but the index is {}", move _22, _20) -> [success: bb6, unwind continue];
+    }
+
+    bb6: {
+        _18 = _19[_20];
+        _15 = BitAnd(move _16, move _18);
+        ((*_1).2: u16) = BitOr(((*_1).2: u16), move _15);
+        _25 = &mut ((*_1).0: std::vec::Vec<u8>);
+        _27 = ((*_1).2: u16);
+        _26 = move _27 as u8 (IntToInt);
+        _24 = Vec::<u8>::push(move _25, move _26) -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        _3 = _9;
+        ((*_1).1: u16) = const 8_u16;
+        ((*_1).2: u16) = const 0_u16;
+        goto -> bb8;
+    }
+
+    bb8: {
+        _29 = _3;
+        _28 = Ge(move _29, const 8_u16);
+        switchInt(move _28) -> [0: bb12, otherwise: bb9];
+    }
+
+    bb9: {
+        _30 = CheckedSub(_3, const 8_u16);
+        assert(!move (_30.1: bool), "attempt to compute `{} - {}`, which would overflow", _3, const 8_u16) -> [success: bb10, unwind continue];
+    }
+
+    bb10: {
+        _3 = move (_30.0: u16);
+        _32 = &mut ((*_1).0: std::vec::Vec<u8>);
+        _35 = _3;
+        _36 = Lt(_35, const 16_u16);
+        assert(move _36, "attempt to shift right by `{}`, which would overflow", _35) -> [success: bb11, unwind continue];
+    }
+
+    bb11: {
+        _34 = Shr(_2, move _35);
+        _33 = move _34 as u8 (IntToInt);
+        _31 = Vec::<u8>::push(move _32, move _33) -> [return: bb8, unwind continue];
+    }
+
+    bb12: {
+        _38 = const false;
+        switchInt(move _38) -> [0: bb14, otherwise: bb13];
+    }
+
+    bb13: {
+        _40 = _3;
+        _39 = Lt(move _40, const 8_u16);
+        _41 = const "false verification condition";
+        _37 = mirai_verify(move _39, _41) -> [return: bb14, unwind continue];
+    }
+
+    bb14: {
+        _43 = _3;
+        _42 = Gt(move _43, const 0_u16);
+        switchInt(move _42) -> [0: bb19, otherwise: bb15];
+    }
+
+    bb15: {
+        _44 = _3;
+        _45 = Lt(_44, const 16_u16);
+        assert(move _45, "attempt to shift left by `{}`, which would overflow", _44) -> [success: bb16, unwind continue];
+    }
+
+    bb16: {
+        ((*_1).2: u16) = Shl(((*_1).2: u16), move _44);
+        _48 = const _;
+        _50 = _3;
+        _49 = move _50 as usize (IntToInt);
+        _51 = const 8_usize;
+        _52 = Lt(_49, _51);
+        assert(move _52, "index out of bounds: the length is {} but the index is {}", move _51, _49) -> [success: bb17, unwind continue];
+    }
+
+    bb17: {
+        _47 = _48[_49];
+        _46 = BitAnd(_2, move _47);
+        ((*_1).2: u16) = BitOr(((*_1).2: u16), move _46);
+        _53 = _3;
+        _54 = CheckedSub(((*_1).1: u16), _53);
+        assert(!move (_54.1: bool), "attempt to compute `{} - {}`, which would overflow", ((*_1).1: u16), move _53) -> [success: bb18, unwind continue];
+    }
+
+    bb18: {
+        ((*_1).1: u16) = move (_54.0: u16);
+        goto -> bb19;
+    }
+
+    bb19: {
+        return;
+    }
+}
+
+fn mnemonic::<impl at testsuite/cli/diem-wallet/src/mnemonic.rs:190:1: 190:18>::write_buffer(_1: &mut U11BitWriter) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let mut _2: u16;
+    let _3: ();
+    let mut _4: &mut std::vec::Vec<u8>;
+    let mut _5: u8;
+    let mut _6: u16;
+
+    bb0: {
+        _2 = ((*_1).1: u16);
+        switchInt(move _2) -> [8: bb2, otherwise: bb1];
+    }
+
+    bb1: {
+        _4 = &mut ((*_1).0: std::vec::Vec<u8>);
+        _6 = ((*_1).2: u16);
+        _5 = move _6 as u8 (IntToInt);
+        _3 = Vec::<u8>::push(move _4, move _5) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+const MASKS: [u16; 8] = {
+    let mut _0: [u16; 8];
+
+    bb0: {
+        _0 = [const 0_u16, const 1_u16, const 3_u16, const 7_u16, const 15_u16, const 31_u16, const 63_u16, const 127_u16];
+        return;
+    }
+}
+
+MASKS::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 8_usize;
+        return;
+    }
+}
+
+const WORDS: [&str; 2048] = {
+    let mut _0: [&str; 2048];
+
+    bb0: {
+        _0 = [const "abandon", const "ability", const "able", const "about", const "above", const "absent", const "absorb", const "abstract", const "absurd", const "abuse", const "access", const "accident", const "account", const "accuse", const "achieve", const "acid", const "acoustic", const "acquire", const "across", const "act", const "action", const "actor", const "actress", const "actual", const "adapt", const "add", const "addict", const "address", const "adjust", const "admit", const "adult", const "advance", const "advice", const "aerobic", const "affair", const "afford", const "afraid", const "again", const "age", const "agent", const "agree", const "ahead", const "aim", const "air", const "airport", const "aisle", const "alarm", const "album", const "alcohol", const "alert", const "alien", const "all", const "alley", const "allow", const "almost", const "alone", const "alpha", const "already", const "also", const "alter", const "always", const "amateur", const "amazing", const "among", const "amount", const "amused", const "analyst", const "anchor", const "ancient", const "anger", const "angle", const "angry", const "animal", const "ankle", const "announce", const "annual", const "another", const "answer", const "antenna", const "antique", const "anxiety", const "any", const "apart", const "apology", const "appear", const "apple", const "approve", const "april", const "arch", const "arctic", const "area", const "arena", const "argue", const "arm", const "armed", const "armor", const "army", const "around", const "arrange", const "arrest", const "arrive", const "arrow", const "art", const "artefact", const "artist", const "artwork", const "ask", const "aspect", const "assault", const "asset", const "assist", const "assume", const "asthma", const "athlete", const "atom", const "attack", const "attend", const "attitude", const "attract", const "auction", const "audit", const "august", const "aunt", const "author", const "auto", const "autumn", const "average", const "avocado", const "avoid", const "awake", const "aware", const "away", const "awesome", const "awful", const "awkward", const "axis", const "baby", const "bachelor", const "bacon", const "badge", const "bag", const "balance", const "balcony", const "ball", const "bamboo", const "banana", const "banner", const "bar", const "barely", const "bargain", const "barrel", const "base", const "basic", const "basket", const "battle", const "beach", const "bean", const "beauty", const "because", const "become", const "beef", const "before", const "begin", const "behave", const "behind", const "believe", const "below", const "belt", const "bench", const "benefit", const "best", const "betray", const "better", const "between", const "beyond", const "bicycle", const "bid", const "bike", const "bind", const "biology", const "bird", const "birth", const "bitter", const "black", const "blade", const "blame", const "blanket", const "blast", const "bleak", const "bless", const "blind", const "blood", const "blossom", const "blouse", const "blue", const "blur", const "blush", const "board", const "boat", const "body", const "boil", const "bomb", const "bone", const "bonus", const "book", const "boost", const "border", const "boring", const "borrow", const "boss", const "bottom", const "bounce", const "box", const "boy", const "bracket", const "brain", const "brand", const "brass", const "brave", const "bread", const "breeze", const "brick", const "bridge", const "brief", const "bright", const "bring", const "brisk", const "broccoli", const "broken", const "bronze", const "broom", const "brother", const "brown", const "brush", const "bubble", const "buddy", const "budget", const "buffalo", const "build", const "bulb", const "bulk", const "bullet", const "bundle", const "bunker", const "burden", const "burger", const "burst", const "bus", const "business", const "busy", const "butter", const "buyer", const "buzz", const "cabbage", const "cabin", const "cable", const "cactus", const "cage", const "cake", const "call", const "calm", const "camera", const "camp", const "can", const "canal", const "cancel", const "candy", const "cannon", const "canoe", const "canvas", const "canyon", const "capable", const "capital", const "captain", const "car", const "carbon", const "card", const "cargo", const "carpet", const "carry", const "cart", const "case", const "cash", const "casino", const "castle", const "casual", const "cat", const "catalog", const "catch", const "category", const "cattle", const "caught", const "cause", const "caution", const "cave", const "ceiling", const "celery", const "cement", const "census", const "century", const "cereal", const "certain", const "chair", const "chalk", const "champion", const "change", const "chaos", const "chapter", const "charge", const "chase", const "chat", const "cheap", const "check", const "cheese", const "chef", const "cherry", const "chest", const "chicken", const "chief", const "child", const "chimney", const "choice", const "choose", const "chronic", const "chuckle", const "chunk", const "churn", const "cigar", const "cinnamon", const "circle", const "citizen", const "city", const "civil", const "claim", const "clap", const "clarify", const "claw", const "clay", const "clean", const "clerk", const "clever", const "click", const "client", const "cliff", const "climb", const "clinic", const "clip", const "clock", const "clog", const "close", const "cloth", const "cloud", const "clown", const "club", const "clump", const "cluster", const "clutch", const "coach", const "coast", const "coconut", const "code", const "coffee", const "coil", const "coin", const "collect", const "color", const "column", const "combine", const "come", const "comfort", const "comic", const "common", const "company", const "concert", const "conduct", const "confirm", const "congress", const "connect", const "consider", const "control", const "convince", const "cook", const "cool", const "copper", const "copy", const "coral", const "core", const "corn", const "correct", const "cost", const "cotton", const "couch", const "country", const "couple", const "course", const "cousin", const "cover", const "coyote", const "crack", const "cradle", const "craft", const "cram", const "crane", const "crash", const "crater", const "crawl", const "crazy", const "cream", const "credit", const "creek", const "crew", const "cricket", const "crime", const "crisp", const "critic", const "crop", const "cross", const "crouch", const "crowd", const "crucial", const "cruel", const "cruise", const "crumble", const "crunch", const "crush", const "cry", const "crystal", const "cube", const "culture", const "cup", const "cupboard", const "curious", const "current", const "curtain", const "curve", const "cushion", const "custom", const "cute", const "cycle", const "dad", const "damage", const "damp", const "dance", const "danger", const "daring", const "dash", const "daughter", const "dawn", const "day", const "deal", const "debate", const "debris", const "decade", const "december", const "decide", const "decline", const "decorate", const "decrease", const "deer", const "defense", const "define", const "defy", const "degree", const "delay", const "deliver", const "demand", const "demise", const "denial", const "dentist", const "deny", const "depart", const "depend", const "deposit", const "depth", const "deputy", const "derive", const "describe", const "desert", const "design", const "desk", const "despair", const "destroy", const "detail", const "detect", const "develop", const "device", const "devote", const "diagram", const "dial", const "diamond", const "diary", const "dice", const "diesel", const "diet", const "differ", const "digital", const "dignity", const "dilemma", const "dinner", const "dinosaur", const "direct", const "dirt", const "disagree", const "discover", const "disease", const "dish", const "dismiss", const "disorder", const "display", const "distance", const "divert", const "divide", const "divorce", const "dizzy", const "doctor", const "document", const "dog", const "doll", const "dolphin", const "domain", const "donate", const "donkey", const "donor", const "door", const "dose", const "double", const "dove", const "draft", const "dragon", const "drama", const "drastic", const "draw", const "dream", const "dress", const "drift", const "drill", const "drink", const "drip", const "drive", const "drop", const "drum", const "dry", const "duck", const "dumb", const "dune", const "during", const "dust", const "dutch", const "duty", const "dwarf", const "dynamic", const "eager", const "eagle", const "early", const "earn", const "earth", const "easily", const "east", const "easy", const "echo", const "ecology", const "economy", const "edge", const "edit", const "educate", const "effort", const "egg", const "eight", const "either", const "elbow", const "elder", const "electric", const "elegant", const "element", const "elephant", const "elevator", const "elite", const "else", const "embark", const "embody", const "embrace", const "emerge", const "emotion", const "employ", const "empower", const "empty", const "enable", const "enact", const "end", const "endless", const "endorse", const "enemy", const "energy", const "enforce", const "engage", const "engine", const "enhance", const "enjoy", const "enlist", const "enough", const "enrich", const "enroll", const "ensure", const "enter", const "entire", const "entry", const "envelope", const "episode", const "equal", const "equip", const "era", const "erase", const "erode", const "erosion", const "error", const "erupt", const "escape", const "essay", const "essence", const "estate", const "eternal", const "ethics", const "evidence", const "evil", const "evoke", const "evolve", const "exact", const "example", const "excess", const "exchange", const "excite", const "exclude", const "excuse", const "execute", const "exercise", const "exhaust", const "exhibit", const "exile", const "exist", const "exit", const "exotic", const "expand", const "expect", const "expire", const "explain", const "expose", const "express", const "extend", const "extra", const "eye", const "eyebrow", const "fabric", const "face", const "faculty", const "fade", const "faint", const "faith", const "fall", const "false", const "fame", const "family", const "famous", const "fan", const "fancy", const "fantasy", const "farm", const "fashion", const "fat", const "fatal", const "father", const "fatigue", const "fault", const "favorite", const "feature", const "february", const "federal", const "fee", const "feed", const "feel", const "female", const "fence", const "festival", const "fetch", const "fever", const "few", const "fiber", const "fiction", const "field", const "figure", const "file", const "film", const "filter", const "final", const "find", const "fine", const "finger", const "finish", const "fire", const "firm", const "first", const "fiscal", const "fish", const "fit", const "fitness", const "fix", const "flag", const "flame", const "flash", const "flat", const "flavor", const "flee", const "flight", const "flip", const "float", const "flock", const "floor", const "flower", const "fluid", const "flush", const "fly", const "foam", const "focus", const "fog", const "foil", const "fold", const "follow", const "food", const "foot", const "force", const "forest", const "forget", const "fork", const "fortune", const "forum", const "forward", const "fossil", const "foster", const "found", const "fox", const "fragile", const "frame", const "frequent", const "fresh", const "friend", const "fringe", const "frog", const "front", const "frost", const "frown", const "frozen", const "fruit", const "fuel", const "fun", const "funny", const "furnace", const "fury", const "future", const "gadget", const "gain", const "galaxy", const "gallery", const "game", const "gap", const "garage", const "garbage", const "garden", const "garlic", const "garment", const "gas", const "gasp", const "gate", const "gather", const "gauge", const "gaze", const "general", const "genius", const "genre", const "gentle", const "genuine", const "gesture", const "ghost", const "giant", const "gift", const "giggle", const "ginger", const "giraffe", const "girl", const "give", const "glad", const "glance", const "glare", const "glass", const "glide", const "glimpse", const "globe", const "gloom", const "glory", const "glove", const "glow", const "glue", const "goat", const "goddess", const "gold", const "good", const "goose", const "gorilla", const "gospel", const "gossip", const "govern", const "gown", const "grab", const "grace", const "grain", const "grant", const "grape", const "grass", const "gravity", const "great", const "green", const "grid", const "grief", const "grit", const "grocery", const "group", const "grow", const "grunt", const "guard", const "guess", const "guide", const "guilt", const "guitar", const "gun", const "gym", const "habit", const "hair", const "half", const "hammer", const "hamster", const "hand", const "happy", const "harbor", const "hard", const "harsh", const "harvest", const "hat", const "have", const "hawk", const "hazard", const "head", const "health", const "heart", const "heavy", const "hedgehog", const "height", const "hello", const "helmet", const "help", const "hen", const "hero", const "hidden", const "high", const "hill", const "hint", const "hip", const "hire", const "history", const "hobby", const "hockey", const "hold", const "hole", const "holiday", const "hollow", const "home", const "honey", const "hood", const "hope", const "horn", const "horror", const "horse", const "hospital", const "host", const "hotel", const "hour", const "hover", const "hub", const "huge", const "human", const "humble", const "humor", const "hundred", const "hungry", const "hunt", const "hurdle", const "hurry", const "hurt", const "husband", const "hybrid", const "ice", const "icon", const "idea", const "identify", const "idle", const "ignore", const "ill", const "illegal", const "illness", const "image", const "imitate", const "immense", const "immune", const "impact", const "impose", const "improve", const "impulse", const "inch", const "include", const "income", const "increase", const "index", const "indicate", const "indoor", const "industry", const "infant", const "inflict", const "inform", const "inhale", const "inherit", const "initial", const "inject", const "injury", const "inmate", const "inner", const "innocent", const "input", const "inquiry", const "insane", const "insect", const "inside", const "inspire", const "install", const "intact", const "interest", const "into", const "invest", const "invite", const "involve", const "iron", const "island", const "isolate", const "issue", const "item", const "ivory", const "jacket", const "jaguar", const "jar", const "jazz", const "jealous", const "jeans", const "jelly", const "jewel", const "job", const "join", const "joke", const "journey", const "joy", const "judge", const "juice", const "jump", const "jungle", const "junior", const "junk", const "just", const "kangaroo", const "keen", const "keep", const "ketchup", const "key", const "kick", const "kid", const "kidney", const "kind", const "kingdom", const "kiss", const "kit", const "kitchen", const "kite", const "kitten", const "kiwi", const "knee", const "knife", const "knock", const "know", const "lab", const "label", const "labor", const "ladder", const "lady", const "lake", const "lamp", const "language", const "laptop", const "large", const "later", const "latin", const "laugh", const "laundry", const "lava", const "law", const "lawn", const "lawsuit", const "layer", const "lazy", const "leader", const "leaf", const "learn", const "leave", const "lecture", const "left", const "leg", const "legal", const "legend", const "leisure", const "lemon", const "lend", const "length", const "lens", const "leopard", const "lesson", const "letter", const "level", const "liar", const "liberty", const "library", const "license", const "life", const "lift", const "light", const "like", const "limb", const "limit", const "link", const "lion", const "liquid", const "list", const "little", const "live", const "lizard", const "load", const "loan", const "lobster", const "local", const "lock", const "logic", const "lonely", const "long", const "loop", const "lottery", const "loud", const "lounge", const "love", const "loyal", const "lucky", const "luggage", const "lumber", const "lunar", const "lunch", const "luxury", const "lyrics", const "machine", const "mad", const "magic", const "magnet", const "maid", const "mail", const "main", const "major", const "make", const "mammal", const "man", const "manage", const "mandate", const "mango", const "mansion", const "manual", const "maple", const "marble", const "march", const "margin", const "marine", const "market", const "marriage", const "mask", const "mass", const "master", const "match", const "material", const "math", const "matrix", const "matter", const "maximum", const "maze", const "meadow", const "mean", const "measure", const "meat", const "mechanic", const "medal", const "media", const "melody", const "melt", const "member", const "memory", const "mention", const "menu", const "mercy", const "merge", const "merit", const "merry", const "mesh", const "message", const "metal", const "method", const "middle", const "midnight", const "milk", const "million", const "mimic", const "mind", const "minimum", const "minor", const "minute", const "miracle", const "mirror", const "misery", const "miss", const "mistake", const "mix", const "mixed", const "mixture", const "mobile", const "model", const "modify", const "mom", const "moment", const "monitor", const "monkey", const "monster", const "month", const "moon", const "moral", const "more", const "morning", const "mosquito", const "mother", const "motion", const "motor", const "mountain", const "mouse", const "move", const "movie", const "much", const "muffin", const "mule", const "multiply", const "muscle", const "museum", const "mushroom", const "music", const "must", const "mutual", const "myself", const "mystery", const "myth", const "naive", const "name", const "napkin", const "narrow", const "nasty", const "nation", const "nature", const "near", const "neck", const "need", const "negative", const "neglect", const "neither", const "nephew", const "nerve", const "nest", const "net", const "network", const "neutral", const "never", const "news", const "next", const "nice", const "night", const "noble", const "noise", const "nominee", const "noodle", const "normal", const "north", const "nose", const "notable", const "note", const "nothing", const "notice", const "novel", const "now", const "nuclear", const "number", const "nurse", const "nut", const "oak", const "obey", const "object", const "oblige", const "obscure", const "observe", const "obtain", const "obvious", const "occur", const "ocean", const "october", const "odor", const "off", const "offer", const "office", const "often", const "oil", const "okay", const "old", const "olive", const "olympic", const "omit", const "once", const "one", const "onion", const "online", const "only", const "open", const "opera", const "opinion", const "oppose", const "option", const "orange", const "orbit", const "orchard", const "order", const "ordinary", const "organ", const "orient", const "original", const "orphan", const "ostrich", const "other", const "outdoor", const "outer", const "output", const "outside", const "oval", const "oven", const "over", const "own", const "owner", const "oxygen", const "oyster", const "ozone", const "pact", const "paddle", const "page", const "pair", const "palace", const "palm", const "panda", const "panel", const "panic", const "panther", const "paper", const "parade", const "parent", const "park", const "parrot", const "party", const "pass", const "patch", const "path", const "patient", const "patrol", const "pattern", const "pause", const "pave", const "payment", const "peace", const "peanut", const "pear", const "peasant", const "pelican", const "pen", const "penalty", const "pencil", const "people", const "pepper", const "perfect", const "permit", const "person", const "pet", const "phone", const "photo", const "phrase", const "physical", const "piano", const "picnic", const "picture", const "piece", const "pig", const "pigeon", const "pill", const "pilot", const "pink", const "pioneer", const "pipe", const "pistol", const "pitch", const "pizza", const "place", const "planet", const "plastic", const "plate", const "play", const "please", const "pledge", const "pluck", const "plug", const "plunge", const "poem", const "poet", const "point", const "polar", const "pole", const "police", const "pond", const "pony", const "pool", const "popular", const "portion", const "position", const "possible", const "post", const "potato", const "pottery", const "poverty", const "powder", const "power", const "practice", const "praise", const "predict", const "prefer", const "prepare", const "present", const "pretty", const "prevent", const "price", const "pride", const "primary", const "print", const "priority", const "prison", const "private", const "prize", const "problem", const "process", const "produce", const "profit", const "program", const "project", const "promote", const "proof", const "property", const "prosper", const "protect", const "proud", const "provide", const "public", const "pudding", const "pull", const "pulp", const "pulse", const "pumpkin", const "punch", const "pupil", const "puppy", const "purchase", const "purity", const "purpose", const "purse", const "push", const "put", const "puzzle", const "pyramid", const "quality", const "quantum", const "quarter", const "question", const "quick", const "quit", const "quiz", const "quote", const "rabbit", const "raccoon", const "race", const "rack", const "radar", const "radio", const "rail", const "rain", const "raise", const "rally", const "ramp", const "ranch", const "random", const "range", const "rapid", const "rare", const "rate", const "rather", const "raven", const "raw", const "razor", const "ready", const "real", const "reason", const "rebel", const "rebuild", const "recall", const "receive", const "recipe", const "record", const "recycle", const "reduce", const "reflect", const "reform", const "refuse", const "region", const "regret", const "regular", const "reject", const "relax", const "release", const "relief", const "rely", const "remain", const "remember", const "remind", const "remove", const "render", const "renew", const "rent", const "reopen", const "repair", const "repeat", const "replace", const "report", const "require", const "rescue", const "resemble", const "resist", const "resource", const "response", const "result", const "retire", const "retreat", const "return", const "reunion", const "reveal", const "review", const "reward", const "rhythm", const "rib", const "ribbon", const "rice", const "rich", const "ride", const "ridge", const "rifle", const "right", const "rigid", const "ring", const "riot", const "ripple", const "risk", const "ritual", const "rival", const "river", const "road", const "roast", const "robot", const "robust", const "rocket", const "romance", const "roof", const "rookie", const "room", const "rose", const "rotate", const "rough", const "round", const "route", const "royal", const "rubber", const "rude", const "rug", const "rule", const "run", const "runway", const "rural", const "sad", const "saddle", const "sadness", const "safe", const "sail", const "salad", const "salmon", const "salon", const "salt", const "salute", const "same", const "sample", const "sand", const "satisfy", const "satoshi", const "sauce", const "sausage", const "save", const "say", const "scale", const "scan", const "scare", const "scatter", const "scene", const "scheme", const "school", const "science", const "scissors", const "scorpion", const "scout", const "scrap", const "screen", const "script", const "scrub", const "sea", const "search", const "season", const "seat", const "second", const "secret", const "section", const "security", const "seed", const "seek", const "segment", const "select", const "sell", const "seminar", const "senior", const "sense", const "sentence", const "series", const "service", const "session", const "settle", const "setup", const "seven", const "shadow", const "shaft", const "shallow", const "share", const "shed", const "shell", const "sheriff", const "shield", const "shift", const "shine", const "ship", const "shiver", const "shock", const "shoe", const "shoot", const "shop", const "short", const "shoulder", const "shove", const "shrimp", const "shrug", const "shuffle", const "shy", const "sibling", const "sick", const "side", const "siege", const "sight", const "sign", const "silent", const "silk", const "silly", const "silver", const "similar", const "simple", const "since", const "sing", const "siren", const "sister", const "situate", const "six", const "size", const "skate", const "sketch", const "ski", const "skill", const "skin", const "skirt", const "skull", const "slab", const "slam", const "sleep", const "slender", const "slice", const "slide", const "slight", const "slim", const "slogan", const "slot", const "slow", const "slush", const "small", const "smart", const "smile", const "smoke", const "smooth", const "snack", const "snake", const "snap", const "sniff", const "snow", const "soap", const "soccer", const "social", const "sock", const "soda", const "soft", const "solar", const "soldier", const "solid", const "solution", const "solve", const "someone", const "song", const "soon", const "sorry", const "sort", const "soul", const "sound", const "soup", const "source", const "south", const "space", const "spare", const "spatial", const "spawn", const "speak", const "special", const "speed", const "spell", const "spend", const "sphere", const "spice", const "spider", const "spike", const "spin", const "spirit", const "split", const "spoil", const "sponsor", const "spoon", const "sport", const "spot", const "spray", const "spread", const "spring", const "spy", const "square", const "squeeze", const "squirrel", const "stable", const "stadium", const "staff", const "stage", const "stairs", const "stamp", const "stand", const "start", const "state", const "stay", const "steak", const "steel", const "stem", const "step", const "stereo", const "stick", const "still", const "sting", const "stock", const "stomach", const "stone", const "stool", const "story", const "stove", const "strategy", const "street", const "strike", const "strong", const "struggle", const "student", const "stuff", const "stumble", const "style", const "subject", const "submit", const "subway", const "success", const "such", const "sudden", const "suffer", const "sugar", const "suggest", const "suit", const "summer", const "sun", const "sunny", const "sunset", const "super", const "supply", const "supreme", const "sure", const "surface", const "surge", const "surprise", const "surround", const "survey", const "suspect", const "sustain", const "swallow", const "swamp", const "swap", const "swarm", const "swear", const "sweet", const "swift", const "swim", const "swing", const "switch", const "sword", const "symbol", const "symptom", const "syrup", const "system", const "table", const "tackle", const "tag", const "tail", const "talent", const "talk", const "tank", const "tape", const "target", const "task", const "taste", const "tattoo", const "taxi", const "teach", const "team", const "tell", const "ten", const "tenant", const "tennis", const "tent", const "term", const "test", const "text", const "thank", const "that", const "theme", const "then", const "theory", const "there", const "they", const "thing", const "this", const "thought", const "three", const "thrive", const "throw", const "thumb", const "thunder", const "ticket", const "tide", const "tiger", const "tilt", const "timber", const "time", const "tiny", const "tip", const "tired", const "tissue", const "title", const "toast", const "tobacco", const "today", const "toddler", const "toe", const "together", const "toilet", const "token", const "tomato", const "tomorrow", const "tone", const "tongue", const "tonight", const "tool", const "tooth", const "top", const "topic", const "topple", const "torch", const "tornado", const "tortoise", const "toss", const "total", const "tourist", const "toward", const "tower", const "town", const "toy", const "track", const "trade", const "traffic", const "tragic", const "train", const "transfer", const "trap", const "trash", const "travel", const "tray", const "treat", const "tree", const "trend", const "trial", const "tribe", const "trick", const "trigger", const "trim", const "trip", const "trophy", const "trouble", const "truck", const "true", const "truly", const "trumpet", const "trust", const "truth", const "try", const "tube", const "tuition", const "tumble", const "tuna", const "tunnel", const "turkey", const "turn", const "turtle", const "twelve", const "twenty", const "twice", const "twin", const "twist", const "two", const "type", const "typical", const "ugly", const "umbrella", const "unable", const "unaware", const "uncle", const "uncover", const "under", const "undo", const "unfair", const "unfold", const "unhappy", const "uniform", const "unique", const "unit", const "universe", const "unknown", const "unlock", const "until", const "unusual", const "unveil", const "update", const "upgrade", const "uphold", const "upon", const "upper", const "upset", const "urban", const "urge", const "usage", const "use", const "used", const "useful", const "useless", const "usual", const "utility", const "vacant", const "vacuum", const "vague", const "valid", const "valley", const "valve", const "van", const "vanish", const "vapor", const "various", const "vast", const "vault", const "vehicle", const "velvet", const "vendor", const "venture", const "venue", const "verb", const "verify", const "version", const "very", const "vessel", const "veteran", const "viable", const "vibrant", const "vicious", const "victory", const "video", const "view", const "village", const "vintage", const "violin", const "virtual", const "virus", const "visa", const "visit", const "visual", const "vital", const "vivid", const "vocal", const "voice", const "void", const "volcano", const "volume", const "vote", const "voyage", const "wage", const "wagon", const "wait", const "walk", const "wall", const "walnut", const "want", const "warfare", const "warm", const "warrior", const "wash", const "wasp", const "waste", const "water", const "wave", const "way", const "wealth", const "weapon", const "wear", const "weasel", const "weather", const "web", const "wedding", const "weekend", const "weird", const "welcome", const "west", const "wet", const "whale", const "what", const "wheat", const "wheel", const "when", const "where", const "whip", const "whisper", const "wide", const "width", const "wife", const "wild", const "will", const "win", const "window", const "wine", const "wing", const "wink", const "winner", const "winter", const "wire", const "wisdom", const "wise", const "wish", const "witness", const "wolf", const "woman", const "wonder", const "wood", const "wool", const "word", const "work", const "world", const "worry", const "worth", const "wrap", const "wreck", const "wrestle", const "wrist", const "write", const "wrong", const "yard", const "year", const "yellow", const "you", const "young", const "youth", const "zebra", const "zero", const "zone", const "zoo"];
+        return;
+    }
+}
+
+WORDS::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 2048_usize;
+        return;
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::new() -> WalletLibrary {
+    let mut _0: wallet_library::WalletLibrary;
+    let mut _1: rand::rngs::OsRng;
+    let mut _3: &mut rand::rngs::OsRng;
+    let mut _5: std::result::Result<mnemonic::Mnemonic, anyhow::Error>;
+    let mut _6: &[u8];
+    let _7: &[u8; 32];
+    scope 1 {
+        debug rng => const OsRng;
+        let _2: [u8; 32];
+        scope 2 {
+            debug data => _2;
+            let _4: mnemonic::Mnemonic;
+            scope 3 {
+                debug mnemonic => _4;
+            }
+        }
+    }
+
+    bb0: {
+        _3 = &mut _1;
+        _2 = <OsRng as Rng>::gen::<[u8; 32]>(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _7 = &_2;
+        _6 = _7 as &[u8] (PointerCoercion(Unsize));
+        _5 = Mnemonic::mnemonic(move _6) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _4 = Result::<Mnemonic, anyhow::Error>::unwrap(move _5) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _0 = WalletLibrary::new_from_mnemonic(move _4) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        return;
+    }
+}
+
+wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::new::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 32_usize;
+        return;
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::new_from_mnemonic(_1: Mnemonic) -> WalletLibrary {
+    debug mnemonic => _1;
+    let mut _0: wallet_library::WalletLibrary;
+    let _2: key_factory::Seed;
+    let _3: &mnemonic::Mnemonic;
+    let _4: &str;
+    let mut _5: mnemonic::Mnemonic;
+    let mut _6: key_factory::KeyFactory;
+    let mut _7: std::result::Result<key_factory::KeyFactory, anyhow::Error>;
+    let _8: &key_factory::Seed;
+    let mut _9: std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>;
+    let mut _10: key_factory::ChildNumber;
+    let mut _11: bool;
+    scope 1 {
+        debug seed => _2;
+    }
+
+    bb0: {
+        _11 = const false;
+        _11 = const true;
+        _3 = &_1;
+        _4 = const "DIEM";
+        _2 = Seed::new(_3, _4) -> [return: bb1, unwind: bb8];
+    }
+
+    bb1: {
+        _11 = const false;
+        _5 = move _1;
+        _8 = &_2;
+        _7 = KeyFactory::new(_8) -> [return: bb2, unwind: bb5];
+    }
+
+    bb2: {
+        _6 = Result::<KeyFactory, anyhow::Error>::unwrap(move _7) -> [return: bb3, unwind: bb5];
+    }
+
+    bb3: {
+        _9 = HashMap::<AccountAddress, ChildNumber>::new() -> [return: bb4, unwind: bb5];
+    }
+
+    bb4: {
+        _10 = ChildNumber(const 0_u64);
+        _0 = WalletLibrary { mnemonic: move _5, key_factory: move _6, addr_map: move _9, key_leaf: move _10 };
+        return;
+    }
+
+    bb5 (cleanup): {
+        drop(_5) -> [return: bb8, unwind terminate(cleanup)];
+    }
+
+    bb6 (cleanup): {
+        resume;
+    }
+
+    bb7 (cleanup): {
+        drop(_1) -> [return: bb6, unwind terminate(cleanup)];
+    }
+
+    bb8 (cleanup): {
+        switchInt(_11) -> [0: bb6, otherwise: bb7];
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::mnemonic(_1: &WalletLibrary) -> std::string::String {
+    debug self => _1;
+    let mut _0: std::string::String;
+    let mut _2: &mnemonic::Mnemonic;
+
+    bb0: {
+        _2 = &((*_1).0: mnemonic::Mnemonic);
+        _0 = <Mnemonic as ToString>::to_string(move _2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::write_recovery(_1: &WalletLibrary, _2: &std::path::Path) -> Result<(), anyhow::Error> {
+    debug self => _1;
+    debug output_file_path => _2;
+    let mut _0: std::result::Result<(), anyhow::Error>;
+    let mut _3: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, anyhow::Error>>;
+    let mut _4: std::result::Result<(), anyhow::Error>;
+    let _5: &&wallet_library::WalletLibrary;
+    let _6: &&std::path::Path;
+    let mut _7: isize;
+    let _8: std::result::Result<std::convert::Infallible, anyhow::Error>;
+    let mut _9: &wallet_library::WalletLibrary;
+    scope 1 {
+        debug residual => _8;
+        scope 2 {
+        }
+    }
+    scope 3 {
+        debug val => const ();
+        scope 4 {
+        }
+    }
+
+    bb0: {
+        _5 = &_1;
+        _9 = deref_copy (*_5);
+        _6 = &_2;
+        _4 = write_recovery::<&std::path::Path>(_9, _6) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _3 = <Result<(), anyhow::Error> as Try>::branch(move _4) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _7 = discriminant(_3);
+        switchInt(move _7) -> [0: bb3, 1: bb5, otherwise: bb4];
+    }
+
+    bb3: {
+        _0 = Result::<(), anyhow::Error>::Ok(const ());
+        goto -> bb6;
+    }
+
+    bb4: {
+        unreachable;
+    }
+
+    bb5: {
+        _8 = move ((_3 as Break).0: std::result::Result<std::convert::Infallible, anyhow::Error>);
+        _0 = <Result<(), anyhow::Error> as FromResidual<Result<Infallible, anyhow::Error>>>::from_residual(move _8) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        return;
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::recover(_1: &std::path::Path) -> Result<WalletLibrary, anyhow::Error> {
+    debug input_file_path => _1;
+    let mut _0: std::result::Result<wallet_library::WalletLibrary, anyhow::Error>;
+    let _2: &&std::path::Path;
+
+    bb0: {
+        _2 = &_1;
+        _0 = recover::<&std::path::Path>(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::key_leaf(_1: &WalletLibrary) -> u64 {
+    debug self => _1;
+    let mut _0: u64;
+
+    bb0: {
+        _0 = (((*_1).3: key_factory::ChildNumber).0: u64);
+        return;
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::generate_addresses(_1: &mut WalletLibrary, _2: u64) -> Result<(), anyhow::Error> {
+    debug self => _1;
+    debug depth => _2;
+    let mut _0: std::result::Result<(), anyhow::Error>;
+    let _3: u64;
+    let mut _4: bool;
+    let mut _5: anyhow::Error;
+    let mut _6: error::WalletError;
+    let mut _7: std::string::String;
+    let _8: &str;
+    let mut _9: bool;
+    let mut _10: &key_factory::ChildNumber;
+    let mut _11: &key_factory::ChildNumber;
+    let _12: key_factory::ChildNumber;
+    let mut _13: std::result::Result<(diem_types::transaction::authenticator::AuthenticationKey, key_factory::ChildNumber), anyhow::Error>;
+    scope 1 {
+        debug current => _3;
+        scope 2 {
+        }
+    }
+
+    bb0: {
+        _3 = (((*_1).3: key_factory::ChildNumber).0: u64);
+        _4 = Gt(_3, _2);
+        switchInt(move _4) -> [0: bb4, otherwise: bb1];
+    }
+
+    bb1: {
+        _8 = const "Addresses already generated up to the supplied depth";
+        _7 = <str as ToString>::to_string(_8) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _6 = WalletError::DiemWalletGeneric(move _7);
+        _5 = <WalletError as Into<anyhow::Error>>::into(move _6) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _0 = Result::<(), anyhow::Error>::Err(move _5);
+        goto -> bb9;
+    }
+
+    bb4: {
+        _10 = &((*_1).3: key_factory::ChildNumber);
+        _12 = ChildNumber(_2);
+        _11 = &_12;
+        _9 = <ChildNumber as PartialEq>::ne(move _10, move _11) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        switchInt(move _9) -> [0: bb8, otherwise: bb6];
+    }
+
+    bb6: {
+        _13 = WalletLibrary::new_address(_1) -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        drop(_13) -> [return: bb4, unwind continue];
+    }
+
+    bb8: {
+        _0 = Result::<(), anyhow::Error>::Ok(const ());
+        goto -> bb9;
+    }
+
+    bb9: {
+        return;
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::new_address_at_child_number(_1: &mut WalletLibrary, _2: ChildNumber) -> Result<AccountAddress, anyhow::Error> {
+    debug self => _1;
+    debug child_number => _2;
+    let mut _0: std::result::Result<diem_types::PeerId, anyhow::Error>;
+    let _3: key_factory::ExtendedPrivKey;
+    let mut _4: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, anyhow::Error>, key_factory::ExtendedPrivKey>;
+    let mut _5: std::result::Result<key_factory::ExtendedPrivKey, anyhow::Error>;
+    let mut _6: &key_factory::KeyFactory;
+    let mut _7: isize;
+    let _8: std::result::Result<std::convert::Infallible, anyhow::Error>;
+    let _9: key_factory::ExtendedPrivKey;
+    let mut _10: diem_types::PeerId;
+    let mut _11: &key_factory::ExtendedPrivKey;
+    scope 1 {
+        debug child => _3;
+    }
+    scope 2 {
+        debug residual => _8;
+        scope 3 {
+        }
+    }
+    scope 4 {
+        debug val => _9;
+        scope 5 {
+        }
+    }
+
+    bb0: {
+        _6 = &((*_1).1: key_factory::KeyFactory);
+        _5 = KeyFactory::private_child(move _6, _2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _4 = <Result<ExtendedPrivKey, anyhow::Error> as Try>::branch(move _5) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _7 = discriminant(_4);
+        switchInt(move _7) -> [0: bb3, 1: bb5, otherwise: bb4];
+    }
+
+    bb3: {
+        _9 = move ((_4 as Continue).0: key_factory::ExtendedPrivKey);
+        _3 = move _9;
+        _11 = &_3;
+        _10 = ExtendedPrivKey::get_address(move _11) -> [return: bb6, unwind: bb8];
+    }
+
+    bb4: {
+        unreachable;
+    }
+
+    bb5: {
+        _8 = move ((_4 as Break).0: std::result::Result<std::convert::Infallible, anyhow::Error>);
+        _0 = <Result<AccountAddress, anyhow::Error> as FromResidual<Result<Infallible, anyhow::Error>>>::from_residual(move _8) -> [return: bb7, unwind continue];
+    }
+
+    bb6: {
+        _0 = Result::<AccountAddress, anyhow::Error>::Ok(move _10);
+        drop(_3) -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        return;
+    }
+
+    bb8 (cleanup): {
+        drop(_3) -> [return: bb9, unwind terminate(cleanup)];
+    }
+
+    bb9 (cleanup): {
+        resume;
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::new_address(_1: &mut WalletLibrary) -> Result<(AuthenticationKey, ChildNumber), anyhow::Error> {
+    debug self => _1;
+    let mut _0: std::result::Result<(diem_types::transaction::authenticator::AuthenticationKey, key_factory::ChildNumber), anyhow::Error>;
+    let _2: key_factory::ExtendedPrivKey;
+    let mut _3: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, anyhow::Error>, key_factory::ExtendedPrivKey>;
+    let mut _4: std::result::Result<key_factory::ExtendedPrivKey, anyhow::Error>;
+    let mut _5: &key_factory::KeyFactory;
+    let mut _6: key_factory::ChildNumber;
+    let mut _7: isize;
+    let _8: std::result::Result<std::convert::Infallible, anyhow::Error>;
+    let _9: key_factory::ExtendedPrivKey;
+    let mut _11: &key_factory::ExtendedPrivKey;
+    let _13: ();
+    let mut _14: &mut key_factory::ChildNumber;
+    let mut _15: bool;
+    let mut _16: &std::option::Option<key_factory::ChildNumber>;
+    let _17: std::option::Option<key_factory::ChildNumber>;
+    let mut _18: &mut std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>;
+    let mut _19: diem_types::PeerId;
+    let mut _20: &diem_types::transaction::authenticator::AuthenticationKey;
+    let mut _21: (diem_types::transaction::authenticator::AuthenticationKey, key_factory::ChildNumber);
+    let mut _22: diem_types::transaction::authenticator::AuthenticationKey;
+    let mut _23: anyhow::Error;
+    let mut _24: error::WalletError;
+    let mut _25: std::string::String;
+    let _26: &str;
+    scope 1 {
+        debug child => _2;
+        let _10: diem_types::transaction::authenticator::AuthenticationKey;
+        scope 6 {
+            debug authentication_key => _10;
+            let _12: key_factory::ChildNumber;
+            scope 7 {
+                debug old_key_leaf => _12;
+            }
+        }
+    }
+    scope 2 {
+        debug residual => _8;
+        scope 3 {
+        }
+    }
+    scope 4 {
+        debug val => _9;
+        scope 5 {
+        }
+    }
+
+    bb0: {
+        _5 = &((*_1).1: key_factory::KeyFactory);
+        _6 = ((*_1).3: key_factory::ChildNumber);
+        _4 = KeyFactory::private_child(move _5, move _6) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _3 = <Result<ExtendedPrivKey, anyhow::Error> as Try>::branch(move _4) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _7 = discriminant(_3);
+        switchInt(move _7) -> [0: bb3, 1: bb5, otherwise: bb4];
+    }
+
+    bb3: {
+        _9 = move ((_3 as Continue).0: key_factory::ExtendedPrivKey);
+        _2 = move _9;
+        _11 = &_2;
+        _10 = ExtendedPrivKey::get_authentication_key(move _11) -> [return: bb6, unwind: bb17];
+    }
+
+    bb4: {
+        unreachable;
+    }
+
+    bb5: {
+        _8 = move ((_3 as Break).0: std::result::Result<std::convert::Infallible, anyhow::Error>);
+        _0 = <Result<(AuthenticationKey, ChildNumber), anyhow::Error> as FromResidual<Result<Infallible, anyhow::Error>>>::from_residual(move _8) -> [return: bb16, unwind continue];
+    }
+
+    bb6: {
+        _12 = ((*_1).3: key_factory::ChildNumber);
+        _14 = &mut ((*_1).3: key_factory::ChildNumber);
+        _13 = ChildNumber::increment(move _14) -> [return: bb7, unwind: bb17];
+    }
+
+    bb7: {
+        _18 = &mut ((*_1).2: std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>);
+        _20 = &_10;
+        _19 = AuthenticationKey::derived_address(move _20) -> [return: bb8, unwind: bb17];
+    }
+
+    bb8: {
+        _17 = HashMap::<AccountAddress, ChildNumber>::insert(move _18, move _19, _12) -> [return: bb9, unwind: bb17];
+    }
+
+    bb9: {
+        _16 = &_17;
+        _15 = std::option::Option::<ChildNumber>::is_none(move _16) -> [return: bb10, unwind: bb17];
+    }
+
+    bb10: {
+        switchInt(move _15) -> [0: bb12, otherwise: bb11];
+    }
+
+    bb11: {
+        _22 = _10;
+        _21 = (move _22, _12);
+        _0 = Result::<(AuthenticationKey, ChildNumber), anyhow::Error>::Ok(move _21);
+        goto -> bb15;
+    }
+
+    bb12: {
+        _26 = const "This address is already in your wallet";
+        _25 = <str as ToString>::to_string(_26) -> [return: bb13, unwind: bb17];
+    }
+
+    bb13: {
+        _24 = WalletError::DiemWalletGeneric(move _25);
+        _23 = <WalletError as Into<anyhow::Error>>::into(move _24) -> [return: bb14, unwind: bb17];
+    }
+
+    bb14: {
+        _0 = Result::<(AuthenticationKey, ChildNumber), anyhow::Error>::Err(move _23);
+        goto -> bb15;
+    }
+
+    bb15: {
+        drop(_2) -> [return: bb16, unwind continue];
+    }
+
+    bb16: {
+        return;
+    }
+
+    bb17 (cleanup): {
+        drop(_2) -> [return: bb18, unwind terminate(cleanup)];
+    }
+
+    bb18 (cleanup): {
+        resume;
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::get_addresses(_1: &WalletLibrary) -> Result<Vec<AccountAddress>, anyhow::Error> {
+    debug self => _1;
+    let mut _0: std::result::Result<std::vec::Vec<diem_types::PeerId>, anyhow::Error>;
+    let mut _2: std::vec::Vec<diem_types::PeerId>;
+    let mut _3: usize;
+    let mut _4: &std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>;
+    let mut _6: std::iter::Map<std::collections::hash_map::Iter<'_, diem_types::PeerId, key_factory::ChildNumber>, {closure@testsuite/cli/diem-wallet/src/wallet_library.rs:138:18: 138:28}>;
+    let mut _7: std::collections::hash_map::Iter<'_, diem_types::PeerId, key_factory::ChildNumber>;
+    let mut _8: &std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>;
+    let mut _9: std::ops::Range<u64>;
+    let mut _10: std::ops::Range<u64>;
+    let mut _11: u64;
+    let mut _12: usize;
+    let mut _13: &std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>;
+    let mut _15: std::option::Option<u64>;
+    let mut _16: &mut std::ops::Range<u64>;
+    let mut _17: isize;
+    let mut _19: std::option::Option<&diem_types::PeerId>;
+    let mut _20: &std::collections::HashMap<u64, diem_types::PeerId>;
+    let _21: &u64;
+    let mut _22: isize;
+    let _24: ();
+    let mut _25: &mut std::vec::Vec<diem_types::PeerId>;
+    let mut _26: diem_types::PeerId;
+    let mut _27: anyhow::Error;
+    let mut _28: error::WalletError;
+    let mut _30: std::fmt::Arguments<'_>;
+    let mut _31: &[&str];
+    let mut _32: &[core::fmt::rt::Argument<'_>];
+    let _33: &[core::fmt::rt::Argument<'_>; 2];
+    let _34: [core::fmt::rt::Argument<'_>; 2];
+    let mut _35: core::fmt::rt::Argument<'_>;
+    let _36: &u64;
+    let mut _37: core::fmt::rt::Argument<'_>;
+    let _38: &usize;
+    let _39: usize;
+    let mut _40: &std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>;
+    let mut _41: std::vec::Vec<diem_types::PeerId>;
+    let mut _43: bool;
+    scope 1 {
+        debug ret => _2;
+        let _5: std::collections::HashMap<u64, diem_types::PeerId>;
+        scope 2 {
+            debug rev_map => _5;
+            let mut _14: std::ops::Range<u64>;
+            scope 3 {
+                debug iter => _14;
+                let _18: u64;
+                scope 4 {
+                    debug i => _18;
+                    let _23: &diem_types::PeerId;
+                    let _29: std::string::String;
+                    let mut _42: &[&str; 2];
+                    scope 5 {
+                        debug account_address => _23;
+                    }
+                    scope 6 {
+                        debug res => _29;
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _43 = const false;
+        _4 = &((*_1).2: std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>);
+        _3 = HashMap::<AccountAddress, ChildNumber>::len(move _4) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _43 = const true;
+        _2 = Vec::<AccountAddress>::with_capacity(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _8 = &((*_1).2: std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>);
+        _7 = HashMap::<AccountAddress, ChildNumber>::iter(move _8) -> [return: bb3, unwind: bb29];
+    }
+
+    bb3: {
+        _6 = <std::collections::hash_map::Iter<'_, AccountAddress, ChildNumber> as Iterator>::map::<(u64, AccountAddress), {closure@testsuite/cli/diem-wallet/src/wallet_library.rs:138:18: 138:28}>(move _7, const ZeroSized: {closure@testsuite/cli/diem-wallet/src/wallet_library.rs:138:18: 138:28}) -> [return: bb4, unwind: bb29];
+    }
+
+    bb4: {
+        _5 = <std::iter::Map<std::collections::hash_map::Iter<'_, AccountAddress, ChildNumber>, {closure@testsuite/cli/diem-wallet/src/wallet_library.rs:138:18: 138:28}> as Iterator>::collect::<HashMap<u64, AccountAddress>>(move _6) -> [return: bb5, unwind: bb29];
+    }
+
+    bb5: {
+        _13 = &((*_1).2: std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>);
+        _12 = HashMap::<AccountAddress, ChildNumber>::len(move _13) -> [return: bb6, unwind: bb26];
+    }
+
+    bb6: {
+        _11 = move _12 as u64 (IntToInt);
+        _10 = std::ops::Range::<u64> { start: const 0_u64, end: move _11 };
+        _9 = <std::ops::Range<u64> as IntoIterator>::into_iter(move _10) -> [return: bb7, unwind: bb26];
+    }
+
+    bb7: {
+        _14 = move _9;
+        goto -> bb8;
+    }
+
+    bb8: {
+        _16 = &mut _14;
+        _15 = <std::ops::Range<u64> as Iterator>::next(_16) -> [return: bb9, unwind: bb26];
+    }
+
+    bb9: {
+        _17 = discriminant(_15);
+        switchInt(move _17) -> [0: bb12, 1: bb10, otherwise: bb11];
+    }
+
+    bb10: {
+        _18 = ((_15 as Some).0: u64);
+        _20 = &_5;
+        _21 = &_18;
+        _19 = HashMap::<u64, AccountAddress>::get::<u64>(move _20, _21) -> [return: bb13, unwind: bb26];
+    }
+
+    bb11: {
+        unreachable;
+    }
+
+    bb12: {
+        _43 = const false;
+        _41 = move _2;
+        _0 = Result::<Vec<AccountAddress>, anyhow::Error>::Ok(move _41);
+        drop(_5) -> [return: bb22, unwind: bb29];
+    }
+
+    bb13: {
+        _22 = discriminant(_19);
+        switchInt(move _22) -> [0: bb14, 1: bb15, otherwise: bb11];
+    }
+
+    bb14: {
+        _42 = const _;
+        _31 = _42 as &[&str] (PointerCoercion(Unsize));
+        _36 = &_18;
+        _35 = core::fmt::rt::Argument::<'_>::new_display::<u64>(_36) -> [return: bb16, unwind: bb26];
+    }
+
+    bb15: {
+        _23 = ((_19 as Some).0: &diem_types::PeerId);
+        _25 = &mut _2;
+        _26 = (*_23);
+        _24 = Vec::<AccountAddress>::push(move _25, move _26) -> [return: bb30, unwind: bb26];
+    }
+
+    bb16: {
+        _40 = &((*_1).2: std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>);
+        _39 = HashMap::<AccountAddress, ChildNumber>::len(move _40) -> [return: bb17, unwind: bb26];
+    }
+
+    bb17: {
+        _38 = &_39;
+        _37 = core::fmt::rt::Argument::<'_>::new_display::<usize>(_38) -> [return: bb18, unwind: bb26];
+    }
+
+    bb18: {
+        _34 = [move _35, move _37];
+        _33 = &_34;
+        _32 = _33 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _30 = Arguments::<'_>::new_v1(move _31, move _32) -> [return: bb19, unwind: bb26];
+    }
+
+    bb19: {
+        _29 = format(move _30) -> [return: bb20, unwind: bb26];
+    }
+
+    bb20: {
+        _28 = WalletError::DiemWalletGeneric(move _29);
+        _27 = <WalletError as Into<anyhow::Error>>::into(move _28) -> [return: bb21, unwind: bb26];
+    }
+
+    bb21: {
+        _0 = Result::<Vec<AccountAddress>, anyhow::Error>::Err(move _27);
+        drop(_5) -> [return: bb23, unwind: bb29];
+    }
+
+    bb22: {
+        _43 = const false;
+        goto -> bb25;
+    }
+
+    bb23: {
+        drop(_2) -> [return: bb24, unwind continue];
+    }
+
+    bb24: {
+        _43 = const false;
+        goto -> bb25;
+    }
+
+    bb25: {
+        return;
+    }
+
+    bb26 (cleanup): {
+        drop(_5) -> [return: bb29, unwind terminate(cleanup)];
+    }
+
+    bb27 (cleanup): {
+        resume;
+    }
+
+    bb28 (cleanup): {
+        drop(_2) -> [return: bb27, unwind terminate(cleanup)];
+    }
+
+    bb29 (cleanup): {
+        switchInt(_43) -> [0: bb27, otherwise: bb28];
+    }
+
+    bb30: {
+        goto -> bb8;
+    }
+}
+
+promoted[0] in wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::get_addresses: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "Child num ", const " not exist while depth is "];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::get_addresses::{closure#0}(_1: &mut {closure@testsuite/cli/diem-wallet/src/wallet_library.rs:138:18: 138:28}, _2: (&AccountAddress, &ChildNumber)) -> (u64, AccountAddress) {
+    let mut _0: (u64, diem_types::PeerId);
+    let _3: diem_types::PeerId;
+    let _4: key_factory::ChildNumber;
+    let mut _5: u64;
+    let _6: &u64;
+    let mut _7: &key_factory::ChildNumber;
+    let mut _8: diem_types::PeerId;
+    let mut _9: &diem_types::PeerId;
+    let mut _10: &diem_types::PeerId;
+    let mut _11: &key_factory::ChildNumber;
+    scope 1 {
+        debug k => _3;
+        debug v => _4;
+    }
+
+    bb0: {
+        _10 = deref_copy (_2.0: &diem_types::PeerId);
+        _3 = (*_10);
+        _11 = deref_copy (_2.1: &key_factory::ChildNumber);
+        _4 = (*_11);
+        _7 = &_4;
+        _6 = <ChildNumber as AsRef<u64>>::as_ref(move _7) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _5 = <u64 as ToOwned>::to_owned(_6) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _9 = &_3;
+        _8 = <AccountAddress as ToOwned>::to_owned(move _9) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _0 = (move _5, move _8);
+        return;
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::sign_txn(_1: &WalletLibrary, _2: RawTransaction) -> Result<SignedTransaction, anyhow::Error> {
+    debug self => _1;
+    debug txn => _2;
+    let mut _0: std::result::Result<diem_types::transaction::SignedTransaction, anyhow::Error>;
+    let mut _3: std::option::Option<&key_factory::ChildNumber>;
+    let mut _4: &std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>;
+    let _5: &diem_types::PeerId;
+    let _6: diem_types::PeerId;
+    let mut _7: &diem_types::transaction::RawTransaction;
+    let mut _8: isize;
+    let mut _11: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, anyhow::Error>, key_factory::ExtendedPrivKey>;
+    let mut _12: std::result::Result<key_factory::ExtendedPrivKey, anyhow::Error>;
+    let mut _13: &key_factory::KeyFactory;
+    let mut _14: key_factory::ChildNumber;
+    let mut _15: isize;
+    let mut _19: &key_factory::ExtendedPrivKey;
+    let _20: &diem_types::transaction::RawTransaction;
+    let mut _21: diem_types::transaction::SignedTransaction;
+    let mut _22: diem_types::transaction::RawTransaction;
+    let mut _23: diem_crypto::ed25519::Ed25519PublicKey;
+    let mut _24: &key_factory::ExtendedPrivKey;
+    let mut _25: anyhow::Error;
+    let mut _26: error::WalletError;
+    let mut _27: std::string::String;
+    let _28: &str;
+    let mut _29: bool;
+    let mut _30: bool;
+    scope 1 {
+        debug child => _9;
+        let _9: &key_factory::ChildNumber;
+        let _10: key_factory::ExtendedPrivKey;
+        let _16: std::result::Result<std::convert::Infallible, anyhow::Error>;
+        let _17: key_factory::ExtendedPrivKey;
+        scope 2 {
+            debug child_key => _10;
+            let _18: diem_crypto::ed25519::Ed25519Signature;
+            scope 7 {
+                debug signature => _18;
+            }
+        }
+        scope 3 {
+            debug residual => _16;
+            scope 4 {
+            }
+        }
+        scope 5 {
+            debug val => _17;
+            scope 6 {
+            }
+        }
+    }
+
+    bb0: {
+        _29 = const false;
+        _30 = const false;
+        _29 = const true;
+        _4 = &((*_1).2: std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>);
+        _7 = &_2;
+        _6 = RawTransaction::sender(move _7) -> [return: bb1, unwind: bb24];
+    }
+
+    bb1: {
+        _5 = &_6;
+        _3 = HashMap::<AccountAddress, ChildNumber>::get::<AccountAddress>(move _4, _5) -> [return: bb2, unwind: bb24];
+    }
+
+    bb2: {
+        _8 = discriminant(_3);
+        switchInt(move _8) -> [1: bb3, otherwise: bb13];
+    }
+
+    bb3: {
+        _9 = ((_3 as Some).0: &key_factory::ChildNumber);
+        _13 = &((*_1).1: key_factory::KeyFactory);
+        _14 = (*_9);
+        _12 = KeyFactory::private_child(move _13, move _14) -> [return: bb4, unwind: bb24];
+    }
+
+    bb4: {
+        _11 = <Result<ExtendedPrivKey, anyhow::Error> as Try>::branch(move _12) -> [return: bb5, unwind: bb24];
+    }
+
+    bb5: {
+        _15 = discriminant(_11);
+        switchInt(move _15) -> [0: bb6, 1: bb8, otherwise: bb7];
+    }
+
+    bb6: {
+        _17 = move ((_11 as Continue).0: key_factory::ExtendedPrivKey);
+        _10 = move _17;
+        _19 = &_10;
+        _20 = &_2;
+        _18 = ExtendedPrivKey::sign::<RawTransaction>(move _19, _20) -> [return: bb10, unwind: bb18];
+    }
+
+    bb7: {
+        unreachable;
+    }
+
+    bb8: {
+        _16 = move ((_11 as Break).0: std::result::Result<std::convert::Infallible, anyhow::Error>);
+        _0 = <Result<SignedTransaction, anyhow::Error> as FromResidual<Result<Infallible, anyhow::Error>>>::from_residual(move _16) -> [return: bb9, unwind: bb24];
+    }
+
+    bb9: {
+        drop(_2) -> [return: bb17, unwind continue];
+    }
+
+    bb10: {
+        _29 = const false;
+        _30 = const true;
+        _22 = move _2;
+        _24 = &_10;
+        _23 = ExtendedPrivKey::get_public(move _24) -> [return: bb11, unwind: bb22];
+    }
+
+    bb11: {
+        _30 = const false;
+        _21 = SignedTransaction::new(move _22, move _23, move _18) -> [return: bb12, unwind: bb22];
+    }
+
+    bb12: {
+        _30 = const false;
+        _0 = Result::<SignedTransaction, anyhow::Error>::Ok(move _21);
+        drop(_10) -> [return: bb16, unwind: bb24];
+    }
+
+    bb13: {
+        _28 = const "Well, that address is nowhere to be found... This is awkward";
+        _27 = <str as ToString>::to_string(_28) -> [return: bb14, unwind: bb24];
+    }
+
+    bb14: {
+        _26 = WalletError::DiemWalletGeneric(move _27);
+        _25 = <WalletError as Into<anyhow::Error>>::into(move _26) -> [return: bb15, unwind: bb24];
+    }
+
+    bb15: {
+        _0 = Result::<SignedTransaction, anyhow::Error>::Err(move _25);
+        goto -> bb16;
+    }
+
+    bb16: {
+        switchInt(_29) -> [0: bb17, otherwise: bb20];
+    }
+
+    bb17: {
+        return;
+    }
+
+    bb18 (cleanup): {
+        drop(_10) -> [return: bb24, unwind terminate(cleanup)];
+    }
+
+    bb19 (cleanup): {
+        resume;
+    }
+
+    bb20: {
+        drop(_2) -> [return: bb17, unwind continue];
+    }
+
+    bb21 (cleanup): {
+        drop(_22) -> [return: bb18, unwind terminate(cleanup)];
+    }
+
+    bb22 (cleanup): {
+        switchInt(_30) -> [0: bb18, otherwise: bb21];
+    }
+
+    bb23 (cleanup): {
+        drop(_2) -> [return: bb19, unwind terminate(cleanup)];
+    }
+
+    bb24 (cleanup): {
+        switchInt(_29) -> [0: bb19, otherwise: bb23];
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::get_private_key(_1: &WalletLibrary, _2: &AccountAddress) -> Result<Ed25519PrivateKey, anyhow::Error> {
+    debug self => _1;
+    debug address => _2;
+    let mut _0: std::result::Result<diem_crypto::ed25519::Ed25519PrivateKey, anyhow::Error>;
+    let mut _3: std::option::Option<&key_factory::ChildNumber>;
+    let mut _4: &std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>;
+    let _5: &&diem_types::PeerId;
+    let mut _6: isize;
+    let mut _8: diem_crypto::ed25519::Ed25519PrivateKey;
+    let mut _9: &key_factory::ExtendedPrivKey;
+    let _10: key_factory::ExtendedPrivKey;
+    let mut _11: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, anyhow::Error>, key_factory::ExtendedPrivKey>;
+    let mut _12: std::result::Result<key_factory::ExtendedPrivKey, anyhow::Error>;
+    let mut _13: &key_factory::KeyFactory;
+    let mut _14: key_factory::ChildNumber;
+    let mut _15: isize;
+    let mut _18: anyhow::Error;
+    let mut _19: error::WalletError;
+    let mut _20: std::string::String;
+    let _21: &str;
+    let mut _22: &diem_types::PeerId;
+    scope 1 {
+        debug child => _7;
+        let _7: &key_factory::ChildNumber;
+        let _16: std::result::Result<std::convert::Infallible, anyhow::Error>;
+        let _17: key_factory::ExtendedPrivKey;
+        scope 2 {
+            debug residual => _16;
+            scope 3 {
+            }
+        }
+        scope 4 {
+            debug val => _17;
+            scope 5 {
+            }
+        }
+    }
+
+    bb0: {
+        _4 = &((*_1).2: std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>);
+        _5 = &_2;
+        _22 = deref_copy (*_5);
+        _3 = HashMap::<AccountAddress, ChildNumber>::get::<AccountAddress>(move _4, _22) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _6 = discriminant(_3);
+        switchInt(move _6) -> [1: bb2, otherwise: bb9];
+    }
+
+    bb2: {
+        _7 = ((_3 as Some).0: &key_factory::ChildNumber);
+        _13 = &((*_1).1: key_factory::KeyFactory);
+        _14 = (*_7);
+        _12 = KeyFactory::private_child(move _13, move _14) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _11 = <Result<ExtendedPrivKey, anyhow::Error> as Try>::branch(move _12) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _15 = discriminant(_11);
+        switchInt(move _15) -> [0: bb5, 1: bb7, otherwise: bb6];
+    }
+
+    bb5: {
+        _17 = move ((_11 as Continue).0: key_factory::ExtendedPrivKey);
+        _10 = move _17;
+        _9 = &_10;
+        _8 = ExtendedPrivKey::get_private_key(move _9) -> [return: bb8, unwind: bb13];
+    }
+
+    bb6: {
+        unreachable;
+    }
+
+    bb7: {
+        _16 = move ((_11 as Break).0: std::result::Result<std::convert::Infallible, anyhow::Error>);
+        _0 = <Result<Ed25519PrivateKey, anyhow::Error> as FromResidual<Result<Infallible, anyhow::Error>>>::from_residual(move _16) -> [return: bb12, unwind continue];
+    }
+
+    bb8: {
+        _0 = Result::<Ed25519PrivateKey, anyhow::Error>::Ok(move _8);
+        drop(_10) -> [return: bb12, unwind continue];
+    }
+
+    bb9: {
+        _21 = const "missing address";
+        _20 = <str as ToString>::to_string(_21) -> [return: bb10, unwind continue];
+    }
+
+    bb10: {
+        _19 = WalletError::DiemWalletGeneric(move _20);
+        _18 = <WalletError as Into<anyhow::Error>>::into(move _19) -> [return: bb11, unwind continue];
+    }
+
+    bb11: {
+        _0 = Result::<Ed25519PrivateKey, anyhow::Error>::Err(move _18);
+        goto -> bb12;
+    }
+
+    bb12: {
+        return;
+    }
+
+    bb13 (cleanup): {
+        drop(_10) -> [return: bb14, unwind terminate(cleanup)];
+    }
+
+    bb14 (cleanup): {
+        resume;
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:40:1: 40:19>::get_authentication_key(_1: &WalletLibrary, _2: &AccountAddress) -> Result<AuthenticationKey, anyhow::Error> {
+    debug self => _1;
+    debug address => _2;
+    let mut _0: std::result::Result<diem_types::transaction::authenticator::AuthenticationKey, anyhow::Error>;
+    let mut _3: std::option::Option<&key_factory::ChildNumber>;
+    let mut _4: &std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>;
+    let _5: &&diem_types::PeerId;
+    let mut _6: isize;
+    let mut _8: diem_types::transaction::authenticator::AuthenticationKey;
+    let mut _9: &key_factory::ExtendedPrivKey;
+    let _10: key_factory::ExtendedPrivKey;
+    let mut _11: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, anyhow::Error>, key_factory::ExtendedPrivKey>;
+    let mut _12: std::result::Result<key_factory::ExtendedPrivKey, anyhow::Error>;
+    let mut _13: &key_factory::KeyFactory;
+    let mut _14: key_factory::ChildNumber;
+    let mut _15: isize;
+    let mut _18: anyhow::Error;
+    let mut _19: error::WalletError;
+    let mut _20: std::string::String;
+    let _21: &str;
+    let mut _22: &diem_types::PeerId;
+    scope 1 {
+        debug child => _7;
+        let _7: &key_factory::ChildNumber;
+        let _16: std::result::Result<std::convert::Infallible, anyhow::Error>;
+        let _17: key_factory::ExtendedPrivKey;
+        scope 2 {
+            debug residual => _16;
+            scope 3 {
+            }
+        }
+        scope 4 {
+            debug val => _17;
+            scope 5 {
+            }
+        }
+    }
+
+    bb0: {
+        _4 = &((*_1).2: std::collections::HashMap<diem_types::PeerId, key_factory::ChildNumber>);
+        _5 = &_2;
+        _22 = deref_copy (*_5);
+        _3 = HashMap::<AccountAddress, ChildNumber>::get::<AccountAddress>(move _4, _22) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _6 = discriminant(_3);
+        switchInt(move _6) -> [1: bb2, otherwise: bb9];
+    }
+
+    bb2: {
+        _7 = ((_3 as Some).0: &key_factory::ChildNumber);
+        _13 = &((*_1).1: key_factory::KeyFactory);
+        _14 = (*_7);
+        _12 = KeyFactory::private_child(move _13, move _14) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _11 = <Result<ExtendedPrivKey, anyhow::Error> as Try>::branch(move _12) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _15 = discriminant(_11);
+        switchInt(move _15) -> [0: bb5, 1: bb7, otherwise: bb6];
+    }
+
+    bb5: {
+        _17 = move ((_11 as Continue).0: key_factory::ExtendedPrivKey);
+        _10 = move _17;
+        _9 = &_10;
+        _8 = ExtendedPrivKey::get_authentication_key(move _9) -> [return: bb8, unwind: bb13];
+    }
+
+    bb6: {
+        unreachable;
+    }
+
+    bb7: {
+        _16 = move ((_11 as Break).0: std::result::Result<std::convert::Infallible, anyhow::Error>);
+        _0 = <Result<AuthenticationKey, anyhow::Error> as FromResidual<Result<Infallible, anyhow::Error>>>::from_residual(move _16) -> [return: bb12, unwind continue];
+    }
+
+    bb8: {
+        _0 = Result::<AuthenticationKey, anyhow::Error>::Ok(move _8);
+        drop(_10) -> [return: bb12, unwind continue];
+    }
+
+    bb9: {
+        _21 = const "missing address";
+        _20 = <str as ToString>::to_string(_21) -> [return: bb10, unwind continue];
+    }
+
+    bb10: {
+        _19 = WalletError::DiemWalletGeneric(move _20);
+        _18 = <WalletError as Into<anyhow::Error>>::into(move _19) -> [return: bb11, unwind continue];
+    }
+
+    bb11: {
+        _0 = Result::<AuthenticationKey, anyhow::Error>::Err(move _18);
+        goto -> bb12;
+    }
+
+    bb12: {
+        return;
+    }
+
+    bb13 (cleanup): {
+        drop(_10) -> [return: bb14, unwind terminate(cleanup)];
+    }
+
+    bb14 (cleanup): {
+        resume;
+    }
+}
+
+fn wallet_library::<impl at testsuite/cli/diem-wallet/src/wallet_library.rs:201:1: 201:41>::sign_txn(_1: &WalletLibrary, _2: RawTransaction) -> Result<SignedTransaction, anyhow::Error> {
+    debug self => _1;
+    debug raw_txn => _2;
+    let mut _0: std::result::Result<diem_types::transaction::SignedTransaction, anyhow::Error>;
+
+    bb0: {
+        _0 = WalletLibrary::sign_txn(_1, move _2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn WalletError::DiemWalletGeneric(_1: std::string::String) -> WalletError {
+    let mut _0: error::WalletError;
+
+    bb0: {
+        _0 = WalletError::DiemWalletGeneric(move _1);
+        return;
+    }
+}
+
+// MIR FOR CTFE
+fn WalletError::DiemWalletGeneric(_1: std::string::String) -> WalletError {
+    let mut _0: error::WalletError;
+
+    bb0: {
+        _0 = WalletError::DiemWalletGeneric(move _1);
+        return;
+    }
+}
+
+fn Main(_1: [u8; 32]) -> Main {
+    let mut _0: key_factory::Main;
+
+    bb0: {
+        _0 = Main(move _1);
+        return;
+    }
+}
+
+// MIR FOR CTFE
+fn Main(_1: [u8; 32]) -> Main {
+    let mut _0: key_factory::Main;
+
+    bb0: {
+        _0 = Main(move _1);
+        return;
+    }
+}
+
+fn ChildNumber(_1: u64) -> ChildNumber {
+    let mut _0: key_factory::ChildNumber;
+
+    bb0: {
+        _0 = ChildNumber(move _1);
+        return;
+    }
+}
+
+// MIR FOR CTFE
+fn ChildNumber(_1: u64) -> ChildNumber {
+    let mut _0: key_factory::ChildNumber;
+
+    bb0: {
+        _0 = ChildNumber(move _1);
+        return;
+    }
+}
+
+fn Seed(_1: [u8; 32]) -> Seed {
+    let mut _0: key_factory::Seed;
+
+    bb0: {
+        _0 = Seed(move _1);
+        return;
+    }
+}
+
+// MIR FOR CTFE
+fn Seed(_1: [u8; 32]) -> Seed {
+    let mut _0: key_factory::Seed;
+
+    bb0: {
+        _0 = Seed(move _1);
+        return;
+    }
+}
+
+fn Mnemonic(_1: Vec<&str>) -> Mnemonic {
+    let mut _0: mnemonic::Mnemonic;
+
+    bb0: {
+        _0 = Mnemonic(move _1);
+        return;
+    }
+}
+
+// MIR FOR CTFE
+fn Mnemonic(_1: Vec<&str>) -> Mnemonic {
+    let mut _0: mnemonic::Mnemonic;
+
+    bb0: {
+        _0 = Mnemonic(move _1);
+        return;
+    }
+}

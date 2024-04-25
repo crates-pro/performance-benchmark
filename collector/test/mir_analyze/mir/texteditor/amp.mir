@@ -1,3 +1,309 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1fb450f98624154f4646f9c7c2bd0afa906c4e8ce4d86de6372c92abd0fb9b55
-size 8173
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn main() -> () {
+    let mut _0: ();
+    let mut _1: std::option::Option<amp::Error>;
+    let mut _2: std::result::Result<(), amp::Error>;
+    let mut _3: std::result::Result<amp::Application, amp::Error>;
+    let _4: &std::vec::Vec<std::string::String>;
+    let _5: std::vec::Vec<std::string::String>;
+    let mut _6: std::env::Args;
+    let mut _7: isize;
+    let _9: &amp::Error;
+    let mut _10: bool;
+    let mut _11: isize;
+    scope 1 {
+        debug e => _8;
+        let _8: amp::Error;
+    }
+
+    bb0: {
+        _10 = const false;
+        _6 = args() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _5 = <Args as Iterator>::collect::<Vec<String>>(move _6) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _4 = &_5;
+        _3 = Application::new(_4) -> [return: bb3, unwind: bb10];
+    }
+
+    bb3: {
+        _2 = Result::<Application, amp::Error>::and_then::<(), {closure@src/main.rs:9:19: 9:28}>(move _3, const ZeroSized: {closure@src/main.rs:9:19: 9:28}) -> [return: bb4, unwind: bb10];
+    }
+
+    bb4: {
+        _1 = Result::<(), amp::Error>::err(move _2) -> [return: bb5, unwind: bb10];
+    }
+
+    bb5: {
+        _10 = const true;
+        _7 = discriminant(_1);
+        switchInt(move _7) -> [1: bb6, otherwise: bb15];
+    }
+
+    bb6: {
+        _10 = const false;
+        _8 = move ((_1 as Some).0: amp::Error);
+        _9 = &_8;
+        _0 = handle_error(_9) -> [return: bb7, unwind: bb9];
+    }
+
+    bb7: {
+        drop(_8) -> [return: bb15, unwind: bb10];
+    }
+
+    bb8: {
+        _10 = const false;
+        return;
+    }
+
+    bb9 (cleanup): {
+        drop(_8) -> [return: bb10, unwind terminate(cleanup)];
+    }
+
+    bb10 (cleanup): {
+        drop(_5) -> [return: bb11, unwind terminate(cleanup)];
+    }
+
+    bb11 (cleanup): {
+        resume;
+    }
+
+    bb12: {
+        drop(_5) -> [return: bb8, unwind continue];
+    }
+
+    bb13: {
+        switchInt(_10) -> [0: bb12, otherwise: bb14];
+    }
+
+    bb14: {
+        drop(((_1 as Some).0: amp::Error)) -> [return: bb12, unwind: bb10];
+    }
+
+    bb15: {
+        _11 = discriminant(_1);
+        switchInt(move _11) -> [1: bb13, otherwise: bb12];
+    }
+}
+
+fn main::{closure#0}(_1: {closure@src/main.rs:9:19: 9:28}, _2: Application) -> Result<(), amp::Error> {
+    debug app => _2;
+    let mut _0: std::result::Result<(), amp::Error>;
+    let mut _3: &mut amp::Application;
+
+    bb0: {
+        _3 = &mut _2;
+        _0 = Application::run(move _3) -> [return: bb1, unwind: bb3];
+    }
+
+    bb1: {
+        drop(_2) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+
+    bb3 (cleanup): {
+        drop(_2) -> [return: bb4, unwind terminate(cleanup)];
+    }
+
+    bb4 (cleanup): {
+        resume;
+    }
+}
+
+fn handle_error(_1: &amp::Error) -> () {
+    debug error => _1;
+    let mut _0: ();
+    let _2: ();
+    let mut _3: std::fmt::Arguments<'_>;
+    let mut _4: &[&str];
+    let mut _5: &[core::fmt::rt::Argument<'_>];
+    let _6: &[core::fmt::rt::Argument<'_>; 1];
+    let _7: [core::fmt::rt::Argument<'_>; 1];
+    let mut _8: core::fmt::rt::Argument<'_>;
+    let _9: &&amp::Error;
+    let mut _10: std::iter::Skip<error_chain::Iter<'_>>;
+    let mut _11: std::iter::Skip<error_chain::Iter<'_>>;
+    let mut _12: error_chain::Iter<'_>;
+    let mut _13: &amp::Error;
+    let mut _14: std::iter::Skip<error_chain::Iter<'_>>;
+    let mut _15: std::option::Option<&dyn std::error::Error>;
+    let mut _16: &mut std::iter::Skip<error_chain::Iter<'_>>;
+    let mut _17: isize;
+    let _19: ();
+    let mut _20: std::fmt::Arguments<'_>;
+    let mut _21: &[&str];
+    let mut _22: &[core::fmt::rt::Argument<'_>];
+    let _23: &[core::fmt::rt::Argument<'_>; 1];
+    let _24: [core::fmt::rt::Argument<'_>; 1];
+    let mut _25: core::fmt::rt::Argument<'_>;
+    let _26: &&dyn std::error::Error;
+    let mut _27: std::option::Option<&backtrace::capture::Backtrace>;
+    let mut _28: &amp::Error;
+    let mut _29: isize;
+    let _31: ();
+    let mut _32: std::fmt::Arguments<'_>;
+    let mut _33: &[&str];
+    let mut _34: &[core::fmt::rt::Argument<'_>];
+    let _35: &[core::fmt::rt::Argument<'_>; 1];
+    let _36: [core::fmt::rt::Argument<'_>; 1];
+    let mut _37: core::fmt::rt::Argument<'_>;
+    let _38: &&backtrace::capture::Backtrace;
+    let _39: !;
+    let mut _42: &[&str; 2];
+    scope 1 {
+        debug iter => _14;
+        let _18: &dyn std::error::Error;
+        scope 2 {
+            debug e => _18;
+            let mut _40: &[&str; 2];
+        }
+    }
+    scope 3 {
+        debug backtrace => _30;
+        let _30: &backtrace::capture::Backtrace;
+        let mut _41: &[&str; 2];
+    }
+
+    bb0: {
+        _42 = const _;
+        _4 = _42 as &[&str] (PointerCoercion(Unsize));
+        _9 = &_1;
+        _8 = core::fmt::rt::Argument::<'_>::new_display::<&amp::Error>(_9) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _7 = [move _8];
+        _6 = &_7;
+        _5 = _6 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _3 = Arguments::<'_>::new_v1(move _4, move _5) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _2 = _eprint(move _3) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _13 = _1;
+        _12 = amp::Error::iter(move _13) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _11 = <error_chain::Iter<'_> as Iterator>::skip(move _12, const 1_usize) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        _10 = <Skip<error_chain::Iter<'_>> as IntoIterator>::into_iter(move _11) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _14 = move _10;
+        goto -> bb7;
+    }
+
+    bb7: {
+        _16 = &mut _14;
+        _15 = <Skip<error_chain::Iter<'_>> as Iterator>::next(_16) -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        _17 = discriminant(_15);
+        switchInt(move _17) -> [0: bb11, 1: bb9, otherwise: bb10];
+    }
+
+    bb9: {
+        _18 = ((_15 as Some).0: &dyn std::error::Error);
+        _40 = const _;
+        _21 = _40 as &[&str] (PointerCoercion(Unsize));
+        _26 = &_18;
+        _25 = core::fmt::rt::Argument::<'_>::new_display::<&dyn std::error::Error>(_26) -> [return: bb12, unwind continue];
+    }
+
+    bb10: {
+        unreachable;
+    }
+
+    bb11: {
+        _28 = _1;
+        _27 = amp::Error::backtrace(move _28) -> [return: bb14, unwind continue];
+    }
+
+    bb12: {
+        _24 = [move _25];
+        _23 = &_24;
+        _22 = _23 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _20 = Arguments::<'_>::new_v1(move _21, move _22) -> [return: bb13, unwind continue];
+    }
+
+    bb13: {
+        _19 = _eprint(move _20) -> [return: bb7, unwind continue];
+    }
+
+    bb14: {
+        _29 = discriminant(_27);
+        switchInt(move _29) -> [1: bb15, otherwise: bb18];
+    }
+
+    bb15: {
+        _30 = ((_27 as Some).0: &backtrace::capture::Backtrace);
+        _41 = const _;
+        _33 = _41 as &[&str] (PointerCoercion(Unsize));
+        _38 = &_30;
+        _37 = core::fmt::rt::Argument::<'_>::new_debug::<&backtrace::capture::Backtrace>(_38) -> [return: bb16, unwind continue];
+    }
+
+    bb16: {
+        _36 = [move _37];
+        _35 = &_36;
+        _34 = _35 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _32 = Arguments::<'_>::new_v1(move _33, move _34) -> [return: bb17, unwind continue];
+    }
+
+    bb17: {
+        _31 = _eprint(move _32) -> [return: bb18, unwind continue];
+    }
+
+    bb18: {
+        _39 = exit(const 1_i32) -> unwind continue;
+    }
+}
+
+promoted[0] in handle_error: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "caused by: ", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in handle_error: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "backtrace: ", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[2] in handle_error: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "error: ", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}

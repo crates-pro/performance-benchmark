@@ -82,7 +82,7 @@ fn normalize(matrix: &DMatrix<f64>) -> DMatrix<f64> {
     let deviations = matrix
         .column_iter()
         .map(|c| {
-            let mut d = 0.0;
+            let mut d: f64 = 0.0;
             let m = mean_iter.next().unwrap();
             c.iter().for_each(|x| {
                 d += (x - m).powf(2.0);

@@ -8,7 +8,7 @@ use crate::{
     statistics::statistic::Statistics,
 };
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct CompileTimeResult {
     benchmark: String,
     iteration: usize,
@@ -35,7 +35,7 @@ impl CompileTimeResult {
     }
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct CompileTimeBenchResult {
     benchmark: String,
     iterations: usize,
@@ -76,7 +76,7 @@ impl CompileTimeBenchResult {
             .collect()
     }
 
-    fn get_stats_with_profile_scenario(&self) -> HashMap<(Profile, Scenario), Vec<Stats>> {
+    pub fn get_stats_with_profile_scenario(&self) -> HashMap<(Profile, Scenario), Vec<Stats>> {
         let mut map = HashMap::<(Profile, Scenario), Vec<Stats>>::new();
         self.result_vec.iter().for_each(|r| {
             if map.contains_key(&(r.profile, r.scenario)) {
@@ -124,7 +124,7 @@ impl CompileTimeResultSet {
                     statistic_vec.push((label.clone(), Statistics::from(vals.clone())));
                 });
 
-                statistics.0.push(CompileTimeStatistic {
+                statistics.push(CompileTimeStatistic {
                     name: result.benchmark.clone(),
                     profile: profile.clone(),
                     scenario: scenario.clone(),
@@ -142,20 +142,12 @@ impl CompileTimeResultSet {
 }
 
 #[derive(Serialize, Deserialize)]
-struct CompileTimeStatistic {
-    name: String,
-    profile: Profile,
-    scenario: Scenario,
-    iterations: u32,
-    statistic_vec: Vec<(String, Statistics)>,
+pub struct CompileTimeStatistic {
+    pub name: String,
+    pub profile: Profile,
+    pub scenario: Scenario,
+    pub iterations: u32,
+    pub statistic_vec: Vec<(String, Statistics)>,
 }
 
-impl CompileTimeStatistic {}
-
-#[derive(Serialize, Deserialize)]
-pub struct CompileTimeStatistics(Vec<CompileTimeStatistic>);
-impl CompileTimeStatistics {
-    fn new() -> Self {
-        Self(vec![])
-    }
-}
+pub type CompileTimeStatistics = Vec<CompileTimeStatistic>;

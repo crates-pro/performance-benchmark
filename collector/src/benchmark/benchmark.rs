@@ -63,7 +63,7 @@ impl Benchamrk {
         out_dir: &Path,
     ) -> anyhow::Result<CompileTimeBenchResult> {
         if self.config.disabled {
-            eprintln!("Skipping {}: disabled", self.name);
+            println!("Skipping {}: disabled", self.name);
             bail!("disabled benchmark");
         }
 
@@ -72,11 +72,11 @@ impl Benchamrk {
         let mut bench_result = CompileTimeBenchResult::new(self.name.clone(), iterations);
 
         if profiles.is_empty() {
-            eprintln!("Skipping {}: no profiles selected", self.name);
+            println!("Skipping {}: no profiles selected", self.name);
             return Ok(bench_result);
         }
 
-        eprintln!("Preparing {}...", self.name);
+        println!("Preparing {}...", self.name);
 
         let profile_dirs = profiles
             .iter()
@@ -273,7 +273,7 @@ impl Benchamrk {
         use std::process::Command;
 
         let mut cmd = Command::new("cp");
-        cmd.arg("-pLR").arg(from).arg(to);
+        cmd.arg("-pLRa").arg(from).arg(to);
         command_output(&mut cmd)?;
         Ok(())
     }
@@ -547,6 +547,7 @@ pub struct BenchmarkConfig {
     pub runtime_test_type: Option<RuntimeTestType>,
     pub example_lst: Option<Vec<String>>,
     pub runtime_args: Option<String>,
+    pub target_path: Option<PathBuf>,
     /// The file that should be touched to ensure cargo re-checks the leaf crate
     /// we're interested in. Likely, something similar to `src/lib.rs`. The
     /// default if this is not present is to touch all .rs files in the

@@ -7,7 +7,6 @@ pub enum MIR {
     MOVE(Move),
     CALL(Call),
     FIELDACCESS(FIELDACCESS),
-    MEMORY(Memory),
 }
 
 pub static ASSIGN_TYPE: &str = "assignment";
@@ -15,7 +14,6 @@ pub static REF_TYPE: &str = "reference";
 pub static MOVE_TYPE: &str = "move";
 pub static CALL_TYPE: &str = "call";
 pub static FIELD_ACCESS_TYPE: &str = "field acess";
-pub static MEMORY_TYPE: &str = "memory management";
 
 impl MIR {
     pub fn get_all_types() -> Vec<String> {
@@ -25,7 +23,6 @@ impl MIR {
             MOVE_TYPE.to_string(),
             CALL_TYPE.to_string(),
             FIELD_ACCESS_TYPE.to_string(),
-            MEMORY_TYPE.to_string(),
         ]
     }
 
@@ -36,7 +33,6 @@ impl MIR {
             MIR::MOVE(_) => MOVE_TYPE.to_string(),
             MIR::CALL(_) => CALL_TYPE.to_string(),
             MIR::FIELDACCESS(_) => FIELD_ACCESS_TYPE.to_string(),
-            MIR::MEMORY(_) => MEMORY_TYPE.to_string(),
         }
     }
 }
@@ -89,7 +85,6 @@ pub enum Param {
     MOVE(Var),
     VAR(Var),
     COSNT(Const),
-    FUNCPTR(String),
 }
 
 #[derive(Debug)]
@@ -106,12 +101,6 @@ pub struct Const {
 #[derive(Debug)]
 pub struct Var {
     pub id: VarId,
-}
-
-#[derive(Debug)]
-pub enum Memory {
-    StorageLive(Var),
-    SotrageDead(Var),
 }
 
 impl MIR {
@@ -141,7 +130,6 @@ impl MIR {
             MIR::ref_capture,
             MIR::call_capture,
             MIR::field_access_capture,
-            MIR::storage_capture,
         ]
     }
 
@@ -283,7 +271,7 @@ impl MIR {
                                     })
                                 }
                             } else {
-                                Param::FUNCPTR(param.to_string())
+                                panic!();
                             }
                         })
                         .collect()
@@ -328,26 +316,6 @@ impl MIR {
                 Some(MIR::FIELDACCESS(FIELDACCESS::REF(field_access)))
             } else {
                 panic!("Fail to capture {} as field access statement.", line);
-            }
-        } else {
-            None
-        }
-    }
-
-    fn storage_capture(line: &String) -> Option<MIR> {
-        let storage_pattern =
-            Regex::new(r"(StorageLive\(_(\d+)\))|(StorageDead\(_(\d+)\))").unwrap();
-        if let Some(captures) = storage_pattern.captures(line) {
-            if let Some(live) = captures.get(2).map(|m| m.as_str()) {
-                Some(MIR::MEMORY(Memory::StorageLive(Var {
-                    id: live.parse().unwrap(),
-                })))
-            } else if let Some(dead) = captures.get(4).map(|m| m.as_str()) {
-                Some(MIR::MEMORY(Memory::SotrageDead(Var {
-                    id: dead.parse().unwrap(),
-                })))
-            } else {
-                None
             }
         } else {
             None

@@ -42,7 +42,7 @@ mod test {
 
     use crate::mir_analyze::{
         analyze::reader::read_mir,
-        mirs::mir::{ASSIGN_TYPE, CALL_TYPE, FIELD_ACCESS_TYPE, MEMORY_TYPE, MOVE_TYPE, REF_TYPE},
+        mirs::mir::{ASSIGN_TYPE, CALL_TYPE, FIELD_ACCESS_TYPE, MOVE_TYPE, REF_TYPE},
     };
 
     use super::count_mir;
@@ -59,7 +59,6 @@ mod test {
             (CALL_TYPE.to_string(), 24),
             (FIELD_ACCESS_TYPE.to_string(), 3),
             (REF_TYPE.to_string(), 18),
-            (MEMORY_TYPE.to_string(), 281),
         ]
         .into_iter()
         .collect();

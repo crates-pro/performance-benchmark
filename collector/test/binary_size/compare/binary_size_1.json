@@ -1,0 +1,631 @@
+[
+    {
+        "benchmark": "stacks-core",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "stacks-core",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 180.63983154296875
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "ckb",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "ckb",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 48.25531768798828
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "graph-node",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "graph-node",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 15.024578094482422
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "starcoin",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "starcoin",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 98.24720764160156
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "conflux-rust",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "conflux-rust",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 38.93913269042969
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "diem",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "diem",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 44.09404373168945
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "cita",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "cita",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 58.247764587402344
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "sled",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "sled",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 34.91075897216797
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "rust-rocksdb",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "rust-rocksdb",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.7637691497802734
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "toydb",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "toydb",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 11.887809753417969
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "skytable",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "skytable",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 7.447479248046875
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "lucid",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "lucid",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 16.713958740234375
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "broot",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "broot",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 10.218093872070312
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "exa",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "exa",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 3.5835113525390625
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "bat",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "bat",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 8.052986145019531
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "zoxide",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "zoxide",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 3.3864364624023438
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "lsd",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "lsd",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 8.810287475585938
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "ripgrep",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "ripgrep",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 35.80431365966797
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "fd",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "fd",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 10.804237365722656
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "rayon",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "rayon",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 4.26490592956543
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "emu",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "emu",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.014844894409179688
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "crossbeam",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "crossbeam",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.009929656982421875
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "systemd",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "systemd",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 2.7191085815429688
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "coreutils",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "coreutils",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 16.838157653808594
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "systemstat",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "systemstat",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 0.7915554046630859
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "system76-power",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "system76-power",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 9.12823486328125
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "runiq",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "runiq",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 6.1466827392578125
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "ruplacer",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "ruplacer",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 8.810447692871094
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "grex",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "grex",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 8.330276489257812
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "xsv",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "xsv",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 37.124664306640625
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "kiro-editor",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "kiro-editor",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 10.0384521484375
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "amp",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "amp",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 10.573539733886719
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "kibi",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "kibi",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 5.4885406494140625
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "relay",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "relay",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 19.256927490234375
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "static-web-server",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "static-web-server",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 8.251228332519531
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "simple-http-server",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "simple-http-server",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 8.616477966308594
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "benchmark": "Rocket",
+        "iterations": 1,
+        "result_vec": [
+            {
+                "benchmark": "Rocket",
+                "iteration": 1,
+                "profile": "Release",
+                "scenario": "Full",
+                "stats": {
+                    "stats": {
+                        "binary_size": 32.995933532714844
+                    }
+                }
+            }
+        ]
+    }
+]

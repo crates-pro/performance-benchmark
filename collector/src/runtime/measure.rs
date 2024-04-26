@@ -154,7 +154,7 @@ impl<'a> Runtime for RuntimeProcess<'a> {
             match perf_tool.get_bencher() {
                 crate::toolchain::Bencher::PerfStat => {
                     let output = command_output(&mut cmd)
-                        .with_context(|| format!("faile to start benchmark process."))?;
+                        .with_context(|| format!("fail to start benchmark process."))?;
                     let stats = process_benchmark_output(output)?;
                     log::info!("stats:{:?}", stats);
                     result.append(stats);

@@ -32,7 +32,6 @@ impl<'a> CargoTestProcess<'a> {
             .args(self.args.clone())
             .arg("--manifest-path")
             .arg(&self.manifest_path)
-            .arg("--profile")
             .arg("release")
             .arg("--no-fail-fast");
         cmd
@@ -55,7 +54,6 @@ impl<'a> CargoTestProcess<'a> {
             .args(self.args.clone())
             .arg("--manifest-path")
             .arg(&self.manifest_path)
-            .arg("--profile")
             .arg("release")
             .arg("--no-fail-fast");
         cmd

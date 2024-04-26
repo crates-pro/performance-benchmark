@@ -2,7 +2,7 @@ use std::{collections::HashMap, path::Path};
 
 use crate::mir_analyze::{analyze::count::MirCount, mirs::mir::MIR};
 
-use super::tex_writer::{write_tex_table, TableDatas};
+use super::table_data::{write_tex_table, TableDatas};
 
 pub struct Data {
     mir_count: TableDatas<String, String, u32>,
@@ -26,10 +26,10 @@ impl Data {
 
     pub fn write_all(self, out_dir: &Path) -> anyhow::Result<()> {
         write_tex_table(
-            self.mir_count,
+            &self.mir_count,
             out_dir,
-            "MIR Count.tex".to_string(),
-            "MIR Count.tex".to_string(),
+            "MIR Count".to_string(),
+            "MIR Count".to_string(),
         )?;
 
         Ok(())

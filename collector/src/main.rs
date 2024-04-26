@@ -8,13 +8,22 @@ use std::{
 use anyhow::{Context, Ok};
 use benchmark::scenario::Scenario;
 use clap::Parser;
-use compile_time::bench_compile_time;
+use compile_time::{
+    bench_compile_time,
+    binary_size::{
+        compare::compare_binary_size,
+        plotter::{plot, plot_compare},
+    },
+};
 use runtime::bench_runtime;
 use toolchain::{Cli, Commands, ResultWriter};
 
 use crate::{
-    compile_time::result::CompileTimeResultSet, csv_transfer::sheduler, morpheme_miner::run_miners,
-    perf_analyze::perf_analyzer, toolchain::get_local_toolchain,
+    compile_time::{binary_size::bench_binary_size, result::CompileTimeResultSet},
+    csv_transfer::sheduler,
+    morpheme_miner::run_miners,
+    perf_analyze::perf_analyzer,
+    toolchain::get_local_toolchain,
 };
 
 mod benchmark;
@@ -23,6 +32,7 @@ mod csv_transfer;
 mod execute;
 mod mir_analyze;
 mod morpheme_miner;
+mod pca_analysis;
 mod perf_analyze;
 mod runtime;
 mod statistics;
@@ -45,14 +55,6 @@ fn main_result() -> anyhow::Result<i32> {
     env_logger::init();
     let args = Cli::parse();
 
-    let mut cmd = Command::new("perf");
-    let has_perf = cmd.output().is_ok();
-    assert!(has_perf);
-
-    let mut cmd = Command::new("flamegraph");
-    let has_flamegraph = cmd.output().is_ok();
-    assert!(has_flamegraph);
-
     match args.command {
         Commands::BenchLocal {
             local,
@@ -64,7 +66,12 @@ fn main_result() -> anyhow::Result<i32> {
             out_dir,
             flamegraph,
         } => {
-            eprintln!("profiles: {:?}", profiles.profiles);
+            perf_check();
+            if flamegraph > 0 {
+                flamegraph_check();
+            }
+
+            println!("profiles: {:?}", profiles.profiles);
             let default_scenarios = vec![Scenario::Full];
             let toolch = get_local_toolchain(
                 &local.rustc,
@@ -140,6 +147,11 @@ fn main_result() -> anyhow::Result<i32> {
             out_dir,
             flamegraph,
         } => {
+            perf_check();
+            if flamegraph > 0 {
+                flamegraph_check();
+            }
+
             let ltc = get_local_toolchain(
                 &local.rustc,
                 local.cargo.as_deref(),
@@ -237,6 +249,53 @@ fn main_result() -> anyhow::Result<i32> {
 
             Ok(0)
         }
+        Commands::BinaryLocal {
+            local,
+            profiles,
+            bench_dir,
+            out_dir,
+        } => {
+            let toolch = get_local_toolchain(
+                &local.rustc,
+                local.cargo.as_deref(),
+                local.id.as_deref(),
+                "",
+            )?;
+            create_output_dir(&out_dir)?;
+
+            let mut result_writer =
+                ResultWriter::new(out_dir.clone(), PathBuf::from("compiled_binary_size.json"))
+                    .with_context(|| {
+                        format!(
+                            "Fail to open {} to record results!",
+                            out_dir.to_str().unwrap_or("?")
+                        )
+                    })?;
+
+            let results = bench_binary_size(&toolch, &profiles.profiles, bench_dir)?;
+
+            result_writer.write(serde_json::to_string(&results)?)?;
+
+            Ok(0)
+        }
+        Commands::BinaryPlot {
+            data1,
+            data2,
+            data1_label,
+            data2_label,
+            profile,
+            out_path,
+            mode,
+        } => match mode {
+            toolchain::BinaryPlotMode::DefaultMode => {
+                plot(data1, data2, data1_label, data2_label, out_path, profile)?;
+                Ok(0)
+            }
+            toolchain::BinaryPlotMode::CompareMode => {
+                plot_compare(&compare_binary_size(&data1, &data2, profile), out_path)?;
+                Ok(0)
+            }
+        },
     }
 }
 
@@ -248,4 +307,16 @@ fn create_output_dir(out_dir: &PathBuf) -> anyhow::Result<()> {
     assert!(out_dir.is_dir());
 
     Ok(())
+}
+
+fn perf_check() {
+    let mut cmd = Command::new("perf");
+    let has_perf = cmd.output().is_ok();
+    assert!(has_perf);
+}
+
+fn flamegraph_check() {
+    let mut cmd = Command::new("flamegraph");
+    let has_flamegraph = cmd.output().is_ok();
+    assert!(has_flamegraph);
 }

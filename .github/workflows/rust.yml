@@ -19,6 +19,7 @@ jobs:
     - name: Check formatting
       run: |
         cargo fmt --manifest-path collector/Cargo.toml -- --check
+        cargo fmt --manifest-path data_manage/Cargo.toml -- --check
       continue-on-error: false
 
   build-and-test:
@@ -42,3 +43,4 @@ jobs:
       run: |
         cargo build --verbose --manifest-path collector/Cargo.toml
         cargo test --verbose --manifest-path collector/Cargo.toml
+        cargo test --verbose --manifest-path data_manage/Cargo.toml

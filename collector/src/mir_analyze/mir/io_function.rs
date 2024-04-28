@@ -42,23 +42,19 @@ pub fn count_io_metrics(mir_file: MIRs) -> i32 {
         for basic_block in bbs {
             let terminator = basic_block.terminator;
             match terminator {
-                Some(terminator) => {
-                    match terminator {
-                        Terminator::Call(call_data) => {
-                            let callee = call_data.callee;
-                            for moduled_name in callee {
-                                if contains_io_keywords(&moduled_name) {
-                                    io_count += 1; 
-                                    break; 
-                                }                             
+                Some(terminator) => match terminator {
+                    Terminator::Call(call_data) => {
+                        let callee = call_data.callee;
+                        for moduled_name in callee {
+                            if contains_io_keywords(&moduled_name) {
+                                io_count += 1;
+                                break;
                             }
                         }
-                        _ => {
-                        }
                     }
-                }
-                None => {
-                }
+                    _ => {}
+                },
+                None => {}
             }
         }
     }

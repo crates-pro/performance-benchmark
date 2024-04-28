@@ -1,7 +1,7 @@
 use std::collections::{HashMap, HashSet};
 use std::fmt;
 
-use super::{mir::MIRs,terminator::Terminator,terminator::*};
+use super::{mir::MIRs, terminator::Terminator, terminator::*};
 
 //LOF
 pub fn lof(mir_file: MIRs) -> i32 {
@@ -20,24 +20,24 @@ pub fn lof(mir_file: MIRs) -> i32 {
                 Some(_terminator) => {
                     lof += 1;
                 }
-                None => {
-                }
+                None => {}
             }
         }
     }
     let functions = mir_file.functions;
-    for function in functions{
+    for function in functions {
         flag = 0;
         let label = function.label;
-        for sub_label in label{
+        for sub_label in label {
             if sub_label.contains("closure") {
                 flag = 1;
                 break;
             } else {
-                
-            } 
+            }
         }
-        if flag ==0 {continue;}
+        if flag == 0 {
+            continue;
+        }
         let bbs = function.bbs;
         for basic_block in bbs {
             let statements = basic_block.statements;
@@ -49,8 +49,7 @@ pub fn lof(mir_file: MIRs) -> i32 {
                 Some(_terminator) => {
                     lof += 1;
                 }
-                None => {
-                }
+                None => {}
             }
         }
     }
@@ -58,7 +57,7 @@ pub fn lof(mir_file: MIRs) -> i32 {
     lof
 }
 //DFC
-pub fn count_function_call(mir_file: MIRs) -> HashMap<Vec<String>, Vec<Vec<String>>>  {
+pub fn count_function_call(mir_file: MIRs) -> HashMap<Vec<String>, Vec<Vec<String>>> {
     let functions = mir_file.functions;
     let mut funcname_call = HashMap::new();
     for function in functions {
@@ -69,7 +68,7 @@ pub fn count_function_call(mir_file: MIRs) -> HashMap<Vec<String>, Vec<Vec<Strin
         } else {
             "Unknown".to_string()
         };
-        
+
         let mut result = Vec::new();
         let mut found_impl = false;
         for label in labels.clone() {
@@ -102,12 +101,10 @@ pub fn count_function_call(mir_file: MIRs) -> HashMap<Vec<String>, Vec<Vec<Strin
                             let callee = call_data.callee;
                             call.push(callee); // 这里应该将 callee 插入到 call[key] 中
                         }
-                        _ => {
-                        }
+                        _ => {}
                     }
                 }
-                None => {
-                }
+                None => {}
             }
         }
         funcname_call.insert(result, call); // 应该是 funcname_call.insert(param_ty, call);
@@ -119,7 +116,9 @@ struct CallGraph {
 }
 impl CallGraph {
     fn new() -> Self {
-        Self { edges: HashMap::new() }
+        Self {
+            edges: HashMap::new(),
+        }
     }
 
     fn add_edge(&mut self, caller: Vec<String>, callees: Vec<String>) {
@@ -131,25 +130,38 @@ impl CallGraph {
             self.edges.insert(caller, callees_set);
         }
     }
-    
+
     fn depth(&self) -> HashMap<Vec<String>, usize> {
         let mut depths: HashMap<Vec<String>, usize> = HashMap::new();
-    
-        for node in self.edges.keys().filter(|node| node.iter().any(|s| s == "main")) {
+
+        for node in self
+            .edges
+            .keys()
+            .filter(|node| node.iter().any(|s| s == "main"))
+        {
             self.dfs(node.clone(), 1, &mut depths, &HashSet::new());
         }
-    
+
         depths
     }
-    
 
-    fn dfs(&self, node: Vec<String>, depth: usize, depths: &mut HashMap<Vec<String>, usize>, visited: &HashSet<Vec<String>>) {
+    fn dfs(
+        &self,
+        node: Vec<String>,
+        depth: usize,
+        depths: &mut HashMap<Vec<String>, usize>,
+        visited: &HashSet<Vec<String>>,
+    ) {
         if visited.contains(&node) {
             return;
         }
 
         depths.insert(node.clone(), depth);
-        let visited = visited.iter().cloned().chain(std::iter::once(node.clone())).collect::<HashSet<_>>();
+        let visited = visited
+            .iter()
+            .cloned()
+            .chain(std::iter::once(node.clone()))
+            .collect::<HashSet<_>>();
 
         if let Some(neighbors) = self.edges.get(&node) {
             for neighbor in neighbors {
@@ -180,9 +192,11 @@ pub fn dfc(mir_file: MIRs) -> i32 {
     result as i32
 }
 
-
 // 将切片中包含 "main" 的键放入工作列表中
-fn add_main_to_wl(funcname_call: &HashMap<Vec<String>, Vec<Vec<String>>>, wl: &mut Vec<Vec<String>>) {
+fn add_main_to_wl(
+    funcname_call: &HashMap<Vec<String>, Vec<Vec<String>>>,
+    wl: &mut Vec<Vec<String>>,
+) {
     for key in funcname_call.keys() {
         if key.iter().any(|s| s == "main") {
             wl.push(key.clone());
@@ -219,7 +233,10 @@ fn build_call_graph(funcname_call: &HashMap<Vec<String>, Vec<Vec<String>>>) -> C
     cg // 返回 CallGraph 结果
 }
 
-fn resolve(function_call: &HashMap<Vec<String>, Vec<Vec<String>>>, call_site: &Vec<String>) -> Vec<String> {
+fn resolve(
+    function_call: &HashMap<Vec<String>, Vec<Vec<String>>>,
+    call_site: &Vec<String>,
+) -> Vec<String> {
     for key in function_call.keys() {
         let first_elem = &key[0];
         if first_elem.contains("closure") && call_site.iter().any(|s| s.contains(first_elem)) {
@@ -235,7 +252,7 @@ fn resolve(function_call: &HashMap<Vec<String>, Vec<Vec<String>>>, call_site: &V
             }
         } else {
             // 其他情况直接返回键值
-            if call_site.iter().any(|s| s.contains(first_elem)){
+            if call_site.iter().any(|s| s.contains(first_elem)) {
                 return key.clone();
             }
         }
@@ -244,7 +261,7 @@ fn resolve(function_call: &HashMap<Vec<String>, Vec<Vec<String>>>, call_site: &V
 }
 
 //PBF
-pub fn pbf(mir_file: MIRs) -> i32{
+pub fn pbf(mir_file: MIRs) -> i32 {
     let mut pbf = 1;
     let mut func = 0;
     let functions = mir_file.promoted_functions;
@@ -254,57 +271,35 @@ pub fn pbf(mir_file: MIRs) -> i32{
         for basic_block in bbs {
             let terminator = basic_block.terminator;
             match terminator {
-                Some(terminator) => {
-                    match terminator {
-                        Terminator::Assert(assert) => {
-                            match assert.unwind{
-                                Some(unwind) => {
-                                    match unwind{
-                                        UnwindAction::CleanUp(_)| UnwindAction::Continue => {
-                                            pbf += 1;
-                                        }
-                                        _ => {
-        
-                                        }
-                                    }
-                                }
-                                _ => {
-
-                                }
+                Some(terminator) => match terminator {
+                    Terminator::Assert(assert) => match assert.unwind {
+                        Some(unwind) => match unwind {
+                            UnwindAction::CleanUp(_) | UnwindAction::Continue => {
+                                pbf += 1;
                             }
-                        }
-                        Terminator::Call(call) => {
-                            match call.success{
-                                None => {
-
+                            _ => {}
+                        },
+                        _ => {}
+                    },
+                    Terminator::Call(call) => match call.success {
+                        None => {}
+                        _ => match call.unwind {
+                            Some(unwind) => match unwind {
+                                UnwindAction::CleanUp(_) | UnwindAction::Continue => {
+                                    pbf += 1;
                                 }
-                                _ => {
-                                    match call.unwind{
-                                        Some(unwind) => {
-                                            match unwind{
-                                                UnwindAction::CleanUp(_)| UnwindAction::Continue => {
-                                                    pbf += 1;
-                                                }
-                                                _ => {
-                
-                                                }
-                                            }
-                                        }
-                                        _ => {}
-                                    }
-                                }
-                            }
-                        }
-                        Terminator::SwitchInt(switch) => {
-                            let count = switch.success.len();
-                            pbf += count -1; 
-                        }
-                        _ => {  
-                        }
+                                _ => {}
+                            },
+                            _ => {}
+                        },
+                    },
+                    Terminator::SwitchInt(switch) => {
+                        let count = switch.success.len();
+                        pbf += count - 1;
                     }
-                }
-                None => {
-                }
+                    _ => {}
+                },
+                None => {}
             }
         }
     }
@@ -315,57 +310,35 @@ pub fn pbf(mir_file: MIRs) -> i32{
         for basic_block in bbs {
             let terminator = basic_block.terminator;
             match terminator {
-                Some(terminator) => {
-                    match terminator {
-                        Terminator::Assert(assert) => {
-                            match assert.unwind{
-                                Some(unwind) => {
-                                    match unwind{
-                                        UnwindAction::CleanUp(_)| UnwindAction::Continue => {
-                                            pbf += 1;
-                                        }
-                                        _ => {
-        
-                                        }
-                                    }
-                                }
-                                _ => {
-
-                                }
+                Some(terminator) => match terminator {
+                    Terminator::Assert(assert) => match assert.unwind {
+                        Some(unwind) => match unwind {
+                            UnwindAction::CleanUp(_) | UnwindAction::Continue => {
+                                pbf += 1;
                             }
-                        }
-                        Terminator::Call(call) => {
-                            match call.success{
-                                None => {
-
+                            _ => {}
+                        },
+                        _ => {}
+                    },
+                    Terminator::Call(call) => match call.success {
+                        None => {}
+                        _ => match call.unwind {
+                            Some(unwind) => match unwind {
+                                UnwindAction::CleanUp(_) | UnwindAction::Continue => {
+                                    pbf += 1;
                                 }
-                                _ => {
-                                    match call.unwind{
-                                        Some(unwind) => {
-                                            match unwind{
-                                                UnwindAction::CleanUp(_)| UnwindAction::Continue => {
-                                                    pbf += 1;
-                                                }
-                                                _ => {
-                
-                                                }
-                                            }
-                                        }
-                                        _ => {}
-                                    }
-                                }
-                            }
-                        }
-                        Terminator::SwitchInt(switch) => {
-                            let count = switch.success.len();
-                            pbf += count -1; 
-                        }
-                        _ => {  
-                        }
+                                _ => {}
+                            },
+                            _ => {}
+                        },
+                    },
+                    Terminator::SwitchInt(switch) => {
+                        let count = switch.success.len();
+                        pbf += count - 1;
                     }
-                }
-                None => {
-                }
+                    _ => {}
+                },
+                None => {}
             }
         }
     }
@@ -402,7 +375,7 @@ pub fn wms_noc_rfs(mir_file: MIRs) -> Vec<i32> {
                 let name = params[0].ty.to_string()[1..].to_string();
                 let count = struct_method.entry(name.clone()).or_insert(0);
                 *count += 1;
-                rfs.insert(name.clone() + "::" + &method_name, 0);   
+                rfs.insert(name.clone() + "::" + &method_name, 0);
             }
         }
     }
@@ -436,7 +409,7 @@ pub fn wms_noc_rfs(mir_file: MIRs) -> Vec<i32> {
                         }
                     }
                 }
-            } 
+            }
         }
     }
 
@@ -462,7 +435,6 @@ pub fn wms_noc_rfs(mir_file: MIRs) -> Vec<i32> {
     final_vec
 }
 
-
 //RFS
 //same as vms: rfs
 //NOC
@@ -476,7 +448,7 @@ fn arithmetic_mean(scores: &HashMap<String, i32>) -> f64 {
         sum += *score as i64; // 将 score 转换为 i64 类型，并累加到 sum 中
         count += 1; // 统计迭代次数
     }
-    
+
     // 计算算数平均值
     let arithmetic_mean = if count > 0 {
         sum as f64 / count as f64
@@ -486,5 +458,3 @@ fn arithmetic_mean(scores: &HashMap<String, i32>) -> f64 {
 
     arithmetic_mean
 }
-
-

@@ -1,11 +1,21 @@
 use std::{
     path::PathBuf,
     process::{Command, Stdio},
+    fs,
 };
 
 use nalgebra::DVector;
 
-use crate::pca_analysis::pca_data::PcaRawData;
+use crate::pca_analysis::pca_data::*;
+use crate::mir_analyze::data::table_data::*;
+
+#[test]
+fn test_allfiles() {
+    //println!("{:?}", generate_benchmark_data());
+    fs::create_dir("test/pca_map").unwrap();
+    let tmp_dir = PathBuf::from("test/pca_map");
+    draw_coordinate_map_2d(&get_principle_components(&generate_benchmark_data()), &generate_benchmark_data(), &tmp_dir);
+}
 
 /// `draw_coordinate_map_2d` plots the dataset,
 /// shows the relationship between specific data
@@ -207,6 +217,6 @@ mod coordinate_map_test {
         )
         .unwrap();
 
-        fs::remove_dir_all("test/draw_coordinate_map_2d").unwrap();
+        //fs::remove_dir_all("test/draw_coordinate_map_2d").unwrap();
     }
 }

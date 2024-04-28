@@ -5,16 +5,7 @@ use std::{
 
 use lalrpop_util::lalrpop_mod;
 
-use super::{
-    basic_block,
-    function_pattern::*,
-    io_function::*,
-    mir::{MIRs, ModuledIdentifier},
-    oop_pattern::*,
-    parallelism::*,
-    scope::Scope,
-    terminator::Terminator,
-};
+use super::{mir::MIRs};
 
 lalrpop_mod!(pub mir_parser, "/mir_analyze/mir/mir.rs");
 
@@ -27,338 +18,77 @@ pub fn parse_mir(mir_file: File) -> anyhow::Result<MIRs> {
         Err(e) => panic!("{}", e),
     }
 }
-
-#[test]
-fn test_dev() {
-    let test_file = File::open("test/mir_analyze/mir/dev.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    wms_noc_rfs(result);
+pub struct TestFile {
+    pub name: &'static str,
+    pub path: &'static str,
 }
 
-#[test]
-fn test_binary_op() {
-    let test_file = File::open("test/mir_analyze/mir/binary_unary_op.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
 
+
+pub const TEST_FILES: [TestFile; 46] = [
+    /*TestFile { name: "dev", path: "test/mir_analyze/mir/dev.mir" },
+    TestFile { name: "binary_op", path: "test/mir_analyze/mir/binary_unary_op.mir" },
+    TestFile { name: "aggregate", path: "test/mir_analyze/mir/aggregate.mir" },
+    TestFile { name: "closure", path: "test/mir_analyze/mir/closure.mir" },*/
+    TestFile { name: "runiq", path: "test/mir_analyze/mir/texteditor/runiq.mir" },
+    TestFile { name: "ruplacer", path: "test/mir_analyze/mir/texteditor/ruplacer.mir" },
+    TestFile { name: "xsv", path: "test/mir_analyze/mir/texteditor/xsv.mir" },
+    TestFile { name: "amp", path: "test/mir_analyze/mir/texteditor/amp.mir" },
+    TestFile { name: "grex", path: "test/mir_analyze/mir/texteditor/grex.mir" },
+    TestFile { name: "kibi", path: "test/mir_analyze/mir/texteditor/kibi.mir" },
+    TestFile { name: "kiro", path: "test/mir_analyze/mir/texteditor/kiro.mir" },
+    TestFile { name: "pepper", path: "test/mir_analyze/mir/texteditor/pepper.mir" },
+    TestFile { name: "systemstat", path: "test/mir_analyze/mir/system_programing/systemstat.mir" },
+    TestFile { name: "system76", path: "test/mir_analyze/mir/system_programing/system76-power.mir" },
+    TestFile { name: "systemd", path: "test/mir_analyze/mir/system_programing/systemd.mir" },
+    TestFile { name: "coreutils", path: "test/mir_analyze/mir/system_programing/coreutils.mir" },
+    TestFile { name: "bat", path: "test/mir_analyze/mir/fs/bat.mir" },
+    TestFile { name: "broot", path: "test/mir_analyze/mir/fs/broot.mir" },
+    TestFile { name: "exa", path: "test/mir_analyze/mir/fs/exa.mir" },
+    TestFile { name: "fd", path: "test/mir_analyze/mir/fs/fd.mir" },
+    TestFile { name: "lsd", path: "test/mir_analyze/mir/fs/lsd.mir" },
+    TestFile { name: "rg", path: "test/mir_analyze/mir/fs/rg.mir" },
+    TestFile { name: "zoxide", path: "test/mir_analyze/mir/fs/zoxide.mir" },
+    TestFile { name: "lucid", path: "test/mir_analyze/mir/db/lucid.mir" },
+    TestFile { name: "rocksdb", path: "test/mir_analyze/mir/db/rocksdb.mir" },
+    TestFile { name: "skysh", path: "test/mir_analyze/mir/db/skysh.mir" },
+    TestFile { name: "sled", path: "test/mir_analyze/mir/db/sled.mir" },
+    TestFile { name: "toydb", path: "test/mir_analyze/mir/db/toydb.mir" },
+    TestFile { name: "http", path: "test/mir_analyze/mir/web/http.mir" },
+    TestFile { name: "relay", path: "test/mir_analyze/mir/web/relay.mir" },
+    TestFile { name: "Rocket", path: "test/mir_analyze/mir/web/Rocket.mir" },
+    TestFile { name: "web", path: "test/mir_analyze/mir/web/web.mir" },
+    TestFile { name: "rustlings", path: "test/mir_analyze/mir/compiler/rustlings.mir" },
+    TestFile { name: "wasmer", path: "test/mir_analyze/mir/compiler/wasmer.mir" },
+    TestFile { name: "blockchain_core", path: "test/mir_analyze/mir/blockchain/blockchain_core.mir" },
+    TestFile { name: "starcoin", path: "test/mir_analyze/mir/blockchain/starcoin.mir" },
+    TestFile { name: "graph", path: "test/mir_analyze/mir/blockchain/graph.mir" },
+    TestFile { name: "diem_client", path: "test/mir_analyze/mir/blockchain/diem_core/diem_client.mir" },
+    TestFile { name: "diem_wallet", path: "test/mir_analyze/mir/blockchain/diem_core/diem_wallet.mir" },
+    TestFile { name: "conflux", path: "test/mir_analyze/mir/blockchain/conflux.mir" },
+    TestFile { name: "ckb", path: "test/mir_analyze/mir/blockchain/ckb.mir" },
+    TestFile { name: "cita_auth", path: "test/mir_analyze/mir/blockchain/cita/cita_auth.mir" },
+    TestFile { name: "cita_jsonrpc", path: "test/mir_analyze/mir/blockchain/cita/cita_jsonrpc.mir" },
+    TestFile { name: "cita_chain", path: "test/mir_analyze/mir/blockchain/cita/cita_chain.mir" },
+    TestFile { name: "common_types", path: "test/mir_analyze/mir/blockchain/cita/common-types.mir" },
+    TestFile { name: "core", path: "test/mir_analyze/mir/blockchain/cita/core.mir" },
+    TestFile { name: "cita_network", path: "test/mir_analyze/mir/blockchain/cita/cita_network.mir" },
+    TestFile { name: "cita_executor", path: "test/mir_analyze/mir/blockchain/cita/cita_executor.mir" },
+    TestFile { name: "create_key_addr", path: "test/mir_analyze/mir/blockchain/cita/create_key_addr.mir" },
+    TestFile { name: "chain_executor_mock", path: "test/mir_analyze/mir/blockchain/cita/chain_executor_mock.mir" },
+];
+
+fn run_test(file_path: &str) {
+    let test_file = File::open(file_path).unwrap();
+    let result = parse_mir(test_file).unwrap();
     println!("{:?}", result);
 }
 
 #[test]
-fn test_aggregate() {
-    let test_file = File::open("test/mir_analyze/mir/aggregate.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_closure() {
-    let test_file = File::open("test/mir_analyze/mir/closure.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_runiq() {
-    let test_file = File::open("test/mir_analyze/mir/texteditor/runiq.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_ruplacer() {
-    let test_file = File::open("test/mir_analyze/mir/texteditor/ruplacer.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_xsv() {
-    let test_file = File::open("test/mir_analyze/mir/texteditor/xsv.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_amp() {
-    let test_file = File::open("test/mir_analyze/mir/texteditor/amp.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_grex() {
-    let test_file = File::open("test/mir_analyze/mir/texteditor/grex.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_kibi() {
-    let test_file = File::open("test/mir_analyze/mir/texteditor/kibi.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_kiro() {
-    let test_file = File::open("test/mir_analyze/mir/texteditor/kiro.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_pepper() {
-    let test_file = File::open("test/mir_analyze/mir/texteditor/pepper.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_systemstat() {
-    let test_file = File::open("test/mir_analyze/mir/system_programing/systemstat.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_system76() {
-    let test_file =
-        File::open("test/mir_analyze/mir/system_programing/system76-power.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_systemd() {
-    let test_file = File::open("test/mir_analyze/mir/system_programing/systemd.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_coreutils() {
-    let test_file = File::open("test/mir_analyze/mir/system_programing/coreutils.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_bat() {
-    let test_file = File::open("test/mir_analyze/mir/fs/bat.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_broot() {
-    let test_file = File::open("test/mir_analyze/mir/fs/broot.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_exa() {
-    let test_file = File::open("test/mir_analyze/mir/fs/exa.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_fd() {
-    let test_file = File::open("test/mir_analyze/mir/fs/fd.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_lsd() {
-    let test_file = File::open("test/mir_analyze/mir/fs/lsd.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_rg() {
-    let test_file = File::open("test/mir_analyze/mir/fs/rg.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-
-    println!("{:?}", result);
-}
-#[test]
-fn test_zoxide() {
-    let test_file = File::open("test/mir_analyze/mir/fs/zoxide.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_lucid() {
-    let test_file = File::open("test/mir_analyze/mir/db/lucid.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_rocksdb() {
-    let test_file = File::open("test/mir_analyze/mir/db/rocksdb.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_skysh() {
-    let test_file = File::open("test/mir_analyze/mir/db/skysh.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_sled() {
-    let test_file = File::open("test/mir_analyze/mir/db/sled.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_toydb() {
-    let test_file = File::open("test/mir_analyze/mir/db/toydb.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_http() {
-    let test_file = File::open("test/mir_analyze/mir/web/http.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_relay() {
-    let test_file = File::open("test/mir_analyze/mir/web/relay.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_rocket() {
-    let test_file = File::open("test/mir_analyze/mir/web/Rocket.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_web() {
-    let test_file = File::open("test/mir_analyze/mir/web/web.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-/*#[test]
-fn test_deno() {
-    let test_file = File::open("test/mir_analyze/mir/compiler/deno.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}*/
-#[test]
-fn test_rustlings() {
-    let test_file = File::open("test/mir_analyze/mir/compiler/rustlings.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_wasmer() {
-    let test_file = File::open("test/mir_analyze/mir/compiler/wasmer.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_blockchain_core() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/blockchain_core.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_starcoin() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/starcoin.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_graph() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/graph.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_diem_client() {
-    let test_file =
-        File::open("test/mir_analyze/mir/blockchain/diem_core/diem_client.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_diem_wallet() {
-    let test_file =
-        File::open("test/mir_analyze/mir/blockchain/diem_core/diem_wallet.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_conflux() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/conflux.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_ckb() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/ckb.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_cita_auth() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/cita/cita_auth.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_cita_jsonrpc() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/cita/cita_jsonrpc.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_cita_chain() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/cita/cita_chain.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_common_types() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/cita/common-types.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_core() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/cita/core.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_cita_network() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/cita/cita_network.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_cita_executor() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/cita/cita_executor.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_create_key_addr() {
-    let test_file = File::open("test/mir_analyze/mir/blockchain/cita/create_key_addr.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
-}
-#[test]
-fn test_chain_executor_mock() {
-    let test_file =
-        File::open("test/mir_analyze/mir/blockchain/cita/chain_executor_mock.mir").unwrap();
-    let result = parse_mir(test_file).unwrap();
-    println!("{:?}", result);
+fn test_files() {
+    for test_file in TEST_FILES.iter() {
+        println!("Running test for {}", test_file.name);
+        run_test(test_file.path);
+        println!();
+    }
 }

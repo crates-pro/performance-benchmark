@@ -1,18 +1,4 @@
-use std::{
-    fs::File,
-    io::{BufReader, Read},
-};
-
-use super::{
-    basic_block,
-    mir::{MIRs, ModuledIdentifier},
-    operand::Operand,
-    rvalue::Rvalue,
-    scope::Scope,
-    statement::Statement,
-    terminator::Terminator,
-    ty::Ty,
-};
+use super::{mir::MIRs, terminator::Terminator};
 
 fn contains_io_keywords(input: &str) -> bool {
     // 定义与 I/O 操作相关的关键字数组
@@ -48,30 +34,34 @@ fn contains_io_keywords(input: &str) -> bool {
     false
 }
 
-pub fn count_io_metrics(mir_file: MIRs) {
+pub fn count_io_metrics(mir_file: MIRs) -> i32 {
     let mut io_count = 0;
-    let mut parallelism_count = 0;
     let functions = mir_file.functions;
     for function in functions {
         let bbs = function.bbs;
         for basic_block in bbs {
             let terminator = basic_block.terminator;
             match terminator {
-                Some(terminator) => match terminator {
-                    Terminator::Call(call_data) => {
-                        let callee = call_data.callee;
-                        for moduled_name in callee {
-                            if contains_io_keywords(&moduled_name) {
-                                io_count += 1;
-                                break;
+                Some(terminator) => {
+                    match terminator {
+                        Terminator::Call(call_data) => {
+                            let callee = call_data.callee;
+                            for moduled_name in callee {
+                                if contains_io_keywords(&moduled_name) {
+                                    io_count += 1; 
+                                    break; 
+                                }                             
                             }
                         }
+                        _ => {
+                        }
                     }
-                    _ => {}
-                },
-                None => {}
+                }
+                None => {
+                }
             }
         }
     }
     println!("{:?}", io_count);
+    io_count
 }

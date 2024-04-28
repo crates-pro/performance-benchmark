@@ -18,10 +18,10 @@ pub mirs: MIRs = {
     <mut mirs: mirs> <const_block: const_block> => {mirs.const_blocks.push(const_block); mirs}, 
     <mut mirs: mirs> <nofn_function: nofn_function> => {mirs.nofn_functions.push(nofn_function); mirs},
     <mut mirs: mirs> <static_struct: static_struct> => {mirs.static_structs.push(static_struct); mirs},
-    <mut mirs: mirs> <c: comment> => mirs,
+    <mirs: mirs> <c: comment> => mirs,
     <function: function> => MIRs {functions: vec![function], promoted_functions: vec![], const_blocks: vec![], nofn_functions: vec![],static_structs: vec![],},
     <c: comment> => MIRs{functions: vec![], promoted_functions: vec![], const_blocks: vec![], nofn_functions: vec![],static_structs: vec![],},
-    <mut mirs: mirs> <alloc_block: alloc_block> => mirs,
+    <mirs: mirs> <alloc_block: alloc_block> => mirs,
 }
 
 function: Function = {
@@ -1043,7 +1043,7 @@ struct_field: Operand = {
 aggregate_anonymous_elements: Vec<Operand> = {
     <operand: operand> => vec![operand],
     <mut elements: aggregate_anonymous_elements> <comma: comma> <operand: operand> => { elements.push(operand); elements },
-    <mut elements: aggregate_anonymous_elements> <comma: comma> => elements,
+    <elements: aggregate_anonymous_elements> <comma: comma> => elements,
 };
 
 reference: Ref = {
@@ -1057,6 +1057,7 @@ unaryOp: UnaryOp = {
 };
 neg: Neg = "Neg" <left_parenthesis: left_parenthesis> <operand: operand> <right_parenthesis: right_parenthesis>
  => Neg{ operand };
+
 not: Not = "Not" <left_parenthesis: left_parenthesis> <operand: operand> <right_parenthesis: right_parenthesis>
  => Not{ operand };
 
@@ -1251,7 +1252,7 @@ unwind_action: UnwindAction = {
 }
 
 tys: Vec<Ty> = {
-    <mut tys: tys> <comma: comma> => tys,
+    <tys: tys> <comma: comma> => tys,
     <mut tys: tys> <comma: comma> <ty: ty> => {tys.push(ty); tys},
     <mut tys: tys> <comma: comma> <fn_ty: fn_ty> => {tys.push(fn_ty); tys},
     <mut tys: tys> <comma: comma> <trait_bounds_ty: trait_bounds_ty> => {tys.push(trait_bounds_ty); tys},

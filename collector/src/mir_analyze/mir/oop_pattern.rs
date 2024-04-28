@@ -1,42 +1,23 @@
 use std::collections::{HashMap, HashSet};
 use std::fmt;
-use std::{
-    fs::File,
-    io::{BufReader, Read},
-};
 
-use cargo_metadata::Resolve;
-use libc::PIPE_BUF;
-
-use crate::mir_analyze::mir::statement;
-
-use super::{
-    basic_block, function,
-    mir::{MIRs, ModuledIdentifier},
-    operand::Operand,
-    rvalue::Rvalue,
-    scope::Scope,
-    statement::Statement,
-    terminator::Terminator,
-    terminator::*,
-    ty::Ty,
-};
+use super::{mir::MIRs, terminator::Terminator, terminator::*};
 
 //LOF
-pub fn lof(mir_file: MIRs) {
+pub fn lof(mir_file: MIRs) -> i32 {
     let mut lof = 0;
-    let mut flag = 0;
+    let mut flag;
     let functions = mir_file.promoted_functions;
     for function in functions {
         let bbs = function.body.bbs;
         for basic_block in bbs {
             let statements = basic_block.statements;
-            for statement in statements {
+            for _statement in statements {
                 lof += 1;
             }
             let terminator = basic_block.terminator;
             match terminator {
-                Some(terminator) => {
+                Some(_terminator) => {
                     lof += 1;
                 }
                 None => {}
@@ -60,12 +41,12 @@ pub fn lof(mir_file: MIRs) {
         let bbs = function.bbs;
         for basic_block in bbs {
             let statements = basic_block.statements;
-            for statement in statements {
+            for _statement in statements {
                 lof += 1;
             }
             let terminator = basic_block.terminator;
             match terminator {
-                Some(terminator) => {
+                Some(_terminator) => {
                     lof += 1;
                 }
                 None => {}
@@ -73,6 +54,7 @@ pub fn lof(mir_file: MIRs) {
         }
     }
     println!("{:?}", lof);
+    lof
 }
 //DFC
 pub fn count_function_call(mir_file: MIRs) -> HashMap<Vec<String>, Vec<Vec<String>>> {
@@ -194,10 +176,9 @@ impl fmt::Debug for CallGraph {
     }
 }
 
-pub fn dfc(mir_file: MIRs) {
+pub fn dfc(mir_file: MIRs) -> i32 {
     let funcname_call = count_function_call(mir_file);
-    let mut cg = CallGraph::new();
-    cg = build_call_graph(&funcname_call);
+    let cg = build_call_graph(&funcname_call);
     println!("{:?}", cg);
     let depths = cg.depth();
     println!("{:?}", depths);
@@ -208,6 +189,7 @@ pub fn dfc(mir_file: MIRs) {
 
     let result = funcname_call_count - depths_count + depths_sum / funcname_call_count;
     println!("Result: {}", result);
+    result as i32
 }
 
 // 将切片中包含 "main" 的键放入工作列表中
@@ -279,7 +261,7 @@ fn resolve(
 }
 
 //PBF
-pub fn pbf(mir_file: MIRs) {
+pub fn pbf(mir_file: MIRs) -> i32 {
     let mut pbf = 1;
     let mut func = 0;
     let functions = mir_file.promoted_functions;
@@ -362,9 +344,10 @@ pub fn pbf(mir_file: MIRs) {
     }
     let result = pbf as f64 / func as f64;
     println!("{}", result);
+    result as i32
 }
 //WMS
-pub fn wms_noc_rfs(mir_file: MIRs) {
+pub fn wms_noc_rfs(mir_file: MIRs) -> Vec<i32> {
     let mut struct_method = HashMap::new();
     let mut rfs = HashMap::new();
     let mut flag;
@@ -388,11 +371,12 @@ pub fn wms_noc_rfs(mir_file: MIRs) {
         }
 
         if flag && !closure_flag {
-            let name = params[0].ty.to_string()[1..].to_string();
-            let count = struct_method.entry(name.clone()).or_insert(0);
-            *count += 1;
-
-            rfs.insert(name.clone() + "::" + &method_name, 0);
+            if params.len() != 0 {
+                let name = params[0].ty.to_string()[1..].to_string();
+                let count = struct_method.entry(name.clone()).or_insert(0);
+                *count += 1;
+                rfs.insert(name.clone() + "::" + &method_name, 0);
+            }
         }
     }
 
@@ -433,39 +417,44 @@ pub fn wms_noc_rfs(mir_file: MIRs) {
         println!("{}: {}", name, score);
     }
     //wms 几何均值
-    let wms = geometric_mean(&struct_method);
+    let wms = arithmetic_mean(&struct_method);
     println!("{:?}", wms);
     println!("{}", struct_method.len());
 
     for (name, score) in &rfs {
         println!("{}: {}", name, score);
     }
-    let rfs = geometric_mean(&rfs);
+    let rfs = arithmetic_mean(&rfs);
     println!("{:?}", rfs);
     //rfs 几何均值
+
+    let mut final_vec = Vec::new();
+    final_vec.push(wms as i32);
+    final_vec.push(rfs as i32);
+    final_vec.push(struct_method.len() as i32);
+    final_vec
 }
 
 //RFS
 //same as vms: rfs
 //NOC
 //same as vms: struct_method.len()
-
-fn geometric_mean(scores: &HashMap<String, i32>) -> f64 {
-    let mut product = 1;
+fn arithmetic_mean(scores: &HashMap<String, i32>) -> f64 {
+    let mut sum: i64 = 0;
     let mut count = 0;
 
-    // 计算乘积和计数
+    // 计算总和和计数
     for score in scores.values() {
-        product *= *score;
-        count += 1;
+        sum += *score as i64; // 将 score 转换为 i64 类型，并累加到 sum 中
+        count += 1; // 统计迭代次数
     }
 
-    // 计算几何平均值
-    let geometric_mean = if count > 0 {
-        (product as f64).powf(1.0 / count as f64)
+    // 计算算数平均值
+    let arithmetic_mean = if count > 0 {
+        sum as f64 / count as f64
     } else {
         0.0 // 防止除以零
     };
 
-    geometric_mean
+    arithmetic_mean
 }

@@ -1,18 +1,5 @@
-use std::{
-    fs::File,
-    io::{BufReader, Read},
-};
-
-use crate::mir_analyze::mir::operand;
-
 use super::{
-    basic_block, function,
-    mir::{MIRs, ModuledIdentifier},
-    operand::Operand,
-    rvalue::Rvalue,
-    scope::Scope,
-    statement::Statement,
-    terminator::Terminator,
+    mir::MIRs, operand::Operand, rvalue::Rvalue, statement::Statement, terminator::Terminator,
     ty::Ty,
 };
 
@@ -67,9 +54,9 @@ fn contains_outlet_keywords(input: &str) -> bool {
     false
 }
 
-pub fn count_pure_function(mir_file: MIRs) {
+pub fn count_pure_function(mir_file: MIRs) -> i32 {
     let mut func_all = 0;
-    let mut flag = 0;
+    let mut flag;
     let mut func_part = 0;
     let functions = mir_file.functions;
     for function in functions {
@@ -141,9 +128,10 @@ pub fn count_pure_function(mir_file: MIRs) {
         }
     }
     println!("{:?}", func_all - func_part);
+    func_all - func_part
 }
 
-pub fn count_closure(mir_file: MIRs) {
+pub fn count_closure(mir_file: MIRs) -> i32 {
     let mut closure_count = 0;
     let mut closure_use_count = 0;
     let functions = mir_file.functions;
@@ -178,12 +166,13 @@ pub fn count_closure(mir_file: MIRs) {
     }
     println!("{:?}", closure_count);
     println!("{:?}", closure_use_count);
+    closure_count
 }
 
-pub fn higher_function(mir_file: MIRs) {
+pub fn higher_function(mir_file: MIRs) -> i32 {
     let mut high_count = 0;
-    let mut high_use = 0;
-    let mut flag = 0;
+    let mut _high_use = 0;
+    let mut flag;
     let mut use_flag = 0;
     let mut need_check: Vec<String> = Vec::new();
     let mut func_param: Vec<String> = Vec::new();
@@ -197,7 +186,7 @@ pub fn higher_function(mir_file: MIRs) {
             match param_ty {
                 Ty::ClosureDefault | Ty::Trait | Ty::Closure(_) | Ty::CoroutineClosure(_) => {
                     func_param.push(ids.to_string());
-                    if (flag == 0) {
+                    if flag == 0 {
                         high_count += 1;
                     }
                     flag = 1;
@@ -215,7 +204,7 @@ pub fn higher_function(mir_file: MIRs) {
         let recv = function.ret_ty;
         match recv {
             Ty::ClosureDefault | Ty::Trait | Ty::Closure(_) | Ty::CoroutineClosure(_) => {
-                if (flag == 0) {
+                if flag == 0 {
                     high_count += 1;
                 }
                 flag = 1;
@@ -238,19 +227,19 @@ pub fn higher_function(mir_file: MIRs) {
                     Terminator::Call(call_data) => {
                         let callee = call_data.callee;
                         for call_name in callee {
-                            if (contains_with_prefix_or_suffix(&call_name, &need_check)) {
-                                if (flag == 0) {
+                            if contains_with_prefix_or_suffix(&call_name, &need_check) {
+                                if flag == 0 {
                                     high_count += 1;
                                 }
                                 flag = 1;
-                                if (use_flag == 0) {
-                                    high_use += 1;
+                                if use_flag == 0 {
+                                    _high_use += 1;
                                 }
                                 use_flag = 1;
                             }
-                            if (contains_any_substring(&call_name, &func_param)) {
-                                if (use_flag == 0) {
-                                    high_use += 1;
+                            if contains_any_substring(&call_name, &func_param) {
+                                if use_flag == 0 {
+                                    _high_use += 1;
                                 }
                                 use_flag = 1;
                             }
@@ -261,8 +250,8 @@ pub fn higher_function(mir_file: MIRs) {
                                 match call_param {
                                     Operand::CONST(const_val) => {
                                         if let Ty::ClosureDefault = const_val.ty {
-                                            if (use_flag == 0) {
-                                                high_use += 1;
+                                            if use_flag == 0 {
+                                                _high_use += 1;
                                             }
                                             use_flag = 1;
                                         }
@@ -279,6 +268,7 @@ pub fn higher_function(mir_file: MIRs) {
             use_flag = 0;
         }
     }
+    high_count
 }
 
 fn contains_with_prefix_or_suffix(input: &str, another_array: &[String]) -> bool {

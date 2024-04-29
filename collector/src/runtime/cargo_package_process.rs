@@ -18,6 +18,7 @@ pub struct CargoTestProcess<'a> {
     pub manifest_path: String,
     pub iterations: u32,
     pub args: Vec<String>,
+    pub packages: Vec<String>,
 }
 
 impl<'a> CargoTestProcess<'a> {
@@ -29,12 +30,12 @@ impl<'a> CargoTestProcess<'a> {
             .env("RUSTC_BOOTSTRAP", "1")
             .current_dir(self.cwd)
             .arg("test")
-            .arg("--all")
             .args(self.args.clone())
             .arg("--manifest-path")
             .arg(&self.manifest_path)
             .arg("release")
             .arg("--no-fail-fast");
+
         cmd
     }
 
@@ -52,7 +53,6 @@ impl<'a> CargoTestProcess<'a> {
             .arg("--")
             .arg(self.compiler.cargo)
             .arg("test")
-            .arg("--all")
             .args(self.args.clone())
             .arg("--manifest-path")
             .arg(&self.manifest_path)
@@ -61,9 +61,17 @@ impl<'a> CargoTestProcess<'a> {
         cmd
     }
 
+    fn add_packages(&self, cmd: &mut Command) {
+        self.packages.iter().for_each(|p| {
+            cmd.arg("--package");
+            cmd.arg(p);
+        });
+    }
+
     fn compile_test(&self) -> anyhow::Result<()> {
         let mut cmd = self.base_command();
-        cmd.arg("--no-run").env("CARGO_INCREMENTAL", "0");
+        cmd.env("CARGO_INCREMENTAL", "0");
+        self.add_packages(&mut cmd);
 
         command_discard_output(&mut cmd)
     }
@@ -96,6 +104,7 @@ impl<'a> Runtime for CargoTestProcess<'a> {
             );
 
             let mut cmd = self.base_command();
+            self.add_packages(&mut cmd);
 
             let perf_tool_name = perf_tool.name();
             cmd.arg("--wrap-rustc-with");
@@ -144,69 +153,4 @@ impl<'a> Runtime for CargoTestProcess<'a> {
         command_discard_output(&mut cmd)?;
         Ok(())
     }
-}
-
-#[test]
-fn test_cargo_test_process() {
-    let bench_dir = "/media/workstation/cc36671e-05f5-48bd-9b40-1b1c1f396fae/home/fxl/benchmarks_real/runtime/test/sled-0.34";
-    let cargo = "/home/workstation/.rustup/toolchains/1.67-x86_64-unknown-linux-gnu/bin/cargo";
-    let rustc = "/media/workstation/cc36671e-05f5-48bd-9b40-1b1c1f396fae/home/fxl/rustc/targets/Add_new_MIR_constant_propagation_based_on_dataflow_analysis/780952f922a_old/bin/rustc";
-
-    let mut cmd = Command::new(cargo);
-    cmd.env("RUSTC", rustc)
-        .env("CARGO_INCREMENTAL", "0")
-        .arg("test")
-        .arg("--no-fail-fast")
-        .arg("--no-run")
-        .arg("--manifest-path")
-        .arg("Cargo.toml")
-        .arg("--features")
-        .arg("testing")
-        .arg("--profile")
-        .arg("release");
-
-    let _ = command_output(&mut cmd);
-
-    let mut cmd = Command::new("/media/workstation/cc36671e-05f5-48bd-9b40-1b1c1f396fae/home/fxl/Rust_Performance_Benchmark/collector/target/release/runtime-fake");
-    cmd.env("RUSTC", rustc)
-        .env("RUNTIME_ELF", cargo)
-        .env("CARGO_INCREMENTAL", "0")
-        .env("RUSTC_BOOTSTRAP", "1")
-        .current_dir(bench_dir)
-        .arg("test")
-        .arg("--features")
-        .arg("testing")
-        .arg("--no-fail-fast")
-        .arg("--manifest-path")
-        .arg("Cargo.toml")
-        .arg("--profile")
-        .arg("release");
-
-    let output = command_output(&mut cmd);
-    match output {
-        Ok(output) => {
-            eprintln!("{:?}", output);
-            eprintln!("{:?}", process_benchmark_output(output));
-        }
-        _ => eprintln!("{:?}", output),
-    }
-}
-
-#[test]
-fn test_cargo_test_process_flamegraph() {
-    let mut cmd = Command::new("/home/fxl191220029/study/Rust_Performance_Benchmark/collector/target/release/flamegraph-fake");
-    let out = Path::new(
-        "/home/fxl191220029/study/Rust_Performance_Benchmark/collector/results/flamegraphs",
-    );
-    let mut flame_graph_file_name = String::from("plus");
-    flame_graph_file_name += "_runtime.svg";
-    cmd.current_dir("/tmp/plus")
-        .arg("--output")
-        .arg(out.join(flame_graph_file_name))
-        .arg("--")
-        .arg("/home/fxl191220029/.cargo/bin/cargo")
-        .arg("test");
-
-    println!("{:?}", cmd);
-    let _output = command_discard_output(&mut cmd);
 }

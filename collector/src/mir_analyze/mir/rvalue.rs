@@ -63,7 +63,7 @@ pub enum BinaryOpKind {
     Lt,
     Shl,
     Shr,
-    Mul,
+    //Mul,
 }
 
 #[derive(Debug)]
@@ -151,6 +151,6 @@ pub struct AddressOf {
 
 #[derive(Debug)]
 pub enum Mutability {
-    Not,
+    //Not,
     Mut,
 }

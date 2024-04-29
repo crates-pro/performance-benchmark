@@ -1,18 +1,4 @@
-use std::{
-    fs::File,
-    io::{BufReader, Read},
-};
-
-use super::{
-    basic_block,
-    mir::{MIRs, ModuledIdentifier},
-    operand::Operand,
-    rvalue::Rvalue,
-    scope::Scope,
-    statement::Statement,
-    terminator::Terminator,
-    ty::Ty,
-};
+use super::{mir::MIRs, scope::Scope, terminator::Terminator};
 
 fn contains_parallelism_keywords(input: &str) -> bool {
     // 定义与 I/O 操作相关的关键字数组
@@ -40,7 +26,7 @@ fn contains_parallelism_keywords(input: &str) -> bool {
     false
 }
 
-pub fn count_parallelism_metrics(mir_file: MIRs) {
+pub fn count_parallelism_metrics(mir_file: MIRs) -> i32 {
     let mut parallelism_count = 0;
     let functions = mir_file.functions;
     for function in functions {
@@ -65,16 +51,17 @@ pub fn count_parallelism_metrics(mir_file: MIRs) {
         }
     }
     println!("{:?}", parallelism_count);
+    parallelism_count
 }
 
-pub fn count_parallelism_strcut(mir_file: MIRs) {
+pub fn count_parallelism_strcut(mir_file: MIRs) -> i32 {
     let mut parallelism_struct_count = 0;
     let functions = mir_file.functions;
     for function in functions {
         let local_defs = function.local_defs;
         for local_def in local_defs {
             let ty = local_def.ty;
-            if (contains_parallelism_keywords(&ty.to_string())) {
+            if contains_parallelism_keywords(&ty.to_string()) {
                 parallelism_struct_count += 1;
             }
         }
@@ -82,6 +69,7 @@ pub fn count_parallelism_strcut(mir_file: MIRs) {
         parallelism_struct_count = count_scopes(scopes, parallelism_struct_count);
     }
     println!("{:?}", parallelism_struct_count);
+    parallelism_struct_count
 }
 
 pub fn count_scopes(scopes: Vec<Scope>, mut parallelism_struct_count: i32) -> i32 {
@@ -89,7 +77,7 @@ pub fn count_scopes(scopes: Vec<Scope>, mut parallelism_struct_count: i32) -> i3
         let local_defs = scope.local_defs;
         for local_def in local_defs {
             let ty = local_def.ty;
-            if (contains_parallelism_keywords(&ty.to_string())) {
+            if contains_parallelism_keywords(&ty.to_string()) {
                 parallelism_struct_count += 1;
             }
         }

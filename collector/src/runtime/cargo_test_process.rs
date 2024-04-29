@@ -25,7 +25,7 @@ impl<'a> CargoTestProcess<'a> {
         let mut cmd = Command::new(&*FAKE_RUNTIME);
         cmd.env("RUNTIME_ELF", self.compiler.cargo)
             .env("RUSTC", self.compiler.rustc)
-            .env("CARGO_INCREMENTAL", "0")
+            .env("CARGO_INCREMENTAL", "1")
             .env("RUSTC_BOOTSTRAP", "1")
             .current_dir(self.cwd)
             .arg("test")

@@ -11,7 +11,7 @@ use crate::{
 
 use super::{result::RuntimeResult, Runtime, FAKE_FLAMEGRAPH, FAKE_RUNTIME};
 
-pub struct CargoTestProcess<'a> {
+pub struct CargoPackageTestProcess<'a> {
     pub compiler: Compiler<'a>,
     pub processor_name: String,
     pub cwd: &'a Path,
@@ -21,12 +21,12 @@ pub struct CargoTestProcess<'a> {
     pub packages: Vec<String>,
 }
 
-impl<'a> CargoTestProcess<'a> {
+impl<'a> CargoPackageTestProcess<'a> {
     fn base_command(&self) -> Command {
         let mut cmd = Command::new(&*FAKE_RUNTIME);
         cmd.env("RUNTIME_ELF", self.compiler.cargo)
             .env("RUSTC", self.compiler.rustc)
-            .env("CARGO_INCREMENTAL", "0")
+            .env("CARGO_INCREMENTAL", "1")
             .env("RUSTC_BOOTSTRAP", "1")
             .current_dir(self.cwd)
             .arg("test")
@@ -70,14 +70,14 @@ impl<'a> CargoTestProcess<'a> {
 
     fn compile_test(&self) -> anyhow::Result<()> {
         let mut cmd = self.base_command();
-        cmd.env("CARGO_INCREMENTAL", "0");
+        cmd.arg("--no-run").env("CARGO_INCREMENTAL", "0");
         self.add_packages(&mut cmd);
 
         command_discard_output(&mut cmd)
     }
 }
 
-impl<'a> Runtime for CargoTestProcess<'a> {
+impl<'a> Runtime for CargoPackageTestProcess<'a> {
     fn measure(
         &self,
         perf_tool: &PerfTool,

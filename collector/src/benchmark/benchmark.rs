@@ -18,7 +18,8 @@ use crate::{
     },
     runtime::{
         cargo_bench_process::CargoBenchProcess, cargo_example_process::CargoExampleProcess,
-        cargo_test_process::CargoTestProcess, measure::RuntimeProcess, Runtime,
+        cargo_package_process::CargoPackageTestProcess, cargo_test_process::CargoTestProcess,
+        measure::RuntimeProcess, Runtime,
     },
     toolchain::{Compiler, PerfTool},
 };
@@ -428,7 +429,7 @@ impl Benchamrk {
                         cwd,
                         manifest_path: self
                             .config
-                            .cargo_toml
+                            .runtime_cargo_toml
                             .clone()
                             .unwrap_or_else(|| String::from("Cargo.toml")),
                         iterations,
@@ -455,7 +456,7 @@ impl Benchamrk {
                         self.name.clone(),
                         cwd,
                         self.config
-                            .cargo_toml
+                            .runtime_cargo_toml
                             .clone()
                             .unwrap_or_else(|| String::from("Cargo.toml")),
                         iterations,
@@ -483,7 +484,7 @@ impl Benchamrk {
                             .map(String::from)
                             .collect(),
                         self.config
-                            .cargo_toml
+                            .runtime_cargo_toml
                             .clone()
                             .unwrap_or_else(|| String::from("Cargo.toml")),
                         iterations,
@@ -496,7 +497,7 @@ impl Benchamrk {
                         self.name.clone(),
                         cwd,
                         self.config
-                            .cargo_toml
+                            .runtime_cargo_toml
                             .clone()
                             .unwrap_or_else(|| String::from("Cargo.toml")),
                         iterations,
@@ -510,6 +511,28 @@ impl Benchamrk {
                     );
                     core::result::Result::Ok(Box::new(process))
                 }
+                RuntimeTestType::Packages => {
+                    core::result::Result::Ok(Box::new(CargoPackageTestProcess {
+                        compiler,
+                        processor_name: self.name.clone(),
+                        cwd,
+                        manifest_path: self
+                            .config
+                            .runtime_cargo_toml
+                            .clone()
+                            .unwrap_or_else(|| String::from("Cargo.toml")),
+                        iterations,
+                        args: self
+                            .config
+                            .runtime_args
+                            .clone()
+                            .unwrap_or_default()
+                            .split_whitespace()
+                            .map(String::from)
+                            .collect(),
+                        packages: self.config.runtime_test_packages.clone().unwrap(),
+                    }))
+                }
             },
             None => {
                 let process = CargoTestProcess {
@@ -518,7 +541,7 @@ impl Benchamrk {
                     cwd,
                     manifest_path: self
                         .config
-                        .cargo_toml
+                        .runtime_cargo_toml
                         .clone()
                         .unwrap_or_else(|| String::from("Cargo.toml")),
                     iterations,
@@ -542,8 +565,10 @@ pub struct BenchmarkConfig {
     pub cargo_opts: Option<String>,
     pub cargo_rustc_opts: Option<String>,
     pub cargo_toml: Option<String>,
+    pub runtime_cargo_toml: Option<String>,
     pub compile_time_type: Option<CompileTimeType>,
     pub packages: Option<Vec<String>>,
+    pub runtime_test_packages: Option<Vec<String>>,
     pub runtime_test_type: Option<RuntimeTestType>,
     pub example_lst: Option<Vec<String>>,
     pub runtime_args: Option<String>,
@@ -564,6 +589,7 @@ pub struct BenchmarkConfig {
 pub enum RuntimeTestType {
     #[default]
     Test,
+    Packages,
     Example,
     Binary,
     Bench,

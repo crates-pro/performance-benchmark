@@ -17,6 +17,7 @@ use self::result::RuntimeResult;
 
 pub mod cargo_bench_process;
 pub mod cargo_example_process;
+pub mod cargo_package_process;
 pub mod cargo_test_process;
 pub mod measure;
 pub mod result;

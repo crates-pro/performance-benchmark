@@ -25,10 +25,11 @@ impl<'a> CargoTestProcess<'a> {
         let mut cmd = Command::new(&*FAKE_RUNTIME);
         cmd.env("RUNTIME_ELF", self.compiler.cargo)
             .env("RUSTC", self.compiler.rustc)
-            .env("CARGO_INCREMENTAL", "0")
+            .env("CARGO_INCREMENTAL", "1")
             .env("RUSTC_BOOTSTRAP", "1")
             .current_dir(self.cwd)
             .arg("test")
+            .arg("--all")
             .args(self.args.clone())
             .arg("--manifest-path")
             .arg(&self.manifest_path)
@@ -51,6 +52,7 @@ impl<'a> CargoTestProcess<'a> {
             .arg("--")
             .arg(self.compiler.cargo)
             .arg("test")
+            .arg("--all")
             .args(self.args.clone())
             .arg("--manifest-path")
             .arg(&self.manifest_path)
@@ -62,10 +64,6 @@ impl<'a> CargoTestProcess<'a> {
     fn compile_test(&self) -> anyhow::Result<()> {
         let mut cmd = self.base_command();
         cmd.arg("--no-run").env("CARGO_INCREMENTAL", "0");
-
-        eprintln!("{:?}", cmd.get_program());
-        eprintln!("args: {:?}", cmd.get_args());
-        eprintln!("env: {:?}", cmd.get_envs());
 
         command_discard_output(&mut cmd)
     }

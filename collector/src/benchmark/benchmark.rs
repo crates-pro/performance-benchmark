@@ -17,7 +17,9 @@ use crate::{
         CompileTimeProcessor,
     },
     runtime::{
-        self, cargo_bench_process::CargoBenchProcess, cargo_example_process::CargoExampleProcess, cargo_package_process::CargoPackageTestProcess, cargo_test_process::CargoTestProcess, measure::RuntimeProcess, Runtime
+        cargo_bench_process::CargoBenchProcess, cargo_example_process::CargoExampleProcess,
+        cargo_package_process::CargoPackageTestProcess, cargo_test_process::CargoTestProcess,
+        measure::RuntimeProcess, Runtime,
     },
     toolchain::{Compiler, PerfTool},
 };
@@ -509,8 +511,8 @@ impl Benchamrk {
                     );
                     core::result::Result::Ok(Box::new(process))
                 }
-                RuntimeTestType::Packages => core::result::Result::Ok(Box::new(
-                    CargoPackageTestProcess {
+                RuntimeTestType::Packages => {
+                    core::result::Result::Ok(Box::new(CargoPackageTestProcess {
                         compiler,
                         processor_name: self.name.clone(),
                         cwd,
@@ -529,8 +531,8 @@ impl Benchamrk {
                             .map(String::from)
                             .collect(),
                         packages: self.config.runtime_test_packages.clone().unwrap(),
-                    },
-                )),
+                    }))
+                }
             },
             None => {
                 let process = CargoTestProcess {

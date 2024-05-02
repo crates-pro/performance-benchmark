@@ -54,15 +54,15 @@ fn contains_outlet_keywords(input: &str) -> bool {
     false
 }
 
-pub fn count_pure_function(mir_file: MIRs) -> i32 {
+pub fn count_pure_function(mir_file: &MIRs) -> i32 {
     let mut func_all = 0;
     let mut flag;
     let mut func_part = 0;
-    let functions = mir_file.functions;
+    let functions = &mir_file.functions;
     for function in functions {
         func_all += 1;
         flag = 0;
-        let params = function.params;
+        let params = &function.params;
         for param in params {
             if let Ty::Mut(_) = param.ty {
                 flag = 1;
@@ -75,16 +75,16 @@ pub fn count_pure_function(mir_file: MIRs) -> i32 {
         if flag == 1 {
             continue;
         }
-        let bbs = function.bbs;
+        let bbs = &function.bbs;
         for basic_block in bbs {
             if flag == 1 {
                 break;
             }
-            let terminator = basic_block.terminator;
+            let terminator = &basic_block.terminator;
             match terminator {
                 Some(terminator) => match terminator {
                     Terminator::Call(call_data) => {
-                        let callee = call_data.callee;
+                        let callee = &call_data.callee;
                         for moduled_name in callee {
                             if contains_outlet_keywords(&moduled_name) {
                                 flag = 1;
@@ -100,11 +100,11 @@ pub fn count_pure_function(mir_file: MIRs) -> i32 {
             if flag == 1 {
                 break;
             }
-            let statements = basic_block.statements;
+            let statements = &basic_block.statements;
             for statement in statements {
                 match statement {
                     Statement::Assign(assign) => {
-                        let rvalue = assign.rvalue;
+                        let rvalue = &assign.rvalue;
                         match rvalue {
                             Rvalue::Use(operand) => match operand {
                                 Operand::CONST(const_val) => {
@@ -127,16 +127,16 @@ pub fn count_pure_function(mir_file: MIRs) -> i32 {
             }
         }
     }
-    println!("{:?}", func_all - func_part);
+    // println!("{:?}", func_all - func_part);
     func_all - func_part
 }
 
-pub fn count_closure(mir_file: MIRs) -> i32 {
+pub fn count_closure(mir_file: &MIRs) -> i32 {
     let mut closure_count = 0;
     let mut closure_use_count = 0;
-    let functions = mir_file.functions;
+    let functions = &mir_file.functions;
     for function in functions {
-        let label = function.label;
+        let label = &function.label;
         for sub_label in label {
             if sub_label.contains("closure") {
                 closure_count += 1;
@@ -144,13 +144,13 @@ pub fn count_closure(mir_file: MIRs) -> i32 {
             } else {
             }
         }
-        let bbs = function.bbs;
+        let bbs = &function.bbs;
         for basic_block in bbs {
-            let terminator = basic_block.terminator;
+            let terminator = &basic_block.terminator;
             match terminator {
                 Some(terminator) => match terminator {
                     Terminator::Call(call_data) => {
-                        let callee = call_data.callee;
+                        let callee = &call_data.callee;
                         for moduled_name in callee {
                             if moduled_name.contains("closure") {
                                 closure_use_count += 1;
@@ -164,25 +164,25 @@ pub fn count_closure(mir_file: MIRs) -> i32 {
             }
         }
     }
-    println!("{:?}", closure_count);
-    println!("{:?}", closure_use_count);
+    // println!("{:?}", closure_count);
+    // println!("{:?}", closure_use_count);
     closure_count
 }
 
-pub fn higher_function(mir_file: MIRs) -> i32 {
+pub fn higher_function(mir_file: &MIRs) -> i32 {
     let mut high_count = 0;
     let mut _high_use = 0;
     let mut flag;
     let mut use_flag = 0;
     let mut need_check: Vec<String> = Vec::new();
     let mut func_param: Vec<String> = Vec::new();
-    let functions = mir_file.functions;
+    let functions = &mir_file.functions;
     for function in functions {
         flag = 0;
-        let params = function.params;
+        let params = &function.params;
         for param in params {
-            let param_ty = param.ty;
-            let ids = param.local_id;
+            let param_ty = &param.ty;
+            let ids = &param.local_id;
             match param_ty {
                 Ty::ClosureDefault | Ty::Trait | Ty::Closure(_) | Ty::CoroutineClosure(_) => {
                     func_param.push(ids.to_string());
@@ -201,7 +201,7 @@ pub fn higher_function(mir_file: MIRs) -> i32 {
                 }
             }
         }
-        let recv = function.ret_ty;
+        let recv = &function.ret_ty;
         match recv {
             Ty::ClosureDefault | Ty::Trait | Ty::Closure(_) | Ty::CoroutineClosure(_) => {
                 if flag == 0 {
@@ -219,13 +219,13 @@ pub fn higher_function(mir_file: MIRs) -> i32 {
                 // 其他情况的处理逻辑（如果需要）
             }
         }
-        let bbs = function.bbs;
+        let bbs = &function.bbs;
         for basic_block in bbs {
-            let terminator = basic_block.terminator;
+            let terminator = &basic_block.terminator;
             match terminator {
                 Some(terminator) => match terminator {
                     Terminator::Call(call_data) => {
-                        let callee = call_data.callee;
+                        let callee = &call_data.callee;
                         for call_name in callee {
                             if contains_with_prefix_or_suffix(&call_name, &need_check) {
                                 if flag == 0 {
@@ -245,7 +245,7 @@ pub fn higher_function(mir_file: MIRs) -> i32 {
                             }
                         }
                         if use_flag == 0 {
-                            let call_params = call_data.params;
+                            let call_params = &call_data.params;
                             for call_param in call_params {
                                 match call_param {
                                     Operand::CONST(const_val) => {

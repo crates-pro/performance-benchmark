@@ -4,7 +4,6 @@ use std::{
     fs::File,
     io::{BufWriter, Write},
     path::Path,
-    path::PathBuf,
     vec::IntoIter,
 };
 
@@ -25,84 +24,61 @@ pub type TableDatas<X, Y, T> = HashMap<X, HashMap<Y, T>>;
 pub fn generate_benchmark_data() -> TableDatas<String, String, i32> {
     let mut table_data = HashMap::new();
 
+    vec![
+        "io_call",
+        "parallelism_call",
+        "parallelism_struct",
+        "oop_lof",
+        "oop_dfc",
+        "oop_pbf",
+        "oop_wms",
+        "oop_rfs",
+        "oop_noc",
+        "pure_function",
+        "closure",
+        "higher_function",
+    ]
+    .iter()
+    .for_each(|s| {
+        table_data.insert(s.to_string(), HashMap::new());
+    });
+
     for test_file in TEST_FILES.iter() {
         let column_name = test_file.name.to_string();
         let file_path = test_file.path.to_string();
+        let mir = &parse_mir(File::open(file_path.clone()).unwrap()).unwrap();
+
         //let test_file = File::open(file_path).unwrap();
-        let column_data = vec![
-            (
-                "io_call".to_string(),
-                count_io_metrics(parse_mir(File::open(file_path.clone()).unwrap()).unwrap()),
-            ),
+        vec![
+            ("io_call".to_string(), count_io_metrics(mir)),
             (
                 "parallelism_call".to_string(),
-                count_parallelism_metrics(
-                    parse_mir(File::open(file_path.clone()).unwrap()).unwrap(),
-                ),
+                count_parallelism_metrics(mir),
             ),
             (
                 "parallelism_struct".to_string(),
-                count_parallelism_strcut(
-                    parse_mir(File::open(file_path.clone()).unwrap()).unwrap(),
-                ),
+                count_parallelism_strcut(mir),
             ),
-            (
-                "oop_lof".to_string(),
-                lof(parse_mir(File::open(file_path.clone()).unwrap()).unwrap()),
-            ),
-            (
-                "oop_dfc".to_string(),
-                dfc(parse_mir(File::open(file_path.clone()).unwrap()).unwrap()),
-            ),
-            (
-                "oop_pbf".to_string(),
-                pbf(parse_mir(File::open(file_path.clone()).unwrap()).unwrap()),
-            ),
-            (
-                "oop_wms".to_string(),
-                wms_noc_rfs(parse_mir(File::open(file_path.clone()).unwrap()).unwrap())[0],
-            ),
-            (
-                "oop_rfs".to_string(),
-                wms_noc_rfs(parse_mir(File::open(file_path.clone()).unwrap()).unwrap())[1],
-            ),
-            (
-                "oop_noc".to_string(),
-                wms_noc_rfs(parse_mir(File::open(file_path.clone()).unwrap()).unwrap())[2],
-            ),
-            (
-                "pure_function".to_string(),
-                count_pure_function(parse_mir(File::open(file_path.clone()).unwrap()).unwrap()),
-            ),
-            (
-                "closure".to_string(),
-                count_closure(parse_mir(File::open(file_path.clone()).unwrap()).unwrap()),
-            ),
-            (
-                "higher_function".to_string(),
-                higher_function(parse_mir(File::open(file_path.clone()).unwrap()).unwrap()),
-            ),
+            ("oop_lof".to_string(), lof(mir)),
+            ("oop_dfc".to_string(), dfc(mir)),
+            ("oop_pbf".to_string(), pbf(mir)),
+            ("oop_wms".to_string(), wms_noc_rfs(mir)[0]),
+            ("oop_rfs".to_string(), wms_noc_rfs(mir)[1]),
+            ("oop_noc".to_string(), wms_noc_rfs(mir)[2]),
+            ("pure_function".to_string(), count_pure_function(mir)),
+            ("closure".to_string(), count_closure(mir)),
+            ("higher_function".to_string(), higher_function(mir)),
         ]
         .into_iter()
-        .collect::<HashMap<String, i32>>();
-
-        table_data.insert(column_name, column_data);
+        .for_each(|(k, v)| {
+            table_data
+                .get_mut(&k)
+                .unwrap()
+                .insert(column_name.clone(), v);
+        });
     }
 
     table_data
-}
-
-#[test]
-fn test_allfiles() {
-    //println!("{:?}", generate_benchmark_data());
-    let tmp_dir = PathBuf::from("test/mir_analyze/writer/test_tex_writer");
-    write_tex_table(
-        &generate_benchmark_data(),
-        tmp_dir.as_path(),
-        "benchmark.tex".to_string(),
-        "benchmark".to_string(),
-    )
-    .unwrap();
 }
 
 /// Transform 2-D data into a 2-D tex table.
@@ -295,12 +271,12 @@ fn sort<X: Ord + Clone, Y: Ord + Clone, T: Clone>(
 }
 
 #[cfg(test)]
-mod test {
+mod test_table_data {
     use std::{collections::HashMap, path::PathBuf};
 
     use crate::{mir_analyze::data::table_data::sort, pca_analysis::pca_data::PcaRawData};
 
-    use super::{write_tex_table, TableDatas};
+    use super::{generate_benchmark_data, write_tex_table, TableDatas};
 
     fn assert_file_eq(path: &PathBuf, std_path: &PathBuf) {
         use std::fs::File;
@@ -430,5 +406,18 @@ mod test {
                 (vec![3.0, 6.0], String::from("row_c"))
             ]
         );
+    }
+
+    #[test]
+    #[ignore]
+    fn test_allfiles() {
+        let tmp_dir = PathBuf::from("test/mir_analyze/writer/test_tex_writer");
+        write_tex_table(
+            &generate_benchmark_data(),
+            tmp_dir.as_path(),
+            "benchmark.tex".to_string(),
+            "benchmark".to_string(),
+        )
+        .unwrap();
     }
 }

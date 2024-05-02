@@ -1,26 +1,11 @@
 use std::{
-    fs,
     path::PathBuf,
     process::{Command, Stdio},
 };
 
 use nalgebra::DVector;
 
-use crate::mir_analyze::data::table_data::*;
 use crate::pca_analysis::pca_data::*;
-
-#[test]
-fn test_allfiles() {
-    //println!("{:?}", generate_benchmark_data());
-    fs::create_dir("test/pca_map").unwrap();
-    let tmp_dir = PathBuf::from("test/pca_map");
-    draw_coordinate_map_2d(
-        &get_principle_components(&generate_benchmark_data()),
-        &generate_benchmark_data(),
-        &tmp_dir,
-    );
-    fs::remove_dir_all("test/pca_map").unwrap();
-}
 
 /// `draw_coordinate_map_2d` plots the dataset,
 /// shows the relationship between specific data
@@ -85,6 +70,7 @@ fn draw(
     out_dir: &PathBuf,
 ) -> anyhow::Result<()> {
     let mut scatter = Command::new("python");
+
     scatter
         .arg("src/pca_analysis/plotter/scatter.py")
         .arg(
@@ -111,9 +97,9 @@ mod coordinate_map_test {
 
     use nalgebra::DVector;
 
-    use crate::mir_analyze::data::table_data::TableDatas;
+    use crate::mir_analyze::data::table_data::{generate_benchmark_data, TableDatas};
 
-    use super::{draw_coordinate_map_2d, get_coordinate_2d};
+    use super::{draw_coordinate_map_2d, get_coordinate_2d, get_principle_components};
 
     fn generate_table_data() -> TableDatas<String, String, i32> {
         vec![
@@ -223,5 +209,19 @@ mod coordinate_map_test {
         .unwrap();
 
         fs::remove_dir_all("test/draw_coordinate_map_2d").unwrap();
+    }
+
+    #[test]
+    fn test_allfiles() {
+        fs::create_dir("test/pca_map").unwrap();
+        let tmp_dir = PathBuf::from("test/pca_map");
+
+        let data = &generate_benchmark_data();
+        let principle_components = get_principle_components(data, 4);
+
+        println!("principle_components = {:?}", principle_components);
+
+        draw_coordinate_map_2d(&principle_components, data, &tmp_dir).unwrap();
+        fs::remove_dir_all("test/pca_map").unwrap();
     }
 }

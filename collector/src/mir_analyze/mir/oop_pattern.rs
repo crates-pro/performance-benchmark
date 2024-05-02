@@ -4,18 +4,18 @@ use std::fmt;
 use super::{mir::MIRs, terminator::Terminator, terminator::*};
 
 //LOF
-pub fn lof(mir_file: MIRs) -> i32 {
+pub fn lof(mir_file: &MIRs) -> i32 {
     let mut lof = 0;
     let mut flag;
-    let functions = mir_file.promoted_functions;
+    let functions = &mir_file.promoted_functions;
     for function in functions {
-        let bbs = function.body.bbs;
+        let bbs = &function.body.bbs;
         for basic_block in bbs {
-            let statements = basic_block.statements;
+            let statements = &basic_block.statements;
             for _statement in statements {
                 lof += 1;
             }
-            let terminator = basic_block.terminator;
+            let terminator = &basic_block.terminator;
             match terminator {
                 Some(_terminator) => {
                     lof += 1;
@@ -24,10 +24,10 @@ pub fn lof(mir_file: MIRs) -> i32 {
             }
         }
     }
-    let functions = mir_file.functions;
+    let functions = &mir_file.functions;
     for function in functions {
         flag = 0;
-        let label = function.label;
+        let label = &function.label;
         for sub_label in label {
             if sub_label.contains("closure") {
                 flag = 1;
@@ -38,13 +38,13 @@ pub fn lof(mir_file: MIRs) -> i32 {
         if flag == 0 {
             continue;
         }
-        let bbs = function.bbs;
+        let bbs = &function.bbs;
         for basic_block in bbs {
-            let statements = basic_block.statements;
+            let statements = &basic_block.statements;
             for _statement in statements {
                 lof += 1;
             }
-            let terminator = basic_block.terminator;
+            let terminator = &basic_block.terminator;
             match terminator {
                 Some(_terminator) => {
                     lof += 1;
@@ -53,16 +53,16 @@ pub fn lof(mir_file: MIRs) -> i32 {
             }
         }
     }
-    println!("{:?}", lof);
+    // println!("{:?}", lof);
     lof
 }
 //DFC
-pub fn count_function_call(mir_file: MIRs) -> HashMap<Vec<String>, Vec<Vec<String>>> {
-    let functions = mir_file.functions;
+pub fn count_function_call(mir_file: &MIRs) -> HashMap<Vec<String>, Vec<Vec<String>>> {
+    let functions = &mir_file.functions;
     let mut funcname_call = HashMap::new();
     for function in functions {
-        let labels = function.label;
-        let params = function.params;
+        let labels = &function.label;
+        let params = &function.params;
         let param_ty = if let Some(param) = params.get(0) {
             param.ty.to_string()
         } else {
@@ -91,15 +91,15 @@ pub fn count_function_call(mir_file: MIRs) -> HashMap<Vec<String>, Vec<Vec<Strin
             }
         }
         let mut call = Vec::new(); // 正确的定义应该是 HashMap<Vec<String>, Vec<Vec<String>>>
-        let bbs = function.bbs;
+        let bbs = &function.bbs;
         for basic_block in bbs {
-            let terminator = basic_block.terminator;
+            let terminator = &basic_block.terminator;
             match terminator {
                 Some(terminator) => {
                     match terminator {
                         Terminator::Call(call_data) => {
-                            let callee = call_data.callee;
-                            call.push(callee); // 这里应该将 callee 插入到 call[key] 中
+                            let callee = &call_data.callee;
+                            call.push(callee.clone()); // 这里应该将 callee 插入到 call[key] 中
                         }
                         _ => {}
                     }
@@ -176,19 +176,19 @@ impl fmt::Debug for CallGraph {
     }
 }
 
-pub fn dfc(mir_file: MIRs) -> i32 {
+pub fn dfc(mir_file: &MIRs) -> i32 {
     let funcname_call = count_function_call(mir_file);
     let cg = build_call_graph(&funcname_call);
-    println!("{:?}", cg);
+    // println!("{:?}", cg);
     let depths = cg.depth();
-    println!("{:?}", depths);
+    // println!("{:?}", depths);
 
     let funcname_call_count = funcname_call.len();
     let depths_count = depths.len();
     let depths_sum: usize = depths.values().sum();
 
     let result = funcname_call_count - depths_count + depths_sum / funcname_call_count;
-    println!("Result: {}", result);
+    // println!("Result: {}", result);
     result as i32
 }
 
@@ -261,18 +261,18 @@ fn resolve(
 }
 
 //PBF
-pub fn pbf(mir_file: MIRs) -> i32 {
+pub fn pbf(mir_file: &MIRs) -> i32 {
     let mut pbf = 1;
     let mut func = 0;
-    let functions = mir_file.promoted_functions;
+    let functions = &mir_file.promoted_functions;
     for function in functions {
         func += 1;
-        let bbs = function.body.bbs;
+        let bbs = &function.body.bbs;
         for basic_block in bbs {
-            let terminator = basic_block.terminator;
+            let terminator = &basic_block.terminator;
             match terminator {
                 Some(terminator) => match terminator {
-                    Terminator::Assert(assert) => match assert.unwind {
+                    Terminator::Assert(assert) => match &assert.unwind {
                         Some(unwind) => match unwind {
                             UnwindAction::CleanUp(_) | UnwindAction::Continue => {
                                 pbf += 1;
@@ -283,7 +283,7 @@ pub fn pbf(mir_file: MIRs) -> i32 {
                     },
                     Terminator::Call(call) => match call.success {
                         None => {}
-                        _ => match call.unwind {
+                        _ => match &call.unwind {
                             Some(unwind) => match unwind {
                                 UnwindAction::CleanUp(_) | UnwindAction::Continue => {
                                     pbf += 1;
@@ -303,15 +303,15 @@ pub fn pbf(mir_file: MIRs) -> i32 {
             }
         }
     }
-    let functions = mir_file.functions;
+    let functions = &mir_file.functions;
     for function in functions {
         func += 1;
-        let bbs = function.bbs;
+        let bbs = &function.bbs;
         for basic_block in bbs {
-            let terminator = basic_block.terminator;
+            let terminator = &basic_block.terminator;
             match terminator {
                 Some(terminator) => match terminator {
-                    Terminator::Assert(assert) => match assert.unwind {
+                    Terminator::Assert(assert) => match &assert.unwind {
                         Some(unwind) => match unwind {
                             UnwindAction::CleanUp(_) | UnwindAction::Continue => {
                                 pbf += 1;
@@ -322,7 +322,7 @@ pub fn pbf(mir_file: MIRs) -> i32 {
                     },
                     Terminator::Call(call) => match call.success {
                         None => {}
-                        _ => match call.unwind {
+                        _ => match &call.unwind {
                             Some(unwind) => match unwind {
                                 UnwindAction::CleanUp(_) | UnwindAction::Continue => {
                                     pbf += 1;
@@ -343,11 +343,11 @@ pub fn pbf(mir_file: MIRs) -> i32 {
         }
     }
     let result = pbf as f64 / func as f64;
-    println!("{}", result);
+    // println!("{}", result);
     result as i32
 }
 //WMS
-pub fn wms_noc_rfs(mir_file: MIRs) -> Vec<i32> {
+pub fn wms_noc_rfs(mir_file: &MIRs) -> Vec<i32> {
     let mut struct_method = HashMap::new();
     let mut rfs = HashMap::new();
     let mut flag;
@@ -414,18 +414,18 @@ pub fn wms_noc_rfs(mir_file: MIRs) -> Vec<i32> {
     }
 
     for (name, score) in &struct_method {
-        println!("{}: {}", name, score);
+        // println!("{}: {}", name, score);
     }
     //wms 几何均值
     let wms = arithmetic_mean(&struct_method);
-    println!("{:?}", wms);
-    println!("{}", struct_method.len());
+    // println!("{:?}", wms);
+    // println!("{}", struct_method.len());
 
     for (name, score) in &rfs {
-        println!("{}: {}", name, score);
+        // println!("{}: {}", name, score);
     }
     let rfs = arithmetic_mean(&rfs);
-    println!("{:?}", rfs);
+    // println!("{:?}", rfs);
     //rfs 几何均值
 
     let mut final_vec = Vec::new();

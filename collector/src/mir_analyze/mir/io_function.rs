@@ -34,17 +34,17 @@ fn contains_io_keywords(input: &str) -> bool {
     false
 }
 
-pub fn count_io_metrics(mir_file: MIRs) -> i32 {
+pub fn count_io_metrics(mir_file: &MIRs) -> i32 {
     let mut io_count = 0;
-    let functions = mir_file.functions;
+    let functions = &mir_file.functions;
     for function in functions {
-        let bbs = function.bbs;
+        let bbs = &function.bbs;
         for basic_block in bbs {
-            let terminator = basic_block.terminator;
+            let terminator = &basic_block.terminator;
             match terminator {
                 Some(terminator) => match terminator {
                     Terminator::Call(call_data) => {
-                        let callee = call_data.callee;
+                        let callee = &call_data.callee;
                         for moduled_name in callee {
                             if contains_io_keywords(&moduled_name) {
                                 io_count += 1;
@@ -58,6 +58,6 @@ pub fn count_io_metrics(mir_file: MIRs) -> i32 {
             }
         }
     }
-    println!("{:?}", io_count);
+    // println!("{:?}", io_count);
     io_count
 }

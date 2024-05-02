@@ -269,6 +269,20 @@ pub enum Commands {
         flamegraph: i32,
     },
 
+    /// Generate MIR with a local rustc.
+    GenerateMir {
+        #[clap(flatten)]
+        local: LocalOptions,
+
+        /// The path of benchmark dir
+        #[clap(long = "bench-dir", default_value = "../benchmarks/runtime/")]
+        bench_dir: PathBuf,
+
+        /// The path of output mirs
+        #[clap(long = "out-dir", default_value = "results")]
+        out_dir: PathBuf,
+    },
+
     /// Benchmarks the binary size of compiled benchmarks for a local rustc.
     BinaryLocal {
         #[clap(flatten)]

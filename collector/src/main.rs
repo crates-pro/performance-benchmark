@@ -14,6 +14,7 @@ use compile_time::{
         compare::compare_binary_size,
         plotter::{plot, plot_compare},
     },
+    discover_benchmark_suit,
 };
 use runtime::bench_runtime;
 use toolchain::{Cli, Commands, ResultWriter};
@@ -294,6 +295,24 @@ fn main_result() -> anyhow::Result<i32> {
                 Ok(0)
             }
         },
+        Commands::GenerateMir {
+            local,
+            bench_dir,
+            out_dir,
+        } => {
+            let toolch = get_local_toolchain(
+                &local.rustc,
+                local.cargo.as_deref(),
+                local.id.as_deref(),
+                "",
+            )?;
+
+            discover_benchmark_suit(&bench_dir)?
+                .into_iter()
+                .for_each(|b| unimplemented!());
+
+            Ok(0)
+        }
     }
 }
 

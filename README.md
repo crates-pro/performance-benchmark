@@ -26,11 +26,11 @@ https://blog.eastonman.com/blog/2021/02/use-perf/
 python3
 kaleido, matplotlib (can be installed with pip...
 ```
-pip install -U kaleido matplotlib
+pip install -U kaleido matplotlib plotly
 ```
 or with conda...)
 ```
-conda install -c conda-forge python-kaleido matplotlib
+conda install -c conda-forge python-kaleido matplotlib plotly
 ```
 
 **Attention:** The harness & flamegraph will fail to collect some of the specific data we need if you are going to run it in a virtual environment.

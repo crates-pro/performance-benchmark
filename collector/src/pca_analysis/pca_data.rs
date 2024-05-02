@@ -37,7 +37,7 @@ pub trait PcaRawData {
 /// Step4. Calculate the eigenvalue and eigenvectors of the matrix
 ///
 /// Step5. Sort the eigenvectors by the corresponding eigenvalue.
-pub fn get_principle_components(raw_data: &dyn PcaRawData) -> Vec<Vec<f64>> {
+pub fn get_principle_components(raw_data: &dyn PcaRawData, pc_num: u32) -> Vec<Vec<f64>> {
     let data = raw_data.into_matrix();
 
     // normalize
@@ -71,7 +71,14 @@ pub fn get_principle_components(raw_data: &dyn PcaRawData) -> Vec<Vec<f64>> {
         .collect();
     eigen_value_vectors.sort_by(|x, y| y.0.partial_cmp(&x.0).unwrap());
 
-    eigen_value_vectors.into_iter().map(|(_, v)| v).collect()
+    if eigen_value_vectors.len() > pc_num as usize {
+        eigen_value_vectors[0..pc_num as usize]
+            .into_iter()
+            .map(|(_, v)| v.clone())
+            .collect()
+    } else {
+        eigen_value_vectors.into_iter().map(|(_, v)| v).collect()
+    }
 }
 
 /// normalize a matrix
@@ -174,7 +181,7 @@ mod cfg_test {
     #[test]
     fn test_pca() {
         assert_eq!(
-            get_principle_components(&generate_table_data()),
+            get_principle_components(&generate_table_data(), 100),
             vec![
                 vec![0.8164965809277261, -0.4082482904638633, -0.408248290463863],
                 vec![0.0, -0.7071067811865475, 0.7071067811865477],

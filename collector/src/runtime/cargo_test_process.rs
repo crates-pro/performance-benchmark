@@ -26,14 +26,14 @@ impl<'a> CargoTestProcess<'a> {
         let mut cmd = Command::new(&*FAKE_RUNTIME);
         cmd.env("RUNTIME_ELF", self.compiler.cargo)
             .env("RUSTC", self.compiler.rustc)
-            .env("CARGO_INCREMENTAL", "0")
+            .env("CARGO_INCREMENTAL", "1")
             .env("RUSTC_BOOTSTRAP", "1")
             .current_dir(self.cwd)
             .arg("test")
+            .arg("--all")
             .args(self.args.clone())
             .arg("--manifest-path")
             .arg(&self.manifest_path)
-            .arg("--profile")
             .arg("release")
             .arg("--no-fail-fast");
         cmd
@@ -53,10 +53,10 @@ impl<'a> CargoTestProcess<'a> {
             .arg("--")
             .arg(self.compiler.cargo)
             .arg("test")
+            .arg("--all")
             .args(self.args.clone())
             .arg("--manifest-path")
             .arg(&self.manifest_path)
-            .arg("--profile")
             .arg("release")
             .arg("--no-fail-fast");
         cmd
@@ -65,10 +65,6 @@ impl<'a> CargoTestProcess<'a> {
     fn compile_test(&self) -> anyhow::Result<()> {
         let mut cmd = self.base_command();
         cmd.arg("--no-run").env("CARGO_INCREMENTAL", "0");
-
-        eprintln!("{:?}", cmd.get_program());
-        eprintln!("args: {:?}", cmd.get_args());
-        eprintln!("env: {:?}", cmd.get_envs());
 
         command_discard_output(&mut cmd)
     }
@@ -92,13 +88,15 @@ impl<'a> Runtime for CargoTestProcess<'a> {
 
         let mut result = RuntimeResult::new(self.processor_name.clone());
 
-        for iteration in 0..self.iterations {
-            eprintln!(
-                "running '{}' Runtime iteration {}/{}...",
-                self.processor_name.clone(),
-                iteration + 1,
-                self.iterations
-            );
+        for iteration in 0..self.iterations + 1 {
+            if iteration > 0 {
+                eprintln!(
+                    "running '{}' Runtime iteration {}/{}...",
+                    self.processor_name.clone(),
+                    iteration,
+                    self.iterations
+                );
+            }
 
             let mut cmd = self.base_command();
 
@@ -115,6 +113,10 @@ impl<'a> Runtime for CargoTestProcess<'a> {
             }
 
             let output = command_output(&mut cmd)?;
+
+            if iteration == 0 {
+                continue;
+            }
 
             match perf_tool.get_bencher() {
                 crate::toolchain::Bencher::PerfStat => match process_benchmark_output(output) {

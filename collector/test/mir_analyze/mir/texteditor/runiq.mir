@@ -1,0 +1,2830 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn filters::<impl at src/filters.rs:23:20: 23:25>::clone(_1: &FilterKind) -> FilterKind {
+    debug self => _1;
+    let mut _0: filters::FilterKind;
+
+    bb0: {
+        _0 = (*_1);
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:23:27: 23:32>::fmt(_1: &FilterKind, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug f => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let mut _3: &str;
+    let mut _4: isize;
+    let _5: &str;
+    let _6: &str;
+    let _7: &str;
+    let _8: &str;
+
+    bb0: {
+        _4 = discriminant((*_1));
+        switchInt(move _4) -> [0: bb3, 1: bb4, 2: bb5, 3: bb1, otherwise: bb2];
+    }
+
+    bb1: {
+        _8 = const "Bloom";
+        _3 = _8;
+        goto -> bb6;
+    }
+
+    bb2: {
+        unreachable;
+    }
+
+    bb3: {
+        _5 = const "Sorted";
+        _3 = _5;
+        goto -> bb6;
+    }
+
+    bb4: {
+        _6 = const "Digest";
+        _3 = _6;
+        goto -> bb6;
+    }
+
+    bb5: {
+        _7 = const "Naive";
+        _3 = _7;
+        goto -> bb6;
+    }
+
+    bb6: {
+        _0 = Formatter::<'_>::write_str(_2, move _3) -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        return;
+    }
+}
+
+fn filters::<impl at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-2.34.0/src/macros.rs:323:9: 323:40>::from_str(_1: &str) -> Result<FilterKind, String> {
+    debug s => _1;
+    let mut _0: std::result::Result<filters::FilterKind, std::string::String>;
+    let mut _2: bool;
+    let mut _3: bool;
+    let mut _4: bool;
+    let mut _5: bool;
+    let mut _6: bool;
+    let _7: &str;
+    let mut _8: bool;
+    let _9: &str;
+    let mut _10: filters::FilterKind;
+    let mut _11: bool;
+    let _12: &str;
+    let mut _13: bool;
+    let _14: &str;
+    let mut _15: filters::FilterKind;
+    let mut _16: bool;
+    let _17: &str;
+    let mut _18: bool;
+    let _19: &str;
+    let mut _20: filters::FilterKind;
+    let mut _21: bool;
+    let _22: &str;
+    let mut _23: bool;
+    let _24: &str;
+    let mut _25: filters::FilterKind;
+    let mut _26: std::string::String;
+    let _27: std::vec::Vec<&str>;
+    let mut _28: std::boxed::Box<[&str]>;
+    let mut _29: usize;
+    let mut _30: usize;
+    let mut _31: *mut u8;
+    let mut _32: std::boxed::Box<[&str; 4]>;
+    let _33: &str;
+    let _34: &str;
+    let _35: &str;
+    let mut _37: std::fmt::Arguments<'_>;
+    let mut _38: &[&str];
+    let mut _39: &[core::fmt::rt::Argument<'_>];
+    let _40: &[core::fmt::rt::Argument<'_>; 1];
+    let _41: [core::fmt::rt::Argument<'_>; 1];
+    let mut _42: core::fmt::rt::Argument<'_>;
+    let _43: &std::string::String;
+    let _44: std::string::String;
+    let _45: &[&str];
+    let mut _46: &std::vec::Vec<&str>;
+    let _47: &str;
+    let mut _49: *const [&str; 4];
+    let mut _50: *const ();
+    let mut _51: usize;
+    let mut _52: usize;
+    let mut _53: usize;
+    let mut _54: usize;
+    let mut _55: bool;
+    scope 1 {
+        debug v => _27;
+        let _36: std::string::String;
+        let mut _48: &[&str; 1];
+        scope 3 {
+            debug res => _36;
+        }
+    }
+    scope 2 {
+    }
+
+    bb0: {
+        _5 = <str as PartialEq>::eq(_1, const "Sorted") -> [return: bb12, unwind continue];
+    }
+
+    bb1: {
+        _7 = const "Sorted";
+        _6 = core::str::<impl str>::eq_ignore_ascii_case(_1, _7) -> [return: bb14, unwind continue];
+    }
+
+    bb2: {
+        _9 = const "Sorted";
+        _8 = core::str::<impl str>::eq_ignore_ascii_case(_1, _9) -> [return: bb15, unwind continue];
+    }
+
+    bb3: {
+        _12 = const "Digest";
+        _11 = core::str::<impl str>::eq_ignore_ascii_case(_1, _12) -> [return: bb18, unwind continue];
+    }
+
+    bb4: {
+        _14 = const "Digest";
+        _13 = core::str::<impl str>::eq_ignore_ascii_case(_1, _14) -> [return: bb19, unwind continue];
+    }
+
+    bb5: {
+        _17 = const "Naive";
+        _16 = core::str::<impl str>::eq_ignore_ascii_case(_1, _17) -> [return: bb22, unwind continue];
+    }
+
+    bb6: {
+        _19 = const "Naive";
+        _18 = core::str::<impl str>::eq_ignore_ascii_case(_1, _19) -> [return: bb23, unwind continue];
+    }
+
+    bb7: {
+        _22 = const "Bloom";
+        _21 = core::str::<impl str>::eq_ignore_ascii_case(_1, _22) -> [return: bb26, unwind continue];
+    }
+
+    bb8: {
+        _24 = const "Bloom";
+        _23 = core::str::<impl str>::eq_ignore_ascii_case(_1, _24) -> [return: bb27, unwind continue];
+    }
+
+    bb9: {
+        switchInt(move _2) -> [0: bb8, otherwise: bb7];
+    }
+
+    bb10: {
+        switchInt(move _3) -> [0: bb6, otherwise: bb5];
+    }
+
+    bb11: {
+        switchInt(move _4) -> [0: bb4, otherwise: bb3];
+    }
+
+    bb12: {
+        switchInt(move _5) -> [0: bb2, otherwise: bb1];
+    }
+
+    bb13: {
+        _10 = FilterKind::Sorted;
+        _0 = Result::<FilterKind, String>::Ok(move _10);
+        goto -> bb38;
+    }
+
+    bb14: {
+        switchInt(move _6) -> [0: bb2, otherwise: bb13];
+    }
+
+    bb15: {
+        switchInt(move _8) -> [0: bb16, otherwise: bb13];
+    }
+
+    bb16: {
+        _4 = <str as PartialEq>::eq(_1, const "Digest") -> [return: bb11, unwind continue];
+    }
+
+    bb17: {
+        _15 = FilterKind::Digest;
+        _0 = Result::<FilterKind, String>::Ok(move _15);
+        goto -> bb38;
+    }
+
+    bb18: {
+        switchInt(move _11) -> [0: bb4, otherwise: bb17];
+    }
+
+    bb19: {
+        switchInt(move _13) -> [0: bb20, otherwise: bb17];
+    }
+
+    bb20: {
+        _3 = <str as PartialEq>::eq(_1, const "Naive") -> [return: bb10, unwind continue];
+    }
+
+    bb21: {
+        _20 = FilterKind::Naive;
+        _0 = Result::<FilterKind, String>::Ok(move _20);
+        goto -> bb38;
+    }
+
+    bb22: {
+        switchInt(move _16) -> [0: bb6, otherwise: bb21];
+    }
+
+    bb23: {
+        switchInt(move _18) -> [0: bb24, otherwise: bb21];
+    }
+
+    bb24: {
+        _2 = <str as PartialEq>::eq(_1, const "Bloom") -> [return: bb9, unwind continue];
+    }
+
+    bb25: {
+        _25 = FilterKind::Bloom;
+        _0 = Result::<FilterKind, String>::Ok(move _25);
+        goto -> bb38;
+    }
+
+    bb26: {
+        switchInt(move _21) -> [0: bb8, otherwise: bb25];
+    }
+
+    bb27: {
+        switchInt(move _23) -> [0: bb28, otherwise: bb25];
+    }
+
+    bb28: {
+        _29 = SizeOf([&str; 4]);
+        _30 = AlignOf([&str; 4]);
+        _31 = alloc::alloc::exchange_malloc(move _29, move _30) -> [return: bb29, unwind continue];
+    }
+
+    bb29: {
+        _32 = ShallowInitBox(move _31, [&str; 4]);
+        _33 = const "Digest";
+        _34 = const "Naive";
+        _35 = const "Bloom";
+        _49 = (((_32.0: std::ptr::Unique<[&str; 4]>).0: std::ptr::NonNull<[&str; 4]>).0: *const [&str; 4]);
+        _50 = _49 as *const () (PtrToPtr);
+        _51 = _50 as usize (Transmute);
+        _52 = AlignOf([&str; 4]);
+        _53 = Sub(_52, const 1_usize);
+        _54 = BitAnd(_51, _53);
+        _55 = Eq(_54, const 0_usize);
+        assert(_55, "misaligned pointer dereference: address must be a multiple of {} but is {}", _52, _51) -> [success: bb43, unwind unreachable];
+    }
+
+    bb30: {
+        _48 = const _;
+        _38 = _48 as &[&str] (PointerCoercion(Unsize));
+        _46 = &_27;
+        _45 = <Vec<&str> as Deref>::deref(move _46) -> [return: bb31, unwind: bb41];
+    }
+
+    bb31: {
+        _47 = const ", ";
+        _44 = slice::<impl [&str]>::join::<&str>(_45, _47) -> [return: bb32, unwind: bb41];
+    }
+
+    bb32: {
+        _43 = &_44;
+        _42 = core::fmt::rt::Argument::<'_>::new_display::<String>(_43) -> [return: bb33, unwind: bb40];
+    }
+
+    bb33: {
+        _41 = [move _42];
+        _40 = &_41;
+        _39 = _40 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _37 = Arguments::<'_>::new_v1(move _38, move _39) -> [return: bb34, unwind: bb40];
+    }
+
+    bb34: {
+        _36 = format(move _37) -> [return: bb35, unwind: bb40];
+    }
+
+    bb35: {
+        drop(_44) -> [return: bb36, unwind: bb39];
+    }
+
+    bb36: {
+        _26 = move _36;
+        drop(_27) -> [return: bb37, unwind continue];
+    }
+
+    bb37: {
+        _0 = Result::<FilterKind, String>::Err(move _26);
+        goto -> bb38;
+    }
+
+    bb38: {
+        return;
+    }
+
+    bb39 (cleanup): {
+        drop(_36) -> [return: bb41, unwind terminate(cleanup)];
+    }
+
+    bb40 (cleanup): {
+        drop(_44) -> [return: bb41, unwind terminate(cleanup)];
+    }
+
+    bb41 (cleanup): {
+        drop(_27) -> [return: bb42, unwind terminate(cleanup)];
+    }
+
+    bb42 (cleanup): {
+        resume;
+    }
+
+    bb43: {
+        (*_49) = [const "Sorted", _33, _34, _35];
+        _28 = move _32 as std::boxed::Box<[&str]> (PointerCoercion(Unsize));
+        _27 = slice::<impl [&str]>::into_vec::<std::alloc::Global>(move _28) -> [return: bb30, unwind continue];
+    }
+}
+
+promoted[0] in filters::<impl at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-2.34.0/src/macros.rs:323:9: 323:40>::from_str: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "valid values: "];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn filters::<impl at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-2.34.0/src/macros.rs:342:9: 342:40>::fmt(_1: &FilterKind, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug f => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let mut _3: isize;
+    let mut _4: std::fmt::Arguments<'_>;
+    let mut _5: &[&str];
+    let mut _6: std::fmt::Arguments<'_>;
+    let mut _7: &[&str];
+    let mut _8: std::fmt::Arguments<'_>;
+    let mut _9: &[&str];
+    let mut _10: std::fmt::Arguments<'_>;
+    let mut _11: &[&str];
+    let mut _12: &[&str; 1];
+    let mut _13: &[&str; 1];
+    let mut _14: &[&str; 1];
+    let mut _15: &[&str; 1];
+
+    bb0: {
+        _3 = discriminant((*_1));
+        switchInt(move _3) -> [0: bb3, 1: bb5, 2: bb7, 3: bb1, otherwise: bb2];
+    }
+
+    bb1: {
+        _12 = const _;
+        _11 = _12 as &[&str] (PointerCoercion(Unsize));
+        _10 = Arguments::<'_>::new_const(move _11) -> [return: bb9, unwind continue];
+    }
+
+    bb2: {
+        unreachable;
+    }
+
+    bb3: {
+        _15 = const _;
+        _5 = _15 as &[&str] (PointerCoercion(Unsize));
+        _4 = Arguments::<'_>::new_const(move _5) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _0 = Formatter::<'_>::write_fmt(_2, move _4) -> [return: bb10, unwind continue];
+    }
+
+    bb5: {
+        _14 = const _;
+        _7 = _14 as &[&str] (PointerCoercion(Unsize));
+        _6 = Arguments::<'_>::new_const(move _7) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _0 = Formatter::<'_>::write_fmt(_2, move _6) -> [return: bb10, unwind continue];
+    }
+
+    bb7: {
+        _13 = const _;
+        _9 = _13 as &[&str] (PointerCoercion(Unsize));
+        _8 = Arguments::<'_>::new_const(move _9) -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        _0 = Formatter::<'_>::write_fmt(_2, move _8) -> [return: bb10, unwind continue];
+    }
+
+    bb9: {
+        _0 = Formatter::<'_>::write_fmt(_2, move _10) -> [return: bb10, unwind continue];
+    }
+
+    bb10: {
+        return;
+    }
+}
+
+promoted[0] in filters::<impl at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-2.34.0/src/macros.rs:342:9: 342:40>::fmt: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "Bloom"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in filters::<impl at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-2.34.0/src/macros.rs:342:9: 342:40>::fmt: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "Naive"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[2] in filters::<impl at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-2.34.0/src/macros.rs:342:9: 342:40>::fmt: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "Digest"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[3] in filters::<impl at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-2.34.0/src/macros.rs:342:9: 342:40>::fmt: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "Sorted"];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn filters::<impl at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-2.34.0/src/macros.rs:349:9: 349:16>::variants() -> [&str; 4] {
+    let mut _0: [&str; 4];
+
+    bb0: {
+        _0 = [const "Sorted", const "Digest", const "Naive", const "Bloom"];
+        return;
+    }
+}
+
+filters::<impl at /home/workstation/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-2.34.0/src/macros.rs:349:9: 349:16>::variants::{constant#0}: usize = {
+    let mut _0: usize;
+    let mut _1: usize;
+    let mut _2: usize;
+    let mut _3: (usize, bool);
+    let mut _4: (usize, bool);
+    let mut _5: (usize, bool);
+
+    bb0: {
+        StorageLive(_1);
+        StorageLive(_2);
+        _3 = CheckedAdd(const 1_usize, const 1_usize);
+        assert(!move (_3.1: bool), "attempt to compute `{} + {}`, which would overflow", const 1_usize, const 1_usize) -> [success: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = move (_3.0: usize);
+        _4 = CheckedAdd(const 1_usize, _2);
+        assert(!move (_4.1: bool), "attempt to compute `{} + {}`, which would overflow", const 1_usize, move _2) -> [success: bb2, unwind continue];
+    }
+
+    bb2: {
+        _1 = move (_4.0: usize);
+        StorageDead(_2);
+        _5 = CheckedAdd(const 1_usize, _1);
+        assert(!move (_5.1: bool), "attempt to compute `{} + {}`, which would overflow", const 1_usize, move _1) -> [success: bb3, unwind continue];
+    }
+
+    bb3: {
+        _0 = move (_5.0: usize);
+        StorageDead(_1);
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:51:1: 51:42>::into(_1: FilterKind) -> Box<dyn filters::Filter> {
+    debug self => _1;
+    let mut _0: std::boxed::Box<dyn filters::Filter>;
+    let mut _2: std::boxed::Box<dyn filters::Filter>;
+    let mut _3: isize;
+    let mut _4: std::boxed::Box<filters::SortedFilter>;
+    let mut _5: filters::SortedFilter;
+    let mut _6: std::boxed::Box<filters::DigestFilter>;
+    let mut _7: filters::DigestFilter;
+    let mut _8: std::boxed::Box<filters::NaiveFilter>;
+    let mut _9: filters::NaiveFilter;
+    let mut _10: std::boxed::Box<filters::BloomFilter>;
+    let mut _11: filters::BloomFilter;
+
+    bb0: {
+        _3 = discriminant(_1);
+        switchInt(move _3) -> [0: bb3, 1: bb6, 2: bb9, 3: bb1, otherwise: bb2];
+    }
+
+    bb1: {
+        _11 = <BloomFilter as filters::Filter>::new() -> [return: bb12, unwind continue];
+    }
+
+    bb2: {
+        unreachable;
+    }
+
+    bb3: {
+        _5 = <SortedFilter as filters::Filter>::new() -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _4 = Box::<SortedFilter>::new(move _5) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        _2 = move _4 as std::boxed::Box<dyn filters::Filter> (PointerCoercion(Unsize));
+        goto -> bb14;
+    }
+
+    bb6: {
+        _7 = <DigestFilter as filters::Filter>::new() -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        _6 = Box::<DigestFilter>::new(move _7) -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        _2 = move _6 as std::boxed::Box<dyn filters::Filter> (PointerCoercion(Unsize));
+        goto -> bb14;
+    }
+
+    bb9: {
+        _9 = <NaiveFilter as filters::Filter>::new() -> [return: bb10, unwind continue];
+    }
+
+    bb10: {
+        _8 = Box::<NaiveFilter>::new(move _9) -> [return: bb11, unwind continue];
+    }
+
+    bb11: {
+        _2 = move _8 as std::boxed::Box<dyn filters::Filter> (PointerCoercion(Unsize));
+        goto -> bb14;
+    }
+
+    bb12: {
+        _10 = Box::<BloomFilter>::new(move _11) -> [return: bb13, unwind continue];
+    }
+
+    bb13: {
+        _2 = move _10 as std::boxed::Box<dyn filters::Filter> (PointerCoercion(Unsize));
+        goto -> bb14;
+    }
+
+    bb14: {
+        _0 = move _2;
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:70:10: 70:15>::clone(_1: &NaiveFilter) -> NaiveFilter {
+    debug self => _1;
+    let mut _0: filters::NaiveFilter;
+    let mut _2: std::collections::HashSet<std::vec::Vec<u8>>;
+    let _3: &std::collections::HashSet<std::vec::Vec<u8>>;
+
+    bb0: {
+        _3 = &((*_1).0: std::collections::HashSet<std::vec::Vec<u8>>);
+        _2 = <HashSet<Vec<u8>> as Clone>::clone(_3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = NaiveFilter { inner: move _2 };
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:70:17: 70:22>::fmt(_1: &NaiveFilter, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug f => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let _3: &str;
+    let _4: &str;
+    let mut _5: &dyn std::fmt::Debug;
+    let _6: &&std::collections::HashSet<std::vec::Vec<u8>>;
+    let _7: &std::collections::HashSet<std::vec::Vec<u8>>;
+
+    bb0: {
+        _3 = const "NaiveFilter";
+        _4 = const "inner";
+        _7 = &((*_1).0: std::collections::HashSet<std::vec::Vec<u8>>);
+        _6 = &_7;
+        _5 = _6 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _0 = Formatter::<'_>::debug_struct_field1_finish(_2, _3, _4, move _5) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:70:24: 70:31>::default() -> NaiveFilter {
+    let mut _0: filters::NaiveFilter;
+    let mut _1: std::collections::HashSet<std::vec::Vec<u8>>;
+
+    bb0: {
+        _1 = <HashSet<Vec<u8>> as Default>::default() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = NaiveFilter { inner: move _1 };
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:76:1: 76:28>::new() -> NaiveFilter {
+    let mut _0: filters::NaiveFilter;
+
+    bb0: {
+        _0 = <NaiveFilter as Default>::default() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:76:1: 76:28>::detect(_1: &mut NaiveFilter, _2: &[u8]) -> bool {
+    debug self => _1;
+    debug input => _2;
+    let mut _0: bool;
+    let mut _3: &mut std::collections::HashSet<std::vec::Vec<u8>>;
+    let mut _4: std::vec::Vec<u8>;
+
+    bb0: {
+        _3 = &mut ((*_1).0: std::collections::HashSet<std::vec::Vec<u8>>);
+        _4 = slice::<impl [u8]>::to_vec(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = HashSet::<Vec<u8>>::insert(move _3, move _4) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:98:10: 98:15>::clone(_1: &DigestFilter) -> DigestFilter {
+    debug self => _1;
+    let mut _0: filters::DigestFilter;
+    let mut _2: std::collections::HashSet<u64, std::hash::BuildHasherDefault<fnv::FnvHasher>>;
+    let _3: &std::collections::HashSet<u64, std::hash::BuildHasherDefault<fnv::FnvHasher>>;
+
+    bb0: {
+        _3 = &((*_1).0: std::collections::HashSet<u64, std::hash::BuildHasherDefault<fnv::FnvHasher>>);
+        _2 = <HashSet<u64, BuildHasherDefault<FnvHasher>> as Clone>::clone(_3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = DigestFilter { inner: move _2 };
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:98:17: 98:22>::fmt(_1: &DigestFilter, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug f => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let _3: &str;
+    let _4: &str;
+    let mut _5: &dyn std::fmt::Debug;
+    let _6: &&std::collections::HashSet<u64, std::hash::BuildHasherDefault<fnv::FnvHasher>>;
+    let _7: &std::collections::HashSet<u64, std::hash::BuildHasherDefault<fnv::FnvHasher>>;
+
+    bb0: {
+        _3 = const "DigestFilter";
+        _4 = const "inner";
+        _7 = &((*_1).0: std::collections::HashSet<u64, std::hash::BuildHasherDefault<fnv::FnvHasher>>);
+        _6 = &_7;
+        _5 = _6 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _0 = Formatter::<'_>::debug_struct_field1_finish(_2, _3, _4, move _5) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:98:24: 98:31>::default() -> DigestFilter {
+    let mut _0: filters::DigestFilter;
+    let mut _1: std::collections::HashSet<u64, std::hash::BuildHasherDefault<fnv::FnvHasher>>;
+
+    bb0: {
+        _1 = <HashSet<u64, BuildHasherDefault<FnvHasher>> as Default>::default() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = DigestFilter { inner: move _1 };
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:104:1: 104:29>::new() -> DigestFilter {
+    let mut _0: filters::DigestFilter;
+
+    bb0: {
+        _0 = <DigestFilter as Default>::default() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:104:1: 104:29>::detect(_1: &mut DigestFilter, _2: &[u8]) -> bool {
+    debug self => _1;
+    debug input => _2;
+    let mut _0: bool;
+    let mut _3: &mut std::collections::HashSet<u64, std::hash::BuildHasherDefault<fnv::FnvHasher>>;
+    let mut _4: u64;
+
+    bb0: {
+        _3 = &mut ((*_1).0: std::collections::HashSet<u64, std::hash::BuildHasherDefault<fnv::FnvHasher>>);
+        _4 = filters::hash(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = HashSet::<u64, BuildHasherDefault<FnvHasher>>::insert(move _3, move _4) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:129:10: 129:15>::clone(_1: &SortedFilter) -> SortedFilter {
+    debug self => _1;
+    let mut _0: filters::SortedFilter;
+    let mut _2: std::vec::Vec<u8>;
+    let _3: &std::vec::Vec<u8>;
+
+    bb0: {
+        _3 = &((*_1).0: std::vec::Vec<u8>);
+        _2 = <Vec<u8> as Clone>::clone(_3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = SortedFilter { inner: move _2 };
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:129:17: 129:22>::fmt(_1: &SortedFilter, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug f => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let _3: &str;
+    let _4: &str;
+    let mut _5: &dyn std::fmt::Debug;
+    let _6: &&std::vec::Vec<u8>;
+    let _7: &std::vec::Vec<u8>;
+
+    bb0: {
+        _3 = const "SortedFilter";
+        _4 = const "inner";
+        _7 = &((*_1).0: std::vec::Vec<u8>);
+        _6 = &_7;
+        _5 = _6 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _0 = Formatter::<'_>::debug_struct_field1_finish(_2, _3, _4, move _5) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:135:1: 135:29>::new() -> SortedFilter {
+    let mut _0: filters::SortedFilter;
+    let mut _1: std::vec::Vec<u8>;
+
+    bb0: {
+        _1 = Vec::<u8>::new() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = SortedFilter { inner: move _1 };
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:135:1: 135:29>::detect(_1: &mut SortedFilter, _2: &[u8]) -> bool {
+    debug self => _1;
+    debug input => _2;
+    let mut _0: bool;
+    let mut _3: bool;
+    let mut _4: &&[u8];
+    let mut _5: &&[u8];
+    let _6: &[u8];
+    let _7: &[u8];
+    let mut _8: &std::vec::Vec<u8>;
+    let mut _9: std::vec::Vec<u8>;
+    let mut _10: &[u8];
+
+    bb0: {
+        _4 = &_2;
+        _8 = &((*_1).0: std::vec::Vec<u8>);
+        _7 = <Vec<u8> as Index<RangeFull>>::index(move _8, const RangeFull) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _6 = _7;
+        _5 = &_6;
+        _3 = <&[u8] as PartialEq>::eq(move _4, move _5) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        switchInt(move _3) -> [0: bb4, otherwise: bb3];
+    }
+
+    bb3: {
+        _0 = const false;
+        goto -> bb8;
+    }
+
+    bb4: {
+        _10 = _2;
+        _9 = slice::<impl [u8]>::to_vec(move _10) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        drop(((*_1).0: std::vec::Vec<u8>)) -> [return: bb6, unwind: bb7];
+    }
+
+    bb6: {
+        ((*_1).0: std::vec::Vec<u8>) = move _9;
+        _0 = const true;
+        goto -> bb8;
+    }
+
+    bb7 (cleanup): {
+        ((*_1).0: std::vec::Vec<u8>) = move _9;
+        resume;
+    }
+
+    bb8: {
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:165:10: 165:15>::fmt(_1: &BloomFilter, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug f => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let _3: &str;
+    let _4: &str;
+    let mut _5: &dyn std::fmt::Debug;
+    let _6: &&scalable_bloom_filter::ScalableBloomFilter<u64>;
+    let _7: &scalable_bloom_filter::ScalableBloomFilter<u64>;
+
+    bb0: {
+        _3 = const "BloomFilter";
+        _4 = const "inner";
+        _7 = &((*_1).0: scalable_bloom_filter::ScalableBloomFilter<u64>);
+        _6 = &_7;
+        _5 = _6 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _0 = Formatter::<'_>::debug_struct_field1_finish(_2, _3, _4, move _5) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:171:1: 171:28>::new() -> BloomFilter {
+    let mut _0: filters::BloomFilter;
+    let mut _1: scalable_bloom_filter::ScalableBloomFilter<u64>;
+
+    bb0: {
+        _1 = ScalableBloomFilter::<u64>::new(const 1000000_usize, const 1.0E-8f64) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = BloomFilter { inner: move _1 };
+        return;
+    }
+}
+
+fn filters::<impl at src/filters.rs:171:1: 171:28>::detect(_1: &mut BloomFilter, _2: &[u8]) -> bool {
+    debug self => _1;
+    debug input => _2;
+    let mut _0: bool;
+    let _3: u64;
+    let mut _4: bool;
+    let mut _5: &scalable_bloom_filter::ScalableBloomFilter<u64>;
+    let _6: &u64;
+    let _7: ();
+    let mut _8: &mut scalable_bloom_filter::ScalableBloomFilter<u64>;
+    let _9: &u64;
+    scope 1 {
+        debug digest => _3;
+    }
+
+    bb0: {
+        _3 = filters::hash(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _5 = &((*_1).0: scalable_bloom_filter::ScalableBloomFilter<u64>);
+        _6 = &_3;
+        _4 = ScalableBloomFilter::<u64>::contains(move _5, _6) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        switchInt(move _4) -> [0: bb4, otherwise: bb3];
+    }
+
+    bb3: {
+        _0 = const false;
+        goto -> bb6;
+    }
+
+    bb4: {
+        _8 = &mut ((*_1).0: scalable_bloom_filter::ScalableBloomFilter<u64>);
+        _9 = &_3;
+        _7 = ScalableBloomFilter::<u64>::insert(move _8, _9) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        _0 = const true;
+        goto -> bb6;
+    }
+
+    bb6: {
+        return;
+    }
+}
+
+fn filters::hash(_1: &[u8]) -> u64 {
+    debug input => _1;
+    let mut _0: u64;
+    let mut _2: twox_hash::XxHash64;
+    let _3: ();
+    let mut _4: &mut twox_hash::XxHash64;
+    let mut _5: &twox_hash::XxHash64;
+    scope 1 {
+        debug hasher => _2;
+    }
+
+    bb0: {
+        _2 = <XxHash64 as Default>::default() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _4 = &mut _2;
+        _3 = <XxHash64 as Hasher>::write(move _4, _1) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _5 = &_2;
+        _0 = <XxHash64 as Hasher>::finish(move _5) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        return;
+    }
+}
+
+fn options::<impl at src/options.rs:16:10: 16:15>::clone(_1: &Options) -> Options {
+    debug self => _1;
+    let mut _0: options::Options;
+    let mut _2: filters::FilterKind;
+    let _3: &filters::FilterKind;
+    let mut _4: std::vec::Vec<std::string::String>;
+    let _5: &std::vec::Vec<std::string::String>;
+    let mut _6: bool;
+    let _7: &bool;
+    let mut _8: bool;
+    let _9: &bool;
+
+    bb0: {
+        _3 = &((*_1).0: filters::FilterKind);
+        _2 = <FilterKind as Clone>::clone(_3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _5 = &((*_1).1: std::vec::Vec<std::string::String>);
+        _4 = <Vec<String> as Clone>::clone(_5) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _7 = &((*_1).2: bool);
+        _6 = (*_7);
+        _9 = &((*_1).3: bool);
+        _8 = (*_9);
+        _0 = Options { filter: move _2, inputs: move _4, inverted: move _6, statistics: move _8 };
+        return;
+    }
+}
+
+fn options::<impl at src/options.rs:16:17: 16:22>::fmt(_1: &Options, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug f => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let _3: &str;
+    let _4: &str;
+    let mut _5: &dyn std::fmt::Debug;
+    let _6: &filters::FilterKind;
+    let _7: &str;
+    let mut _8: &dyn std::fmt::Debug;
+    let _9: &std::vec::Vec<std::string::String>;
+    let _10: &str;
+    let mut _11: &dyn std::fmt::Debug;
+    let _12: &bool;
+    let _13: &str;
+    let mut _14: &dyn std::fmt::Debug;
+    let _15: &&bool;
+    let _16: &bool;
+
+    bb0: {
+        _3 = const "Options";
+        _4 = const "filter";
+        _6 = &((*_1).0: filters::FilterKind);
+        _5 = _6 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _7 = const "inputs";
+        _9 = &((*_1).1: std::vec::Vec<std::string::String>);
+        _8 = _9 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _10 = const "inverted";
+        _12 = &((*_1).2: bool);
+        _11 = _12 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _13 = const "statistics";
+        _16 = &((*_1).3: bool);
+        _15 = &_16;
+        _14 = _15 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _0 = Formatter::<'_>::debug_struct_field4_finish(_2, _3, _4, move _5, _7, move _8, _10, move _11, _13, move _14) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn options::<impl at src/options.rs:24:1: 24:13>::from(_1: I) -> Options {
+    debug args => _1;
+    let mut _0: options::Options;
+    let _2: clap::App<'_, '_>;
+    let mut _4: I;
+    let mut _6: std::option::Option<&str>;
+    let mut _7: &clap::ArgMatches<'_>;
+    let mut _8: isize;
+    let mut _10: std::result::Result<filters::FilterKind, std::string::String>;
+    let mut _11: &str;
+    let mut _12: isize;
+    let mut _14: clap::Error;
+    let mut _16: std::fmt::Arguments<'_>;
+    let mut _17: &[&str];
+    let mut _18: &[core::fmt::rt::Argument<'_>];
+    let _19: &[core::fmt::rt::Argument<'_>; 1];
+    let _20: [core::fmt::rt::Argument<'_>; 1];
+    let mut _21: core::fmt::rt::Argument<'_>;
+    let _22: &&str;
+    let mut _23: clap::Error;
+    let mut _24: bool;
+    let mut _25: &clap::ArgMatches<'_>;
+    let mut _26: bool;
+    let mut _27: &clap::ArgMatches<'_>;
+    let mut _28: filters::FilterKind;
+    let mut _29: std::result::Result<filters::FilterKind, clap::Error>;
+    let mut _30: filters::FilterKind;
+    let mut _31: std::vec::Vec<std::string::String>;
+    let mut _32: std::iter::Map<clap::Values<'_>, {closure@src/options.rs:58:22: 58:25}>;
+    let mut _33: clap::Values<'_>;
+    let mut _34: std::option::Option<clap::Values<'_>>;
+    let mut _35: &clap::ArgMatches<'_>;
+    let mut _37: bool;
+    let mut _38: bool;
+    scope 1 {
+        debug parser => _2;
+        let _3: clap::ArgMatches<'_>;
+        scope 2 {
+            debug options => _3;
+            let _5: std::result::Result<filters::FilterKind, clap::Error>;
+            scope 3 {
+                debug filter => _5;
+            }
+            scope 4 {
+                debug v => _9;
+                let _9: &str;
+                let _13: filters::FilterKind;
+                let _15: std::string::String;
+                let mut _36: &[&str; 2];
+                scope 5 {
+                    debug val => _13;
+                }
+                scope 6 {
+                    debug res => _15;
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _38 = const false;
+        _37 = const false;
+        _38 = const true;
+        _2 = Options::create_parser::<'_, '_>() -> [return: bb1, unwind: bb31];
+    }
+
+    bb1: {
+        _38 = const false;
+        _4 = move _1;
+        _3 = App::<'_, '_>::get_matches_from::<I, T>(move _2, move _4) -> [return: bb2, unwind: bb31];
+    }
+
+    bb2: {
+        _7 = &_3;
+        _6 = ArgMatches::<'_>::value_of::<&str>(move _7, const "filter") -> [return: bb3, unwind: bb26];
+    }
+
+    bb3: {
+        _8 = discriminant(_6);
+        switchInt(move _8) -> [1: bb4, otherwise: bb14];
+    }
+
+    bb4: {
+        _9 = ((_6 as Some).0: &str);
+        _11 = _9;
+        _10 = core::str::<impl str>::parse::<FilterKind>(move _11) -> [return: bb5, unwind: bb26];
+    }
+
+    bb5: {
+        _12 = discriminant(_10);
+        switchInt(move _12) -> [0: bb8, 1: bb6, otherwise: bb7];
+    }
+
+    bb6: {
+        _36 = const _;
+        _17 = _36 as &[&str] (PointerCoercion(Unsize));
+        _22 = &_9;
+        _21 = core::fmt::rt::Argument::<'_>::new_display::<&str>(_22) -> [return: bb9, unwind: bb25];
+    }
+
+    bb7: {
+        unreachable;
+    }
+
+    bb8: {
+        _13 = ((_10 as Ok).0: filters::FilterKind);
+        _37 = const true;
+        _5 = Result::<FilterKind, clap::Error>::Ok(_13);
+        goto -> bb13;
+    }
+
+    bb9: {
+        _20 = [move _21];
+        _19 = &_20;
+        _18 = _19 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _16 = Arguments::<'_>::new_v1(move _17, move _18) -> [return: bb10, unwind: bb25];
+    }
+
+    bb10: {
+        _15 = format(move _16) -> [return: bb11, unwind: bb25];
+    }
+
+    bb11: {
+        _14 = clap::Error::value_validation_auto(move _15) -> [return: bb12, unwind: bb25];
+    }
+
+    bb12: {
+        _37 = const true;
+        _5 = Result::<FilterKind, clap::Error>::Err(move _14);
+        goto -> bb13;
+    }
+
+    bb13: {
+        drop(_10) -> [return: bb16, unwind: bb26];
+    }
+
+    bb14: {
+        _23 = clap::Error::argument_not_found_auto::<&str>(const "filter") -> [return: bb15, unwind: bb26];
+    }
+
+    bb15: {
+        _37 = const true;
+        _5 = Result::<FilterKind, clap::Error>::Err(move _23);
+        goto -> bb16;
+    }
+
+    bb16: {
+        _25 = &_3;
+        _24 = ArgMatches::<'_>::is_present::<&str>(move _25, const "statistics") -> [return: bb17, unwind: bb29];
+    }
+
+    bb17: {
+        _27 = &_3;
+        _26 = ArgMatches::<'_>::is_present::<&str>(move _27, const "invert") -> [return: bb18, unwind: bb29];
+    }
+
+    bb18: {
+        _37 = const false;
+        _29 = move _5;
+        _30 = FilterKind::Digest;
+        _28 = Result::<FilterKind, clap::Error>::unwrap_or(move _29, move _30) -> [return: bb19, unwind: bb29];
+    }
+
+    bb19: {
+        _35 = &_3;
+        _34 = ArgMatches::<'_>::values_of::<&str>(move _35, const "inputs") -> [return: bb20, unwind: bb29];
+    }
+
+    bb20: {
+        _33 = Option::<clap::Values<'_>>::unwrap(move _34) -> [return: bb21, unwind: bb29];
+    }
+
+    bb21: {
+        _32 = <clap::Values<'_> as Iterator>::map::<String, {closure@src/options.rs:58:22: 58:25}>(move _33, const ZeroSized: {closure@src/options.rs:58:22: 58:25}) -> [return: bb22, unwind: bb29];
+    }
+
+    bb22: {
+        _31 = <Map<clap::Values<'_>, {closure@src/options.rs:58:22: 58:25}> as Iterator>::collect::<Vec<String>>(move _32) -> [return: bb23, unwind: bb29];
+    }
+
+    bb23: {
+        _0 = Options { filter: move _28, inputs: move _31, inverted: move _26, statistics: move _24 };
+        _37 = const false;
+        drop(_3) -> [return: bb24, unwind: bb31];
+    }
+
+    bb24: {
+        return;
+    }
+
+    bb25 (cleanup): {
+        drop(_10) -> [return: bb26, unwind terminate(cleanup)];
+    }
+
+    bb26 (cleanup): {
+        drop(_3) -> [return: bb31, unwind terminate(cleanup)];
+    }
+
+    bb27 (cleanup): {
+        resume;
+    }
+
+    bb28 (cleanup): {
+        drop(_5) -> [return: bb26, unwind terminate(cleanup)];
+    }
+
+    bb29 (cleanup): {
+        switchInt(_37) -> [0: bb26, otherwise: bb28];
+    }
+
+    bb30 (cleanup): {
+        drop(_1) -> [return: bb27, unwind terminate(cleanup)];
+    }
+
+    bb31 (cleanup): {
+        switchInt(_38) -> [0: bb27, otherwise: bb30];
+    }
+}
+
+promoted[0] in options::<impl at src/options.rs:24:1: 24:13>::from: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "The argument '", const "' isn't a valid value"];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn options::<impl at src/options.rs:24:1: 24:13>::from::{closure#0}(_1: &mut {closure@src/options.rs:58:22: 58:25}, _2: &str) -> String {
+    debug s => _2;
+    let mut _0: std::string::String;
+
+    bb0: {
+        _0 = <str as ToOwned>::to_owned(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn options::<impl at src/options.rs:24:1: 24:13>::create_parser() -> App<'_, '_> {
+    let mut _0: clap::App<'_, '_>;
+    let mut _1: clap::App<'_, '_>;
+    let mut _2: clap::App<'_, '_>;
+    let mut _3: clap::App<'_, '_>;
+    let mut _4: clap::App<'_, '_>;
+    let mut _5: clap::App<'_, '_>;
+    let mut _6: &[clap::Arg<'_, '_>];
+    let _7: &[clap::Arg<'_, '_>; 4];
+    let _8: [clap::Arg<'_, '_>; 4];
+    let mut _9: clap::Arg<'_, '_>;
+    let mut _10: clap::Arg<'_, '_>;
+    let mut _11: clap::Arg<'_, '_>;
+    let mut _12: clap::Arg<'_, '_>;
+    let mut _13: clap::Arg<'_, '_>;
+    let mut _14: clap::Arg<'_, '_>;
+    let mut _15: clap::Arg<'_, '_>;
+    let mut _16: clap::Arg<'_, '_>;
+    let _17: &str;
+    let _18: &str;
+    let _19: &str;
+    let mut _20: &[&str];
+    let _21: &[&str; 4];
+    let _22: [&str; 4];
+    let mut _23: clap::ArgSettings;
+    let mut _24: clap::ArgSettings;
+    let mut _25: clap::Arg<'_, '_>;
+    let mut _26: clap::Arg<'_, '_>;
+    let mut _27: clap::Arg<'_, '_>;
+    let mut _28: clap::Arg<'_, '_>;
+    let _29: &str;
+    let _30: &str;
+    let mut _31: clap::Arg<'_, '_>;
+    let mut _32: clap::Arg<'_, '_>;
+    let mut _33: clap::Arg<'_, '_>;
+    let mut _34: clap::Arg<'_, '_>;
+    let _35: &str;
+    let _36: &str;
+    let _37: &str;
+    let mut _38: clap::Arg<'_, '_>;
+    let mut _39: clap::Arg<'_, '_>;
+    let mut _40: clap::Arg<'_, '_>;
+    let mut _41: clap::Arg<'_, '_>;
+    let _42: &str;
+    let _43: &str;
+    let _44: &str;
+    let mut _45: &[clap::AppSettings];
+    let mut _46: &[clap::AppSettings; 3];
+    let mut _47: bool;
+
+    bb0: {
+        _47 = const false;
+        _5 = App::<'_, '_>::new::<&str>(const "") -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _4 = App::<'_, '_>::name::<&str>(move _5, const "runiq") -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _3 = App::<'_, '_>::about::<&str>(move _4, const "An efficient way to filter duplicate lines from input, à la uniq.") -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _2 = App::<'_, '_>::version::<&str>(move _3, const "1.2.0") -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _17 = const "filter";
+        _16 = Arg::<'_, '_>::with_name(_17) -> [return: bb5, unwind: bb33];
+    }
+
+    bb5: {
+        _18 = const "Filter to use to determine uniqueness";
+        _15 = Arg::<'_, '_>::help(move _16, _18) -> [return: bb6, unwind: bb33];
+    }
+
+    bb6: {
+        _14 = Arg::<'_, '_>::short::<&str>(move _15, const "f") -> [return: bb7, unwind: bb33];
+    }
+
+    bb7: {
+        _19 = const "filter";
+        _13 = Arg::<'_, '_>::long(move _14, _19) -> [return: bb8, unwind: bb33];
+    }
+
+    bb8: {
+        _12 = Arg::<'_, '_>::takes_value(move _13, const true) -> [return: bb9, unwind: bb33];
+    }
+
+    bb9: {
+        _47 = const true;
+        _22 = FilterKind::variants() -> [return: bb10, unwind: bb36];
+    }
+
+    bb10: {
+        _21 = &_22;
+        _20 = _21 as &[&str] (PointerCoercion(Unsize));
+        _47 = const false;
+        _11 = Arg::<'_, '_>::possible_values(move _12, move _20) -> [return: bb11, unwind: bb36];
+    }
+
+    bb11: {
+        _47 = const false;
+        _23 = CaseInsensitive;
+        _10 = Arg::<'_, '_>::set(move _11, move _23) -> [return: bb12, unwind: bb33];
+    }
+
+    bb12: {
+        _24 = HideDefaultValue;
+        _9 = Arg::<'_, '_>::set(move _10, move _24) -> [return: bb13, unwind: bb33];
+    }
+
+    bb13: {
+        _29 = const "inputs";
+        _28 = Arg::<'_, '_>::with_name(_29) -> [return: bb14, unwind: bb32];
+    }
+
+    bb14: {
+        _30 = const "Input sources to filter";
+        _27 = Arg::<'_, '_>::help(move _28, _30) -> [return: bb15, unwind: bb32];
+    }
+
+    bb15: {
+        _26 = Arg::<'_, '_>::multiple(move _27, const true) -> [return: bb16, unwind: bb32];
+    }
+
+    bb16: {
+        _25 = Arg::<'_, '_>::required(move _26, const true) -> [return: bb17, unwind: bb32];
+    }
+
+    bb17: {
+        _35 = const "invert";
+        _34 = Arg::<'_, '_>::with_name(_35) -> [return: bb18, unwind: bb31];
+    }
+
+    bb18: {
+        _36 = const "Prints duplicates instead of uniques";
+        _33 = Arg::<'_, '_>::help(move _34, _36) -> [return: bb19, unwind: bb31];
+    }
+
+    bb19: {
+        _32 = Arg::<'_, '_>::short::<&str>(move _33, const "i") -> [return: bb20, unwind: bb31];
+    }
+
+    bb20: {
+        _37 = const "invert";
+        _31 = Arg::<'_, '_>::long(move _32, _37) -> [return: bb21, unwind: bb31];
+    }
+
+    bb21: {
+        _42 = const "statistics";
+        _41 = Arg::<'_, '_>::with_name(_42) -> [return: bb22, unwind: bb30];
+    }
+
+    bb22: {
+        _43 = const "Prints statistics instead of entries";
+        _40 = Arg::<'_, '_>::help(move _41, _43) -> [return: bb23, unwind: bb30];
+    }
+
+    bb23: {
+        _39 = Arg::<'_, '_>::short::<&str>(move _40, const "s") -> [return: bb24, unwind: bb30];
+    }
+
+    bb24: {
+        _44 = const "statistics";
+        _38 = Arg::<'_, '_>::long(move _39, _44) -> [return: bb25, unwind: bb30];
+    }
+
+    bb25: {
+        _8 = [move _9, move _25, move _31, move _38];
+        _7 = &_8;
+        _6 = _7 as &[clap::Arg<'_, '_>] (PointerCoercion(Unsize));
+        _1 = App::<'_, '_>::args(move _2, move _6) -> [return: bb26, unwind: bb29];
+    }
+
+    bb26: {
+        _46 = const _;
+        _45 = _46 as &[clap::AppSettings] (PointerCoercion(Unsize));
+        _0 = App::<'_, '_>::settings(move _1, move _45) -> [return: bb27, unwind: bb29];
+    }
+
+    bb27: {
+        drop(_8) -> [return: bb28, unwind continue];
+    }
+
+    bb28: {
+        return;
+    }
+
+    bb29 (cleanup): {
+        drop(_8) -> [return: bb34, unwind terminate(cleanup)];
+    }
+
+    bb30 (cleanup): {
+        drop(_31) -> [return: bb31, unwind terminate(cleanup)];
+    }
+
+    bb31 (cleanup): {
+        drop(_25) -> [return: bb32, unwind terminate(cleanup)];
+    }
+
+    bb32 (cleanup): {
+        drop(_9) -> [return: bb33, unwind terminate(cleanup)];
+    }
+
+    bb33 (cleanup): {
+        drop(_2) -> [return: bb34, unwind terminate(cleanup)];
+    }
+
+    bb34 (cleanup): {
+        resume;
+    }
+
+    bb35 (cleanup): {
+        drop(_12) -> [return: bb33, unwind terminate(cleanup)];
+    }
+
+    bb36 (cleanup): {
+        switchInt(_47) -> [0: bb33, otherwise: bb35];
+    }
+}
+
+promoted[0] in options::<impl at src/options.rs:24:1: 24:13>::create_parser: &[AppSettings; 3] = {
+    let mut _0: &[clap::AppSettings; 3];
+    let mut _1: [clap::AppSettings; 3];
+    let mut _2: clap::AppSettings;
+    let mut _3: clap::AppSettings;
+    let mut _4: clap::AppSettings;
+
+    bb0: {
+        _2 = ArgRequiredElseHelp;
+        _3 = HidePossibleValuesInHelp;
+        _4 = TrailingVarArg;
+        _1 = [move _2, move _3, move _4];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn statistics::<impl at src/statistics.rs:17:10: 17:15>::fmt(_1: &Stats, _2: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+    debug self => _1;
+    debug f => _2;
+    let mut _0: std::result::Result<(), std::fmt::Error>;
+    let _3: &str;
+    let _4: &str;
+    let mut _5: &dyn std::fmt::Debug;
+    let _6: &u64;
+    let _7: &str;
+    let mut _8: &dyn std::fmt::Debug;
+    let _9: &&u64;
+    let _10: &u64;
+
+    bb0: {
+        _3 = const "Stats";
+        _4 = const "unique";
+        _6 = &((*_1).0: u64);
+        _5 = _6 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _7 = const "total";
+        _10 = &((*_1).1: u64);
+        _9 = &_10;
+        _8 = _9 as &dyn std::fmt::Debug (PointerCoercion(Unsize));
+        _0 = Formatter::<'_>::debug_struct_field2_finish(_2, _3, _4, move _5, _7, move _8) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn statistics::<impl at src/statistics.rs:17:17: 17:24>::default() -> Stats {
+    let mut _0: statistics::Stats;
+    let mut _1: u64;
+    let mut _2: u64;
+
+    bb0: {
+        _1 = <u64 as Default>::default() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = <u64 as Default>::default() -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _0 = Stats { unique: move _1, total: move _2 };
+        return;
+    }
+}
+
+fn statistics::<impl at src/statistics.rs:23:1: 23:11>::new() -> Stats {
+    let mut _0: statistics::Stats;
+
+    bb0: {
+        _0 = <Stats as Default>::default() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn statistics::<impl at src/statistics.rs:23:1: 23:11>::add_unique(_1: &mut Stats) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let mut _2: (u64, bool);
+    let mut _3: (u64, bool);
+
+    bb0: {
+        _2 = CheckedAdd(((*_1).1: u64), const 1_u64);
+        assert(!move (_2.1: bool), "attempt to compute `{} + {}`, which would overflow", ((*_1).1: u64), const 1_u64) -> [success: bb1, unwind continue];
+    }
+
+    bb1: {
+        ((*_1).1: u64) = move (_2.0: u64);
+        _3 = CheckedAdd(((*_1).0: u64), const 1_u64);
+        assert(!move (_3.1: bool), "attempt to compute `{} + {}`, which would overflow", ((*_1).0: u64), const 1_u64) -> [success: bb2, unwind continue];
+    }
+
+    bb2: {
+        ((*_1).0: u64) = move (_3.0: u64);
+        return;
+    }
+}
+
+fn statistics::<impl at src/statistics.rs:23:1: 23:11>::add_duplicate(_1: &mut Stats) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let mut _2: (u64, bool);
+
+    bb0: {
+        _2 = CheckedAdd(((*_1).1: u64), const 1_u64);
+        assert(!move (_2.1: bool), "attempt to compute `{} + {}`, which would overflow", ((*_1).1: u64), const 1_u64) -> [success: bb1, unwind continue];
+    }
+
+    bb1: {
+        ((*_1).1: u64) = move (_2.0: u64);
+        return;
+    }
+}
+
+fn statistics::<impl at src/statistics.rs:23:1: 23:11>::duplicates(_1: &Stats) -> u64 {
+    debug self => _1;
+    let mut _0: u64;
+    let mut _2: u64;
+    let mut _3: u64;
+    let mut _4: (u64, bool);
+
+    bb0: {
+        _2 = ((*_1).1: u64);
+        _3 = ((*_1).0: u64);
+        _4 = CheckedSub(_2, _3);
+        assert(!move (_4.1: bool), "attempt to compute `{} - {}`, which would overflow", move _2, move _3) -> [success: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = move (_4.0: u64);
+        return;
+    }
+}
+
+fn statistics::<impl at src/statistics.rs:23:1: 23:11>::rate(_1: &Stats) -> f32 {
+    debug self => _1;
+    let mut _0: f32;
+    let mut _2: f64;
+    let mut _3: f64;
+    let mut _4: f64;
+    let mut _5: u64;
+    let mut _6: f64;
+    let mut _7: u64;
+
+    bb0: {
+        _5 = ((*_1).0: u64);
+        _4 = move _5 as f64 (IntToFloat);
+        _7 = ((*_1).1: u64);
+        _6 = move _7 as f64 (IntToFloat);
+        _3 = Div(move _4, move _6);
+        _2 = Mul(move _3, const 100f64);
+        _0 = move _2 as f32 (FloatToFloat);
+        return;
+    }
+}
+
+fn statistics::<impl at src/statistics.rs:23:1: 23:11>::total(_1: &Stats) -> u64 {
+    debug self => _1;
+    let mut _0: u64;
+
+    bb0: {
+        _0 = ((*_1).1: u64);
+        return;
+    }
+}
+
+fn statistics::<impl at src/statistics.rs:23:1: 23:11>::uniques(_1: &Stats) -> u64 {
+    debug self => _1;
+    let mut _0: u64;
+
+    bb0: {
+        _0 = ((*_1).0: u64);
+        return;
+    }
+}
+
+fn statistics::<impl at src/statistics.rs:23:1: 23:11>::print(_1: &Stats) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let _2: ();
+    let mut _3: std::fmt::Arguments<'_>;
+    let mut _4: &[&str];
+    let _5: ();
+    let _6: &str;
+    let mut _7: u64;
+    let _8: ();
+    let _9: &str;
+    let mut _10: u64;
+    let _11: ();
+    let _12: &str;
+    let mut _13: u64;
+    let _14: ();
+    let mut _15: std::fmt::Arguments<'_>;
+    let mut _16: &[&str];
+    let mut _17: &[core::fmt::rt::Argument<'_>];
+    let _18: &[core::fmt::rt::Argument<'_>; 1];
+    let _19: [core::fmt::rt::Argument<'_>; 1];
+    let mut _20: core::fmt::rt::Argument<'_>;
+    let _21: &f32;
+    let _22: f32;
+    let mut _23: f32;
+    let mut _24: &[core::fmt::rt::Placeholder];
+    let _25: &[core::fmt::rt::Placeholder; 1];
+    let _26: [core::fmt::rt::Placeholder; 1];
+    let mut _27: core::fmt::rt::Placeholder;
+    let mut _28: core::fmt::rt::Alignment;
+    let mut _29: core::fmt::rt::Count;
+    let mut _30: core::fmt::rt::Count;
+    let mut _31: core::fmt::rt::UnsafeArg;
+    let _32: ();
+    let mut _33: std::fmt::Arguments<'_>;
+    let mut _34: &[&str];
+    let mut _35: &[&str; 1];
+    let mut _36: &[&str; 2];
+    let mut _37: &[&str; 1];
+    scope 1 {
+    }
+
+    bb0: {
+        _37 = const _;
+        _4 = _37 as &[&str] (PointerCoercion(Unsize));
+        _3 = Arguments::<'_>::new_const(move _4) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = _print(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _6 = const "Unique Count";
+        _7 = Stats::uniques(_1) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _5 = uprintln(_6, move _7, const 1_usize) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _9 = const "Total Count";
+        _10 = Stats::total(_1) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        _8 = uprintln(_9, move _10, const 2_usize) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _12 = const "Dup Offset";
+        _13 = Stats::duplicates(_1) -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        _11 = uprintln(_12, move _13, const 3_usize) -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        _36 = const _;
+        _16 = _36 as &[&str] (PointerCoercion(Unsize));
+        _23 = Stats::rate(_1) -> [return: bb9, unwind continue];
+    }
+
+    bb9: {
+        _22 = Sub(const 100f32, move _23);
+        _21 = &_22;
+        _20 = core::fmt::rt::Argument::<'_>::new_display::<f32>(_21) -> [return: bb10, unwind continue];
+    }
+
+    bb10: {
+        _19 = [move _20];
+        _18 = &_19;
+        _17 = _18 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _28 = core::fmt::rt::Alignment::Right;
+        _29 = core::fmt::rt::Count::Is(const 2_usize);
+        _30 = core::fmt::rt::Count::Is(const 22_usize);
+        _27 = core::fmt::rt::Placeholder::new(const 0_usize, const ' ', move _28, const 0_u32, move _29, move _30) -> [return: bb11, unwind continue];
+    }
+
+    bb11: {
+        _26 = [move _27];
+        _25 = &_26;
+        _24 = _25 as &[core::fmt::rt::Placeholder] (PointerCoercion(Unsize));
+        _31 = core::fmt::rt::UnsafeArg::new() -> [return: bb12, unwind continue];
+    }
+
+    bb12: {
+        _15 = Arguments::<'_>::new_v1_formatted(move _16, move _17, move _24, const core::fmt::rt::UnsafeArg {{ _private: () }}) -> [return: bb13, unwind continue];
+    }
+
+    bb13: {
+        _14 = _print(move _15) -> [return: bb14, unwind continue];
+    }
+
+    bb14: {
+        _35 = const _;
+        _34 = _35 as &[&str] (PointerCoercion(Unsize));
+        _33 = Arguments::<'_>::new_const(move _34) -> [return: bb15, unwind continue];
+    }
+
+    bb15: {
+        _32 = _print(move _33) -> [return: bb16, unwind continue];
+    }
+
+    bb16: {
+        return;
+    }
+}
+
+promoted[0] in statistics::<impl at src/statistics.rs:23:1: 23:11>::print: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in statistics::<impl at src/statistics.rs:23:1: 23:11>::print: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "Dup Rate:", const "%\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[2] in statistics::<impl at src/statistics.rs:23:1: 23:11>::print: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn uprintln(_1: &str, _2: u64, _3: usize) -> () {
+    debug label => _1;
+    debug value => _2;
+    debug offset => _3;
+    let mut _0: ();
+    let _4: std::string::String;
+    let mut _5: &u64;
+    let mut _8: &std::string::String;
+    let mut _10: std::str::Chars<'_>;
+    let mut _11: std::str::Chars<'_>;
+    let _12: &str;
+    let mut _13: &std::string::String;
+    let mut _15: std::option::Option<char>;
+    let mut _16: &mut std::str::Chars<'_>;
+    let mut _17: isize;
+    let mut _19: bool;
+    let mut _20: usize;
+    let mut _21: usize;
+    let mut _22: bool;
+    let _23: ();
+    let mut _24: &mut std::string::String;
+    let _25: ();
+    let mut _26: &mut std::string::String;
+    let mut _27: (usize, bool);
+    let _28: ();
+    let mut _29: std::fmt::Arguments<'_>;
+    let mut _30: &[&str];
+    let mut _31: &[core::fmt::rt::Argument<'_>];
+    let _32: &[core::fmt::rt::Argument<'_>; 3];
+    let _33: [core::fmt::rt::Argument<'_>; 3];
+    let mut _34: core::fmt::rt::Argument<'_>;
+    let _35: &&str;
+    let mut _36: core::fmt::rt::Argument<'_>;
+    let _37: &std::string::String;
+    let mut _38: core::fmt::rt::Argument<'_>;
+    let _39: &usize;
+    let _40: usize;
+    let mut _41: (usize, bool);
+    let mut _42: &[core::fmt::rt::Placeholder];
+    let _43: &[core::fmt::rt::Placeholder; 2];
+    let _44: [core::fmt::rt::Placeholder; 2];
+    let mut _45: core::fmt::rt::Placeholder;
+    let mut _46: core::fmt::rt::Alignment;
+    let mut _47: core::fmt::rt::Count;
+    let mut _48: core::fmt::rt::Count;
+    let mut _49: core::fmt::rt::Placeholder;
+    let mut _50: core::fmt::rt::Alignment;
+    let mut _51: core::fmt::rt::Count;
+    let mut _52: core::fmt::rt::Count;
+    let mut _53: core::fmt::rt::UnsafeArg;
+    scope 1 {
+        debug str_value => _4;
+        let mut _6: std::string::String;
+        scope 2 {
+            debug output => _6;
+            let mut _7: usize;
+            scope 3 {
+                debug place => _7;
+                let mut _9: bool;
+                scope 4 {
+                    debug later_loop => _9;
+                    let mut _14: std::str::Chars<'_>;
+                    let mut _54: &[&str; 3];
+                    scope 5 {
+                        debug iter => _14;
+                        let _18: char;
+                        scope 6 {
+                            debug ch => _18;
+                        }
+                    }
+                    scope 7 {
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _5 = &_2;
+        _4 = <u64 as ToString>::to_string(move _5) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _6 = String::new() -> [return: bb2, unwind: bb30];
+    }
+
+    bb2: {
+        _8 = &_4;
+        _7 = String::len(move _8) -> [return: bb3, unwind: bb29];
+    }
+
+    bb3: {
+        _9 = const false;
+        _13 = &_4;
+        _12 = <String as Deref>::deref(move _13) -> [return: bb4, unwind: bb29];
+    }
+
+    bb4: {
+        _11 = core::str::<impl str>::chars(_12) -> [return: bb5, unwind: bb29];
+    }
+
+    bb5: {
+        _10 = <Chars<'_> as IntoIterator>::into_iter(move _11) -> [return: bb6, unwind: bb29];
+    }
+
+    bb6: {
+        _14 = move _10;
+        goto -> bb7;
+    }
+
+    bb7: {
+        _16 = &mut _14;
+        _15 = <Chars<'_> as Iterator>::next(_16) -> [return: bb8, unwind: bb29];
+    }
+
+    bb8: {
+        _17 = discriminant(_15);
+        switchInt(move _17) -> [0: bb11, 1: bb9, otherwise: bb10];
+    }
+
+    bb9: {
+        _18 = ((_15 as Some).0: char);
+        _19 = _9;
+        switchInt(move _19) -> [0: bb15, otherwise: bb12];
+    }
+
+    bb10: {
+        unreachable;
+    }
+
+    bb11: {
+        _54 = const _;
+        _30 = _54 as &[&str] (PointerCoercion(Unsize));
+        _35 = &_1;
+        _34 = core::fmt::rt::Argument::<'_>::new_display::<&str>(_35) -> [return: bb18, unwind: bb29];
+    }
+
+    bb12: {
+        _21 = _7;
+        _22 = Eq(const 3_usize, const 0_usize);
+        assert(!move _22, "attempt to calculate the remainder of `{}` with a divisor of zero", _21) -> [success: bb13, unwind: bb29];
+    }
+
+    bb13: {
+        _20 = Rem(move _21, const 3_usize);
+        switchInt(move _20) -> [0: bb14, otherwise: bb15];
+    }
+
+    bb14: {
+        _24 = &mut _6;
+        _23 = String::push(move _24, const ',') -> [return: bb32, unwind: bb29];
+    }
+
+    bb15: {
+        _26 = &mut _6;
+        _25 = String::push(move _26, _18) -> [return: bb16, unwind: bb29];
+    }
+
+    bb16: {
+        _9 = const true;
+        _27 = CheckedSub(_7, const 1_usize);
+        assert(!move (_27.1: bool), "attempt to compute `{} - {}`, which would overflow", _7, const 1_usize) -> [success: bb17, unwind: bb29];
+    }
+
+    bb17: {
+        _7 = move (_27.0: usize);
+        goto -> bb7;
+    }
+
+    bb18: {
+        _37 = &_6;
+        _36 = core::fmt::rt::Argument::<'_>::new_display::<String>(_37) -> [return: bb19, unwind: bb29];
+    }
+
+    bb19: {
+        _41 = CheckedAdd(const 18_usize, _3);
+        assert(!move (_41.1: bool), "attempt to compute `{} + {}`, which would overflow", const 18_usize, _3) -> [success: bb20, unwind: bb29];
+    }
+
+    bb20: {
+        _40 = move (_41.0: usize);
+        _39 = &_40;
+        _38 = core::fmt::rt::Argument::<'_>::from_usize(_39) -> [return: bb21, unwind: bb29];
+    }
+
+    bb21: {
+        _33 = [move _34, move _36, move _38];
+        _32 = &_33;
+        _31 = _32 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _46 = core::fmt::rt::Alignment::Unknown;
+        _47 = core::fmt::rt::Count::Implied;
+        _48 = core::fmt::rt::Count::Implied;
+        _45 = core::fmt::rt::Placeholder::new(const 0_usize, const ' ', move _46, const 0_u32, move _47, move _48) -> [return: bb22, unwind: bb29];
+    }
+
+    bb22: {
+        _50 = core::fmt::rt::Alignment::Right;
+        _51 = core::fmt::rt::Count::Implied;
+        _52 = core::fmt::rt::Count::Param(const 2_usize);
+        _49 = core::fmt::rt::Placeholder::new(const 1_usize, const ' ', move _50, const 0_u32, move _51, move _52) -> [return: bb23, unwind: bb29];
+    }
+
+    bb23: {
+        _44 = [move _45, move _49];
+        _43 = &_44;
+        _42 = _43 as &[core::fmt::rt::Placeholder] (PointerCoercion(Unsize));
+        _53 = core::fmt::rt::UnsafeArg::new() -> [return: bb24, unwind: bb29];
+    }
+
+    bb24: {
+        _29 = Arguments::<'_>::new_v1_formatted(move _30, move _31, move _42, const core::fmt::rt::UnsafeArg {{ _private: () }}) -> [return: bb25, unwind: bb29];
+    }
+
+    bb25: {
+        _28 = _print(move _29) -> [return: bb26, unwind: bb29];
+    }
+
+    bb26: {
+        drop(_6) -> [return: bb27, unwind: bb30];
+    }
+
+    bb27: {
+        drop(_4) -> [return: bb28, unwind continue];
+    }
+
+    bb28: {
+        return;
+    }
+
+    bb29 (cleanup): {
+        drop(_6) -> [return: bb30, unwind terminate(cleanup)];
+    }
+
+    bb30 (cleanup): {
+        drop(_4) -> [return: bb31, unwind terminate(cleanup)];
+    }
+
+    bb31 (cleanup): {
+        resume;
+    }
+
+    bb32: {
+        goto -> bb15;
+    }
+}
+
+promoted[0] in uprintln: &[&str; 3] = {
+    let mut _0: &[&str; 3];
+    let mut _1: [&str; 3];
+
+    bb0: {
+        _1 = [const "", const ":", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+const EOL: &[u8; 1] = {
+    let mut _0: &[u8; 1];
+    let _1: &[u8; 1];
+    let _2: [u8; 1];
+    let mut _3: &[u8; 1];
+
+    bb0: {
+        StorageLive(_1);
+        _3 = const _;
+        _1 = &(*_3);
+        _0 = &(*_1);
+        StorageDead(_1);
+        return;
+    }
+}
+
+promoted[0] in EOL: &[u8; 1] = {
+    let mut _0: &[u8; 1];
+    let mut _1: [u8; 1];
+
+    bb0: {
+        _1 = [const 10_u8];
+        _0 = &_1;
+        return;
+    }
+}
+
+EOL::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 1_usize;
+        return;
+    }
+}
+
+fn main() -> Result<(), std::io::Error> {
+    let mut _0: std::result::Result<(), std::io::Error>;
+    let _1: options::Options;
+    let mut _2: &mut std::env::ArgsOs;
+    let mut _3: std::env::ArgsOs;
+    let mut _7: std::iter::Map<std::slice::Iter<'_, std::string::String>, {closure@src/main.rs:44:14: 44:38}>;
+    let mut _8: std::slice::Iter<'_, std::string::String>;
+    let _9: &[std::string::String];
+    let _10: &std::vec::Vec<std::string::String>;
+    let mut _11: {closure@src/main.rs:44:14: 44:38};
+    let mut _12: &std::io::Stdin;
+    let mut _14: filters::FilterKind;
+    let mut _17: &std::io::Stdout;
+    let mut _18: std::vec::IntoIter<std::boxed::Box<dyn std::io::Read>>;
+    let mut _19: std::vec::Vec<std::boxed::Box<dyn std::io::Read>>;
+    let mut _21: std::option::Option<std::boxed::Box<dyn std::io::Read>>;
+    let mut _22: &mut std::vec::IntoIter<std::boxed::Box<dyn std::io::Read>>;
+    let mut _23: isize;
+    let mut _26: std::io::BufReader<std::boxed::Box<dyn std::io::Read>>;
+    let mut _27: std::option::Option<std::result::Result<&[u8], std::io::Error>>;
+    let mut _28: &mut bytelines::ByteLines<std::io::BufReader<std::boxed::Box<dyn std::io::Read>>>;
+    let mut _29: isize;
+    let mut _32: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>, &[u8]>;
+    let mut _33: isize;
+    let mut _36: bool;
+    let mut _37: &mut dyn filters::Filter;
+    let _38: &&[u8];
+    let mut _39: bool;
+    let _40: ();
+    let mut _41: &mut statistics::Stats;
+    let mut _42: bool;
+    let mut _43: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>>;
+    let mut _44: std::result::Result<(), std::io::Error>;
+    let mut _45: &mut std::io::StdoutLock<'_>;
+    let mut _46: &[u8];
+    let mut _47: isize;
+    let mut _49: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>>;
+    let mut _50: std::result::Result<(), std::io::Error>;
+    let mut _51: &mut std::io::StdoutLock<'_>;
+    let mut _52: &[u8];
+    let _53: &[u8; 1];
+    let mut _54: isize;
+    let mut _56: bool;
+    let _57: ();
+    let mut _58: &mut statistics::Stats;
+    let mut _59: bool;
+    let mut _60: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>>;
+    let mut _61: std::result::Result<(), std::io::Error>;
+    let mut _62: &mut std::io::StdoutLock<'_>;
+    let mut _63: &[u8];
+    let mut _64: isize;
+    let mut _66: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>>;
+    let mut _67: std::result::Result<(), std::io::Error>;
+    let mut _68: &mut std::io::StdoutLock<'_>;
+    let mut _69: &[u8];
+    let _70: &[u8; 1];
+    let mut _71: isize;
+    let mut _73: bool;
+    let _74: ();
+    let mut _75: &statistics::Stats;
+    let mut _76: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::io::Error>>;
+    let mut _77: std::result::Result<(), std::io::Error>;
+    let mut _78: &mut std::io::StdoutLock<'_>;
+    let mut _79: isize;
+    let mut _81: &[u8];
+    let mut _82: bool;
+    let mut _83: *const dyn filters::Filter;
+    scope 1 {
+        debug options => _1;
+        let _4: std::io::Stdin;
+        scope 2 {
+            debug stdin => _4;
+            let _5: std::io::Stdout;
+            scope 3 {
+                debug stdout => _5;
+                let _6: std::vec::Vec<std::boxed::Box<dyn std::io::Read>>;
+                scope 4 {
+                    debug readers => _6;
+                    let mut _13: std::boxed::Box<dyn filters::Filter>;
+                    scope 5 {
+                        debug filter => _13;
+                        let mut _15: statistics::Stats;
+                        scope 6 {
+                            debug statistics => _15;
+                            let mut _16: std::io::StdoutLock<'_>;
+                            scope 7 {
+                                debug stdout => _16;
+                                let mut _20: std::vec::IntoIter<std::boxed::Box<dyn std::io::Read>>;
+                                let _80: std::result::Result<std::convert::Infallible, std::io::Error>;
+                                scope 8 {
+                                    debug iter => _20;
+                                    let _24: std::boxed::Box<dyn std::io::Read>;
+                                    scope 9 {
+                                        debug reader => _24;
+                                        let mut _25: bytelines::ByteLines<std::io::BufReader<std::boxed::Box<dyn std::io::Read>>>;
+                                        scope 10 {
+                                            debug lines => _25;
+                                            scope 11 {
+                                                debug line => _30;
+                                                let _30: std::result::Result<&[u8], std::io::Error>;
+                                                let _31: &[u8];
+                                                let _34: std::result::Result<std::convert::Infallible, std::io::Error>;
+                                                let _35: &[u8];
+                                                scope 12 {
+                                                    debug input => _31;
+                                                    let _48: std::result::Result<std::convert::Infallible, std::io::Error>;
+                                                    let _55: std::result::Result<std::convert::Infallible, std::io::Error>;
+                                                    let _65: std::result::Result<std::convert::Infallible, std::io::Error>;
+                                                    let _72: std::result::Result<std::convert::Infallible, std::io::Error>;
+                                                    scope 17 {
+                                                        debug residual => _48;
+                                                        scope 18 {
+                                                        }
+                                                    }
+                                                    scope 19 {
+                                                        debug val => const ();
+                                                        scope 20 {
+                                                        }
+                                                    }
+                                                    scope 21 {
+                                                        debug residual => _55;
+                                                        scope 22 {
+                                                        }
+                                                    }
+                                                    scope 23 {
+                                                        debug val => const ();
+                                                        scope 24 {
+                                                        }
+                                                    }
+                                                    scope 25 {
+                                                        debug residual => _65;
+                                                        scope 26 {
+                                                        }
+                                                    }
+                                                    scope 27 {
+                                                        debug val => const ();
+                                                        scope 28 {
+                                                        }
+                                                    }
+                                                    scope 29 {
+                                                        debug residual => _72;
+                                                        scope 30 {
+                                                        }
+                                                    }
+                                                    scope 31 {
+                                                        debug val => const ();
+                                                        scope 32 {
+                                                        }
+                                                    }
+                                                }
+                                                scope 13 {
+                                                    debug residual => _34;
+                                                    scope 14 {
+                                                    }
+                                                }
+                                                scope 15 {
+                                                    debug val => _35;
+                                                    scope 16 {
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                scope 33 {
+                                    debug residual => _80;
+                                    scope 34 {
+                                    }
+                                }
+                                scope 35 {
+                                    debug val => const ();
+                                    scope 36 {
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _82 = const false;
+        _3 = args_os() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = &mut _3;
+        _1 = Options::from::<&mut ArgsOs, OsString>(move _2) -> [return: bb2, unwind: bb71];
+    }
+
+    bb2: {
+        drop(_3) -> [return: bb3, unwind: bb70];
+    }
+
+    bb3: {
+        _4 = stdin() -> [return: bb4, unwind: bb70];
+    }
+
+    bb4: {
+        _5 = stdout() -> [return: bb5, unwind: bb70];
+    }
+
+    bb5: {
+        _10 = &(_1.1: std::vec::Vec<std::string::String>);
+        _9 = <Vec<String> as Deref>::deref(_10) -> [return: bb6, unwind: bb70];
+    }
+
+    bb6: {
+        _8 = core::slice::<impl [String]>::iter(_9) -> [return: bb7, unwind: bb70];
+    }
+
+    bb7: {
+        _12 = &_4;
+        _11 = {closure@src/main.rs:44:14: 44:38} { stdin: move _12 };
+        _7 = <std::slice::Iter<'_, String> as Iterator>::map::<Box<dyn std::io::Read>, {closure@src/main.rs:44:14: 44:38}>(move _8, move _11) -> [return: bb8, unwind: bb70];
+    }
+
+    bb8: {
+        _6 = <Map<std::slice::Iter<'_, String>, {closure@src/main.rs:44:14: 44:38}> as Iterator>::collect::<Vec<Box<dyn std::io::Read>>>(move _7) -> [return: bb9, unwind: bb70];
+    }
+
+    bb9: {
+        _82 = const true;
+        _14 = (_1.0: filters::FilterKind);
+        _13 = <FilterKind as Into<Box<dyn filters::Filter>>>::into(move _14) -> [return: bb10, unwind: bb74];
+    }
+
+    bb10: {
+        _15 = Stats::new() -> [return: bb11, unwind: bb69];
+    }
+
+    bb11: {
+        _17 = &_5;
+        _16 = Stdout::lock(move _17) -> [return: bb12, unwind: bb69];
+    }
+
+    bb12: {
+        _82 = const false;
+        _19 = move _6;
+        _18 = <Vec<Box<dyn std::io::Read>> as IntoIterator>::into_iter(move _19) -> [return: bb13, unwind: bb68];
+    }
+
+    bb13: {
+        _20 = move _18;
+        goto -> bb14;
+    }
+
+    bb14: {
+        _22 = &mut _20;
+        _21 = <std::vec::IntoIter<Box<dyn std::io::Read>> as Iterator>::next(_22) -> [return: bb15, unwind: bb67];
+    }
+
+    bb15: {
+        _23 = discriminant(_21);
+        switchInt(move _23) -> [0: bb18, 1: bb16, otherwise: bb17];
+    }
+
+    bb16: {
+        _24 = move ((_21 as Some).0: std::boxed::Box<dyn std::io::Read>);
+        _26 = BufReader::<Box<dyn std::io::Read>>::new(move _24) -> [return: bb19, unwind: bb67];
+    }
+
+    bb17: {
+        unreachable;
+    }
+
+    bb18: {
+        drop(_20) -> [return: bb51, unwind: bb68];
+    }
+
+    bb19: {
+        _25 = <BufReader<Box<dyn std::io::Read>> as ByteLinesReader<BufReader<Box<dyn std::io::Read>>>>::byte_lines(move _26) -> [return: bb75, unwind: bb67];
+    }
+
+    bb20: {
+        _28 = &mut _25;
+        _27 = ByteLines::<BufReader<Box<dyn std::io::Read>>>::next(move _28) -> [return: bb21, unwind: bb66];
+    }
+
+    bb21: {
+        _29 = discriminant(_27);
+        switchInt(move _29) -> [1: bb22, otherwise: bb49];
+    }
+
+    bb22: {
+        _30 = move ((_27 as Some).0: std::result::Result<&[u8], std::io::Error>);
+        _32 = <Result<&[u8], std::io::Error> as Try>::branch(move _30) -> [return: bb23, unwind: bb66];
+    }
+
+    bb23: {
+        _33 = discriminant(_32);
+        switchInt(move _33) -> [0: bb24, 1: bb25, otherwise: bb17];
+    }
+
+    bb24: {
+        _35 = ((_32 as Continue).0: &[u8]);
+        _31 = _35;
+        _83 = (((_13.0: std::ptr::Unique<dyn filters::Filter>).0: std::ptr::NonNull<dyn filters::Filter>).0: *const dyn filters::Filter);
+        _37 = &mut (*_83);
+        _38 = &_31;
+        _81 = deref_copy (*_38);
+        _36 = <dyn filters::Filter as filters::Filter>::detect(move _37, _81) -> [return: bb26, unwind: bb66];
+    }
+
+    bb25: {
+        _34 = move ((_32 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<(), std::io::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _34) -> [return: bb76, unwind: bb66];
+    }
+
+    bb26: {
+        switchInt(move _36) -> [0: bb38, otherwise: bb27];
+    }
+
+    bb27: {
+        _39 = (_1.3: bool);
+        switchInt(move _39) -> [0: bb29, otherwise: bb28];
+    }
+
+    bb28: {
+        _41 = &mut _15;
+        _40 = Stats::add_unique(move _41) -> [return: bb77, unwind: bb66];
+    }
+
+    bb29: {
+        _42 = (_1.2: bool);
+        switchInt(move _42) -> [0: bb30, otherwise: bb20];
+    }
+
+    bb30: {
+        _45 = &mut _16;
+        _46 = _31;
+        _44 = <StdoutLock<'_> as std::io::Write>::write_all(move _45, move _46) -> [return: bb31, unwind: bb66];
+    }
+
+    bb31: {
+        _43 = <Result<(), std::io::Error> as Try>::branch(move _44) -> [return: bb32, unwind: bb66];
+    }
+
+    bb32: {
+        _47 = discriminant(_43);
+        switchInt(move _47) -> [0: bb33, 1: bb34, otherwise: bb17];
+    }
+
+    bb33: {
+        _51 = &mut _16;
+        _53 = const _;
+        _52 = _53 as &[u8] (PointerCoercion(Unsize));
+        _50 = <StdoutLock<'_> as std::io::Write>::write_all(move _51, move _52) -> [return: bb35, unwind: bb66];
+    }
+
+    bb34: {
+        _48 = move ((_43 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<(), std::io::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _48) -> [return: bb78, unwind: bb66];
+    }
+
+    bb35: {
+        _49 = <Result<(), std::io::Error> as Try>::branch(move _50) -> [return: bb36, unwind: bb66];
+    }
+
+    bb36: {
+        _54 = discriminant(_49);
+        switchInt(move _54) -> [0: bb20, 1: bb37, otherwise: bb17];
+    }
+
+    bb37: {
+        _55 = move ((_49 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<(), std::io::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _55) -> [return: bb79, unwind: bb66];
+    }
+
+    bb38: {
+        _56 = (_1.3: bool);
+        switchInt(move _56) -> [0: bb40, otherwise: bb39];
+    }
+
+    bb39: {
+        _58 = &mut _15;
+        _57 = Stats::add_duplicate(move _58) -> [return: bb80, unwind: bb66];
+    }
+
+    bb40: {
+        _59 = (_1.2: bool);
+        switchInt(move _59) -> [0: bb20, otherwise: bb41];
+    }
+
+    bb41: {
+        _62 = &mut _16;
+        _63 = _31;
+        _61 = <StdoutLock<'_> as std::io::Write>::write_all(move _62, move _63) -> [return: bb42, unwind: bb66];
+    }
+
+    bb42: {
+        _60 = <Result<(), std::io::Error> as Try>::branch(move _61) -> [return: bb43, unwind: bb66];
+    }
+
+    bb43: {
+        _64 = discriminant(_60);
+        switchInt(move _64) -> [0: bb44, 1: bb45, otherwise: bb17];
+    }
+
+    bb44: {
+        _68 = &mut _16;
+        _70 = const _;
+        _69 = _70 as &[u8] (PointerCoercion(Unsize));
+        _67 = <StdoutLock<'_> as std::io::Write>::write_all(move _68, move _69) -> [return: bb46, unwind: bb66];
+    }
+
+    bb45: {
+        _65 = move ((_60 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<(), std::io::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _65) -> [return: bb81, unwind: bb66];
+    }
+
+    bb46: {
+        _66 = <Result<(), std::io::Error> as Try>::branch(move _67) -> [return: bb47, unwind: bb66];
+    }
+
+    bb47: {
+        _71 = discriminant(_66);
+        switchInt(move _71) -> [0: bb20, 1: bb48, otherwise: bb17];
+    }
+
+    bb48: {
+        _72 = move ((_66 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<(), std::io::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _72) -> [return: bb82, unwind: bb66];
+    }
+
+    bb49: {
+        drop(_27) -> [return: bb50, unwind: bb66];
+    }
+
+    bb50: {
+        drop(_25) -> [return: bb14, unwind: bb67];
+    }
+
+    bb51: {
+        _73 = (_1.3: bool);
+        switchInt(move _73) -> [0: bb53, otherwise: bb52];
+    }
+
+    bb52: {
+        _75 = &_15;
+        _74 = Stats::print(move _75) -> [return: bb83, unwind: bb68];
+    }
+
+    bb53: {
+        _78 = &mut _16;
+        _77 = <StdoutLock<'_> as std::io::Write>::flush(move _78) -> [return: bb54, unwind: bb68];
+    }
+
+    bb54: {
+        _76 = <Result<(), std::io::Error> as Try>::branch(move _77) -> [return: bb55, unwind: bb68];
+    }
+
+    bb55: {
+        _79 = discriminant(_76);
+        switchInt(move _79) -> [0: bb56, 1: bb57, otherwise: bb17];
+    }
+
+    bb56: {
+        _0 = Result::<(), std::io::Error>::Ok(const ());
+        drop(_16) -> [return: bb58, unwind: bb69];
+    }
+
+    bb57: {
+        _80 = move ((_76 as Break).0: std::result::Result<std::convert::Infallible, std::io::Error>);
+        _0 = <Result<(), std::io::Error> as FromResidual<Result<Infallible, std::io::Error>>>::from_residual(move _80) -> [return: bb84, unwind: bb68];
+    }
+
+    bb58: {
+        drop(_13) -> [return: bb59, unwind: bb74];
+    }
+
+    bb59: {
+        _82 = const false;
+        drop(_1) -> [return: bb65, unwind continue];
+    }
+
+    bb60: {
+        drop(_25) -> [return: bb61, unwind: bb67];
+    }
+
+    bb61: {
+        drop(_20) -> [return: bb62, unwind: bb68];
+    }
+
+    bb62: {
+        drop(_16) -> [return: bb63, unwind: bb69];
+    }
+
+    bb63: {
+        drop(_13) -> [return: bb64, unwind: bb74];
+    }
+
+    bb64: {
+        _82 = const false;
+        drop(_1) -> [return: bb65, unwind continue];
+    }
+
+    bb65: {
+        return;
+    }
+
+    bb66 (cleanup): {
+        drop(_25) -> [return: bb67, unwind terminate(cleanup)];
+    }
+
+    bb67 (cleanup): {
+        drop(_20) -> [return: bb68, unwind terminate(cleanup)];
+    }
+
+    bb68 (cleanup): {
+        drop(_16) -> [return: bb69, unwind terminate(cleanup)];
+    }
+
+    bb69 (cleanup): {
+        drop(_13) -> [return: bb74, unwind terminate(cleanup)];
+    }
+
+    bb70 (cleanup): {
+        drop(_1) -> [return: bb72, unwind terminate(cleanup)];
+    }
+
+    bb71 (cleanup): {
+        drop(_3) -> [return: bb72, unwind terminate(cleanup)];
+    }
+
+    bb72 (cleanup): {
+        resume;
+    }
+
+    bb73 (cleanup): {
+        drop(_6) -> [return: bb70, unwind terminate(cleanup)];
+    }
+
+    bb74 (cleanup): {
+        switchInt(_82) -> [0: bb70, otherwise: bb73];
+    }
+
+    bb75: {
+        goto -> bb20;
+    }
+
+    bb76: {
+        goto -> bb60;
+    }
+
+    bb77: {
+        goto -> bb20;
+    }
+
+    bb78: {
+        goto -> bb60;
+    }
+
+    bb79: {
+        goto -> bb60;
+    }
+
+    bb80: {
+        goto -> bb20;
+    }
+
+    bb81: {
+        goto -> bb60;
+    }
+
+    bb82: {
+        goto -> bb60;
+    }
+
+    bb83: {
+        goto -> bb53;
+    }
+
+    bb84: {
+        goto -> bb62;
+    }
+}
+
+fn main::{closure#0}(_1: &mut {closure@src/main.rs:44:14: 44:38}, _2: &String) -> Box<dyn std::io::Read> {
+    debug input => _2;
+    debug stdin => (*((*_1).0: &std::io::Stdin));
+    let mut _0: std::boxed::Box<dyn std::io::Read>;
+    let mut _3: std::boxed::Box<dyn std::io::Read>;
+    let mut _4: &str;
+    let mut _5: bool;
+    let mut _6: std::boxed::Box<std::io::StdinLock<'_>>;
+    let mut _7: std::io::StdinLock<'_>;
+    let mut _8: std::boxed::Box<std::fs::File>;
+    let mut _9: std::fs::File;
+    let mut _10: std::result::Result<std::fs::File, std::io::Error>;
+    let mut _11: &std::io::Stdin;
+    scope 1 {
+        debug any => _4;
+    }
+
+    bb0: {
+        _4 = <String as AsRef<str>>::as_ref(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _5 = <str as PartialEq>::eq(_4, const "-") -> [return: bb4, unwind continue];
+    }
+
+    bb2: {
+        _11 = deref_copy ((*_1).0: &std::io::Stdin);
+        _7 = Stdin::lock(_11) -> [return: bb5, unwind continue];
+    }
+
+    bb3: {
+        _10 = File::open::<&str>(_4) -> [return: bb7, unwind continue];
+    }
+
+    bb4: {
+        switchInt(move _5) -> [0: bb3, otherwise: bb2];
+    }
+
+    bb5: {
+        _6 = Box::<StdinLock<'_>>::new(move _7) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _3 = move _6 as std::boxed::Box<dyn std::io::Read> (PointerCoercion(Unsize));
+        goto -> bb10;
+    }
+
+    bb7: {
+        _9 = Result::<File, std::io::Error>::unwrap(move _10) -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        _8 = Box::<File>::new(move _9) -> [return: bb9, unwind continue];
+    }
+
+    bb9: {
+        _3 = move _8 as std::boxed::Box<dyn std::io::Read> (PointerCoercion(Unsize));
+        goto -> bb10;
+    }
+
+    bb10: {
+        _0 = move _3;
+        return;
+    }
+}

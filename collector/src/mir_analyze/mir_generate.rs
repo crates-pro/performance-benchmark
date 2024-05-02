@@ -170,6 +170,8 @@ mod test {
                 disabled: false,
                 runs: 0,
                 target_path: None,
+                runtime_cargo_toml: None,
+                runtime_test_packages: None,
             },
         };
 

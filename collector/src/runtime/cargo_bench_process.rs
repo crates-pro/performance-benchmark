@@ -158,21 +158,3 @@ impl<'a> Runtime for CargoBenchProcess<'a> {
         Ok(())
     }
 }
-
-#[test]
-fn test_cargo_example() {
-    let mut cmd = Command::new(
-        "/home/fxl191220029/study/Rust_Performance_Benchmark/collector/target/release/runtime-fake",
-    );
-    cmd.current_dir("/home/fxl191220029/study/benchmark_exp/bat/")
-        .env("RUNTIME_ELF", "./target/release/examples/advanced");
-
-    let output = command_output(&mut cmd);
-    match output {
-        Ok(output) => {
-            eprintln!("{:?}", output);
-            println!("{:?}", process_benchmark_output(output));
-        }
-        _ => eprintln!("{:?}", output),
-    }
-}

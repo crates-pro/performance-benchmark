@@ -1,0 +1,6261 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn run(_1: fn(pepper::Args, UnixListener) -> Result<(), AnyError>, _2: fn(pepper::Args, UnixStream)) -> () {
+    debug server_fn => _1;
+    debug client_fn => _2;
+    let mut _0: ();
+    let _3: pepper::Args;
+    let _5: ();
+    let mut _6: &mut std::string::String;
+    let _7: &str;
+    let _8: ();
+    let mut _9: &mut std::string::String;
+    let _10: &str;
+    let _11: ();
+    let mut _12: &mut std::string::String;
+    let _13: ();
+    let mut _14: isize;
+    let mut _16: &mut std::string::String;
+    let _17: &str;
+    let mut _19: std::result::Result<std::path::PathBuf, std::io::Error>;
+    let _20: &str;
+    let _22: &std::ffi::OsStr;
+    let _23: &std::path::Path;
+    let mut _24: &std::path::PathBuf;
+    let mut _28: &mut [u8];
+    let mut _29: &mut [u8; 16];
+    let _30: ();
+    let mut _31: std::result::Result<(), std::io::Error>;
+    let mut _32: &mut std::io::Cursor<&mut [u8]>;
+    let mut _33: std::fmt::Arguments<'_>;
+    let mut _34: &[&str];
+    let mut _35: &[core::fmt::rt::Argument<'_>];
+    let _36: &[core::fmt::rt::Argument<'_>; 1];
+    let _37: [core::fmt::rt::Argument<'_>; 1];
+    let mut _38: core::fmt::rt::Argument<'_>;
+    let _39: &u64;
+    let mut _41: u64;
+    let mut _42: &std::io::Cursor<&mut [u8]>;
+    let mut _44: std::result::Result<&str, std::str::Utf8Error>;
+    let _45: &[u8];
+    let mut _46: &[u8; 16];
+    let mut _47: std::ops::RangeTo<usize>;
+    let _48: ();
+    let mut _49: &mut std::string::String;
+    let mut _50: bool;
+    let _51: ();
+    let mut _52: std::fmt::Arguments<'_>;
+    let mut _53: &[&str];
+    let mut _54: &[core::fmt::rt::Argument<'_>];
+    let _55: &[core::fmt::rt::Argument<'_>; 1];
+    let _56: [core::fmt::rt::Argument<'_>; 1];
+    let mut _57: core::fmt::rt::Argument<'_>;
+    let _58: &std::string::String;
+    let _60: &std::string::String;
+    let mut _61: bool;
+    let mut _62: std::result::Result<(), pepper::application::AnyError>;
+    let mut _63: pepper::Args;
+    let mut _64: std::os::unix::net::UnixListener;
+    let mut _65: std::result::Result<(), std::io::Error>;
+    let mut _66: std::result::Result<std::os::unix::net::UnixStream, std::io::Error>;
+    let mut _67: isize;
+    let mut _69: pepper::Args;
+    let mut _70: i32;
+    let _71: !;
+    let mut _72: std::result::Result<(), pepper::application::AnyError>;
+    let mut _73: pepper::Args;
+    let mut _74: std::os::unix::net::UnixListener;
+    let mut _75: std::result::Result<(), std::io::Error>;
+    let mut _76: ();
+    let mut _77: std::result::Result<std::os::unix::net::UnixStream, std::io::Error>;
+    let mut _78: isize;
+    let _80: ();
+    let mut _81: pepper::Args;
+    let mut _82: std::time::Duration;
+    let mut _85: bool;
+    let mut _86: bool;
+    let mut _87: bool;
+    let mut _88: isize;
+    let mut _89: isize;
+    let mut _90: isize;
+    let mut _91: isize;
+    let mut _92: isize;
+    scope 1 {
+        debug args => _3;
+        let mut _4: std::string::String;
+        scope 2 {
+            debug session_path => _4;
+            let _15: &std::string::String;
+            let _18: std::path::PathBuf;
+            let _59: &std::path::Path;
+            let mut _83: &[&str; 1];
+            scope 3 {
+                debug name => _15;
+            }
+            scope 4 {
+                debug current_dir => _18;
+                let _21: &[u8];
+                scope 5 {
+                    debug current_dir_bytes => _21;
+                    let _25: u64;
+                    scope 6 {
+                        debug current_directory_hash => _25;
+                        let mut _26: [u8; 16];
+                        scope 7 {
+                            debug hash_buf => _26;
+                            let mut _27: std::io::Cursor<&mut [u8]>;
+                            scope 8 {
+                                debug cursor => _27;
+                                let _40: usize;
+                                let mut _84: &[&str; 1];
+                                scope 9 {
+                                    debug len => _40;
+                                    let _43: &str;
+                                    scope 10 {
+                                        debug name => _43;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            scope 11 {
+                debug session_path => _59;
+                let _68: std::os::unix::net::UnixStream;
+                let _79: std::os::unix::net::UnixStream;
+                scope 12 {
+                    scope 13 {
+                    }
+                }
+                scope 14 {
+                    debug stream => _68;
+                }
+                scope 15 {
+                }
+                scope 16 {
+                    scope 17 {
+                    }
+                }
+                scope 18 {
+                    debug stream => _79;
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _87 = const false;
+        _86 = const false;
+        _85 = const false;
+        _87 = const true;
+        _3 = pepper::Args::parse() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _4 = std::string::String::new() -> [return: bb2, unwind: bb76];
+    }
+
+    bb2: {
+        _6 = &mut _4;
+        _7 = const "/tmp/";
+        _5 = std::string::String::push_str(move _6, _7) -> [return: bb3, unwind: bb61];
+    }
+
+    bb3: {
+        _9 = &mut _4;
+        _10 = const "pepper";
+        _8 = std::string::String::push_str(move _9, _10) -> [return: bb4, unwind: bb61];
+    }
+
+    bb4: {
+        _12 = &mut _4;
+        _11 = std::string::String::push(move _12, const '/') -> [return: bb5, unwind: bb61];
+    }
+
+    bb5: {
+        _14 = discriminant((_3.1: std::option::Option<std::string::String>));
+        switchInt(move _14) -> [0: bb6, 1: bb8, otherwise: bb7];
+    }
+
+    bb6: {
+        _19 = current_dir() -> [return: bb10, unwind: bb61];
+    }
+
+    bb7: {
+        unreachable;
+    }
+
+    bb8: {
+        _15 = &(((_3.1: std::option::Option<std::string::String>) as Some).0: std::string::String);
+        _16 = &mut _4;
+        _17 = <std::string::String as Deref>::deref(_15) -> [return: bb9, unwind: bb61];
+    }
+
+    bb9: {
+        _13 = std::string::String::push_str(move _16, _17) -> [return: bb77, unwind: bb61];
+    }
+
+    bb10: {
+        _20 = const "could not retrieve the current directory";
+        _18 = Result::<PathBuf, std::io::Error>::expect(move _19, _20) -> [return: bb11, unwind: bb61];
+    }
+
+    bb11: {
+        _24 = &_18;
+        _23 = <PathBuf as Deref>::deref(move _24) -> [return: bb12, unwind: bb60];
+    }
+
+    bb12: {
+        _22 = Path::as_os_str(_23) -> [return: bb13, unwind: bb60];
+    }
+
+    bb13: {
+        _21 = <OsStr as OsStrExt>::as_bytes(_22) -> [return: bb14, unwind: bb60];
+    }
+
+    bb14: {
+        _25 = hash_bytes(_21) -> [return: bb15, unwind: bb60];
+    }
+
+    bb15: {
+        _26 = [const 0_u8; 16];
+        _29 = &mut _26;
+        _28 = <[u8; 16] as IndexMut<RangeFull>>::index_mut(move _29, const RangeFull) -> [return: bb16, unwind: bb60];
+    }
+
+    bb16: {
+        _27 = std::io::Cursor::<&mut [u8]>::new(_28) -> [return: bb17, unwind: bb60];
+    }
+
+    bb17: {
+        _32 = &mut _27;
+        _84 = const _;
+        _34 = _84 as &[&str] (PointerCoercion(Unsize));
+        _39 = &_25;
+        _38 = core::fmt::rt::Argument::<'_>::new_lower_hex::<u64>(_39) -> [return: bb18, unwind: bb60];
+    }
+
+    bb18: {
+        _37 = [move _38];
+        _36 = &_37;
+        _35 = _36 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _33 = Arguments::<'_>::new_v1(move _34, move _35) -> [return: bb19, unwind: bb60];
+    }
+
+    bb19: {
+        _31 = <std::io::Cursor<&mut [u8]> as std::io::Write>::write_fmt(_32, move _33) -> [return: bb20, unwind: bb60];
+    }
+
+    bb20: {
+        _30 = Result::<(), std::io::Error>::unwrap(move _31) -> [return: bb21, unwind: bb60];
+    }
+
+    bb21: {
+        _42 = &_27;
+        _41 = std::io::Cursor::<&mut [u8]>::position(move _42) -> [return: bb22, unwind: bb60];
+    }
+
+    bb22: {
+        _40 = move _41 as usize (IntToInt);
+        _46 = &_26;
+        _47 = RangeTo::<usize> { end: _40 };
+        _45 = <[u8; 16] as Index<RangeTo<usize>>>::index(move _46, move _47) -> [return: bb23, unwind: bb60];
+    }
+
+    bb23: {
+        _44 = from_utf8(_45) -> [return: bb24, unwind: bb60];
+    }
+
+    bb24: {
+        _43 = Result::<&str, Utf8Error>::unwrap(move _44) -> [return: bb25, unwind: bb60];
+    }
+
+    bb25: {
+        _49 = &mut _4;
+        _48 = std::string::String::push_str(move _49, _43) -> [return: bb26, unwind: bb60];
+    }
+
+    bb26: {
+        drop(_18) -> [return: bb27, unwind: bb61];
+    }
+
+    bb27: {
+        _50 = (_3.2: bool);
+        switchInt(move _50) -> [0: bb32, otherwise: bb28];
+    }
+
+    bb28: {
+        _83 = const _;
+        _53 = _83 as &[&str] (PointerCoercion(Unsize));
+        _58 = &_4;
+        _57 = core::fmt::rt::Argument::<'_>::new_display::<std::string::String>(_58) -> [return: bb29, unwind: bb61];
+    }
+
+    bb29: {
+        _56 = [move _57];
+        _55 = &_56;
+        _54 = _55 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _52 = Arguments::<'_>::new_v1(move _53, move _54) -> [return: bb30, unwind: bb61];
+    }
+
+    bb30: {
+        _51 = _print(move _52) -> [return: bb31, unwind: bb61];
+    }
+
+    bb31: {
+        drop(_4) -> [return: bb57, unwind: bb76];
+    }
+
+    bb32: {
+        _60 = &_4;
+        _59 = Path::new::<std::string::String>(_60) -> [return: bb33, unwind: bb61];
+    }
+
+    bb33: {
+        _61 = (_3.4: bool);
+        switchInt(move _61) -> [0: bb38, otherwise: bb34];
+    }
+
+    bb34: {
+        _87 = const false;
+        _86 = const true;
+        _63 = move _3;
+        _64 = start_server(_59) -> [return: bb35, unwind: bb74];
+    }
+
+    bb35: {
+        _86 = const false;
+        _62 = _1(move _63, move _64) -> [return: bb36, unwind: bb74];
+    }
+
+    bb36: {
+        _86 = const false;
+        _65 = remove_file::<&Path>(_59) -> [return: bb37, unwind: bb61];
+    }
+
+    bb37: {
+        drop(_65) -> [return: bb55, unwind: bb61];
+    }
+
+    bb38: {
+        _66 = UnixStream::connect::<&Path>(_59) -> [return: bb39, unwind: bb61];
+    }
+
+    bb39: {
+        _67 = discriminant(_66);
+        switchInt(move _67) -> [0: bb41, 1: bb40, otherwise: bb7];
+    }
+
+    bb40: {
+        _70 = fork() -> [return: bb42, unwind: bb72];
+    }
+
+    bb41: {
+        _68 = move ((_66 as Ok).0: std::os::unix::net::UnixStream);
+        _87 = const false;
+        _69 = move _3;
+        _0 = _2(move _69, move _68) -> [return: bb78, unwind: bb72];
+    }
+
+    bb42: {
+        switchInt(_70) -> [4294967295: bb43, 0: bb44, otherwise: bb48];
+    }
+
+    bb43: {
+        _71 = begin_panic::<&str>(const "could not start server") -> bb72;
+    }
+
+    bb44: {
+        _87 = const false;
+        _85 = const true;
+        _73 = move _3;
+        _74 = start_server(_59) -> [return: bb45, unwind: bb70];
+    }
+
+    bb45: {
+        _85 = const false;
+        _72 = _1(move _73, move _74) -> [return: bb46, unwind: bb70];
+    }
+
+    bb46: {
+        _85 = const false;
+        _75 = remove_file::<&Path>(_59) -> [return: bb47, unwind: bb72];
+    }
+
+    bb47: {
+        drop(_75) -> [return: bb66, unwind: bb72];
+    }
+
+    bb48: {
+        _77 = UnixStream::connect::<&Path>(_59) -> [return: bb49, unwind: bb72];
+    }
+
+    bb49: {
+        _78 = discriminant(_77);
+        switchInt(move _78) -> [0: bb51, 1: bb50, otherwise: bb7];
+    }
+
+    bb50: {
+        _82 = Duration::from_millis(const 100_u64) -> [return: bb53, unwind: bb68];
+    }
+
+    bb51: {
+        _79 = move ((_77 as Ok).0: std::os::unix::net::UnixStream);
+        _87 = const false;
+        _81 = move _3;
+        _80 = _2(move _81, move _79) -> [return: bb52, unwind: bb68];
+    }
+
+    bb52: {
+        _89 = discriminant(_77);
+        switchInt(move _89) -> [0: bb66, otherwise: bb64];
+    }
+
+    bb53: {
+        _76 = std::thread::sleep(move _82) -> [return: bb54, unwind: bb68];
+    }
+
+    bb54: {
+        _88 = discriminant(_77);
+        switchInt(move _88) -> [0: bb48, otherwise: bb63];
+    }
+
+    bb55: {
+        drop(_4) -> [return: bb56, unwind: bb76];
+    }
+
+    bb56: {
+        _87 = const false;
+        goto -> bb59;
+    }
+
+    bb57: {
+        drop(_3) -> [return: bb58, unwind continue];
+    }
+
+    bb58: {
+        _87 = const false;
+        goto -> bb59;
+    }
+
+    bb59: {
+        return;
+    }
+
+    bb60 (cleanup): {
+        drop(_18) -> [return: bb61, unwind terminate(cleanup)];
+    }
+
+    bb61 (cleanup): {
+        drop(_4) -> [return: bb76, unwind terminate(cleanup)];
+    }
+
+    bb62 (cleanup): {
+        resume;
+    }
+
+    bb63: {
+        drop(_77) -> [return: bb48, unwind: bb72];
+    }
+
+    bb64: {
+        drop(_77) -> [return: bb66, unwind: bb72];
+    }
+
+    bb65: {
+        drop(_66) -> [return: bb55, unwind: bb61];
+    }
+
+    bb66: {
+        _90 = discriminant(_66);
+        switchInt(move _90) -> [0: bb55, otherwise: bb65];
+    }
+
+    bb67 (cleanup): {
+        drop(_77) -> [return: bb72, unwind terminate(cleanup)];
+    }
+
+    bb68 (cleanup): {
+        _91 = discriminant(_77);
+        switchInt(move _91) -> [0: bb72, otherwise: bb67];
+    }
+
+    bb69 (cleanup): {
+        drop(_73) -> [return: bb72, unwind terminate(cleanup)];
+    }
+
+    bb70 (cleanup): {
+        switchInt(_85) -> [0: bb72, otherwise: bb69];
+    }
+
+    bb71 (cleanup): {
+        drop(_66) -> [return: bb61, unwind terminate(cleanup)];
+    }
+
+    bb72 (cleanup): {
+        _92 = discriminant(_66);
+        switchInt(move _92) -> [0: bb61, otherwise: bb71];
+    }
+
+    bb73 (cleanup): {
+        drop(_63) -> [return: bb61, unwind terminate(cleanup)];
+    }
+
+    bb74 (cleanup): {
+        switchInt(_86) -> [0: bb61, otherwise: bb73];
+    }
+
+    bb75 (cleanup): {
+        drop(_3) -> [return: bb62, unwind terminate(cleanup)];
+    }
+
+    bb76 (cleanup): {
+        switchInt(_87) -> [0: bb62, otherwise: bb75];
+    }
+
+    bb77: {
+        goto -> bb27;
+    }
+
+    bb78: {
+        goto -> bb66;
+    }
+}
+
+promoted[0] in run: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const ""];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in run: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const ""];
+        _0 = &_1;
+        return;
+    }
+}
+
+run::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 16_usize;
+        return;
+    }
+}
+
+fn start_server(_1: &Path) -> UnixListener {
+    debug session_path => _1;
+    let mut _0: std::os::unix::net::UnixListener;
+    let mut _2: std::option::Option<&std::path::Path>;
+    let mut _3: isize;
+    let mut _5: bool;
+    let mut _6: std::result::Result<(), std::io::Error>;
+    let mut _7: std::result::Result<(), std::io::Error>;
+    let mut _8: std::result::Result<std::os::unix::net::UnixListener, std::io::Error>;
+    let _9: &str;
+    scope 1 {
+        debug dir => _4;
+        let _4: &std::path::Path;
+        scope 2 {
+        }
+    }
+    scope 3 {
+    }
+
+    bb0: {
+        _2 = Path::parent(_1) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _3 = discriminant(_2);
+        switchInt(move _3) -> [1: bb2, otherwise: bb6];
+    }
+
+    bb2: {
+        _4 = ((_2 as Some).0: &std::path::Path);
+        _5 = Path::exists(_4) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        switchInt(move _5) -> [0: bb4, otherwise: bb6];
+    }
+
+    bb4: {
+        _6 = create_dir::<&Path>(_4) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        drop(_6) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _7 = remove_file::<&Path>(_1) -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        drop(_7) -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        _8 = UnixListener::bind::<&Path>(_1) -> [return: bb9, unwind continue];
+    }
+
+    bb9: {
+        _9 = const "could not start unix domain socket server";
+        _0 = Result::<UnixListener, std::io::Error>::expect(move _8, _9) -> [return: bb10, unwind continue];
+    }
+
+    bb10: {
+        return;
+    }
+}
+
+ fn unix_utils::<impl at src/platforms/unix_utils.rs:96:1: 96:13>::enter() -> RawMode {
+    let mut _0: platforms::sys::unix_utils::RawMode;
+    let _1: libc::termios;
+    let _3: i32;
+    let mut _4: *mut libc::termios;
+    let mut _5: &mut libc::termios;
+    let mut _7: &libc::termios;
+    let mut _8: u32;
+    let mut _9: u32;
+    let mut _10: u32;
+    let mut _11: u32;
+    let mut _12: u32;
+    let mut _13: u32;
+    let mut _14: u32;
+    let mut _15: u32;
+    let mut _16: u32;
+    let mut _17: u32;
+    let mut _18: u32;
+    let mut _19: u32;
+    let mut _20: u32;
+    let mut _21: u32;
+    let mut _22: u32;
+    let _23: usize;
+    let mut _24: usize;
+    let mut _25: bool;
+    let _26: usize;
+    let mut _27: usize;
+    let mut _28: bool;
+    let _29: i32;
+    let mut _30: *const libc::termios;
+    let _31: &libc::termios;
+    scope 1 {
+        debug original => _1;
+    }
+    scope 2 {
+        let mut _2: libc::termios;
+        scope 3 {
+            debug original => _2;
+            let mut _6: libc::termios;
+            scope 4 {
+                debug new => _6;
+            }
+        }
+    }
+
+    bb0: {
+        _2 = zeroed::<termios>() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _5 = &mut _2;
+        _4 = &raw mut (*_5);
+        _3 = tcgetattr(const _, move _4) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _7 = &_2;
+        _6 = <termios as Clone>::clone(move _7) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _15 = BitOr(const _, const _);
+        _14 = BitOr(move _15, const _);
+        _13 = BitOr(move _14, const _);
+        _12 = BitOr(move _13, const _);
+        _11 = BitOr(move _12, const _);
+        _10 = BitOr(move _11, const _);
+        _9 = BitOr(move _10, const _);
+        _8 = Not(move _9);
+        (_6.0: u32) = BitAnd((_6.0: u32), move _8);
+        _16 = Not(const _);
+        (_6.1: u32) = BitAnd((_6.1: u32), move _16);
+        _18 = BitOr(const _, const _);
+        _17 = Not(move _18);
+        (_6.2: u32) = BitAnd((_6.2: u32), move _17);
+        (_6.2: u32) = BitOr((_6.2: u32), const _);
+        _22 = BitOr(const _, const _);
+        _21 = BitOr(move _22, const _);
+        _20 = BitOr(move _21, const _);
+        _19 = Not(move _20);
+        (_6.3: u32) = BitAnd((_6.3: u32), move _19);
+        (_6.3: u32) = BitOr((_6.3: u32), const _);
+        _23 = const _;
+        _24 = const 32_usize;
+        _25 = Lt(_23, _24);
+        assert(move _25, "index out of bounds: the length is {} but the index is {}", move _24, _23) -> [success: bb4, unwind continue];
+    }
+
+    bb4: {
+        (_6.5: [u8; 32])[_23] = const 0_u8;
+        _26 = const _;
+        _27 = const 32_usize;
+        _28 = Lt(_26, _27);
+        assert(move _28, "index out of bounds: the length is {} but the index is {}", move _27, _26) -> [success: bb5, unwind continue];
+    }
+
+    bb5: {
+        (_6.5: [u8; 32])[_26] = const 0_u8;
+        _31 = &_6;
+        _30 = &raw const (*_31);
+        _29 = tcsetattr(const _, const _, move _30) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _1 = _2;
+        _0 = RawMode { original: _1 };
+        return;
+    }
+}
+
+fn unix_utils::<impl at src/platforms/unix_utils.rs:96:1: 96:13>::backspace_code(_1: &RawMode) -> u8 {
+    debug self => _1;
+    let mut _0: u8;
+    let _2: usize;
+    let mut _3: usize;
+    let mut _4: bool;
+
+    bb0: {
+        _2 = const _;
+        _3 = const 32_usize;
+        _4 = Lt(_2, _3);
+        assert(move _4, "index out of bounds: the length is {} but the index is {}", move _3, _2) -> [success: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = (((*_1).0: libc::termios).5: [u8; 32])[_2];
+        return;
+    }
+}
+
+fn unix_utils::<impl at src/platforms/unix_utils.rs:127:1: 127:22>::drop(_1: &mut RawMode) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let _2: i32;
+    let mut _3: *const libc::termios;
+    let _4: &libc::termios;
+    scope 1 {
+    }
+
+    bb0: {
+        _4 = &((*_1).0: libc::termios);
+        _3 = &raw const (*_4);
+        _2 = tcsetattr(const _, const _, move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn is_pipped() -> bool {
+    let mut _0: bool;
+    let mut _1: i32;
+    scope 1 {
+    }
+
+    bb0: {
+        _1 = isatty(const _) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = Eq(move _1, const 0_i32);
+        return;
+    }
+}
+
+fn unix_utils::read(_1: i32, _2: &mut [u8]) -> Result<usize, ()> {
+    debug fd => _1;
+    debug buf => _2;
+    let mut _0: std::result::Result<usize, ()>;
+    let _3: isize;
+    let mut _4: *mut libc::c_void;
+    let mut _5: *mut u8;
+    let mut _6: usize;
+    let mut _7: &[u8];
+    let mut _8: bool;
+    let mut _9: usize;
+    scope 1 {
+        debug len => _3;
+    }
+    scope 2 {
+    }
+
+    bb0: {
+        _5 = core::slice::<impl [u8]>::as_mut_ptr(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _4 = move _5 as *mut libc::c_void (PtrToPtr);
+        _7 = &(*_2);
+        _6 = Len((*_7));
+        _3 = libc::read(_1, _4, _6) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _8 = Ge(_3, const 0_isize);
+        switchInt(move _8) -> [0: bb4, otherwise: bb3];
+    }
+
+    bb3: {
+        _9 = _3 as usize (IntToInt);
+        _0 = Result::<usize, ()>::Ok(_9);
+        goto -> bb5;
+    }
+
+    bb4: {
+        _0 = Result::<usize, ()>::Err(const ());
+        goto -> bb5;
+    }
+
+    bb5: {
+        return;
+    }
+}
+
+fn read_from_connection(_1: &mut UnixStream, _2: &mut BufPool, _3: usize) -> Result<SharedBuf, ()> {
+    debug connection => _1;
+    debug buf_pool => _2;
+    debug len => _3;
+    let mut _0: std::result::Result<pepper::platform::SharedBuf, ()>;
+    let mut _4: pepper::platform::ExclusiveBuf;
+    let mut _6: &mut pepper::platform::ExclusiveBuf;
+    let mut _7: std::result::Result<usize, std::io::Error>;
+    let mut _8: &mut [u8];
+    let mut _9: isize;
+    let _11: ();
+    let mut _13: pepper::platform::ExclusiveBuf;
+    let _14: ();
+    let mut _15: pepper::platform::SharedBuf;
+    let mut _16: &pepper::platform::SharedBuf;
+    let mut _17: pepper::platform::SharedBuf;
+    let _18: ();
+    let mut _19: pepper::platform::SharedBuf;
+    let mut _20: pepper::platform::ExclusiveBuf;
+    let mut _21: bool;
+    scope 1 {
+        debug buf => _4;
+        let _5: &mut std::vec::Vec<u8>;
+        scope 2 {
+            debug write => _5;
+            let _10: usize;
+            scope 3 {
+                debug len => _10;
+                let _12: pepper::platform::SharedBuf;
+                scope 4 {
+                    debug buf => _12;
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _21 = const false;
+        _21 = const true;
+        _4 = BufPool::acquire(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _6 = &mut _4;
+        _5 = ExclusiveBuf::write_with_len(move _6, _3) -> [return: bb2, unwind: bb18];
+    }
+
+    bb2: {
+        _8 = <Vec<u8> as DerefMut>::deref_mut(_5) -> [return: bb3, unwind: bb18];
+    }
+
+    bb3: {
+        _7 = <UnixStream as std::io::Read>::read(_1, _8) -> [return: bb4, unwind: bb18];
+    }
+
+    bb4: {
+        _9 = discriminant(_7);
+        switchInt(move _9) -> [0: bb7, 1: bb5, otherwise: bb6];
+    }
+
+    bb5: {
+        _21 = const false;
+        _20 = move _4;
+        _19 = ExclusiveBuf::share(move _20) -> [return: bb12, unwind: bb21];
+    }
+
+    bb6: {
+        unreachable;
+    }
+
+    bb7: {
+        _10 = ((_7 as Ok).0: usize);
+        _11 = Vec::<u8>::truncate(_5, _10) -> [return: bb8, unwind: bb21];
+    }
+
+    bb8: {
+        _21 = const false;
+        _13 = move _4;
+        _12 = ExclusiveBuf::share(move _13) -> [return: bb9, unwind: bb21];
+    }
+
+    bb9: {
+        _16 = &_12;
+        _15 = <SharedBuf as Clone>::clone(move _16) -> [return: bb10, unwind: bb16];
+    }
+
+    bb10: {
+        _14 = BufPool::release(_2, move _15) -> [return: bb11, unwind: bb16];
+    }
+
+    bb11: {
+        _17 = move _12;
+        _0 = Result::<SharedBuf, ()>::Ok(move _17);
+        goto -> bb14;
+    }
+
+    bb12: {
+        _18 = BufPool::release(_2, move _19) -> [return: bb13, unwind: bb21];
+    }
+
+    bb13: {
+        _0 = Result::<SharedBuf, ()>::Err(const ());
+        goto -> bb14;
+    }
+
+    bb14: {
+        _21 = const false;
+        drop(_7) -> [return: bb15, unwind continue];
+    }
+
+    bb15: {
+        return;
+    }
+
+    bb16 (cleanup): {
+        drop(_12) -> [return: bb21, unwind terminate(cleanup)];
+    }
+
+    bb17 (cleanup): {
+        drop(_7) -> [return: bb19, unwind terminate(cleanup)];
+    }
+
+    bb18 (cleanup): {
+        drop(_4) -> [return: bb19, unwind terminate(cleanup)];
+    }
+
+    bb19 (cleanup): {
+        resume;
+    }
+
+    bb20 (cleanup): {
+        drop(_4) -> [return: bb17, unwind terminate(cleanup)];
+    }
+
+    bb21 (cleanup): {
+        switchInt(_21) -> [0: bb17, otherwise: bb20];
+    }
+}
+
+fn unix_utils::<impl at src/platforms/unix_utils.rs:174:1: 174:13>::new(_1: Child, _2: ProcessTag, _3: usize) -> Process {
+    debug child => _1;
+    debug tag => _2;
+    debug buf_len => _3;
+    let mut _0: platforms::sys::unix_utils::Process;
+
+    bb0: {
+        _0 = Process { alive: const true, child: move _1, tag: _2, buf_len: _3 };
+        return;
+    }
+}
+
+fn unix_utils::<impl at src/platforms/unix_utils.rs:174:1: 174:13>::tag(_1: &Process) -> ProcessTag {
+    debug self => _1;
+    let mut _0: pepper::platform::ProcessTag;
+
+    bb0: {
+        _0 = ((*_1).2: pepper::platform::ProcessTag);
+        return;
+    }
+}
+
+fn unix_utils::<impl at src/platforms/unix_utils.rs:174:1: 174:13>::try_as_raw_fd(_1: &Process) -> Option<i32> {
+    debug self => _1;
+    let mut _0: std::option::Option<i32>;
+    let mut _2: std::option::Option<&std::process::ChildStdout>;
+    let mut _3: &std::option::Option<std::process::ChildStdout>;
+
+    bb0: {
+        _3 = &(((*_1).1: std::process::Child).2: std::option::Option<std::process::ChildStdout>);
+        _2 = Option::<ChildStdout>::as_ref(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = Option::<&ChildStdout>::map::<i32, {closure@src/platforms/unix_utils.rs:189:40: 189:43}>(move _2, const ZeroSized: {closure@src/platforms/unix_utils.rs:189:40: 189:43}) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn unix_utils::<impl at src/platforms/unix_utils.rs:174:1: 174:13>::try_as_raw_fd::{closure#0}(_1: {closure@src/platforms/unix_utils.rs:189:40: 189:43}, _2: &ChildStdout) -> i32 {
+    debug s => _2;
+    let mut _0: i32;
+
+    bb0: {
+        _0 = <ChildStdout as AsRawFd>::as_raw_fd(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn unix_utils::<impl at src/platforms/unix_utils.rs:174:1: 174:13>::read(_1: &mut Process, _2: &mut BufPool) -> Result<Option<SharedBuf>, ()> {
+    debug self => _1;
+    debug buf_pool => _2;
+    let mut _0: std::result::Result<std::option::Option<pepper::platform::SharedBuf>, ()>;
+    let mut _3: isize;
+    let _4: &mut std::process::ChildStdout;
+    let mut _7: &mut pepper::platform::ExclusiveBuf;
+    let mut _8: usize;
+    let mut _9: std::result::Result<usize, std::io::Error>;
+    let mut _10: &mut [u8];
+    let mut _11: isize;
+    let _13: ();
+    let mut _15: pepper::platform::ExclusiveBuf;
+    let _16: ();
+    let mut _17: pepper::platform::SharedBuf;
+    let mut _18: &pepper::platform::SharedBuf;
+    let mut _19: std::option::Option<pepper::platform::SharedBuf>;
+    let mut _20: pepper::platform::SharedBuf;
+    let _21: ();
+    let mut _22: pepper::platform::SharedBuf;
+    let mut _23: pepper::platform::ExclusiveBuf;
+    let mut _24: std::option::Option<pepper::platform::SharedBuf>;
+    let mut _25: bool;
+    scope 1 {
+        debug stdout => _4;
+        let mut _5: pepper::platform::ExclusiveBuf;
+        scope 2 {
+            debug buf => _5;
+            let _6: &mut std::vec::Vec<u8>;
+            scope 3 {
+                debug write => _6;
+                let _12: usize;
+                scope 4 {
+                    debug len => _12;
+                    let _14: pepper::platform::SharedBuf;
+                    scope 5 {
+                        debug buf => _14;
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _25 = const false;
+        _3 = discriminant((((*_1).1: std::process::Child).2: std::option::Option<std::process::ChildStdout>));
+        switchInt(move _3) -> [0: bb1, 1: bb3, otherwise: bb2];
+    }
+
+    bb1: {
+        _24 = Option::<SharedBuf>::None;
+        _0 = Result::<Option<SharedBuf>, ()>::Ok(move _24);
+        goto -> bb17;
+    }
+
+    bb2: {
+        unreachable;
+    }
+
+    bb3: {
+        _4 = &mut (((((*_1).1: std::process::Child).2: std::option::Option<std::process::ChildStdout>) as Some).0: std::process::ChildStdout);
+        _25 = const true;
+        _5 = BufPool::acquire(_2) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _7 = &mut _5;
+        _8 = ((*_1).3: usize);
+        _6 = ExclusiveBuf::write_with_len(move _7, move _8) -> [return: bb5, unwind: bb20];
+    }
+
+    bb5: {
+        _10 = <Vec<u8> as DerefMut>::deref_mut(_6) -> [return: bb6, unwind: bb20];
+    }
+
+    bb6: {
+        _9 = <ChildStdout as std::io::Read>::read(_4, _10) -> [return: bb7, unwind: bb20];
+    }
+
+    bb7: {
+        _11 = discriminant(_9);
+        switchInt(move _11) -> [0: bb9, 1: bb8, otherwise: bb2];
+    }
+
+    bb8: {
+        _25 = const false;
+        _23 = move _5;
+        _22 = ExclusiveBuf::share(move _23) -> [return: bb14, unwind: bb23];
+    }
+
+    bb9: {
+        _12 = ((_9 as Ok).0: usize);
+        _13 = Vec::<u8>::truncate(_6, _12) -> [return: bb10, unwind: bb23];
+    }
+
+    bb10: {
+        _25 = const false;
+        _15 = move _5;
+        _14 = ExclusiveBuf::share(move _15) -> [return: bb11, unwind: bb23];
+    }
+
+    bb11: {
+        _18 = &_14;
+        _17 = <SharedBuf as Clone>::clone(move _18) -> [return: bb12, unwind: bb18];
+    }
+
+    bb12: {
+        _16 = BufPool::release(_2, move _17) -> [return: bb13, unwind: bb18];
+    }
+
+    bb13: {
+        _20 = move _14;
+        _19 = Option::<SharedBuf>::Some(move _20);
+        _0 = Result::<Option<SharedBuf>, ()>::Ok(move _19);
+        goto -> bb16;
+    }
+
+    bb14: {
+        _21 = BufPool::release(_2, move _22) -> [return: bb15, unwind: bb23];
+    }
+
+    bb15: {
+        _0 = Result::<Option<SharedBuf>, ()>::Err(const ());
+        goto -> bb16;
+    }
+
+    bb16: {
+        _25 = const false;
+        drop(_9) -> [return: bb17, unwind continue];
+    }
+
+    bb17: {
+        return;
+    }
+
+    bb18 (cleanup): {
+        drop(_14) -> [return: bb23, unwind terminate(cleanup)];
+    }
+
+    bb19 (cleanup): {
+        drop(_9) -> [return: bb21, unwind terminate(cleanup)];
+    }
+
+    bb20 (cleanup): {
+        drop(_5) -> [return: bb21, unwind terminate(cleanup)];
+    }
+
+    bb21 (cleanup): {
+        resume;
+    }
+
+    bb22 (cleanup): {
+        drop(_5) -> [return: bb19, unwind terminate(cleanup)];
+    }
+
+    bb23 (cleanup): {
+        switchInt(_25) -> [0: bb19, otherwise: bb22];
+    }
+}
+
+fn unix_utils::<impl at src/platforms/unix_utils.rs:174:1: 174:13>::write(_1: &mut Process, _2: &[u8]) -> bool {
+    debug self => _1;
+    debug buf => _2;
+    let mut _0: bool;
+    let mut _3: isize;
+    let _4: &mut std::process::ChildStdin;
+    let mut _5: &std::result::Result<(), std::io::Error>;
+    let _6: std::result::Result<(), std::io::Error>;
+    scope 1 {
+        debug stdin => _4;
+    }
+
+    bb0: {
+        _3 = discriminant((((*_1).1: std::process::Child).1: std::option::Option<std::process::ChildStdin>));
+        switchInt(move _3) -> [0: bb1, 1: bb3, otherwise: bb2];
+    }
+
+    bb1: {
+        _0 = const true;
+        goto -> bb6;
+    }
+
+    bb2: {
+        unreachable;
+    }
+
+    bb3: {
+        _4 = &mut (((((*_1).1: std::process::Child).1: std::option::Option<std::process::ChildStdin>) as Some).0: std::process::ChildStdin);
+        _6 = <ChildStdin as std::io::Write>::write_all(_4, _2) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _5 = &_6;
+        _0 = Result::<(), std::io::Error>::is_ok(move _5) -> [return: bb5, unwind: bb7];
+    }
+
+    bb5: {
+        drop(_6) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        return;
+    }
+
+    bb7 (cleanup): {
+        drop(_6) -> [return: bb8, unwind terminate(cleanup)];
+    }
+
+    bb8 (cleanup): {
+        resume;
+    }
+}
+
+fn unix_utils::<impl at src/platforms/unix_utils.rs:174:1: 174:13>::close_input(_1: &mut Process) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let mut _2: std::option::Option<std::process::ChildStdin>;
+
+    bb0: {
+        _2 = Option::<ChildStdin>::None;
+        drop((((*_1).1: std::process::Child).1: std::option::Option<std::process::ChildStdin>)) -> [return: bb1, unwind: bb2];
+    }
+
+    bb1: {
+        (((*_1).1: std::process::Child).1: std::option::Option<std::process::ChildStdin>) = move _2;
+        return;
+    }
+
+    bb2 (cleanup): {
+        (((*_1).1: std::process::Child).1: std::option::Option<std::process::ChildStdin>) = move _2;
+        resume;
+    }
+}
+
+fn unix_utils::<impl at src/platforms/unix_utils.rs:174:1: 174:13>::kill(_1: &mut Process) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let mut _2: bool;
+    let mut _3: std::result::Result<(), std::io::Error>;
+    let mut _4: &mut std::process::Child;
+    let mut _5: std::result::Result<std::process::ExitStatus, std::io::Error>;
+    let mut _6: &mut std::process::Child;
+    scope 1 {
+        scope 2 {
+        }
+    }
+
+    bb0: {
+        _2 = ((*_1).0: bool);
+        switchInt(move _2) -> [0: bb5, otherwise: bb1];
+    }
+
+    bb1: {
+        ((*_1).0: bool) = const false;
+        _4 = &mut ((*_1).1: std::process::Child);
+        _3 = Child::kill(move _4) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        drop(_3) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _6 = &mut ((*_1).1: std::process::Child);
+        _5 = Child::wait(move _6) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        drop(_5) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        return;
+    }
+}
+
+fn unix_utils::<impl at src/platforms/unix_utils.rs:237:1: 237:22>::drop(_1: &mut Process) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let _2: ();
+
+    bb0: {
+        _2 = Process::kill(_1) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        ((*_1).0: bool) = const false;
+        return;
+    }
+}
+
+fn suspend_process(_1: &mut ClientApplication<'_>, _2: &mut Option<RawMode>) -> () {
+    debug application => _1;
+    debug raw_mode => _2;
+    let mut _0: ();
+    let _3: ();
+    let _4: bool;
+    let mut _5: &std::option::Option<platforms::sys::unix_utils::RawMode>;
+    let mut _6: std::option::Option<platforms::sys::unix_utils::RawMode>;
+    let _7: i32;
+    let mut _8: std::option::Option<platforms::sys::unix_utils::RawMode>;
+    let mut _9: platforms::sys::unix_utils::RawMode;
+    let _10: ();
+    scope 1 {
+        debug was_in_raw_mode => _4;
+        scope 2 {
+        }
+    }
+
+    bb0: {
+        _3 = ClientApplication::<'_>::restore_screen(_1) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _5 = &(*_2);
+        _4 = Option::<RawMode>::is_some(move _5) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _6 = Option::<RawMode>::None;
+        drop((*_2)) -> [return: bb3, unwind: bb4];
+    }
+
+    bb3: {
+        (*_2) = move _6;
+        _7 = raise(const _) -> [return: bb5, unwind continue];
+    }
+
+    bb4 (cleanup): {
+        (*_2) = move _6;
+        goto -> bb12;
+    }
+
+    bb5: {
+        switchInt(_4) -> [0: bb10, otherwise: bb6];
+    }
+
+    bb6: {
+        _9 = RawMode::enter() -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        _8 = Option::<RawMode>::Some(move _9);
+        drop((*_2)) -> [return: bb8, unwind: bb9];
+    }
+
+    bb8: {
+        (*_2) = move _8;
+        goto -> bb10;
+    }
+
+    bb9 (cleanup): {
+        (*_2) = move _8;
+        goto -> bb12;
+    }
+
+    bb10: {
+        _10 = ClientApplication::<'_>::reinit_screen(_1) -> [return: bb11, unwind continue];
+    }
+
+    bb11: {
+        return;
+    }
+
+    bb12 (cleanup): {
+        resume;
+    }
+}
+
+fn get_terminal_size() -> (usize, usize) {
+    let mut _0: (usize, usize);
+    let mut _1: libc::winsize;
+    let mut _3: u64;
+    let mut _4: *mut libc::winsize;
+    let mut _5: &mut libc::winsize;
+    let mut _6: u16;
+    let _7: !;
+    let mut _8: usize;
+    let mut _9: u16;
+    let mut _10: usize;
+    let mut _11: u16;
+    scope 1 {
+        debug size => _1;
+        let _2: i32;
+        scope 3 {
+            debug result => _2;
+        }
+        scope 4 {
+        }
+    }
+    scope 2 {
+    }
+
+    bb0: {
+        _1 = zeroed::<winsize>() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _3 = const _;
+        _5 = &mut _1;
+        _4 = &raw mut (*_5);
+        _2 = ioctl(const _, _3, move _4) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        switchInt(move _2) -> [4294967295: bb4, otherwise: bb3];
+    }
+
+    bb3: {
+        _6 = (_1.1: u16);
+        switchInt(move _6) -> [0: bb4, otherwise: bb5];
+    }
+
+    bb4: {
+        _7 = begin_panic::<&str>(const "could not get terminal size") -> unwind continue;
+    }
+
+    bb5: {
+        _9 = (_1.1: u16);
+        _8 = move _9 as usize (IntToInt);
+        _11 = (_1.0: u16);
+        _10 = move _11 as usize (IntToInt);
+        _0 = (_8, _10);
+        return;
+    }
+}
+
+fn parse_terminal_keys(_1: &[u8], _2: u8, _3: &mut Vec<pepper::platform::Key>) -> () {
+    debug buf => _1;
+    debug backspace_code => _2;
+    debug keys => _3;
+    let mut _0: ();
+    let _4: pepper::platform::Key;
+    let _5: &[u8];
+    let mut _6: (pepper::platform::Key, &[u8]);
+    let mut _7: usize;
+    let mut _8: usize;
+    let mut _9: bool;
+    let mut _10: usize;
+    let mut _11: usize;
+    let mut _12: bool;
+    let mut _13: usize;
+    let mut _14: usize;
+    let mut _15: bool;
+    let mut _16: bool;
+    let mut _17: bool;
+    let mut _18: usize;
+    let mut _19: usize;
+    let mut _20: bool;
+    let mut _21: usize;
+    let mut _22: usize;
+    let mut _23: bool;
+    let mut _24: usize;
+    let mut _25: usize;
+    let mut _26: bool;
+    let mut _27: usize;
+    let mut _28: usize;
+    let mut _29: bool;
+    let _30: u8;
+    let _31: &u8;
+    let _32: &[u8];
+    let _33: &&[u8];
+    let mut _34: bool;
+    let mut _35: u8;
+    let mut _36: pepper::platform::Key;
+    let mut _37: &[u8];
+    let _38: &[u8];
+    let mut _39: pepper::platform::Key;
+    let _40: &[u8];
+    let mut _41: pepper::platform::Key;
+    let _42: &[u8];
+    let mut _43: pepper::platform::Key;
+    let _44: &[u8];
+    let mut _45: pepper::platform::Key;
+    let _46: &[u8];
+    let mut _47: pepper::platform::Key;
+    let _48: &[u8];
+    let mut _49: pepper::platform::Key;
+    let _50: &[u8];
+    let mut _51: pepper::platform::Key;
+    let mut _52: &[u8];
+    let _53: &[u8];
+    let mut _54: pepper::platform::Key;
+    let mut _55: &[u8];
+    let _56: &[u8];
+    let mut _57: pepper::platform::Key;
+    let _58: &[u8];
+    let mut _59: pepper::platform::Key;
+    let _60: &[u8];
+    let mut _61: pepper::platform::Key;
+    let _62: &[u8];
+    let mut _63: pepper::platform::Key;
+    let _64: &[u8];
+    let mut _65: pepper::platform::Key;
+    let _66: &[u8];
+    let mut _67: pepper::platform::Key;
+    let _68: u8;
+    let _69: &[u8];
+    let mut _71: pepper::platform::Key;
+    let mut _72: char;
+    let mut _73: usize;
+    let mut _74: std::option::Option<usize>;
+    let mut _75: &mut std::slice::Iter<'_, u8>;
+    let mut _76: std::slice::Iter<'_, u8>;
+    let mut _77: &[u8];
+    let mut _78: usize;
+    let mut _79: &[u8];
+    let mut _80: pepper::platform::Key;
+    let mut _81: char;
+    let mut _82: u8;
+    let _83: usize;
+    let mut _84: usize;
+    let mut _85: bool;
+    let _86: &[u8];
+    let mut _87: &[u8];
+    let mut _88: std::ops::RangeFrom<usize>;
+    let mut _91: (&[u8], &[u8]);
+    let mut _92: &[u8];
+    let mut _93: std::result::Result<&str, std::str::Utf8Error>;
+    let mut _94: isize;
+    let mut _96: std::option::Option<char>;
+    let mut _97: &mut std::str::Chars<'_>;
+    let mut _98: std::str::Chars<'_>;
+    let mut _99: isize;
+    let mut _101: pepper::platform::Key;
+    let mut _102: pepper::platform::Key;
+    let mut _103: pepper::platform::Key;
+    let _104: ();
+    scope 1 {
+        debug key => _4;
+        debug rest => _5;
+    }
+    scope 2 {
+        debug b => _30;
+        debug b => _31;
+        debug rest => _32;
+        debug rest => _33;
+    }
+    scope 3 {
+        debug rest => _38;
+    }
+    scope 4 {
+        debug rest => _40;
+    }
+    scope 5 {
+        debug rest => _42;
+    }
+    scope 6 {
+        debug rest => _44;
+    }
+    scope 7 {
+        debug rest => _46;
+    }
+    scope 8 {
+        debug rest => _48;
+    }
+    scope 9 {
+        debug rest => _50;
+    }
+    scope 10 {
+        debug rest => _53;
+    }
+    scope 11 {
+        debug rest => _56;
+    }
+    scope 12 {
+        debug rest => _58;
+    }
+    scope 13 {
+        debug rest => _60;
+    }
+    scope 14 {
+        debug rest => _62;
+    }
+    scope 15 {
+        debug rest => _64;
+    }
+    scope 16 {
+        debug rest => _66;
+    }
+    scope 17 {
+        debug b => _68;
+        debug rest => _69;
+        let _70: u8;
+        scope 18 {
+            debug byte => _70;
+        }
+    }
+    scope 19 {
+        debug len => _73;
+        let _89: &[u8];
+        let _90: &[u8];
+        scope 20 {
+            debug c => _89;
+            debug rest => _90;
+            let _95: &str;
+            scope 21 {
+                debug s => _95;
+                let _100: char;
+                scope 22 {
+                    debug c => _100;
+                }
+            }
+        }
+    }
+
+    bb0: {
+        goto -> bb1;
+    }
+
+    bb1: {
+        _27 = Len((*_1));
+        _28 = const 0_usize;
+        _29 = Eq(move _27, move _28);
+        switchInt(move _29) -> [0: bb2, otherwise: bb42];
+    }
+
+    bb2: {
+        _24 = Len((*_1));
+        _25 = const 1_usize;
+        _26 = Ge(move _24, move _25);
+        switchInt(move _26) -> [0: bb40, otherwise: bb43];
+    }
+
+    bb3: {
+        switchInt((*_1)[0 of 4]) -> [27: bb4, otherwise: bb7];
+    }
+
+    bb4: {
+        switchInt((*_1)[1 of 4]) -> [91: bb5, otherwise: bb7];
+    }
+
+    bb5: {
+        switchInt((*_1)[2 of 4]) -> [53: bb6, 54: bb8, otherwise: bb7];
+    }
+
+    bb6: {
+        switchInt((*_1)[3 of 4]) -> [126: bb46, otherwise: bb7];
+    }
+
+    bb7: {
+        _18 = Len((*_1));
+        _19 = const 3_usize;
+        _20 = Ge(move _18, move _19);
+        switchInt(move _20) -> [0: bb37, otherwise: bb9];
+    }
+
+    bb8: {
+        switchInt((*_1)[3 of 4]) -> [126: bb47, otherwise: bb7];
+    }
+
+    bb9: {
+        switchInt((*_1)[0 of 3]) -> [27: bb10, otherwise: bb12];
+    }
+
+    bb10: {
+        switchInt((*_1)[1 of 3]) -> [91: bb11, otherwise: bb12];
+    }
+
+    bb11: {
+        switchInt((*_1)[2 of 3]) -> [65: bb48, 66: bb49, 67: bb50, 68: bb51, otherwise: bb12];
+    }
+
+    bb12: {
+        _13 = Len((*_1));
+        _14 = const 4_usize;
+        _15 = Ge(move _13, move _14);
+        switchInt(move _15) -> [0: bb17, otherwise: bb13];
+    }
+
+    bb13: {
+        switchInt((*_1)[0 of 4]) -> [27: bb14, otherwise: bb17];
+    }
+
+    bb14: {
+        switchInt((*_1)[1 of 4]) -> [91: bb15, otherwise: bb17];
+    }
+
+    bb15: {
+        switchInt((*_1)[2 of 4]) -> [49: bb16, 55: bb18, otherwise: bb17];
+    }
+
+    bb16: {
+        switchInt((*_1)[3 of 4]) -> [126: bb53, otherwise: bb17];
+    }
+
+    bb17: {
+        switchInt((*_1)[0 of 3]) -> [27: bb19, otherwise: bb21];
+    }
+
+    bb18: {
+        switchInt((*_1)[3 of 4]) -> [126: bb54, otherwise: bb17];
+    }
+
+    bb19: {
+        switchInt((*_1)[1 of 3]) -> [91: bb20, 79: bb22, otherwise: bb21];
+    }
+
+    bb20: {
+        switchInt((*_1)[2 of 3]) -> [72: bb55, otherwise: bb21];
+    }
+
+    bb21: {
+        _10 = Len((*_1));
+        _11 = const 4_usize;
+        _12 = Ge(move _10, move _11);
+        switchInt(move _12) -> [0: bb27, otherwise: bb23];
+    }
+
+    bb22: {
+        switchInt((*_1)[2 of 3]) -> [72: bb56, otherwise: bb21];
+    }
+
+    bb23: {
+        switchInt((*_1)[0 of 4]) -> [27: bb24, otherwise: bb27];
+    }
+
+    bb24: {
+        switchInt((*_1)[1 of 4]) -> [91: bb25, otherwise: bb27];
+    }
+
+    bb25: {
+        switchInt((*_1)[2 of 4]) -> [52: bb26, 56: bb28, otherwise: bb27];
+    }
+
+    bb26: {
+        switchInt((*_1)[3 of 4]) -> [126: bb58, otherwise: bb27];
+    }
+
+    bb27: {
+        switchInt((*_1)[0 of 3]) -> [27: bb29, otherwise: bb31];
+    }
+
+    bb28: {
+        switchInt((*_1)[3 of 4]) -> [126: bb59, otherwise: bb27];
+    }
+
+    bb29: {
+        switchInt((*_1)[1 of 3]) -> [91: bb30, 79: bb32, otherwise: bb31];
+    }
+
+    bb30: {
+        switchInt((*_1)[2 of 3]) -> [70: bb60, otherwise: bb31];
+    }
+
+    bb31: {
+        _7 = Len((*_1));
+        _8 = const 4_usize;
+        _9 = Ge(move _7, move _8);
+        switchInt(move _9) -> [0: bb37, otherwise: bb33];
+    }
+
+    bb32: {
+        switchInt((*_1)[2 of 3]) -> [70: bb61, otherwise: bb31];
+    }
+
+    bb33: {
+        switchInt((*_1)[0 of 4]) -> [27: bb34, otherwise: bb37];
+    }
+
+    bb34: {
+        switchInt((*_1)[1 of 4]) -> [91: bb35, otherwise: bb37];
+    }
+
+    bb35: {
+        switchInt((*_1)[2 of 4]) -> [51: bb36, otherwise: bb37];
+    }
+
+    bb36: {
+        switchInt((*_1)[3 of 4]) -> [126: bb62, otherwise: bb37];
+    }
+
+    bb37: {
+        switchInt((*_1)[0 of 1]) -> [27: bb63, 8: bb64, 13: bb65, 9: bb66, 127: bb67, otherwise: bb38];
+    }
+
+    bb38: {
+        _16 = Le(const 0_u8, (*_1)[0 of 1]);
+        switchInt(move _16) -> [0: bb40, otherwise: bb41];
+    }
+
+    bb39: {
+        _68 = (*_1)[0 of 1];
+        _69 = &(*_1)[1:];
+        _70 = BitOr(_68, const 96_u8);
+        _72 = _70 as char (IntToInt);
+        _71 = Ctrl(_72);
+        _6 = (move _71, _69);
+        goto -> bb84;
+    }
+
+    bb40: {
+        _77 = _1;
+        _76 = core::slice::<impl [u8]>::iter(move _77) -> [return: bb68, unwind continue];
+    }
+
+    bb41: {
+        _17 = Le((*_1)[0 of 1], const 31_u8);
+        switchInt(move _17) -> [0: bb40, otherwise: bb39];
+    }
+
+    bb42: {
+        return;
+    }
+
+    bb43: {
+        _31 = &(*_1)[0 of 1];
+        _32 = &(*_1)[1:];
+        _33 = &_32;
+        _35 = (*_31);
+        _34 = Eq(move _35, _2);
+        switchInt(move _34) -> [0: bb45, otherwise: bb44];
+    }
+
+    bb44: {
+        _30 = (*_1)[0 of 1];
+        _36 = pepper::platform::Key::Backspace;
+        _37 = _32;
+        _6 = (move _36, move _37);
+        goto -> bb84;
+    }
+
+    bb45: {
+        _21 = Len((*_1));
+        _22 = const 4_usize;
+        _23 = Ge(move _21, move _22);
+        switchInt(move _23) -> [0: bb7, otherwise: bb3];
+    }
+
+    bb46: {
+        _38 = &(*_1)[4:];
+        _39 = PageUp;
+        _6 = (move _39, _38);
+        goto -> bb84;
+    }
+
+    bb47: {
+        _40 = &(*_1)[4:];
+        _41 = PageDown;
+        _6 = (move _41, _40);
+        goto -> bb84;
+    }
+
+    bb48: {
+        _42 = &(*_1)[3:];
+        _43 = Up;
+        _6 = (move _43, _42);
+        goto -> bb84;
+    }
+
+    bb49: {
+        _44 = &(*_1)[3:];
+        _45 = Down;
+        _6 = (move _45, _44);
+        goto -> bb84;
+    }
+
+    bb50: {
+        _46 = &(*_1)[3:];
+        _47 = pepper::platform::Key::Right;
+        _6 = (move _47, _46);
+        goto -> bb84;
+    }
+
+    bb51: {
+        _48 = &(*_1)[3:];
+        _49 = pepper::platform::Key::Left;
+        _6 = (move _49, _48);
+        goto -> bb84;
+    }
+
+    bb52: {
+        _51 = pepper::platform::Key::Home;
+        _52 = _50;
+        _6 = (move _51, move _52);
+        goto -> bb84;
+    }
+
+    bb53: {
+        _50 = &(*_1)[4:];
+        goto -> bb52;
+    }
+
+    bb54: {
+        _50 = &(*_1)[4:];
+        goto -> bb52;
+    }
+
+    bb55: {
+        _50 = &(*_1)[3:];
+        goto -> bb52;
+    }
+
+    bb56: {
+        _50 = &(*_1)[3:];
+        goto -> bb52;
+    }
+
+    bb57: {
+        _54 = pepper::platform::Key::End;
+        _55 = _53;
+        _6 = (move _54, move _55);
+        goto -> bb84;
+    }
+
+    bb58: {
+        _53 = &(*_1)[4:];
+        goto -> bb57;
+    }
+
+    bb59: {
+        _53 = &(*_1)[4:];
+        goto -> bb57;
+    }
+
+    bb60: {
+        _53 = &(*_1)[3:];
+        goto -> bb57;
+    }
+
+    bb61: {
+        _53 = &(*_1)[3:];
+        goto -> bb57;
+    }
+
+    bb62: {
+        _56 = &(*_1)[4:];
+        _57 = pepper::platform::Key::Delete;
+        _6 = (move _57, _56);
+        goto -> bb84;
+    }
+
+    bb63: {
+        _58 = &(*_1)[1:];
+        _59 = Esc;
+        _6 = (move _59, _58);
+        goto -> bb84;
+    }
+
+    bb64: {
+        _60 = &(*_1)[1:];
+        _61 = pepper::platform::Key::Backspace;
+        _6 = (move _61, _60);
+        goto -> bb84;
+    }
+
+    bb65: {
+        _62 = &(*_1)[1:];
+        _63 = Enter;
+        _6 = (move _63, _62);
+        goto -> bb84;
+    }
+
+    bb66: {
+        _64 = &(*_1)[1:];
+        _65 = Tab;
+        _6 = (move _65, _64);
+        goto -> bb84;
+    }
+
+    bb67: {
+        _66 = &(*_1)[1:];
+        _67 = pepper::platform::Key::Delete;
+        _6 = (move _67, _66);
+        goto -> bb84;
+    }
+
+    bb68: {
+        _75 = &mut _76;
+        _74 = <std::slice::Iter<'_, u8> as Iterator>::position::<{closure@src/platforms/unix_utils.rs:302:44: 302:47}>(move _75, const ZeroSized: {closure@src/platforms/unix_utils.rs:302:44: 302:47}) -> [return: bb69, unwind continue];
+    }
+
+    bb69: {
+        _79 = _1;
+        _78 = Len((*_79));
+        _73 = Option::<usize>::unwrap_or(move _74, move _78) -> [return: bb70, unwind continue];
+    }
+
+    bb70: {
+        switchInt(_73) -> [0: bb72, otherwise: bb71];
+    }
+
+    bb71: {
+        _92 = _1;
+        _91 = core::slice::<impl [u8]>::split_at(move _92, _73) -> [return: bb75, unwind continue];
+    }
+
+    bb72: {
+        _83 = const 0_usize;
+        _84 = Len((*_1));
+        _85 = Lt(_83, _84);
+        assert(move _85, "index out of bounds: the length is {} but the index is {}", move _84, _83) -> [success: bb73, unwind continue];
+    }
+
+    bb73: {
+        _82 = (*_1)[_83];
+        _81 = move _82 as char (IntToInt);
+        _80 = pepper::platform::Key::Char(_81);
+        _87 = _1;
+        _88 = RangeFrom::<usize> { start: const 1_usize };
+        _86 = <[u8] as Index<RangeFrom<usize>>>::index(move _87, move _88) -> [return: bb74, unwind continue];
+    }
+
+    bb74: {
+        _6 = (move _80, _86);
+        goto -> bb84;
+    }
+
+    bb75: {
+        _89 = (_91.0: &[u8]);
+        _90 = (_91.1: &[u8]);
+        _93 = from_utf8(_89) -> [return: bb76, unwind continue];
+    }
+
+    bb76: {
+        _94 = discriminant(_93);
+        switchInt(move _94) -> [0: bb79, 1: bb77, otherwise: bb78];
+    }
+
+    bb77: {
+        _103 = pepper::platform::Key::None;
+        _6 = (move _103, _90);
+        goto -> bb84;
+    }
+
+    bb78: {
+        unreachable;
+    }
+
+    bb79: {
+        _95 = ((_93 as Ok).0: &str);
+        _98 = core::str::<impl str>::chars(_95) -> [return: bb80, unwind continue];
+    }
+
+    bb80: {
+        _97 = &mut _98;
+        _96 = <Chars<'_> as Iterator>::next(move _97) -> [return: bb81, unwind continue];
+    }
+
+    bb81: {
+        _99 = discriminant(_96);
+        switchInt(move _99) -> [0: bb82, 1: bb83, otherwise: bb78];
+    }
+
+    bb82: {
+        _102 = pepper::platform::Key::None;
+        _6 = (move _102, _90);
+        goto -> bb84;
+    }
+
+    bb83: {
+        _100 = ((_96 as Some).0: char);
+        _101 = pepper::platform::Key::Char(_100);
+        _6 = (move _101, _90);
+        goto -> bb84;
+    }
+
+    bb84: {
+        _4 = (_6.0: pepper::platform::Key);
+        _5 = (_6.1: &[u8]);
+        _1 = _5;
+        _104 = Vec::<pepper::platform::Key>::push(_3, _4) -> [return: bb1, unwind continue];
+    }
+}
+
+fn parse_terminal_keys::{closure#0}(_1: &mut {closure@src/platforms/unix_utils.rs:302:44: 302:47}, _2: &u8) -> bool {
+    debug b => _2;
+    let mut _0: bool;
+
+    bb0: {
+        _0 = core::num::<impl u8>::is_ascii(_2) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+const MAX_CLIENT_COUNT: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 20_usize;
+        return;
+    }
+}
+
+const MAX_PROCESS_COUNT: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 42_usize;
+        return;
+    }
+}
+
+const MAX_TRIGGERED_EVENT_COUNT: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 32_usize;
+        return;
+    }
+}
+
+fn sys::main() -> () {
+    let mut _0: ();
+    let _1: ();
+    let mut _2: fn(pepper::Args, std::os::unix::net::UnixListener) -> std::result::Result<(), pepper::application::AnyError>;
+    let mut _3: fn(pepper::Args, std::os::unix::net::UnixStream);
+
+    bb0: {
+        _2 = platforms::sys::run_server as fn(pepper::Args, std::os::unix::net::UnixListener) -> std::result::Result<(), pepper::application::AnyError> (PointerCoercion(ReifyFnPointer));
+        _3 = platforms::sys::run_client as fn(pepper::Args, std::os::unix::net::UnixStream) (PointerCoercion(ReifyFnPointer));
+        _1 = run(move _2, move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+ 
+fn errno() -> i32 {
+    let mut _0: i32;
+    let mut _1: *mut i32;
+    scope 1 {
+        let mut _2: *const ();
+        let mut _3: usize;
+        let mut _4: usize;
+        let mut _5: usize;
+        let mut _6: usize;
+        let mut _7: bool;
+    }
+
+    bb0: {
+        _1 = __errno_location() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = _1 as *const () (PtrToPtr);
+        _3 = _2 as usize (Transmute);
+        _4 = AlignOf(i32);
+        _5 = Sub(_4, const 1_usize);
+        _6 = BitAnd(_3, _5);
+        _7 = Eq(_6, const 0_usize);
+        assert(_7, "misaligned pointer dereference: address must be a multiple of {} but is {}", _4, _3) -> [success: bb2, unwind unreachable];
+    }
+
+    bb2: {
+        _0 = (*_1);
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:37:1: 37:13>::new() -> EventFd {
+    let mut _0: platforms::sys::EventFd;
+    let _1: i32;
+    let _2: !;
+    scope 1 {
+        debug fd => _1;
+    }
+    scope 2 {
+    }
+
+    bb0: {
+        _1 = eventfd(const 0_u32, const 0_i32) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        switchInt(move _1) -> [4294967295: bb2, otherwise: bb3];
+    }
+
+    bb2: {
+        _2 = begin_panic::<&str>(const "could not create event fd") -> unwind continue;
+    }
+
+    bb3: {
+        _0 = EventFd(_1);
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:37:1: 37:13>::write(_1: i32) -> () {
+    debug fd => _1;
+    let mut _0: ();
+    let mut _2: [u8; 8];
+    let mut _4: *const libc::c_void;
+    let mut _5: *mut u8;
+    let mut _6: &mut [u8];
+    let mut _7: &mut [u8; 8];
+    let mut _8: usize;
+    let mut _9: &[u8];
+    let mut _10: &[u8; 8];
+    let mut _11: bool;
+    let mut _12: isize;
+    let mut _13: usize;
+    let mut _14: &[u8];
+    let mut _15: &[u8; 8];
+    let _16: !;
+    scope 1 {
+        debug buf => _2;
+        let _3: isize;
+        scope 2 {
+            debug result => _3;
+        }
+        scope 3 {
+        }
+    }
+
+    bb0: {
+        _2 = core::num::<impl u64>::to_ne_bytes(const 1_u64) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _7 = &mut _2;
+        _6 = move _7 as &mut [u8] (PointerCoercion(Unsize));
+        _5 = core::slice::<impl [u8]>::as_mut_ptr(move _6) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _4 = move _5 as *const libc::c_void (PtrToPtr);
+        _10 = &_2;
+        _9 = move _10 as &[u8] (PointerCoercion(Unsize));
+        _8 = Len((*_9));
+        _3 = libc::write(_1, _4, _8) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _15 = &_2;
+        _14 = move _15 as &[u8] (PointerCoercion(Unsize));
+        _13 = Len((*_14));
+        _12 = move _13 as isize (IntToInt);
+        _11 = Ne(_3, _12);
+        switchInt(move _11) -> [0: bb5, otherwise: bb4];
+    }
+
+    bb4: {
+        _16 = begin_panic::<&str>(const "could not write to event fd") -> unwind continue;
+    }
+
+    bb5: {
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:37:1: 37:13>::read(_1: &EventFd) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let mut _2: [u8; 8];
+    let mut _3: bool;
+    let mut _4: &std::result::Result<usize, ()>;
+    let _5: std::result::Result<usize, ()>;
+    let mut _6: i32;
+    let mut _7: &mut [u8];
+    let mut _8: &mut [u8; 8];
+    let mut _9: &std::result::Result<usize, ()>;
+    let _10: std::result::Result<usize, ()>;
+    let mut _11: usize;
+    let mut _12: &[u8];
+    let mut _13: &[u8; 8];
+    let _14: !;
+    scope 1 {
+        debug buf => _2;
+    }
+
+    bb0: {
+        _2 = [const 0_u8; 8];
+        _6 = ((*_1).0: i32);
+        _8 = &mut _2;
+        _7 = _8 as &mut [u8] (PointerCoercion(Unsize));
+        _5 = unix_utils::read(move _6, move _7) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _4 = &_5;
+        _13 = &_2;
+        _12 = move _13 as &[u8] (PointerCoercion(Unsize));
+        _11 = Len((*_12));
+        _10 = Result::<usize, ()>::Ok(move _11);
+        _9 = &_10;
+        _3 = <Result<usize, ()> as PartialEq>::ne(move _4, move _9) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        switchInt(move _3) -> [0: bb4, otherwise: bb3];
+    }
+
+    bb3: {
+        _14 = begin_panic::<&str>(const "could not read from event fd") -> unwind continue;
+    }
+
+    bb4: {
+        return;
+    }
+}
+
+sys::<impl at src/platforms/linux.rs:37:1: 37:13>::read::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 8_usize;
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:61:1: 61:25>::as_raw_fd(_1: &EventFd) -> i32 {
+    debug self => _1;
+    let mut _0: i32;
+
+    bb0: {
+        _0 = ((*_1).0: i32);
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:66:1: 66:22>::drop(_1: &mut EventFd) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let _2: i32;
+    let mut _3: i32;
+    scope 1 {
+    }
+
+    bb0: {
+        _3 = ((*_1).0: i32);
+        _2 = close(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:73:1: 73:14>::new(_1: i32) -> SignalFd {
+    debug signal => _1;
+    let mut _0: platforms::sys::SignalFd;
+    let mut _4: *mut libc::sigset_t;
+    let mut _5: &mut libc::sigset_t;
+    let _6: !;
+    let mut _8: *mut libc::sigset_t;
+    let mut _9: &mut libc::sigset_t;
+    let _10: !;
+    let mut _12: *const libc::sigset_t;
+    let _13: &libc::sigset_t;
+    let mut _14: *mut libc::sigset_t;
+    let _15: !;
+    let mut _17: *const libc::sigset_t;
+    let _18: &libc::sigset_t;
+    let _19: !;
+    scope 1 {
+        let mut _2: libc::sigset_t;
+        scope 2 {
+            debug signals => _2;
+            let _3: i32;
+            scope 3 {
+                debug result => _3;
+                let _7: i32;
+                scope 4 {
+                    debug result => _7;
+                    let _11: i32;
+                    scope 5 {
+                        debug result => _11;
+                        let _16: i32;
+                        scope 6 {
+                            debug fd => _16;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _2 = zeroed::<sigset_t>() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _5 = &mut _2;
+        _4 = &raw mut (*_5);
+        _3 = sigemptyset(move _4) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        switchInt(move _3) -> [4294967295: bb3, otherwise: bb4];
+    }
+
+    bb3: {
+        _6 = begin_panic::<&str>(const "could not create signal fd") -> unwind continue;
+    }
+
+    bb4: {
+        _9 = &mut _2;
+        _8 = &raw mut (*_9);
+        _7 = sigaddset(move _8, _1) -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        switchInt(move _7) -> [4294967295: bb6, otherwise: bb7];
+    }
+
+    bb6: {
+        _10 = begin_panic::<&str>(const "could not create signal fd") -> unwind continue;
+    }
+
+    bb7: {
+        _13 = &_2;
+        _12 = &raw const (*_13);
+        _14 = null_mut::<sigset_t>() -> [return: bb8, unwind continue];
+    }
+
+    bb8: {
+        _11 = sigprocmask(const _, move _12, move _14) -> [return: bb9, unwind continue];
+    }
+
+    bb9: {
+        switchInt(move _11) -> [4294967295: bb10, otherwise: bb11];
+    }
+
+    bb10: {
+        _15 = begin_panic::<&str>(const "could not create signal fd") -> unwind continue;
+    }
+
+    bb11: {
+        _18 = &_2;
+        _17 = &raw const (*_18);
+        _16 = signalfd(const -1_i32, move _17, const 0_i32) -> [return: bb12, unwind continue];
+    }
+
+    bb12: {
+        switchInt(move _16) -> [4294967295: bb13, otherwise: bb14];
+    }
+
+    bb13: {
+        _19 = begin_panic::<&str>(const "could not create signal fd") -> unwind continue;
+    }
+
+    bb14: {
+        _0 = SignalFd(_16);
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:73:1: 73:14>::read(_1: &SignalFd) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let mut _2: [u8; 128];
+    let mut _3: bool;
+    let mut _4: &std::result::Result<usize, ()>;
+    let _5: std::result::Result<usize, ()>;
+    let mut _6: i32;
+    let mut _7: &mut [u8];
+    let mut _8: &mut [u8; 128];
+    let mut _9: &std::result::Result<usize, ()>;
+    let _10: std::result::Result<usize, ()>;
+    let mut _11: usize;
+    let mut _12: &[u8];
+    let mut _13: &[u8; 128];
+    let _14: !;
+    scope 1 {
+        debug buf => _2;
+    }
+
+    bb0: {
+        _2 = [const 0_u8; 128];
+        _6 = ((*_1).0: i32);
+        _8 = &mut _2;
+        _7 = _8 as &mut [u8] (PointerCoercion(Unsize));
+        _5 = unix_utils::read(move _6, move _7) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _4 = &_5;
+        _13 = &_2;
+        _12 = move _13 as &[u8] (PointerCoercion(Unsize));
+        _11 = Len((*_12));
+        _10 = Result::<usize, ()>::Ok(move _11);
+        _9 = &_10;
+        _3 = <Result<usize, ()> as PartialEq>::ne(move _4, move _9) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        switchInt(move _3) -> [0: bb4, otherwise: bb3];
+    }
+
+    bb3: {
+        _14 = begin_panic::<&str>(const "could not read from signal fd") -> unwind continue;
+    }
+
+    bb4: {
+        return;
+    }
+}
+
+sys::<impl at src/platforms/linux.rs:73:1: 73:14>::read::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        ConstEvalCounter;
+        _0 = std::mem::size_of::<signalfd_siginfo>() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:104:1: 104:26>::as_raw_fd(_1: &SignalFd) -> i32 {
+    debug self => _1;
+    let mut _0: i32;
+
+    bb0: {
+        _0 = ((*_1).0: i32);
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:109:1: 109:23>::drop(_1: &mut SignalFd) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let _2: i32;
+    let mut _3: i32;
+    scope 1 {
+    }
+
+    bb0: {
+        _3 = ((*_1).0: i32);
+        _2 = close(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+EpollEvents::0::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const _;
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:116:1: 116:17>::new() -> EpollEvents {
+    let mut _0: platforms::sys::EpollEvents;
+    let mut _1: [libc::epoll_event; 32];
+
+    bb0: {
+        _1 = [const _; 32];
+        _0 = EpollEvents(move _1);
+        return;
+    }
+}
+
+const DEFAULT_EVENT: epoll_event = {
+    let mut _0: libc::epoll_event;
+
+    bb0: {
+        _0 = epoll_event { events: const 0_u32, u64: const 0_u64 };
+        return;
+    }
+}
+
+sys::<impl at src/platforms/linux.rs:116:1: 116:17>::new::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const _;
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:123:1: 123:11>::new() -> Epoll {
+    let mut _0: platforms::sys::Epoll;
+    let _1: i32;
+    let _2: !;
+    scope 1 {
+        debug fd => _1;
+    }
+    scope 2 {
+    }
+
+    bb0: {
+        _1 = epoll_create1(const 0_i32) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        switchInt(move _1) -> [4294967295: bb2, otherwise: bb3];
+    }
+
+    bb2: {
+        _2 = begin_panic::<&str>(const "could not create epoll") -> unwind continue;
+    }
+
+    bb3: {
+        _0 = Epoll(_1);
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:123:1: 123:11>::add(_1: &Epoll, _2: i32, _3: usize) -> () {
+    debug self => _1;
+    debug fd => _2;
+    debug index => _3;
+    let mut _0: ();
+    let mut _4: libc::epoll_event;
+    let mut _5: u32;
+    let mut _6: i32;
+    let mut _7: i32;
+    let mut _8: i32;
+    let mut _9: u64;
+    let mut _11: i32;
+    let mut _12: *mut libc::epoll_event;
+    let mut _13: &mut libc::epoll_event;
+    let _14: !;
+    scope 1 {
+        debug event => _4;
+        let _10: i32;
+        scope 2 {
+            debug result => _10;
+        }
+        scope 3 {
+        }
+    }
+
+    bb0: {
+        _8 = BitOr(const _, const _);
+        _7 = BitOr(move _8, const _);
+        _6 = BitOr(move _7, const _);
+        _5 = move _6 as u32 (IntToInt);
+        _9 = _3 as u64 (IntToInt);
+        _4 = epoll_event { events: _5, u64: _9 };
+        _11 = ((*_1).0: i32);
+        _13 = &mut _4;
+        _12 = &raw mut (*_13);
+        _10 = epoll_ctl(move _11, const _, _2, move _12) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        switchInt(move _10) -> [4294967295: bb2, otherwise: bb3];
+    }
+
+    bb2: {
+        _14 = begin_panic::<&str>(const "could not add event") -> unwind continue;
+    }
+
+    bb3: {
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:123:1: 123:11>::remove(_1: &Epoll, _2: i32) -> () {
+    debug self => _1;
+    debug fd => _2;
+    let mut _0: ();
+    let mut _3: libc::epoll_event;
+    let _4: i32;
+    let mut _5: i32;
+    let mut _6: *mut libc::epoll_event;
+    let mut _7: &mut libc::epoll_event;
+    scope 1 {
+        debug event => _3;
+        scope 2 {
+        }
+    }
+
+    bb0: {
+        _3 = epoll_event { events: const 0_u32, u64: const 0_u64 };
+        _5 = ((*_1).0: i32);
+        _7 = &mut _3;
+        _6 = &raw mut (*_7);
+        _4 = epoll_ctl(move _5, const _, _2, move _6) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+ fn sys::<impl at src/platforms/linux.rs:123:1: 123:11>::wait(_1: &Epoll, _2: &mut EpollEvents, _3: Option<Duration>) -> Map<std::slice::Iter<'_, epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}> {
+    debug self => _1;
+    debug events => _2;
+    debug timeout => _3;
+    let mut _0: std::iter::Map<std::slice::Iter<'_, libc::epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}>;
+    let _4: i32;
+    let mut _5: isize;
+    let _6: std::time::Duration;
+    let mut _7: i32;
+    let mut _8: u128;
+    let mut _9: &std::time::Duration;
+    let mut _11: i32;
+    let mut _12: *mut libc::epoll_event;
+    let mut _13: &mut [libc::epoll_event];
+    let mut _14: &mut [libc::epoll_event; 32];
+    let mut _15: i32;
+    let mut _16: usize;
+    let mut _17: &[libc::epoll_event];
+    let mut _18: &[libc::epoll_event; 32];
+    let mut _19: i32;
+    let mut _20: i32;
+    let mut _21: bool;
+    let mut _22: i32;
+    let _23: !;
+    let mut _24: std::slice::Iter<'_, libc::epoll_event>;
+    let _25: &[libc::epoll_event];
+    let mut _26: &[libc::epoll_event; 32];
+    let mut _27: std::ops::RangeTo<usize>;
+    let mut _28: usize;
+    let mut _29: i32;
+    scope 1 {
+        debug timeout => _4;
+        let mut _10: i32;
+        scope 3 {
+            debug len => _10;
+        }
+        scope 4 {
+        }
+    }
+    scope 2 {
+        debug duration => _6;
+    }
+
+    bb0: {
+        _5 = discriminant(_3);
+        switchInt(move _5) -> [0: bb1, 1: bb3, otherwise: bb2];
+    }
+
+    bb1: {
+        _4 = const -1_i32;
+        goto -> bb5;
+    }
+
+    bb2: {
+        unreachable;
+    }
+
+    bb3: {
+        _6 = ((_3 as Some).0: std::time::Duration);
+        _9 = &_6;
+        _8 = Duration::as_millis(move _9) -> [return: bb4, unwind continue];
+    }
+
+    bb4: {
+        _7 = move _8 as i32 (IntToInt);
+        _4 = _7;
+        goto -> bb5;
+    }
+
+    bb5: {
+        _11 = ((*_1).0: i32);
+        _14 = &mut ((*_2).0: [libc::epoll_event; 32]);
+        _13 = move _14 as &mut [libc::epoll_event] (PointerCoercion(Unsize));
+        _12 = core::slice::<impl [epoll_event]>::as_mut_ptr(move _13) -> [return: bb6, unwind continue];
+    }
+
+    bb6: {
+        _18 = &((*_2).0: [libc::epoll_event; 32]);
+        _17 = move _18 as &[libc::epoll_event] (PointerCoercion(Unsize));
+        _16 = Len((*_17));
+        _15 = move _16 as i32 (IntToInt);
+        _19 = _4;
+        _10 = epoll_wait(move _11, move _12, _15, move _19) -> [return: bb7, unwind continue];
+    }
+
+    bb7: {
+        _20 = _10;
+        switchInt(move _20) -> [4294967295: bb8, otherwise: bb12];
+    }
+
+    bb8: {
+        _22 = errno() -> [return: bb9, unwind continue];
+    }
+
+    bb9: {
+        _21 = Eq(move _22, const _);
+        switchInt(move _21) -> [0: bb11, otherwise: bb10];
+    }
+
+    bb10: {
+        _10 = const 0_i32;
+        goto -> bb12;
+    }
+
+    bb11: {
+        _23 = begin_panic::<&str>(const "could not wait for events") -> unwind continue;
+    }
+
+    bb12: {
+        _26 = &((*_2).0: [libc::epoll_event; 32]);
+        _29 = _10;
+        _28 = move _29 as usize (IntToInt);
+        _27 = RangeTo::<usize> { end: move _28 };
+        _25 = <[epoll_event; 32] as Index<RangeTo<usize>>>::index(move _26, move _27) -> [return: bb13, unwind continue];
+    }
+
+    bb13: {
+        _24 = core::slice::<impl [epoll_event]>::iter(_25) -> [return: bb14, unwind continue];
+    }
+
+    bb14: {
+        _0 = <std::slice::Iter<'_, epoll_event> as Iterator>::map::<usize, {closure@src/platforms/linux.rs:168:45: 168:48}>(move _24, const ZeroSized: {closure@src/platforms/linux.rs:168:45: 168:48}) -> [return: bb15, unwind continue];
+    }
+
+    bb15: {
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:123:1: 123:11>::wait::{closure#0}(_1: &mut {closure@src/platforms/linux.rs:168:45: 168:48}, _2: &epoll_event) -> usize {
+    debug e => _2;
+    let mut _0: usize;
+    let mut _3: u64;
+
+    bb0: {
+        _3 = ((*_2).1: u64);
+        _0 = move _3 as usize (IntToInt);
+        return;
+    }
+}
+
+fn sys::<impl at src/platforms/linux.rs:171:1: 171:20>::drop(_1: &mut Epoll) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let _2: i32;
+    let mut _3: i32;
+    scope 1 {
+    }
+
+    bb0: {
+        _3 = ((*_1).0: i32);
+        _2 = close(move _3) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn run_server(_1: pepper::Args, _2: UnixListener) -> Result<(), AnyError> {
+    debug args => _1;
+    debug listener => _2;
+    let mut _0: std::result::Result<(), pepper::application::AnyError>;
+    let _3: platforms::sys::EventFd;
+    let _4: ();
+    let _5: &std::sync::atomic::AtomicIsize;
+    let mut _6: isize;
+    let mut _7: i32;
+    let mut _8: &platforms::sys::EventFd;
+    let mut _9: std::sync::atomic::Ordering;
+    let mut _12: (std::sync::mpsc::SyncSender<pepper::platform::PlatformRequest>, std::sync::mpsc::Receiver<pepper::platform::PlatformRequest>);
+    let mut _14: fn();
+    let mut _15: std::sync::mpsc::SyncSender<pepper::platform::PlatformRequest>;
+    let mut _17: pepper::Args;
+    let mut _22: std::time::Duration;
+    let _24: ();
+    let mut _25: &platforms::sys::Epoll;
+    let mut _26: i32;
+    let mut _27: &platforms::sys::EventFd;
+    let _28: ();
+    let mut _29: &platforms::sys::Epoll;
+    let mut _30: i32;
+    let mut _31: &std::os::unix::net::UnixListener;
+    let mut _34: &platforms::sys::Epoll;
+    let mut _35: &mut platforms::sys::EpollEvents;
+    let mut _36: std::option::Option<std::time::Duration>;
+    let mut _37: usize;
+    let mut _38: &std::iter::Map<std::slice::Iter<'_, libc::epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}>;
+    let mut _39: std::option::Option<std::time::Duration>;
+    let mut _40: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, pepper::application::AnyError>>;
+    let mut _41: std::result::Result<(), pepper::application::AnyError>;
+    let mut _42: &pepper::application::ApplicationEventSender;
+    let mut _43: pepper::application::ApplicationEvent;
+    let mut _44: isize;
+    let mut _45: std::iter::Map<std::slice::Iter<'_, libc::epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}>;
+    let mut _46: std::iter::Map<std::slice::Iter<'_, libc::epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}>;
+    let mut _48: std::option::Option<usize>;
+    let mut _49: &mut std::iter::Map<std::slice::Iter<'_, libc::epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}>;
+    let mut _50: isize;
+    let mut _52: bool;
+    let mut _53: bool;
+    let mut _54: bool;
+    let mut _55: bool;
+    let _56: ();
+    let mut _57: &platforms::sys::EventFd;
+    let mut _58: std::sync::mpsc::TryIter<'_, pepper::platform::PlatformRequest>;
+    let mut _59: std::sync::mpsc::TryIter<'_, pepper::platform::PlatformRequest>;
+    let mut _60: &std::sync::mpsc::Receiver<pepper::platform::PlatformRequest>;
+    let mut _62: std::option::Option<pepper::platform::PlatformRequest>;
+    let mut _63: &mut std::sync::mpsc::TryIter<'_, pepper::platform::PlatformRequest>;
+    let mut _64: isize;
+    let mut _66: isize;
+    let mut _70: usize;
+    let mut _71: bool;
+    let mut _72: isize;
+    let mut _74: bool;
+    let mut _75: &std::result::Result<(), std::io::Error>;
+    let _76: std::result::Result<(), std::io::Error>;
+    let _77: &[u8];
+    let mut _78: &pepper::platform::SharedBuf;
+    let _79: ();
+    let mut _80: &platforms::sys::Epoll;
+    let mut _81: i32;
+    let mut _82: &std::os::unix::net::UnixStream;
+    let mut _83: std::option::Option<std::os::unix::net::UnixStream>;
+    let mut _84: usize;
+    let mut _85: bool;
+    let mut _86: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, pepper::application::AnyError>>;
+    let mut _87: std::result::Result<(), pepper::application::AnyError>;
+    let mut _88: &pepper::application::ApplicationEventSender;
+    let mut _89: pepper::application::ApplicationEvent;
+    let mut _90: isize;
+    let mut _93: std::option::Option<std::os::unix::net::UnixStream>;
+    let mut _94: &mut std::option::Option<std::os::unix::net::UnixStream>;
+    let mut _95: usize;
+    let mut _96: bool;
+    let mut _97: isize;
+    let _99: ();
+    let mut _100: &platforms::sys::Epoll;
+    let mut _101: i32;
+    let mut _102: &std::os::unix::net::UnixStream;
+    let mut _103: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, pepper::application::AnyError>>;
+    let mut _104: std::result::Result<(), pepper::application::AnyError>;
+    let mut _105: &pepper::application::ApplicationEventSender;
+    let mut _106: pepper::application::ApplicationEvent;
+    let mut _107: isize;
+    let mut _112: std::iter::Enumerate<std::slice::IterMut<'_, std::option::Option<platforms::sys::unix_utils::Process>>>;
+    let mut _113: std::iter::Enumerate<std::slice::IterMut<'_, std::option::Option<platforms::sys::unix_utils::Process>>>;
+    let mut _114: std::slice::IterMut<'_, std::option::Option<platforms::sys::unix_utils::Process>>;
+    let mut _115: &mut [std::option::Option<platforms::sys::unix_utils::Process>];
+    let mut _116: &mut [std::option::Option<platforms::sys::unix_utils::Process>; 42];
+    let mut _118: std::option::Option<(usize, &mut std::option::Option<platforms::sys::unix_utils::Process>)>;
+    let mut _119: &mut std::iter::Enumerate<std::slice::IterMut<'_, std::option::Option<platforms::sys::unix_utils::Process>>>;
+    let mut _120: isize;
+    let mut _123: bool;
+    let mut _124: &std::option::Option<platforms::sys::unix_utils::Process>;
+    let mut _126: std::result::Result<std::process::Child, std::io::Error>;
+    let mut _127: &mut std::process::Command;
+    let mut _128: isize;
+    let mut _131: std::option::Option<i32>;
+    let mut _132: &platforms::sys::unix_utils::Process;
+    let mut _133: isize;
+    let _135: ();
+    let mut _136: &platforms::sys::Epoll;
+    let mut _137: usize;
+    let mut _138: (usize, bool);
+    let mut _139: std::option::Option<platforms::sys::unix_utils::Process>;
+    let mut _140: platforms::sys::unix_utils::Process;
+    let mut _141: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, pepper::application::AnyError>>;
+    let mut _142: std::result::Result<(), pepper::application::AnyError>;
+    let mut _143: &pepper::application::ApplicationEventSender;
+    let mut _144: pepper::application::ApplicationEvent;
+    let mut _145: isize;
+    let mut _146: bool;
+    let mut _147: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, pepper::application::AnyError>>;
+    let mut _148: std::result::Result<(), pepper::application::AnyError>;
+    let mut _149: &pepper::application::ApplicationEventSender;
+    let mut _150: pepper::application::ApplicationEvent;
+    let mut _151: isize;
+    let mut _155: usize;
+    let mut _156: bool;
+    let mut _157: isize;
+    let mut _159: bool;
+    let _160: &[u8];
+    let mut _161: &pepper::platform::SharedBuf;
+    let mut _162: std::option::Option<i32>;
+    let mut _163: &platforms::sys::unix_utils::Process;
+    let mut _164: isize;
+    let _166: ();
+    let mut _167: &platforms::sys::Epoll;
+    let mut _169: &platforms::sys::unix_utils::Process;
+    let _170: ();
+    let mut _171: std::option::Option<platforms::sys::unix_utils::Process>;
+    let mut _172: usize;
+    let mut _173: bool;
+    let mut _174: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, pepper::application::AnyError>>;
+    let mut _175: std::result::Result<(), pepper::application::AnyError>;
+    let mut _176: &pepper::application::ApplicationEventSender;
+    let mut _177: pepper::application::ApplicationEvent;
+    let mut _178: isize;
+    let _180: usize;
+    let mut _181: usize;
+    let mut _182: bool;
+    let mut _183: isize;
+    let _185: ();
+    let mut _188: usize;
+    let mut _189: bool;
+    let mut _190: isize;
+    let mut _192: std::option::Option<i32>;
+    let mut _193: &platforms::sys::unix_utils::Process;
+    let mut _194: isize;
+    let _196: ();
+    let mut _197: &platforms::sys::Epoll;
+    let mut _199: &platforms::sys::unix_utils::Process;
+    let _200: ();
+    let mut _201: std::option::Option<platforms::sys::unix_utils::Process>;
+    let mut _202: usize;
+    let mut _203: bool;
+    let mut _204: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, pepper::application::AnyError>>;
+    let mut _205: std::result::Result<(), pepper::application::AnyError>;
+    let mut _206: &pepper::application::ApplicationEventSender;
+    let mut _207: pepper::application::ApplicationEvent;
+    let mut _208: isize;
+    let mut _209: std::result::Result<(std::os::unix::net::UnixStream, std::os::unix::net::SocketAddr), std::io::Error>;
+    let mut _210: &std::os::unix::net::UnixListener;
+    let mut _211: isize;
+    let mut _213: std::iter::Enumerate<std::slice::IterMut<'_, std::option::Option<std::os::unix::net::UnixStream>>>;
+    let mut _214: std::iter::Enumerate<std::slice::IterMut<'_, std::option::Option<std::os::unix::net::UnixStream>>>;
+    let mut _215: std::slice::IterMut<'_, std::option::Option<std::os::unix::net::UnixStream>>;
+    let mut _216: &mut [std::option::Option<std::os::unix::net::UnixStream>];
+    let mut _217: &mut [std::option::Option<std::os::unix::net::UnixStream>; 20];
+    let mut _219: std::option::Option<(usize, &mut std::option::Option<std::os::unix::net::UnixStream>)>;
+    let mut _220: &mut std::iter::Enumerate<std::slice::IterMut<'_, std::option::Option<std::os::unix::net::UnixStream>>>;
+    let mut _221: isize;
+    let mut _224: bool;
+    let mut _225: &std::option::Option<std::os::unix::net::UnixStream>;
+    let _226: ();
+    let mut _227: &platforms::sys::Epoll;
+    let mut _228: i32;
+    let mut _229: &std::os::unix::net::UnixStream;
+    let mut _230: usize;
+    let mut _231: (usize, bool);
+    let mut _232: std::option::Option<std::os::unix::net::UnixStream>;
+    let mut _233: std::os::unix::net::UnixStream;
+    let mut _235: std::option::Option<pepper::client::ClientHandle>;
+    let mut _236: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, pepper::application::AnyError>>;
+    let mut _237: std::result::Result<(), pepper::application::AnyError>;
+    let mut _238: &pepper::application::ApplicationEventSender;
+    let mut _239: pepper::application::ApplicationEvent;
+    let mut _240: isize;
+    let _242: !;
+    let mut _243: std::fmt::Arguments<'_>;
+    let mut _244: &[&str];
+    let mut _245: &[core::fmt::rt::Argument<'_>];
+    let _246: &[core::fmt::rt::Argument<'_>; 1];
+    let _247: [core::fmt::rt::Argument<'_>; 1];
+    let mut _248: core::fmt::rt::Argument<'_>;
+    let _249: &std::io::Error;
+    let mut _251: (usize, bool);
+    let mut _252: usize;
+    let mut _253: bool;
+    let mut _254: isize;
+    let mut _257: std::option::Option<pepper::client::ClientHandle>;
+    let mut _258: std::result::Result<pepper::platform::SharedBuf, ()>;
+    let mut _259: &mut pepper::platform::BufPool;
+    let mut _260: usize;
+    let mut _261: isize;
+    let mut _264: bool;
+    let _265: &[u8];
+    let mut _266: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, pepper::application::AnyError>>;
+    let mut _267: std::result::Result<(), pepper::application::AnyError>;
+    let mut _268: &pepper::application::ApplicationEventSender;
+    let mut _269: pepper::application::ApplicationEvent;
+    let mut _270: isize;
+    let _271: ();
+    let mut _272: &platforms::sys::Epoll;
+    let mut _273: i32;
+    let mut _274: &std::os::unix::net::UnixStream;
+    let mut _275: std::option::Option<std::os::unix::net::UnixStream>;
+    let mut _276: usize;
+    let mut _277: bool;
+    let mut _278: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, pepper::application::AnyError>>;
+    let mut _279: std::result::Result<(), pepper::application::AnyError>;
+    let mut _280: &pepper::application::ApplicationEventSender;
+    let mut _281: pepper::application::ApplicationEvent;
+    let mut _282: isize;
+    let mut _283: std::option::Option<std::time::Duration>;
+    let mut _284: std::time::Duration;
+    let mut _286: (usize, bool);
+    let mut _287: usize;
+    let mut _288: bool;
+    let mut _289: isize;
+    let mut _292: &platforms::sys::unix_utils::Process;
+    let mut _293: std::result::Result<std::option::Option<pepper::platform::SharedBuf>, ()>;
+    let mut _294: &mut pepper::platform::BufPool;
+    let mut _295: isize;
+    let mut _296: isize;
+    let mut _299: bool;
+    let _300: &[u8];
+    let mut _301: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, pepper::application::AnyError>>;
+    let mut _302: std::result::Result<(), pepper::application::AnyError>;
+    let mut _303: &pepper::application::ApplicationEventSender;
+    let mut _304: pepper::application::ApplicationEvent;
+    let mut _305: isize;
+    let mut _306: std::option::Option<i32>;
+    let mut _307: &platforms::sys::unix_utils::Process;
+    let mut _308: isize;
+    let _310: ();
+    let mut _311: &platforms::sys::Epoll;
+    let _312: ();
+    let mut _313: std::option::Option<platforms::sys::unix_utils::Process>;
+    let mut _314: usize;
+    let mut _315: bool;
+    let mut _316: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, pepper::application::AnyError>>;
+    let mut _317: std::result::Result<(), pepper::application::AnyError>;
+    let mut _318: &pepper::application::ApplicationEventSender;
+    let mut _319: pepper::application::ApplicationEvent;
+    let mut _320: isize;
+    let mut _321: !;
+    let mut _323: bool;
+    let mut _324: bool;
+    let mut _325: bool;
+    let mut _326: bool;
+    let mut _327: bool;
+    let mut _328: bool;
+    let mut _329: bool;
+    let mut _330: bool;
+    let mut _331: bool;
+    let mut _332: bool;
+    let mut _333: bool;
+    let mut _334: bool;
+    let mut _335: bool;
+    let mut _336: isize;
+    let mut _337: isize;
+    let mut _338: isize;
+    let mut _339: isize;
+    let mut _340: isize;
+    let mut _341: isize;
+    let mut _342: isize;
+    let mut _343: isize;
+    let mut _344: isize;
+    let mut _345: isize;
+    let mut _346: isize;
+    let mut _347: isize;
+    let mut _348: isize;
+    scope 1 {
+        debug new_request_event => _3;
+        let _10: std::sync::mpsc::SyncSender<pepper::platform::PlatformRequest>;
+        let _11: std::sync::mpsc::Receiver<pepper::platform::PlatformRequest>;
+        scope 2 {
+            debug request_sender => _10;
+            debug request_receiver => _11;
+            let _13: pepper::platform::Platform;
+            scope 3 {
+                debug platform => _13;
+                let _16: pepper::application::ApplicationEventSender;
+                scope 4 {
+                    debug event_sender => _16;
+                    let mut _18: [std::option::Option<std::os::unix::net::UnixStream>; 20];
+                    scope 5 {
+                        debug client_connections => _18;
+                        let mut _19: [std::option::Option<platforms::sys::unix_utils::Process>; 42];
+                        scope 6 {
+                            debug processes => _19;
+                            let mut _20: pepper::platform::BufPool;
+                            scope 7 {
+                                debug buf_pool => _20;
+                                let mut _21: std::option::Option<std::time::Duration>;
+                                scope 8 {
+                                    debug timeout => _21;
+                                    let _23: platforms::sys::Epoll;
+                                    scope 9 {
+                                        debug epoll => _23;
+                                        let mut _32: platforms::sys::EpollEvents;
+                                        scope 10 {
+                                            debug epoll_events => _32;
+                                            let _33: std::iter::Map<std::slice::Iter<'_, libc::epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}>;
+                                            scope 11 {
+                                                debug events => _33;
+                                                let mut _47: std::iter::Map<std::slice::Iter<'_, libc::epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}>;
+                                                scope 12 {
+                                                    debug residual => const Result::<Infallible, AnyError>::Err(AnyError);
+                                                    scope 13 {
+                                                    }
+                                                }
+                                                scope 14 {
+                                                    debug val => const ();
+                                                    scope 15 {
+                                                    }
+                                                }
+                                                scope 16 {
+                                                    debug iter => _47;
+                                                    let _51: usize;
+                                                    scope 17 {
+                                                        debug event_index => _51;
+                                                        let mut _61: std::sync::mpsc::TryIter<'_, pepper::platform::PlatformRequest>;
+                                                        let _212: std::os::unix::net::UnixStream;
+                                                        let _241: std::io::Error;
+                                                        let _250: usize;
+                                                        let _285: usize;
+                                                        scope 18 {
+                                                            debug iter => _61;
+                                                            let _65: pepper::platform::PlatformRequest;
+                                                            scope 19 {
+                                                                debug request => _65;
+                                                                let _67: pepper::client::ClientHandle;
+                                                                let _68: pepper::platform::SharedBuf;
+                                                                let _91: pepper::client::ClientHandle;
+                                                                let _108: pepper::platform::ProcessTag;
+                                                                let mut _109: std::process::Command;
+                                                                let _110: usize;
+                                                                let _152: pepper::platform::ProcessHandle;
+                                                                let _153: pepper::platform::SharedBuf;
+                                                                let _179: pepper::platform::ProcessHandle;
+                                                                let _186: pepper::platform::ProcessHandle;
+                                                                scope 20 {
+                                                                    debug handle => _67;
+                                                                    debug buf => _68;
+                                                                    let _69: usize;
+                                                                    scope 21 {
+                                                                        debug index => _69;
+                                                                        scope 22 {
+                                                                            debug connection => _73;
+                                                                            let _73: &mut std::os::unix::net::UnixStream;
+                                                                            scope 23 {
+                                                                                debug residual => const Result::<Infallible, AnyError>::Err(AnyError);
+                                                                                scope 24 {
+                                                                                }
+                                                                            }
+                                                                            scope 25 {
+                                                                                debug val => const ();
+                                                                                scope 26 {
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                scope 27 {
+                                                                    debug handle => _91;
+                                                                    let _92: usize;
+                                                                    scope 28 {
+                                                                        debug index => _92;
+                                                                        scope 29 {
+                                                                            debug connection => _98;
+                                                                            let _98: std::os::unix::net::UnixStream;
+                                                                        }
+                                                                        scope 30 {
+                                                                            debug residual => const Result::<Infallible, AnyError>::Err(AnyError);
+                                                                            scope 31 {
+                                                                            }
+                                                                        }
+                                                                        scope 32 {
+                                                                            debug val => const ();
+                                                                            scope 33 {
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                scope 34 {
+                                                                    debug tag => _108;
+                                                                    debug command => _109;
+                                                                    debug buf_len => _110;
+                                                                    let mut _111: bool;
+                                                                    scope 35 {
+                                                                        debug spawned => _111;
+                                                                        let mut _117: std::iter::Enumerate<std::slice::IterMut<'_, std::option::Option<platforms::sys::unix_utils::Process>>>;
+                                                                        scope 36 {
+                                                                            debug iter => _117;
+                                                                            let _121: usize;
+                                                                            let _122: &mut std::option::Option<platforms::sys::unix_utils::Process>;
+                                                                            scope 37 {
+                                                                                debug i => _121;
+                                                                                debug p => _122;
+                                                                                let _125: pepper::platform::ProcessHandle;
+                                                                                scope 38 {
+                                                                                    debug handle => _125;
+                                                                                    scope 39 {
+                                                                                        debug child => _129;
+                                                                                        let _129: std::process::Child;
+                                                                                        let _130: platforms::sys::unix_utils::Process;
+                                                                                        scope 40 {
+                                                                                            debug process => _130;
+                                                                                            scope 41 {
+                                                                                                debug fd => _134;
+                                                                                                let _134: i32;
+                                                                                            }
+                                                                                            scope 42 {
+                                                                                                debug residual => const Result::<Infallible, AnyError>::Err(AnyError);
+                                                                                                scope 43 {
+                                                                                                }
+                                                                                            }
+                                                                                            scope 44 {
+                                                                                                debug val => const ();
+                                                                                                scope 45 {
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        scope 46 {
+                                                                            debug residual => const Result::<Infallible, AnyError>::Err(AnyError);
+                                                                            scope 47 {
+                                                                            }
+                                                                        }
+                                                                        scope 48 {
+                                                                            debug val => const ();
+                                                                            scope 49 {
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                scope 50 {
+                                                                    debug handle => _152;
+                                                                    debug buf => _153;
+                                                                    let _154: usize;
+                                                                    scope 51 {
+                                                                        debug index => _154;
+                                                                        scope 52 {
+                                                                            debug process => _158;
+                                                                            let _158: &mut platforms::sys::unix_utils::Process;
+                                                                            let _168: pepper::platform::ProcessTag;
+                                                                            scope 53 {
+                                                                                debug fd => _165;
+                                                                                let _165: i32;
+                                                                            }
+                                                                            scope 54 {
+                                                                                debug tag => _168;
+                                                                                scope 55 {
+                                                                                    debug residual => const Result::<Infallible, AnyError>::Err(AnyError);
+                                                                                    scope 56 {
+                                                                                    }
+                                                                                }
+                                                                                scope 57 {
+                                                                                    debug val => const ();
+                                                                                    scope 58 {
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                scope 59 {
+                                                                    debug handle => _179;
+                                                                    scope 60 {
+                                                                        debug process => _184;
+                                                                        let _184: &mut platforms::sys::unix_utils::Process;
+                                                                    }
+                                                                }
+                                                                scope 61 {
+                                                                    debug handle => _186;
+                                                                    let _187: usize;
+                                                                    scope 62 {
+                                                                        debug index => _187;
+                                                                        scope 63 {
+                                                                            debug process => _191;
+                                                                            let _191: &mut platforms::sys::unix_utils::Process;
+                                                                            let _198: pepper::platform::ProcessTag;
+                                                                            scope 64 {
+                                                                                debug fd => _195;
+                                                                                let _195: i32;
+                                                                            }
+                                                                            scope 65 {
+                                                                                debug tag => _198;
+                                                                                scope 66 {
+                                                                                    debug residual => const Result::<Infallible, AnyError>::Err(AnyError);
+                                                                                    scope 67 {
+                                                                                    }
+                                                                                }
+                                                                                scope 68 {
+                                                                                    debug val => const ();
+                                                                                    scope 69 {
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        scope 70 {
+                                                            debug connection => _212;
+                                                            let mut _218: std::iter::Enumerate<std::slice::IterMut<'_, std::option::Option<std::os::unix::net::UnixStream>>>;
+                                                            scope 71 {
+                                                                debug iter => _218;
+                                                                let _222: usize;
+                                                                let _223: &mut std::option::Option<std::os::unix::net::UnixStream>;
+                                                                scope 72 {
+                                                                    debug i => _222;
+                                                                    debug c => _223;
+                                                                    let _234: pepper::client::ClientHandle;
+                                                                    scope 73 {
+                                                                        debug handle => _234;
+                                                                        scope 74 {
+                                                                            debug residual => const Result::<Infallible, AnyError>::Err(AnyError);
+                                                                            scope 75 {
+                                                                            }
+                                                                        }
+                                                                        scope 76 {
+                                                                            debug val => const ();
+                                                                            scope 77 {
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        scope 78 {
+                                                            debug error => _241;
+                                                            let mut _322: &[&str; 1];
+                                                        }
+                                                        scope 79 {
+                                                            debug index => _250;
+                                                            scope 80 {
+                                                                debug connection => _255;
+                                                                let _255: &mut std::os::unix::net::UnixStream;
+                                                                let _256: pepper::client::ClientHandle;
+                                                                scope 81 {
+                                                                    debug handle => _256;
+                                                                    let _262: pepper::platform::SharedBuf;
+                                                                    let _263: &pepper::platform::SharedBuf;
+                                                                    scope 82 {
+                                                                        debug buf => _262;
+                                                                        debug buf => _263;
+                                                                        scope 83 {
+                                                                            debug residual => const Result::<Infallible, AnyError>::Err(AnyError);
+                                                                            scope 84 {
+                                                                            }
+                                                                        }
+                                                                        scope 85 {
+                                                                            debug val => const ();
+                                                                            scope 86 {
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    scope 87 {
+                                                                        debug residual => const Result::<Infallible, AnyError>::Err(AnyError);
+                                                                        scope 88 {
+                                                                        }
+                                                                    }
+                                                                    scope 89 {
+                                                                        debug val => const ();
+                                                                        scope 90 {
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        scope 91 {
+                                                            debug index => _285;
+                                                            scope 92 {
+                                                                debug process => _290;
+                                                                let _290: &mut platforms::sys::unix_utils::Process;
+                                                                let _291: pepper::platform::ProcessTag;
+                                                                scope 93 {
+                                                                    debug tag => _291;
+                                                                    let _297: pepper::platform::SharedBuf;
+                                                                    let _298: &pepper::platform::SharedBuf;
+                                                                    scope 94 {
+                                                                        debug buf => _297;
+                                                                        debug buf => _298;
+                                                                        scope 95 {
+                                                                            debug residual => const Result::<Infallible, AnyError>::Err(AnyError);
+                                                                            scope 96 {
+                                                                            }
+                                                                        }
+                                                                        scope 97 {
+                                                                            debug val => const ();
+                                                                            scope 98 {
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    scope 99 {
+                                                                        debug fd => _309;
+                                                                        let _309: i32;
+                                                                    }
+                                                                    scope 100 {
+                                                                        debug residual => const Result::<Infallible, AnyError>::Err(AnyError);
+                                                                        scope 101 {
+                                                                        }
+                                                                    }
+                                                                    scope 102 {
+                                                                        debug val => const ();
+                                                                        scope 103 {
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _335 = const false;
+        _334 = const false;
+        _333 = const false;
+        _332 = const false;
+        _331 = const false;
+        _330 = const false;
+        _325 = const false;
+        _329 = const false;
+        _328 = const false;
+        _323 = const false;
+        _324 = const false;
+        _326 = const false;
+        _327 = const false;
+        _335 = const true;
+        _3 = EventFd::new() -> [return: bb1, unwind: bb241];
+    }
+
+    bb1: {
+        _5 = const {alloc46: &AtomicIsize};
+        _8 = &_3;
+        _7 = <EventFd as AsRawFd>::as_raw_fd(move _8) -> [return: bb2, unwind: bb240];
+    }
+
+    bb2: {
+        _6 = move _7 as isize (IntToInt);
+        _9 = Relaxed;
+        _4 = AtomicIsize::store(_5, _6, move _9) -> [return: bb3, unwind: bb240];
+    }
+
+    bb3: {
+        _12 = ServerApplication::platform_request_channel() -> [return: bb4, unwind: bb240];
+    }
+
+    bb4: {
+        _334 = const true;
+        _10 = move (_12.0: std::sync::mpsc::SyncSender<pepper::platform::PlatformRequest>);
+        _11 = move (_12.1: std::sync::mpsc::Receiver<pepper::platform::PlatformRequest>);
+        _14 = const ZeroSized: {closure@src/platforms/linux.rs:188:9: 188:11} as fn() (PointerCoercion(ClosureFnPointer(Normal)));
+        _334 = const false;
+        _15 = move _10;
+        _13 = Platform::new(move _14, move _15) -> [return: bb5, unwind: bb239];
+    }
+
+    bb5: {
+        _335 = const false;
+        _17 = move _1;
+        _16 = ServerApplication::run(move _17, move _13) -> [return: bb6, unwind: bb239];
+    }
+
+    bb6: {
+        _18 = <[Option<UnixStream>; 20] as Default>::default() -> [return: bb7, unwind: bb238];
+    }
+
+    bb7: {
+        _19 = [const _; 42];
+        _20 = <BufPool as Default>::default() -> [return: bb8, unwind: bb236];
+    }
+
+    bb8: {
+        _22 = ServerApplication::idle_duration() -> [return: bb9, unwind: bb235];
+    }
+
+    bb9: {
+        _21 = Option::<Duration>::Some(move _22);
+        _23 = Epoll::new() -> [return: bb10, unwind: bb235];
+    }
+
+    bb10: {
+        _25 = &_23;
+        _27 = &_3;
+        _26 = <EventFd as AsRawFd>::as_raw_fd(move _27) -> [return: bb11, unwind: bb234];
+    }
+
+    bb11: {
+        _24 = Epoll::add(move _25, move _26, const 0_usize) -> [return: bb12, unwind: bb234];
+    }
+
+    bb12: {
+        _29 = &_23;
+        _31 = &_2;
+        _30 = <UnixListener as AsRawFd>::as_raw_fd(move _31) -> [return: bb13, unwind: bb234];
+    }
+
+    bb13: {
+        _28 = Epoll::add(move _29, move _30, const 1_usize) -> [return: bb14, unwind: bb234];
+    }
+
+    bb14: {
+        _32 = EpollEvents::new() -> [return: bb296, unwind: bb234];
+    }
+
+    bb15: {
+        _34 = &_23;
+        _35 = &mut _32;
+        _36 = _21;
+        _33 = Epoll::wait(move _34, _35, move _36) -> [return: bb16, unwind: bb234];
+    }
+
+    bb16: {
+        _38 = &_33;
+        _37 = <Map<std::slice::Iter<'_, epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}> as ExactSizeIterator>::len(move _38) -> [return: bb17, unwind: bb234];
+    }
+
+    bb17: {
+        switchInt(move _37) -> [0: bb18, otherwise: bb23];
+    }
+
+    bb18: {
+        _39 = Option::<Duration>::None;
+        _21 = move _39;
+        _42 = &_16;
+        _43 = pepper::application::ApplicationEvent::Idle;
+        _41 = ApplicationEventSender::send(move _42, move _43) -> [return: bb19, unwind: bb234];
+    }
+
+    bb19: {
+        _40 = <Result<(), AnyError> as Try>::branch(move _41) -> [return: bb20, unwind: bb234];
+    }
+
+    bb20: {
+        _44 = discriminant(_40);
+        switchInt(move _44) -> [0: bb15, 1: bb22, otherwise: bb21];
+    }
+
+    bb21: {
+        unreachable;
+    }
+
+    bb22: {
+        _0 = <Result<(), AnyError> as FromResidual<Result<Infallible, AnyError>>>::from_residual(const Result::<Infallible, AnyError>::Err(AnyError)) -> [return: bb297, unwind: bb234];
+    }
+
+    bb23: {
+        _46 = move _33;
+        _45 = <Map<std::slice::Iter<'_, epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}> as IntoIterator>::into_iter(move _46) -> [return: bb24, unwind: bb234];
+    }
+
+    bb24: {
+        _47 = move _45;
+        goto -> bb25;
+    }
+
+    bb25: {
+        _49 = &mut _47;
+        _48 = <Map<std::slice::Iter<'_, epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}> as Iterator>::next(_49) -> [return: bb26, unwind: bb234];
+    }
+
+    bb26: {
+        _50 = discriminant(_48);
+        switchInt(move _50) -> [0: bb15, 1: bb27, otherwise: bb21];
+    }
+
+    bb27: {
+        _51 = ((_48 as Some).0: usize);
+        switchInt(_51) -> [0: bb35, 1: bb138, otherwise: bb28];
+    }
+
+    bb28: {
+        _54 = Le(const 2_usize, _51);
+        switchInt(move _54) -> [0: bb30, otherwise: bb34];
+    }
+
+    bb29: {
+        _251 = CheckedSub(_51, const _);
+        assert(!move (_251.1: bool), "attempt to compute `{} - {}`, which would overflow", _51, const _) -> [success: bb165, unwind: bb234];
+    }
+
+    bb30: {
+        _52 = Le(const 22_usize, _51);
+        switchInt(move _52) -> [0: bb32, otherwise: bb33];
+    }
+
+    bb31: {
+        _286 = CheckedSub(_51, const _);
+        assert(!move (_286.1: bool), "attempt to compute `{} - {}`, which would overflow", _51, const _) -> [success: bb191, unwind: bb234];
+    }
+
+    bb32: {
+        _321 = core::panicking::panic(const "internal error: entered unreachable code") -> bb234;
+    }
+
+    bb33: {
+        _53 = Le(_51, const 63_usize);
+        switchInt(move _53) -> [0: bb32, otherwise: bb31];
+    }
+
+    bb34: {
+        _55 = Le(_51, const 21_usize);
+        switchInt(move _55) -> [0: bb30, otherwise: bb29];
+    }
+
+    bb35: {
+        _57 = &_3;
+        _56 = EventFd::read(move _57) -> [return: bb36, unwind: bb234];
+    }
+
+    bb36: {
+        _60 = &_11;
+        _59 = std::sync::mpsc::Receiver::<PlatformRequest>::try_iter(move _60) -> [return: bb37, unwind: bb234];
+    }
+
+    bb37: {
+        _58 = <TryIter<'_, PlatformRequest> as IntoIterator>::into_iter(move _59) -> [return: bb38, unwind: bb234];
+    }
+
+    bb38: {
+        _61 = move _58;
+        goto -> bb39;
+    }
+
+    bb39: {
+        _63 = &mut _61;
+        _62 = <TryIter<'_, PlatformRequest> as Iterator>::next(_63) -> [return: bb40, unwind: bb234];
+    }
+
+    bb40: {
+        _64 = discriminant(_62);
+        switchInt(move _64) -> [0: bb25, 1: bb41, otherwise: bb21];
+    }
+
+    bb41: {
+        _65 = move ((_62 as Some).0: pepper::platform::PlatformRequest);
+        _66 = discriminant(_65);
+        switchInt(move _66) -> [0: bb43, 1: bb44, 2: bb64, 3: bb74, 4: bb103, 5: bb122, 6: bb42, otherwise: bb21];
+    }
+
+    bb42: {
+        _186 = ((_65 as KillProcess).0: pepper::platform::ProcessHandle);
+        _187 = (_186.0: usize);
+        _188 = const 42_usize;
+        _189 = Lt(_187, _188);
+        assert(move _189, "index out of bounds: the length is {} but the index is {}", move _188, _187) -> [success: bb125, unwind: bb234];
+    }
+
+    bb43: {
+        _0 = Result::<(), AnyError>::Ok(const ());
+        goto -> bb219;
+    }
+
+    bb44: {
+        _67 = ((_65 as WriteToClient).0: pepper::client::ClientHandle);
+        _68 = move ((_65 as WriteToClient).1: pepper::platform::SharedBuf);
+        _69 = pepper::client::ClientHandle::into_index(_67) -> [return: bb45, unwind: bb233];
+    }
+
+    bb45: {
+        _70 = const 20_usize;
+        _71 = Lt(_69, _70);
+        assert(move _71, "index out of bounds: the length is {} but the index is {}", move _70, _69) -> [success: bb46, unwind: bb233];
+    }
+
+    bb46: {
+        _72 = discriminant(_18[_69]);
+        switchInt(move _72) -> [1: bb47, otherwise: bb63];
+    }
+
+    bb47: {
+        _73 = &mut ((_18[_69] as Some).0: std::os::unix::net::UnixStream);
+        _78 = &_68;
+        _77 = SharedBuf::as_bytes(move _78) -> [return: bb48, unwind: bb233];
+    }
+
+    bb48: {
+        _76 = <UnixStream as std::io::Write>::write_all(_73, _77) -> [return: bb49, unwind: bb233];
+    }
+
+    bb49: {
+        _75 = &_76;
+        _74 = Result::<(), std::io::Error>::is_err(move _75) -> [return: bb50, unwind: bb232];
+    }
+
+    bb50: {
+        switchInt(move _74) -> [0: bb62, otherwise: bb51];
+    }
+
+    bb51: {
+        drop(_76) -> [return: bb52, unwind: bb233];
+    }
+
+    bb52: {
+        _80 = &_23;
+        _82 = &(*_73);
+        _81 = <UnixStream as AsRawFd>::as_raw_fd(move _82) -> [return: bb53, unwind: bb233];
+    }
+
+    bb53: {
+        _79 = Epoll::remove(move _80, move _81) -> [return: bb54, unwind: bb233];
+    }
+
+    bb54: {
+        _333 = const true;
+        _83 = Option::<UnixStream>::None;
+        _84 = const 20_usize;
+        _85 = Lt(_69, _84);
+        assert(move _85, "index out of bounds: the length is {} but the index is {}", move _84, _69) -> [success: bb55, unwind: bb291];
+    }
+
+    bb55: {
+        drop(_18[_69]) -> [return: bb56, unwind: bb57];
+    }
+
+    bb56: {
+        _333 = const false;
+        _18[_69] = move _83;
+        _333 = const false;
+        _88 = &_16;
+        _89 = ConnectionClose { handle: _67 };
+        _87 = ApplicationEventSender::send(move _88, move _89) -> [return: bb58, unwind: bb233];
+    }
+
+    bb57 (cleanup): {
+        _333 = const false;
+        _18[_69] = move _83;
+        goto -> bb291;
+    }
+
+    bb58: {
+        _86 = <Result<(), AnyError> as Try>::branch(move _87) -> [return: bb59, unwind: bb233];
+    }
+
+    bb59: {
+        _90 = discriminant(_86);
+        switchInt(move _90) -> [0: bb63, 1: bb60, otherwise: bb21];
+    }
+
+    bb60: {
+        _0 = <Result<(), AnyError> as FromResidual<Result<Infallible, AnyError>>>::from_residual(const Result::<Infallible, AnyError>::Err(AnyError)) -> [return: bb61, unwind: bb233];
+    }
+
+    bb61: {
+        drop(_68) -> [return: bb219, unwind: bb234];
+    }
+
+    bb62: {
+        drop(_76) -> [return: bb63, unwind: bb233];
+    }
+
+    bb63: {
+        drop(_68) -> [return: bb39, unwind: bb234];
+    }
+
+    bb64: {
+        _91 = ((_65 as CloseClient).0: pepper::client::ClientHandle);
+        _92 = pepper::client::ClientHandle::into_index(_91) -> [return: bb65, unwind: bb234];
+    }
+
+    bb65: {
+        _95 = const 20_usize;
+        _96 = Lt(_92, _95);
+        assert(move _96, "index out of bounds: the length is {} but the index is {}", move _95, _92) -> [success: bb66, unwind: bb234];
+    }
+
+    bb66: {
+        _94 = &mut _18[_92];
+        _93 = Option::<UnixStream>::take(move _94) -> [return: bb67, unwind: bb234];
+    }
+
+    bb67: {
+        _323 = const true;
+        _97 = discriminant(_93);
+        switchInt(move _97) -> [1: bb68, otherwise: bb246];
+    }
+
+    bb68: {
+        _323 = const false;
+        _98 = move ((_93 as Some).0: std::os::unix::net::UnixStream);
+        _100 = &_23;
+        _102 = &_98;
+        _101 = <UnixStream as AsRawFd>::as_raw_fd(move _102) -> [return: bb69, unwind: bb231];
+    }
+
+    bb69: {
+        _99 = Epoll::remove(move _100, move _101) -> [return: bb70, unwind: bb231];
+    }
+
+    bb70: {
+        drop(_98) -> [return: bb246, unwind: bb234];
+    }
+
+    bb71: {
+        _103 = <Result<(), AnyError> as Try>::branch(move _104) -> [return: bb72, unwind: bb234];
+    }
+
+    bb72: {
+        _107 = discriminant(_103);
+        switchInt(move _107) -> [0: bb39, 1: bb73, otherwise: bb21];
+    }
+
+    bb73: {
+        _0 = <Result<(), AnyError> as FromResidual<Result<Infallible, AnyError>>>::from_residual(const Result::<Infallible, AnyError>::Err(AnyError)) -> [return: bb298, unwind: bb234];
+    }
+
+    bb74: {
+        _108 = ((_65 as SpawnProcess).0: pepper::platform::ProcessTag);
+        _109 = move ((_65 as SpawnProcess).1: std::process::Command);
+        _110 = ((_65 as SpawnProcess).2: usize);
+        _111 = const false;
+        _116 = &mut _19;
+        _115 = move _116 as &mut [std::option::Option<platforms::sys::unix_utils::Process>] (PointerCoercion(Unsize));
+        _114 = core::slice::<impl [Option<Process>]>::iter_mut(move _115) -> [return: bb75, unwind: bb230];
+    }
+
+    bb75: {
+        _113 = <std::slice::IterMut<'_, Option<Process>> as Iterator>::enumerate(move _114) -> [return: bb76, unwind: bb230];
+    }
+
+    bb76: {
+        _112 = <Enumerate<std::slice::IterMut<'_, Option<Process>>> as IntoIterator>::into_iter(move _113) -> [return: bb77, unwind: bb230];
+    }
+
+    bb77: {
+        _117 = move _112;
+        goto -> bb78;
+    }
+
+    bb78: {
+        _119 = &mut _117;
+        _118 = <Enumerate<std::slice::IterMut<'_, Option<Process>>> as Iterator>::next(_119) -> [return: bb79, unwind: bb230];
+    }
+
+    bb79: {
+        _120 = discriminant(_118);
+        switchInt(move _120) -> [0: bb97, 1: bb80, otherwise: bb21];
+    }
+
+    bb80: {
+        _121 = (((_118 as Some).0: (usize, &mut std::option::Option<platforms::sys::unix_utils::Process>)).0: usize);
+        _122 = move (((_118 as Some).0: (usize, &mut std::option::Option<platforms::sys::unix_utils::Process>)).1: &mut std::option::Option<platforms::sys::unix_utils::Process>);
+        _124 = &(*_122);
+        _123 = Option::<Process>::is_some(move _124) -> [return: bb81, unwind: bb230];
+    }
+
+    bb81: {
+        switchInt(move _123) -> [0: bb82, otherwise: bb78];
+    }
+
+    bb82: {
+        _125 = ProcessHandle(_121);
+        _127 = &mut _109;
+        _126 = std::process::Command::spawn(move _127) -> [return: bb83, unwind: bb230];
+    }
+
+    bb83: {
+        _324 = const true;
+        _128 = discriminant(_126);
+        switchInt(move _128) -> [0: bb84, otherwise: bb251];
+    }
+
+    bb84: {
+        _324 = const false;
+        _129 = move ((_126 as Ok).0: std::process::Child);
+        _130 = Process::new(move _129, _108, _110) -> [return: bb85, unwind: bb289];
+    }
+
+    bb85: {
+        _332 = const true;
+        _132 = &_130;
+        _131 = Process::try_as_raw_fd(move _132) -> [return: bb86, unwind: bb287];
+    }
+
+    bb86: {
+        _133 = discriminant(_131);
+        switchInt(move _133) -> [1: bb87, otherwise: bb89];
+    }
+
+    bb87: {
+        _134 = ((_131 as Some).0: i32);
+        _136 = &_23;
+        _138 = CheckedAdd(const _, _121);
+        assert(!move (_138.1: bool), "attempt to compute `{} + {}`, which would overflow", const _, _121) -> [success: bb88, unwind: bb287];
+    }
+
+    bb88: {
+        _137 = move (_138.0: usize);
+        _135 = Epoll::add(move _136, _134, move _137) -> [return: bb299, unwind: bb287];
+    }
+
+    bb89: {
+        _332 = const false;
+        _140 = move _130;
+        _139 = Option::<Process>::Some(move _140);
+        drop((*_122)) -> [return: bb90, unwind: bb91];
+    }
+
+    bb90: {
+        (*_122) = move _139;
+        _143 = &_16;
+        _144 = ProcessSpawned { tag: _108, handle: _125 };
+        _142 = ApplicationEventSender::send(move _143, move _144) -> [return: bb92, unwind: bb287];
+    }
+
+    bb91 (cleanup): {
+        (*_122) = move _139;
+        goto -> bb287;
+    }
+
+    bb92: {
+        _141 = <Result<(), AnyError> as Try>::branch(move _142) -> [return: bb93, unwind: bb287];
+    }
+
+    bb93: {
+        _145 = discriminant(_141);
+        switchInt(move _145) -> [0: bb94, 1: bb95, otherwise: bb21];
+    }
+
+    bb94: {
+        _111 = const true;
+        _332 = const false;
+        goto -> bb251;
+    }
+
+    bb95: {
+        _0 = <Result<(), AnyError> as FromResidual<Result<Infallible, AnyError>>>::from_residual(const Result::<Infallible, AnyError>::Err(AnyError)) -> [return: bb96, unwind: bb287];
+    }
+
+    bb96: {
+        _332 = const false;
+        _344 = discriminant(_126);
+        switchInt(move _344) -> [0: bb267, otherwise: bb268];
+    }
+
+    bb97: {
+        _146 = _111;
+        switchInt(move _146) -> [0: bb98, otherwise: bb102];
+    }
+
+    bb98: {
+        _149 = &_16;
+        _150 = ProcessExit { tag: _108 };
+        _148 = ApplicationEventSender::send(move _149, move _150) -> [return: bb99, unwind: bb230];
+    }
+
+    bb99: {
+        _147 = <Result<(), AnyError> as Try>::branch(move _148) -> [return: bb100, unwind: bb230];
+    }
+
+    bb100: {
+        _151 = discriminant(_147);
+        switchInt(move _151) -> [0: bb102, 1: bb101, otherwise: bb21];
+    }
+
+    bb101: {
+        _0 = <Result<(), AnyError> as FromResidual<Result<Infallible, AnyError>>>::from_residual(const Result::<Infallible, AnyError>::Err(AnyError)) -> [return: bb300, unwind: bb230];
+    }
+
+    bb102: {
+        drop(_109) -> [return: bb39, unwind: bb234];
+    }
+
+    bb103: {
+        _152 = ((_65 as WriteToProcess).0: pepper::platform::ProcessHandle);
+        _153 = move ((_65 as WriteToProcess).1: pepper::platform::SharedBuf);
+        _154 = (_152.0: usize);
+        _155 = const 42_usize;
+        _156 = Lt(_154, _155);
+        assert(move _156, "index out of bounds: the length is {} but the index is {}", move _155, _154) -> [success: bb104, unwind: bb229];
+    }
+
+    bb104: {
+        _157 = discriminant(_19[_154]);
+        switchInt(move _157) -> [1: bb105, otherwise: bb121];
+    }
+
+    bb105: {
+        _158 = &mut ((_19[_154] as Some).0: platforms::sys::unix_utils::Process);
+        _161 = &_153;
+        _160 = SharedBuf::as_bytes(move _161) -> [return: bb106, unwind: bb229];
+    }
+
+    bb106: {
+        _159 = Process::write(_158, _160) -> [return: bb107, unwind: bb229];
+    }
+
+    bb107: {
+        switchInt(move _159) -> [0: bb108, otherwise: bb121];
+    }
+
+    bb108: {
+        _163 = &(*_158);
+        _162 = Process::try_as_raw_fd(move _163) -> [return: bb109, unwind: bb229];
+    }
+
+    bb109: {
+        _164 = discriminant(_162);
+        switchInt(move _164) -> [1: bb110, otherwise: bb111];
+    }
+
+    bb110: {
+        _165 = ((_162 as Some).0: i32);
+        _167 = &_23;
+        _166 = Epoll::remove(move _167, _165) -> [return: bb301, unwind: bb229];
+    }
+
+    bb111: {
+        _169 = &(*_158);
+        _168 = Process::tag(move _169) -> [return: bb112, unwind: bb229];
+    }
+
+    bb112: {
+        _170 = Process::kill(_158) -> [return: bb113, unwind: bb229];
+    }
+
+    bb113: {
+        _331 = const true;
+        _171 = Option::<Process>::None;
+        _172 = const 42_usize;
+        _173 = Lt(_154, _172);
+        assert(move _173, "index out of bounds: the length is {} but the index is {}", move _172, _154) -> [success: bb114, unwind: bb285];
+    }
+
+    bb114: {
+        drop(_19[_154]) -> [return: bb115, unwind: bb116];
+    }
+
+    bb115: {
+        _331 = const false;
+        _19[_154] = move _171;
+        _331 = const false;
+        _176 = &_16;
+        _177 = ProcessExit { tag: _168 };
+        _175 = ApplicationEventSender::send(move _176, move _177) -> [return: bb117, unwind: bb229];
+    }
+
+    bb116 (cleanup): {
+        _331 = const false;
+        _19[_154] = move _171;
+        goto -> bb285;
+    }
+
+    bb117: {
+        _174 = <Result<(), AnyError> as Try>::branch(move _175) -> [return: bb118, unwind: bb229];
+    }
+
+    bb118: {
+        _178 = discriminant(_174);
+        switchInt(move _178) -> [0: bb121, 1: bb119, otherwise: bb21];
+    }
+
+    bb119: {
+        _0 = <Result<(), AnyError> as FromResidual<Result<Infallible, AnyError>>>::from_residual(const Result::<Infallible, AnyError>::Err(AnyError)) -> [return: bb120, unwind: bb229];
+    }
+
+    bb120: {
+        drop(_153) -> [return: bb219, unwind: bb234];
+    }
+
+    bb121: {
+        drop(_153) -> [return: bb39, unwind: bb234];
+    }
+
+    bb122: {
+        _179 = ((_65 as CloseProcessInput).0: pepper::platform::ProcessHandle);
+        _180 = (_179.0: usize);
+        _181 = const 42_usize;
+        _182 = Lt(_180, _181);
+        assert(move _182, "index out of bounds: the length is {} but the index is {}", move _181, _180) -> [success: bb123, unwind: bb234];
+    }
+
+    bb123: {
+        _183 = discriminant(_19[_180]);
+        switchInt(move _183) -> [1: bb124, otherwise: bb39];
+    }
+
+    bb124: {
+        _184 = &mut ((_19[_180] as Some).0: platforms::sys::unix_utils::Process);
+        _185 = Process::close_input(_184) -> [return: bb302, unwind: bb234];
+    }
+
+    bb125: {
+        _190 = discriminant(_19[_187]);
+        switchInt(move _190) -> [1: bb126, otherwise: bb39];
+    }
+
+    bb126: {
+        _191 = &mut ((_19[_187] as Some).0: platforms::sys::unix_utils::Process);
+        _193 = &(*_191);
+        _192 = Process::try_as_raw_fd(move _193) -> [return: bb127, unwind: bb234];
+    }
+
+    bb127: {
+        _194 = discriminant(_192);
+        switchInt(move _194) -> [1: bb128, otherwise: bb129];
+    }
+
+    bb128: {
+        _195 = ((_192 as Some).0: i32);
+        _197 = &_23;
+        _196 = Epoll::remove(move _197, _195) -> [return: bb303, unwind: bb234];
+    }
+
+    bb129: {
+        _199 = &(*_191);
+        _198 = Process::tag(move _199) -> [return: bb130, unwind: bb234];
+    }
+
+    bb130: {
+        _200 = Process::kill(_191) -> [return: bb131, unwind: bb234];
+    }
+
+    bb131: {
+        _330 = const true;
+        _201 = Option::<Process>::None;
+        _202 = const 42_usize;
+        _203 = Lt(_187, _202);
+        assert(move _203, "index out of bounds: the length is {} but the index is {}", move _202, _187) -> [success: bb132, unwind: bb283];
+    }
+
+    bb132: {
+        drop(_19[_187]) -> [return: bb133, unwind: bb134];
+    }
+
+    bb133: {
+        _330 = const false;
+        _19[_187] = move _201;
+        _330 = const false;
+        _206 = &_16;
+        _207 = ProcessExit { tag: _198 };
+        _205 = ApplicationEventSender::send(move _206, move _207) -> [return: bb135, unwind: bb234];
+    }
+
+    bb134 (cleanup): {
+        _330 = const false;
+        _19[_187] = move _201;
+        goto -> bb283;
+    }
+
+    bb135: {
+        _204 = <Result<(), AnyError> as Try>::branch(move _205) -> [return: bb136, unwind: bb234];
+    }
+
+    bb136: {
+        _208 = discriminant(_204);
+        switchInt(move _208) -> [0: bb39, 1: bb137, otherwise: bb21];
+    }
+
+    bb137: {
+        _0 = <Result<(), AnyError> as FromResidual<Result<Infallible, AnyError>>>::from_residual(const Result::<Infallible, AnyError>::Err(AnyError)) -> [return: bb304, unwind: bb234];
+    }
+
+    bb138: {
+        _210 = &_2;
+        _209 = UnixListener::accept(move _210) -> [return: bb139, unwind: bb234];
+    }
+
+    bb139: {
+        _211 = discriminant(_209);
+        switchInt(move _211) -> [0: bb141, 1: bb140, otherwise: bb21];
+    }
+
+    bb140: {
+        _241 = move ((_209 as Err).0: std::io::Error);
+        _322 = const _;
+        _244 = _322 as &[&str] (PointerCoercion(Unsize));
+        _249 = &_241;
+        _248 = core::fmt::rt::Argument::<'_>::new_display::<std::io::Error>(_249) -> [return: bb163, unwind: bb228];
+    }
+
+    bb141: {
+        _325 = const true;
+        _212 = move (((_209 as Ok).0: (std::os::unix::net::UnixStream, std::os::unix::net::SocketAddr)).0: std::os::unix::net::UnixStream);
+        _217 = &mut _18;
+        _216 = move _217 as &mut [std::option::Option<std::os::unix::net::UnixStream>] (PointerCoercion(Unsize));
+        _215 = core::slice::<impl [Option<UnixStream>]>::iter_mut(move _216) -> [return: bb142, unwind: bb281];
+    }
+
+    bb142: {
+        _214 = <std::slice::IterMut<'_, Option<UnixStream>> as Iterator>::enumerate(move _215) -> [return: bb143, unwind: bb281];
+    }
+
+    bb143: {
+        _213 = <Enumerate<std::slice::IterMut<'_, Option<UnixStream>>> as IntoIterator>::into_iter(move _214) -> [return: bb144, unwind: bb281];
+    }
+
+    bb144: {
+        _218 = move _213;
+        goto -> bb145;
+    }
+
+    bb145: {
+        _220 = &mut _218;
+        _219 = <Enumerate<std::slice::IterMut<'_, Option<UnixStream>>> as Iterator>::next(_220) -> [return: bb146, unwind: bb281];
+    }
+
+    bb146: {
+        _221 = discriminant(_219);
+        switchInt(move _221) -> [0: bb161, 1: bb147, otherwise: bb21];
+    }
+
+    bb147: {
+        _222 = (((_219 as Some).0: (usize, &mut std::option::Option<std::os::unix::net::UnixStream>)).0: usize);
+        _223 = move (((_219 as Some).0: (usize, &mut std::option::Option<std::os::unix::net::UnixStream>)).1: &mut std::option::Option<std::os::unix::net::UnixStream>);
+        _225 = &(*_223);
+        _224 = Option::<UnixStream>::is_none(move _225) -> [return: bb148, unwind: bb281];
+    }
+
+    bb148: {
+        switchInt(move _224) -> [0: bb145, otherwise: bb149];
+    }
+
+    bb149: {
+        _227 = &_23;
+        _229 = &_212;
+        _228 = <UnixStream as AsRawFd>::as_raw_fd(move _229) -> [return: bb150, unwind: bb281];
+    }
+
+    bb150: {
+        _231 = CheckedAdd(const _, _222);
+        assert(!move (_231.1: bool), "attempt to compute `{} + {}`, which would overflow", const _, _222) -> [success: bb151, unwind: bb281];
+    }
+
+    bb151: {
+        _230 = move (_231.0: usize);
+        _226 = Epoll::add(move _227, move _228, move _230) -> [return: bb152, unwind: bb281];
+    }
+
+    bb152: {
+        _325 = const false;
+        _233 = move _212;
+        _232 = Option::<UnixStream>::Some(move _233);
+        drop((*_223)) -> [return: bb153, unwind: bb154];
+    }
+
+    bb153: {
+        (*_223) = move _232;
+        _235 = pepper::client::ClientHandle::from_index(_222) -> [return: bb155, unwind: bb281];
+    }
+
+    bb154 (cleanup): {
+        (*_223) = move _232;
+        goto -> bb281;
+    }
+
+    bb155: {
+        _234 = Option::<pepper::client::ClientHandle>::unwrap(move _235) -> [return: bb156, unwind: bb281];
+    }
+
+    bb156: {
+        _238 = &_16;
+        _239 = ConnectionOpen { handle: _234 };
+        _237 = ApplicationEventSender::send(move _238, move _239) -> [return: bb157, unwind: bb281];
+    }
+
+    bb157: {
+        _236 = <Result<(), AnyError> as Try>::branch(move _237) -> [return: bb158, unwind: bb281];
+    }
+
+    bb158: {
+        _240 = discriminant(_236);
+        switchInt(move _240) -> [0: bb161, 1: bb159, otherwise: bb21];
+    }
+
+    bb159: {
+        _0 = <Result<(), AnyError> as FromResidual<Result<Infallible, AnyError>>>::from_residual(const Result::<Infallible, AnyError>::Err(AnyError)) -> [return: bb160, unwind: bb281];
+    }
+
+    bb160: {
+        _325 = const false;
+        goto -> bb219;
+    }
+
+    bb161: {
+        switchInt(_325) -> [0: bb162, otherwise: bb252];
+    }
+
+    bb162: {
+        _325 = const false;
+        goto -> bb25;
+    }
+
+    bb163: {
+        _247 = [move _248];
+        _246 = &_247;
+        _245 = _246 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _243 = Arguments::<'_>::new_v1(move _244, move _245) -> [return: bb164, unwind: bb228];
+    }
+
+    bb164: {
+        _242 = panic_fmt(move _243) -> bb228;
+    }
+
+    bb165: {
+        _250 = move (_251.0: usize);
+        _252 = const 20_usize;
+        _253 = Lt(_250, _252);
+        assert(move _253, "index out of bounds: the length is {} but the index is {}", move _252, _250) -> [success: bb166, unwind: bb234];
+    }
+
+    bb166: {
+        _254 = discriminant(_18[_250]);
+        switchInt(move _254) -> [1: bb167, otherwise: bb189];
+    }
+
+    bb167: {
+        _255 = &mut ((_18[_250] as Some).0: std::os::unix::net::UnixStream);
+        _257 = pepper::client::ClientHandle::from_index(_250) -> [return: bb168, unwind: bb234];
+    }
+
+    bb168: {
+        _256 = Option::<pepper::client::ClientHandle>::unwrap(move _257) -> [return: bb169, unwind: bb234];
+    }
+
+    bb169: {
+        _259 = &mut _20;
+        _260 = ServerApplication::connection_buffer_len() -> [return: bb170, unwind: bb234];
+    }
+
+    bb170: {
+        _258 = read_from_connection(_255, _259, move _260) -> [return: bb171, unwind: bb234];
+    }
+
+    bb171: {
+        _326 = const true;
+        _261 = discriminant(_258);
+        switchInt(move _261) -> [0: bb173, otherwise: bb172];
+    }
+
+    bb172: {
+        _272 = &_23;
+        _274 = &(*_255);
+        _273 = <UnixStream as AsRawFd>::as_raw_fd(move _274) -> [return: bb180, unwind: bb279];
+    }
+
+    bb173: {
+        _263 = &((_258 as Ok).0: pepper::platform::SharedBuf);
+        _265 = SharedBuf::as_bytes(_263) -> [return: bb174, unwind: bb279];
+    }
+
+    bb174: {
+        _264 = core::slice::<impl [u8]>::is_empty(_265) -> [return: bb175, unwind: bb279];
+    }
+
+    bb175: {
+        switchInt(move _264) -> [0: bb176, otherwise: bb172];
+    }
+
+    bb176: {
+        _326 = const false;
+        _262 = move ((_258 as Ok).0: pepper::platform::SharedBuf);
+        _268 = &_16;
+        _269 = ConnectionOutput { handle: _256, buf: move _262 };
+        _267 = ApplicationEventSender::send(move _268, move _269) -> [return: bb177, unwind: bb279];
+    }
+
+    bb177: {
+        _266 = <Result<(), AnyError> as Try>::branch(move _267) -> [return: bb178, unwind: bb279];
+    }
+
+    bb178: {
+        _270 = discriminant(_266);
+        switchInt(move _270) -> [0: bb188, 1: bb179, otherwise: bb21];
+    }
+
+    bb179: {
+        _0 = <Result<(), AnyError> as FromResidual<Result<Infallible, AnyError>>>::from_residual(const Result::<Infallible, AnyError>::Err(AnyError)) -> [return: bb305, unwind: bb279];
+    }
+
+    bb180: {
+        _271 = Epoll::remove(move _272, move _273) -> [return: bb181, unwind: bb279];
+    }
+
+    bb181: {
+        _329 = const true;
+        _275 = Option::<UnixStream>::None;
+        _276 = const 20_usize;
+        _277 = Lt(_250, _276);
+        assert(move _277, "index out of bounds: the length is {} but the index is {}", move _276, _250) -> [success: bb182, unwind: bb276];
+    }
+
+    bb182: {
+        drop(_18[_250]) -> [return: bb183, unwind: bb184];
+    }
+
+    bb183: {
+        _329 = const false;
+        _18[_250] = move _275;
+        _329 = const false;
+        _280 = &_16;
+        _281 = ConnectionClose { handle: _256 };
+        _279 = ApplicationEventSender::send(move _280, move _281) -> [return: bb185, unwind: bb279];
+    }
+
+    bb184 (cleanup): {
+        _329 = const false;
+        _18[_250] = move _275;
+        goto -> bb276;
+    }
+
+    bb185: {
+        _278 = <Result<(), AnyError> as Try>::branch(move _279) -> [return: bb186, unwind: bb279];
+    }
+
+    bb186: {
+        _282 = discriminant(_278);
+        switchInt(move _282) -> [0: bb188, 1: bb187, otherwise: bb21];
+    }
+
+    bb187: {
+        _0 = <Result<(), AnyError> as FromResidual<Result<Infallible, AnyError>>>::from_residual(const Result::<Infallible, AnyError>::Err(AnyError)) -> [return: bb306, unwind: bb279];
+    }
+
+    bb188: {
+        _338 = discriminant(_258);
+        switchInt(move _338) -> [0: bb254, otherwise: bb253];
+    }
+
+    bb189: {
+        _284 = ServerApplication::idle_duration() -> [return: bb190, unwind: bb234];
+    }
+
+    bb190: {
+        _283 = Option::<Duration>::Some(move _284);
+        _21 = move _283;
+        goto -> bb25;
+    }
+
+    bb191: {
+        _285 = move (_286.0: usize);
+        _287 = const 42_usize;
+        _288 = Lt(_285, _287);
+        assert(move _288, "index out of bounds: the length is {} but the index is {}", move _287, _285) -> [success: bb192, unwind: bb234];
+    }
+
+    bb192: {
+        _289 = discriminant(_19[_285]);
+        switchInt(move _289) -> [1: bb193, otherwise: bb25];
+    }
+
+    bb193: {
+        _290 = &mut ((_19[_285] as Some).0: platforms::sys::unix_utils::Process);
+        _292 = &(*_290);
+        _291 = Process::tag(move _292) -> [return: bb194, unwind: bb234];
+    }
+
+    bb194: {
+        _294 = &mut _20;
+        _293 = Process::read(_290, _294) -> [return: bb195, unwind: bb234];
+    }
+
+    bb195: {
+        _327 = const true;
+        _296 = discriminant(_293);
+        switchInt(move _296) -> [0: bb196, otherwise: bb197];
+    }
+
+    bb196: {
+        _295 = discriminant(((_293 as Ok).0: std::option::Option<pepper::platform::SharedBuf>));
+        switchInt(move _295) -> [0: bb215, 1: bb198, otherwise: bb21];
+    }
+
+    bb197: {
+        _307 = &(*_290);
+        _306 = Process::try_as_raw_fd(move _307) -> [return: bb205, unwind: bb274];
+    }
+
+    bb198: {
+        _298 = &((((_293 as Ok).0: std::option::Option<pepper::platform::SharedBuf>) as Some).0: pepper::platform::SharedBuf);
+        _300 = SharedBuf::as_bytes(_298) -> [return: bb199, unwind: bb274];
+    }
+
+    bb199: {
+        _299 = core::slice::<impl [u8]>::is_empty(_300) -> [return: bb200, unwind: bb274];
+    }
+
+    bb200: {
+        switchInt(move _299) -> [0: bb201, otherwise: bb197];
+    }
+
+    bb201: {
+        _327 = const false;
+        _297 = move ((((_293 as Ok).0: std::option::Option<pepper::platform::SharedBuf>) as Some).0: pepper::platform::SharedBuf);
+        _303 = &_16;
+        _304 = ProcessOutput { tag: _291, buf: move _297 };
+        _302 = ApplicationEventSender::send(move _303, move _304) -> [return: bb202, unwind: bb274];
+    }
+
+    bb202: {
+        _301 = <Result<(), AnyError> as Try>::branch(move _302) -> [return: bb203, unwind: bb274];
+    }
+
+    bb203: {
+        _305 = discriminant(_301);
+        switchInt(move _305) -> [0: bb215, 1: bb204, otherwise: bb21];
+    }
+
+    bb204: {
+        _0 = <Result<(), AnyError> as FromResidual<Result<Infallible, AnyError>>>::from_residual(const Result::<Infallible, AnyError>::Err(AnyError)) -> [return: bb307, unwind: bb274];
+    }
+
+    bb205: {
+        _308 = discriminant(_306);
+        switchInt(move _308) -> [1: bb206, otherwise: bb207];
+    }
+
+    bb206: {
+        _309 = ((_306 as Some).0: i32);
+        _311 = &_23;
+        _310 = Epoll::remove(move _311, _309) -> [return: bb308, unwind: bb274];
+    }
+
+    bb207: {
+        _312 = Process::kill(_290) -> [return: bb208, unwind: bb274];
+    }
+
+    bb208: {
+        _328 = const true;
+        _313 = Option::<Process>::None;
+        _314 = const 42_usize;
+        _315 = Lt(_285, _314);
+        assert(move _315, "index out of bounds: the length is {} but the index is {}", move _314, _285) -> [success: bb209, unwind: bb270];
+    }
+
+    bb209: {
+        drop(_19[_285]) -> [return: bb210, unwind: bb211];
+    }
+
+    bb210: {
+        _328 = const false;
+        _19[_285] = move _313;
+        _328 = const false;
+        _318 = &_16;
+        _319 = ProcessExit { tag: _291 };
+        _317 = ApplicationEventSender::send(move _318, move _319) -> [return: bb212, unwind: bb274];
+    }
+
+    bb211 (cleanup): {
+        _328 = const false;
+        _19[_285] = move _313;
+        goto -> bb270;
+    }
+
+    bb212: {
+        _316 = <Result<(), AnyError> as Try>::branch(move _317) -> [return: bb213, unwind: bb274];
+    }
+
+    bb213: {
+        _320 = discriminant(_316);
+        switchInt(move _320) -> [0: bb215, 1: bb214, otherwise: bb21];
+    }
+
+    bb214: {
+        _0 = <Result<(), AnyError> as FromResidual<Result<Infallible, AnyError>>>::from_residual(const Result::<Infallible, AnyError>::Err(AnyError)) -> [return: bb309, unwind: bb274];
+    }
+
+    bb215: {
+        _340 = discriminant(_293);
+        switchInt(move _340) -> [0: bb257, otherwise: bb256];
+    }
+
+    bb216: {
+        _342 = discriminant(_293);
+        switchInt(move _342) -> [0: bb261, otherwise: bb260];
+    }
+
+    bb217: {
+        _343 = discriminant(_258);
+        switchInt(move _343) -> [0: bb265, otherwise: bb264];
+    }
+
+    bb218: {
+        drop(_109) -> [return: bb219, unwind: bb234];
+    }
+
+    bb219: {
+        drop(_23) -> [return: bb220, unwind: bb235];
+    }
+
+    bb220: {
+        drop(_20) -> [return: bb221, unwind: bb236];
+    }
+
+    bb221: {
+        drop(_19) -> [return: bb222, unwind: bb237];
+    }
+
+    bb222: {
+        drop(_18) -> [return: bb223, unwind: bb238];
+    }
+
+    bb223: {
+        drop(_16) -> [return: bb224, unwind: bb239];
+    }
+
+    bb224: {
+        drop(_11) -> [return: bb225, unwind: bb293];
+    }
+
+    bb225: {
+        _334 = const false;
+        drop(_3) -> [return: bb226, unwind: bb241];
+    }
+
+    bb226: {
+        drop(_2) -> [return: bb227, unwind: bb295];
+    }
+
+    bb227: {
+        return;
+    }
+
+    bb228 (cleanup): {
+        drop(_241) -> [return: bb234, unwind terminate(cleanup)];
+    }
+
+    bb229 (cleanup): {
+        drop(_153) -> [return: bb234, unwind terminate(cleanup)];
+    }
+
+    bb230 (cleanup): {
+        drop(_109) -> [return: bb234, unwind terminate(cleanup)];
+    }
+
+    bb231 (cleanup): {
+        drop(_98) -> [return: bb234, unwind terminate(cleanup)];
+    }
+
+    bb232 (cleanup): {
+        drop(_76) -> [return: bb233, unwind terminate(cleanup)];
+    }
+
+    bb233 (cleanup): {
+        drop(_68) -> [return: bb234, unwind terminate(cleanup)];
+    }
+
+    bb234 (cleanup): {
+        drop(_23) -> [return: bb235, unwind terminate(cleanup)];
+    }
+
+    bb235 (cleanup): {
+        drop(_20) -> [return: bb236, unwind terminate(cleanup)];
+    }
+
+    bb236 (cleanup): {
+        drop(_19) -> [return: bb237, unwind terminate(cleanup)];
+    }
+
+    bb237 (cleanup): {
+        drop(_18) -> [return: bb238, unwind terminate(cleanup)];
+    }
+
+    bb238 (cleanup): {
+        drop(_16) -> [return: bb239, unwind terminate(cleanup)];
+    }
+
+    bb239 (cleanup): {
+        drop(_11) -> [return: bb293, unwind terminate(cleanup)];
+    }
+
+    bb240 (cleanup): {
+        drop(_3) -> [return: bb241, unwind terminate(cleanup)];
+    }
+
+    bb241 (cleanup): {
+        drop(_2) -> [return: bb295, unwind terminate(cleanup)];
+    }
+
+    bb242 (cleanup): {
+        resume;
+    }
+
+    bb243: {
+        _323 = const false;
+        _105 = &_16;
+        _106 = ConnectionClose { handle: _91 };
+        _104 = ApplicationEventSender::send(move _105, move _106) -> [return: bb71, unwind: bb234];
+    }
+
+    bb244: {
+        switchInt(_323) -> [0: bb243, otherwise: bb245];
+    }
+
+    bb245: {
+        drop(((_93 as Some).0: std::os::unix::net::UnixStream)) -> [return: bb243, unwind: bb234];
+    }
+
+    bb246: {
+        _336 = discriminant(_93);
+        switchInt(move _336) -> [1: bb244, otherwise: bb243];
+    }
+
+    bb247: {
+        _324 = const false;
+        goto -> bb97;
+    }
+
+    bb248: {
+        switchInt(_324) -> [0: bb247, otherwise: bb249];
+    }
+
+    bb249: {
+        drop(((_126 as Ok).0: std::process::Child)) -> [return: bb247, unwind: bb230];
+    }
+
+    bb250: {
+        drop(_126) -> [return: bb247, unwind: bb230];
+    }
+
+    bb251: {
+        _337 = discriminant(_126);
+        switchInt(move _337) -> [0: bb248, otherwise: bb250];
+    }
+
+    bb252: {
+        drop(_212) -> [return: bb162, unwind: bb234];
+    }
+
+    bb253: {
+        _326 = const false;
+        goto -> bb189;
+    }
+
+    bb254: {
+        switchInt(_326) -> [0: bb253, otherwise: bb255];
+    }
+
+    bb255: {
+        drop(((_258 as Ok).0: pepper::platform::SharedBuf)) -> [return: bb253, unwind: bb234];
+    }
+
+    bb256: {
+        _327 = const false;
+        goto -> bb25;
+    }
+
+    bb257: {
+        _339 = discriminant(((_293 as Ok).0: std::option::Option<pepper::platform::SharedBuf>));
+        switchInt(move _339) -> [1: bb258, otherwise: bb256];
+    }
+
+    bb258: {
+        switchInt(_327) -> [0: bb256, otherwise: bb259];
+    }
+
+    bb259: {
+        drop(((((_293 as Ok).0: std::option::Option<pepper::platform::SharedBuf>) as Some).0: pepper::platform::SharedBuf)) -> [return: bb256, unwind: bb234];
+    }
+
+    bb260: {
+        _327 = const false;
+        goto -> bb219;
+    }
+
+    bb261: {
+        _341 = discriminant(((_293 as Ok).0: std::option::Option<pepper::platform::SharedBuf>));
+        switchInt(move _341) -> [1: bb262, otherwise: bb260];
+    }
+
+    bb262: {
+        switchInt(_327) -> [0: bb260, otherwise: bb263];
+    }
+
+    bb263: {
+        drop(((((_293 as Ok).0: std::option::Option<pepper::platform::SharedBuf>) as Some).0: pepper::platform::SharedBuf)) -> [return: bb260, unwind: bb234];
+    }
+
+    bb264: {
+        _326 = const false;
+        goto -> bb219;
+    }
+
+    bb265: {
+        switchInt(_326) -> [0: bb264, otherwise: bb266];
+    }
+
+    bb266: {
+        drop(((_258 as Ok).0: pepper::platform::SharedBuf)) -> [return: bb264, unwind: bb234];
+    }
+
+    bb267: {
+        _324 = const false;
+        goto -> bb218;
+    }
+
+    bb268: {
+        drop(_126) -> [return: bb267, unwind: bb230];
+    }
+
+    bb269 (cleanup): {
+        drop(_313) -> [return: bb274, unwind terminate(cleanup)];
+    }
+
+    bb270 (cleanup): {
+        switchInt(_328) -> [0: bb274, otherwise: bb269];
+    }
+
+    bb271 (cleanup): {
+        _345 = discriminant(((_293 as Ok).0: std::option::Option<pepper::platform::SharedBuf>));
+        switchInt(move _345) -> [1: bb272, otherwise: bb234];
+    }
+
+    bb272 (cleanup): {
+        switchInt(_327) -> [0: bb234, otherwise: bb273];
+    }
+
+    bb273 (cleanup): {
+        drop(((((_293 as Ok).0: std::option::Option<pepper::platform::SharedBuf>) as Some).0: pepper::platform::SharedBuf)) -> [return: bb234, unwind terminate(cleanup)];
+    }
+
+    bb274 (cleanup): {
+        _346 = discriminant(_293);
+        switchInt(move _346) -> [0: bb271, otherwise: bb234];
+    }
+
+    bb275 (cleanup): {
+        drop(_275) -> [return: bb279, unwind terminate(cleanup)];
+    }
+
+    bb276 (cleanup): {
+        switchInt(_329) -> [0: bb279, otherwise: bb275];
+    }
+
+    bb277 (cleanup): {
+        switchInt(_326) -> [0: bb234, otherwise: bb278];
+    }
+
+    bb278 (cleanup): {
+        drop(((_258 as Ok).0: pepper::platform::SharedBuf)) -> [return: bb234, unwind terminate(cleanup)];
+    }
+
+    bb279 (cleanup): {
+        _347 = discriminant(_258);
+        switchInt(move _347) -> [0: bb277, otherwise: bb234];
+    }
+
+    bb280 (cleanup): {
+        drop(_212) -> [return: bb234, unwind terminate(cleanup)];
+    }
+
+    bb281 (cleanup): {
+        switchInt(_325) -> [0: bb234, otherwise: bb280];
+    }
+
+    bb282 (cleanup): {
+        drop(_201) -> [return: bb234, unwind terminate(cleanup)];
+    }
+
+    bb283 (cleanup): {
+        switchInt(_330) -> [0: bb234, otherwise: bb282];
+    }
+
+    bb284 (cleanup): {
+        drop(_171) -> [return: bb229, unwind terminate(cleanup)];
+    }
+
+    bb285 (cleanup): {
+        switchInt(_331) -> [0: bb229, otherwise: bb284];
+    }
+
+    bb286 (cleanup): {
+        drop(_130) -> [return: bb289, unwind terminate(cleanup)];
+    }
+
+    bb287 (cleanup): {
+        switchInt(_332) -> [0: bb289, otherwise: bb286];
+    }
+
+    bb288 (cleanup): {
+        drop(_126) -> [return: bb230, unwind terminate(cleanup)];
+    }
+
+    bb289 (cleanup): {
+        _348 = discriminant(_126);
+        switchInt(move _348) -> [0: bb230, otherwise: bb288];
+    }
+
+    bb290 (cleanup): {
+        drop(_83) -> [return: bb233, unwind terminate(cleanup)];
+    }
+
+    bb291 (cleanup): {
+        switchInt(_333) -> [0: bb233, otherwise: bb290];
+    }
+
+    bb292 (cleanup): {
+        drop(_10) -> [return: bb240, unwind terminate(cleanup)];
+    }
+
+    bb293 (cleanup): {
+        switchInt(_334) -> [0: bb240, otherwise: bb292];
+    }
+
+    bb294 (cleanup): {
+        drop(_1) -> [return: bb242, unwind terminate(cleanup)];
+    }
+
+    bb295 (cleanup): {
+        switchInt(_335) -> [0: bb242, otherwise: bb294];
+    }
+
+    bb296: {
+        goto -> bb15;
+    }
+
+    bb297: {
+        goto -> bb219;
+    }
+
+    bb298: {
+        goto -> bb219;
+    }
+
+    bb299: {
+        goto -> bb89;
+    }
+
+    bb300: {
+        goto -> bb218;
+    }
+
+    bb301: {
+        goto -> bb111;
+    }
+
+    bb302: {
+        goto -> bb39;
+    }
+
+    bb303: {
+        goto -> bb129;
+    }
+
+    bb304: {
+        goto -> bb219;
+    }
+
+    bb305: {
+        goto -> bb217;
+    }
+
+    bb306: {
+        goto -> bb217;
+    }
+
+    bb307: {
+        goto -> bb216;
+    }
+
+    bb308: {
+        goto -> bb207;
+    }
+
+    bb309: {
+        goto -> bb216;
+    }
+}
+
+alloc46 (static: NEW_REQUEST_EVENT_FD, size: 8, align: 8) {
+    ff ff ff ff ff ff ff ff                         │ ........
+}
+
+promoted[0] in run_server: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "could not accept connection "];
+        _0 = &_1;
+        return;
+    }
+}
+
+const NONE_PROCESS: Option<Process> = {
+    let mut _0: std::option::Option<platforms::sys::unix_utils::Process>;
+
+    bb0: {
+        _0 = Option::<Process>::None;
+        return;
+    }
+}
+
+static NEW_REQUEST_EVENT_FD: AtomicIsize = {
+    let mut _0: std::sync::atomic::AtomicIsize;
+
+    bb0: {
+        ConstEvalCounter;
+        _0 = AtomicIsize::new(const -1_isize) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn run_server::{closure#0}(_1: &{closure@src/platforms/linux.rs:188:9: 188:11}) -> () {
+    let mut _0: ();
+    let mut _2: i32;
+    let mut _3: isize;
+    let _4: &std::sync::atomic::AtomicIsize;
+    let mut _5: std::sync::atomic::Ordering;
+
+    bb0: {
+        _4 = const {alloc46: &AtomicIsize};
+        _5 = Relaxed;
+        _3 = AtomicIsize::load(_4, move _5) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = move _3 as i32 (IntToInt);
+        _0 = EventFd::write(_2) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+alloc46 (static: NEW_REQUEST_EVENT_FD, size: 8, align: 8) {
+    ff ff ff ff ff ff ff ff                         │ ........
+}
+
+run_server::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const _;
+        return;
+    }
+}
+
+run_server::{constant#1}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const _;
+        return;
+    }
+}
+
+const CLIENTS_START_INDEX: usize = {
+    let mut _0: usize;
+    let mut _1: (usize, bool);
+
+    bb0: {
+        _1 = CheckedAdd(const 1_usize, const 1_usize);
+        assert(!move (_1.1: bool), "attempt to compute `{} + {}`, which would overflow", const 1_usize, const 1_usize) -> [success: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = move (_1.0: usize);
+        return;
+    }
+}
+
+const CLIENTS_LAST_INDEX: usize = {
+    let mut _0: usize;
+    let mut _1: usize;
+    let mut _2: (usize, bool);
+    let mut _3: (usize, bool);
+
+    bb0: {
+        StorageLive(_1);
+        _2 = CheckedAdd(const _, const _);
+        assert(!move (_2.1: bool), "attempt to compute `{} + {}`, which would overflow", const _, const _) -> [success: bb1, unwind continue];
+    }
+
+    bb1: {
+        _1 = move (_2.0: usize);
+        _3 = CheckedSub(_1, const 1_usize);
+        assert(!move (_3.1: bool), "attempt to compute `{} - {}`, which would overflow", move _1, const 1_usize) -> [success: bb2, unwind continue];
+    }
+
+    bb2: {
+        _0 = move (_3.0: usize);
+        StorageDead(_1);
+        return;
+    }
+}
+
+const PROCESSES_START_INDEX: usize = {
+    let mut _0: usize;
+    let mut _1: (usize, bool);
+
+    bb0: {
+        _1 = CheckedAdd(const _, const 1_usize);
+        assert(!move (_1.1: bool), "attempt to compute `{} + {}`, which would overflow", const _, const 1_usize) -> [success: bb1, unwind continue];
+    }
+
+    bb1: {
+        _0 = move (_1.0: usize);
+        return;
+    }
+}
+
+const PROCESSES_LAST_INDEX: usize = {
+    let mut _0: usize;
+    let mut _1: usize;
+    let mut _2: (usize, bool);
+    let mut _3: (usize, bool);
+
+    bb0: {
+        StorageLive(_1);
+        _2 = CheckedAdd(const _, const _);
+        assert(!move (_2.1: bool), "attempt to compute `{} + {}`, which would overflow", const _, const _) -> [success: bb1, unwind continue];
+    }
+
+    bb1: {
+        _1 = move (_2.0: usize);
+        _3 = CheckedSub(_1, const 1_usize);
+        assert(!move (_3.1: bool), "attempt to compute `{} - {}`, which would overflow", move _1, const 1_usize) -> [success: bb2, unwind continue];
+    }
+
+    bb2: {
+        _0 = move (_3.0: usize);
+        StorageDead(_1);
+        return;
+    }
+}
+
+fn run_client(_1: pepper::Args, _2: UnixStream) -> () {
+    debug args => _1;
+    debug connection => _2;
+    let mut _0: ();
+    let mut _3: [u8; 2];
+    let mut _4: std::result::Result<(), std::io::Error>;
+    let mut _5: &mut std::os::unix::net::UnixStream;
+    let mut _6: &mut [u8];
+    let mut _7: &mut [u8; 2];
+    let mut _8: isize;
+    let mut _10: u8;
+    let _11: usize;
+    let mut _12: usize;
+    let mut _13: bool;
+    let _15: usize;
+    let mut _16: usize;
+    let mut _17: bool;
+    let mut _19: std::option::Option<pepper::client::ClientHandle>;
+    let mut _20: usize;
+    let mut _24: std::io::StdoutLock<'_>;
+    let mut _25: &std::io::Stdout;
+    let mut _27: &mut pepper::application::ClientApplication<'_>;
+    let mut _28: pepper::Args;
+    let mut _29: bool;
+    let mut _30: &std::result::Result<(), std::io::Error>;
+    let _31: std::result::Result<(), std::io::Error>;
+    let mut _32: &mut std::os::unix::net::UnixStream;
+    let _36: ();
+    let mut _37: &platforms::sys::Epoll;
+    let mut _38: i32;
+    let mut _39: &std::os::unix::net::UnixStream;
+    let _40: ();
+    let mut _41: &platforms::sys::Epoll;
+    let mut _43: std::option::Option<platforms::sys::unix_utils::RawMode>;
+    let mut _44: std::option::Option<platforms::sys::SignalFd>;
+    let mut _45: std::option::Option<platforms::sys::unix_utils::RawMode>;
+    let mut _46: platforms::sys::unix_utils::RawMode;
+    let _48: ();
+    let mut _49: &platforms::sys::Epoll;
+    let mut _50: i32;
+    let mut _51: &platforms::sys::SignalFd;
+    let mut _52: std::option::Option<platforms::sys::SignalFd>;
+    let mut _53: platforms::sys::SignalFd;
+    let mut _56: (bool, &[u8]);
+    let mut _57: &mut pepper::application::ClientApplication<'_>;
+    let mut _58: std::option::Option<(usize, usize)>;
+    let mut _59: &[pepper::platform::Key];
+    let mut _60: &[u8];
+    let mut _61: &[u8];
+    let mut _62: bool;
+    let mut _63: &std::result::Result<(), std::io::Error>;
+    let _64: std::result::Result<(), std::io::Error>;
+    let mut _65: &mut std::os::unix::net::UnixStream;
+    let mut _67: isize;
+    let mut _71: std::iter::Map<std::slice::Iter<'_, libc::epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}>;
+    let mut _72: std::iter::Map<std::slice::Iter<'_, libc::epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}>;
+    let mut _73: &platforms::sys::Epoll;
+    let mut _74: &mut platforms::sys::EpollEvents;
+    let mut _75: std::option::Option<std::time::Duration>;
+    let mut _77: std::option::Option<usize>;
+    let mut _78: &mut std::iter::Map<std::slice::Iter<'_, libc::epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}>;
+    let mut _79: isize;
+    let _83: &[u8];
+    let _85: &[u8];
+    let _86: ();
+    let mut _87: &mut std::vec::Vec<pepper::platform::Key>;
+    let mut _88: std::result::Result<usize, std::io::Error>;
+    let mut _89: &mut std::os::unix::net::UnixStream;
+    let mut _90: &mut [u8];
+    let mut _91: &mut [u8; 4096];
+    let mut _92: isize;
+    let _94: &[u8];
+    let mut _95: &[u8; 4096];
+    let mut _96: std::ops::RangeTo<usize>;
+    let mut _97: std::result::Result<usize, ()>;
+    let mut _98: &mut [u8];
+    let mut _99: &mut [u8; 4096];
+    let mut _100: isize;
+    let _101: ();
+    let mut _102: &platforms::sys::Epoll;
+    let _104: &[u8];
+    let mut _105: &[u8; 4096];
+    let mut _106: std::ops::RangeTo<usize>;
+    let _107: ();
+    let mut _108: u8;
+    let mut _109: &mut std::vec::Vec<pepper::platform::Key>;
+    let mut _110: isize;
+    let _112: ();
+    let mut _113: std::option::Option<(usize, usize)>;
+    let mut _114: (usize, usize);
+    let mut _115: !;
+    let mut _118: (bool, &[u8]);
+    let mut _119: &mut pepper::application::ClientApplication<'_>;
+    let mut _120: std::option::Option<(usize, usize)>;
+    let _121: &[pepper::platform::Key];
+    let _122: &std::vec::Vec<pepper::platform::Key>;
+    let mut _123: &[u8];
+    let mut _124: &[u8];
+    let mut _125: bool;
+    let mut _126: &std::result::Result<(), std::io::Error>;
+    let _127: std::result::Result<(), std::io::Error>;
+    let mut _128: &mut std::os::unix::net::UnixStream;
+    let _129: ();
+    let mut _130: &mut pepper::application::ClientApplication<'_>;
+    let mut _131: &mut std::option::Option<platforms::sys::unix_utils::RawMode>;
+    let _132: ();
+    let mut _133: std::option::Option<platforms::sys::unix_utils::RawMode>;
+    let mut _139: bool;
+    let mut _140: bool;
+    let mut _141: bool;
+    let mut _142: bool;
+    scope 1 {
+        debug buf => _3;
+        let _9: bool;
+        scope 2 {
+            debug is_first_client => _9;
+            let _14: u8;
+            scope 3 {
+                debug client_index => _14;
+                let _18: pepper::client::ClientHandle;
+                scope 4 {
+                    debug client_handle => _18;
+                    let _21: bool;
+                    scope 5 {
+                        debug is_pipped => _21;
+                        let _22: std::io::Stdout;
+                        scope 6 {
+                            debug stdout => _22;
+                            let mut _23: pepper::application::ClientApplication<'_>;
+                            scope 7 {
+                                debug application => _23;
+                                let _26: &[u8];
+                                scope 8 {
+                                    debug bytes => _26;
+                                    let mut _33: std::option::Option<platforms::sys::unix_utils::RawMode>;
+                                    scope 9 {
+                                        debug raw_mode => _33;
+                                        let _34: std::option::Option<platforms::sys::SignalFd>;
+                                        scope 10 {
+                                            debug resize_signal => _34;
+                                            let _35: platforms::sys::Epoll;
+                                            scope 11 {
+                                                debug epoll => _35;
+                                                let mut _42: platforms::sys::EpollEvents;
+                                                scope 12 {
+                                                    debug epoll_events => _42;
+                                                    let _47: platforms::sys::SignalFd;
+                                                    let _66: u8;
+                                                    let _68: &platforms::sys::unix_utils::RawMode;
+                                                    scope 13 {
+                                                        debug signal => _47;
+                                                        let _54: (usize, usize);
+                                                        scope 14 {
+                                                            debug size => _54;
+                                                            let _55: &[u8];
+                                                            let mut _136: &[u8; 0];
+                                                            let mut _137: &[u8; 0];
+                                                            let mut _138: &[pepper::platform::Key; 1];
+                                                            scope 15 {
+                                                                debug bytes => _55;
+                                                            }
+                                                        }
+                                                    }
+                                                    scope 16 {
+                                                        debug backspace_code => _66;
+                                                        let mut _69: std::vec::Vec<pepper::platform::Key>;
+                                                        scope 18 {
+                                                            debug keys => _69;
+                                                            let mut _70: [u8; 4096];
+                                                            scope 19 {
+                                                                debug buf => _70;
+                                                                let mut _76: std::iter::Map<std::slice::Iter<'_, libc::epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}>;
+                                                                scope 20 {
+                                                                    debug iter => _76;
+                                                                    let _80: usize;
+                                                                    scope 21 {
+                                                                        debug event_index => _80;
+                                                                        let mut _81: std::option::Option<(usize, usize)>;
+                                                                        scope 22 {
+                                                                            debug resize => _81;
+                                                                            let mut _82: &[u8];
+                                                                            let mut _135: &[u8; 0];
+                                                                            scope 23 {
+                                                                                debug stdin_bytes => _82;
+                                                                                let mut _84: &[u8];
+                                                                                let mut _134: &[u8; 0];
+                                                                                scope 24 {
+                                                                                    debug server_bytes => _84;
+                                                                                    let _93: usize;
+                                                                                    let _103: usize;
+                                                                                    let _116: bool;
+                                                                                    let _117: &[u8];
+                                                                                    scope 25 {
+                                                                                        debug len => _93;
+                                                                                    }
+                                                                                    scope 26 {
+                                                                                        debug len => _103;
+                                                                                        scope 27 {
+                                                                                            debug bytes => _104;
+                                                                                        }
+                                                                                    }
+                                                                                    scope 28 {
+                                                                                        debug signal => _111;
+                                                                                        let _111: &platforms::sys::SignalFd;
+                                                                                    }
+                                                                                    scope 29 {
+                                                                                        debug suspend => _116;
+                                                                                        debug bytes => _117;
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    scope 17 {
+                                                        debug raw => _68;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _139 = const false;
+        _142 = const false;
+        _141 = const false;
+        _140 = const false;
+        _139 = const true;
+        _3 = [const 0_u8; 2];
+        _5 = &mut _2;
+        _7 = &mut _3;
+        _6 = _7 as &mut [u8] (PointerCoercion(Unsize));
+        _4 = <UnixStream as std::io::Read>::read_exact(move _5, move _6) -> [return: bb1, unwind: bb100];
+    }
+
+    bb1: {
+        _8 = discriminant(_4);
+        switchInt(move _8) -> [0: bb3, otherwise: bb2];
+    }
+
+    bb2: {
+        drop(_4) -> [return: bb91, unwind: bb100];
+    }
+
+    bb3: {
+        drop(_4) -> [return: bb4, unwind: bb100];
+    }
+
+    bb4: {
+        _11 = const 0_usize;
+        _12 = const 2_usize;
+        _13 = Lt(_11, _12);
+        assert(move _13, "index out of bounds: the length is {} but the index is {}", move _12, _11) -> [success: bb5, unwind: bb100];
+    }
+
+    bb5: {
+        _10 = _3[_11];
+        _9 = Ne(move _10, const 0_u8);
+        _15 = const 1_usize;
+        _16 = const 2_usize;
+        _17 = Lt(_15, _16);
+        assert(move _17, "index out of bounds: the length is {} but the index is {}", move _16, _15) -> [success: bb6, unwind: bb100];
+    }
+
+    bb6: {
+        _14 = _3[_15];
+        _20 = _14 as usize (IntToInt);
+        _19 = pepper::client::ClientHandle::from_index(_20) -> [return: bb7, unwind: bb100];
+    }
+
+    bb7: {
+        _18 = Option::<pepper::client::ClientHandle>::unwrap(move _19) -> [return: bb8, unwind: bb100];
+    }
+
+    bb8: {
+        _21 = is_pipped() -> [return: bb9, unwind: bb100];
+    }
+
+    bb9: {
+        _22 = stdout() -> [return: bb10, unwind: bb100];
+    }
+
+    bb10: {
+        _25 = &_22;
+        _24 = Stdout::lock(move _25) -> [return: bb11, unwind: bb100];
+    }
+
+    bb11: {
+        _23 = ClientApplication::<'_>::new(_18, move _24, _21) -> [return: bb12, unwind: bb100];
+    }
+
+    bb12: {
+        _27 = &mut _23;
+        _139 = const false;
+        _28 = move _1;
+        _26 = ClientApplication::<'_>::init(move _27, move _28, _9) -> [return: bb13, unwind: bb99];
+    }
+
+    bb13: {
+        _32 = &mut _2;
+        _31 = <UnixStream as std::io::Write>::write_all(move _32, _26) -> [return: bb14, unwind: bb99];
+    }
+
+    bb14: {
+        _30 = &_31;
+        _29 = Result::<(), std::io::Error>::is_err(move _30) -> [return: bb15, unwind: bb98];
+    }
+
+    bb15: {
+        switchInt(move _29) -> [0: bb17, otherwise: bb16];
+    }
+
+    bb16: {
+        drop(_31) -> [return: bb90, unwind: bb99];
+    }
+
+    bb17: {
+        drop(_31) -> [return: bb18, unwind: bb99];
+    }
+
+    bb18: {
+        _35 = Epoll::new() -> [return: bb19, unwind: bb107];
+    }
+
+    bb19: {
+        _37 = &_35;
+        _39 = &_2;
+        _38 = <UnixStream as AsRawFd>::as_raw_fd(move _39) -> [return: bb20, unwind: bb97];
+    }
+
+    bb20: {
+        _36 = Epoll::add(move _37, move _38, const 0_usize) -> [return: bb21, unwind: bb97];
+    }
+
+    bb21: {
+        _41 = &_35;
+        _40 = Epoll::add(move _41, const _, const 1_usize) -> [return: bb22, unwind: bb97];
+    }
+
+    bb22: {
+        _42 = EpollEvents::new() -> [return: bb23, unwind: bb97];
+    }
+
+    bb23: {
+        switchInt(_21) -> [0: bb25, otherwise: bb24];
+    }
+
+    bb24: {
+        _43 = Option::<RawMode>::None;
+        _142 = const true;
+        _33 = move _43;
+        _44 = Option::<SignalFd>::None;
+        _141 = const true;
+        _34 = move _44;
+        goto -> bb38;
+    }
+
+    bb25: {
+        _46 = RawMode::enter() -> [return: bb26, unwind: bb97];
+    }
+
+    bb26: {
+        _45 = Option::<RawMode>::Some(move _46);
+        _142 = const true;
+        _33 = move _45;
+        _47 = SignalFd::new(const _) -> [return: bb27, unwind: bb97];
+    }
+
+    bb27: {
+        _140 = const true;
+        _49 = &_35;
+        _51 = &_47;
+        _50 = <SignalFd as AsRawFd>::as_raw_fd(move _51) -> [return: bb28, unwind: bb105];
+    }
+
+    bb28: {
+        _48 = Epoll::add(move _49, move _50, const 2_usize) -> [return: bb29, unwind: bb105];
+    }
+
+    bb29: {
+        _140 = const false;
+        _53 = move _47;
+        _52 = Option::<SignalFd>::Some(move _53);
+        _141 = const true;
+        _34 = move _52;
+        _54 = get_terminal_size() -> [return: bb30, unwind: bb105];
+    }
+
+    bb30: {
+        _57 = &mut _23;
+        _58 = Option::<(usize, usize)>::Some(_54);
+        _138 = const _;
+        _59 = _138 as &[pepper::platform::Key] (PointerCoercion(Unsize));
+        _137 = const _;
+        _60 = _137 as &[u8] (PointerCoercion(Unsize));
+        _136 = const _;
+        _61 = _136 as &[u8] (PointerCoercion(Unsize));
+        _56 = ClientApplication::<'_>::update(move _57, move _58, move _59, move _60, move _61) -> [return: bb31, unwind: bb105];
+    }
+
+    bb31: {
+        _55 = (_56.1: &[u8]);
+        _65 = &mut _2;
+        _64 = <UnixStream as std::io::Write>::write_all(move _65, _55) -> [return: bb32, unwind: bb105];
+    }
+
+    bb32: {
+        _63 = &_64;
+        _62 = Result::<(), std::io::Error>::is_err(move _63) -> [return: bb33, unwind: bb96];
+    }
+
+    bb33: {
+        switchInt(move _62) -> [0: bb36, otherwise: bb34];
+    }
+
+    bb34: {
+        drop(_64) -> [return: bb35, unwind: bb105];
+    }
+
+    bb35: {
+        _140 = const false;
+        drop(_35) -> [return: bb87, unwind: bb107];
+    }
+
+    bb36: {
+        drop(_64) -> [return: bb37, unwind: bb105];
+    }
+
+    bb37: {
+        _140 = const false;
+        goto -> bb38;
+    }
+
+    bb38: {
+        _67 = discriminant(_33);
+        switchInt(move _67) -> [0: bb39, 1: bb41, otherwise: bb40];
+    }
+
+    bb39: {
+        _66 = const 0_u8;
+        goto -> bb42;
+    }
+
+    bb40: {
+        unreachable;
+    }
+
+    bb41: {
+        _68 = &((_33 as Some).0: platforms::sys::unix_utils::RawMode);
+        _66 = RawMode::backspace_code(_68) -> [return: bb112, unwind: bb97];
+    }
+
+    bb42: {
+        _69 = Vec::<pepper::platform::Key>::new() -> [return: bb43, unwind: bb97];
+    }
+
+    bb43: {
+        _70 = [const 0_u8; 4096];
+        goto -> bb44;
+    }
+
+    bb44: {
+        _73 = &_35;
+        _74 = &mut _42;
+        _75 = Option::<Duration>::None;
+        _72 = Epoll::wait(move _73, _74, move _75) -> [return: bb45, unwind: bb95];
+    }
+
+    bb45: {
+        _71 = <Map<std::slice::Iter<'_, epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}> as IntoIterator>::into_iter(move _72) -> [return: bb46, unwind: bb95];
+    }
+
+    bb46: {
+        _76 = move _71;
+        goto -> bb47;
+    }
+
+    bb47: {
+        _78 = &mut _76;
+        _77 = <Map<std::slice::Iter<'_, epoll_event>, {closure@src/platforms/linux.rs:168:45: 168:48}> as Iterator>::next(_78) -> [return: bb48, unwind: bb95];
+    }
+
+    bb48: {
+        _79 = discriminant(_77);
+        switchInt(move _79) -> [0: bb44, 1: bb49, otherwise: bb40];
+    }
+
+    bb49: {
+        _80 = ((_77 as Some).0: usize);
+        _81 = Option::<(usize, usize)>::None;
+        _135 = const _;
+        _83 = <[u8; 0] as Index<RangeFull>>::index(_135, const RangeFull) -> [return: bb50, unwind: bb95];
+    }
+
+    bb50: {
+        _82 = _83;
+        _134 = const _;
+        _85 = <[u8; 0] as Index<RangeFull>>::index(_134, const RangeFull) -> [return: bb51, unwind: bb95];
+    }
+
+    bb51: {
+        _84 = _85;
+        _87 = &mut _69;
+        _86 = Vec::<pepper::platform::Key>::clear(move _87) -> [return: bb52, unwind: bb95];
+    }
+
+    bb52: {
+        switchInt(_80) -> [0: bb54, 1: bb60, 2: bb68, otherwise: bb53];
+    }
+
+    bb53: {
+        _115 = core::panicking::panic(const "internal error: entered unreachable code") -> bb95;
+    }
+
+    bb54: {
+        _89 = &mut _2;
+        _91 = &mut _70;
+        _90 = _91 as &mut [u8] (PointerCoercion(Unsize));
+        _88 = <UnixStream as std::io::Read>::read(move _89, move _90) -> [return: bb55, unwind: bb95];
+    }
+
+    bb55: {
+        _92 = discriminant(_88);
+        switchInt(move _92) -> [0: bb56, 1: bb58, otherwise: bb40];
+    }
+
+    bb56: {
+        switchInt(((_88 as Ok).0: usize)) -> [0: bb58, otherwise: bb57];
+    }
+
+    bb57: {
+        _93 = ((_88 as Ok).0: usize);
+        _95 = &_70;
+        _96 = RangeTo::<usize> { end: _93 };
+        _94 = <[u8; 4096] as Index<RangeTo<usize>>>::index(move _95, move _96) -> [return: bb59, unwind: bb94];
+    }
+
+    bb58: {
+        drop(_88) -> [return: bb81, unwind: bb95];
+    }
+
+    bb59: {
+        _84 = _94;
+        drop(_88) -> [return: bb72, unwind: bb95];
+    }
+
+    bb60: {
+        _99 = &mut _70;
+        _98 = _99 as &mut [u8] (PointerCoercion(Unsize));
+        _97 = unix_utils::read(const _, move _98) -> [return: bb61, unwind: bb95];
+    }
+
+    bb61: {
+        _100 = discriminant(_97);
+        switchInt(move _100) -> [0: bb62, 1: bb64, otherwise: bb40];
+    }
+
+    bb62: {
+        switchInt(((_97 as Ok).0: usize)) -> [0: bb64, otherwise: bb63];
+    }
+
+    bb63: {
+        _103 = ((_97 as Ok).0: usize);
+        _105 = &_70;
+        _106 = RangeTo::<usize> { end: _103 };
+        _104 = <[u8; 4096] as Index<RangeTo<usize>>>::index(move _105, move _106) -> [return: bb65, unwind: bb95];
+    }
+
+    bb64: {
+        _102 = &_35;
+        _101 = Epoll::remove(move _102, const _) -> [return: bb113, unwind: bb95];
+    }
+
+    bb65: {
+        switchInt(_21) -> [0: bb67, otherwise: bb66];
+    }
+
+    bb66: {
+        _82 = _104;
+        goto -> bb72;
+    }
+
+    bb67: {
+        _108 = _66;
+        _109 = &mut _69;
+        _107 = parse_terminal_keys(_104, move _108, _109) -> [return: bb114, unwind: bb95];
+    }
+
+    bb68: {
+        _110 = discriminant(_34);
+        switchInt(move _110) -> [1: bb69, otherwise: bb72];
+    }
+
+    bb69: {
+        _111 = &((_34 as Some).0: platforms::sys::SignalFd);
+        _112 = SignalFd::read(_111) -> [return: bb70, unwind: bb95];
+    }
+
+    bb70: {
+        _114 = get_terminal_size() -> [return: bb71, unwind: bb95];
+    }
+
+    bb71: {
+        _113 = Option::<(usize, usize)>::Some(move _114);
+        _81 = move _113;
+        goto -> bb72;
+    }
+
+    bb72: {
+        _119 = &mut _23;
+        _120 = _81;
+        _122 = &_69;
+        _121 = <Vec<pepper::platform::Key> as Deref>::deref(_122) -> [return: bb73, unwind: bb95];
+    }
+
+    bb73: {
+        _123 = _82;
+        _124 = _84;
+        _118 = ClientApplication::<'_>::update(move _119, move _120, _121, move _123, move _124) -> [return: bb74, unwind: bb95];
+    }
+
+    bb74: {
+        _116 = (_118.0: bool);
+        _117 = (_118.1: &[u8]);
+        _128 = &mut _2;
+        _127 = <UnixStream as std::io::Write>::write_all(move _128, _117) -> [return: bb75, unwind: bb95];
+    }
+
+    bb75: {
+        _126 = &_127;
+        _125 = Result::<(), std::io::Error>::is_err(move _126) -> [return: bb76, unwind: bb93];
+    }
+
+    bb76: {
+        switchInt(move _125) -> [0: bb78, otherwise: bb77];
+    }
+
+    bb77: {
+        drop(_127) -> [return: bb44, unwind: bb95];
+    }
+
+    bb78: {
+        drop(_127) -> [return: bb79, unwind: bb95];
+    }
+
+    bb79: {
+        switchInt(_116) -> [0: bb47, otherwise: bb80];
+    }
+
+    bb80: {
+        _130 = &mut _23;
+        _131 = &mut _33;
+        _129 = suspend_process(_130, _131) -> [return: bb115, unwind: bb95];
+    }
+
+    bb81: {
+        _142 = const false;
+        _133 = move _33;
+        _132 = std::mem::drop::<Option<RawMode>>(move _133) -> [return: bb82, unwind: bb95];
+    }
+
+    bb82: {
+        drop(_69) -> [return: bb83, unwind: bb97];
+    }
+
+    bb83: {
+        drop(_35) -> [return: bb84, unwind: bb107];
+    }
+
+    bb84: {
+        drop(_34) -> [return: bb85, unwind: bb109];
+    }
+
+    bb85: {
+        _141 = const false;
+        _142 = const false;
+        drop(_23) -> [return: bb86, unwind: bb100];
+    }
+
+    bb86: {
+        drop(_2) -> [return: bb92, unwind: bb111];
+    }
+
+    bb87: {
+        drop(_34) -> [return: bb88, unwind: bb109];
+    }
+
+    bb88: {
+        _141 = const false;
+        drop(_33) -> [return: bb89, unwind: bb99];
+    }
+
+    bb89: {
+        _142 = const false;
+        goto -> bb90;
+    }
+
+    bb90: {
+        drop(_23) -> [return: bb91, unwind: bb100];
+    }
+
+    bb91: {
+        drop(_2) -> [return: bb103, unwind: bb111];
+    }
+
+    bb92: {
+        return;
+    }
+
+    bb93 (cleanup): {
+        drop(_127) -> [return: bb95, unwind terminate(cleanup)];
+    }
+
+    bb94 (cleanup): {
+        drop(_88) -> [return: bb95, unwind terminate(cleanup)];
+    }
+
+    bb95 (cleanup): {
+        drop(_69) -> [return: bb97, unwind terminate(cleanup)];
+    }
+
+    bb96 (cleanup): {
+        drop(_64) -> [return: bb105, unwind terminate(cleanup)];
+    }
+
+    bb97 (cleanup): {
+        drop(_35) -> [return: bb107, unwind terminate(cleanup)];
+    }
+
+    bb98 (cleanup): {
+        drop(_31) -> [return: bb99, unwind terminate(cleanup)];
+    }
+
+    bb99 (cleanup): {
+        drop(_23) -> [return: bb100, unwind terminate(cleanup)];
+    }
+
+    bb100 (cleanup): {
+        drop(_2) -> [return: bb111, unwind terminate(cleanup)];
+    }
+
+    bb101 (cleanup): {
+        resume;
+    }
+
+    bb102: {
+        drop(_1) -> [return: bb92, unwind continue];
+    }
+
+    bb103: {
+        switchInt(_139) -> [0: bb92, otherwise: bb102];
+    }
+
+    bb104 (cleanup): {
+        drop(_47) -> [return: bb97, unwind terminate(cleanup)];
+    }
+
+    bb105 (cleanup): {
+        switchInt(_140) -> [0: bb97, otherwise: bb104];
+    }
+
+    bb106 (cleanup): {
+        drop(_34) -> [return: bb109, unwind terminate(cleanup)];
+    }
+
+    bb107 (cleanup): {
+        switchInt(_141) -> [0: bb109, otherwise: bb106];
+    }
+
+    bb108 (cleanup): {
+        drop(_33) -> [return: bb99, unwind terminate(cleanup)];
+    }
+
+    bb109 (cleanup): {
+        switchInt(_142) -> [0: bb99, otherwise: bb108];
+    }
+
+    bb110 (cleanup): {
+        drop(_1) -> [return: bb101, unwind terminate(cleanup)];
+    }
+
+    bb111 (cleanup): {
+        switchInt(_139) -> [0: bb101, otherwise: bb110];
+    }
+
+    bb112: {
+        goto -> bb42;
+    }
+
+    bb113: {
+        goto -> bb47;
+    }
+
+    bb114: {
+        goto -> bb72;
+    }
+
+    bb115: {
+        goto -> bb47;
+    }
+}
+
+promoted[0] in run_client: &[u8; 0] = {
+    let mut _0: &[u8; 0];
+    let mut _1: [u8; 0];
+
+    bb0: {
+        _1 = [];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[1] in run_client: &[u8; 0] = {
+    let mut _0: &[u8; 0];
+    let mut _1: [u8; 0];
+
+    bb0: {
+        _1 = [];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[2] in run_client: &[u8; 0] = {
+    let mut _0: &[u8; 0];
+    let mut _1: [u8; 0];
+
+    bb0: {
+        _1 = [];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[3] in run_client: &[u8; 0] = {
+    let mut _0: &[u8; 0];
+    let mut _1: [u8; 0];
+
+    bb0: {
+        _1 = [];
+        _0 = &_1;
+        return;
+    }
+}
+
+promoted[4] in run_client: &[pepper::platform::Key; 1] = {
+    let mut _0: &[pepper::platform::Key; 1];
+    let mut _1: [pepper::platform::Key; 1];
+    let mut _2: pepper::platform::Key;
+
+    bb0: {
+        _2 = pepper::platform::Key::None;
+        _1 = [move _2];
+        _0 = &_1;
+        return;
+    }
+}
+
+run_client::{constant#0}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const 2_usize;
+        return;
+    }
+}
+
+const BUF_LEN: usize = {
+    let mut _0: usize;
+    let mut _1: bool;
+    let mut _2: usize;
+    let mut _3: usize;
+
+    bb0: {
+        StorageLive(_1);
+        StorageLive(_2);
+        ConstEvalCounter;
+        _2 = ClientApplication::<'_>::connection_buffer_len() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        StorageLive(_3);
+        ConstEvalCounter;
+        _3 = ClientApplication::<'_>::stdin_buffer_len() -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _1 = Gt(move _2, move _3);
+        switchInt(move _1) -> [0: bb4, otherwise: bb3];
+    }
+
+    bb3: {
+        StorageDead(_3);
+        StorageDead(_2);
+        ConstEvalCounter;
+        _0 = ClientApplication::<'_>::connection_buffer_len() -> [return: bb5, unwind continue];
+    }
+
+    bb4: {
+        StorageDead(_3);
+        StorageDead(_2);
+        ConstEvalCounter;
+        _0 = ClientApplication::<'_>::stdin_buffer_len() -> [return: bb5, unwind continue];
+    }
+
+    bb5: {
+        StorageDead(_1);
+        return;
+    }
+}
+
+run_client::{constant#1}: usize = {
+    let mut _0: usize;
+
+    bb0: {
+        _0 = const _;
+        return;
+    }
+}
+
+fn platforms::main() -> () {
+    let mut _0: ();
+    let _1: ();
+
+    bb0: {
+        _1 = sys::main() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        return;
+    }
+}
+
+fn main() -> () {
+    let mut _0: ();
+    let _1: ();
+    let _2: ();
+
+    bb0: {
+        _1 = set_panic_hook() -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _2 = platforms::main() -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        return;
+    }
+}
+
+fn EventFd(_1: i32) -> EventFd {
+    let mut _0: platforms::sys::EventFd;
+
+    bb0: {
+        _0 = EventFd(move _1);
+        return;
+    }
+}
+
+// MIR FOR CTFE
+fn EventFd(_1: i32) -> EventFd {
+    let mut _0: platforms::sys::EventFd;
+
+    bb0: {
+        _0 = EventFd(move _1);
+        return;
+    }
+}
+
+fn SignalFd(_1: i32) -> SignalFd {
+    let mut _0: platforms::sys::SignalFd;
+
+    bb0: {
+        _0 = SignalFd(move _1);
+        return;
+    }
+}
+
+// MIR FOR CTFE
+fn SignalFd(_1: i32) -> SignalFd {
+    let mut _0: platforms::sys::SignalFd;
+
+    bb0: {
+        _0 = SignalFd(move _1);
+        return;
+    }
+}
+
+fn EpollEvents(_1: [epoll_event; 32]) -> EpollEvents {
+    let mut _0: platforms::sys::EpollEvents;
+
+    bb0: {
+        _0 = EpollEvents(move _1);
+        return;
+    }
+}
+
+// MIR FOR CTFE
+fn EpollEvents(_1: [epoll_event; 32]) -> EpollEvents {
+    let mut _0: platforms::sys::EpollEvents;
+
+    bb0: {
+        _0 = EpollEvents(move _1);
+        return;
+    }
+}
+
+fn Epoll(_1: i32) -> Epoll {
+    let mut _0: platforms::sys::Epoll;
+
+    bb0: {
+        _0 = Epoll(move _1);
+        return;
+    }
+}
+
+// MIR FOR CTFE
+fn Epoll(_1: i32) -> Epoll {
+    let mut _0: platforms::sys::Epoll;
+
+    bb0: {
+        _0 = Epoll(move _1);
+        return;
+    }
+}

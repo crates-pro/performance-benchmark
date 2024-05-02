@@ -1,0 +1,75 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn aggregate::<impl at src\aggregate.rs:5:1: 5:7>::get_number(_1: &A) -> i32 {
+    debug self => _1;
+    let mut _0: i32;
+
+    bb0: {
+        _0 = ((*_1).0: i32);
+        return;
+    }
+}
+
+fn aggregate::<impl at src\aggregate.rs:15:1: 15:21>::print(_1: &A) -> () {
+    debug self => _1;
+    let mut _0: ();
+    let _2: ();
+    let mut _3: std::fmt::Arguments<'_>;
+    let mut _4: &[&str];
+    let mut _5: &[core::fmt::rt::Argument<'_>];
+    let _6: &[core::fmt::rt::Argument<'_>; 1];
+    let _7: [core::fmt::rt::Argument<'_>; 1];
+    let mut _8: core::fmt::rt::Argument<'_>;
+    let _9: &i32;
+    let mut _10: &[&str; 2];
+
+    bb0: {
+        _10 = const _;
+        _4 = _10 as &[&str] (PointerCoercion(Unsize));
+        _9 = &((*_1).0: i32);
+        _8 = core::fmt::rt::Argument::<'_>::new_display::<i32>(_9) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        _7 = [move _8];
+        _6 = &_7;
+        _5 = _6 as &[core::fmt::rt::Argument<'_>] (PointerCoercion(Unsize));
+        _3 = Arguments::<'_>::new_v1(move _4, move _5) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        _2 = _print(move _3) -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        return;
+    }
+}
+
+promoted[0] in aggregate::<impl at src\aggregate.rs:15:1: 15:21>::print: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "A { number: ", const " }\n"];
+        _0 = &_1;
+        return;
+    }
+}
+
+fn main() -> () {
+    let mut _0: ();
+
+    bb0: {
+        return;
+    }
+}
+
+const _C_LOCAL: A = {
+    let mut _0: aggregate::A;
+
+    bb0: {
+        _0 = A { number: const 10_i32 };
+        return;
+    }
+}

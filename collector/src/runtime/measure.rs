@@ -13,7 +13,8 @@ use crate::{
     utils::command::{command_discard_output, command_output},
 };
 
-use super::{result::RuntimeResult, Runtime, FAKE_FLAMEGRAPH, FAKE_RUNTIME};
+use super::{Runtime, FAKE_FLAMEGRAPH, FAKE_RUNTIME};
+use crate::statistics::runtime_stat::RuntimeResult;
 
 pub struct RuntimeProcess<'a> {
     compiler: Compiler<'a>,

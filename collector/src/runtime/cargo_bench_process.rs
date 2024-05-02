@@ -5,7 +5,7 @@ use std::{
 
 use crate::{
     execute::process_benchmark_output,
-    runtime::result::RuntimeResult,
+    statistics::runtime_stat::RuntimeResult,
     toolchain::{Compiler, PerfTool},
     utils::command::{command_discard_output, command_output},
 };
@@ -110,7 +110,7 @@ impl<'a> Runtime for CargoBenchProcess<'a> {
         &self,
         perf_tool: &PerfTool,
         _event_filter_file: &PathBuf,
-    ) -> anyhow::Result<Option<super::result::RuntimeResult>> {
+    ) -> anyhow::Result<Option<crate::statistics::runtime_stat::RuntimeResult>> {
         let mut result = RuntimeResult::new(self.processor_name.clone());
 
         for iteration in 0..self.iterations {

@@ -19,11 +19,9 @@ use runtime::bench_runtime;
 use toolchain::{Cli, Commands, ResultWriter};
 
 use crate::{
-    compile_time::{binary_size::bench_binary_size, result::CompileTimeResultSet},
-    csv_transfer::sheduler,
-    morpheme_miner::run_miners,
-    perf_analyze::perf_analyzer,
-    toolchain::get_local_toolchain,
+    compile_time::binary_size::bench_binary_size, csv_transfer::sheduler,
+    morpheme_miner::run_miners, perf_analyze::perf_analyzer,
+    statistics::compile_time_stat::CompileTimeResultSet, toolchain::get_local_toolchain,
 };
 
 mod benchmark;

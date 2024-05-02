@@ -7,8 +7,8 @@ use std::{
 };
 
 use crate::{
-    benchmark::profile::Profile,
-    compile_time::{binary_size::BINARY_SIZE_LABEL, result::CompileTimeBenchResult},
+    benchmark::profile::Profile, compile_time::binary_size::BINARY_SIZE_LABEL,
+    statistics::compile_time_stat::CompileTimeBenchResult,
 };
 
 pub fn plot(

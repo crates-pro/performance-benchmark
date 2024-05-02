@@ -30,7 +30,7 @@ impl RuntimeResultVec {
             stat_map.iter().for_each(|(label, vals)| {
                 statistic_vec.push((label.clone(), Statistics::from(vals.clone())));
             });
-            statistics.0.push(RuntimeStatistic {
+            statistics.push(RuntimeStatistic {
                 name: result.name.clone(),
                 statistic_vec,
             });
@@ -61,15 +61,9 @@ impl RuntimeResult {
 }
 
 #[derive(Serialize, Deserialize)]
-struct RuntimeStatistic {
-    name: String,
-    statistic_vec: Vec<(String, Statistics)>,
+pub struct RuntimeStatistic {
+    pub name: String,
+    pub statistic_vec: Vec<(String, Statistics)>,
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct RuntimeStatistics(Vec<RuntimeStatistic>);
-impl RuntimeStatistics {
-    fn new() -> Self {
-        RuntimeStatistics { 0: vec![] }
-    }
-}
+pub type RuntimeStatistics = Vec<RuntimeStatistic>;

@@ -11,9 +11,7 @@ use tempfile::TempDir;
 
 use crate::{
     compile_time::{
-        cargo_package_process::CargoPackageProcess,
-        cargo_single_process::CargoSingleProcess,
-        result::{CompileTimeBenchResult, CompileTimeResult},
+        cargo_package_process::CargoPackageProcess, cargo_single_process::CargoSingleProcess,
         CompileTimeProcessor,
     },
     runtime::{
@@ -21,6 +19,7 @@ use crate::{
         cargo_package_process::CargoPackageTestProcess, cargo_test_process::CargoTestProcess,
         measure::RuntimeProcess, Runtime,
     },
+    statistics::compile_time_stat::{CompileTimeBenchResult, CompileTimeResult},
     toolchain::{Compiler, PerfTool},
 };
 

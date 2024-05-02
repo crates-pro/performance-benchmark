@@ -4,18 +4,14 @@ use std::{
     path::PathBuf,
 };
 
-use collector::{
-    benchmark::profile::Profile,
-    compile_time::result::{CompileTimeResultSet, CompileTimeStatistics},
-};
+use collector::statistics::runtime_stat::{RuntimeResultVec, RuntimeStatistics};
 
-pub fn merge_compile_time_stats(
+pub fn merge_runtime_stats(
     root_dir: &PathBuf,
-    profile: Profile,
     rustc: String,
     out_path: PathBuf,
 ) -> anyhow::Result<PathBuf> {
-    let mut merged_stats = CompileTimeStatistics::new();
+    let mut merged_stats = RuntimeStatistics::new();
 
     // Iterate each benchmark group under root dir.
     for bench_group in read_dir(root_dir)? {
@@ -32,16 +28,10 @@ pub fn merge_compile_time_stats(
                     for f in read_dir(rustc_dir.path())? {
                         let f = f?;
                         if f.file_name().to_str().unwrap().contains("results.json") {
-                            let data: CompileTimeResultSet =
+                            let data: RuntimeResultVec =
                                 serde_json::from_reader(BufReader::new(File::open(f.path())?))?;
 
-                            merged_stats.append(
-                                &mut data
-                                    .calculate_statistics()
-                                    .into_iter()
-                                    .filter(|s| s.profile == profile)
-                                    .collect(),
-                            );
+                            merged_stats.append(&mut data.calculate_statistics());
                         }
                     }
                 }
@@ -57,16 +47,16 @@ pub fn merge_compile_time_stats(
 }
 
 #[cfg(test)]
-mod test_merge_stat {
+mod test_merge_runtime_stat {
     use std::{
         fs::{remove_file, File},
         io::BufReader,
         path::PathBuf,
     };
 
-    use collector::{benchmark::profile::Profile, compile_time::result::CompileTimeStatistics};
+    use collector::statistics::runtime_stat::RuntimeStatistics;
 
-    use super::merge_compile_time_stats;
+    use super::merge_runtime_stats;
 
     /// test for merge_stat
     ///
@@ -76,18 +66,17 @@ mod test_merge_stat {
     ///
     /// Step3. clean up.
     #[test]
-    fn test_merge_stat() {
-        let root_dir = PathBuf::from("test/merge_stat/stat");
-        let profile = Profile::Release;
+    fn test_merge_runtime_stat() {
+        let root_dir = PathBuf::from("test/merge_stats/merge_runtime_stat/stat");
         let rustc = String::from("rustc_A");
-        let out_path = PathBuf::from("test/merge_stat/merge.json");
+        let out_path = PathBuf::from("test/merge_stats/merge_runtime_stat/merge.json");
 
         assert_eq!(
-            merge_compile_time_stats(&root_dir, profile, rustc, out_path.clone()).unwrap(),
+            merge_runtime_stats(&root_dir, rustc, out_path.clone()).unwrap(),
             out_path,
         );
 
-        let stats: CompileTimeStatistics =
+        let stats: RuntimeStatistics =
             serde_json::from_reader(BufReader::new(File::open(&out_path).unwrap())).unwrap();
 
         assert_eq!(12, stats.len());

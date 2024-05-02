@@ -1,7 +1,12 @@
 pub mod benchmark;
-pub mod compile_time;
+mod compile_time;
+mod csv_transfer;
 mod execute;
+mod mir_analyze;
+mod morpheme_miner;
+mod pca_analysis;
+mod perf_analyze;
 mod runtime;
 pub mod statistics;
-pub mod toolchain;
+mod toolchain;
 mod utils;

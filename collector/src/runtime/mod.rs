@@ -9,18 +9,17 @@ use anyhow::{bail, Context};
 use crate::{
     benchmark::benchmark::Benchamrk,
     benchmark::benchmark::BenchmarkSuit,
-    runtime::result::RuntimeResultVec,
+    statistics::runtime_stat::RuntimeResultVec,
     toolchain::{Compiler, LocalToolchain, PerfTool},
 };
 
-use self::result::RuntimeResult;
+use crate::statistics::runtime_stat::RuntimeResult;
 
 pub mod cargo_bench_process;
 pub mod cargo_example_process;
 pub mod cargo_package_process;
 pub mod cargo_test_process;
 pub mod measure;
-pub mod result;
 
 pub trait Runtime {
     fn measure(

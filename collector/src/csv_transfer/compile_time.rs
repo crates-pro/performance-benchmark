@@ -4,7 +4,8 @@ use std::{
     path::PathBuf,
 };
 
-use crate::{benchmark::profile::Profiles, compile_time::result::CompileTimeResultSet};
+use crate::benchmark::profile::Profiles;
+use crate::statistics::compile_time_stat::CompileTimeResultSet;
 
 pub fn read_compile_time_json(path: &PathBuf) -> anyhow::Result<CompileTimeResultSet> {
     let file = File::open(path)?;

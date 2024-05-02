@@ -13,15 +13,15 @@ use crate::{
     },
     compile_time::{
         binary_size::binary_single_process::BinarySingleProcess, discover_benchmark_suit,
-        result::CompileTimeResult,
     },
     execute::Stats,
+    statistics::compile_time_stat::CompileTimeResult,
     toolchain::{Compiler, LocalToolchain},
 };
 
 use self::binary_package_process::BinaryPackageProcess;
 
-use super::result::CompileTimeBenchResult;
+use crate::statistics::compile_time_stat::CompileTimeBenchResult;
 
 pub mod binary_package_process;
 pub mod binary_single_process;

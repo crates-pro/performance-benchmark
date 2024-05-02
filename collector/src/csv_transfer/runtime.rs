@@ -4,7 +4,7 @@ use std::{
     path::PathBuf,
 };
 
-use crate::runtime::result::RuntimeResultVec;
+use crate::statistics::runtime_stat::RuntimeResultVec;
 
 pub fn read_runtime_json(path: &PathBuf) -> anyhow::Result<RuntimeResultVec> {
     let file = File::open(path)?;

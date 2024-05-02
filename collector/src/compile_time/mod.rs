@@ -12,15 +12,13 @@ use crate::{
         scenario::Scenario,
     },
     execute::Stats,
+    statistics::compile_time_stat::CompileTimeBenchResult,
     toolchain::{Compiler, LocalToolchain, PerfTool},
 };
-
-use self::result::CompileTimeBenchResult;
 
 pub(crate) mod binary_size;
 pub(crate) mod cargo_package_process;
 pub(crate) mod cargo_single_process;
-pub mod result;
 
 pub(crate) fn bench_compile_time(
     ltc: &LocalToolchain,

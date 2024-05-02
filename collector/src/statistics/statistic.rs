@@ -2,16 +2,16 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Default, Clone)]
 pub struct Statistics {
-    max: f64,
-    min: f64,
-    geometric_mean: f64,
-    algebraic_mean: f64,
-    variance: f64,
-    standard_deviation: f64,
+    pub max: f64,
+    pub min: f64,
+    pub geometric_mean: f64,
+    pub algebraic_mean: f64,
+    pub variance: f64,
+    pub standard_deviation: f64,
     /// 第一四分位点
-    q1: f64,
+    pub q1: f64,
     /// 第三四分位点
-    q3: f64,
+    pub q3: f64,
 }
 
 impl Statistics {

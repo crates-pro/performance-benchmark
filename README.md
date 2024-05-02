@@ -5,7 +5,7 @@ This harness is a command-line tool to automatically bench, collect and process 
 It can also draw flamegraphs to show the rust compiler/programs built by the rust compiler's runtime call stack.
 
 
-## Tips
+## Dependencies
 Before starting the harness, make sure your `perf` tool and flamegraph is ready to run.
 
 1. The following link may help if you have trouble setting up perf tool:
@@ -17,7 +17,12 @@ https://blog.eastonman.com/blog/2021/02/use-perf/
 > cargo install flamegraph
 ```
 
-3. Relative dependancies
+3. Libraries needed on Linux
+```
+> apt install libfontconfig1-dev
+```
+
+4. Relative dependancies
 python3
 kaleido, matplotlib (can be installed with pip...
 ```

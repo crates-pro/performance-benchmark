@@ -1,6 +1,6 @@
 use std::{collections::HashMap, fs::File, io::BufReader, path::PathBuf};
 
-use crate::{benchmark::profile::Profile, compile_time::result::CompileTimeBenchResult};
+use crate::{benchmark::profile::Profile, statistics::compile_time_stat::CompileTimeBenchResult};
 
 use super::BINARY_SIZE_LABEL;
 

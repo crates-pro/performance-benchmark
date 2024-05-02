@@ -8,7 +8,7 @@ use cargo_metadata::Message;
 
 use crate::{
     execute::{process_benchmark_output, Stats},
-    runtime::result::RuntimeResult,
+    statistics::runtime_stat::RuntimeResult,
     toolchain::{Compiler, PerfTool},
     utils::command::{command_discard_output, command_output},
 };

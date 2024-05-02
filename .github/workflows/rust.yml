@@ -36,8 +36,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -U kaleido
-        pip install -U matplotlib
+        pip install -U matplotlib plotly kaleido
 
     - name: Build and test
       run: |

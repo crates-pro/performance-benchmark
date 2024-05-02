@@ -95,13 +95,15 @@ impl<'a> Runtime for CargoPackageTestProcess<'a> {
 
         let mut result = RuntimeResult::new(self.processor_name.clone());
 
-        for iteration in 0..self.iterations {
-            eprintln!(
-                "running '{}' Runtime iteration {}/{}...",
-                self.processor_name.clone(),
-                iteration + 1,
-                self.iterations
-            );
+        for iteration in 0..self.iterations + 1 {
+            if iteration > 0 {
+                eprintln!(
+                    "running '{}' Runtime iteration {}/{}...",
+                    self.processor_name.clone(),
+                    iteration,
+                    self.iterations
+                );
+            }
 
             let mut cmd = self.base_command();
             self.add_packages(&mut cmd);
@@ -119,6 +121,10 @@ impl<'a> Runtime for CargoPackageTestProcess<'a> {
             }
 
             let output = command_output(&mut cmd)?;
+
+            if iteration == 0 {
+                continue;
+            }
 
             match perf_tool.get_bencher() {
                 crate::toolchain::Bencher::PerfStat => match process_benchmark_output(output) {

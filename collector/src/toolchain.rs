@@ -371,16 +371,13 @@ pub enum Commands {
 
     /// Analyze MIRs generated from benchmarks.
     MirAnalyze {
-        #[clap(flatten)]
-        local: LocalOptions,
-
-        /// The path of benchmark dir
-        #[clap(long = "bench-dir", default_value = "../benchmarks/compile-time")]
-        bench_dir: PathBuf,
+        /// The path of dir contains mir files grouped by benchmark name
+        #[clap(long = "mir-dir", default_value = "../benchmarks/compile-time")]
+        mir_dir: PathBuf,
 
         /// The path of output file
-        #[clap(long = "out-dir", default_value = "results")]
-        out_dir: PathBuf,
+        #[clap(long = "out-path", default_value = "results")]
+        out_path: PathBuf,
     },
 }
 

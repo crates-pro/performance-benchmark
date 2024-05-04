@@ -16,12 +16,13 @@ use compile_time::{
     },
     discover_benchmark_suit,
 };
+use mir_analyze::mir_generate::generate_mir;
 use runtime::bench_runtime;
 use toolchain::{Cli, Commands, ResultWriter};
 
 use crate::{
-    compile_time::binary_size::bench_binary_size, csv_transfer::sheduler,
-    morpheme_miner::run_miners, perf_analyze::perf_analyzer,
+    benchmark::benchmark::BenchmarkSuit, compile_time::binary_size::bench_binary_size,
+    csv_transfer::sheduler, morpheme_miner::run_miners, perf_analyze::perf_analyzer,
     statistics::compile_time_stat::CompileTimeResultSet, toolchain::get_local_toolchain,
 };
 
@@ -232,20 +233,8 @@ fn main_result() -> anyhow::Result<i32> {
             run_miners(bench_dir, out_path);
             Ok(0)
         }
-        Commands::MirAnalyze {
-            local,
-            bench_dir,
-            out_dir,
-        } => {
-            let toolch = get_local_toolchain(
-                &local.rustc,
-                local.cargo.as_deref(),
-                local.id.as_deref(),
-                "",
-            )?;
-
-            mir_analyze::mir_analyze::entry(toolch, bench_dir, out_dir)?;
-
+        Commands::MirAnalyze { mir_dir, out_path } => {
+            mir_analyze::mir_analyze::entry(mir_dir, out_path)?;
             Ok(0)
         }
         Commands::BinaryLocal {
@@ -300,16 +289,21 @@ fn main_result() -> anyhow::Result<i32> {
             bench_dir,
             out_dir,
         } => {
-            let toolch = get_local_toolchain(
+            let ltc = get_local_toolchain(
                 &local.rustc,
                 local.cargo.as_deref(),
                 local.id.as_deref(),
                 "",
             )?;
 
-            discover_benchmark_suit(&bench_dir)?
-                .into_iter()
-                .for_each(|b| unimplemented!());
+            let benchmark_suit = BenchmarkSuit {
+                benchmarks: discover_benchmark_suit(&bench_dir)?,
+            };
+            println!("{}", benchmark_suit.display_benchmarks());
+
+            for b in benchmark_suit.benchmarks {
+                generate_mir(&b, &ltc, out_dir.as_path())?;
+            }
 
             Ok(0)
         }

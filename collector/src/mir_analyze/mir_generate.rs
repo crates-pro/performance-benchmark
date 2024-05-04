@@ -1,30 +1,41 @@
 use std::{
-    fs::read_dir,
+    fs::{copy, create_dir_all, read_dir},
     path::{Path, PathBuf},
     process::{Command, Stdio},
 };
 
-use anyhow::bail;
-
 use crate::{benchmark::benchmark::Benchamrk, toolchain::LocalToolchain};
 
-use super::{analyze::reader::read_mir, mirs::mir::MIR};
+pub fn generate_mir(
+    benchmark: &Benchamrk,
+    ltc: &LocalToolchain,
+    out_path: &Path,
+) -> anyhow::Result<Vec<PathBuf>> {
+    println!("Generating MIR for `{}`", benchmark.name);
 
-pub fn generate_mir(benchmark: &Benchamrk, ltc: &LocalToolchain) -> anyhow::Result<Vec<MIR>> {
+    let out_dir = out_path.join(&benchmark.name);
+    create_dir_all(&out_dir)?;
+
     match benchmark
         .config
         .compile_time_type
         .clone()
         .unwrap_or_default()
     {
-        crate::benchmark::benchmark::CompileTimeType::Single => single_genrate_mir(benchmark, ltc),
+        crate::benchmark::benchmark::CompileTimeType::Single => {
+            single_genrate_mir(benchmark, ltc, out_dir.as_path())
+        }
         crate::benchmark::benchmark::CompileTimeType::Packages => {
-            package_generate_mir(benchmark, ltc)
+            package_generate_mir(benchmark, ltc, out_dir.as_path())
         }
     }
 }
 
-fn single_genrate_mir(benchmark: &Benchamrk, ltc: &LocalToolchain) -> anyhow::Result<Vec<MIR>> {
+fn single_genrate_mir(
+    benchmark: &Benchamrk,
+    ltc: &LocalToolchain,
+    out_path: &Path,
+) -> anyhow::Result<Vec<PathBuf>> {
     let tmp_dir = benchmark.make_temp_dir(&benchmark.path)?;
 
     let mut cmd = Command::new(Path::new(&ltc.cargo));
@@ -43,8 +54,7 @@ fn single_genrate_mir(benchmark: &Benchamrk, ltc: &LocalToolchain) -> anyhow::Re
         .env("RUSTC_BOOTSTRAP", "1")
         .current_dir(tmp_dir.path())
         .arg("rustc")
-        .arg("--profile")
-        .arg("release")
+        .arg("--release")
         .arg("--manifest-path")
         .arg(
             &benchmark
@@ -52,18 +62,20 @@ fn single_genrate_mir(benchmark: &Benchamrk, ltc: &LocalToolchain) -> anyhow::Re
                 .cargo_toml
                 .clone()
                 .unwrap_or_else(|| String::from("Cargo.toml")),
-        )
-        .arg("--")
-        .arg("--emit=mir");
+        );
+    if let Some(opts) = &benchmark.config.cargo_opts {
+        cmd.args(opts.split(" ").collect::<Vec<&str>>());
+    }
+    cmd.arg("--").arg("--emit=mir");
 
-    cmd.stdout(Stdio::piped())
-        .stderr(Stdio::piped())
+    cmd.stdout(Stdio::null())
+        .stderr(Stdio::null())
         .spawn()
         .expect(format!("Fail to compile {}.", benchmark.name).as_str())
         .wait()?;
 
     // find mir file
-    let mut mir_file = None;
+    let mut mir_files = vec![];
     for entry in read_dir(PathBuf::from(
         tmp_dir.path().join("target").join("release").join("deps"),
     ))? {
@@ -71,23 +83,20 @@ fn single_genrate_mir(benchmark: &Benchamrk, ltc: &LocalToolchain) -> anyhow::Re
 
         if let Some(file_name) = entry.file_name().to_str() {
             if file_name.ends_with(".mir") {
-                mir_file = Some(entry.path());
+                let dst_path = out_path.join(entry.file_name());
+                copy(entry.path(), &dst_path)?;
+                mir_files.push(dst_path);
             }
         }
     }
-
-    // if mir file found, extract mirs; else return err.
-    if let Some(mir_file) = mir_file {
-        read_mir(mir_file)
-    } else {
-        bail!(format!(
-            "Mir file not found after {} compiled",
-            benchmark.name
-        ))
-    }
+    Ok(mir_files)
 }
 
-fn package_generate_mir(benchmark: &Benchamrk, ltc: &LocalToolchain) -> anyhow::Result<Vec<MIR>> {
+fn package_generate_mir(
+    benchmark: &Benchamrk,
+    ltc: &LocalToolchain,
+    out_path: &Path,
+) -> anyhow::Result<Vec<PathBuf>> {
     let tmp_dir = benchmark.make_temp_dir(&benchmark.path)?;
 
     for package in benchmark.config.packages.clone().unwrap() {
@@ -102,8 +111,7 @@ fn package_generate_mir(benchmark: &Benchamrk, ltc: &LocalToolchain) -> anyhow::
             .env("RUSTC_BOOTSTRAP", "1")
             .current_dir(tmp_dir.path())
             .arg("rustc")
-            .arg("--profile")
-            .arg("release")
+            .arg("--release")
             .arg("--manifest-path")
             .arg(
                 &benchmark
@@ -113,18 +121,20 @@ fn package_generate_mir(benchmark: &Benchamrk, ltc: &LocalToolchain) -> anyhow::
                     .unwrap_or_else(|| String::from("Cargo.toml")),
             )
             .arg("--package")
-            .arg(package)
-            .arg("--")
-            .arg("--emit=mir");
+            .arg(package);
+        if let Some(opts) = &benchmark.config.cargo_opts {
+            cmd.args(opts.split(" ").collect::<Vec<&str>>());
+        }
+        cmd.arg("--").arg("--emit=mir");
 
-        cmd.stdout(Stdio::piped())
-            .stderr(Stdio::piped())
+        cmd.stdout(Stdio::null())
+            .stderr(Stdio::null())
             .spawn()
             .expect(format!("Fail to compile {}.", benchmark.name).as_str())
             .wait()?;
     }
 
-    let mut mirs = vec![];
+    let mut mir_files = vec![];
     for entry in read_dir(PathBuf::from(
         tmp_dir.path().join("target").join("release").join("deps"),
     ))? {
@@ -132,17 +142,22 @@ fn package_generate_mir(benchmark: &Benchamrk, ltc: &LocalToolchain) -> anyhow::
 
         if let Some(file_name) = entry.file_name().to_str() {
             if file_name.ends_with(".mir") {
-                mirs.append(&mut read_mir(entry.path())?);
+                let dst_path = out_path.join(entry.file_name());
+                copy(entry.path(), &dst_path)?;
+                mir_files.push(dst_path);
             }
         }
     }
 
-    Ok(mirs)
+    Ok(mir_files)
 }
 
 #[cfg(test)]
 mod test {
-    use std::path::PathBuf;
+    use std::{
+        fs::remove_dir_all,
+        path::{Path, PathBuf},
+    };
 
     use crate::{
         benchmark::benchmark::{Benchamrk, BenchmarkConfig},
@@ -174,8 +189,9 @@ mod test {
                 runtime_test_packages: None,
             },
         };
+        let out_dir = Path::new("test/mir_analyze/run_analyze/out");
 
-        generate_mir(
+        let v = generate_mir(
             &benchmark,
             &LocalToolchain {
                 rustc: PathBuf::from("rustc"),
@@ -183,8 +199,16 @@ mod test {
                 flame_graph: PathBuf::from(""),
                 id: 0.to_string(),
             },
+            &out_dir,
         )
         .unwrap();
+
+        assert!(v.len() > 0);
+        v.into_iter().for_each(|f| {
+            f.metadata().unwrap();
+        });
+
+        remove_dir_all(out_dir.join("condvar")).unwrap();
     }
 
     /// Test mir generation when handling benchmark programs made of several packages.
@@ -196,7 +220,9 @@ mod test {
         )
         .unwrap();
 
-        generate_mir(
+        let out_dir = Path::new("test/mir_analyze/run_analyze/out");
+
+        let v = generate_mir(
             &benchmark,
             &LocalToolchain {
                 rustc: PathBuf::from("rustc"),
@@ -204,7 +230,14 @@ mod test {
                 flame_graph: PathBuf::from(""),
                 id: 0.to_string(),
             },
+            out_dir,
         )
         .unwrap();
+
+        assert!(v.len() > 0);
+        v.into_iter().for_each(|f| {
+            f.metadata().unwrap();
+        });
+        remove_dir_all(out_dir.join("muti-package")).unwrap();
     }
 }

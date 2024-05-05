@@ -1,14 +1,11 @@
 use std::{
-    collections::HashMap,
     fmt::Display,
     fs::File,
     io::{BufWriter, Write},
     path::Path,
 };
 
-// type TableData<U, V> = HashMap<U, Vec<V>>;
-
-pub type TableDatas<X, Y, T> = HashMap<X, HashMap<Y, T>>;
+use super::table_data::TableDatas;
 
 /// Transform 2-D data into a 2-D tex table.
 pub fn write_tex_table<X: Display + Ord, Y: Display + Ord, T: Display + Default>(

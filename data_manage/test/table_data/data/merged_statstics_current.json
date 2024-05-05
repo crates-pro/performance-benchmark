@@ -1,0 +1,5108 @@
+[
+    {
+        "name": "amp",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "faults",
+                {
+                    "max": 56745.0,
+                    "min": 56498.0,
+                    "geometric_mean": 56675.143412081095,
+                    "algebraic_mean": 56675.16666666666,
+                    "variance": 2633.2055555555557,
+                    "standard_deviation": 51.31476937057747,
+                    "q1": 56673.75,
+                    "q3": 56704.0
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 3334.85,
+                    "min": 3157.91,
+                    "geometric_mean": 3244.1010146980457,
+                    "algebraic_mean": 3244.3480000000004,
+                    "variance": 1607.2118760000017,
+                    "standard_deviation": 40.09004709401077,
+                    "q1": 3216.2774999999997,
+                    "q3": 3269.37
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 2810.0,
+                    "min": 2002.0,
+                    "geometric_mean": 2590.8476398354424,
+                    "algebraic_mean": 2596.8999999999996,
+                    "variance": 29043.690000000006,
+                    "standard_deviation": 170.4220936381196,
+                    "q1": 2557.0,
+                    "q3": 2714.25
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 218728.0,
+                    "min": 215552.0,
+                    "geometric_mean": 217435.0568263407,
+                    "algebraic_mean": 217435.8666666666,
+                    "variance": 351487.44888888893,
+                    "standard_deviation": 592.8637692496387,
+                    "q1": 217389.0,
+                    "q3": 217577.0
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 9485707766.0,
+                    "min": 8743120113.0,
+                    "geometric_mean": 8923170091.26278,
+                    "algebraic_mean": 8924886027.066668,
+                    "variance": 3.121290989083045e16,
+                    "standard_deviation": 176671757.47931656,
+                    "q1": 8809877683.75,
+                    "q3": 8995702865.75
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 10119016864.0,
+                    "min": 10113509880.0,
+                    "geometric_mean": 10117013863.297497,
+                    "algebraic_mean": 10117013948.5,
+                    "variance": 1723889725749.9167,
+                    "standard_deviation": 1312969.8114389062,
+                    "q1": 10116040521.75,
+                    "q3": 10118046048.5
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 1.354207232,
+                    "min": 1.175337881,
+                    "geometric_mean": 1.2331905204039992,
+                    "algebraic_mean": 1.2338868167999997,
+                    "variance": 0.0017506388846306833,
+                    "standard_deviation": 0.04184063676177363,
+                    "q1": 1.20510097475,
+                    "q3": 1.251647253
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 80161780.0,
+                    "min": 79748355.0,
+                    "geometric_mean": 79858108.15442547,
+                    "algebraic_mean": 79858155.93333331,
+                    "variance": 7640113566.862223,
+                    "standard_deviation": 87407.74317451642,
+                    "q1": 79798364.5,
+                    "q3": 79880084.25
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 27353913.0,
+                    "min": 12152006.0,
+                    "geometric_mean": 15417403.918626217,
+                    "algebraic_mean": 15806120.533333331,
+                    "variance": 14408008009684.717,
+                    "standard_deviation": 3795788.1934697987,
+                    "q1": 12852827.0,
+                    "q3": 17195960.5
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 3334.45,
+                    "min": 3157.54,
+                    "geometric_mean": 3243.770811921039,
+                    "algebraic_mean": 3244.017666666667,
+                    "variance": 1606.1615978888876,
+                    "standard_deviation": 40.076945965091795,
+                    "q1": 3215.915,
+                    "q3": 3268.9925
+                }
+            ]
+        ]
+    },
+    {
+        "name": "bat",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "faults",
+                {
+                    "max": 749398.0,
+                    "min": 728299.0,
+                    "geometric_mean": 745285.6228017621,
+                    "algebraic_mean": 745298.7333333334,
+                    "variance": 19360328.795555558,
+                    "standard_deviation": 4400.037362972678,
+                    "q1": 745261.0,
+                    "q3": 747589.75
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 42201.98,
+                    "min": 40174.52,
+                    "geometric_mean": 41605.72250170593,
+                    "algebraic_mean": 41608.94500000002,
+                    "variance": 265054.76732499996,
+                    "standard_deviation": 514.8346990296982,
+                    "q1": 41444.895000000004,
+                    "q3": 41963.755
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 228076869.0,
+                    "min": 206848992.0,
+                    "geometric_mean": 221067822.85629162,
+                    "algebraic_mean": 221174147.33333334,
+                    "variance": 46238669089893.086,
+                    "standard_deviation": 6799902.138258542,
+                    "q1": 215601258.5,
+                    "q3": 226339219.75
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 715292.0,
+                    "min": 713988.0,
+                    "geometric_mean": 714346.8930716389,
+                    "algebraic_mean": 714347.0666666668,
+                    "variance": 248150.06222222224,
+                    "standard_deviation": 498.1466272316036,
+                    "q1": 714008.0,
+                    "q3": 714254.0
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 148669444502.0,
+                    "min": 143752112127.0,
+                    "geometric_mean": 147175134954.59943,
+                    "algebraic_mean": 147180615717.40005,
+                    "variance": 1.599419106015629e18,
+                    "standard_deviation": 1264681424.7136033,
+                    "q1": 147033765934.25,
+                    "q3": 148004409219.5
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 42201.94,
+                    "min": 40174.46,
+                    "geometric_mean": 41605.682201027026,
+                    "algebraic_mean": 41608.904666666676,
+                    "variance": 265051.73621155566,
+                    "standard_deviation": 514.8317552478243,
+                    "q1": 41444.89,
+                    "q3": 41963.725
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 555.0,
+                    "min": 418.0,
+                    "geometric_mean": 468.8307968105745,
+                    "algebraic_mean": 470.4,
+                    "variance": 1516.9733333333336,
+                    "standard_deviation": 38.948341856019155,
+                    "q1": 435.25,
+                    "q3": 496.5
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 42.39257608,
+                    "min": 40.372777172,
+                    "geometric_mean": 41.78795181298964,
+                    "algebraic_mean": 41.791144770566675,
+                    "variance": 0.26379095925761026,
+                    "standard_deviation": 0.5136058403655572,
+                    "q1": 41.6272717995,
+                    "q3": 42.14725767625
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 186408577498.0,
+                    "min": 186264447398.0,
+                    "geometric_mean": 186336164154.49896,
+                    "algebraic_mean": 186336169167.73325,
+                    "variance": 1868233040250401.5,
+                    "standard_deviation": 43223061.44005074,
+                    "q1": 186297706780.25,
+                    "q3": 186377746714.5
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 1233271452.0,
+                    "min": 1229198860.0,
+                    "geometric_mean": 1230928650.934881,
+                    "algebraic_mean": 1230928984.4333334,
+                    "variance": 821228171693.379,
+                    "standard_deviation": 906216.4044494996,
+                    "q1": 1230231479.75,
+                    "q3": 1231653936.5
+                }
+            ]
+        ]
+    },
+    {
+        "name": "broot",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "cache-misses",
+                {
+                    "max": 382967039.0,
+                    "min": 352408283.0,
+                    "geometric_mean": 360682498.6386447,
+                    "algebraic_mean": 360857959.4666665,
+                    "variance": 129956998029262.17,
+                    "standard_deviation": 11399868.333856413,
+                    "q1": 354273104.25,
+                    "q3": 357048967.25
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 678.0,
+                    "min": 489.0,
+                    "geometric_mean": 573.33131353112,
+                    "algebraic_mean": 575.6333333333333,
+                    "variance": 2724.698888888889,
+                    "standard_deviation": 52.19864834350492,
+                    "q1": 536.5,
+                    "q3": 613.0
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 974808.0,
+                    "min": 974316.0,
+                    "geometric_mean": 974627.8520687786,
+                    "algebraic_mean": 974627.866666667,
+                    "variance": 28453.848888888864,
+                    "standard_deviation": 168.68268698621344,
+                    "q1": 974460.0,
+                    "q3": 974784.0
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 64409.91,
+                    "min": 61572.58,
+                    "geometric_mean": 62345.8803971719,
+                    "algebraic_mean": 62349.79333333334,
+                    "variance": 493464.1420222224,
+                    "standard_deviation": 702.470029269735,
+                    "q1": 61858.5175,
+                    "q3": 62666.10249999999
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 1854565053.0,
+                    "min": 1850271819.0,
+                    "geometric_mean": 1852333475.3363664,
+                    "algebraic_mean": 1852333757.033333,
+                    "variance": 1043569032193.3656,
+                    "standard_deviation": 1021552.2660115662,
+                    "q1": 1851747699.75,
+                    "q3": 1853301174.5
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 64.592738712,
+                    "min": 61.754896635,
+                    "geometric_mean": 62.53915898262883,
+                    "algebraic_mean": 62.54303187279999,
+                    "variance": 0.4898501983441405,
+                    "standard_deviation": 0.699892990637955,
+                    "q1": 62.061939840250005,
+                    "q3": 62.85437803525
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 1509347.0,
+                    "min": 1145219.0,
+                    "geometric_mean": 1166782.7797699107,
+                    "algebraic_mean": 1168287.8333333333,
+                    "variance": 4136284983.2055554,
+                    "standard_deviation": 64313.956364117075,
+                    "q1": 1147459.25,
+                    "q3": 1169288.75
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 293766148756.0,
+                    "min": 293592763871.0,
+                    "geometric_mean": 293660367057.30237,
+                    "algebraic_mean": 293660371045.60004,
+                    "variance": 2342662037291002.0,
+                    "standard_deviation": 48401054.09276746,
+                    "q1": 293628667589.0,
+                    "q3": 293671626474.0
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 64409.89,
+                    "min": 61572.51,
+                    "geometric_mean": 62345.79893440613,
+                    "algebraic_mean": 62349.712,
+                    "variance": 493480.2700026662,
+                    "standard_deviation": 702.4815086553284,
+                    "q1": 61858.4175,
+                    "q3": 62666.020000000004
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 231326922106.0,
+                    "min": 221105172495.0,
+                    "geometric_mean": 223157070560.7346,
+                    "algebraic_mean": 223169041820.60007,
+                    "variance": 5.441552278467857e18,
+                    "standard_deviation": 2332713501.1543655,
+                    "q1": 221921272287.0,
+                    "q3": 223385802063.5
+                }
+            ]
+        ]
+    },
+    {
+        "name": "cita",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "instructions:u",
+                {
+                    "max": 442763680721.0,
+                    "min": 442560183688.0,
+                    "geometric_mean": 442622593224.77734,
+                    "algebraic_mean": 442622595195.5333,
+                    "variance": 1744735495896369.0,
+                    "standard_deviation": 41770031.07368211,
+                    "q1": 442599387083.75,
+                    "q3": 442635244814.0
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 112071.7,
+                    "min": 109362.65,
+                    "geometric_mean": 110046.5463974254,
+                    "algebraic_mean": 110047.97033333335,
+                    "variance": 315562.9943832224,
+                    "standard_deviation": 561.7499393709112,
+                    "q1": 109781.0275,
+                    "q3": 110145.09999999999
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 114188.0,
+                    "min": 103217.0,
+                    "geometric_mean": 109427.57739638528,
+                    "algebraic_mean": 109459.2,
+                    "variance": 6881287.826666669,
+                    "standard_deviation": 2623.2208878908136,
+                    "q1": 108202.25,
+                    "q3": 111396.75
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 21.524754893,
+                    "min": 20.284130994,
+                    "geometric_mean": 20.50446830706945,
+                    "algebraic_mean": 20.50600618323334,
+                    "variance": 0.06452727012448008,
+                    "standard_deviation": 0.25402218431562246,
+                    "q1": 20.39708859625,
+                    "q3": 20.51675801475
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 369738866537.0,
+                    "min": 361483027519.0,
+                    "geometric_mean": 363577024471.75073,
+                    "algebraic_mean": 363580802040.6333,
+                    "variance": 2.7659291938125804e18,
+                    "standard_deviation": 1663108292.8698843,
+                    "q1": 362723017369.25,
+                    "q3": 363820480362.0
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 611612586.0,
+                    "min": 474778467.0,
+                    "geometric_mean": 494617158.4804724,
+                    "algebraic_mean": 495344176.63333327,
+                    "variance": 807268274001053.9,
+                    "standard_deviation": 28412466.876374073,
+                    "q1": 485251795.25,
+                    "q3": 492519743.5
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 3067858555.0,
+                    "min": 3063738588.0,
+                    "geometric_mean": 3065872947.493099,
+                    "algebraic_mean": 3065873103.4666667,
+                    "variance": 956416846028.3822,
+                    "standard_deviation": 977965.66710104,
+                    "q1": 3065155448.5,
+                    "q3": 3066680571.25
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 112064.15,
+                    "min": 109354.87,
+                    "geometric_mean": 110038.167510386,
+                    "algebraic_mean": 110039.59066666669,
+                    "variance": 315371.11455955426,
+                    "standard_deviation": 561.579125822492,
+                    "q1": 109772.955,
+                    "q3": 110136.73000000001
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 910463.0,
+                    "min": 719748.0,
+                    "geometric_mean": 765017.8444904599,
+                    "algebraic_mean": 766048.7,
+                    "variance": 1653150322.9433331,
+                    "standard_deviation": 40658.95132616351,
+                    "q1": 735449.0,
+                    "q3": 789933.25
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 1683752.0,
+                    "min": 1653964.0,
+                    "geometric_mean": 1665224.9545263054,
+                    "algebraic_mean": 1665247.333333333,
+                    "variance": 74668201.68888888,
+                    "standard_deviation": 8641.076419572326,
+                    "q1": 1657461.0,
+                    "q3": 1671938.0
+                }
+            ]
+        ]
+    },
+    {
+        "name": "ckb",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "cycles:u",
+                {
+                    "max": 11184668345.0,
+                    "min": 10611691998.0,
+                    "geometric_mean": 10752816963.914711,
+                    "algebraic_mean": 10753295225.066666,
+                    "variance": 1.0434047233846922e16,
+                    "standard_deviation": 102147184.16993648,
+                    "q1": 10692873431.0,
+                    "q3": 10784831824.75
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 152927109.0,
+                    "min": 134786021.0,
+                    "geometric_mean": 137567322.58390856,
+                    "algebraic_mean": 137597546.93333334,
+                    "variance": 8850486944213.129,
+                    "standard_deviation": 2974976.7972562625,
+                    "q1": 136491263.5,
+                    "q3": 137551230.5
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 8104338051.0,
+                    "min": 8103678221.0,
+                    "geometric_mean": 8104013143.323267,
+                    "algebraic_mean": 8104013145.633333,
+                    "variance": 37441570864.232216,
+                    "standard_deviation": 193498.2451192574,
+                    "q1": 8103871379.75,
+                    "q3": 8104183007.25
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 4091.46,
+                    "min": 3821.95,
+                    "geometric_mean": 3866.663393960501,
+                    "algebraic_mean": 3866.9356666666667,
+                    "variance": 2166.2406445555575,
+                    "standard_deviation": 46.54289037603442,
+                    "q1": 3839.7475,
+                    "q3": 3878.46
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 4091.27,
+                    "min": 3821.71,
+                    "geometric_mean": 3866.413926646913,
+                    "algebraic_mean": 3866.686333333333,
+                    "variance": 2167.193316555553,
+                    "standard_deviation": 46.55312359611923,
+                    "q1": 3839.4900000000002,
+                    "q3": 3878.2275
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 4.083493887,
+                    "min": 3.782620129,
+                    "geometric_mean": 3.819419349023437,
+                    "algebraic_mean": 3.819772074933333,
+                    "variance": 0.0027942322618885657,
+                    "standard_deviation": 0.05286049812372719,
+                    "q1": 3.7883783705000003,
+                    "q3": 3.829419431
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 34864728.0,
+                    "min": 34689807.0,
+                    "geometric_mean": 34772800.40885455,
+                    "algebraic_mean": 34772830.199999996,
+                    "variance": 2072099464.493333,
+                    "standard_deviation": 45520.319248587584,
+                    "q1": 34731517.5,
+                    "q3": 34803655.5
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 198737.0,
+                    "min": 198666.0,
+                    "geometric_mean": 198721.266262214,
+                    "algebraic_mean": 198721.26666666666,
+                    "variance": 160.72888888888886,
+                    "standard_deviation": 12.677889764818469,
+                    "q1": 198716.0,
+                    "q3": 198729.0
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 518020.0,
+                    "min": 518016.0,
+                    "geometric_mean": 518017.1999967572,
+                    "algebraic_mean": 518017.19999999995,
+                    "variance": 3.3600000000000003,
+                    "standard_deviation": 1.8330302779823362,
+                    "q1": 518016.0,
+                    "q3": 518020.0
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 1517.0,
+                    "min": 1174.0,
+                    "geometric_mean": 1416.1119636243236,
+                    "algebraic_mean": 1417.5333333333333,
+                    "variance": 3777.448888888888,
+                    "standard_deviation": 61.460954181406,
+                    "q1": 1398.25,
+                    "q3": 1441.25
+                }
+            ]
+        ]
+    },
+    {
+        "name": "conflux-rust",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "max-rss",
+                {
+                    "max": 588088.0,
+                    "min": 580052.0,
+                    "geometric_mean": 584758.479609605,
+                    "algebraic_mean": 584760.9333333332,
+                    "variance": 2863665.7955555553,
+                    "standard_deviation": 1692.2369206336195,
+                    "q1": 584379.0,
+                    "q3": 585644.0
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 121895763948.0,
+                    "min": 120151077589.0,
+                    "geometric_mean": 121009524010.13577,
+                    "algebraic_mean": 121010430673.6667,
+                    "variance": 2.1941856502927997e17,
+                    "standard_deviation": 468421354.1559351,
+                    "q1": 120669748648.0,
+                    "q3": 121313682053.25
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 37048.99,
+                    "min": 36524.78,
+                    "geometric_mean": 36801.468511075276,
+                    "algebraic_mean": 36801.69899999999,
+                    "variance": 16956.484935666624,
+                    "standard_deviation": 130.21706852662066,
+                    "q1": 36719.4225,
+                    "q3": 36893.9625
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 37046.54,
+                    "min": 36522.29,
+                    "geometric_mean": 36799.12606124615,
+                    "algebraic_mean": 36799.35666666667,
+                    "variance": 16963.94034222214,
+                    "standard_deviation": 130.24569222136347,
+                    "q1": 36717.08,
+                    "q3": 36891.7
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 139962510170.0,
+                    "min": 139898846721.0,
+                    "geometric_mean": 139931194493.23346,
+                    "algebraic_mean": 139931195380.5,
+                    "variance": 248312159369852.1,
+                    "standard_deviation": 15757923.701105172,
+                    "q1": 139919361298.25,
+                    "q3": 139940636592.5
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 247305949.0,
+                    "min": 234914422.0,
+                    "geometric_mean": 240848353.20553496,
+                    "algebraic_mean": 240872051.6,
+                    "variance": 11451363102736.643,
+                    "standard_deviation": 3383986.2740171747,
+                    "q1": 238187659.5,
+                    "q3": 243824434.25
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 35106.0,
+                    "min": 30066.0,
+                    "geometric_mean": 33429.65816307052,
+                    "algebraic_mean": 33442.2,
+                    "variance": 815949.4266666669,
+                    "standard_deviation": 903.2991900066482,
+                    "q1": 32984.0,
+                    "q3": 33990.75
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 993793234.0,
+                    "min": 992368661.0,
+                    "geometric_mean": 993175580.5514041,
+                    "algebraic_mean": 993175661.6000001,
+                    "variance": 160976450473.03998,
+                    "standard_deviation": 401218.7065342791,
+                    "q1": 992940808.25,
+                    "q3": 993467037.25
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 8.525343552,
+                    "min": 8.044944709,
+                    "geometric_mean": 8.223836818164857,
+                    "algebraic_mean": 8.224750011766666,
+                    "variance": 0.015162798130856471,
+                    "standard_deviation": 0.12313731412880692,
+                    "q1": 8.137322336,
+                    "q3": 8.260423117
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 359858.0,
+                    "min": 350653.0,
+                    "geometric_mean": 356420.8426035671,
+                    "algebraic_mean": 356426.43333333335,
+                    "variance": 3954345.445555555,
+                    "standard_deviation": 1988.5536064073192,
+                    "q1": 356558.0,
+                    "q3": 357255.75
+                }
+            ]
+        ]
+    },
+    {
+        "name": "coreutils",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "faults",
+                {
+                    "max": 230124.0,
+                    "min": 203078.0,
+                    "geometric_mean": 213085.92449207997,
+                    "algebraic_mean": 213233.6,
+                    "variance": 64179347.573333345,
+                    "standard_deviation": 8011.201381399256,
+                    "q1": 208220.0,
+                    "q3": 219486.5
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 33867.0,
+                    "min": 25526.0,
+                    "geometric_mean": 30320.45918710837,
+                    "algebraic_mean": 30358.66666666667,
+                    "variance": 2228320.5555555555,
+                    "standard_deviation": 1492.7560268026236,
+                    "q1": 30125.5,
+                    "q3": 31079.5
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 163576352.0,
+                    "min": 116177329.0,
+                    "geometric_mean": 132441085.13763808,
+                    "algebraic_mean": 133330161.09999998,
+                    "variance": 251163850024789.66,
+                    "standard_deviation": 15848149.735057076,
+                    "q1": 120901486.75,
+                    "q3": 144575261.25
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 30136.76,
+                    "min": 28823.62,
+                    "geometric_mean": 29420.401611583555,
+                    "algebraic_mean": 29422.414999999997,
+                    "variance": 119133.11383166655,
+                    "standard_deviation": 345.15665114794837,
+                    "q1": 29183.552499999998,
+                    "q3": 29592.4325
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 119272501258.0,
+                    "min": 119191423486.0,
+                    "geometric_mean": 119229136992.74196,
+                    "algebraic_mean": 119229138557.13333,
+                    "variance": 373039341562000.7,
+                    "standard_deviation": 19314226.403405357,
+                    "q1": 119218681726.75,
+                    "q3": 119242291717.25
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 7.350018714,
+                    "min": 6.574571944,
+                    "geometric_mean": 6.9239544984775945,
+                    "algebraic_mean": 6.926837199600002,
+                    "variance": 0.0402895826576009,
+                    "standard_deviation": 0.20072265108253454,
+                    "q1": 6.7917844335,
+                    "q3": 7.095887522
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 428464.0,
+                    "min": 420436.0,
+                    "geometric_mean": 425450.7562204751,
+                    "algebraic_mean": 425454.9333333334,
+                    "variance": 3542758.3288888885,
+                    "standard_deviation": 1882.2216471204683,
+                    "q1": 424750.0,
+                    "q3": 426583.0
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 99222697233.0,
+                    "min": 95568870840.0,
+                    "geometric_mean": 97104760064.52008,
+                    "algebraic_mean": 97110339223.09999,
+                    "variance": 1.0898108877977249e18,
+                    "standard_deviation": 1043940078.643274,
+                    "q1": 96488117855.0,
+                    "q3": 97724235383.0
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 837328457.0,
+                    "min": 834692668.0,
+                    "geometric_mean": 835738007.0981648,
+                    "algebraic_mean": 835738166.3666669,
+                    "variance": 266316790751.76556,
+                    "standard_deviation": 516058.9024053025,
+                    "q1": 835395145.75,
+                    "q3": 835991397.75
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 30139.0,
+                    "min": 28825.69,
+                    "geometric_mean": 29422.44973065403,
+                    "algebraic_mean": 29424.462000000007,
+                    "variance": 119074.86602933316,
+                    "standard_deviation": 345.07226203989967,
+                    "q1": 29185.7,
+                    "q3": 29594.11
+                }
+            ]
+        ]
+    },
+    {
+        "name": "crossbeam",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 20,
+        "statistic_vec": [
+            [
+                "task-clock",
+                {
+                    "max": 55.37,
+                    "min": 36.49,
+                    "geometric_mean": 50.03877053727757,
+                    "algebraic_mean": 50.19800000000001,
+                    "variance": 13.937655999999999,
+                    "standard_deviation": 3.7333170237738984,
+                    "q1": 49.4125,
+                    "q3": 52.155
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 89360.0,
+                    "min": 89360.0,
+                    "geometric_mean": 89360.0,
+                    "algebraic_mean": 89360.0,
+                    "variance": 0.0,
+                    "standard_deviation": 0.0,
+                    "q1": 89360.0,
+                    "q3": 89360.0
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 0.228531217,
+                    "min": 0.193711085,
+                    "geometric_mean": 0.21497262159980499,
+                    "algebraic_mean": 0.2152229453,
+                    "variance": 0.00010534718914063487,
+                    "standard_deviation": 0.010263877880247546,
+                    "q1": 0.210791389,
+                    "q3": 0.22507042175
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 3616.0,
+                    "min": 3611.0,
+                    "geometric_mean": 3613.2495728224194,
+                    "algebraic_mean": 3613.25,
+                    "variance": 3.0875,
+                    "standard_deviation": 1.7571283390805579,
+                    "q1": 3612.0,
+                    "q3": 3615.0
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 55.36,
+                    "min": 36.47,
+                    "geometric_mean": 50.024116574057814,
+                    "algebraic_mean": 50.1835,
+                    "variance": 13.945202749999998,
+                    "standard_deviation": 3.734327616854204,
+                    "q1": 49.400000000000006,
+                    "q3": 52.1425
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 653974.0,
+                    "min": 524724.0,
+                    "geometric_mean": 541673.1713780805,
+                    "algebraic_mean": 542361.65,
+                    "variance": 821334113.1275,
+                    "standard_deviation": 28658.927285010162,
+                    "q1": 528108.5,
+                    "q3": 539733.75
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 41309162.0,
+                    "min": 34459792.0,
+                    "geometric_mean": 36148708.02886627,
+                    "algebraic_mean": 36175706.400000006,
+                    "variance": 2050877639355.7397,
+                    "standard_deviation": 1432088.5584892228,
+                    "q1": 35097761.75,
+                    "q3": 36663551.75
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 50562094.0,
+                    "min": 50555042.0,
+                    "geometric_mean": 50557134.82411086,
+                    "algebraic_mean": 50557134.89999999,
+                    "variance": 7673788.590000001,
+                    "standard_deviation": 2770.1603906633277,
+                    "q1": 50555194.0,
+                    "q3": 50557512.5
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 293186.0,
+                    "min": 288820.0,
+                    "geometric_mean": 290457.38538732403,
+                    "algebraic_mean": 290459.25,
+                    "variance": 1086052.7875,
+                    "standard_deviation": 1042.1385644433278,
+                    "q1": 289813.25,
+                    "q3": 290755.5
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 45.0,
+                    "min": 17.0,
+                    "geometric_mean": 35.87561520173421,
+                    "algebraic_mean": 36.7,
+                    "variance": 46.709999999999994,
+                    "standard_deviation": 6.83447144993671,
+                    "q1": 36.5,
+                    "q3": 40.25
+                }
+            ]
+        ]
+    },
+    {
+        "name": "diem",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "faults",
+                {
+                    "max": 716368.0,
+                    "min": 459910.0,
+                    "geometric_mean": 589407.9974155773,
+                    "algebraic_mean": 592889.3333333333,
+                    "variance": 4100406686.622223,
+                    "standard_deviation": 64034.417984566884,
+                    "q1": 539244.25,
+                    "q3": 648298.25
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 62676.46,
+                    "min": 60041.57000000001,
+                    "geometric_mean": 61171.81310971924,
+                    "algebraic_mean": 61175.063666666676,
+                    "variance": 398266.76030322135,
+                    "standard_deviation": 631.0837981625114,
+                    "q1": 60848.865,
+                    "q3": 61595.78
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 14.652757582,
+                    "min": 13.557586422,
+                    "geometric_mean": 14.049019288708152,
+                    "algebraic_mean": 14.051753736166667,
+                    "variance": 0.07688387561502646,
+                    "standard_deviation": 0.2772794179433924,
+                    "q1": 13.86237038775,
+                    "q3": 14.22623887275
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 62685.99,
+                    "min": 60046.05,
+                    "geometric_mean": 61177.59305192423,
+                    "algebraic_mean": 61180.85133333334,
+                    "variance": 399252.96230488835,
+                    "standard_deviation": 631.8646708788903,
+                    "q1": 60855.6525,
+                    "q3": 61602.265
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 237016389479.0,
+                    "min": 236848484730.0,
+                    "geometric_mean": 236913433116.17056,
+                    "algebraic_mean": 236913435872.33334,
+                    "variance": 1306035405747972.2,
+                    "standard_deviation": 36139111.85610366,
+                    "q1": 236889037935.75,
+                    "q3": 236946961444.0
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 417151639.0,
+                    "min": 388173916.0,
+                    "geometric_mean": 402082183.5671633,
+                    "algebraic_mean": 402136239.23333323,
+                    "variance": 43743460461228.516,
+                    "standard_deviation": 6613883.916522009,
+                    "q1": 398908927.0,
+                    "q3": 405133285.75
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 1128152.0,
+                    "min": 1080352.0,
+                    "geometric_mean": 1105539.7786549076,
+                    "algebraic_mean": 1105617.0666666667,
+                    "variance": 170458164.19555557,
+                    "standard_deviation": 13055.962783171357,
+                    "q1": 1097335.0,
+                    "q3": 1114644.0
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 1546776933.0,
+                    "min": 1541606595.0,
+                    "geometric_mean": 1543765355.3884559,
+                    "algebraic_mean": 1543765906.766667,
+                    "variance": 1702737706696.846,
+                    "standard_deviation": 1304889.921294837,
+                    "q1": 1542629138.25,
+                    "q3": 1544545837.5
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 202442791514.0,
+                    "min": 197438987626.0,
+                    "geometric_mean": 200139154598.88055,
+                    "algebraic_mean": 200143898932.3667,
+                    "variance": 1.8971342860471265e18,
+                    "standard_deviation": 1377364979.2437465,
+                    "q1": 198914992884.0,
+                    "q3": 200948992528.5
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 89537.0,
+                    "min": 57024.0,
+                    "geometric_mean": 69121.79031791417,
+                    "algebraic_mean": 69615.63333333333,
+                    "variance": 72141476.69888888,
+                    "standard_deviation": 8493.613877431024,
+                    "q1": 63701.75,
+                    "q3": 76051.75
+                }
+            ]
+        ]
+    },
+    {
+        "name": "emu",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "cpu-clock",
+                {
+                    "max": 73.31,
+                    "min": 69.02,
+                    "geometric_mean": 71.29389815293678,
+                    "algebraic_mean": 71.30666666666669,
+                    "variance": 1.8179688888888892,
+                    "standard_deviation": 1.3483207663196801,
+                    "q1": 70.2775,
+                    "q3": 72.5625
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 64.0,
+                    "min": 38.0,
+                    "geometric_mean": 55.24144634391802,
+                    "algebraic_mean": 55.733333333333334,
+                    "variance": 47.995555555555576,
+                    "standard_deviation": 6.927882472700845,
+                    "q1": 55.0,
+                    "q3": 61.0
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 423641.0,
+                    "min": 418677.0,
+                    "geometric_mean": 421627.85122327815,
+                    "algebraic_mean": 421629.3999999999,
+                    "variance": 1303912.0399999993,
+                    "standard_deviation": 1141.8896794349266,
+                    "q1": 421111.5,
+                    "q3": 422408.75
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 135712.0,
+                    "min": 135712.0,
+                    "geometric_mean": 135711.9999999998,
+                    "algebraic_mean": 135712.0000000001,
+                    "variance": 7.623296525288703e-21,
+                    "standard_deviation": 8.731149137020111e-11,
+                    "q1": 135712.0,
+                    "q3": 135712.0
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 5433.0,
+                    "min": 5428.0,
+                    "geometric_mean": 5430.699710584116,
+                    "algebraic_mean": 5430.700000000003,
+                    "variance": 3.1433333333333304,
+                    "standard_deviation": 1.7729448195962925,
+                    "q1": 5429.0,
+                    "q3": 5432.0
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 73.33,
+                    "min": 69.04,
+                    "geometric_mean": 71.31055566721291,
+                    "algebraic_mean": 71.32333333333334,
+                    "variance": 1.8197288888888878,
+                    "standard_deviation": 1.3489732721180534,
+                    "q1": 70.28999999999999,
+                    "q3": 72.58
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 53236301.0,
+                    "min": 50088405.0,
+                    "geometric_mean": 51497579.00910701,
+                    "algebraic_mean": 51504316.93333333,
+                    "variance": 697456419272.0623,
+                    "standard_deviation": 835138.5629175929,
+                    "q1": 50816821.5,
+                    "q3": 51981964.25
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 66193831.0,
+                    "min": 66182440.0,
+                    "geometric_mean": 66191538.73851124,
+                    "algebraic_mean": 66191538.76666667,
+                    "variance": 3727069.0455555613,
+                    "standard_deviation": 1930.5618471200453,
+                    "q1": 66191115.75,
+                    "q3": 66191941.0
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 0.273315315,
+                    "min": 0.240196042,
+                    "geometric_mean": 0.25425007494692276,
+                    "algebraic_mean": 0.2543626428333333,
+                    "variance": 0.000057607882275809166,
+                    "standard_deviation": 0.007589985657154377,
+                    "q1": 0.25025665249999995,
+                    "q3": 0.257895048
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 719899.0,
+                    "min": 678759.0,
+                    "geometric_mean": 694873.6586612249,
+                    "algebraic_mean": 694933.1333333332,
+                    "variance": 83055131.51555556,
+                    "standard_deviation": 9113.458811864766,
+                    "q1": 688427.5,
+                    "q3": 701749.0
+                }
+            ]
+        ]
+    },
+    {
+        "name": "exa",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "instructions:u",
+                {
+                    "max": 82030485966.0,
+                    "min": 81990855424.0,
+                    "geometric_mean": 82012920706.42871,
+                    "algebraic_mean": 82012921650.63333,
+                    "variance": 154870124720565.1,
+                    "standard_deviation": 12444682.588180589,
+                    "q1": 82000944828.25,
+                    "q3": 82022905603.75
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 78973426.0,
+                    "min": 70911927.0,
+                    "geometric_mean": 75745866.20674108,
+                    "algebraic_mean": 75791216.43333334,
+                    "variance": 6795035623497.179,
+                    "standard_deviation": 2606728.9125448354,
+                    "q1": 73619499.0,
+                    "q3": 78188814.5
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 65286801682.0,
+                    "min": 63798360134.0,
+                    "geometric_mean": 64596771581.30107,
+                    "algebraic_mean": 64598481655.86665,
+                    "variance": 2.204670319028684e17,
+                    "standard_deviation": 469539169.72162014,
+                    "q1": 64076957831.25,
+                    "q3": 64962636328.0
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 19086.08,
+                    "min": 18504.97,
+                    "geometric_mean": 18839.459712610653,
+                    "algebraic_mean": 18840.370333333332,
+                    "variance": 34188.81874988896,
+                    "standard_deviation": 184.9021869797352,
+                    "q1": 18707.455,
+                    "q3": 18938.41
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 471520.0,
+                    "min": 467768.0,
+                    "geometric_mean": 470948.5510980059,
+                    "algebraic_mean": 470949.2,
+                    "variance": 609379.3599999999,
+                    "standard_deviation": 780.6275424298068,
+                    "q1": 471034.0,
+                    "q3": 471354.0
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 536468718.0,
+                    "min": 535087833.0,
+                    "geometric_mean": 535825186.31014097,
+                    "algebraic_mean": 535825268.1999999,
+                    "variance": 87743152256.22665,
+                    "standard_deviation": 296214.70634697843,
+                    "q1": 535697796.25,
+                    "q3": 536017970.0
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 14.957406293,
+                    "min": 14.328366852,
+                    "geometric_mean": 14.704017121196971,
+                    "algebraic_mean": 14.705251978133331,
+                    "variance": 0.036127676767734505,
+                    "standard_deviation": 0.19007281964482586,
+                    "q1": 14.571310884999999,
+                    "q3": 14.800482238
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 14547.0,
+                    "min": 11011.0,
+                    "geometric_mean": 13313.223732482218,
+                    "algebraic_mean": 13347.866666666667,
+                    "variance": 890788.248888889,
+                    "standard_deviation": 943.81579182004,
+                    "q1": 12830.0,
+                    "q3": 14046.75
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 19085.1,
+                    "min": 18503.69,
+                    "geometric_mean": 18838.33193631881,
+                    "algebraic_mean": 18839.242999999995,
+                    "variance": 34203.34502100015,
+                    "standard_deviation": 184.9414637689454,
+                    "q1": 18706.3225,
+                    "q3": 18937.33
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 320878.0,
+                    "min": 268378.0,
+                    "geometric_mean": 271578.6007791333,
+                    "algebraic_mean": 271717.70000000007,
+                    "variance": 84152772.74333332,
+                    "standard_deviation": 9173.482040279652,
+                    "q1": 269391.25,
+                    "q3": 270976.0
+                }
+            ]
+        ]
+    },
+    {
+        "name": "fd",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "cycles:u",
+                {
+                    "max": 114349826539.0,
+                    "min": 112046368237.0,
+                    "geometric_mean": 113088387057.25406,
+                    "algebraic_mean": 113089720099.26668,
+                    "variance": 3.022087388219184e17,
+                    "standard_deviation": 549735153.3437883,
+                    "q1": 112694494359.25,
+                    "q3": 113341818010.75
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 32302.02,
+                    "min": 31361.83,
+                    "geometric_mean": 31953.726652801008,
+                    "algebraic_mean": 31954.585666666673,
+                    "variance": 54723.667431222086,
+                    "standard_deviation": 233.93090311291087,
+                    "q1": 31868.6225,
+                    "q3": 32126.8
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 168944578.0,
+                    "min": 152836111.0,
+                    "geometric_mean": 163668733.44237262,
+                    "algebraic_mean": 163788796.49999997,
+                    "variance": 38341560439364.99,
+                    "standard_deviation": 6192056.236773451,
+                    "q1": 158921879.0,
+                    "q3": 167781094.75
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 33.180219158,
+                    "min": 31.533239944,
+                    "geometric_mean": 32.165121463692614,
+                    "algebraic_mean": 32.16651042403334,
+                    "variance": 0.08976608947330306,
+                    "standard_deviation": 0.29960989548628575,
+                    "q1": 32.03030323,
+                    "q3": 32.345275813499995
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 142510254686.0,
+                    "min": 142410061545.0,
+                    "geometric_mean": 142471840289.72147,
+                    "algebraic_mean": 142471841997.23334,
+                    "variance": 486486834291450.25,
+                    "standard_deviation": 22056446.54724442,
+                    "q1": 142470495204.0,
+                    "q3": 142479377931.5
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 539668.0,
+                    "min": 514716.0,
+                    "geometric_mean": 526932.5244008747,
+                    "algebraic_mean": 527025.0333333333,
+                    "variance": 97149848.96555556,
+                    "standard_deviation": 9856.4622946347,
+                    "q1": 515367.5,
+                    "q3": 535752.5
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 597488.0,
+                    "min": 597180.0,
+                    "geometric_mean": 597272.9221322167,
+                    "algebraic_mean": 597272.9333333332,
+                    "variance": 13382.062222222223,
+                    "standard_deviation": 115.68086368203785,
+                    "q1": 597201.0,
+                    "q3": 597374.0
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 969709413.0,
+                    "min": 967328530.0,
+                    "geometric_mean": 968378025.2596203,
+                    "algebraic_mean": 968378237.4333334,
+                    "variance": 410955017595.6455,
+                    "standard_deviation": 641057.7334340843,
+                    "q1": 967821301.25,
+                    "q3": 968886187.0
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 32301.98,
+                    "min": 31361.8,
+                    "geometric_mean": 31953.715150576318,
+                    "algebraic_mean": 31954.574000000004,
+                    "variance": 54713.12715733347,
+                    "standard_deviation": 233.90837342287142,
+                    "q1": 31868.655,
+                    "q3": 32126.725
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 1041.0,
+                    "min": 349.0,
+                    "geometric_mean": 417.60506366510464,
+                    "algebraic_mean": 429.29999999999995,
+                    "variance": 16582.343333333334,
+                    "standard_deviation": 128.77244788126586,
+                    "q1": 380.25,
+                    "q3": 417.25
+                }
+            ]
+        ]
+    },
+    {
+        "name": "graph-node",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "branch-misses",
+                {
+                    "max": 2065029794.0,
+                    "min": 2054328010.0,
+                    "geometric_mean": 2055876161.310544,
+                    "algebraic_mean": 2055877135.6666672,
+                    "variance": 4014788269755.4224,
+                    "standard_deviation": 2003693.6566639678,
+                    "q1": 2054792764.25,
+                    "q3": 2056053621.75
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 271394555973.0,
+                    "min": 252239091014.0,
+                    "geometric_mean": 254296365339.3491,
+                    "algebraic_mean": 254317668505.19998,
+                    "variance": 1.1247746560183405e19,
+                    "standard_deviation": 3353766026.4519653,
+                    "q1": 252950389045.75,
+                    "q3": 254299613767.5
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 80976.79,
+                    "min": 74493.86,
+                    "geometric_mean": 75586.93798164256,
+                    "algebraic_mean": 75594.75533333333,
+                    "variance": 1224546.5031182212,
+                    "standard_deviation": 1106.592293086402,
+                    "q1": 75036.1625,
+                    "q3": 75687.14249999999
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 25.294123654,
+                    "min": 21.116764468,
+                    "geometric_mean": 21.928826157699085,
+                    "algebraic_mean": 21.940518131733338,
+                    "variance": 0.5471626633389468,
+                    "standard_deviation": 0.7397044432332057,
+                    "q1": 21.59790788925,
+                    "q3": 22.061514748
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 317798381475.0,
+                    "min": 317664251301.0,
+                    "geometric_mean": 317728766193.61145,
+                    "algebraic_mean": 317728767764.1334,
+                    "variance": 998012832288188.9,
+                    "standard_deviation": 31591341.096702255,
+                    "q1": 317705701764.25,
+                    "q3": 317743065550.5
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 80979.57,
+                    "min": 74497.65,
+                    "geometric_mean": 75591.64656751373,
+                    "algebraic_mean": 75599.46233333334,
+                    "variance": 1224327.5964912253,
+                    "standard_deviation": 1106.4933784217712,
+                    "q1": 75039.73999999999,
+                    "q3": 75692.8375
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 992304.0,
+                    "min": 936244.0,
+                    "geometric_mean": 966559.5579694278,
+                    "algebraic_mean": 966625.6000000001,
+                    "variance": 127021716.90666671,
+                    "standard_deviation": 11270.391160322108,
+                    "q1": 963460.0,
+                    "q3": 969416.0
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 63728.0,
+                    "min": 41756.0,
+                    "geometric_mean": 52124.76456902504,
+                    "algebraic_mean": 52399.16666666667,
+                    "variance": 28309468.538888883,
+                    "standard_deviation": 5320.66429488733,
+                    "q1": 46884.0,
+                    "q3": 56819.5
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 757509.0,
+                    "min": 524611.0,
+                    "geometric_mean": 607392.2291739397,
+                    "algebraic_mean": 610357.4333333335,
+                    "variance": 3724691863.378889,
+                    "standard_deviation": 61030.25367290299,
+                    "q1": 565991.5,
+                    "q3": 659347.75
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 578844354.0,
+                    "min": 299528747.0,
+                    "geometric_mean": 324654179.17863876,
+                    "algebraic_mean": 327157496.26666665,
+                    "variance": 2331571244325928.0,
+                    "standard_deviation": 48286346.35511293,
+                    "q1": 310616236.25,
+                    "q3": 328300056.75
+                }
+            ]
+        ]
+    },
+    {
+        "name": "grex",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "instructions:u",
+                {
+                    "max": 7885494958.0,
+                    "min": 7879765469.0,
+                    "geometric_mean": 7882967783.429908,
+                    "algebraic_mean": 7882967892.566667,
+                    "variance": 1720595784487.7788,
+                    "standard_deviation": 1311714.8259007286,
+                    "q1": 7881869588.25,
+                    "q3": 7883955635.0
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 7822205099.0,
+                    "min": 6375058983.0,
+                    "geometric_mean": 7056923569.061405,
+                    "algebraic_mean": 7071278744.266668,
+                    "variance": 2.0280384940328e17,
+                    "standard_deviation": 450337483.8976654,
+                    "q1": 6633356306.75,
+                    "q3": 7474997400.0
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 3589.0,
+                    "min": 1158.0,
+                    "geometric_mean": 1854.4200622337758,
+                    "algebraic_mean": 1926.1333333333337,
+                    "variance": 297934.84888888896,
+                    "standard_deviation": 545.834085495665,
+                    "q1": 1446.25,
+                    "q3": 2270.5
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 217260.0,
+                    "min": 213228.0,
+                    "geometric_mean": 215454.41049173716,
+                    "algebraic_mean": 215456.13333333333,
+                    "variance": 741942.9155555556,
+                    "standard_deviation": 861.3610831443197,
+                    "q1": 215102.0,
+                    "q3": 215848.0
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 39265.0,
+                    "min": 37798.0,
+                    "geometric_mean": 38778.54689215602,
+                    "algebraic_mean": 38779.433333333334,
+                    "variance": 68232.51222222221,
+                    "standard_deviation": 261.21353759371317,
+                    "q1": 38720.5,
+                    "q3": 38870.75
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 2692.44,
+                    "min": 2233.38,
+                    "geometric_mean": 2443.661253395347,
+                    "algebraic_mean": 2445.9976666666657,
+                    "variance": 11525.538677888888,
+                    "standard_deviation": 107.35706161165594,
+                    "q1": 2360.9474999999998,
+                    "q3": 2519.3575
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 58046195.0,
+                    "min": 57172657.0,
+                    "geometric_mean": 57622107.11738155,
+                    "algebraic_mean": 57622908.83333333,
+                    "variance": 92332244554.80556,
+                    "standard_deviation": 303862.21310785844,
+                    "q1": 57299826.0,
+                    "q3": 57892577.0
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 2691.88,
+                    "min": 2233.12,
+                    "geometric_mean": 2443.4011763300346,
+                    "algebraic_mean": 2445.7343333333333,
+                    "variance": 11507.886904555558,
+                    "standard_deviation": 107.27481952702395,
+                    "q1": 2360.7775,
+                    "q3": 2519.0
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 34615970.0,
+                    "min": 7147005.0,
+                    "geometric_mean": 18867768.955498897,
+                    "algebraic_mean": 20624273.900000006,
+                    "variance": 64948100572853.164,
+                    "standard_deviation": 8059038.439718052,
+                    "q1": 13231060.75,
+                    "q3": 28479830.25
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 1.64277416,
+                    "min": 1.083811369,
+                    "geometric_mean": 1.2827706634223603,
+                    "algebraic_mean": 1.2936689075333332,
+                    "variance": 0.02865809701871457,
+                    "standard_deviation": 0.1692870255474842,
+                    "q1": 1.14443044025,
+                    "q3": 1.44518910175
+                }
+            ]
+        ]
+    },
+    {
+        "name": "kibi",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "context-switches",
+                {
+                    "max": 1286.0,
+                    "min": 975.0,
+                    "geometric_mean": 1144.642681954726,
+                    "algebraic_mean": 1147.8999999999996,
+                    "variance": 7418.29,
+                    "standard_deviation": 86.1294955285354,
+                    "q1": 1086.0,
+                    "q3": 1222.5
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 1358023636.0,
+                    "min": 1261453715.0,
+                    "geometric_mean": 1288182859.9405618,
+                    "algebraic_mean": 1288419818.8999999,
+                    "variance": 623747087353288.2,
+                    "standard_deviation": 24974929.176141586,
+                    "q1": 1270084469.25,
+                    "q3": 1292070101.25
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 741.69,
+                    "min": 643.25,
+                    "geometric_mean": 704.9594359621212,
+                    "algebraic_mean": 705.312,
+                    "variance": 491.3349360000001,
+                    "standard_deviation": 22.166076242763403,
+                    "q1": 695.1025,
+                    "q3": 717.085
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 4817277.0,
+                    "min": 2483194.0,
+                    "geometric_mean": 3003384.511190443,
+                    "algebraic_mean": 3055756.766666666,
+                    "variance": 370941301490.97894,
+                    "standard_deviation": 609049.5066010471,
+                    "q1": 2575819.5,
+                    "q3": 3169394.0
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 1501587871.0,
+                    "min": 1499867433.0,
+                    "geometric_mean": 1500933157.9974315,
+                    "algebraic_mean": 1500933228.2666671,
+                    "variance": 210922080145.79553,
+                    "standard_deviation": 459262.5394540638,
+                    "q1": 1500659489.25,
+                    "q3": 1501304129.5
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 741.47,
+                    "min": 643.08,
+                    "geometric_mean": 704.7362664454951,
+                    "algebraic_mean": 705.0886666666668,
+                    "variance": 490.96287155555535,
+                    "standard_deviation": 22.157681998700934,
+                    "q1": 694.8699999999999,
+                    "q3": 716.845
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 12101069.0,
+                    "min": 12017457.0,
+                    "geometric_mean": 12064975.47646119,
+                    "algebraic_mean": 12064991.533333335,
+                    "variance": 387418637.2488889,
+                    "standard_deviation": 19682.952960592294,
+                    "q1": 12051546.0,
+                    "q3": 12075548.75
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 164712.0,
+                    "min": 163108.0,
+                    "geometric_mean": 164094.09096118776,
+                    "algebraic_mean": 164094.6666666666,
+                    "variance": 188881.42222222214,
+                    "standard_deviation": 434.6049035874102,
+                    "q1": 163791.0,
+                    "q3": 164492.0
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 0.578915711,
+                    "min": 0.492572024,
+                    "geometric_mean": 0.5419529598987094,
+                    "algebraic_mean": 0.5423392598333332,
+                    "variance": 0.0004124079935512115,
+                    "standard_deviation": 0.020307830843081482,
+                    "q1": 0.5318962327500001,
+                    "q3": 0.5567847204999999
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 20727.0,
+                    "min": 20554.0,
+                    "geometric_mean": 20620.454537542453,
+                    "algebraic_mean": 20620.500000000004,
+                    "variance": 1875.7833333333333,
+                    "standard_deviation": 43.31031439892042,
+                    "q1": 20585.25,
+                    "q3": 20653.75
+                }
+            ]
+        ]
+    },
+    {
+        "name": "kiro-editor",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "branch-misses",
+                {
+                    "max": 341263399.0,
+                    "min": 339979042.0,
+                    "geometric_mean": 340550179.3173181,
+                    "algebraic_mean": 340550347.90000004,
+                    "variance": 114825776425.35667,
+                    "standard_deviation": 338859.523143967,
+                    "q1": 340191063.0,
+                    "q3": 340838338.75
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 355728.0,
+                    "min": 350712.0,
+                    "geometric_mean": 352566.09159386967,
+                    "algebraic_mean": 352568.0,
+                    "variance": 1347600.0,
+                    "standard_deviation": 1160.861748874516,
+                    "q1": 351512.0,
+                    "q3": 353509.0
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 107406430.0,
+                    "min": 62346027.0,
+                    "geometric_mean": 76558759.33249156,
+                    "algebraic_mean": 77166004.93333334,
+                    "variance": 100330856427931.06,
+                    "standard_deviation": 10016529.160738816,
+                    "q1": 72902631.0,
+                    "q3": 80080665.5
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 42315401318.0,
+                    "min": 39735372866.0,
+                    "geometric_mean": 40647487041.85087,
+                    "algebraic_mean": 40651708894.666664,
+                    "variance": 3.454406760304046e17,
+                    "standard_deviation": 587742014.8589044,
+                    "q1": 40291750026.25,
+                    "q3": 40994628203.75
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 12937.22,
+                    "min": 11923.01,
+                    "geometric_mean": 12254.645291991581,
+                    "algebraic_mean": 12257.000000000002,
+                    "variance": 58247.94783333333,
+                    "standard_deviation": 241.34611625906336,
+                    "q1": 12085.0375,
+                    "q3": 12403.04
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 194931.0,
+                    "min": 168626.0,
+                    "geometric_mean": 175847.83551005396,
+                    "algebraic_mean": 176106.0333333333,
+                    "variance": 94936520.43222222,
+                    "standard_deviation": 9743.537367518134,
+                    "q1": 169916.75,
+                    "q3": 172622.25
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 11.375862328,
+                    "min": 10.297124337,
+                    "geometric_mean": 10.657092914514966,
+                    "algebraic_mean": 10.6600541612,
+                    "variance": 0.06381552242676283,
+                    "standard_deviation": 0.25261734387559936,
+                    "q1": 10.4608290945,
+                    "q3": 10.81647652775
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 50961681755.0,
+                    "min": 50831229327.0,
+                    "geometric_mean": 50875115234.01767,
+                    "algebraic_mean": 50875123619.700005,
+                    "variance": 853595528091156.8,
+                    "standard_deviation": 29216357.20090985,
+                    "q1": 50855263620.75,
+                    "q3": 50890942041.75
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 5832.0,
+                    "min": 2594.0,
+                    "geometric_mean": 4871.240151000002,
+                    "algebraic_mean": 4919.400000000001,
+                    "variance": 387969.9733333334,
+                    "standard_deviation": 622.8723571754757,
+                    "q1": 4667.25,
+                    "q3": 5325.25
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 12937.67,
+                    "min": 11923.55,
+                    "geometric_mean": 12255.079609553448,
+                    "algebraic_mean": 12257.434,
+                    "variance": 58242.541797333324,
+                    "standard_deviation": 241.334916241586,
+                    "q1": 12085.2875,
+                    "q3": 12403.532500000001
+                }
+            ]
+        ]
+    },
+    {
+        "name": "lsd",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "cpu-clock",
+                {
+                    "max": 16946.49,
+                    "min": 16580.69,
+                    "geometric_mean": 16739.046737989745,
+                    "algebraic_mean": 16739.172000000006,
+                    "variance": 4198.253816000011,
+                    "standard_deviation": 64.79393348146114,
+                    "q1": 16703.1325,
+                    "q3": 16765.81
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 45230953.0,
+                    "min": 42944779.0,
+                    "geometric_mean": 44456822.56500716,
+                    "algebraic_mean": 44460584.1,
+                    "variance": 331332083215.15656,
+                    "standard_deviation": 575614.5265845509,
+                    "q1": 44344131.25,
+                    "q3": 44859112.0
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 3.997748497,
+                    "min": 3.800551405,
+                    "geometric_mean": 3.8747650163060414,
+                    "algebraic_mean": 3.874920308433333,
+                    "variance": 0.0012118868654440995,
+                    "standard_deviation": 0.034812165480534236,
+                    "q1": 3.8602782700000002,
+                    "q3": 3.88365021175
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 17498.0,
+                    "min": 15606.0,
+                    "geometric_mean": 16549.866945971113,
+                    "algebraic_mean": 16556.5,
+                    "variance": 219491.65,
+                    "standard_deviation": 468.4993596580469,
+                    "q1": 16259.25,
+                    "q3": 16880.25
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 475581558.0,
+                    "min": 473984861.0,
+                    "geometric_mean": 474411547.386789,
+                    "algebraic_mean": 474411691.9333334,
+                    "variance": 137231513434.72887,
+                    "standard_deviation": 370447.72024501493,
+                    "q1": 474112708.25,
+                    "q3": 474555862.5
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 345204.0,
+                    "min": 340832.0,
+                    "geometric_mean": 342288.33724339266,
+                    "algebraic_mean": 342290.2666666666,
+                    "variance": 1324328.1955555554,
+                    "standard_deviation": 1150.7945931205775,
+                    "q1": 341593.0,
+                    "q3": 342428.0
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 72363949808.0,
+                    "min": 72318118249.0,
+                    "geometric_mean": 72336799225.98541,
+                    "algebraic_mean": 72336800017.83333,
+                    "variance": 114562062734771.6,
+                    "standard_deviation": 10703366.887796177,
+                    "q1": 72328036620.5,
+                    "q3": 72343548807.25
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 124068.0,
+                    "min": 118590.0,
+                    "geometric_mean": 122538.35166869877,
+                    "algebraic_mean": 122541.50000000003,
+                    "variance": 761474.1166666667,
+                    "standard_deviation": 872.6248430262954,
+                    "q1": 122420.0,
+                    "q3": 122711.25
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 55695410992.0,
+                    "min": 54753352850.0,
+                    "geometric_mean": 55073024677.12877,
+                    "algebraic_mean": 55073277936.6,
+                    "variance": 2.797800274406261e16,
+                    "standard_deviation": 167266263.01816696,
+                    "q1": 54960753072.5,
+                    "q3": 55154809376.75
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 16947.94,
+                    "min": 16581.96,
+                    "geometric_mean": 16740.402972227388,
+                    "algebraic_mean": 16740.528333333332,
+                    "variance": 4201.919107222225,
+                    "standard_deviation": 64.82221152677702,
+                    "q1": 16704.4475,
+                    "q3": 16767.24
+                }
+            ]
+        ]
+    },
+    {
+        "name": "lucid",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "branch-misses",
+                {
+                    "max": 1683933357.0,
+                    "min": 1661418822.0,
+                    "geometric_mean": 1666976339.6820467,
+                    "algebraic_mean": 1666985605.6333327,
+                    "variance": 30996689057959.7,
+                    "standard_deviation": 5567467.023517939,
+                    "q1": 1663484106.0,
+                    "q3": 1669523449.25
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 278395981323.0,
+                    "min": 278290694610.0,
+                    "geometric_mean": 278342112186.1664,
+                    "algebraic_mean": 278342113089.63336,
+                    "variance": 502957001589702.7,
+                    "standard_deviation": 22426702.869340885,
+                    "q1": 278325082736.75,
+                    "q3": 278353879171.5
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 30.34370156,
+                    "min": 21.216217519,
+                    "geometric_mean": 24.15955884335465,
+                    "algebraic_mean": 24.26906811713334,
+                    "variance": 5.678896205383141,
+                    "standard_deviation": 2.3830434753447407,
+                    "q1": 22.5367508255,
+                    "q3": 25.50094869825
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 746856.0,
+                    "min": 668416.0,
+                    "geometric_mean": 701491.3194795845,
+                    "algebraic_mean": 701665.9999999999,
+                    "variance": 248040738.93333334,
+                    "standard_deviation": 15749.309157335547,
+                    "q1": 691312.0,
+                    "q3": 707972.0
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 45795.0,
+                    "min": 19488.0,
+                    "geometric_mean": 32634.120267232414,
+                    "algebraic_mean": 33231.90000000001,
+                    "variance": 38176714.75666666,
+                    "standard_deviation": 6178.730837046283,
+                    "q1": 29251.25,
+                    "q3": 36948.0
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 75721.11,
+                    "min": 65475.12,
+                    "geometric_mean": 69647.53235534146,
+                    "algebraic_mean": 69681.50766666666,
+                    "variance": 4809124.8951312285,
+                    "standard_deviation": 2192.9717041337376,
+                    "q1": 68395.4325,
+                    "q3": 70840.86750000001
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 679987107.0,
+                    "min": 261869514.0,
+                    "geometric_mean": 415985430.83667856,
+                    "algebraic_mean": 427066231.8999999,
+                    "variance": 1.032758941766108e16,
+                    "standard_deviation": 101624748.0570608,
+                    "q1": 364929144.5,
+                    "q3": 473115724.75
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 735191.0,
+                    "min": 391058.0,
+                    "geometric_mean": 553796.3842850483,
+                    "algebraic_mean": 561070.4333333333,
+                    "variance": 7783738220.97889,
+                    "standard_deviation": 88225.49643373446,
+                    "q1": 503701.5,
+                    "q3": 616406.75
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 253357893575.0,
+                    "min": 222255183917.0,
+                    "geometric_mean": 233911185606.7135,
+                    "algebraic_mean": 234012457654.6333,
+                    "variance": 4.833546702906965e19,
+                    "standard_deviation": 6952371324.164845,
+                    "q1": 230367335871.0,
+                    "q3": 237426085865.0
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 75717.92,
+                    "min": 65472.9,
+                    "geometric_mean": 69644.86866044704,
+                    "algebraic_mean": 69678.84133333333,
+                    "variance": 4808583.975051556,
+                    "standard_deviation": 2192.8483702827143,
+                    "q1": 68393.06,
+                    "q3": 70838.575
+                }
+            ]
+        ]
+    },
+    {
+        "name": "rayon",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "wall-time",
+                {
+                    "max": 2.510848973,
+                    "min": 2.422700433,
+                    "geometric_mean": 2.464064219139227,
+                    "algebraic_mean": 2.4641712169,
+                    "variance": 0.0005285062890042467,
+                    "standard_deviation": 0.022989264646879132,
+                    "q1": 2.445123587,
+                    "q3": 2.47833662975
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 1718.0,
+                    "min": 1303.0,
+                    "geometric_mean": 1519.4305324360637,
+                    "algebraic_mean": 1522.7666666666667,
+                    "variance": 10048.17888888889,
+                    "standard_deviation": 100.24060499063685,
+                    "q1": 1432.5,
+                    "q3": 1589.5
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 280164.0,
+                    "min": 278460.0,
+                    "geometric_mean": 279120.84718543466,
+                    "algebraic_mean": 279121.06666666665,
+                    "variance": 122578.06222222232,
+                    "standard_deviation": 350.111499700056,
+                    "q1": 278990.0,
+                    "q3": 279286.0
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 58100.0,
+                    "min": 57683.0,
+                    "geometric_mean": 58003.99780750148,
+                    "algebraic_mean": 58004.13333333334,
+                    "variance": 15677.248888888884,
+                    "standard_deviation": 125.20882113049737,
+                    "q1": 58022.25,
+                    "q3": 58072.75
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 3026.29,
+                    "min": 2914.63,
+                    "geometric_mean": 2971.3173107307084,
+                    "algebraic_mean": 2971.440666666667,
+                    "variance": 731.6507462222218,
+                    "standard_deviation": 27.0490433513317,
+                    "q1": 2957.4575,
+                    "q3": 2991.585
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 3025.99,
+                    "min": 2914.38,
+                    "geometric_mean": 2971.045684395235,
+                    "algebraic_mean": 2971.1689999999994,
+                    "variance": 731.3443823333353,
+                    "standard_deviation": 27.043379639633343,
+                    "q1": 2957.1875,
+                    "q3": 2991.32
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 60801699.0,
+                    "min": 60710288.0,
+                    "geometric_mean": 60759323.62434532,
+                    "algebraic_mean": 60759328.199999996,
+                    "variance": 555985849.8933333,
+                    "standard_deviation": 23579.352194098406,
+                    "q1": 60742376.0,
+                    "q3": 60777706.75
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 9535563236.0,
+                    "min": 9533977919.0,
+                    "geometric_mean": 9534753931.8998,
+                    "algebraic_mean": 9534753938.533335,
+                    "variance": 126498695890.64891,
+                    "standard_deviation": 355666.5515488474,
+                    "q1": 9534492449.0,
+                    "q3": 9534931288.0
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 13642829.0,
+                    "min": 11777542.0,
+                    "geometric_mean": 12789458.58616992,
+                    "algebraic_mean": 12798379.933333335,
+                    "variance": 225993035045.19562,
+                    "standard_deviation": 475387.2474574761,
+                    "q1": 12362022.5,
+                    "q3": 13053561.5
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 8911251886.0,
+                    "min": 8698365937.0,
+                    "geometric_mean": 8809404773.831541,
+                    "algebraic_mean": 8809575355.9,
+                    "variance": 3005802822502776.5,
+                    "standard_deviation": 54825202.43923206,
+                    "q1": 8770326242.5,
+                    "q3": 8855028520.5
+                }
+            ]
+        ]
+    },
+    {
+        "name": "relay",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 20,
+        "statistic_vec": [
+            [
+                "branch-misses",
+                {
+                    "max": 1289220728.0,
+                    "min": 1286744869.0,
+                    "geometric_mean": 1288097864.5506294,
+                    "algebraic_mean": 1288098015.4500003,
+                    "variance": 388735496413.9475,
+                    "standard_deviation": 623486.5647421342,
+                    "q1": 1287783034.0,
+                    "q3": 1288363216.0
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 206770327.0,
+                    "min": 195757060.0,
+                    "geometric_mean": 202230832.92947704,
+                    "algebraic_mean": 202249942.00000006,
+                    "variance": 7708514649377.1,
+                    "standard_deviation": 2776421.194519502,
+                    "q1": 200686302.0,
+                    "q3": 204007104.75
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 191064514714.0,
+                    "min": 190970584143.0,
+                    "geometric_mean": 191006820845.87656,
+                    "algebraic_mean": 191006822560.55002,
+                    "variance": 655067319136968.1,
+                    "standard_deviation": 25594282.938519064,
+                    "q1": 190988434581.5,
+                    "q3": 191016161981.0
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 541284.0,
+                    "min": 527492.0,
+                    "geometric_mean": 533668.0569416244,
+                    "algebraic_mean": 533679.6,
+                    "variance": 12361399.84,
+                    "standard_deviation": 3515.8782459010154,
+                    "q1": 532250.0,
+                    "q3": 533491.0
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 350989.0,
+                    "min": 315683.0,
+                    "geometric_mean": 333623.2536694352,
+                    "algebraic_mean": 333736.74999999994,
+                    "variance": 75970920.4875,
+                    "standard_deviation": 8716.129903087724,
+                    "q1": 327825.5,
+                    "q3": 340353.25
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 9.712128476,
+                    "min": 9.332390883,
+                    "geometric_mean": 9.461816649467934,
+                    "algebraic_mean": 9.462233377299999,
+                    "variance": 0.007949374328162565,
+                    "standard_deviation": 0.08915926383815966,
+                    "q1": 9.403553918250001,
+                    "q3": 9.51370545575
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 48356.0,
+                    "min": 40825.0,
+                    "geometric_mean": 45398.37899790484,
+                    "algebraic_mean": 45440.700000000004,
+                    "variance": 3778935.909999999,
+                    "standard_deviation": 1943.9485358414197,
+                    "q1": 44391.75,
+                    "q3": 47013.0
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 47433.0,
+                    "min": 46741.7,
+                    "geometric_mean": 47102.546208523025,
+                    "algebraic_mean": 47102.86599999999,
+                    "variance": 30101.009264000157,
+                    "standard_deviation": 173.49642435508622,
+                    "q1": 46994.41,
+                    "q3": 47230.74
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 157048254447.0,
+                    "min": 155467824112.0,
+                    "geometric_mean": 156220974220.24313,
+                    "algebraic_mean": 156221402405.5,
+                    "variance": 1.3373987077576491e17,
+                    "standard_deviation": 365704622.30571395,
+                    "q1": 156054997116.75,
+                    "q3": 156449908127.0
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 47428.57,
+                    "min": 46737.38,
+                    "geometric_mean": 47098.42001648616,
+                    "algebraic_mean": 47098.7395,
+                    "variance": 30069.21711474986,
+                    "standard_deviation": 173.40477823505861,
+                    "q1": 46991.1525,
+                    "q3": 47226.43
+                }
+            ]
+        ]
+    },
+    {
+        "name": "ripgrep",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "faults",
+                {
+                    "max": 270046.0,
+                    "min": 248622.0,
+                    "geometric_mean": 254733.44485164896,
+                    "algebraic_mean": 254784.36666666673,
+                    "variance": 26536295.098888885,
+                    "standard_deviation": 5151.339155878682,
+                    "q1": 251816.25,
+                    "q3": 255753.5
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 45470.0,
+                    "min": 36511.0,
+                    "geometric_mean": 39008.686695976685,
+                    "algebraic_mean": 39054.2,
+                    "variance": 3699139.4933333336,
+                    "standard_deviation": 1923.314715103416,
+                    "q1": 37817.5,
+                    "q3": 39882.5
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 35890.65,
+                    "min": 35224.99,
+                    "geometric_mean": 35554.421270960294,
+                    "algebraic_mean": 35554.70233333334,
+                    "variance": 20004.363697888995,
+                    "standard_deviation": 141.43678339770386,
+                    "q1": 35475.8125,
+                    "q3": 35632.4025
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 999642155.0,
+                    "min": 997967887.0,
+                    "geometric_mean": 998674720.3766888,
+                    "algebraic_mean": 998674812.6666666,
+                    "variance": 184364755778.82224,
+                    "standard_deviation": 429377.1719349111,
+                    "q1": 998329832.75,
+                    "q3": 998909153.25
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 565032.0,
+                    "min": 498400.0,
+                    "geometric_mean": 532695.193712592,
+                    "algebraic_mean": 532879.6000000001,
+                    "variance": 196490070.77333337,
+                    "standard_deviation": 14017.49160061576,
+                    "q1": 524024.0,
+                    "q3": 543033.0
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 7.253584368,
+                    "min": 6.979663323,
+                    "geometric_mean": 7.163472449294419,
+                    "algebraic_mean": 7.1638062815999985,
+                    "variance": 0.004759394386390545,
+                    "standard_deviation": 0.06898836413766125,
+                    "q1": 7.11929182225,
+                    "q3": 7.2213064305
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 149277114264.0,
+                    "min": 149181805547.0,
+                    "geometric_mean": 149215687370.06076,
+                    "algebraic_mean": 149215689303.73334,
+                    "variance": 577103687562408.1,
+                    "standard_deviation": 24022982.486827236,
+                    "q1": 149195906436.5,
+                    "q3": 149233432940.25
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 35887.55,
+                    "min": 35222.09,
+                    "geometric_mean": 35551.64348575594,
+                    "algebraic_mean": 35551.92433333333,
+                    "variance": 19987.376204555734,
+                    "standard_deviation": 141.3767173354783,
+                    "q1": 35473.1325,
+                    "q3": 35629.537500000006
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 153463345.0,
+                    "min": 148803731.0,
+                    "geometric_mean": 150789056.87705377,
+                    "algebraic_mean": 150795019.8,
+                    "variance": 1801185447821.0269,
+                    "standard_deviation": 1342082.504103614,
+                    "q1": 149631829.25,
+                    "q3": 151865209.75
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 119632804626.0,
+                    "min": 117880268512.0,
+                    "geometric_mean": 118766573463.29376,
+                    "algebraic_mean": 118767257546.23334,
+                    "variance": 1.6251429831362797e17,
+                    "standard_deviation": 403130621.9001826,
+                    "q1": 118559243912.0,
+                    "q3": 119049279543.5
+                }
+            ]
+        ]
+    },
+    {
+        "name": "Rocket",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 20,
+        "statistic_vec": [
+            [
+                "cpu-clock",
+                {
+                    "max": 70358.19,
+                    "min": 69337.76,
+                    "geometric_mean": 69748.92809158134,
+                    "algebraic_mean": 69749.57549999999,
+                    "variance": 90394.00756474995,
+                    "standard_deviation": 300.65596213072166,
+                    "q1": 69466.655,
+                    "q3": 70003.1225
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 70361.01,
+                    "min": 69340.64,
+                    "geometric_mean": 69751.61197058418,
+                    "algebraic_mean": 69752.26,
+                    "variance": 90484.15555999901,
+                    "standard_deviation": 300.80584362674705,
+                    "q1": 69469.1,
+                    "q3": 70005.9675
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 16.262263146,
+                    "min": 15.535274783,
+                    "geometric_mean": 15.874144185072069,
+                    "algebraic_mean": 15.87554895995,
+                    "variance": 0.04474823195959023,
+                    "standard_deviation": 0.21153777903625212,
+                    "q1": 15.718808150249998,
+                    "q3": 15.949608461
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 237844394657.0,
+                    "min": 234597241764.0,
+                    "geometric_mean": 235739700605.241,
+                    "algebraic_mean": 235741282998.59998,
+                    "variance": 7.474714023966698e17,
+                    "standard_deviation": 864564284.7103214,
+                    "q1": 235098982392.0,
+                    "q3": 236130916292.25
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 693576.0,
+                    "min": 683360.0,
+                    "geometric_mean": 688639.3745724509,
+                    "algebraic_mean": 688646.8000000002,
+                    "variance": 10227161.760000002,
+                    "standard_deviation": 3197.9933958656015,
+                    "q1": 686053.0,
+                    "q3": 691494.0
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 34969.0,
+                    "min": 30228.0,
+                    "geometric_mean": 33054.536052431744,
+                    "algebraic_mean": 33077.1,
+                    "variance": 1451615.9900000002,
+                    "standard_deviation": 1204.830274354027,
+                    "q1": 32672.25,
+                    "q3": 33858.5
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 1967967574.0,
+                    "min": 1963956524.0,
+                    "geometric_mean": 1966001467.0105474,
+                    "algebraic_mean": 1966001732.3000002,
+                    "variance": 1043184268642.1101,
+                    "standard_deviation": 1021363.9256612258,
+                    "q1": 1965242247.75,
+                    "q3": 1966468845.0
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 292539587413.0,
+                    "min": 292405210826.0,
+                    "geometric_mean": 292474878572.0487,
+                    "algebraic_mean": 292474880457.60004,
+                    "variance": 1102946132631104.8,
+                    "standard_deviation": 33210632.824911736,
+                    "q1": 292460524114.75,
+                    "q3": 292493012861.25
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 317751073.0,
+                    "min": 295674995.0,
+                    "geometric_mean": 305597799.68797773,
+                    "algebraic_mean": 305646777.84999996,
+                    "variance": 29932739860813.426,
+                    "standard_deviation": 5471082.147145428,
+                    "q1": 302006549.5,
+                    "q3": 309378087.0
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 481183.0,
+                    "min": 364684.0,
+                    "geometric_mean": 414118.44469740207,
+                    "algebraic_mean": 414666.6,
+                    "variance": 466962577.34,
+                    "standard_deviation": 21609.316910536527,
+                    "q1": 405510.25,
+                    "q3": 418408.5
+                }
+            ]
+        ]
+    },
+    {
+        "name": "runiq",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "wall-time",
+                {
+                    "max": 1.724697407,
+                    "min": 1.625868823,
+                    "geometric_mean": 1.6736413916857344,
+                    "algebraic_mean": 1.6738548874,
+                    "variance": 0.0007169170121367909,
+                    "standard_deviation": 0.026775306013877617,
+                    "q1": 1.6511438865,
+                    "q3": 1.69774618975
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 5428.67,
+                    "min": 5241.84,
+                    "geometric_mean": 5328.8747618548,
+                    "algebraic_mean": 5329.092333333333,
+                    "variance": 2319.445784555552,
+                    "standard_deviation": 48.16062483560146,
+                    "q1": 5288.317499999999,
+                    "q3": 5368.692499999999
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 23832564.0,
+                    "min": 11227928.0,
+                    "geometric_mean": 14828406.771597112,
+                    "algebraic_mean": 15163257.300000003,
+                    "variance": 11180108478669.68,
+                    "standard_deviation": 3343666.921011972,
+                    "q1": 12784767.0,
+                    "q3": 17204791.0
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 5427.98,
+                    "min": 5241.26,
+                    "geometric_mean": 5328.198351044993,
+                    "algebraic_mean": 5328.416,
+                    "variance": 2319.97857733333,
+                    "standard_deviation": 48.16615593270165,
+                    "q1": 5287.605,
+                    "q3": 5367.98
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 16599718977.0,
+                    "min": 15809687024.0,
+                    "geometric_mean": 16069371192.811914,
+                    "algebraic_mean": 16070505325.866663,
+                    "variance": 3.670107113675157e16,
+                    "standard_deviation": 191575236.230447,
+                    "q1": 15927529039.0,
+                    "q3": 16174789355.75
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 45554.0,
+                    "min": 45124.0,
+                    "geometric_mean": 45342.75994440197,
+                    "algebraic_mean": 45342.83333333333,
+                    "variance": 6655.005555555557,
+                    "standard_deviation": 81.5782174085433,
+                    "q1": 45320.0,
+                    "q3": 45372.5
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 7365.0,
+                    "min": 4542.0,
+                    "geometric_mean": 6230.432569555486,
+                    "algebraic_mean": 6266.7666666666655,
+                    "variance": 440959.378888889,
+                    "standard_deviation": 664.0477233519357,
+                    "q1": 5857.0,
+                    "q3": 6709.75
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 19482220719.0,
+                    "min": 19465836382.0,
+                    "geometric_mean": 19472751859.022907,
+                    "algebraic_mean": 19472752400.83333,
+                    "variance": 21102401865144.81,
+                    "standard_deviation": 4593735.066930265,
+                    "q1": 19468912104.75,
+                    "q3": 19476092621.5
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 239384.0,
+                    "min": 237160.0,
+                    "geometric_mean": 238430.04869516526,
+                    "algebraic_mean": 238430.66666666672,
+                    "variance": 294389.6888888889,
+                    "standard_deviation": 542.5768967518695,
+                    "q1": 238140.0,
+                    "q3": 238726.0
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 146530040.0,
+                    "min": 146149880.0,
+                    "geometric_mean": 146294298.0925659,
+                    "algebraic_mean": 146294330.5,
+                    "variance": 9484369926.983334,
+                    "standard_deviation": 97387.72985845462,
+                    "q1": 146224389.0,
+                    "q3": 146343141.5
+                }
+            ]
+        ]
+    },
+    {
+        "name": "ruplacer",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "max-rss",
+                {
+                    "max": 215088.0,
+                    "min": 211560.0,
+                    "geometric_mean": 213622.2270570331,
+                    "algebraic_mean": 213623.19999999998,
+                    "variance": 415116.16000000003,
+                    "standard_deviation": 644.2950876733424,
+                    "q1": 213447.0,
+                    "q3": 213926.0
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 1.684351091,
+                    "min": 1.250359558,
+                    "geometric_mean": 1.3852927762448437,
+                    "algebraic_mean": 1.389851692633333,
+                    "variance": 0.01333086010006716,
+                    "standard_deviation": 0.11545934392706014,
+                    "q1": 1.30820904625,
+                    "q3": 1.4468529125
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 3513.96,
+                    "min": 3031.37,
+                    "geometric_mean": 3270.6201329030587,
+                    "algebraic_mean": 3272.792333333333,
+                    "variance": 14180.354971222225,
+                    "standard_deviation": 119.0812956396689,
+                    "q1": 3231.2125,
+                    "q3": 3325.895
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 3514.41,
+                    "min": 3031.61,
+                    "geometric_mean": 3270.9797596305084,
+                    "algebraic_mean": 3273.154333333333,
+                    "variance": 14197.125931222206,
+                    "standard_deviation": 119.1516929431647,
+                    "q1": 3231.505,
+                    "q3": 3326.3175
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 10604417299.0,
+                    "min": 8866834983.0,
+                    "geometric_mean": 9384372321.461603,
+                    "algebraic_mean": 9396564826.766666,
+                    "variance": 2.3663630539813942e17,
+                    "standard_deviation": 486452778.17907405,
+                    "q1": 9030971082.5,
+                    "q3": 9650247721.75
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 39182487.0,
+                    "min": 9267851.0,
+                    "geometric_mean": 17783523.94494004,
+                    "algebraic_mean": 19522556.33333333,
+                    "variance": 76782990410555.95,
+                    "standard_deviation": 8762590.393859338,
+                    "q1": 13401683.0,
+                    "q3": 24615009.75
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 10691240965.0,
+                    "min": 10682624678.0,
+                    "geometric_mean": 10685987050.951038,
+                    "algebraic_mean": 10685987264.46667,
+                    "variance": 4563602350280.782,
+                    "standard_deviation": 2136258.961427847,
+                    "q1": 10684208080.25,
+                    "q3": 10687311666.5
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 43648.0,
+                    "min": 43153.0,
+                    "geometric_mean": 43388.59991358241,
+                    "algebraic_mean": 43388.76666666666,
+                    "variance": 14467.77888888889,
+                    "standard_deviation": 120.28208049784011,
+                    "q1": 43344.5,
+                    "q3": 43461.25
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 4037.0,
+                    "min": 1956.0,
+                    "geometric_mean": 2964.4429890959286,
+                    "algebraic_mean": 3014.2000000000003,
+                    "variance": 280551.0266666666,
+                    "standard_deviation": 529.6706775598085,
+                    "q1": 2823.25,
+                    "q3": 3311.5
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 80531479.0,
+                    "min": 79439107.0,
+                    "geometric_mean": 79755990.43425426,
+                    "algebraic_mean": 79756692.46666667,
+                    "variance": 112277229202.24889,
+                    "standard_deviation": 335077.94496541977,
+                    "q1": 79514023.25,
+                    "q3": 80020417.5
+                }
+            ]
+        ]
+    },
+    {
+        "name": "rust-rocksdb",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "wall-time",
+                {
+                    "max": 1.826854943,
+                    "min": 0.947813263,
+                    "geometric_mean": 1.1167200134146553,
+                    "algebraic_mean": 1.1421711259,
+                    "variance": 0.07151117406339015,
+                    "standard_deviation": 0.26741573264000407,
+                    "q1": 0.99056065425,
+                    "q3": 1.0724720947500002
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 6539485313.0,
+                    "min": 5505413684.0,
+                    "geometric_mean": 5740482846.602308,
+                    "algebraic_mean": 5749122447.366667,
+                    "variance": 1.0469795411952917e17,
+                    "standard_deviation": 323570632.35023224,
+                    "q1": 5534350430.0,
+                    "q3": 5752755404.25
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 2239.86,
+                    "min": 1982.83,
+                    "geometric_mean": 2142.560515565786,
+                    "algebraic_mean": 2143.720999999999,
+                    "variance": 4861.502509000004,
+                    "standard_deviation": 69.72447568106915,
+                    "q1": 2127.395,
+                    "q3": 2185.545
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 2239.52,
+                    "min": 1982.63,
+                    "geometric_mean": 2142.2605640835327,
+                    "algebraic_mean": 2143.4196666666667,
+                    "variance": 4855.169463222227,
+                    "standard_deviation": 69.67904608433031,
+                    "q1": 2127.075,
+                    "q3": 2185.2275
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 2908.0,
+                    "min": 1023.0,
+                    "geometric_mean": 2019.489051563497,
+                    "algebraic_mean": 2060.066666666666,
+                    "variance": 145364.9288888889,
+                    "standard_deviation": 381.2675292873613,
+                    "q1": 1950.5,
+                    "q3": 2202.75
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 6473177780.0,
+                    "min": 6468980881.0,
+                    "geometric_mean": 6470810073.444401,
+                    "algebraic_mean": 6470810137.433332,
+                    "variance": 828138938445.4457,
+                    "standard_deviation": 910021.3944987479,
+                    "q1": 6470304890.5,
+                    "q3": 6471316602.25
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 21889777.0,
+                    "min": 4199479.0,
+                    "geometric_mean": 7128782.953964504,
+                    "algebraic_mean": 8304490.766666667,
+                    "variance": 26705977807070.117,
+                    "standard_deviation": 5167782.678003219,
+                    "q1": 4695894.75,
+                    "q3": 9020276.75
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 23334.0,
+                    "min": 22760.0,
+                    "geometric_mean": 22977.01327312626,
+                    "algebraic_mean": 22977.266666666666,
+                    "variance": 11700.995555555557,
+                    "standard_deviation": 108.17114012321197,
+                    "q1": 22934.5,
+                    "q3": 22988.75
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 208604.0,
+                    "min": 206468.0,
+                    "geometric_mean": 207869.1584670508,
+                    "algebraic_mean": 207869.6,
+                    "variance": 183243.30666666664,
+                    "standard_deviation": 428.06927788229166,
+                    "q1": 207766.0,
+                    "q3": 208063.0
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 52957134.0,
+                    "min": 52311165.0,
+                    "geometric_mean": 52447372.138655156,
+                    "algebraic_mean": 52447631.56666666,
+                    "variance": 27306221087.445553,
+                    "standard_deviation": 165245.94121322784,
+                    "q1": 52351430.25,
+                    "q3": 52438222.75
+                }
+            ]
+        ]
+    },
+    {
+        "name": "rust-systemd-systemd",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "faults",
+                {
+                    "max": 32614.0,
+                    "min": 32090.0,
+                    "geometric_mean": 32411.79433222439,
+                    "algebraic_mean": 32412.200000000008,
+                    "variance": 26240.226666666666,
+                    "standard_deviation": 161.9883534908194,
+                    "q1": 32289.5,
+                    "q3": 32528.5
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 7872.0,
+                    "min": 4205.0,
+                    "geometric_mean": 6233.092357412954,
+                    "algebraic_mean": 6279.433333333334,
+                    "variance": 548377.9788888888,
+                    "standard_deviation": 740.5254748412702,
+                    "q1": 5819.5,
+                    "q3": 6821.0
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 22271453.0,
+                    "min": 8040407.0,
+                    "geometric_mean": 12759749.803123612,
+                    "algebraic_mean": 13503150.000000002,
+                    "variance": 20898412168549.67,
+                    "standard_deviation": 4571478.116380923,
+                    "q1": 9085092.75,
+                    "q3": 16562387.0
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 228780.0,
+                    "min": 224640.0,
+                    "geometric_mean": 226953.75847105499,
+                    "algebraic_mean": 226956.40000000005,
+                    "variance": 1197769.9733333334,
+                    "standard_deviation": 1094.4267784248216,
+                    "q1": 226067.0,
+                    "q3": 227750.0
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 9718458620.0,
+                    "min": 9710546689.0,
+                    "geometric_mean": 9712531846.533358,
+                    "algebraic_mean": 9712531990.699999,
+                    "variance": 2800998743044.277,
+                    "standard_deviation": 1673618.4580256867,
+                    "q1": 9711355744.25,
+                    "q3": 9713016624.0
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 1.332617034,
+                    "min": 1.122646104,
+                    "geometric_mean": 1.2219024606181206,
+                    "algebraic_mean": 1.2234099895000001,
+                    "variance": 0.0036931996329214456,
+                    "standard_deviation": 0.06077170092174026,
+                    "q1": 1.17452255525,
+                    "q3": 1.2761800255
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 3295.05,
+                    "min": 2906.36,
+                    "geometric_mean": 3024.9941538436824,
+                    "algebraic_mean": 3026.272,
+                    "variance": 7851.906229333325,
+                    "standard_deviation": 88.6109825548353,
+                    "q1": 2952.3825,
+                    "q3": 3086.7675
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 3295.88,
+                    "min": 2906.95,
+                    "geometric_mean": 3025.697924468982,
+                    "algebraic_mean": 3026.9776666666676,
+                    "variance": 7865.361551222229,
+                    "standard_deviation": 88.68687361285338,
+                    "q1": 2953.04,
+                    "q3": 3087.5299999999997
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 8939834875.0,
+                    "min": 8057567314.0,
+                    "geometric_mean": 8367009387.032385,
+                    "algebraic_mean": 8370481314.699999,
+                    "variance": 5.860576386674601e16,
+                    "standard_deviation": 242086273.60250315,
+                    "q1": 8143205740.5,
+                    "q3": 8517273826.75
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 74577676.0,
+                    "min": 73601594.0,
+                    "geometric_mean": 73873838.38188405,
+                    "algebraic_mean": 73874438.59999998,
+                    "variance": 88962818466.17332,
+                    "standard_deviation": 298266.35490140907,
+                    "q1": 73691384.25,
+                    "q3": 73954130.25
+                }
+            ]
+        ]
+    },
+    {
+        "name": "simple-http-server",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 20,
+        "statistic_vec": [
+            [
+                "cache-misses",
+                {
+                    "max": 48659278.0,
+                    "min": 44569016.0,
+                    "geometric_mean": 46739281.45066276,
+                    "algebraic_mean": 46750511.5,
+                    "variance": 1046754889979.65,
+                    "standard_deviation": 1023110.3997026177,
+                    "q1": 46184435.5,
+                    "q3": 47362494.25
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 341864.0,
+                    "min": 329356.0,
+                    "geometric_mean": 335027.0857138213,
+                    "algebraic_mean": 335048.6000000001,
+                    "variance": 14466984.440000001,
+                    "standard_deviation": 3803.548926989109,
+                    "q1": 332041.0,
+                    "q3": 338641.0
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 60184444944.0,
+                    "min": 60150171431.0,
+                    "geometric_mean": 60162012717.275024,
+                    "algebraic_mean": 60162013263.49999,
+                    "variance": 65727989897751.75,
+                    "standard_deviation": 8107280.055465689,
+                    "q1": 60155615664.0,
+                    "q3": 60165747562.0
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 16843.0,
+                    "min": 13698.0,
+                    "geometric_mean": 14956.843150167679,
+                    "algebraic_mean": 14981.249999999998,
+                    "variance": 747301.6875000001,
+                    "standard_deviation": 864.4661286019251,
+                    "q1": 14449.0,
+                    "q3": 15301.5
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 49770544865.0,
+                    "min": 49361008076.0,
+                    "geometric_mean": 49582075796.58794,
+                    "algebraic_mean": 49582179531.450005,
+                    "variance": 1.0283855460138872e16,
+                    "standard_deviation": 101409346.01967844,
+                    "q1": 49494146884.75,
+                    "q3": 49645580805.25
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 15444.35,
+                    "min": 15285.51,
+                    "geometric_mean": 15386.8419919138,
+                    "algebraic_mean": 15386.888000000003,
+                    "variance": 1414.4129759999971,
+                    "standard_deviation": 37.60868218909029,
+                    "q1": 15370.470000000001,
+                    "q3": 15412.2125
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 15445.89,
+                    "min": 15287.24,
+                    "geometric_mean": 15388.608905209152,
+                    "algebraic_mean": 15388.654999999999,
+                    "variance": 1417.2397950000031,
+                    "standard_deviation": 37.64624543032151,
+                    "q1": 15371.99,
+                    "q3": 15414.05
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 3.922915666,
+                    "min": 3.724594279,
+                    "geometric_mean": 3.830022647288778,
+                    "algebraic_mean": 3.8303352798500003,
+                    "variance": 0.002387035081221806,
+                    "standard_deviation": 0.0488572930197919,
+                    "q1": 3.789050604,
+                    "q3": 3.864735077
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 128983.0,
+                    "min": 126353.0,
+                    "geometric_mean": 127585.37919684892,
+                    "algebraic_mean": 127587.44999999998,
+                    "variance": 529383.0475,
+                    "standard_deviation": 727.587140829193,
+                    "q1": 127026.25,
+                    "q3": 128262.5
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 433857514.0,
+                    "min": 433070330.0,
+                    "geometric_mean": 433497043.1959212,
+                    "algebraic_mean": 433497093.00000006,
+                    "variance": 43178122794.3,
+                    "standard_deviation": 207793.46186610396,
+                    "q1": 433362622.0,
+                    "q3": 433629955.5
+                }
+            ]
+        ]
+    },
+    {
+        "name": "skytable",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "cpu-clock",
+                {
+                    "max": 35705.36,
+                    "min": 29438.33,
+                    "geometric_mean": 31917.23037426699,
+                    "algebraic_mean": 31945.551666666666,
+                    "variance": 1853492.519773889,
+                    "standard_deviation": 1361.4303213069295,
+                    "q1": 31204.545,
+                    "q3": 32491.100000000002
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 35.984850361,
+                    "min": 29.700388034,
+                    "geometric_mean": 32.30684061558514,
+                    "algebraic_mean": 32.33492880536667,
+                    "variance": 1.8565738016532858,
+                    "standard_deviation": 1.362561485457917,
+                    "q1": 31.5131114505,
+                    "q3": 32.96612611025
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 118394147617.0,
+                    "min": 102153666791.0,
+                    "geometric_mean": 108416194327.06985,
+                    "algebraic_mean": 108478087000.53336,
+                    "variance": 1.3697552253461844e19,
+                    "standard_deviation": 3701020434.0778565,
+                    "q1": 106302770909.0,
+                    "q3": 109882136813.25
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 876049091.0,
+                    "min": 871348989.0,
+                    "geometric_mean": 872897661.5375189,
+                    "algebraic_mean": 872898200.5333333,
+                    "variance": 941738651640.9823,
+                    "standard_deviation": 970432.1983739937,
+                    "q1": 872237439.0,
+                    "q3": 873242068.75
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 571968.0,
+                    "min": 571820.0,
+                    "geometric_mean": 571896.6653926924,
+                    "algebraic_mean": 571896.6666666666,
+                    "variance": 1457.155555555557,
+                    "standard_deviation": 38.172706945611765,
+                    "q1": 571865.0,
+                    "q3": 571923.0
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 890.0,
+                    "min": 198.0,
+                    "geometric_mean": 380.3883005930707,
+                    "algebraic_mean": 414.6,
+                    "variance": 29993.64,
+                    "standard_deviation": 173.18672004515818,
+                    "q1": 267.25,
+                    "q3": 527.5
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 409346215.0,
+                    "min": 186000611.0,
+                    "geometric_mean": 275200165.8107784,
+                    "algebraic_mean": 281151506.8333334,
+                    "variance": 3661380035351011.0,
+                    "standard_deviation": 60509338.414421715,
+                    "q1": 249292197.5,
+                    "q3": 295654358.75
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 35705.39,
+                    "min": 29438.35,
+                    "geometric_mean": 31917.223842702104,
+                    "algebraic_mean": 31945.545,
+                    "variance": 1853484.3289049992,
+                    "standard_deviation": 1361.4273131184784,
+                    "q1": 31204.55,
+                    "q3": 32491.1075
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 128255102549.0,
+                    "min": 128141103179.0,
+                    "geometric_mean": 128198577938.41016,
+                    "algebraic_mean": 128198581311.63336,
+                    "variance": 864871101846845.1,
+                    "standard_deviation": 29408690.92371922,
+                    "q1": 128185983733.75,
+                    "q3": 128223436202.75
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 639372.0,
+                    "min": 497122.0,
+                    "geometric_mean": 547729.1938384462,
+                    "algebraic_mean": 549872.1333333333,
+                    "variance": 2460607166.782222,
+                    "standard_deviation": 49604.50752484316,
+                    "q1": 517436.5,
+                    "q3": 606894.5
+                }
+            ]
+        ]
+    },
+    {
+        "name": "sled",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "task-clock",
+                {
+                    "max": 48908.91,
+                    "min": 40674.97,
+                    "geometric_mean": 46265.79578190119,
+                    "algebraic_mean": 46309.32533333333,
+                    "variance": 3874551.00608489,
+                    "standard_deviation": 1968.38792063071,
+                    "q1": 45737.465,
+                    "q3": 47702.84
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 159402274868.0,
+                    "min": 159321721153.0,
+                    "geometric_mean": 159355877333.0911,
+                    "algebraic_mean": 159355878417.19995,
+                    "variance": 345528132757412.6,
+                    "standard_deviation": 18588387.04023059,
+                    "q1": 159343438244.25,
+                    "q3": 159365916773.75
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 17.658094482,
+                    "min": 7.849549912,
+                    "geometric_mean": 14.20016616334916,
+                    "algebraic_mean": 14.531993049833334,
+                    "variance": 7.844952301095263,
+                    "standard_deviation": 2.8008841998724727,
+                    "q1": 14.36467905575,
+                    "q3": 16.210870507499997
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 156592495586.0,
+                    "min": 134305676993.0,
+                    "geometric_mean": 149580354821.03375,
+                    "algebraic_mean": 149698146169.3,
+                    "variance": 3.4141868760926253e19,
+                    "standard_deviation": 5843104377.035058,
+                    "q1": 147213369863.0,
+                    "q3": 153563456123.5
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 558657329.0,
+                    "min": 239080630.0,
+                    "geometric_mean": 466503354.0501857,
+                    "algebraic_mean": 476181553.6333333,
+                    "variance": 7264655824835937.0,
+                    "standard_deviation": 85232950.34689306,
+                    "q1": 446362037.0,
+                    "q3": 532011473.0
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 692293.0,
+                    "min": 292760.0,
+                    "geometric_mean": 489155.32436773414,
+                    "algebraic_mean": 500555.5333333333,
+                    "variance": 10486316560.515556,
+                    "standard_deviation": 102402.71754458256,
+                    "q1": 440944.0,
+                    "q3": 590548.5
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 818180.0,
+                    "min": 756920.0,
+                    "geometric_mean": 784345.6818135205,
+                    "algebraic_mean": 784532.5333333336,
+                    "variance": 294023010.9155556,
+                    "standard_deviation": 17147.099198277112,
+                    "q1": 772746.0,
+                    "q3": 799343.0
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 85871.0,
+                    "min": 23156.0,
+                    "geometric_mean": 36477.77396040614,
+                    "algebraic_mean": 39872.8,
+                    "variance": 337419184.62666667,
+                    "standard_deviation": 18368.973423320822,
+                    "q1": 27328.75,
+                    "q3": 53022.25
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 48904.13,
+                    "min": 40671.41,
+                    "geometric_mean": 46262.666310461325,
+                    "algebraic_mean": 46306.22966666668,
+                    "variance": 3877232.145543221,
+                    "standard_deviation": 1969.0688524130437,
+                    "q1": 45735.53,
+                    "q3": 47700.292499999996
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 1082461311.0,
+                    "min": 1065270253.0,
+                    "geometric_mean": 1076116941.527527,
+                    "algebraic_mean": 1076127535.0000002,
+                    "variance": 22746007162118.266,
+                    "standard_deviation": 4769277.425576989,
+                    "q1": 1074583729.5,
+                    "q3": 1079754071.75
+                }
+            ]
+        ]
+    },
+    {
+        "name": "stacks-blockchain",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "cycles:u",
+                {
+                    "max": 79390187071.0,
+                    "min": 78027806110.0,
+                    "geometric_mean": 78550198214.98631,
+                    "algebraic_mean": 78550788734.7667,
+                    "variance": 9.294453095835082e16,
+                    "standard_deviation": 304868054.99814314,
+                    "q1": 78353009990.75,
+                    "q3": 78675183274.5
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 24817.27,
+                    "min": 24277.42,
+                    "geometric_mean": 24517.701850496942,
+                    "algebraic_mean": 24517.978,
+                    "variance": 13545.28986933335,
+                    "standard_deviation": 116.38423376614786,
+                    "q1": 24426.22,
+                    "q3": 24588.71
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 47184.0,
+                    "min": 39274.0,
+                    "geometric_mean": 43213.355743022235,
+                    "algebraic_mean": 43250.63333333334,
+                    "variance": 3216706.7655555555,
+                    "standard_deviation": 1793.5179858466865,
+                    "q1": 42032.25,
+                    "q3": 44338.5
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 598025088.0,
+                    "min": 596972902.0,
+                    "geometric_mean": 597440130.482762,
+                    "algebraic_mean": 597440198.9000001,
+                    "variance": 81758902150.42332,
+                    "standard_deviation": 285935.1362641942,
+                    "q1": 597269209.75,
+                    "q3": 597615575.75
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 103726495416.0,
+                    "min": 103667396437.0,
+                    "geometric_mean": 103704532607.1016,
+                    "algebraic_mean": 103704533554.53334,
+                    "variance": 196494327994641.78,
+                    "standard_deviation": 14017643.453685137,
+                    "q1": 103698119379.75,
+                    "q3": 103714675256.0
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 6.621105984,
+                    "min": 6.397986868,
+                    "geometric_mean": 6.547581398240769,
+                    "algebraic_mean": 6.547796137000001,
+                    "variance": 0.00279554198839852,
+                    "standard_deviation": 0.052872885190790565,
+                    "q1": 6.534987521,
+                    "q3": 6.5774484415000005
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 450420.0,
+                    "min": 412320.0,
+                    "geometric_mean": 427657.8463254525,
+                    "algebraic_mean": 427763.86666666664,
+                    "variance": 91273072.51555555,
+                    "standard_deviation": 9553.694181600935,
+                    "q1": 422214.0,
+                    "q3": 434140.0
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 310832.0,
+                    "min": 304553.0,
+                    "geometric_mean": 307725.03259510454,
+                    "algebraic_mean": 307728.8333333333,
+                    "variance": 2338867.872222222,
+                    "standard_deviation": 1529.3357617679062,
+                    "q1": 306602.5,
+                    "q3": 308988.0
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 24814.01,
+                    "min": 24274.54,
+                    "geometric_mean": 24514.407099366625,
+                    "algebraic_mean": 24514.68233333333,
+                    "variance": 13498.651171222102,
+                    "standard_deviation": 116.18369580634841,
+                    "q1": 24423.2725,
+                    "q3": 24583.1625
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 159541380.0,
+                    "min": 142563204.0,
+                    "geometric_mean": 146324638.04319498,
+                    "algebraic_mean": 146353874.23333332,
+                    "variance": 8864554304686.78,
+                    "standard_deviation": 2977340.1392327985,
+                    "q1": 144707484.25,
+                    "q3": 147391265.5
+                }
+            ]
+        ]
+    },
+    {
+        "name": "starcoin",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "wall-time",
+                {
+                    "max": 54.262055057,
+                    "min": 37.42763288,
+                    "geometric_mean": 48.11423877477901,
+                    "algebraic_mean": 48.374946624899984,
+                    "variance": 23.985233745672883,
+                    "standard_deviation": 4.897472179162724,
+                    "q1": 42.31186568525,
+                    "q3": 52.29890503875
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 4895065714.0,
+                    "min": 4830193374.0,
+                    "geometric_mean": 4852843038.590224,
+                    "algebraic_mean": 4852879389.5,
+                    "variance": 353602338756934.4,
+                    "standard_deviation": 18804317.02447431,
+                    "q1": 4838156100.5,
+                    "q3": 4859344296.75
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 707080727040.0,
+                    "min": 706560919694.0,
+                    "geometric_mean": 706706747109.1222,
+                    "algebraic_mean": 706706756586.5,
+                    "variance": 1.3397441695244472e16,
+                    "standard_deviation": 115747318.30692439,
+                    "q1": 706638069860.75,
+                    "q3": 706752794185.5
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 675560035543.0,
+                    "min": 637248153393.0,
+                    "geometric_mean": 654570270603.5232,
+                    "algebraic_mean": 654609307297.4999,
+                    "variance": 5.13041357949765e19,
+                    "standard_deviation": 7162690541.617479,
+                    "q1": 650318740532.5,
+                    "q3": 657827954185.5
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 207972.68,
+                    "min": 192335.1,
+                    "geometric_mean": 199453.58878115818,
+                    "algebraic_mean": 199484.37833333333,
+                    "variance": 12300456.148113873,
+                    "standard_deviation": 3507.2006141813263,
+                    "q1": 197291.60249999998,
+                    "q3": 202435.7675
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 2455224.0,
+                    "min": 2170168.0,
+                    "geometric_mean": 2262260.311080687,
+                    "algebraic_mean": 2263022.2666666666,
+                    "variance": 3514713388.462222,
+                    "standard_deviation": 59285.01824628396,
+                    "q1": 2220888.0,
+                    "q3": 2294653.0
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 214159.0,
+                    "min": 74566.0,
+                    "geometric_mean": 146460.41501279318,
+                    "algebraic_mean": 151481.56666666668,
+                    "variance": 1378381640.4455552,
+                    "standard_deviation": 37126.56246470383,
+                    "q1": 128407.75,
+                    "q3": 180330.75
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 1890039323.0,
+                    "min": 1312118558.0,
+                    "geometric_mean": 1602991619.3209155,
+                    "algebraic_mean": 1607116754.3000002,
+                    "variance": 1.353348559925254e16,
+                    "standard_deviation": 116333510.2163282,
+                    "q1": 1538254990.25,
+                    "q3": 1639159029.75
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 3940638.0,
+                    "min": 1997353.0,
+                    "geometric_mean": 3023939.099068454,
+                    "algebraic_mean": 3052835.466666667,
+                    "variance": 173759174317.78223,
+                    "standard_deviation": 416844.30464836897,
+                    "q1": 2769311.25,
+                    "q3": 3242238.75
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 207955.14,
+                    "min": 192329.18,
+                    "geometric_mean": 199440.43455045758,
+                    "algebraic_mean": 199471.18166666664,
+                    "variance": 12282716.10671389,
+                    "standard_deviation": 3504.6706131552346,
+                    "q1": 197277.2775,
+                    "q3": 202424.03749999998
+                }
+            ]
+        ]
+    },
+    {
+        "name": "static-web-server",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 20,
+        "statistic_vec": [
+            [
+                "cpu-clock",
+                {
+                    "max": 54311.41,
+                    "min": 52938.31,
+                    "geometric_mean": 53562.91812011988,
+                    "algebraic_mean": 53564.672,
+                    "variance": 188086.96843600058,
+                    "standard_deviation": 433.68994504830357,
+                    "q1": 53202.337499999994,
+                    "q3": 53956.435
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 534.0,
+                    "min": 417.0,
+                    "geometric_mean": 480.0076770507702,
+                    "algebraic_mean": 481.09999999999985,
+                    "variance": 1037.59,
+                    "standard_deviation": 32.21164385746248,
+                    "q1": 459.75,
+                    "q3": 503.0
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 1484704205.0,
+                    "min": 1480101881.0,
+                    "geometric_mean": 1481166028.1835866,
+                    "algebraic_mean": 1481166458.7499998,
+                    "variance": 1276480357236.1875,
+                    "standard_deviation": 1129814.3021028666,
+                    "q1": 1480381477.0,
+                    "q3": 1481856235.0
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 255819755566.0,
+                    "min": 255705607551.0,
+                    "geometric_mean": 255785527350.61624,
+                    "algebraic_mean": 255785528624.14996,
+                    "variance": 651402707509759.4,
+                    "standard_deviation": 25522592.100132763,
+                    "q1": 255791124368.0,
+                    "q3": 255791167058.75
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 341076429.0,
+                    "min": 299041993.0,
+                    "geometric_mean": 312720839.31550306,
+                    "algebraic_mean": 312959843.1,
+                    "variance": 151729679871023.2,
+                    "standard_deviation": 12317860.198550038,
+                    "q1": 300636650.25,
+                    "q3": 322407692.5
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 54311.31,
+                    "min": 52938.3,
+                    "geometric_mean": 53562.87925503684,
+                    "algebraic_mean": 53564.633,
+                    "variance": 188072.43036099995,
+                    "standard_deviation": 433.67318381587756,
+                    "q1": 53202.3575,
+                    "q3": 53956.3775
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 54.480878242,
+                    "min": 53.10168342,
+                    "geometric_mean": 53.724729126485975,
+                    "algebraic_mean": 53.72647775859999,
+                    "variance": 0.1881011104615644,
+                    "standard_deviation": 0.4337062490460155,
+                    "q1": 53.390161420750005,
+                    "q3": 54.110352899999995
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 191065466355.0,
+                    "min": 187163603800.0,
+                    "geometric_mean": 188926381688.98294,
+                    "algebraic_mean": 188929768262.0,
+                    "variance": 1.2810307326542213e18,
+                    "standard_deviation": 1131826282.0124922,
+                    "q1": 188143023161.5,
+                    "q3": 189798571383.75
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 1005197.0,
+                    "min": 934834.0,
+                    "geometric_mean": 962074.2720255234,
+                    "algebraic_mean": 962187.6999999998,
+                    "variance": 222366002.21000004,
+                    "standard_deviation": 14911.94159759218,
+                    "q1": 958127.75,
+                    "q3": 960934.75
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 860584.0,
+                    "min": 858840.0,
+                    "geometric_mean": 860348.47712235,
+                    "algebraic_mean": 860348.5999999997,
+                    "variance": 211262.84000000014,
+                    "standard_deviation": 459.6333756375837,
+                    "q1": 860532.0,
+                    "q3": 860532.0
+                }
+            ]
+        ]
+    },
+    {
+        "name": "system76-power",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "max-rss",
+                {
+                    "max": 203556.0,
+                    "min": 200808.0,
+                    "geometric_mean": 202781.92658208363,
+                    "algebraic_mean": 202782.53333333333,
+                    "variance": 245184.51555555547,
+                    "standard_deviation": 495.16110060823183,
+                    "q1": 202727.0,
+                    "q3": 202964.0
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 1939.0,
+                    "min": 1395.0,
+                    "geometric_mean": 1633.816214895477,
+                    "algebraic_mean": 1640.3000000000004,
+                    "variance": 21188.210000000003,
+                    "standard_deviation": 145.56170512878722,
+                    "q1": 1531.0,
+                    "q3": 1738.0
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 4898091437.0,
+                    "min": 4353298104.0,
+                    "geometric_mean": 4424378104.370913,
+                    "algebraic_mean": 4425557038.266667,
+                    "variance": 1.0950239469624614e16,
+                    "standard_deviation": 104643391.90615246,
+                    "q1": 4375074275.25,
+                    "q3": 4437021161.25
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 5155823174.0,
+                    "min": 5152415455.0,
+                    "geometric_mean": 5154127578.990767,
+                    "algebraic_mean": 5154127660.566667,
+                    "variance": 840911194580.7123,
+                    "standard_deviation": 917012.1016544505,
+                    "q1": 5153348396.75,
+                    "q3": 5154738020.25
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 38480018.0,
+                    "min": 38041795.0,
+                    "geometric_mean": 38135267.79191417,
+                    "algebraic_mean": 38135344.233333334,
+                    "variance": 5853059520.37889,
+                    "standard_deviation": 76505.29079991062,
+                    "q1": 38092234.5,
+                    "q3": 38167139.5
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 1.192391373,
+                    "min": 0.921442212,
+                    "geometric_mean": 0.9974687531505645,
+                    "algebraic_mean": 0.9988067526,
+                    "variance": 0.002782929120488884,
+                    "standard_deviation": 0.05275347496126567,
+                    "q1": 0.969429565,
+                    "q3": 1.01854252225
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 1861.19,
+                    "min": 1673.69,
+                    "geometric_mean": 1813.9475805703908,
+                    "algebraic_mean": 1814.3619999999996,
+                    "variance": 1467.8076760000001,
+                    "standard_deviation": 38.31197823135736,
+                    "q1": 1800.22,
+                    "q3": 1840.81
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 45768.0,
+                    "min": 45576.0,
+                    "geometric_mean": 45691.24035129614,
+                    "algebraic_mean": 45691.266666666656,
+                    "variance": 2403.462222222224,
+                    "standard_deviation": 49.025118278513354,
+                    "q1": 45654.75,
+                    "q3": 45717.75
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 17992815.0,
+                    "min": 8343737.0,
+                    "geometric_mean": 9820621.915360272,
+                    "algebraic_mean": 10026441.033333335,
+                    "variance": 5108913849412.899,
+                    "standard_deviation": 2260290.65595841,
+                    "q1": 8662594.5,
+                    "q3": 10669491.75
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 1861.5,
+                    "min": 1673.92,
+                    "geometric_mean": 1814.197044467198,
+                    "algebraic_mean": 1814.6113333333333,
+                    "variance": 1467.5472582222212,
+                    "standard_deviation": 38.30857943362324,
+                    "q1": 1800.52,
+                    "q3": 1841.1325000000002
+                }
+            ]
+        ]
+    },
+    {
+        "name": "systemstat",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "faults",
+                {
+                    "max": 30589.0,
+                    "min": 30044.0,
+                    "geometric_mean": 30320.04180118718,
+                    "algebraic_mean": 30320.266666666663,
+                    "variance": 13639.79555555556,
+                    "standard_deviation": 116.78953529985279,
+                    "q1": 30259.75,
+                    "q3": 30414.0
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 1.836273642,
+                    "min": 1.539315039,
+                    "geometric_mean": 1.6054133876651009,
+                    "algebraic_mean": 1.6064259558,
+                    "variance": 0.0034326890424963017,
+                    "standard_deviation": 0.05858915464910124,
+                    "q1": 1.575920951,
+                    "q3": 1.61186669325
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 4981.42,
+                    "min": 4814.98,
+                    "geometric_mean": 4894.673511954383,
+                    "algebraic_mean": 4894.849000000001,
+                    "variance": 1719.92095566667,
+                    "standard_deviation": 41.471929731647045,
+                    "q1": 4862.3150000000005,
+                    "q3": 4925.29
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 4981.9,
+                    "min": 4815.53,
+                    "geometric_mean": 4895.257636203568,
+                    "algebraic_mean": 4895.433,
+                    "variance": 1718.889847666662,
+                    "standard_deviation": 41.45949647145587,
+                    "q1": 4862.8775,
+                    "q3": 4925.91
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 15577694542.0,
+                    "min": 14534309932.0,
+                    "geometric_mean": 14803534556.809168,
+                    "algebraic_mean": 14805579676.300001,
+                    "variance": 6.158011270434092e16,
+                    "standard_deviation": 248153405.58682832,
+                    "q1": 14611356038.25,
+                    "q3": 14931384775.5
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 27834429.0,
+                    "min": 9630361.0,
+                    "geometric_mean": 13116510.350225816,
+                    "algebraic_mean": 13646582.533333335,
+                    "variance": 18389820953434.65,
+                    "standard_deviation": 4288335.452531045,
+                    "q1": 10559232.25,
+                    "q3": 15054001.0
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 133978399.0,
+                    "min": 133252429.0,
+                    "geometric_mean": 133473737.35830814,
+                    "algebraic_mean": 133473829.96666667,
+                    "variance": 24748071491.76556,
+                    "standard_deviation": 157315.19790460667,
+                    "q1": 133362406.25,
+                    "q3": 133502422.0
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 18475712341.0,
+                    "min": 18461030682.0,
+                    "geometric_mean": 18467874100.555653,
+                    "algebraic_mean": 18467874440.533333,
+                    "variance": 12557456725205.846,
+                    "standard_deviation": 3543650.197918221,
+                    "q1": 18466018818.75,
+                    "q3": 18469606156.0
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 6860.0,
+                    "min": 4841.0,
+                    "geometric_mean": 5679.454841571154,
+                    "algebraic_mean": 5700.666666666668,
+                    "variance": 246277.6888888889,
+                    "standard_deviation": 496.26372916916756,
+                    "q1": 5337.5,
+                    "q3": 5995.0
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 239920.0,
+                    "min": 238028.0,
+                    "geometric_mean": 239075.33351796467,
+                    "algebraic_mean": 239075.73333333334,
+                    "variance": 191084.7288888888,
+                    "standard_deviation": 437.13239286157784,
+                    "q1": 238879.0,
+                    "q3": 239391.0
+                }
+            ]
+        ]
+    },
+    {
+        "name": "toydb",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "cache-misses",
+                {
+                    "max": 247967175.0,
+                    "min": 70161674.0,
+                    "geometric_mean": 109475002.62981421,
+                    "algebraic_mean": 119477402.43333334,
+                    "variance": 2856703091754091.0,
+                    "standard_deviation": 53448134.59564413,
+                    "q1": 76346322.25,
+                    "q3": 141971188.75
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 24760.72,
+                    "min": 21585.46,
+                    "geometric_mean": 22530.415845877415,
+                    "algebraic_mean": 22552.355666666666,
+                    "variance": 1014215.4866978888,
+                    "standard_deviation": 1007.0826613033753,
+                    "q1": 21724.625,
+                    "q3": 23400.25
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 85441618602.0,
+                    "min": 85399175713.0,
+                    "geometric_mean": 85419648843.90265,
+                    "algebraic_mean": 85419649640.53333,
+                    "variance": 136097496187030.31,
+                    "standard_deviation": 11666083.155328112,
+                    "q1": 85409594724.5,
+                    "q3": 85429873011.75
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 24760.04,
+                    "min": 21583.64,
+                    "geometric_mean": 22528.933699192676,
+                    "algebraic_mean": 22550.884,
+                    "variance": 1014645.5470506669,
+                    "standard_deviation": 1007.2961565749504,
+                    "q1": 21723.0625,
+                    "q3": 23399.0325
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 81939712985.0,
+                    "min": 70449897399.0,
+                    "geometric_mean": 73469734025.02788,
+                    "algebraic_mean": 73544855718.93335,
+                    "variance": 1.1372169560697856e19,
+                    "standard_deviation": 3372264752.462039,
+                    "q1": 70820084072.0,
+                    "q3": 75623444964.0
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 8.836193075,
+                    "min": 4.52991695,
+                    "geometric_mean": 5.3310087022864225,
+                    "algebraic_mean": 5.423445254066666,
+                    "variance": 1.214976291834393,
+                    "standard_deviation": 1.102259629957658,
+                    "q1": 4.6624167725,
+                    "q3": 5.83446314675
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 392552.0,
+                    "min": 375740.0,
+                    "geometric_mean": 388484.8745479779,
+                    "algebraic_mean": 388497.4666666666,
+                    "variance": 9655114.115555556,
+                    "standard_deviation": 3107.2679503955815,
+                    "q1": 388054.0,
+                    "q3": 390095.0
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 23901.0,
+                    "min": 6969.0,
+                    "geometric_mean": 18670.933195592894,
+                    "algebraic_mean": 19304.56666666667,
+                    "variance": 15969733.11222222,
+                    "standard_deviation": 3996.21484810592,
+                    "q1": 19815.5,
+                    "q3": 21312.25
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 191792.0,
+                    "min": 138007.0,
+                    "geometric_mean": 161997.59651318452,
+                    "algebraic_mean": 162649.93333333335,
+                    "variance": 217449475.72888884,
+                    "standard_deviation": 14746.168171050025,
+                    "q1": 150169.25,
+                    "q3": 175182.0
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 621425962.0,
+                    "min": 613862591.0,
+                    "geometric_mean": 615918755.74079,
+                    "algebraic_mean": 615922264.0666666,
+                    "variance": 4335517750414.6626,
+                    "standard_deviation": 2082190.6133720472,
+                    "q1": 614523992.25,
+                    "q3": 616619769.5
+                }
+            ]
+        ]
+    },
+    {
+        "name": "xsv",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "task-clock",
+                {
+                    "max": 33109.45,
+                    "min": 29845.11,
+                    "geometric_mean": 30620.187220918404,
+                    "algebraic_mean": 30627.727333333336,
+                    "variance": 472551.6352395549,
+                    "standard_deviation": 687.4239123274334,
+                    "q1": 30092.8375,
+                    "q3": 31055.3125
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 309403.0,
+                    "min": 241642.0,
+                    "geometric_mean": 255817.34071929293,
+                    "algebraic_mean": 256776.46666666665,
+                    "variance": 529945307.1155556,
+                    "standard_deviation": 23020.540982252256,
+                    "q1": 242925.5,
+                    "q3": 267330.25
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 119838684513.0,
+                    "min": 119771744153.0,
+                    "geometric_mean": 119803447568.23676,
+                    "algebraic_mean": 119803448553.13336,
+                    "variance": 235993588877200.1,
+                    "standard_deviation": 15362082.830046194,
+                    "q1": 119791339582.5,
+                    "q3": 119812815223.25
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 572116.0,
+                    "min": 523600.0,
+                    "geometric_mean": 546846.4182835632,
+                    "algebraic_mean": 546978.9333333333,
+                    "variance": 144851884.72888884,
+                    "standard_deviation": 12035.442855536678,
+                    "q1": 538077.0,
+                    "q3": 555676.0
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 8.143174594,
+                    "min": 6.69266229,
+                    "geometric_mean": 7.033477300785009,
+                    "algebraic_mean": 7.0386224568,
+                    "variance": 0.0762352197852779,
+                    "standard_deviation": 0.2761072613773095,
+                    "q1": 6.852281707,
+                    "q3": 7.187525602
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 804139789.0,
+                    "min": 798643648.0,
+                    "geometric_mean": 800101343.6254828,
+                    "algebraic_mean": 800102101.6,
+                    "variance": 1214696394383.1064,
+                    "standard_deviation": 1102132.657343528,
+                    "q1": 799482397.75,
+                    "q3": 800321518.25
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 103293987892.0,
+                    "min": 97627470011.0,
+                    "geometric_mean": 99791845967.48253,
+                    "algebraic_mean": 99803456515.43332,
+                    "variance": 2.326857017261608e18,
+                    "standard_deviation": 1525403886.6023674,
+                    "q1": 98610679666.25,
+                    "q3": 101104253663.75
+                }
+            ],
+            [
+                "context-switches",
+                {
+                    "max": 58858.0,
+                    "min": 35270.0,
+                    "geometric_mean": 50045.28478756687,
+                    "algebraic_mean": 50264.9,
+                    "variance": 20489148.29,
+                    "standard_deviation": 4526.494039540978,
+                    "q1": 47931.25,
+                    "q3": 52768.75
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 33105.08,
+                    "min": 29841.62,
+                    "geometric_mean": 30616.61267104292,
+                    "algebraic_mean": 30624.15066666667,
+                    "variance": 472362.3625862225,
+                    "standard_deviation": 687.2862304645878,
+                    "q1": 30089.305,
+                    "q3": 31052.0775
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 232995571.0,
+                    "min": 155032328.0,
+                    "geometric_mean": 187301390.41672516,
+                    "algebraic_mean": 188604257.93333334,
+                    "variance": 495175402494946.3,
+                    "standard_deviation": 22252536.99008152,
+                    "q1": 171248956.75,
+                    "q3": 209195721.75
+                }
+            ]
+        ]
+    },
+    {
+        "name": "zoxide",
+        "profile": "Release",
+        "scenario": "Full",
+        "iterations": 30,
+        "statistic_vec": [
+            [
+                "context-switches",
+                {
+                    "max": 284.0,
+                    "min": 177.0,
+                    "geometric_mean": 221.08402896679672,
+                    "algebraic_mean": 221.8666666666666,
+                    "variance": 355.78222222222223,
+                    "standard_deviation": 18.862190281677847,
+                    "q1": 213.25,
+                    "q3": 230.5
+                }
+            ],
+            [
+                "cache-misses",
+                {
+                    "max": 56912035.0,
+                    "min": 50005466.0,
+                    "geometric_mean": 55053314.385362916,
+                    "algebraic_mean": 55103936.20000001,
+                    "variance": 5351134086942.96,
+                    "standard_deviation": 2313251.8425244926,
+                    "q1": 55601133.75,
+                    "q3": 56444407.75
+                }
+            ],
+            [
+                "task-clock",
+                {
+                    "max": 14404.37,
+                    "min": 13860.96,
+                    "geometric_mean": 14149.348597229886,
+                    "algebraic_mean": 14149.910999999998,
+                    "variance": 15848.492322333388,
+                    "standard_deviation": 125.89079522480343,
+                    "q1": 14123.637499999999,
+                    "q3": 14183.967499999999
+                }
+            ],
+            [
+                "cpu-clock",
+                {
+                    "max": 14404.36,
+                    "min": 13860.96,
+                    "geometric_mean": 14149.340264767376,
+                    "algebraic_mean": 14149.902666666669,
+                    "variance": 15848.4781595556,
+                    "standard_deviation": 125.89073897453935,
+                    "q1": 14123.6125,
+                    "q3": 14183.98
+                }
+            ],
+            [
+                "branch-misses",
+                {
+                    "max": 442611704.0,
+                    "min": 441400347.0,
+                    "geometric_mean": 441975080.1252898,
+                    "algebraic_mean": 441975210.2999999,
+                    "variance": 115098984044.14331,
+                    "standard_deviation": 339262.4117761107,
+                    "q1": 441766763.25,
+                    "q3": 442205833.75
+                }
+            ],
+            [
+                "faults",
+                {
+                    "max": 211007.0,
+                    "min": 190311.0,
+                    "geometric_mean": 204099.7884226615,
+                    "algebraic_mean": 204175.30000000002,
+                    "variance": 29896203.410000004,
+                    "standard_deviation": 5467.74207603102,
+                    "q1": 203986.25,
+                    "q3": 207419.5
+                }
+            ],
+            [
+                "max-rss",
+                {
+                    "max": 340256.0,
+                    "min": 339992.0,
+                    "geometric_mean": 340012.1303097605,
+                    "algebraic_mean": 340012.1333333334,
+                    "variance": 2057.048888888889,
+                    "standard_deviation": 45.35470084664752,
+                    "q1": 340004.0,
+                    "q3": 340004.0
+                }
+            ],
+            [
+                "cycles:u",
+                {
+                    "max": 50671589577.0,
+                    "min": 49248962131.0,
+                    "geometric_mean": 49809110366.0224,
+                    "algebraic_mean": 49810339648.99999,
+                    "variance": 1.2305805308782432e17,
+                    "standard_deviation": 350796312.81959665,
+                    "q1": 49627971102.25,
+                    "q3": 49859971323.75
+                }
+            ],
+            [
+                "wall-time",
+                {
+                    "max": 14.591087631,
+                    "min": 14.022439338,
+                    "geometric_mean": 14.323888143791962,
+                    "algebraic_mean": 14.324450874733332,
+                    "variance": 0.016049270549652606,
+                    "standard_deviation": 0.12668571564960512,
+                    "q1": 14.302434943000002,
+                    "q3": 14.36280325875
+                }
+            ],
+            [
+                "instructions:u",
+                {
+                    "max": 64739355145.0,
+                    "min": 64718568122.0,
+                    "geometric_mean": 64735145274.885864,
+                    "algebraic_mean": 64735145489.933334,
+                    "variance": 27838976968823.453,
+                    "standard_deviation": 5276265.437676867,
+                    "q1": 64736406776.0,
+                    "q3": 64736416434.25
+                }
+            ]
+        ]
+    }
+]

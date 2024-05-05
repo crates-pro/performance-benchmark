@@ -88,4 +88,36 @@ pub enum Commands {
         #[clap(long = "out-path", default_value = "results")]
         out_path: PathBuf,
     },
+
+    /// Merge several metrics into a new metric of a table data fmt file.
+    MergeTableMetrics {
+        /// The path of table data fmt file.
+        #[clap(long = "table-data")]
+        table_data_path: PathBuf,
+        /// The path of output file.
+        #[clap(long = "out-path")]
+        out_path: PathBuf,
+        /// Metrics need to be merged.
+        #[clap(long = "old-metrics")]
+        old_metrics: Vec<String>,
+        /// New metric merged from old-metrics.
+        #[clap(long = "merged-metric")]
+        merged_metric: String,
+    },
+
+    /// Merge compile-time stats into a table data fmt file.
+    MergeCompileTimeStatsToTable {
+        /// The path of table data fmt file.
+        #[clap(long = "table-data")]
+        table_data_path: PathBuf,
+        /// The path of compile-time stats fmt file.
+        #[clap(long = "stats")]
+        stats_path: PathBuf,
+        /// The path of output file.
+        #[clap(long = "out-path")]
+        out_path: PathBuf,
+        /// Metrics merged from stats fmt file.
+        #[clap(long = "new_metrics")]
+        new_metrics: Vec<String>,
+    },
 }

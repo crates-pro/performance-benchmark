@@ -33,13 +33,13 @@ pub fn draw_coordinate_map_2d(
     let mut pc_v = 2;
 
     feature_vectors.iter().for_each(|u| {
-        let mut iter_v = iter_feature_vectors.clone();
         iter_feature_vectors.next();
+        let mut iter_v = iter_feature_vectors.clone();
 
         while let Some(v) = iter_v.next() {
             let coordinates: Vec<(Coordinate, String)> = data_set
                 .iter_with_row_labels()
-                .map(|(data, label)| (get_coordinate_2d(&DVector::from_vec(data), u, v), label))
+                .map(|(data, label)| (get_coordinate_2d(DVector::from_vec(data), u, v), label))
                 .collect();
 
             draw(coordinates, pc_u, pc_v, out_dir).unwrap();
@@ -56,10 +56,15 @@ pub fn draw_coordinate_map_2d(
 pub type Coordinate = (f64, f64);
 
 fn get_coordinate_2d(
-    data: &DVector<f64>,
+    data: DVector<f64>,
     feature_x: &DVector<f64>,
     feature_y: &DVector<f64>,
 ) -> Coordinate {
+    let mut data = data.to_owned().normalize();
+    data.row_iter_mut().for_each(|mut r| {
+        let x = r.get_mut(0).unwrap();
+        *x *= 2.;
+    });
     (data.dot(feature_x), data.dot(feature_y))
 }
 
@@ -95,9 +100,9 @@ fn draw(
 mod coordinate_map_test {
     use std::{collections::HashMap, fs, path::PathBuf};
 
-    use crate::mir_analyze::data::table_data::{generate_benchmark_data, TableDatas};
+    use collector::mir_analyze::data::table_data::TableDatas;
 
-    use super::{draw_coordinate_map_2d, get_principle_components};
+    use super::draw_coordinate_map_2d;
 
     fn generate_table_data() -> TableDatas<String, String, i32> {
         vec![
@@ -172,19 +177,5 @@ mod coordinate_map_test {
         .unwrap();
 
         fs::remove_dir_all("test/draw_coordinate_map_2d").unwrap();
-    }
-
-    #[test]
-    fn test_allfiles() {
-        fs::create_dir("test/pca_map").unwrap();
-        let tmp_dir = PathBuf::from("test/pca_map");
-
-        let data = &generate_benchmark_data();
-        let principle_components = get_principle_components(data, 4);
-
-        println!("principle_components = {:?}", principle_components);
-
-        draw_coordinate_map_2d(&principle_components, data, &tmp_dir).unwrap();
-        fs::remove_dir_all("test/pca_map").unwrap();
     }
 }

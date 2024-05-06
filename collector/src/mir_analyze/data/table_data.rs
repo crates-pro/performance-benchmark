@@ -239,7 +239,7 @@ impl<X: Debug + Clone + Ord, Y: Debug + Clone + Ord + Display, T: Debug + Copy +
     }
 }
 
-fn into_vec<X: Clone + Ord, Y: Clone + Ord, T: Copy + Into<f64>>(
+pub fn into_vec<X: Clone + Ord, Y: Clone + Ord, T: Copy + Into<f64>>(
     table_data: &TableDatas<X, Y, T>,
 ) -> Vec<f64> {
     let mut data = vec![];
@@ -252,7 +252,7 @@ fn into_vec<X: Clone + Ord, Y: Clone + Ord, T: Copy + Into<f64>>(
 }
 
 /// Sort TableData by axis X and Y.
-fn sort<X: Ord + Clone, Y: Ord + Clone, T: Clone>(
+pub fn sort<X: Ord + Clone, Y: Ord + Clone, T: Clone>(
     table_data: &TableDatas<X, Y, T>,
 ) -> Vec<(X, Vec<(Y, T)>)> {
     let mut data_sorted = table_data

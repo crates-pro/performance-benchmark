@@ -97,9 +97,9 @@ pub enum Commands {
         /// The path of output file.
         #[clap(long = "out-path")]
         out_path: PathBuf,
-        /// Metrics need to be merged.
+        /// Metrics need to be merged. Use ',' to concanate the metrics.
         #[clap(long = "old-metrics")]
-        old_metrics: Vec<String>,
+        old_metrics: String,
         /// New metric merged from old-metrics.
         #[clap(long = "merged-metric")]
         merged_metric: String,
@@ -116,8 +116,21 @@ pub enum Commands {
         /// The path of output file.
         #[clap(long = "out-path")]
         out_path: PathBuf,
-        /// Metrics merged from stats fmt file.
+        /// Metrics merged from stats fmt file. Use ',' to concanate the metrics.
         #[clap(long = "new_metrics")]
-        new_metrics: Vec<String>,
+        new_metrics: String,
+    },
+
+    /// Do pca analysis on a table fmt file.
+    PcaAnalysis {
+        /// The path of table data fmt file.
+        #[clap(long = "table-data")]
+        table_data_path: PathBuf,
+        /// The path of output dir.
+        #[clap(long = "out-dir")]
+        out_dir: PathBuf,
+        /// The maximun number principle components.
+        #[clap(long = "max-component-num")]
+        max_component_num: u32,
     },
 }

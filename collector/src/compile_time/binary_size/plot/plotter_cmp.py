@@ -23,3 +23,9 @@ if __name__ == '__main__':
 
     plt.tight_layout()
     plt.savefig(out_file)
+
+    name_value =[item for item in zip(names, values)]
+    name_value.sort(key=lambda x: x[1])
+
+    for (name, value) in name_value:
+        print(name, ":", round(value, 2))

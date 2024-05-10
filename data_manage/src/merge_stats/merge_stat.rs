@@ -1,5 +1,5 @@
 use std::{
-    fs::{read_dir, File},
+    fs::{create_dir_all, read_dir, File},
     io::{BufReader, BufWriter},
     path::PathBuf,
 };
@@ -13,9 +13,10 @@ pub fn merge_compile_time_stats(
     root_dir: &PathBuf,
     profile: Profile,
     rustc: String,
-    out_path: PathBuf,
+    out_dir: PathBuf,
 ) -> anyhow::Result<PathBuf> {
     let mut merged_stats = CompileTimeStatistics::new();
+    let mut merged_data = CompileTimeResultSet::new(0.to_string(), vec![]);
 
     // Iterate each benchmark group under root dir.
     for bench_group in read_dir(root_dir)? {
@@ -32,7 +33,7 @@ pub fn merge_compile_time_stats(
                     for f in read_dir(rustc_dir.path())? {
                         let f = f?;
                         if f.file_name().to_str().unwrap().contains("results.json") {
-                            let data: CompileTimeResultSet =
+                            let mut data: CompileTimeResultSet =
                                 serde_json::from_reader(BufReader::new(File::open(f.path())?))?;
 
                             merged_stats.append(
@@ -42,6 +43,7 @@ pub fn merge_compile_time_stats(
                                     .filter(|s| s.profile == profile)
                                     .collect(),
                             );
+                            merged_data.results.append(&mut data.results);
                         }
                     }
                 }
@@ -51,9 +53,17 @@ pub fn merge_compile_time_stats(
 
     merged_stats.sort_by(|a, b| a.name.to_lowercase().cmp(&b.name.to_lowercase()));
 
-    serde_json::to_writer(BufWriter::new(File::create(&out_path)?), &merged_stats)?;
+    create_dir_all(&out_dir)?;
+    serde_json::to_writer(
+        BufWriter::new(File::create(&out_dir.join("merged-stats.json"))?),
+        &merged_stats,
+    )?;
+    serde_json::to_writer(
+        BufWriter::new(File::create(&out_dir.join("merged-data.json"))?),
+        &merged_data,
+    )?;
 
-    Ok(out_path)
+    Ok(out_dir)
 }
 
 #[cfg(test)]
@@ -82,18 +92,21 @@ mod test_merge_stat {
         let root_dir = PathBuf::from("test/merge_stats/merge_stat/stat");
         let profile = Profile::Release;
         let rustc = String::from("rustc_A");
-        let out_path = PathBuf::from("test/merge_stats/merge_stat/merge.json");
+        let out_dir = PathBuf::from("test/merge_stats/merge_stat/");
+        let out_data = out_dir.join("merged-data.json");
+        let out_stats = out_dir.join("merged-stats.json");
 
         assert_eq!(
-            merge_compile_time_stats(&root_dir, profile, rustc, out_path.clone()).unwrap(),
-            out_path,
+            merge_compile_time_stats(&root_dir, profile, rustc, out_dir.clone()).unwrap(),
+            out_dir,
         );
 
         let stats: CompileTimeStatistics =
-            serde_json::from_reader(BufReader::new(File::open(&out_path).unwrap())).unwrap();
+            serde_json::from_reader(BufReader::new(File::open(&out_stats).unwrap())).unwrap();
 
         assert_eq!(12, stats.len());
 
-        remove_file(out_path).unwrap();
+        remove_file(out_data).unwrap();
+        remove_file(out_stats).unwrap();
     }
 }

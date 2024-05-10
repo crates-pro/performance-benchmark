@@ -10,11 +10,11 @@ use crate::{
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct CompileTimeResult {
-    benchmark: String,
-    iteration: usize,
-    profile: Profile,
-    scenario: Scenario,
-    stats: Stats,
+    pub benchmark: String,
+    pub iteration: usize,
+    pub profile: Profile,
+    pub scenario: Scenario,
+    pub stats: Stats,
 }
 
 impl CompileTimeResult {
@@ -35,11 +35,11 @@ impl CompileTimeResult {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct CompileTimeBenchResult {
-    benchmark: String,
-    iterations: usize,
-    result_vec: Vec<CompileTimeResult>,
+    pub benchmark: String,
+    pub iterations: usize,
+    pub result_vec: Vec<CompileTimeResult>,
 }
 
 impl CompileTimeBenchResult {
@@ -90,10 +90,10 @@ impl CompileTimeBenchResult {
     }
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct CompileTimeResultSet {
-    id: String,
-    results: Vec<CompileTimeBenchResult>,
+    pub id: String,
+    pub results: Vec<CompileTimeBenchResult>,
 }
 
 impl CompileTimeResultSet {
@@ -141,7 +141,7 @@ impl CompileTimeResultSet {
     }
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct CompileTimeStatistic {
     pub name: String,
     pub profile: Profile,

@@ -45,8 +45,8 @@ if __name__ == '__main__':
         ),
         plot_bgcolor="lightgrey",
         paper_bgcolor="white",
-        width=1200,
-        height=800,
+        width=400,
+        height=400,
     )
 
     fig.write_image(out_path)

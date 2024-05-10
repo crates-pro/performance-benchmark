@@ -1,7 +1,7 @@
 pub mod benchmark;
 mod compile_time;
 mod csv_transfer;
-mod execute;
+pub mod execute;
 pub mod mir_analyze;
 mod morpheme_miner;
 mod pca_analysis;

@@ -6,7 +6,8 @@ use std::{
 };
 
 use collector::{
-    mir_analyze::data::table_data::TableDatas, statistics::compile_time_stat::CompileTimeStatistics,
+    mir_analyze::data::table_data::TableDatas,
+    statistics::{compile_time_stat::CompileTimeStatistics, runtime_stat::RuntimeStatistics},
 };
 
 pub fn merge_metrics_on_table_data(
@@ -45,6 +46,24 @@ pub fn merge_metrics_from_compile_time_stats_to_table_data(
     Ok(out_path.to_path_buf())
 }
 
+pub fn merge_runtime_metrics_to_table_data(
+    table_data_path: &Path,
+    stats_path: &Path,
+    out_path: &Path,
+    new_metrics: Vec<String>,
+) -> anyhow::Result<PathBuf> {
+    serde_json::to_writer(
+        BufWriter::new(File::create(out_path)?),
+        &merge_metrics_from_runtime_stats(
+            serde_json::from_reader(BufReader::new(File::open(table_data_path)?))?,
+            serde_json::from_reader(BufReader::new(File::open(stats_path)?))?,
+            new_metrics,
+        ),
+    )?;
+
+    Ok(out_path.to_path_buf())
+}
+
 fn merge_metrics(
     data: TableDatas<String, String, f64>,
     old_metrics: &Vec<String>,
@@ -74,6 +93,37 @@ fn merge_metrics(
 fn merge_metrics_from_compile_time_stats(
     mut data: TableDatas<String, String, f64>,
     stats: CompileTimeStatistics,
+    new_metrics: Vec<String>,
+) -> TableDatas<String, String, f64> {
+    let stats: HashMap<String, HashMap<String, _>> = stats
+        .into_iter()
+        .map(|s| {
+            (
+                s.name,
+                s.statistic_vec
+                    .into_iter()
+                    .map(|(name, stats)| (name, stats))
+                    .collect(),
+            )
+        })
+        .collect();
+
+    new_metrics.into_iter().for_each(|m| {
+        data.insert(
+            m.clone(),
+            stats
+                .iter()
+                .map(|(b, stats_map)| (b.clone(), stats_map.get(&m).unwrap().geometric_mean))
+                .collect(),
+        );
+    });
+
+    data
+}
+
+fn merge_metrics_from_runtime_stats(
+    mut data: TableDatas<String, String, f64>,
+    stats: RuntimeStatistics,
     new_metrics: Vec<String>,
 ) -> TableDatas<String, String, f64> {
     let stats: HashMap<String, HashMap<String, _>> = stats

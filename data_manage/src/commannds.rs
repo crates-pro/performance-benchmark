@@ -150,6 +150,7 @@ pub enum Commands {
         new_metrics: String,
     },
 
+
     /// Merge runtime stats into a table data fmt file.
     MergeRuntimeStatsToTable {
         /// The path of table data fmt file.
@@ -165,7 +166,6 @@ pub enum Commands {
         #[clap(long = "new_metrics")]
         new_metrics: String,
     },
-
     /// Do pca analysis on a table fmt file.
     PcaAnalysis {
         /// The path of table data fmt file.

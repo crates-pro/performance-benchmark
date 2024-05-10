@@ -28,7 +28,7 @@ if __name__ == '__main__':
             y=list(map(lambda data: data.y, datas)),
             mode="markers+text",
             name="",
-            # text=list(map(lambda data: data.label, datas)),
+            text=list(map(lambda data: data.label, datas)),
             textposition="bottom center",
         ))
     

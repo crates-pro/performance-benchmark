@@ -379,6 +379,21 @@ pub enum Commands {
         #[clap(long = "out-path", default_value = "results")]
         out_path: PathBuf,
     },
+
+    /// Analyze source codes of benchmarks.
+    SourceCodeAnalyze {
+        /// The path of benchmark dir
+        #[clap(long = "bench-dir", default_value = "../benchmarks/compile-time")]
+        bench_dir: PathBuf,
+
+        /// The path of local cargo dependencies dir.
+        #[clap(long = "dependency-dir")]
+        dependency_dir: PathBuf,
+
+        /// The path of output directory.
+        #[clap(long = "out-dir", default_value = "results")]
+        out_path: PathBuf,
+    },
 }
 
 #[derive(Debug)]

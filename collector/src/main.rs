@@ -5,7 +5,7 @@ use std::{
     process::{self, Command},
 };
 
-use anyhow::{Context, Ok};
+use anyhow::{bail, Context, Ok};
 use benchmark::scenario::Scenario;
 use clap::Parser;
 use compile_time::{
@@ -18,6 +18,7 @@ use compile_time::{
 };
 use mir_analyze::mir_generate::generate_mir;
 use runtime::bench_runtime;
+use src_code_analyze::entry::src_code_analyze;
 use toolchain::{Cli, Commands, ResultWriter};
 
 use crate::{
@@ -35,6 +36,7 @@ mod morpheme_miner;
 mod pca_analysis;
 mod perf_analyze;
 mod runtime;
+mod src_code_analyze;
 mod statistics;
 mod toolchain;
 mod utils;
@@ -307,6 +309,20 @@ fn main_result() -> anyhow::Result<i32> {
 
             Ok(0)
         }
+        Commands::SourceCodeAnalyze {
+            bench_dir,
+            dependency_dir,
+            out_path,
+        } => match src_code_analyze(bench_dir, dependency_dir, out_path) {
+            anyhow::Result::Ok(p) => {
+                println!(
+                    "Write analyze result to {}.",
+                    p.as_os_str().to_str().unwrap()
+                );
+                Ok(0)
+            }
+            Err(e) => bail!("{}", e),
+        },
     }
 }
 

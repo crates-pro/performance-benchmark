@@ -93,6 +93,13 @@ impl Stats {
     pub fn insert(&mut self, stat: String, value: f64) {
         self.stats.insert(stat, value);
     }
+
+    pub fn add_or_insert(&mut self, stat: String, value: f64) {
+        match self.stats.get_mut(&stat) {
+            Some(e) => *e += value,
+            None => self.insert(stat, value),
+        }
+    }
 }
 
 impl Add for Stats {

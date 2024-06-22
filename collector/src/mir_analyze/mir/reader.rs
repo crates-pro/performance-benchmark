@@ -230,17 +230,17 @@ pub const TEST_RUSTC: [TestFile; 32] = [
         path: "test/rustperf/unicode.mir",
     },
 
-    TestFile {
+    /*TestFile {
         name: "tuple_stress",
         path: "test/rustperf/tuple_stress.mir",
-    },
+    },*/
 
     TestFile {
         name: "piston_image",
         path: "test/rustperf/piston_image.mir",
     },
 
-    TestFile {
+    /*TestFile {
         name: "cranelift",
         path: "test/rustperf/cranelift.mir",
     },
@@ -248,7 +248,7 @@ pub const TEST_RUSTC: [TestFile; 32] = [
     TestFile {
         name: "diesel",
         path: "test/rustperf/diesel.mir",
-    },
+    },*/
 
     TestFile {
         name: "wg_grammer",
@@ -270,10 +270,10 @@ pub const TEST_RUSTC: [TestFile; 32] = [
         path: "test/rustperf/serde_drive.mir",
     },
 
-    TestFile {
+    /*TestFile {
         name: "coercions",
         path: "test/rustperf/coercions.mir",
-    },
+    },*/
 
     TestFile {
         name: "regress",

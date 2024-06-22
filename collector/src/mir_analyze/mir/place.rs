@@ -15,7 +15,7 @@ pub enum Place {
     Empty,
     Index(Index),
 }
- 
+
 #[derive(Debug)]
 pub struct Field {
     pub place: Box<Place>,

@@ -1,0 +1,2486 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn <impl at src/main.rs:176:1: 185:2>::new_service(_1: &FactoryWrapper<SF>, _2: ()) -> Pin<Box<dyn Future<Output =  Result<Box<dyn Service<Req, Error = (), Future = Pin<Box<dyn Future<Output = Result<(), ()>>>>>>, ()>>>> {
+    debug self => _1;                    // in scope 0 at src/main.rs:184:20: 184:25
+    let mut _0: std::pin::Pin<std::boxed::Box<dyn std::future::Future<Output = std::result::Result<std::boxed::Box<dyn Service<Req, Error = (), Future = std::pin::Pin<std::boxed::Box<dyn std::future::Future<Output = std::result::Result<(), ()>>>>>>, ()>>>>; // return place in scope 0 at src/main.rs:184:37: 184:49
+ 
+    bb0: {
+        panic(const "not yet implemented"); // scope 0 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+}
+
+fn route(_1: FooDb) -> impl Future {
+    debug database => _1;                // in scope 0 at src/main.rs:89:16: 89:24
+    let mut _0: impl std::future::Future; // return place in scope 0 at src/main.rs:89:36: 89:53
+    let mut _2: [static generator@src/main.rs:89:54: 92:2]; // in scope 0 at src/main.rs:89:54: 92:2
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/main.rs:89:54: 92:2
+        discriminant(_2) = 0;            // scope 0 at src/main.rs:89:54: 92:2
+        _0 = from_generator::<[static generator@src/main.rs:89:54: 92:2]>(move _2) -> bb1; // scope 0 at src/main.rs:89:54: 92:2
+                                         // mir::Constant
+                                         // + span: src/main.rs:89:54: 92:2
+                                         // + literal: Const { ty: fn([static generator@src/main.rs:89:54: 92:2]) -> impl std::future::Future {std::future::from_generator::<[static generator@src/main.rs:89:54: 92:2]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_2);                 // scope 0 at src/main.rs:92:1: 92:2
+        return;                          // scope 0 at src/main.rs:92:2: 92:2
+    }
+}
+
+fn factory(_1: X) -> BoxServiceFactory<Req> {
+    debug factory => _1;                 // in scope 0 at src/main.rs:83:20: 83:27
+    let mut _0: BoxServiceFactory<Req>;  // return place in scope 0 at src/main.rs:83:35: 83:57
+    let mut _2: std::boxed::Box<dyn ServiceFactory<Req, Service = std::boxed::Box<dyn Service<Req, Error = (), Future = std::pin::Pin<std::boxed::Box<dyn std::future::Future<Output = std::result::Result<(), ()>>>>>>, Future = std::pin::Pin<std::boxed::Box<dyn std::future::Future<Output = std::result::Result<std::boxed::Box<dyn Service<Req, Error = (), Future = std::pin::Pin<std::boxed::Box<dyn std::future::Future<Output = std::result::Result<(), ()>>>>>>, ()>>>>>>; // in scope 0 at src/main.rs:85:23: 85:56
+    let mut _3: std::boxed::Box<FactoryWrapper<X>>; // in scope 0 at src/main.rs:85:23: 85:56
+    let mut _4: FactoryWrapper<X>;       // in scope 0 at src/main.rs:85:32: 85:55
+    let mut _5: X;                       // in scope 0 at src/main.rs:85:47: 85:54
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/main.rs:85:23: 85:56
+        StorageLive(_3);                 // scope 0 at src/main.rs:85:23: 85:56
+        StorageLive(_4);                 // scope 0 at src/main.rs:85:32: 85:55
+        StorageLive(_5);                 // scope 0 at src/main.rs:85:47: 85:54
+        _5 = move _1;                    // scope 0 at src/main.rs:85:47: 85:54
+        (_4.0: X) = move _5;             // scope 0 at src/main.rs:85:32: 85:55
+        StorageDead(_5);                 // scope 0 at src/main.rs:85:54: 85:55
+        _3 = Box::<FactoryWrapper<X>>::new(move _4) -> bb1; // scope 0 at src/main.rs:85:23: 85:56
+                                         // mir::Constant
+                                         // + span: src/main.rs:85:23: 85:31
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn(FactoryWrapper<X>) -> std::boxed::Box<FactoryWrapper<X>> {std::boxed::Box::<FactoryWrapper<X>>::new}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        _2 = move _3 as std::boxed::Box<dyn ServiceFactory<Req, Service = std::boxed::Box<dyn Service<Req, Error = (), Future = std::pin::Pin<std::boxed::Box<dyn std::future::Future<Output = std::result::Result<(), ()>>>>>>, Future = std::pin::Pin<std::boxed::Box<dyn std::future::Future<Output = std::result::Result<std::boxed::Box<dyn Service<Req, Error = (), Future = std::pin::Pin<std::boxed::Box<dyn std::future::Future<Output = std::result::Result<(), ()>>>>>>, ()>>>>>> (Pointer(Unsize)); // scope 0 at src/main.rs:85:23: 85:56
+        StorageDead(_4);                 // scope 0 at src/main.rs:85:55: 85:56
+        StorageDead(_3);                 // scope 0 at src/main.rs:85:55: 85:56
+        (_0.0: std::boxed::Box<dyn ServiceFactory<Req, Service = std::boxed::Box<dyn Service<Req, Error = (), Future = std::pin::Pin<std::boxed::Box<dyn std::future::Future<Output = std::result::Result<(), ()>>>>>>, Future = std::pin::Pin<std::boxed::Box<dyn std::future::Future<Output = std::result::Result<std::boxed::Box<dyn Service<Req, Error = (), Future = std::pin::Pin<std::boxed::Box<dyn std::future::Future<Output = std::result::Result<(), ()>>>>>>, ()>>>>>>) = move _2; // scope 0 at src/main.rs:85:5: 85:57
+        StorageDead(_2);                 // scope 0 at src/main.rs:85:56: 85:57
+        return;                          // scope 0 at src/main.rs:86:2: 86:2
+    }
+}
+
+fn <impl at src/main.rs:36:1: 76:2>::nested::{closure#0}::{closure#0}::{closure#0}::{closure#0}::{closure#0}(_1: Pin<&mut [static generator@src/main.rs:47:36: 58:26]>, _2: ResumeTy) -> GeneratorState<(), Result<String, ()>> {
+    debug _task_context => _22;          // in scope 0 at src/main.rs:47:36: 58:26
+    let mut _0: std::ops::GeneratorState<(), std::result::Result<std::string::String, ()>>; // return place in scope 0 at src/main.rs:47:36: 58:26
+    let mut _3: std::result::Result<std::string::String, ()>; // in scope 0 at src/main.rs:48:35: 53:35
+    let mut _4: impl std::future::Future; // in scope 0 at src/main.rs:48:35: 52:30
+    let mut _5: [static generator@src/main.rs:48:46: 52:30]; // in scope 0 at src/main.rs:48:46: 52:30
+    let mut _6: std::task::Poll<std::result::Result<std::string::String, ()>>; // in scope 0 at src/main.rs:48:35: 53:35
+    let mut _7: std::pin::Pin<&mut impl std::future::Future>; // in scope 0 at src/main.rs:48:35: 53:35
+    let mut _8: &mut impl std::future::Future; // in scope 0 at src/main.rs:48:35: 53:35
+    let mut _9: &mut impl std::future::Future; // in scope 0 at src/main.rs:48:35: 53:35
+    let mut _10: &mut std::task::Context; // in scope 0 at src/main.rs:48:35: 53:35
+    let mut _11: &mut std::task::Context; // in scope 0 at src/main.rs:48:35: 53:35
+    let mut _12: std::future::ResumeTy;  // in scope 0 at src/main.rs:48:35: 53:35
+    let mut _13: isize;                  // in scope 0 at src/main.rs:48:35: 53:35
+    let mut _15: std::future::ResumeTy;  // in scope 0 at src/main.rs:48:35: 53:35
+    let mut _16: ();                     // in scope 0 at src/main.rs:48:35: 53:35
+    let mut _17: isize;                  // in scope 0 at src/main.rs:55:33: 55:38
+    let _18: std::string::String;        // in scope 0 at src/main.rs:55:36: 55:37
+    let mut _19: std::string::String;    // in scope 0 at src/main.rs:55:45: 55:46
+    let _20: std::result::Result<std::string::String, ()>; // in scope 0 at src/main.rs:56:33: 56:37
+    let mut _21: std::result::Result<std::string::String, ()>; // in scope 0 at src/main.rs:47:36: 58:26
+    let mut _22: std::future::ResumeTy;  // in scope 0 at src/main.rs:47:36: 58:26
+    let mut _23: u32;                    // in scope 0 at src/main.rs:47:36: 58:26
+    scope 1 {
+        debug pinned => (((*(_1.0: &mut [static generator@src/main.rs:47:36: 58:26])) as variant#3).0: impl std::future::Future); // in scope 1 at src/main.rs:48:35: 53:35
+        let _14: std::result::Result<std::string::String, ()>; // in scope 1 at src/main.rs:48:35: 53:35
+        scope 2 {
+        }
+        scope 3 {
+            debug result => _14;         // in scope 3 at src/main.rs:48:35: 53:35
+        }
+    }
+    scope 4 {
+        debug x => _18;                  // in scope 4 at src/main.rs:55:36: 55:37
+    }
+    scope 5 {
+        debug Err0 => _20;               // in scope 5 at src/main.rs:56:33: 56:37
+    }
+
+    bb0: {
+        _23 = discriminant((*(_1.0: &mut [static generator@src/main.rs:47:36: 58:26]))); // scope 0 at src/main.rs:47:36: 58:26
+        switchInt(move _23) -> [0_u32: bb1, 1_u32: bb23, 2_u32: bb22, 3_u32: bb21, otherwise: bb24]; // scope 0 at src/main.rs:47:36: 58:26
+    }
+
+    bb1: {
+        _22 = move _2;                   // scope 0 at src/main.rs:47:36: 58:26
+        StorageLive(_3);                 // scope 0 at src/main.rs:48:35: 53:35
+        StorageLive(_4);                 // scope 0 at src/main.rs:48:35: 52:30
+        StorageLive(_5);                 // scope 0 at src/main.rs:48:46: 52:30
+        discriminant(_5) = 0;            // scope 0 at src/main.rs:48:46: 52:30
+        _4 = from_generator::<[static generator@src/main.rs:48:46: 52:30]>(move _5) -> [return: bb2, unwind: bb19]; // scope 0 at src/main.rs:48:35: 52:30
+                                         // mir::Constant
+                                         // + span: src/main.rs:48:46: 52:30
+                                         // + literal: Const { ty: fn([static generator@src/main.rs:48:46: 52:30]) -> impl std::future::Future {std::future::from_generator::<[static generator@src/main.rs:48:46: 52:30]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_5);                 // scope 0 at src/main.rs:52:29: 52:30
+        (((*(_1.0: &mut [static generator@src/main.rs:47:36: 58:26])) as variant#3).0: impl std::future::Future) = move _4; // scope 0 at src/main.rs:48:35: 53:35
+        goto -> bb3;                     // scope 1 at src/main.rs:48:35: 53:35
+    }
+
+    bb3: {
+        StorageLive(_6);                 // scope 1 at src/main.rs:48:35: 53:35
+        StorageLive(_7);                 // scope 2 at src/main.rs:48:35: 53:35
+        StorageLive(_8);                 // scope 2 at src/main.rs:48:35: 53:35
+        StorageLive(_9);                 // scope 2 at src/main.rs:48:35: 53:35
+        _9 = &mut (((*(_1.0: &mut [static generator@src/main.rs:47:36: 58:26])) as variant#3).0: impl std::future::Future); // scope 2 at src/main.rs:48:35: 53:35
+        _8 = &mut (*_9);                 // scope 2 at src/main.rs:48:35: 53:35
+        _7 = Pin::<&mut impl Future>::new_unchecked(move _8) -> [return: bb4, unwind: bb17]; // scope 2 at src/main.rs:48:35: 53:35
+                                         // mir::Constant
+                                         // + span: src/main.rs:48:35: 53:35
+                                         // + literal: Const { ty: unsafe fn(&mut impl std::future::Future) -> std::pin::Pin<&mut impl std::future::Future> {std::pin::Pin::<&mut impl std::future::Future>::new_unchecked}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb4: {
+        StorageDead(_8);                 // scope 2 at src/main.rs:53:34: 53:35
+        StorageLive(_10);                // scope 2 at src/main.rs:48:35: 53:35
+        StorageLive(_11);                // scope 2 at src/main.rs:48:35: 53:35
+        StorageLive(_12);                // scope 2 at src/main.rs:48:35: 53:35
+        _12 = _22;                       // scope 2 at src/main.rs:48:35: 53:35
+        _11 = get_context(move _12) -> [return: bb5, unwind: bb15]; // scope 2 at src/main.rs:48:35: 53:35
+                                         // mir::Constant
+                                         // + span: src/main.rs:48:35: 53:35
+                                         // + literal: Const { ty: unsafe fn(std::future::ResumeTy) -> &mut std::task::Context {std::future::get_context}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb5: {
+        _10 = &mut (*_11);               // scope 2 at src/main.rs:48:35: 53:35
+        StorageDead(_12);                // scope 2 at src/main.rs:53:34: 53:35
+        _6 = <impl Future as Future>::poll(move _7, move _10) -> [return: bb6, unwind: bb16]; // scope 2 at src/main.rs:48:35: 53:35
+                                         // mir::Constant
+                                         // + span: src/main.rs:48:35: 53:35
+                                         // + literal: Const { ty: for<'r, 's, 't0> fn(std::pin::Pin<&'r mut impl std::future::Future>, &'s mut std::task::Context<'t0>) -> std::task::Poll<<impl std::future::Future as std::future::Future>::Output> {<impl std::future::Future as std::future::Future>::poll}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb6: {
+        StorageDead(_10);                // scope 2 at src/main.rs:53:34: 53:35
+        StorageDead(_7);                 // scope 2 at src/main.rs:53:34: 53:35
+        _13 = discriminant(_6);          // scope 1 at src/main.rs:48:35: 53:35
+        switchInt(move _13) -> [0_isize: bb9, 1_isize: bb7, otherwise: bb8]; // scope 1 at src/main.rs:48:35: 53:35
+    }
+
+    bb7: {
+        StorageDead(_11);                // scope 1 at src/main.rs:53:34: 53:35
+        StorageDead(_9);                 // scope 1 at src/main.rs:53:34: 53:35
+        StorageDead(_6);                 // scope 1 at src/main.rs:53:34: 53:35
+        StorageLive(_15);                // scope 1 at src/main.rs:48:35: 53:35
+        StorageLive(_16);                // scope 1 at src/main.rs:48:35: 53:35
+        ((_0 as Yielded).0: ()) = move _16; // scope 1 at src/main.rs:48:35: 53:35
+        discriminant(_0) = 0;            // scope 1 at src/main.rs:48:35: 53:35
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:47:36: 58:26]))) = 3; // scope 1 at src/main.rs:48:35: 53:35
+        return;                          // scope 1 at src/main.rs:48:35: 53:35
+    }
+
+    bb8: {
+        unreachable;                     // scope 1 at src/main.rs:48:35: 53:35
+    }
+
+    bb9: {
+        StorageLive(_14);                // scope 1 at src/main.rs:48:35: 53:35
+        _14 = move ((_6 as Ready).0: std::result::Result<std::string::String, ()>); // scope 1 at src/main.rs:48:35: 53:35
+        _3 = move _14;                   // scope 3 at src/main.rs:48:35: 53:35
+        StorageDead(_14);                // scope 1 at src/main.rs:53:34: 53:35
+        StorageDead(_11);                // scope 1 at src/main.rs:53:34: 53:35
+        StorageDead(_9);                 // scope 1 at src/main.rs:53:34: 53:35
+        StorageDead(_6);                 // scope 1 at src/main.rs:53:34: 53:35
+        drop((((*(_1.0: &mut [static generator@src/main.rs:47:36: 58:26])) as variant#3).0: impl std::future::Future)) -> [return: bb10, unwind: bb20]; // scope 0 at src/main.rs:53:34: 53:35
+    }
+
+    bb10: {
+        _17 = discriminant(_3);          // scope 0 at src/main.rs:48:35: 53:35
+        switchInt(move _17) -> [0_isize: bb12, otherwise: bb11]; // scope 0 at src/main.rs:48:29: 53:35
+    }
+
+    bb11: {
+        StorageLive(_20);                // scope 0 at src/main.rs:56:33: 56:37
+        _20 = move _3;                   // scope 0 at src/main.rs:56:33: 56:37
+        panic(const "not yet implemented") -> bb13; // scope 5 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+
+    bb12: {
+        StorageLive(_18);                // scope 0 at src/main.rs:55:36: 55:37
+        _18 = move ((_3 as Ok).0: std::string::String); // scope 0 at src/main.rs:55:36: 55:37
+        StorageLive(_19);                // scope 4 at src/main.rs:55:45: 55:46
+        _19 = move _18;                  // scope 4 at src/main.rs:55:45: 55:46
+        ((_21 as Ok).0: std::string::String) = move _19; // scope 4 at src/main.rs:55:42: 55:47
+        discriminant(_21) = 0;           // scope 4 at src/main.rs:55:42: 55:47
+        StorageDead(_19);                // scope 4 at src/main.rs:55:46: 55:47
+        StorageDead(_18);                // scope 0 at src/main.rs:55:46: 55:47
+        StorageDead(_4);                 // scope 0 at src/main.rs:58:25: 58:26
+        StorageDead(_3);                 // scope 0 at src/main.rs:58:25: 58:26
+        ((_0 as Complete).0: std::result::Result<std::string::String, ()>) = move _21; // scope 0 at src/main.rs:58:26: 58:26
+        discriminant(_0) = 1;            // scope 0 at src/main.rs:58:26: 58:26
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:47:36: 58:26]))) = 1; // scope 0 at src/main.rs:58:26: 58:26
+        return;                          // scope 0 at src/main.rs:58:26: 58:26
+    }
+
+    bb13 (cleanup): {
+        drop(_20) -> bb14;               // scope 0 at src/main.rs:56:47: 56:48
+    }
+
+    bb14 (cleanup): {
+        StorageDead(_20);                // scope 0 at src/main.rs:56:47: 56:48
+        goto -> bb20;                    // scope 0 at no-location
+    }
+
+    bb15 (cleanup): {
+        StorageDead(_12);                // scope 2 at src/main.rs:53:34: 53:35
+        goto -> bb16;                    // scope 2 at no-location
+    }
+
+    bb16 (cleanup): {
+        StorageDead(_10);                // scope 2 at src/main.rs:53:34: 53:35
+        StorageDead(_7);                 // scope 2 at src/main.rs:53:34: 53:35
+        StorageDead(_11);                // scope 1 at src/main.rs:53:34: 53:35
+        goto -> bb18;                    // scope 1 at no-location
+    }
+
+    bb17 (cleanup): {
+        StorageDead(_8);                 // scope 2 at src/main.rs:53:34: 53:35
+        StorageDead(_7);                 // scope 2 at src/main.rs:53:34: 53:35
+        goto -> bb18;                    // scope 2 at no-location
+    }
+
+    bb18 (cleanup): {
+        StorageDead(_9);                 // scope 1 at src/main.rs:53:34: 53:35
+        StorageDead(_6);                 // scope 1 at src/main.rs:53:34: 53:35
+        drop((((*(_1.0: &mut [static generator@src/main.rs:47:36: 58:26])) as variant#3).0: impl std::future::Future)) -> bb20; // scope 0 at src/main.rs:53:34: 53:35
+    }
+
+    bb19 (cleanup): {
+        StorageDead(_5);                 // scope 0 at src/main.rs:52:29: 52:30
+        goto -> bb20;                    // scope 0 at no-location
+    }
+
+    bb20 (cleanup): {
+        StorageDead(_4);                 // scope 0 at src/main.rs:58:25: 58:26
+        StorageDead(_3);                 // scope 0 at src/main.rs:58:25: 58:26
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:47:36: 58:26]))) = 2; // scope 0 at src/main.rs:47:36: 58:26
+        resume;                          // scope 0 at src/main.rs:47:36: 58:26
+    }
+
+    bb21: {
+        StorageLive(_3);                 // scope 0 at src/main.rs:47:36: 58:26
+        StorageLive(_4);                 // scope 0 at src/main.rs:47:36: 58:26
+        StorageLive(_15);                // scope 0 at src/main.rs:47:36: 58:26
+        StorageLive(_16);                // scope 0 at src/main.rs:47:36: 58:26
+        _15 = move _2;                   // scope 0 at src/main.rs:47:36: 58:26
+        StorageDead(_16);                // scope 1 at src/main.rs:53:34: 53:35
+        _22 = move _15;                  // scope 1 at src/main.rs:48:35: 53:35
+        StorageDead(_15);                // scope 1 at src/main.rs:53:34: 53:35
+        goto -> bb3;                     // scope 1 at src/main.rs:48:35: 53:35
+    }
+
+    bb22: {
+        assert(const false, "`async fn` resumed after panicking") -> bb22; // scope 0 at src/main.rs:47:36: 58:26
+    }
+
+    bb23: {
+        assert(const false, "`async fn` resumed after completion") -> bb23; // scope 0 at src/main.rs:47:36: 58:26
+    }
+
+    bb24: {
+        unreachable;                     // scope 0 at src/main.rs:47:36: 58:26
+    }
+}
+
+fn <impl at src/main.rs:36:1: 76:2>::nested::{closure#0}::{closure#0}(_1: Pin<&mut [static generator@src/main.rs:43:21: 72:10]>, _2: ResumeTy) -> GeneratorState<(), Result<Option<String>, ()>> {
+    debug _task_context => _23;          // in scope 0 at src/main.rs:43:21: 72:10
+    let mut _0: std::ops::GeneratorState<(), std::result::Result<std::option::Option<std::string::String>, ()>>; // return place in scope 0 at src/main.rs:43:21: 72:10
+    let mut _3: std::result::Result<std::option::Option<std::string::String>, ()>; // in scope 0 at src/main.rs:44:19: 67:19
+    let mut _4: impl std::future::Future; // in scope 0 at src/main.rs:44:19: 66:14
+    let mut _5: [static generator@src/main.rs:44:30: 66:14]; // in scope 0 at src/main.rs:44:30: 66:14
+    let mut _6: std::task::Poll<std::result::Result<std::option::Option<std::string::String>, ()>>; // in scope 0 at src/main.rs:44:19: 67:19
+    let mut _7: std::pin::Pin<&mut impl std::future::Future>; // in scope 0 at src/main.rs:44:19: 67:19
+    let mut _8: &mut impl std::future::Future; // in scope 0 at src/main.rs:44:19: 67:19
+    let mut _9: &mut impl std::future::Future; // in scope 0 at src/main.rs:44:19: 67:19
+    let mut _10: &mut std::task::Context; // in scope 0 at src/main.rs:44:19: 67:19
+    let mut _11: &mut std::task::Context; // in scope 0 at src/main.rs:44:19: 67:19
+    let mut _12: std::future::ResumeTy;  // in scope 0 at src/main.rs:44:19: 67:19
+    let mut _13: isize;                  // in scope 0 at src/main.rs:44:19: 67:19
+    let mut _15: std::future::ResumeTy;  // in scope 0 at src/main.rs:44:19: 67:19
+    let mut _16: ();                     // in scope 0 at src/main.rs:44:19: 67:19
+    let mut _17: isize;                  // in scope 0 at src/main.rs:69:17: 69:22
+    let _18: std::option::Option<std::string::String>; // in scope 0 at src/main.rs:69:20: 69:21
+    let mut _19: std::option::Option<std::string::String>; // in scope 0 at src/main.rs:69:29: 69:30
+    let _20: ();                         // in scope 0 at src/main.rs:70:21: 70:22
+    let mut _21: ();                     // in scope 0 at src/main.rs:70:31: 70:32
+    let mut _22: std::result::Result<std::option::Option<std::string::String>, ()>; // in scope 0 at src/main.rs:43:21: 72:10
+    let mut _23: std::future::ResumeTy;  // in scope 0 at src/main.rs:43:21: 72:10
+    let mut _24: u32;                    // in scope 0 at src/main.rs:43:21: 72:10
+    scope 1 {
+        debug pinned => (((*(_1.0: &mut [static generator@src/main.rs:43:21: 72:10])) as variant#3).0: impl std::future::Future); // in scope 1 at src/main.rs:44:19: 67:19
+        let _14: std::result::Result<std::option::Option<std::string::String>, ()>; // in scope 1 at src/main.rs:44:19: 67:19
+        scope 2 {
+        }
+        scope 3 {
+            debug result => _14;         // in scope 3 at src/main.rs:44:19: 67:19
+        }
+    }
+    scope 4 {
+        debug x => _18;                  // in scope 4 at src/main.rs:69:20: 69:21
+    }
+    scope 5 {
+        debug e => _20;                  // in scope 5 at src/main.rs:70:21: 70:22
+    }
+
+    bb0: {
+        _24 = discriminant((*(_1.0: &mut [static generator@src/main.rs:43:21: 72:10]))); // scope 0 at src/main.rs:43:21: 72:10
+        switchInt(move _24) -> [0_u32: bb1, 1_u32: bb23, 2_u32: bb22, 3_u32: bb21, otherwise: bb24]; // scope 0 at src/main.rs:43:21: 72:10
+    }
+
+    bb1: {
+        _23 = move _2;                   // scope 0 at src/main.rs:43:21: 72:10
+        StorageLive(_3);                 // scope 0 at src/main.rs:44:19: 67:19
+        StorageLive(_4);                 // scope 0 at src/main.rs:44:19: 66:14
+        StorageLive(_5);                 // scope 0 at src/main.rs:44:30: 66:14
+        discriminant(_5) = 0;            // scope 0 at src/main.rs:44:30: 66:14
+        _4 = from_generator::<[static generator@src/main.rs:44:30: 66:14]>(move _5) -> [return: bb2, unwind: bb18]; // scope 0 at src/main.rs:44:19: 66:14
+                                         // mir::Constant
+                                         // + span: src/main.rs:44:30: 66:14
+                                         // + literal: Const { ty: fn([static generator@src/main.rs:44:30: 66:14]) -> impl std::future::Future {std::future::from_generator::<[static generator@src/main.rs:44:30: 66:14]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_5);                 // scope 0 at src/main.rs:66:13: 66:14
+        (((*(_1.0: &mut [static generator@src/main.rs:43:21: 72:10])) as variant#3).0: impl std::future::Future) = move _4; // scope 0 at src/main.rs:44:19: 67:19
+        goto -> bb3;                     // scope 1 at src/main.rs:44:19: 67:19
+    }
+
+    bb3: {
+        StorageLive(_6);                 // scope 1 at src/main.rs:44:19: 67:19
+        StorageLive(_7);                 // scope 2 at src/main.rs:44:19: 67:19
+        StorageLive(_8);                 // scope 2 at src/main.rs:44:19: 67:19
+        StorageLive(_9);                 // scope 2 at src/main.rs:44:19: 67:19
+        _9 = &mut (((*(_1.0: &mut [static generator@src/main.rs:43:21: 72:10])) as variant#3).0: impl std::future::Future); // scope 2 at src/main.rs:44:19: 67:19
+        _8 = &mut (*_9);                 // scope 2 at src/main.rs:44:19: 67:19
+        _7 = Pin::<&mut impl Future>::new_unchecked(move _8) -> [return: bb4, unwind: bb16]; // scope 2 at src/main.rs:44:19: 67:19
+                                         // mir::Constant
+                                         // + span: src/main.rs:44:19: 67:19
+                                         // + literal: Const { ty: unsafe fn(&mut impl std::future::Future) -> std::pin::Pin<&mut impl std::future::Future> {std::pin::Pin::<&mut impl std::future::Future>::new_unchecked}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb4: {
+        StorageDead(_8);                 // scope 2 at src/main.rs:67:18: 67:19
+        StorageLive(_10);                // scope 2 at src/main.rs:44:19: 67:19
+        StorageLive(_11);                // scope 2 at src/main.rs:44:19: 67:19
+        StorageLive(_12);                // scope 2 at src/main.rs:44:19: 67:19
+        _12 = _23;                       // scope 2 at src/main.rs:44:19: 67:19
+        _11 = get_context(move _12) -> [return: bb5, unwind: bb14]; // scope 2 at src/main.rs:44:19: 67:19
+                                         // mir::Constant
+                                         // + span: src/main.rs:44:19: 67:19
+                                         // + literal: Const { ty: unsafe fn(std::future::ResumeTy) -> &mut std::task::Context {std::future::get_context}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb5: {
+        _10 = &mut (*_11);               // scope 2 at src/main.rs:44:19: 67:19
+        StorageDead(_12);                // scope 2 at src/main.rs:67:18: 67:19
+        _6 = <impl Future as Future>::poll(move _7, move _10) -> [return: bb6, unwind: bb15]; // scope 2 at src/main.rs:44:19: 67:19
+                                         // mir::Constant
+                                         // + span: src/main.rs:44:19: 67:19
+                                         // + literal: Const { ty: for<'r, 's, 't0> fn(std::pin::Pin<&'r mut impl std::future::Future>, &'s mut std::task::Context<'t0>) -> std::task::Poll<<impl std::future::Future as std::future::Future>::Output> {<impl std::future::Future as std::future::Future>::poll}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb6: {
+        StorageDead(_10);                // scope 2 at src/main.rs:67:18: 67:19
+        StorageDead(_7);                 // scope 2 at src/main.rs:67:18: 67:19
+        _13 = discriminant(_6);          // scope 1 at src/main.rs:44:19: 67:19
+        switchInt(move _13) -> [0_isize: bb9, 1_isize: bb7, otherwise: bb8]; // scope 1 at src/main.rs:44:19: 67:19
+    }
+
+    bb7: {
+        StorageDead(_11);                // scope 1 at src/main.rs:67:18: 67:19
+        StorageDead(_9);                 // scope 1 at src/main.rs:67:18: 67:19
+        StorageDead(_6);                 // scope 1 at src/main.rs:67:18: 67:19
+        StorageLive(_15);                // scope 1 at src/main.rs:44:19: 67:19
+        StorageLive(_16);                // scope 1 at src/main.rs:44:19: 67:19
+        ((_0 as Yielded).0: ()) = move _16; // scope 1 at src/main.rs:44:19: 67:19
+        discriminant(_0) = 0;            // scope 1 at src/main.rs:44:19: 67:19
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:43:21: 72:10]))) = 3; // scope 1 at src/main.rs:44:19: 67:19
+        return;                          // scope 1 at src/main.rs:44:19: 67:19
+    }
+
+    bb8: {
+        unreachable;                     // scope 1 at src/main.rs:44:19: 67:19
+    }
+
+    bb9: {
+        StorageLive(_14);                // scope 1 at src/main.rs:44:19: 67:19
+        _14 = move ((_6 as Ready).0: std::result::Result<std::option::Option<std::string::String>, ()>); // scope 1 at src/main.rs:44:19: 67:19
+        _3 = move _14;                   // scope 3 at src/main.rs:44:19: 67:19
+        StorageDead(_14);                // scope 1 at src/main.rs:67:18: 67:19
+        StorageDead(_11);                // scope 1 at src/main.rs:67:18: 67:19
+        StorageDead(_9);                 // scope 1 at src/main.rs:67:18: 67:19
+        StorageDead(_6);                 // scope 1 at src/main.rs:67:18: 67:19
+        drop((((*(_1.0: &mut [static generator@src/main.rs:43:21: 72:10])) as variant#3).0: impl std::future::Future)) -> [return: bb10, unwind: bb19]; // scope 0 at src/main.rs:67:18: 67:19
+    }
+
+    bb10: {
+        _17 = discriminant(_3);          // scope 0 at src/main.rs:44:19: 67:19
+        switchInt(move _17) -> [0_isize: bb13, 1_isize: bb11, otherwise: bb12]; // scope 0 at src/main.rs:44:13: 67:19
+    }
+
+    bb11: {
+        StorageLive(_20);                // scope 0 at src/main.rs:70:21: 70:22
+        _20 = ((_3 as Err).0: ());       // scope 0 at src/main.rs:70:21: 70:22
+        StorageLive(_21);                // scope 5 at src/main.rs:70:31: 70:32
+        _21 = _20;                       // scope 5 at src/main.rs:70:31: 70:32
+        ((_22 as Err).0: ()) = move _21; // scope 5 at src/main.rs:70:27: 70:33
+        discriminant(_22) = 1;           // scope 5 at src/main.rs:70:27: 70:33
+        StorageDead(_21);                // scope 5 at src/main.rs:70:32: 70:33
+        StorageDead(_20);                // scope 0 at src/main.rs:70:32: 70:33
+        goto -> bb20;                    // scope 0 at src/main.rs:70:32: 70:33
+    }
+
+    bb12: {
+        unreachable;                     // scope 0 at src/main.rs:44:19: 67:19
+    }
+
+    bb13: {
+        StorageLive(_18);                // scope 0 at src/main.rs:69:20: 69:21
+        _18 = move ((_3 as Ok).0: std::option::Option<std::string::String>); // scope 0 at src/main.rs:69:20: 69:21
+        StorageLive(_19);                // scope 4 at src/main.rs:69:29: 69:30
+        _19 = move _18;                  // scope 4 at src/main.rs:69:29: 69:30
+        ((_22 as Ok).0: std::option::Option<std::string::String>) = move _19; // scope 4 at src/main.rs:69:26: 69:31
+        discriminant(_22) = 0;           // scope 4 at src/main.rs:69:26: 69:31
+        StorageDead(_19);                // scope 4 at src/main.rs:69:30: 69:31
+        StorageDead(_18);                // scope 0 at src/main.rs:69:30: 69:31
+        goto -> bb20;                    // scope 0 at src/main.rs:72:9: 72:10
+    }
+
+    bb14 (cleanup): {
+        StorageDead(_12);                // scope 2 at src/main.rs:67:18: 67:19
+        goto -> bb15;                    // scope 2 at no-location
+    }
+
+    bb15 (cleanup): {
+        StorageDead(_10);                // scope 2 at src/main.rs:67:18: 67:19
+        StorageDead(_7);                 // scope 2 at src/main.rs:67:18: 67:19
+        StorageDead(_11);                // scope 1 at src/main.rs:67:18: 67:19
+        goto -> bb17;                    // scope 1 at no-location
+    }
+
+    bb16 (cleanup): {
+        StorageDead(_8);                 // scope 2 at src/main.rs:67:18: 67:19
+        StorageDead(_7);                 // scope 2 at src/main.rs:67:18: 67:19
+        goto -> bb17;                    // scope 2 at no-location
+    }
+
+    bb17 (cleanup): {
+        StorageDead(_9);                 // scope 1 at src/main.rs:67:18: 67:19
+        StorageDead(_6);                 // scope 1 at src/main.rs:67:18: 67:19
+        drop((((*(_1.0: &mut [static generator@src/main.rs:43:21: 72:10])) as variant#3).0: impl std::future::Future)) -> bb19; // scope 0 at src/main.rs:67:18: 67:19
+    }
+
+    bb18 (cleanup): {
+        StorageDead(_5);                 // scope 0 at src/main.rs:66:13: 66:14
+        goto -> bb19;                    // scope 0 at no-location
+    }
+
+    bb19 (cleanup): {
+        StorageDead(_4);                 // scope 0 at src/main.rs:72:9: 72:10
+        StorageDead(_3);                 // scope 0 at src/main.rs:72:9: 72:10
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:43:21: 72:10]))) = 2; // scope 0 at src/main.rs:43:21: 72:10
+        resume;                          // scope 0 at src/main.rs:43:21: 72:10
+    }
+
+    bb20: {
+        StorageDead(_4);                 // scope 0 at src/main.rs:72:9: 72:10
+        StorageDead(_3);                 // scope 0 at src/main.rs:72:9: 72:10
+        ((_0 as Complete).0: std::result::Result<std::option::Option<std::string::String>, ()>) = move _22; // scope 0 at src/main.rs:72:10: 72:10
+        discriminant(_0) = 1;            // scope 0 at src/main.rs:72:10: 72:10
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:43:21: 72:10]))) = 1; // scope 0 at src/main.rs:72:10: 72:10
+        return;                          // scope 0 at src/main.rs:72:10: 72:10
+    }
+
+    bb21: {
+        StorageLive(_3);                 // scope 0 at src/main.rs:43:21: 72:10
+        StorageLive(_4);                 // scope 0 at src/main.rs:43:21: 72:10
+        StorageLive(_15);                // scope 0 at src/main.rs:43:21: 72:10
+        StorageLive(_16);                // scope 0 at src/main.rs:43:21: 72:10
+        _15 = move _2;                   // scope 0 at src/main.rs:43:21: 72:10
+        StorageDead(_16);                // scope 1 at src/main.rs:67:18: 67:19
+        _23 = move _15;                  // scope 1 at src/main.rs:44:19: 67:19
+        StorageDead(_15);                // scope 1 at src/main.rs:67:18: 67:19
+        goto -> bb3;                     // scope 1 at src/main.rs:44:19: 67:19
+    }
+
+    bb22: {
+        assert(const false, "`async fn` resumed after panicking") -> bb22; // scope 0 at src/main.rs:43:21: 72:10
+    }
+
+    bb23: {
+        assert(const false, "`async fn` resumed after completion") -> bb23; // scope 0 at src/main.rs:43:21: 72:10
+    }
+
+    bb24: {
+        unreachable;                     // scope 0 at src/main.rs:43:21: 72:10
+    }
+}
+
+fn <impl at src/main.rs:36:1: 76:2>::nested(_1: &FooDb) -> impl Future {
+    debug self => _1;                    // in scope 0 at src/main.rs:42:21: 42:26
+    let mut _0: impl std::future::Future; // return place in scope 0 at src/main.rs:42:31: 42:57
+    let mut _2: [static generator@src/main.rs:42:58: 75:6]; // in scope 0 at src/main.rs:42:58: 75:6
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/main.rs:42:58: 75:6
+        (_2.0: &FooDb) = _1;             // scope 0 at src/main.rs:42:58: 75:6
+        discriminant(_2) = 0;            // scope 0 at src/main.rs:42:58: 75:6
+        _0 = from_generator::<[static generator@src/main.rs:42:58: 75:6]>(move _2) -> bb1; // scope 0 at src/main.rs:42:58: 75:6
+                                         // mir::Constant
+                                         // + span: src/main.rs:42:58: 75:6
+                                         // + literal: Const { ty: fn([static generator@src/main.rs:42:58: 75:6]) -> impl std::future::Future {std::future::from_generator::<[static generator@src/main.rs:42:58: 75:6]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_2);                 // scope 0 at src/main.rs:75:5: 75:6
+        return;                          // scope 0 at src/main.rs:75:6: 75:6
+    }
+}
+
+fn <impl at src/main.rs:165:1: 174:2>::call(_1: &Box<S>, _2: Req) -> <S as Service<Req>>::Future {
+    debug self => _1;                    // in scope 0 at src/main.rs:173:13: 173:18
+    let mut _0: <S as Service<Req>>::Future; // return place in scope 0 at src/main.rs:173:31: 173:40
+
+    bb0: {
+        panic(const "not yet implemented") -> bb1; // scope 0 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+
+    bb1 (cleanup): {
+        drop(_2) -> bb2;                 // scope 0 at src/main.rs:173:51: 173:52
+    }
+
+    bb2 (cleanup): {
+        resume;                          // scope 0 at src/main.rs:173:5: 173:52
+    }
+}
+
+fn <impl at src/main.rs:30:1: 32:2>::attach(_1: Floating, _2: &Arc<SharedPool>) -> G {
+    debug self => _1;                    // in scope 0 at src/main.rs:31:15: 31:19
+    debug e => _2;                       // in scope 0 at src/main.rs:31:21: 31:22
+    let mut _0: G;                       // return place in scope 0 at src/main.rs:31:56: 31:57
+
+    bb0: {
+        panic(const "not yet implemented"); // scope 0 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+}
+
+fn <impl at src/main.rs:16:1: 26:2>::acquire::{closure#0}::{closure#0}(_1: Pin<&mut [static generator@src/main.rs:18:15: 22:10]>, _2: ResumeTy) -> GeneratorState<(), ()> {
+    debug _task_context => _7;           // in scope 0 at src/main.rs:18:15: 22:10
+    debug self => (*((*(_1.0: &mut [static generator@src/main.rs:18:15: 22:10])).0: &&SharedPool)); // in scope 0 at src/main.rs:17:22: 17:30
+    let mut _0: std::ops::GeneratorState<(), ()>; // return place in scope 0 at src/main.rs:18:15: 22:10
+    let _3: Floating;                    // in scope 0 at src/main.rs:19:20: 19:24
+    let mut _4: impl std::future::Future; // in scope 0 at src/main.rs:20:28: 20:54
+    let _6: std::result::Result<(), DecrementSizeGuard>; // in scope 0 at src/main.rs:20:24: 20:25
+    let mut _7: std::future::ResumeTy;   // in scope 0 at src/main.rs:18:15: 22:10
+    let mut _8: u32;                     // in scope 0 at src/main.rs:18:15: 22:10
+    scope 1 {
+        debug conn => _3;                // in scope 1 at src/main.rs:19:20: 19:24
+    }
+    scope 2 {
+        debug pinned => _4;              // in scope 2 at src/main.rs:20:28: 20:54
+        let _5: std::result::Result<(), DecrementSizeGuard>; // in scope 2 at src/main.rs:20:28: 20:54
+        scope 3 {
+        }
+        scope 4 {
+            debug result => _5;          // in scope 4 at src/main.rs:20:28: 20:54
+        }
+    }
+    scope 5 {
+        debug d => _6;                   // in scope 5 at src/main.rs:20:24: 20:25
+    }
+
+    bb0: {
+        _8 = discriminant((*(_1.0: &mut [static generator@src/main.rs:18:15: 22:10]))); // scope 0 at src/main.rs:18:15: 22:10
+        switchInt(move _8) -> [0_u32: bb1, 2_u32: bb3, otherwise: bb4]; // scope 0 at src/main.rs:18:15: 22:10
+    }
+
+    bb1: {
+        _7 = move _2;                    // scope 0 at src/main.rs:18:15: 22:10
+        panic(const "not yet implemented") -> bb2; // scope 0 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+
+    bb2 (cleanup): {
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:18:15: 22:10]))) = 2; // scope 0 at src/main.rs:18:15: 22:10
+        resume;                          // scope 0 at src/main.rs:18:15: 22:10
+    }
+
+    bb3: {
+        assert(const false, "`async fn` resumed after panicking") -> bb3; // scope 0 at src/main.rs:18:15: 22:10
+    }
+
+    bb4: {
+        unreachable;                     // scope 0 at src/main.rs:18:15: 22:10
+    }
+}
+
+fn <impl at src/main.rs:16:1: 26:2>::acquire(_1: &SharedPool) -> impl Future {
+    debug self => _1;                    // in scope 0 at src/main.rs:17:22: 17:30
+    let mut _0: impl std::future::Future; // return place in scope 0 at src/main.rs:17:35: 17:62
+    let mut _2: [static generator@src/main.rs:17:63: 25:6]; // in scope 0 at src/main.rs:17:63: 25:6
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/main.rs:17:63: 25:6
+        (_2.0: &SharedPool) = _1;        // scope 0 at src/main.rs:17:63: 25:6
+        discriminant(_2) = 0;            // scope 0 at src/main.rs:17:63: 25:6
+        _0 = from_generator::<[static generator@src/main.rs:17:63: 25:6]>(move _2) -> bb1; // scope 0 at src/main.rs:17:63: 25:6
+                                         // mir::Constant
+                                         // + span: src/main.rs:17:63: 25:6
+                                         // + literal: Const { ty: fn([static generator@src/main.rs:17:63: 25:6]) -> impl std::future::Future {std::future::from_generator::<[static generator@src/main.rs:17:63: 25:6]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_2);                 // scope 0 at src/main.rs:25:5: 25:6
+        return;                          // scope 0 at src/main.rs:25:6: 25:6
+    }
+}
+
+fn <impl at src/main.rs:117:1: 124:2>::poll(_1: &Factory<I, T, R>, _2: &mut Context) -> Poll<Result<(), Error>> {
+    debug self => _1;                    // in scope 0 at src/main.rs:121:13: 121:18
+    let mut _0: std::task::Poll<std::result::Result<(), Error>>; // return place in scope 0 at src/main.rs:121:52: 121:87
+
+    bb0: {
+        panic(const "not yet implemented"); // scope 0 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+}
+
+fn check(_1: Floating, _2: &PoolOptions) -> impl Future {
+    debug _conn => _1;                   // in scope 0 at src/main.rs:10:5: 10:14
+    debug _ => _2;                       // in scope 0 at src/main.rs:11:5: 11:6
+    let mut _0: impl std::future::Future; // return place in scope 0 at src/main.rs:12:6: 12:40
+    let mut _3: [static generator@src/main.rs:12:41: 14:2]; // in scope 0 at src/main.rs:12:41: 14:2
+
+    bb0: {
+        StorageLive(_3);                 // scope 0 at src/main.rs:12:41: 14:2
+        (_3.1: &PoolOptions) = _2;       // scope 0 at src/main.rs:12:41: 14:2
+        discriminant(_3) = 0;            // scope 0 at src/main.rs:12:41: 14:2
+        _0 = from_generator::<[static generator@src/main.rs:12:41: 14:2]>(move _3) -> bb1; // scope 0 at src/main.rs:12:41: 14:2
+                                         // mir::Constant
+                                         // + span: src/main.rs:12:41: 14:2
+                                         // + literal: Const { ty: fn([static generator@src/main.rs:12:41: 14:2]) -> impl std::future::Future {std::future::from_generator::<[static generator@src/main.rs:12:41: 14:2]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_3);                 // scope 0 at src/main.rs:14:1: 14:2
+        return;                          // scope 0 at src/main.rs:14:2: 14:2
+    }
+}
+
+fn <impl at src/main.rs:1:10: 1:15>::fmt(_1: &Error, _2: &mut Formatter) -> Result<(), std::fmt::Error> {
+    debug self => _1;                    // in scope 0 at src/main.rs:1:10: 1:15
+    debug f => _2;                       // in scope 0 at src/main.rs:1:10: 1:15
+    let mut _0: std::result::Result<(), std::fmt::Error>; // return place in scope 0 at src/main.rs:1:10: 1:15
+    let _3: &mut std::fmt::DebugTuple;   // in scope 0 at src/main.rs:1:10: 1:15
+    let mut _4: std::fmt::DebugTuple;    // in scope 0 at src/main.rs:1:10: 1:15
+    let mut _5: &mut std::fmt::Formatter; // in scope 0 at src/main.rs:1:10: 1:15
+    let mut _6: &str;                    // in scope 0 at src/main.rs:1:10: 1:15
+    let _7: &str;                        // in scope 0 at src/main.rs:1:10: 1:15
+    let mut _8: &mut std::fmt::DebugTuple; // in scope 0 at src/main.rs:1:10: 1:15
+    scope 1 {
+        debug debug_trait_builder => _3; // in scope 1 at src/main.rs:1:10: 1:15
+    }
+
+    bb0: {
+        StorageLive(_3);                 // scope 0 at src/main.rs:1:10: 1:15
+        StorageLive(_4);                 // scope 0 at src/main.rs:1:10: 1:15
+        StorageLive(_5);                 // scope 0 at src/main.rs:1:10: 1:15
+        _5 = &mut (*_2);                 // scope 0 at src/main.rs:1:10: 1:15
+        StorageLive(_6);                 // scope 0 at src/main.rs:1:10: 1:15
+        StorageLive(_7);                 // scope 0 at src/main.rs:1:10: 1:15
+        _7 = const "Error";              // scope 0 at src/main.rs:1:10: 1:15
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [69, 114, 114, 111, 114], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [31], len: Size { raw: 5 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 5 })
+                                         // mir::Constant
+                                         // + span: src/main.rs:1:10: 1:15
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [69, 114, 114, 111, 114], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [31], len: Size { raw: 5 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 5 }) }
+        _6 = _7;                         // scope 0 at src/main.rs:1:10: 1:15
+        _4 = Formatter::debug_tuple(move _5, move _6) -> bb1; // scope 0 at src/main.rs:1:10: 1:15
+                                         // mir::Constant
+                                         // + span: src/main.rs:1:10: 1:15
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: for<'b, 'r> fn(&'b mut std::fmt::Formatter, &'r str) -> std::fmt::DebugTuple<'b, '_> {std::fmt::Formatter::debug_tuple}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_6);                 // scope 0 at src/main.rs:1:14: 1:15
+        StorageDead(_5);                 // scope 0 at src/main.rs:1:14: 1:15
+        _3 = &mut _4;                    // scope 0 at src/main.rs:1:10: 1:15
+        StorageDead(_7);                 // scope 0 at src/main.rs:1:14: 1:15
+        StorageLive(_8);                 // scope 1 at src/main.rs:1:10: 1:15
+        _8 = &mut (*_3);                 // scope 1 at src/main.rs:1:10: 1:15
+        _0 = DebugTuple::finish(move _8) -> bb2; // scope 1 at src/main.rs:1:10: 1:15
+                                         // mir::Constant
+                                         // + span: src/main.rs:1:10: 1:15
+                                         // + user_ty: UserType(1)
+                                         // + literal: Const { ty: for<'r> fn(&'r mut std::fmt::DebugTuple) -> std::result::Result<(), std::fmt::Error> {std::fmt::DebugTuple::finish}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_8);                 // scope 1 at src/main.rs:1:14: 1:15
+        StorageDead(_4);                 // scope 0 at src/main.rs:1:14: 1:15
+        StorageDead(_3);                 // scope 0 at src/main.rs:1:14: 1:15
+        return;                          // scope 0 at src/main.rs:1:15: 1:15
+    }
+}
+
+fn <impl at src/main.rs:99:1: 101:2>::handle(_1: I) -> Factory<I, T, R> {
+    let mut _0: Factory<I, T, R>;        // return place in scope 0 at src/main.rs:100:24: 100:28
+
+    bb0: {
+        panic(const "not yet implemented") -> bb1; // scope 0 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+
+    bb1 (cleanup): {
+        drop(_1) -> bb2;                 // scope 0 at src/main.rs:100:39: 100:40
+    }
+
+    bb2 (cleanup): {
+        resume;                          // scope 0 at src/main.rs:100:5: 100:40
+    }
+}
+
+fn FactoryWrapper(_1: T) -> FactoryWrapper<T> {
+    let mut _0: FactoryWrapper<T>;       // return place in scope 0 at src/main.rs:196:1: 196:29
+
+    bb0: {
+        (_0.0: T) = move _1;             // scope 0 at src/main.rs:196:1: 196:29
+        return;                          // scope 0 at src/main.rs:196:1: 196:29
+    }
+}
+
+// MIR FOR CTFE
+fn FactoryWrapper(_1: T) -> FactoryWrapper<T> {
+    let mut _0: FactoryWrapper<T>;       // return place in scope 0 at src/main.rs:196:1: 196:29
+
+    bb0: {
+        (_0.0: T) = move _1;             // scope 0 at src/main.rs:196:1: 196:29
+        return;                          // scope 0 at src/main.rs:196:1: 196:29
+    }
+}
+
+fn <impl at src/main.rs:36:1: 76:2>::nested::{closure#0}::{closure#0}::{closure#0}::{closure#0}::{closure#0}::{closure#0}(_1: Pin<&mut [static generator@src/main.rs:48:46: 52:30]>, _2: ResumeTy) -> GeneratorState<(), Result<String, ()>> {
+    debug _task_context => _20;          // in scope 0 at src/main.rs:48:46: 52:30
+    let mut _0: std::ops::GeneratorState<(), std::result::Result<std::string::String, ()>>; // return place in scope 0 at src/main.rs:48:46: 52:30
+    let mut _4: std::result::Result<G, Error>; // in scope 0 at src/main.rs:50:49: 50:67
+    let mut _5: impl std::future::Future; // in scope 0 at src/main.rs:50:49: 50:61
+    let mut _6: &FooDb;                  // in scope 0 at src/main.rs:50:49: 50:51
+    let mut _7: std::task::Poll<std::result::Result<G, Error>>; // in scope 0 at src/main.rs:50:49: 50:67
+    let mut _8: std::pin::Pin<&mut impl std::future::Future>; // in scope 0 at src/main.rs:50:49: 50:67
+    let mut _9: &mut impl std::future::Future; // in scope 0 at src/main.rs:50:49: 50:67
+    let mut _10: &mut impl std::future::Future; // in scope 0 at src/main.rs:50:49: 50:67
+    let mut _11: &mut std::task::Context; // in scope 0 at src/main.rs:50:49: 50:67
+    let mut _12: &mut std::task::Context; // in scope 0 at src/main.rs:50:49: 50:67
+    let mut _13: std::future::ResumeTy;  // in scope 0 at src/main.rs:50:49: 50:67
+    let mut _14: isize;                  // in scope 0 at src/main.rs:50:49: 50:67
+    let mut _16: std::future::ResumeTy;  // in scope 0 at src/main.rs:50:49: 50:67
+    let mut _17: ();                     // in scope 0 at src/main.rs:50:49: 50:67
+    let mut _18: std::string::String;    // in scope 0 at src/main.rs:51:45: 51:62
+    let mut _19: std::result::Result<std::string::String, ()>; // in scope 0 at src/main.rs:48:46: 52:30
+    let mut _20: std::future::ResumeTy;  // in scope 0 at src/main.rs:48:46: 52:30
+    let mut _21: u32;                    // in scope 0 at src/main.rs:48:46: 52:30
+    scope 1 {
+        debug db => (((*(_1.0: &mut [static generator@src/main.rs:48:46: 52:30])) as variant#3).0: FooDb); // in scope 1 at src/main.rs:49:37: 49:39
+        let mut _3: G;                   // in scope 1 at src/main.rs:50:37: 50:46
+        scope 2 {
+            debug _conn => _3;           // in scope 2 at src/main.rs:50:37: 50:46
+        }
+        scope 3 {
+            debug pinned => (((*(_1.0: &mut [static generator@src/main.rs:48:46: 52:30])) as variant#3).1: impl std::future::Future); // in scope 3 at src/main.rs:50:49: 50:67
+            let _15: std::result::Result<G, Error>; // in scope 3 at src/main.rs:50:49: 50:67
+            scope 4 {
+            }
+            scope 5 {
+                debug result => _15;     // in scope 5 at src/main.rs:50:49: 50:67
+            }
+        }
+    }
+
+    bb0: {
+        _21 = discriminant((*(_1.0: &mut [static generator@src/main.rs:48:46: 52:30]))); // scope 0 at src/main.rs:48:46: 52:30
+        switchInt(move _21) -> [0_u32: bb1, 1_u32: bb24, 2_u32: bb23, 3_u32: bb22, otherwise: bb25]; // scope 0 at src/main.rs:48:46: 52:30
+    }
+
+    bb1: {
+        _20 = move _2;                   // scope 0 at src/main.rs:48:46: 52:30
+        StorageLive(_3);                 // scope 1 at src/main.rs:50:37: 50:46
+        StorageLive(_4);                 // scope 1 at src/main.rs:50:49: 50:67
+        StorageLive(_5);                 // scope 1 at src/main.rs:50:49: 50:61
+        StorageLive(_6);                 // scope 1 at src/main.rs:50:49: 50:51
+        _6 = &(((*(_1.0: &mut [static generator@src/main.rs:48:46: 52:30])) as variant#3).0: FooDb); // scope 1 at src/main.rs:50:49: 50:51
+        _5 = FooDb::acquire(move _6) -> [return: bb2, unwind: bb19]; // scope 1 at src/main.rs:50:49: 50:61
+                                         // mir::Constant
+                                         // + span: src/main.rs:50:52: 50:59
+                                         // + literal: Const { ty: for<'r> fn(&'r FooDb) -> impl std::future::Future {FooDb::acquire}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_6);                 // scope 1 at src/main.rs:50:60: 50:61
+        (((*(_1.0: &mut [static generator@src/main.rs:48:46: 52:30])) as variant#3).1: impl std::future::Future) = move _5; // scope 1 at src/main.rs:50:49: 50:67
+        goto -> bb3;                     // scope 3 at src/main.rs:50:49: 50:67
+    }
+
+    bb3: {
+        StorageLive(_7);                 // scope 3 at src/main.rs:50:49: 50:67
+        StorageLive(_8);                 // scope 4 at src/main.rs:50:49: 50:67
+        StorageLive(_9);                 // scope 4 at src/main.rs:50:49: 50:67
+        StorageLive(_10);                // scope 4 at src/main.rs:50:49: 50:67
+        _10 = &mut (((*(_1.0: &mut [static generator@src/main.rs:48:46: 52:30])) as variant#3).1: impl std::future::Future); // scope 4 at src/main.rs:50:49: 50:67
+        _9 = &mut (*_10);                // scope 4 at src/main.rs:50:49: 50:67
+        _8 = Pin::<&mut impl Future>::new_unchecked(move _9) -> [return: bb4, unwind: bb16]; // scope 4 at src/main.rs:50:49: 50:67
+                                         // mir::Constant
+                                         // + span: src/main.rs:50:49: 50:67
+                                         // + literal: Const { ty: unsafe fn(&mut impl std::future::Future) -> std::pin::Pin<&mut impl std::future::Future> {std::pin::Pin::<&mut impl std::future::Future>::new_unchecked}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb4: {
+        StorageDead(_9);                 // scope 4 at src/main.rs:50:66: 50:67
+        StorageLive(_11);                // scope 4 at src/main.rs:50:49: 50:67
+        StorageLive(_12);                // scope 4 at src/main.rs:50:49: 50:67
+        StorageLive(_13);                // scope 4 at src/main.rs:50:49: 50:67
+        _13 = _20;                       // scope 4 at src/main.rs:50:49: 50:67
+        _12 = get_context(move _13) -> [return: bb5, unwind: bb14]; // scope 4 at src/main.rs:50:49: 50:67
+                                         // mir::Constant
+                                         // + span: src/main.rs:50:49: 50:67
+                                         // + literal: Const { ty: unsafe fn(std::future::ResumeTy) -> &mut std::task::Context {std::future::get_context}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb5: {
+        _11 = &mut (*_12);               // scope 4 at src/main.rs:50:49: 50:67
+        StorageDead(_13);                // scope 4 at src/main.rs:50:66: 50:67
+        _7 = <impl Future as Future>::poll(move _8, move _11) -> [return: bb6, unwind: bb15]; // scope 4 at src/main.rs:50:49: 50:67
+                                         // mir::Constant
+                                         // + span: src/main.rs:50:49: 50:67
+                                         // + literal: Const { ty: for<'r, 's, 't0> fn(std::pin::Pin<&'r mut impl std::future::Future>, &'s mut std::task::Context<'t0>) -> std::task::Poll<<impl std::future::Future as std::future::Future>::Output> {<impl std::future::Future as std::future::Future>::poll}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb6: {
+        StorageDead(_11);                // scope 4 at src/main.rs:50:66: 50:67
+        StorageDead(_8);                 // scope 4 at src/main.rs:50:66: 50:67
+        _14 = discriminant(_7);          // scope 3 at src/main.rs:50:49: 50:67
+        switchInt(move _14) -> [0_isize: bb9, 1_isize: bb7, otherwise: bb8]; // scope 3 at src/main.rs:50:49: 50:67
+    }
+
+    bb7: {
+        StorageDead(_12);                // scope 3 at src/main.rs:50:66: 50:67
+        StorageDead(_10);                // scope 3 at src/main.rs:50:66: 50:67
+        StorageDead(_7);                 // scope 3 at src/main.rs:50:66: 50:67
+        StorageLive(_16);                // scope 3 at src/main.rs:50:49: 50:67
+        StorageLive(_17);                // scope 3 at src/main.rs:50:49: 50:67
+        ((_0 as Yielded).0: ()) = move _17; // scope 3 at src/main.rs:50:49: 50:67
+        discriminant(_0) = 0;            // scope 3 at src/main.rs:50:49: 50:67
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:48:46: 52:30]))) = 3; // scope 3 at src/main.rs:50:49: 50:67
+        return;                          // scope 3 at src/main.rs:50:49: 50:67
+    }
+
+    bb8: {
+        unreachable;                     // scope 3 at src/main.rs:50:49: 50:67
+    }
+
+    bb9: {
+        StorageLive(_15);                // scope 3 at src/main.rs:50:49: 50:67
+        _15 = move ((_7 as Ready).0: std::result::Result<G, Error>); // scope 3 at src/main.rs:50:49: 50:67
+        _4 = move _15;                   // scope 5 at src/main.rs:50:49: 50:67
+        StorageDead(_15);                // scope 3 at src/main.rs:50:66: 50:67
+        StorageDead(_12);                // scope 3 at src/main.rs:50:66: 50:67
+        StorageDead(_10);                // scope 3 at src/main.rs:50:66: 50:67
+        StorageDead(_7);                 // scope 3 at src/main.rs:50:66: 50:67
+        drop((((*(_1.0: &mut [static generator@src/main.rs:48:46: 52:30])) as variant#3).1: impl std::future::Future)) -> [return: bb10, unwind: bb18]; // scope 1 at src/main.rs:50:66: 50:67
+    }
+
+    bb10: {
+        _3 = Result::<G, Error>::unwrap(move _4) -> [return: bb11, unwind: bb18]; // scope 1 at src/main.rs:50:49: 50:76
+                                         // mir::Constant
+                                         // + span: src/main.rs:50:68: 50:74
+                                         // + literal: Const { ty: fn(std::result::Result<G, Error>) -> G {std::result::Result::<G, Error>::unwrap}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb11: {
+        StorageDead(_4);                 // scope 1 at src/main.rs:50:75: 50:76
+        StorageDead(_5);                 // scope 1 at src/main.rs:50:76: 50:77
+        StorageLive(_18);                // scope 2 at src/main.rs:51:45: 51:62
+        _18 = <String as Default>::default() -> [return: bb12, unwind: bb13]; // scope 2 at src/main.rs:51:45: 51:62
+                                         // mir::Constant
+                                         // + span: src/main.rs:51:45: 51:60
+                                         // + literal: Const { ty: fn() -> std::string::String {<std::string::String as std::default::Default>::default}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb12: {
+        ((_19 as Ok).0: std::string::String) = move _18; // scope 2 at src/main.rs:51:33: 51:63
+        discriminant(_19) = 0;           // scope 2 at src/main.rs:51:33: 51:63
+        StorageDead(_18);                // scope 2 at src/main.rs:51:62: 51:63
+        StorageDead(_3);                 // scope 1 at src/main.rs:52:29: 52:30
+        ((_0 as Complete).0: std::result::Result<std::string::String, ()>) = move _19; // scope 0 at src/main.rs:52:30: 52:30
+        discriminant(_0) = 1;            // scope 0 at src/main.rs:52:30: 52:30
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:48:46: 52:30]))) = 1; // scope 0 at src/main.rs:52:30: 52:30
+        return;                          // scope 0 at src/main.rs:52:30: 52:30
+    }
+
+    bb13 (cleanup): {
+        StorageDead(_18);                // scope 2 at src/main.rs:51:62: 51:63
+        goto -> bb21;                    // scope 2 at no-location
+    }
+
+    bb14 (cleanup): {
+        StorageDead(_13);                // scope 4 at src/main.rs:50:66: 50:67
+        goto -> bb15;                    // scope 4 at no-location
+    }
+
+    bb15 (cleanup): {
+        StorageDead(_11);                // scope 4 at src/main.rs:50:66: 50:67
+        StorageDead(_8);                 // scope 4 at src/main.rs:50:66: 50:67
+        StorageDead(_12);                // scope 3 at src/main.rs:50:66: 50:67
+        goto -> bb17;                    // scope 3 at no-location
+    }
+
+    bb16 (cleanup): {
+        StorageDead(_9);                 // scope 4 at src/main.rs:50:66: 50:67
+        StorageDead(_8);                 // scope 4 at src/main.rs:50:66: 50:67
+        goto -> bb17;                    // scope 4 at no-location
+    }
+
+    bb17 (cleanup): {
+        StorageDead(_10);                // scope 3 at src/main.rs:50:66: 50:67
+        StorageDead(_7);                 // scope 3 at src/main.rs:50:66: 50:67
+        drop((((*(_1.0: &mut [static generator@src/main.rs:48:46: 52:30])) as variant#3).1: impl std::future::Future)) -> bb18; // scope 1 at src/main.rs:50:66: 50:67
+    }
+
+    bb18 (cleanup): {
+        StorageDead(_4);                 // scope 1 at src/main.rs:50:75: 50:76
+        goto -> bb20;                    // scope 1 at src/main.rs:50:76: 50:77
+    }
+
+    bb19 (cleanup): {
+        StorageDead(_6);                 // scope 1 at src/main.rs:50:60: 50:61
+        StorageDead(_4);                 // scope 1 at src/main.rs:50:75: 50:76
+        goto -> bb20;                    // scope 1 at no-location
+    }
+
+    bb20 (cleanup): {
+        StorageDead(_5);                 // scope 1 at src/main.rs:50:76: 50:77
+        goto -> bb21;                    // scope 1 at no-location
+    }
+
+    bb21 (cleanup): {
+        StorageDead(_3);                 // scope 1 at src/main.rs:52:29: 52:30
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:48:46: 52:30]))) = 2; // scope 0 at src/main.rs:48:46: 52:30
+        resume;                          // scope 0 at src/main.rs:48:46: 52:30
+    }
+
+    bb22: {
+        StorageLive(_3);                 // scope 0 at src/main.rs:48:46: 52:30
+        StorageLive(_4);                 // scope 0 at src/main.rs:48:46: 52:30
+        StorageLive(_5);                 // scope 0 at src/main.rs:48:46: 52:30
+        StorageLive(_16);                // scope 0 at src/main.rs:48:46: 52:30
+        StorageLive(_17);                // scope 0 at src/main.rs:48:46: 52:30
+        _16 = move _2;                   // scope 0 at src/main.rs:48:46: 52:30
+        StorageDead(_17);                // scope 3 at src/main.rs:50:66: 50:67
+        _20 = move _16;                  // scope 3 at src/main.rs:50:49: 50:67
+        StorageDead(_16);                // scope 3 at src/main.rs:50:66: 50:67
+        goto -> bb3;                     // scope 3 at src/main.rs:50:49: 50:67
+    }
+
+    bb23: {
+        assert(const false, "`async fn` resumed after panicking") -> bb23; // scope 0 at src/main.rs:48:46: 52:30
+    }
+
+    bb24: {
+        assert(const false, "`async fn` resumed after completion") -> bb24; // scope 0 at src/main.rs:48:46: 52:30
+    }
+
+    bb25: {
+        unreachable;                     // scope 0 at src/main.rs:48:46: 52:30
+    }
+}
+
+fn <impl at src/main.rs:36:1: 76:2>::nested::{closure#0}::{closure#0}::{closure#0}(_1: Pin<&mut [static generator@src/main.rs:44:30: 66:14]>, _2: ResumeTy) -> GeneratorState<(), Result<Option<String>, ()>> {
+    debug _task_context => _18;          // in scope 0 at src/main.rs:44:30: 66:14
+    let mut _0: std::ops::GeneratorState<(), std::result::Result<std::option::Option<std::string::String>, ()>>; // return place in scope 0 at src/main.rs:44:30: 66:14
+    let mut _3: std::result::Result<std::string::String, ()>; // in scope 0 at src/main.rs:45:17: 64:23
+    let mut _4: impl std::future::Future; // in scope 0 at src/main.rs:45:17: 63:18
+    let mut _5: [static generator@src/main.rs:45:28: 63:18]; // in scope 0 at src/main.rs:45:28: 63:18
+    let mut _6: std::task::Poll<std::result::Result<std::string::String, ()>>; // in scope 0 at src/main.rs:45:17: 64:23
+    let mut _7: std::pin::Pin<&mut impl std::future::Future>; // in scope 0 at src/main.rs:45:17: 64:23
+    let mut _8: &mut impl std::future::Future; // in scope 0 at src/main.rs:45:17: 64:23
+    let mut _9: &mut impl std::future::Future; // in scope 0 at src/main.rs:45:17: 64:23
+    let mut _10: &mut std::task::Context; // in scope 0 at src/main.rs:45:17: 64:23
+    let mut _11: &mut std::task::Context; // in scope 0 at src/main.rs:45:17: 64:23
+    let mut _12: std::future::ResumeTy;  // in scope 0 at src/main.rs:45:17: 64:23
+    let mut _13: isize;                  // in scope 0 at src/main.rs:45:17: 64:23
+    let mut _15: std::future::ResumeTy;  // in scope 0 at src/main.rs:45:17: 64:23
+    let mut _16: ();                     // in scope 0 at src/main.rs:45:17: 64:23
+    let mut _17: std::result::Result<std::option::Option<std::string::String>, ()>; // in scope 0 at src/main.rs:44:30: 66:14
+    let mut _18: std::future::ResumeTy;  // in scope 0 at src/main.rs:44:30: 66:14
+    let mut _19: u32;                    // in scope 0 at src/main.rs:44:30: 66:14
+    scope 1 {
+        debug pinned => (((*(_1.0: &mut [static generator@src/main.rs:44:30: 66:14])) as variant#3).0: impl std::future::Future); // in scope 1 at src/main.rs:45:17: 64:23
+        let _14: std::result::Result<std::string::String, ()>; // in scope 1 at src/main.rs:45:17: 64:23
+        scope 2 {
+        }
+        scope 3 {
+            debug result => _14;         // in scope 3 at src/main.rs:45:17: 64:23
+        }
+    }
+
+    bb0: {
+        _19 = discriminant((*(_1.0: &mut [static generator@src/main.rs:44:30: 66:14]))); // scope 0 at src/main.rs:44:30: 66:14
+        switchInt(move _19) -> [0_u32: bb1, 1_u32: bb21, 2_u32: bb20, 3_u32: bb19, otherwise: bb22]; // scope 0 at src/main.rs:44:30: 66:14
+    }
+
+    bb1: {
+        _18 = move _2;                   // scope 0 at src/main.rs:44:30: 66:14
+        StorageLive(_3);                 // scope 0 at src/main.rs:45:17: 64:23
+        StorageLive(_4);                 // scope 0 at src/main.rs:45:17: 63:18
+        StorageLive(_5);                 // scope 0 at src/main.rs:45:28: 63:18
+        discriminant(_5) = 0;            // scope 0 at src/main.rs:45:28: 63:18
+        _4 = from_generator::<[static generator@src/main.rs:45:28: 63:18]>(move _5) -> [return: bb2, unwind: bb17]; // scope 0 at src/main.rs:45:17: 63:18
+                                         // mir::Constant
+                                         // + span: src/main.rs:45:28: 63:18
+                                         // + literal: Const { ty: fn([static generator@src/main.rs:45:28: 63:18]) -> impl std::future::Future {std::future::from_generator::<[static generator@src/main.rs:45:28: 63:18]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_5);                 // scope 0 at src/main.rs:63:17: 63:18
+        (((*(_1.0: &mut [static generator@src/main.rs:44:30: 66:14])) as variant#3).0: impl std::future::Future) = move _4; // scope 0 at src/main.rs:45:17: 64:23
+        goto -> bb3;                     // scope 1 at src/main.rs:45:17: 64:23
+    }
+
+    bb3: {
+        StorageLive(_6);                 // scope 1 at src/main.rs:45:17: 64:23
+        StorageLive(_7);                 // scope 2 at src/main.rs:45:17: 64:23
+        StorageLive(_8);                 // scope 2 at src/main.rs:45:17: 64:23
+        StorageLive(_9);                 // scope 2 at src/main.rs:45:17: 64:23
+        _9 = &mut (((*(_1.0: &mut [static generator@src/main.rs:44:30: 66:14])) as variant#3).0: impl std::future::Future); // scope 2 at src/main.rs:45:17: 64:23
+        _8 = &mut (*_9);                 // scope 2 at src/main.rs:45:17: 64:23
+        _7 = Pin::<&mut impl Future>::new_unchecked(move _8) -> [return: bb4, unwind: bb14]; // scope 2 at src/main.rs:45:17: 64:23
+                                         // mir::Constant
+                                         // + span: src/main.rs:45:17: 64:23
+                                         // + literal: Const { ty: unsafe fn(&mut impl std::future::Future) -> std::pin::Pin<&mut impl std::future::Future> {std::pin::Pin::<&mut impl std::future::Future>::new_unchecked}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb4: {
+        StorageDead(_8);                 // scope 2 at src/main.rs:64:22: 64:23
+        StorageLive(_10);                // scope 2 at src/main.rs:45:17: 64:23
+        StorageLive(_11);                // scope 2 at src/main.rs:45:17: 64:23
+        StorageLive(_12);                // scope 2 at src/main.rs:45:17: 64:23
+        _12 = _18;                       // scope 2 at src/main.rs:45:17: 64:23
+        _11 = get_context(move _12) -> [return: bb5, unwind: bb12]; // scope 2 at src/main.rs:45:17: 64:23
+                                         // mir::Constant
+                                         // + span: src/main.rs:45:17: 64:23
+                                         // + literal: Const { ty: unsafe fn(std::future::ResumeTy) -> &mut std::task::Context {std::future::get_context}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb5: {
+        _10 = &mut (*_11);               // scope 2 at src/main.rs:45:17: 64:23
+        StorageDead(_12);                // scope 2 at src/main.rs:64:22: 64:23
+        _6 = <impl Future as Future>::poll(move _7, move _10) -> [return: bb6, unwind: bb13]; // scope 2 at src/main.rs:45:17: 64:23
+                                         // mir::Constant
+                                         // + span: src/main.rs:45:17: 64:23
+                                         // + literal: Const { ty: for<'r, 's, 't0> fn(std::pin::Pin<&'r mut impl std::future::Future>, &'s mut std::task::Context<'t0>) -> std::task::Poll<<impl std::future::Future as std::future::Future>::Output> {<impl std::future::Future as std::future::Future>::poll}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb6: {
+        StorageDead(_10);                // scope 2 at src/main.rs:64:22: 64:23
+        StorageDead(_7);                 // scope 2 at src/main.rs:64:22: 64:23
+        _13 = discriminant(_6);          // scope 1 at src/main.rs:45:17: 64:23
+        switchInt(move _13) -> [0_isize: bb9, 1_isize: bb7, otherwise: bb8]; // scope 1 at src/main.rs:45:17: 64:23
+    }
+
+    bb7: {
+        StorageDead(_11);                // scope 1 at src/main.rs:64:22: 64:23
+        StorageDead(_9);                 // scope 1 at src/main.rs:64:22: 64:23
+        StorageDead(_6);                 // scope 1 at src/main.rs:64:22: 64:23
+        StorageLive(_15);                // scope 1 at src/main.rs:45:17: 64:23
+        StorageLive(_16);                // scope 1 at src/main.rs:45:17: 64:23
+        ((_0 as Yielded).0: ()) = move _16; // scope 1 at src/main.rs:45:17: 64:23
+        discriminant(_0) = 0;            // scope 1 at src/main.rs:45:17: 64:23
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:44:30: 66:14]))) = 3; // scope 1 at src/main.rs:45:17: 64:23
+        return;                          // scope 1 at src/main.rs:45:17: 64:23
+    }
+
+    bb8: {
+        unreachable;                     // scope 1 at src/main.rs:45:17: 64:23
+    }
+
+    bb9: {
+        StorageLive(_14);                // scope 1 at src/main.rs:45:17: 64:23
+        _14 = move ((_6 as Ready).0: std::result::Result<std::string::String, ()>); // scope 1 at src/main.rs:45:17: 64:23
+        _3 = move _14;                   // scope 3 at src/main.rs:45:17: 64:23
+        StorageDead(_14);                // scope 1 at src/main.rs:64:22: 64:23
+        StorageDead(_11);                // scope 1 at src/main.rs:64:22: 64:23
+        StorageDead(_9);                 // scope 1 at src/main.rs:64:22: 64:23
+        StorageDead(_6);                 // scope 1 at src/main.rs:64:22: 64:23
+        drop((((*(_1.0: &mut [static generator@src/main.rs:44:30: 66:14])) as variant#3).0: impl std::future::Future)) -> [return: bb10, unwind: bb16]; // scope 0 at src/main.rs:64:22: 64:23
+    }
+
+    bb10: {
+        _17 = Result::<String, ()>::map::<Option<String>, fn(String) -> Option<String> {Option::<String>::Some}>(move _3, Option::<String>::Some) -> [return: bb11, unwind: bb16]; // scope 0 at src/main.rs:45:17: 65:27
+                                         // mir::Constant
+                                         // + span: src/main.rs:65:18: 65:21
+                                         // + literal: Const { ty: fn(std::result::Result<std::string::String, ()>, fn(std::string::String) -> std::option::Option<std::string::String> {std::option::Option::<std::string::String>::Some}) -> std::result::Result<std::option::Option<std::string::String>, ()> {std::result::Result::<std::string::String, ()>::map::<std::option::Option<std::string::String>, fn(std::string::String) -> std::option::Option<std::string::String> {std::option::Option::<std::string::String>::Some}>}, val: Value(Scalar(<ZST>)) }
+                                         // mir::Constant
+                                         // + span: src/main.rs:65:22: 65:26
+                                         // + literal: Const { ty: fn(std::string::String) -> std::option::Option<std::string::String> {std::option::Option::<std::string::String>::Some}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb11: {
+        StorageDead(_3);                 // scope 0 at src/main.rs:65:26: 65:27
+        StorageDead(_4);                 // scope 0 at src/main.rs:66:13: 66:14
+        ((_0 as Complete).0: std::result::Result<std::option::Option<std::string::String>, ()>) = move _17; // scope 0 at src/main.rs:66:14: 66:14
+        discriminant(_0) = 1;            // scope 0 at src/main.rs:66:14: 66:14
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:44:30: 66:14]))) = 1; // scope 0 at src/main.rs:66:14: 66:14
+        return;                          // scope 0 at src/main.rs:66:14: 66:14
+    }
+
+    bb12 (cleanup): {
+        StorageDead(_12);                // scope 2 at src/main.rs:64:22: 64:23
+        goto -> bb13;                    // scope 2 at no-location
+    }
+
+    bb13 (cleanup): {
+        StorageDead(_10);                // scope 2 at src/main.rs:64:22: 64:23
+        StorageDead(_7);                 // scope 2 at src/main.rs:64:22: 64:23
+        StorageDead(_11);                // scope 1 at src/main.rs:64:22: 64:23
+        goto -> bb15;                    // scope 1 at no-location
+    }
+
+    bb14 (cleanup): {
+        StorageDead(_8);                 // scope 2 at src/main.rs:64:22: 64:23
+        StorageDead(_7);                 // scope 2 at src/main.rs:64:22: 64:23
+        goto -> bb15;                    // scope 2 at no-location
+    }
+
+    bb15 (cleanup): {
+        StorageDead(_9);                 // scope 1 at src/main.rs:64:22: 64:23
+        StorageDead(_6);                 // scope 1 at src/main.rs:64:22: 64:23
+        drop((((*(_1.0: &mut [static generator@src/main.rs:44:30: 66:14])) as variant#3).0: impl std::future::Future)) -> bb16; // scope 0 at src/main.rs:64:22: 64:23
+    }
+
+    bb16 (cleanup): {
+        StorageDead(_3);                 // scope 0 at src/main.rs:65:26: 65:27
+        goto -> bb18;                    // scope 0 at src/main.rs:66:13: 66:14
+    }
+
+    bb17 (cleanup): {
+        StorageDead(_5);                 // scope 0 at src/main.rs:63:17: 63:18
+        StorageDead(_3);                 // scope 0 at src/main.rs:65:26: 65:27
+        goto -> bb18;                    // scope 0 at no-location
+    }
+
+    bb18 (cleanup): {
+        StorageDead(_4);                 // scope 0 at src/main.rs:66:13: 66:14
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:44:30: 66:14]))) = 2; // scope 0 at src/main.rs:44:30: 66:14
+        resume;                          // scope 0 at src/main.rs:44:30: 66:14
+    }
+
+    bb19: {
+        StorageLive(_3);                 // scope 0 at src/main.rs:44:30: 66:14
+        StorageLive(_4);                 // scope 0 at src/main.rs:44:30: 66:14
+        StorageLive(_15);                // scope 0 at src/main.rs:44:30: 66:14
+        StorageLive(_16);                // scope 0 at src/main.rs:44:30: 66:14
+        _15 = move _2;                   // scope 0 at src/main.rs:44:30: 66:14
+        StorageDead(_16);                // scope 1 at src/main.rs:64:22: 64:23
+        _18 = move _15;                  // scope 1 at src/main.rs:45:17: 64:23
+        StorageDead(_15);                // scope 1 at src/main.rs:64:22: 64:23
+        goto -> bb3;                     // scope 1 at src/main.rs:45:17: 64:23
+    }
+
+    bb20: {
+        assert(const false, "`async fn` resumed after panicking") -> bb20; // scope 0 at src/main.rs:44:30: 66:14
+    }
+
+    bb21: {
+        assert(const false, "`async fn` resumed after completion") -> bb21; // scope 0 at src/main.rs:44:30: 66:14
+    }
+
+    bb22: {
+        unreachable;                     // scope 0 at src/main.rs:44:30: 66:14
+    }
+}
+
+fn <impl at src/main.rs:36:1: 76:2>::acquire::{closure#0}(_1: Pin<&mut [static generator@src/main.rs:39:20: 39:81]>, _2: ResumeTy) -> GeneratorState<(), Result<G, Error>> {
+    debug _task_context => _22;          // in scope 0 at src/main.rs:39:20: 39:81
+    debug _shared => ((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81])).0: std::sync::Arc<SharedPool>); // in scope 0 at src/main.rs:38:13: 38:20
+    let mut _0: std::ops::GeneratorState<(), std::result::Result<G, Error>>; // return place in scope 0 at src/main.rs:39:20: 39:81
+    let mut _3: std::result::Result<Floating, Error>; // in scope 0 at src/main.rs:39:22: 39:45
+    let mut _4: impl std::future::Future; // in scope 0 at src/main.rs:39:22: 39:39
+    let mut _5: &SharedPool;             // in scope 0 at src/main.rs:39:22: 39:29
+    let _6: &SharedPool;                 // in scope 0 at src/main.rs:39:22: 39:39
+    let mut _7: &std::sync::Arc<SharedPool>; // in scope 0 at src/main.rs:39:22: 39:29
+    let mut _8: std::task::Poll<std::result::Result<Floating, Error>>; // in scope 0 at src/main.rs:39:22: 39:45
+    let mut _9: std::pin::Pin<&mut impl std::future::Future>; // in scope 0 at src/main.rs:39:22: 39:45
+    let mut _10: &mut impl std::future::Future; // in scope 0 at src/main.rs:39:22: 39:45
+    let mut _11: &mut impl std::future::Future; // in scope 0 at src/main.rs:39:22: 39:45
+    let mut _12: &mut std::task::Context; // in scope 0 at src/main.rs:39:22: 39:45
+    let mut _13: &mut std::task::Context; // in scope 0 at src/main.rs:39:22: 39:45
+    let mut _14: std::future::ResumeTy;  // in scope 0 at src/main.rs:39:22: 39:45
+    let mut _15: isize;                  // in scope 0 at src/main.rs:39:22: 39:45
+    let mut _17: std::future::ResumeTy;  // in scope 0 at src/main.rs:39:22: 39:45
+    let mut _18: ();                     // in scope 0 at src/main.rs:39:22: 39:45
+    let mut _19: [closure@src/main.rs:39:50: 39:78]; // in scope 0 at src/main.rs:39:50: 39:78
+    let mut _20: &std::sync::Arc<SharedPool>; // in scope 0 at src/main.rs:39:50: 39:78
+    let mut _21: std::result::Result<G, Error>; // in scope 0 at src/main.rs:39:20: 39:81
+    let mut _22: std::future::ResumeTy;  // in scope 0 at src/main.rs:39:20: 39:81
+    let mut _23: u32;                    // in scope 0 at src/main.rs:39:20: 39:81
+    scope 1 {
+        debug pinned => (((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81])) as variant#3).0: impl std::future::Future); // in scope 1 at src/main.rs:39:22: 39:45
+        let _16: std::result::Result<Floating, Error>; // in scope 1 at src/main.rs:39:22: 39:45
+        scope 2 {
+        }
+        scope 3 {
+            debug result => _16;         // in scope 3 at src/main.rs:39:22: 39:45
+        }
+    }
+
+    bb0: {
+        _23 = discriminant((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81]))); // scope 0 at src/main.rs:39:20: 39:81
+        switchInt(move _23) -> [0_u32: bb1, 1_u32: bb26, 2_u32: bb25, 3_u32: bb24, otherwise: bb27]; // scope 0 at src/main.rs:39:20: 39:81
+    }
+
+    bb1: {
+        _22 = move _2;                   // scope 0 at src/main.rs:39:20: 39:81
+        StorageLive(_3);                 // scope 0 at src/main.rs:39:22: 39:45
+        StorageLive(_4);                 // scope 0 at src/main.rs:39:22: 39:39
+        StorageLive(_5);                 // scope 0 at src/main.rs:39:22: 39:29
+        StorageLive(_6);                 // scope 0 at src/main.rs:39:22: 39:39
+        StorageLive(_7);                 // scope 0 at src/main.rs:39:22: 39:29
+        _7 = &((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81])).0: std::sync::Arc<SharedPool>); // scope 0 at src/main.rs:39:22: 39:29
+        _6 = <Arc<SharedPool> as Deref>::deref(move _7) -> [return: bb2, unwind: bb19]; // scope 0 at src/main.rs:39:22: 39:39
+                                         // mir::Constant
+                                         // + span: src/main.rs:39:22: 39:39
+                                         // + literal: Const { ty: for<'r> fn(&'r std::sync::Arc<SharedPool>) -> &'r <std::sync::Arc<SharedPool> as std::ops::Deref>::Target {<std::sync::Arc<SharedPool> as std::ops::Deref>::deref}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        _5 = _6;                         // scope 0 at src/main.rs:39:22: 39:29
+        StorageDead(_7);                 // scope 0 at src/main.rs:39:28: 39:29
+        _4 = SharedPool::acquire(move _5) -> [return: bb3, unwind: bb20]; // scope 0 at src/main.rs:39:22: 39:39
+                                         // mir::Constant
+                                         // + span: src/main.rs:39:30: 39:37
+                                         // + literal: Const { ty: for<'_> fn(&SharedPool) -> impl for<'_> std::future::Future {SharedPool::acquire}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb3: {
+        StorageDead(_5);                 // scope 0 at src/main.rs:39:38: 39:39
+        (((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81])) as variant#3).0: impl std::future::Future) = move _4; // scope 0 at src/main.rs:39:22: 39:45
+        goto -> bb4;                     // scope 1 at src/main.rs:39:22: 39:45
+    }
+
+    bb4: {
+        StorageLive(_8);                 // scope 1 at src/main.rs:39:22: 39:45
+        StorageLive(_9);                 // scope 2 at src/main.rs:39:22: 39:45
+        StorageLive(_10);                // scope 2 at src/main.rs:39:22: 39:45
+        StorageLive(_11);                // scope 2 at src/main.rs:39:22: 39:45
+        _11 = &mut (((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81])) as variant#3).0: impl std::future::Future); // scope 2 at src/main.rs:39:22: 39:45
+        _10 = &mut (*_11);               // scope 2 at src/main.rs:39:22: 39:45
+        _9 = Pin::<&mut impl Future>::new_unchecked(move _10) -> [return: bb5, unwind: bb16]; // scope 2 at src/main.rs:39:22: 39:45
+                                         // mir::Constant
+                                         // + span: src/main.rs:39:22: 39:45
+                                         // + literal: Const { ty: unsafe fn(&mut impl std::future::Future) -> std::pin::Pin<&mut impl std::future::Future> {std::pin::Pin::<&mut impl std::future::Future>::new_unchecked}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb5: {
+        StorageDead(_10);                // scope 2 at src/main.rs:39:44: 39:45
+        StorageLive(_12);                // scope 2 at src/main.rs:39:22: 39:45
+        StorageLive(_13);                // scope 2 at src/main.rs:39:22: 39:45
+        StorageLive(_14);                // scope 2 at src/main.rs:39:22: 39:45
+        _14 = _22;                       // scope 2 at src/main.rs:39:22: 39:45
+        _13 = get_context(move _14) -> [return: bb6, unwind: bb14]; // scope 2 at src/main.rs:39:22: 39:45
+                                         // mir::Constant
+                                         // + span: src/main.rs:39:22: 39:45
+                                         // + literal: Const { ty: unsafe fn(std::future::ResumeTy) -> &mut std::task::Context {std::future::get_context}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb6: {
+        _12 = &mut (*_13);               // scope 2 at src/main.rs:39:22: 39:45
+        StorageDead(_14);                // scope 2 at src/main.rs:39:44: 39:45
+        _8 = <impl Future as Future>::poll(move _9, move _12) -> [return: bb7, unwind: bb15]; // scope 2 at src/main.rs:39:22: 39:45
+                                         // mir::Constant
+                                         // + span: src/main.rs:39:22: 39:45
+                                         // + literal: Const { ty: for<'r, 's, 't0> fn(std::pin::Pin<&'r mut impl std::future::Future>, &'s mut std::task::Context<'t0>) -> std::task::Poll<<impl std::future::Future as std::future::Future>::Output> {<impl std::future::Future as std::future::Future>::poll}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb7: {
+        StorageDead(_12);                // scope 2 at src/main.rs:39:44: 39:45
+        StorageDead(_9);                 // scope 2 at src/main.rs:39:44: 39:45
+        _15 = discriminant(_8);          // scope 1 at src/main.rs:39:22: 39:45
+        switchInt(move _15) -> [0_isize: bb10, 1_isize: bb8, otherwise: bb9]; // scope 1 at src/main.rs:39:22: 39:45
+    }
+
+    bb8: {
+        StorageDead(_13);                // scope 1 at src/main.rs:39:44: 39:45
+        StorageDead(_11);                // scope 1 at src/main.rs:39:44: 39:45
+        StorageDead(_8);                 // scope 1 at src/main.rs:39:44: 39:45
+        StorageLive(_17);                // scope 1 at src/main.rs:39:22: 39:45
+        StorageLive(_18);                // scope 1 at src/main.rs:39:22: 39:45
+        ((_0 as Yielded).0: ()) = move _18; // scope 1 at src/main.rs:39:22: 39:45
+        discriminant(_0) = 0;            // scope 1 at src/main.rs:39:22: 39:45
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81]))) = 3; // scope 1 at src/main.rs:39:22: 39:45
+        return;                          // scope 1 at src/main.rs:39:22: 39:45
+    }
+
+    bb9: {
+        unreachable;                     // scope 1 at src/main.rs:39:22: 39:45
+    }
+
+    bb10: {
+        StorageLive(_16);                // scope 1 at src/main.rs:39:22: 39:45
+        _16 = move ((_8 as Ready).0: std::result::Result<Floating, Error>); // scope 1 at src/main.rs:39:22: 39:45
+        _3 = move _16;                   // scope 3 at src/main.rs:39:22: 39:45
+        StorageDead(_16);                // scope 1 at src/main.rs:39:44: 39:45
+        StorageDead(_13);                // scope 1 at src/main.rs:39:44: 39:45
+        StorageDead(_11);                // scope 1 at src/main.rs:39:44: 39:45
+        StorageDead(_8);                 // scope 1 at src/main.rs:39:44: 39:45
+        drop((((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81])) as variant#3).0: impl std::future::Future)) -> [return: bb11, unwind: bb18]; // scope 0 at src/main.rs:39:44: 39:45
+    }
+
+    bb11: {
+        StorageLive(_19);                // scope 0 at src/main.rs:39:50: 39:78
+        StorageLive(_20);                // scope 0 at src/main.rs:39:50: 39:78
+        _20 = &((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81])).0: std::sync::Arc<SharedPool>); // scope 0 at src/main.rs:39:50: 39:78
+        (_19.0: &std::sync::Arc<SharedPool>) = move _20; // scope 0 at src/main.rs:39:50: 39:78
+        StorageDead(_20);                // scope 0 at src/main.rs:39:77: 39:78
+        _21 = Result::<Floating, Error>::map::<G, [closure@src/main.rs:39:50: 39:78]>(move _3, move _19) -> [return: bb12, unwind: bb13]; // scope 0 at src/main.rs:39:22: 39:79
+                                         // mir::Constant
+                                         // + span: src/main.rs:39:46: 39:49
+                                         // + literal: Const { ty: fn(std::result::Result<Floating, Error>, [closure@src/main.rs:39:50: 39:78]) -> std::result::Result<G, Error> {std::result::Result::<Floating, Error>::map::<G, [closure@src/main.rs:39:50: 39:78]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb12: {
+        StorageDead(_19);                // scope 0 at src/main.rs:39:78: 39:79
+        StorageDead(_3);                 // scope 0 at src/main.rs:39:78: 39:79
+        StorageDead(_6);                 // scope 0 at src/main.rs:39:80: 39:81
+        StorageDead(_4);                 // scope 0 at src/main.rs:39:80: 39:81
+        drop(((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81])).0: std::sync::Arc<SharedPool>)) -> [return: bb23, unwind: bb22]; // scope 0 at src/main.rs:39:80: 39:81
+    }
+
+    bb13 (cleanup): {
+        StorageDead(_19);                // scope 0 at src/main.rs:39:78: 39:79
+        goto -> bb18;                    // scope 0 at no-location
+    }
+
+    bb14 (cleanup): {
+        StorageDead(_14);                // scope 2 at src/main.rs:39:44: 39:45
+        goto -> bb15;                    // scope 2 at no-location
+    }
+
+    bb15 (cleanup): {
+        StorageDead(_12);                // scope 2 at src/main.rs:39:44: 39:45
+        StorageDead(_9);                 // scope 2 at src/main.rs:39:44: 39:45
+        StorageDead(_13);                // scope 1 at src/main.rs:39:44: 39:45
+        goto -> bb17;                    // scope 1 at no-location
+    }
+
+    bb16 (cleanup): {
+        StorageDead(_10);                // scope 2 at src/main.rs:39:44: 39:45
+        StorageDead(_9);                 // scope 2 at src/main.rs:39:44: 39:45
+        goto -> bb17;                    // scope 2 at no-location
+    }
+
+    bb17 (cleanup): {
+        StorageDead(_11);                // scope 1 at src/main.rs:39:44: 39:45
+        StorageDead(_8);                 // scope 1 at src/main.rs:39:44: 39:45
+        drop((((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81])) as variant#3).0: impl std::future::Future)) -> bb18; // scope 0 at src/main.rs:39:44: 39:45
+    }
+
+    bb18 (cleanup): {
+        StorageDead(_3);                 // scope 0 at src/main.rs:39:78: 39:79
+        goto -> bb21;                    // scope 0 at src/main.rs:39:80: 39:81
+    }
+
+    bb19 (cleanup): {
+        StorageDead(_7);                 // scope 0 at src/main.rs:39:28: 39:29
+        goto -> bb20;                    // scope 0 at no-location
+    }
+
+    bb20 (cleanup): {
+        StorageDead(_5);                 // scope 0 at src/main.rs:39:38: 39:39
+        StorageDead(_3);                 // scope 0 at src/main.rs:39:78: 39:79
+        goto -> bb21;                    // scope 0 at no-location
+    }
+
+    bb21 (cleanup): {
+        StorageDead(_6);                 // scope 0 at src/main.rs:39:80: 39:81
+        StorageDead(_4);                 // scope 0 at src/main.rs:39:80: 39:81
+        drop(((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81])).0: std::sync::Arc<SharedPool>)) -> bb22; // scope 0 at src/main.rs:39:80: 39:81
+    }
+
+    bb22 (cleanup): {
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81]))) = 2; // scope 0 at src/main.rs:39:20: 39:81
+        resume;                          // scope 0 at src/main.rs:39:20: 39:81
+    }
+
+    bb23: {
+        ((_0 as Complete).0: std::result::Result<G, Error>) = move _21; // scope 0 at src/main.rs:39:81: 39:81
+        discriminant(_0) = 1;            // scope 0 at src/main.rs:39:81: 39:81
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:39:20: 39:81]))) = 1; // scope 0 at src/main.rs:39:81: 39:81
+        return;                          // scope 0 at src/main.rs:39:81: 39:81
+    }
+
+    bb24: {
+        StorageLive(_3);                 // scope 0 at src/main.rs:39:20: 39:81
+        StorageLive(_4);                 // scope 0 at src/main.rs:39:20: 39:81
+        StorageLive(_6);                 // scope 0 at src/main.rs:39:20: 39:81
+        StorageLive(_17);                // scope 0 at src/main.rs:39:20: 39:81
+        StorageLive(_18);                // scope 0 at src/main.rs:39:20: 39:81
+        _17 = move _2;                   // scope 0 at src/main.rs:39:20: 39:81
+        StorageDead(_18);                // scope 1 at src/main.rs:39:44: 39:45
+        _22 = move _17;                  // scope 1 at src/main.rs:39:22: 39:45
+        StorageDead(_17);                // scope 1 at src/main.rs:39:44: 39:45
+        goto -> bb4;                     // scope 1 at src/main.rs:39:22: 39:45
+    }
+
+    bb25: {
+        assert(const false, "`async fn` resumed after panicking") -> bb25; // scope 0 at src/main.rs:39:20: 39:81
+    }
+
+    bb26: {
+        assert(const false, "`async fn` resumed after completion") -> bb26; // scope 0 at src/main.rs:39:20: 39:81
+    }
+
+    bb27: {
+        unreachable;                     // scope 0 at src/main.rs:39:20: 39:81
+    }
+}
+
+fn BoxServiceFactory(_1: Box<dyn ServiceFactory<Req, Service = Box<dyn Service<Req, Error = (), Future = Pin<Box<dyn Future<Output = Result<(), ()>>>>>>, Future = Pin<Box<dyn Future<Output = Result<Box<dyn Service<Req, Error = (), Future = Pin<Box<dyn Future<Output = Result<(), ()>>>>>>, ()>>>>>>) -> BoxServiceFactory<Req> {
+    let mut _0: BoxServiceFactory<Req>;  // return place in scope 0 at src/main.rs:140:1: 150:3
+
+    bb0: {
+        (_0.0: std::boxed::Box<(dyn ServiceFactory<Req, Service = std::boxed::Box<(dyn Service<Req, Error = (), Future = std::pin::Pin<std::boxed::Box<(dyn std::future::Future<Output = std::result::Result<(), ()>> + 'static)>>> + 'static)>, Future = std::pin::Pin<std::boxed::Box<(dyn std::future::Future<Output = std::result::Result<std::boxed::Box<(dyn Service<Req, Error = (), Future = std::pin::Pin<std::boxed::Box<(dyn std::future::Future<Output = std::result::Result<(), ()>> + 'static)>>> + 'static)>, ()>> + 'static)>>> + 'static)>) = move _1; // scope 0 at src/main.rs:140:1: 150:3
+        return;                          // scope 0 at src/main.rs:140:1: 150:3
+    }
+}
+
+// MIR FOR CTFE
+fn BoxServiceFactory(_1: Box<dyn ServiceFactory<Req, Service = Box<dyn Service<Req, Error = (), Future = Pin<Box<dyn Future<Output = Result<(), ()>>>>>>, Future = Pin<Box<dyn Future<Output = Result<Box<dyn Service<Req, Error = (), Future = Pin<Box<dyn Future<Output = Result<(), ()>>>>>>, ()>>>>>>) -> BoxServiceFactory<Req> {
+    let mut _0: BoxServiceFactory<Req>;  // return place in scope 0 at src/main.rs:140:1: 150:3
+
+    bb0: {
+        (_0.0: std::boxed::Box<(dyn ServiceFactory<Req, Service = std::boxed::Box<(dyn Service<Req, Error = (), Future = std::pin::Pin<std::boxed::Box<(dyn std::future::Future<Output = std::result::Result<(), ()>> + 'static)>>> + 'static)>, Future = std::pin::Pin<std::boxed::Box<(dyn std::future::Future<Output = std::result::Result<std::boxed::Box<(dyn Service<Req, Error = (), Future = std::pin::Pin<std::boxed::Box<(dyn std::future::Future<Output = std::result::Result<(), ()>> + 'static)>>> + 'static)>, ()>> + 'static)>>> + 'static)>) = move _1; // scope 0 at src/main.rs:140:1: 150:3
+        return;                          // scope 0 at src/main.rs:140:1: 150:3
+    }
+}
+
+fn Floating(_1: PhantomData<dyn Fn(&())>) -> Floating {
+    let mut _0: Floating;                // return place in scope 0 at src/main.rs:29:1: 29:63
+
+    bb0: {
+        (_0.0: std::marker::PhantomData<(dyn std::ops::Fn(&()) + 'static)>) = move _1; // scope 0 at src/main.rs:29:1: 29:63
+        return;                          // scope 0 at src/main.rs:29:1: 29:63
+    }
+}
+
+// MIR FOR CTFE
+fn Floating(_1: PhantomData<dyn Fn(&())>) -> Floating {
+    let mut _0: Floating;                // return place in scope 0 at src/main.rs:29:1: 29:63
+
+    bb0: {
+        (_0.0: std::marker::PhantomData<(dyn std::ops::Fn(&()) + 'static)>) = move _1; // scope 0 at src/main.rs:29:1: 29:63
+        return;                          // scope 0 at src/main.rs:29:1: 29:63
+    }
+}
+
+fn <impl at src/main.rs:117:1: 124:2>::call(_1: &Factory<I, T, R>, _2: K) -> std::future::Ready<Result<L, Error>> {
+    debug self => _1;                    // in scope 0 at src/main.rs:123:13: 123:18
+    debug m => _2;                       // in scope 0 at src/main.rs:123:20: 123:21
+    let mut _0: std::future::Ready<std::result::Result<L, Error>>; // return place in scope 0 at src/main.rs:123:29: 123:41
+
+    bb0: {
+        panic(const "not yet implemented"); // scope 0 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+}
+
+fn check::{closure#0}(_1: Pin<&mut [static generator@src/main.rs:12:41: 14:2]>, _2: ResumeTy) -> GeneratorState<(), Result<(), DecrementSizeGuard>> {
+    debug _task_context => _5;           // in scope 0 at src/main.rs:12:41: 14:2
+    debug _conn => ((*(_1.0: &mut [static generator@src/main.rs:12:41: 14:2])).0: Floating); // in scope 0 at src/main.rs:10:5: 10:14
+    debug _ => ((*(_1.0: &mut [static generator@src/main.rs:12:41: 14:2])).1: &PoolOptions); // in scope 0 at src/main.rs:11:5: 11:6
+    let mut _0: std::ops::GeneratorState<(), std::result::Result<(), DecrementSizeGuard>>; // return place in scope 0 at src/main.rs:12:41: 14:2
+    let mut _3: Floating;                // in scope 0 at src/main.rs:10:5: 10:14
+    let mut _5: std::future::ResumeTy;   // in scope 0 at src/main.rs:12:41: 14:2
+    let mut _6: u32;                     // in scope 0 at src/main.rs:12:41: 14:2
+    scope 1 {
+        debug _conn => _3;               // in scope 1 at src/main.rs:10:5: 10:14
+        let mut _4: &PoolOptions;        // in scope 1 at src/main.rs:11:5: 11:6
+        scope 2 {
+            debug _ => _4;               // in scope 2 at src/main.rs:11:5: 11:6
+            scope 3 {
+            }
+        }
+    }
+
+    bb0: {
+        _6 = discriminant((*(_1.0: &mut [static generator@src/main.rs:12:41: 14:2]))); // scope 0 at src/main.rs:12:41: 14:2
+        switchInt(move _6) -> [0_u32: bb1, 2_u32: bb3, otherwise: bb4]; // scope 0 at src/main.rs:12:41: 14:2
+    }
+
+    bb1: {
+        _5 = move _2;                    // scope 0 at src/main.rs:12:41: 14:2
+        StorageLive(_3);                 // scope 0 at src/main.rs:10:5: 10:14
+        _3 = move ((*(_1.0: &mut [static generator@src/main.rs:12:41: 14:2])).0: Floating); // scope 0 at src/main.rs:10:5: 10:14
+        StorageLive(_4);                 // scope 1 at src/main.rs:11:5: 11:6
+        _4 = ((*(_1.0: &mut [static generator@src/main.rs:12:41: 14:2])).1: &PoolOptions); // scope 1 at src/main.rs:11:5: 11:6
+        panic(const "not yet implemented") -> bb2; // scope 3 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+
+    bb2 (cleanup): {
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:12:41: 14:2]))) = 2; // scope 0 at src/main.rs:12:41: 14:2
+        resume;                          // scope 0 at src/main.rs:12:41: 14:2
+    }
+
+    bb3: {
+        assert(const false, "`async fn` resumed after panicking") -> bb3; // scope 0 at src/main.rs:12:41: 14:2
+    }
+
+    bb4: {
+        unreachable;                     // scope 0 at src/main.rs:12:41: 14:2
+    }
+}
+
+fn <impl at src/main.rs:187:1: 194:2>::call(_1: &Func, _2: (A,)) -> Res {
+    debug self => _1;                    // in scope 0 at src/main.rs:193:13: 193:18
+    let mut _0: Res;                     // return place in scope 0 at src/main.rs:193:32: 193:35
+
+    bb0: {
+        panic(const "not yet implemented") -> bb1; // scope 0 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+
+    bb1 (cleanup): {
+        drop(_2) -> bb2;                 // scope 0 at src/main.rs:193:46: 193:47
+    }
+
+    bb2 (cleanup): {
+        resume;                          // scope 0 at src/main.rs:193:5: 193:47
+    }
+}
+
+fn route::{closure#0}(_1: Pin<&mut [static generator@src/main.rs:89:54: 92:2]>, _2: ResumeTy) -> GeneratorState<(), Result<(), Error>> {
+    debug _task_context => _17;          // in scope 0 at src/main.rs:89:54: 92:2
+    debug database => ((*(_1.0: &mut [static generator@src/main.rs:89:54: 92:2])).0: FooDb); // in scope 0 at src/main.rs:89:16: 89:24
+    let mut _0: std::ops::GeneratorState<(), std::result::Result<(), Error>>; // return place in scope 0 at src/main.rs:89:54: 92:2
+    let _3: std::result::Result<std::option::Option<std::string::String>, ()>; // in scope 0 at src/main.rs:90:5: 90:28
+    let mut _4: impl std::future::Future; // in scope 0 at src/main.rs:90:5: 90:22
+    let mut _5: &FooDb;                  // in scope 0 at src/main.rs:90:5: 90:13
+    let mut _6: std::task::Poll<std::result::Result<std::option::Option<std::string::String>, ()>>; // in scope 0 at src/main.rs:90:5: 90:28
+    let mut _7: std::pin::Pin<&mut impl std::future::Future>; // in scope 0 at src/main.rs:90:5: 90:28
+    let mut _8: &mut impl std::future::Future; // in scope 0 at src/main.rs:90:5: 90:28
+    let mut _9: &mut impl std::future::Future; // in scope 0 at src/main.rs:90:5: 90:28
+    let mut _10: &mut std::task::Context; // in scope 0 at src/main.rs:90:5: 90:28
+    let mut _11: &mut std::task::Context; // in scope 0 at src/main.rs:90:5: 90:28
+    let mut _12: std::future::ResumeTy;  // in scope 0 at src/main.rs:90:5: 90:28
+    let mut _13: isize;                  // in scope 0 at src/main.rs:90:5: 90:28
+    let mut _15: std::future::ResumeTy;  // in scope 0 at src/main.rs:90:5: 90:28
+    let mut _16: ();                     // in scope 0 at src/main.rs:90:5: 90:28
+    let mut _17: std::future::ResumeTy;  // in scope 0 at src/main.rs:89:54: 92:2
+    let mut _18: u32;                    // in scope 0 at src/main.rs:89:54: 92:2
+    scope 1 {
+        debug database => (((*(_1.0: &mut [static generator@src/main.rs:89:54: 92:2])) as variant#3).0: FooDb); // in scope 1 at src/main.rs:89:16: 89:24
+        scope 2 {
+            debug pinned => (((*(_1.0: &mut [static generator@src/main.rs:89:54: 92:2])) as variant#3).1: impl std::future::Future); // in scope 2 at src/main.rs:90:5: 90:28
+            let _14: std::result::Result<std::option::Option<std::string::String>, ()>; // in scope 2 at src/main.rs:90:5: 90:28
+            scope 3 {
+            }
+            scope 4 {
+                debug result => _14;     // in scope 4 at src/main.rs:90:5: 90:28
+            }
+        }
+    }
+
+    bb0: {
+        _18 = discriminant((*(_1.0: &mut [static generator@src/main.rs:89:54: 92:2]))); // scope 0 at src/main.rs:89:54: 92:2
+        switchInt(move _18) -> [0_u32: bb1, 2_u32: bb21, 3_u32: bb20, otherwise: bb22]; // scope 0 at src/main.rs:89:54: 92:2
+    }
+
+    bb1: {
+        _17 = move _2;                   // scope 0 at src/main.rs:89:54: 92:2
+        (((*(_1.0: &mut [static generator@src/main.rs:89:54: 92:2])) as variant#3).0: FooDb) = move ((*(_1.0: &mut [static generator@src/main.rs:89:54: 92:2])).0: FooDb); // scope 0 at src/main.rs:89:16: 89:24
+        StorageLive(_3);                 // scope 1 at src/main.rs:90:5: 90:28
+        StorageLive(_4);                 // scope 1 at src/main.rs:90:5: 90:22
+        StorageLive(_5);                 // scope 1 at src/main.rs:90:5: 90:13
+        _5 = &(((*(_1.0: &mut [static generator@src/main.rs:89:54: 92:2])) as variant#3).0: FooDb); // scope 1 at src/main.rs:90:5: 90:13
+        _4 = FooDb::nested(move _5) -> [return: bb2, unwind: bb17]; // scope 1 at src/main.rs:90:5: 90:22
+                                         // mir::Constant
+                                         // + span: src/main.rs:90:14: 90:20
+                                         // + literal: Const { ty: for<'_> fn(&FooDb) -> impl for<'_> std::future::Future {FooDb::nested}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_5);                 // scope 1 at src/main.rs:90:21: 90:22
+        (((*(_1.0: &mut [static generator@src/main.rs:89:54: 92:2])) as variant#3).1: impl std::future::Future) = move _4; // scope 1 at src/main.rs:90:5: 90:28
+        goto -> bb3;                     // scope 2 at src/main.rs:90:5: 90:28
+    }
+
+    bb3: {
+        StorageLive(_6);                 // scope 2 at src/main.rs:90:5: 90:28
+        StorageLive(_7);                 // scope 3 at src/main.rs:90:5: 90:28
+        StorageLive(_8);                 // scope 3 at src/main.rs:90:5: 90:28
+        StorageLive(_9);                 // scope 3 at src/main.rs:90:5: 90:28
+        _9 = &mut (((*(_1.0: &mut [static generator@src/main.rs:89:54: 92:2])) as variant#3).1: impl std::future::Future); // scope 3 at src/main.rs:90:5: 90:28
+        _8 = &mut (*_9);                 // scope 3 at src/main.rs:90:5: 90:28
+        _7 = Pin::<&mut impl Future>::new_unchecked(move _8) -> [return: bb4, unwind: bb15]; // scope 3 at src/main.rs:90:5: 90:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:90:5: 90:28
+                                         // + literal: Const { ty: unsafe fn(&mut impl std::future::Future) -> std::pin::Pin<&mut impl std::future::Future> {std::pin::Pin::<&mut impl std::future::Future>::new_unchecked}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb4: {
+        StorageDead(_8);                 // scope 3 at src/main.rs:90:27: 90:28
+        StorageLive(_10);                // scope 3 at src/main.rs:90:5: 90:28
+        StorageLive(_11);                // scope 3 at src/main.rs:90:5: 90:28
+        StorageLive(_12);                // scope 3 at src/main.rs:90:5: 90:28
+        _12 = _17;                       // scope 3 at src/main.rs:90:5: 90:28
+        _11 = get_context(move _12) -> [return: bb5, unwind: bb13]; // scope 3 at src/main.rs:90:5: 90:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:90:5: 90:28
+                                         // + literal: Const { ty: unsafe fn(std::future::ResumeTy) -> &mut std::task::Context {std::future::get_context}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb5: {
+        _10 = &mut (*_11);               // scope 3 at src/main.rs:90:5: 90:28
+        StorageDead(_12);                // scope 3 at src/main.rs:90:27: 90:28
+        _6 = <impl Future as Future>::poll(move _7, move _10) -> [return: bb6, unwind: bb14]; // scope 3 at src/main.rs:90:5: 90:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:90:5: 90:28
+                                         // + literal: Const { ty: for<'r, 's, 't0> fn(std::pin::Pin<&'r mut impl std::future::Future>, &'s mut std::task::Context<'t0>) -> std::task::Poll<<impl std::future::Future as std::future::Future>::Output> {<impl std::future::Future as std::future::Future>::poll}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb6: {
+        StorageDead(_10);                // scope 3 at src/main.rs:90:27: 90:28
+        StorageDead(_7);                 // scope 3 at src/main.rs:90:27: 90:28
+        _13 = discriminant(_6);          // scope 2 at src/main.rs:90:5: 90:28
+        switchInt(move _13) -> [0_isize: bb9, 1_isize: bb7, otherwise: bb8]; // scope 2 at src/main.rs:90:5: 90:28
+    }
+
+    bb7: {
+        StorageDead(_11);                // scope 2 at src/main.rs:90:27: 90:28
+        StorageDead(_9);                 // scope 2 at src/main.rs:90:27: 90:28
+        StorageDead(_6);                 // scope 2 at src/main.rs:90:27: 90:28
+        StorageLive(_15);                // scope 2 at src/main.rs:90:5: 90:28
+        StorageLive(_16);                // scope 2 at src/main.rs:90:5: 90:28
+        ((_0 as Yielded).0: ()) = move _16; // scope 2 at src/main.rs:90:5: 90:28
+        discriminant(_0) = 0;            // scope 2 at src/main.rs:90:5: 90:28
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:89:54: 92:2]))) = 3; // scope 2 at src/main.rs:90:5: 90:28
+        return;                          // scope 2 at src/main.rs:90:5: 90:28
+    }
+
+    bb8: {
+        unreachable;                     // scope 2 at src/main.rs:90:5: 90:28
+    }
+
+    bb9: {
+        StorageLive(_14);                // scope 2 at src/main.rs:90:5: 90:28
+        _14 = move ((_6 as Ready).0: std::result::Result<std::option::Option<std::string::String>, ()>); // scope 2 at src/main.rs:90:5: 90:28
+        _3 = move _14;                   // scope 4 at src/main.rs:90:5: 90:28
+        StorageDead(_14);                // scope 2 at src/main.rs:90:27: 90:28
+        StorageDead(_11);                // scope 2 at src/main.rs:90:27: 90:28
+        StorageDead(_9);                 // scope 2 at src/main.rs:90:27: 90:28
+        StorageDead(_6);                 // scope 2 at src/main.rs:90:27: 90:28
+        drop((((*(_1.0: &mut [static generator@src/main.rs:89:54: 92:2])) as variant#3).1: impl std::future::Future)) -> [return: bb10, unwind: bb18]; // scope 1 at src/main.rs:90:27: 90:28
+    }
+
+    bb10: {
+        drop(_3) -> [return: bb11, unwind: bb18]; // scope 1 at src/main.rs:90:28: 90:29
+    }
+
+    bb11: {
+        StorageDead(_4);                 // scope 1 at src/main.rs:90:28: 90:29
+        StorageDead(_3);                 // scope 1 at src/main.rs:90:28: 90:29
+        panic(const "not yet implemented") -> bb12; // scope 1 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+
+    bb12 (cleanup): {
+        goto -> bb19;                    // scope 1 at no-location
+    }
+
+    bb13 (cleanup): {
+        StorageDead(_12);                // scope 3 at src/main.rs:90:27: 90:28
+        goto -> bb14;                    // scope 3 at no-location
+    }
+
+    bb14 (cleanup): {
+        StorageDead(_10);                // scope 3 at src/main.rs:90:27: 90:28
+        StorageDead(_7);                 // scope 3 at src/main.rs:90:27: 90:28
+        StorageDead(_11);                // scope 2 at src/main.rs:90:27: 90:28
+        goto -> bb16;                    // scope 2 at no-location
+    }
+
+    bb15 (cleanup): {
+        StorageDead(_8);                 // scope 3 at src/main.rs:90:27: 90:28
+        StorageDead(_7);                 // scope 3 at src/main.rs:90:27: 90:28
+        goto -> bb16;                    // scope 3 at no-location
+    }
+
+    bb16 (cleanup): {
+        StorageDead(_9);                 // scope 2 at src/main.rs:90:27: 90:28
+        StorageDead(_6);                 // scope 2 at src/main.rs:90:27: 90:28
+        drop((((*(_1.0: &mut [static generator@src/main.rs:89:54: 92:2])) as variant#3).1: impl std::future::Future)) -> bb18; // scope 1 at src/main.rs:90:27: 90:28
+    }
+
+    bb17 (cleanup): {
+        StorageDead(_5);                 // scope 1 at src/main.rs:90:21: 90:22
+        goto -> bb18;                    // scope 1 at no-location
+    }
+
+    bb18 (cleanup): {
+        StorageDead(_4);                 // scope 1 at src/main.rs:90:28: 90:29
+        StorageDead(_3);                 // scope 1 at src/main.rs:90:28: 90:29
+        goto -> bb19;                    // scope 1 at no-location
+    }
+
+    bb19 (cleanup): {
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:89:54: 92:2]))) = 2; // scope 0 at src/main.rs:89:54: 92:2
+        resume;                          // scope 0 at src/main.rs:89:54: 92:2
+    }
+
+    bb20: {
+        StorageLive(_3);                 // scope 0 at src/main.rs:89:54: 92:2
+        StorageLive(_4);                 // scope 0 at src/main.rs:89:54: 92:2
+        StorageLive(_15);                // scope 0 at src/main.rs:89:54: 92:2
+        StorageLive(_16);                // scope 0 at src/main.rs:89:54: 92:2
+        _15 = move _2;                   // scope 0 at src/main.rs:89:54: 92:2
+        StorageDead(_16);                // scope 2 at src/main.rs:90:27: 90:28
+        _17 = move _15;                  // scope 2 at src/main.rs:90:5: 90:28
+        StorageDead(_15);                // scope 2 at src/main.rs:90:27: 90:28
+        goto -> bb3;                     // scope 2 at src/main.rs:90:5: 90:28
+    }
+
+    bb21: {
+        assert(const false, "`async fn` resumed after panicking") -> bb21; // scope 0 at src/main.rs:89:54: 92:2
+    }
+
+    bb22: {
+        unreachable;                     // scope 0 at src/main.rs:89:54: 92:2
+    }
+}
+
+fn <impl at src/main.rs:165:1: 174:2>::poll(_1: &Box<S>, _2: &mut Context) -> Poll<Result<(), <S as Service<Req>>::Error>> {
+    debug self => _1;                    // in scope 0 at src/main.rs:171:13: 171:18
+    let mut _0: std::task::Poll<std::result::Result<(), <S as Service<Req>>::Error>>; // return place in scope 0 at src/main.rs:171:51: 171:88
+
+    bb0: {
+        panic(const "not yet implemented"); // scope 0 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let mut _0: std::result::Result<(), std::boxed::Box<dyn std::error::Error>>; // return place in scope 0 at src/main.rs:78:14: 78:62
+    let _1: BoxServiceFactory<K>;        // in scope 0 at src/main.rs:79:5: 79:36
+    let mut _2: Factory<fn(FooDb) -> impl std::future::Future {route}, (FooDb,), impl std::future::Future>; // in scope 0 at src/main.rs:79:13: 79:35
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/main.rs:79:5: 79:36
+        StorageLive(_2);                 // scope 0 at src/main.rs:79:13: 79:35
+        _2 = Factory::<fn(FooDb) -> impl Future {route}, (FooDb,), impl Future>::handle(route) -> bb1; // scope 0 at src/main.rs:79:13: 79:35
+                                         // mir::Constant
+                                         // + span: src/main.rs:79:13: 79:28
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn(fn(FooDb) -> impl std::future::Future {route}) -> Factory<fn(FooDb) -> impl std::future::Future {route}, (FooDb,), impl std::future::Future> {Factory::<fn(FooDb) -> impl std::future::Future {route}, (FooDb,), impl std::future::Future>::handle}, val: Value(Scalar(<ZST>)) }
+                                         // mir::Constant
+                                         // + span: src/main.rs:79:29: 79:34
+                                         // + literal: Const { ty: fn(FooDb) -> impl std::future::Future {route}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        _1 = factory::<Factory<fn(FooDb) -> impl Future {route}, (FooDb,), impl Future>, K>(move _2) -> bb2; // scope 0 at src/main.rs:79:5: 79:36
+                                         // mir::Constant
+                                         // + span: src/main.rs:79:5: 79:12
+                                         // + literal: Const { ty: fn(Factory<fn(FooDb) -> impl std::future::Future {route}, (FooDb,), impl std::future::Future>) -> BoxServiceFactory<K> {factory::<Factory<fn(FooDb) -> impl std::future::Future {route}, (FooDb,), impl std::future::Future>, K>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_2);                 // scope 0 at src/main.rs:79:35: 79:36
+        drop(_1) -> bb3;                 // scope 0 at src/main.rs:79:36: 79:37
+    }
+
+    bb3: {
+        StorageDead(_1);                 // scope 0 at src/main.rs:79:36: 79:37
+        panic(const "not yet implemented"); // scope 0 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+}
+
+fn <impl at src/main.rs:36:1: 76:2>::nested::{closure#0}::{closure#0}::{closure#0}::{closure#0}(_1: Pin<&mut [static generator@src/main.rs:45:28: 63:18]>, _2: ResumeTy) -> GeneratorState<(), Result<String, ()>> {
+    debug _task_context => _7;           // in scope 0 at src/main.rs:45:28: 63:18
+    let mut _0: std::ops::GeneratorState<(), std::result::Result<std::string::String, ()>>; // return place in scope 0 at src/main.rs:45:28: 63:18
+    let mut _3: impl std::future::Future; // in scope 0 at src/main.rs:47:25: 58:26
+    let mut _4: [static generator@src/main.rs:47:36: 58:26]; // in scope 0 at src/main.rs:47:36: 58:26
+    let mut _5: impl std::future::Future; // in scope 0 at src/main.rs:46:21: 62:31
+    let mut _7: std::future::ResumeTy;   // in scope 0 at src/main.rs:45:28: 63:18
+    let mut _8: u32;                     // in scope 0 at src/main.rs:45:28: 63:18
+    scope 1 {
+        debug pinned => _5;              // in scope 1 at src/main.rs:46:21: 62:31
+        let _6: std::result::Result<std::string::String, ()>; // in scope 1 at src/main.rs:46:21: 62:31
+        scope 2 {
+        }
+        scope 3 {
+            debug result => _6;          // in scope 3 at src/main.rs:46:21: 62:31
+        }
+    }
+
+    bb0: {
+        _8 = discriminant((*(_1.0: &mut [static generator@src/main.rs:45:28: 63:18]))); // scope 0 at src/main.rs:45:28: 63:18
+        switchInt(move _8) -> [0_u32: bb1, 2_u32: bb6, otherwise: bb7]; // scope 0 at src/main.rs:45:28: 63:18
+    }
+
+    bb1: {
+        _7 = move _2;                    // scope 0 at src/main.rs:45:28: 63:18
+        StorageLive(_3);                 // scope 0 at src/main.rs:47:25: 58:26
+        StorageLive(_4);                 // scope 0 at src/main.rs:47:36: 58:26
+        discriminant(_4) = 0;            // scope 0 at src/main.rs:47:36: 58:26
+        _3 = from_generator::<[static generator@src/main.rs:47:36: 58:26]>(move _4) -> [return: bb2, unwind: bb4]; // scope 0 at src/main.rs:47:25: 58:26
+                                         // mir::Constant
+                                         // + span: src/main.rs:47:36: 58:26
+                                         // + literal: Const { ty: fn([static generator@src/main.rs:47:36: 58:26]) -> impl std::future::Future {std::future::from_generator::<[static generator@src/main.rs:47:36: 58:26]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_4);                 // scope 0 at src/main.rs:58:25: 58:26
+        panic(const "not yet implemented") -> bb3; // scope 0 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+
+    bb3 (cleanup): {
+        drop(_3) -> bb5;                 // scope 0 at src/main.rs:60:21: 60:22
+    }
+
+    bb4 (cleanup): {
+        StorageDead(_4);                 // scope 0 at src/main.rs:58:25: 58:26
+        goto -> bb5;                     // scope 0 at no-location
+    }
+
+    bb5 (cleanup): {
+        StorageDead(_3);                 // scope 0 at src/main.rs:60:21: 60:22
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:45:28: 63:18]))) = 2; // scope 0 at src/main.rs:45:28: 63:18
+        resume;                          // scope 0 at src/main.rs:45:28: 63:18
+    }
+
+    bb6: {
+        assert(const false, "`async fn` resumed after panicking") -> bb6; // scope 0 at src/main.rs:45:28: 63:18
+    }
+
+    bb7: {
+        unreachable;                     // scope 0 at src/main.rs:45:28: 63:18
+    }
+}
+
+fn <impl at src/main.rs:36:1: 76:2>::nested::{closure#0}(_1: Pin<&mut [static generator@src/main.rs:42:58: 75:6]>, _2: ResumeTy) -> GeneratorState<(), Result<Option<String>, ()>> {
+    debug _task_context => _19;          // in scope 0 at src/main.rs:42:58: 75:6
+    debug self => ((*(_1.0: &mut [static generator@src/main.rs:42:58: 75:6])).0: &FooDb); // in scope 0 at src/main.rs:42:21: 42:26
+    let mut _0: std::ops::GeneratorState<(), std::result::Result<std::option::Option<std::string::String>, ()>>; // return place in scope 0 at src/main.rs:42:58: 75:6
+    let _3: &FooDb;                      // in scope 0 at src/main.rs:42:21: 42:26
+    let mut _4: (impl std::future::Future,); // in scope 0 at src/main.rs:43:9: 72:12
+    let mut _5: impl std::future::Future; // in scope 0 at src/main.rs:43:10: 72:10
+    let mut _6: [static generator@src/main.rs:43:21: 72:10]; // in scope 0 at src/main.rs:43:21: 72:10
+    let mut _7: std::task::Poll<std::result::Result<std::option::Option<std::string::String>, ()>>; // in scope 0 at src/main.rs:43:9: 74:19
+    let mut _8: std::pin::Pin<&mut impl std::future::Future>; // in scope 0 at src/main.rs:43:9: 74:19
+    let mut _9: &mut impl std::future::Future; // in scope 0 at src/main.rs:43:9: 74:19
+    let mut _10: &mut impl std::future::Future; // in scope 0 at src/main.rs:43:9: 74:19
+    let mut _11: &mut std::task::Context; // in scope 0 at src/main.rs:43:9: 74:19
+    let mut _12: &mut std::task::Context; // in scope 0 at src/main.rs:43:9: 74:19
+    let mut _13: std::future::ResumeTy;  // in scope 0 at src/main.rs:43:9: 74:19
+    let mut _14: isize;                  // in scope 0 at src/main.rs:43:9: 74:19
+    let mut _16: std::future::ResumeTy;  // in scope 0 at src/main.rs:43:9: 74:19
+    let mut _17: ();                     // in scope 0 at src/main.rs:43:9: 74:19
+    let mut _18: std::result::Result<std::option::Option<std::string::String>, ()>; // in scope 0 at src/main.rs:42:58: 75:6
+    let mut _19: std::future::ResumeTy;  // in scope 0 at src/main.rs:42:58: 75:6
+    let mut _20: u32;                    // in scope 0 at src/main.rs:42:58: 75:6
+    scope 1 {
+        debug self => _3;                // in scope 1 at src/main.rs:42:21: 42:26
+        scope 2 {
+            debug pinned => (((*(_1.0: &mut [static generator@src/main.rs:42:58: 75:6])) as variant#3).0: impl std::future::Future); // in scope 2 at src/main.rs:43:9: 74:19
+            let _15: std::result::Result<std::option::Option<std::string::String>, ()>; // in scope 2 at src/main.rs:43:9: 74:19
+            scope 3 {
+            }
+            scope 4 {
+                debug result => _15;     // in scope 4 at src/main.rs:43:9: 74:19
+            }
+        }
+    }
+
+    bb0: {
+        _20 = discriminant((*(_1.0: &mut [static generator@src/main.rs:42:58: 75:6]))); // scope 0 at src/main.rs:42:58: 75:6
+        switchInt(move _20) -> [0_u32: bb1, 1_u32: bb19, 2_u32: bb18, 3_u32: bb17, otherwise: bb20]; // scope 0 at src/main.rs:42:58: 75:6
+    }
+
+    bb1: {
+        _19 = move _2;                   // scope 0 at src/main.rs:42:58: 75:6
+        StorageLive(_3);                 // scope 0 at src/main.rs:42:21: 42:26
+        _3 = ((*(_1.0: &mut [static generator@src/main.rs:42:58: 75:6])).0: &FooDb); // scope 0 at src/main.rs:42:21: 42:26
+        StorageLive(_4);                 // scope 1 at src/main.rs:43:9: 72:12
+        StorageLive(_5);                 // scope 1 at src/main.rs:43:10: 72:10
+        StorageLive(_6);                 // scope 1 at src/main.rs:43:21: 72:10
+        discriminant(_6) = 0;            // scope 1 at src/main.rs:43:21: 72:10
+        _5 = from_generator::<[static generator@src/main.rs:43:21: 72:10]>(move _6) -> [return: bb2, unwind: bb15]; // scope 1 at src/main.rs:43:10: 72:10
+                                         // mir::Constant
+                                         // + span: src/main.rs:43:21: 72:10
+                                         // + literal: Const { ty: fn([static generator@src/main.rs:43:21: 72:10]) -> impl std::future::Future {std::future::from_generator::<[static generator@src/main.rs:43:21: 72:10]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_6);                 // scope 1 at src/main.rs:72:9: 72:10
+        (_4.0: impl std::future::Future) = move _5; // scope 1 at src/main.rs:43:9: 72:12
+        StorageDead(_5);                 // scope 1 at src/main.rs:72:11: 72:12
+        (((*(_1.0: &mut [static generator@src/main.rs:42:58: 75:6])) as variant#3).0: impl std::future::Future) = move (_4.0: impl std::future::Future); // scope 1 at src/main.rs:43:9: 74:19
+        goto -> bb3;                     // scope 2 at src/main.rs:43:9: 74:19
+    }
+
+    bb3: {
+        StorageLive(_7);                 // scope 2 at src/main.rs:43:9: 74:19
+        StorageLive(_8);                 // scope 3 at src/main.rs:43:9: 74:19
+        StorageLive(_9);                 // scope 3 at src/main.rs:43:9: 74:19
+        StorageLive(_10);                // scope 3 at src/main.rs:43:9: 74:19
+        _10 = &mut (((*(_1.0: &mut [static generator@src/main.rs:42:58: 75:6])) as variant#3).0: impl std::future::Future); // scope 3 at src/main.rs:43:9: 74:19
+        _9 = &mut (*_10);                // scope 3 at src/main.rs:43:9: 74:19
+        _8 = Pin::<&mut impl Future>::new_unchecked(move _9) -> [return: bb4, unwind: bb13]; // scope 3 at src/main.rs:43:9: 74:19
+                                         // mir::Constant
+                                         // + span: src/main.rs:43:9: 74:19
+                                         // + literal: Const { ty: unsafe fn(&mut impl std::future::Future) -> std::pin::Pin<&mut impl std::future::Future> {std::pin::Pin::<&mut impl std::future::Future>::new_unchecked}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb4: {
+        StorageDead(_9);                 // scope 3 at src/main.rs:74:18: 74:19
+        StorageLive(_11);                // scope 3 at src/main.rs:43:9: 74:19
+        StorageLive(_12);                // scope 3 at src/main.rs:43:9: 74:19
+        StorageLive(_13);                // scope 3 at src/main.rs:43:9: 74:19
+        _13 = _19;                       // scope 3 at src/main.rs:43:9: 74:19
+        _12 = get_context(move _13) -> [return: bb5, unwind: bb11]; // scope 3 at src/main.rs:43:9: 74:19
+                                         // mir::Constant
+                                         // + span: src/main.rs:43:9: 74:19
+                                         // + literal: Const { ty: unsafe fn(std::future::ResumeTy) -> &mut std::task::Context {std::future::get_context}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb5: {
+        _11 = &mut (*_12);               // scope 3 at src/main.rs:43:9: 74:19
+        StorageDead(_13);                // scope 3 at src/main.rs:74:18: 74:19
+        _7 = <impl Future as Future>::poll(move _8, move _11) -> [return: bb6, unwind: bb12]; // scope 3 at src/main.rs:43:9: 74:19
+                                         // mir::Constant
+                                         // + span: src/main.rs:43:9: 74:19
+                                         // + literal: Const { ty: for<'r, 's, 't0> fn(std::pin::Pin<&'r mut impl std::future::Future>, &'s mut std::task::Context<'t0>) -> std::task::Poll<<impl std::future::Future as std::future::Future>::Output> {<impl std::future::Future as std::future::Future>::poll}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb6: {
+        StorageDead(_11);                // scope 3 at src/main.rs:74:18: 74:19
+        StorageDead(_8);                 // scope 3 at src/main.rs:74:18: 74:19
+        _14 = discriminant(_7);          // scope 2 at src/main.rs:43:9: 74:19
+        switchInt(move _14) -> [0_isize: bb9, 1_isize: bb7, otherwise: bb8]; // scope 2 at src/main.rs:43:9: 74:19
+    }
+
+    bb7: {
+        StorageDead(_12);                // scope 2 at src/main.rs:74:18: 74:19
+        StorageDead(_10);                // scope 2 at src/main.rs:74:18: 74:19
+        StorageDead(_7);                 // scope 2 at src/main.rs:74:18: 74:19
+        StorageLive(_16);                // scope 2 at src/main.rs:43:9: 74:19
+        StorageLive(_17);                // scope 2 at src/main.rs:43:9: 74:19
+        ((_0 as Yielded).0: ()) = move _17; // scope 2 at src/main.rs:43:9: 74:19
+        discriminant(_0) = 0;            // scope 2 at src/main.rs:43:9: 74:19
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:42:58: 75:6]))) = 3; // scope 2 at src/main.rs:43:9: 74:19
+        return;                          // scope 2 at src/main.rs:43:9: 74:19
+    }
+
+    bb8: {
+        unreachable;                     // scope 2 at src/main.rs:43:9: 74:19
+    }
+
+    bb9: {
+        StorageLive(_15);                // scope 2 at src/main.rs:43:9: 74:19
+        _15 = move ((_7 as Ready).0: std::result::Result<std::option::Option<std::string::String>, ()>); // scope 2 at src/main.rs:43:9: 74:19
+        _18 = move _15;                  // scope 4 at src/main.rs:43:9: 74:19
+        StorageDead(_15);                // scope 2 at src/main.rs:74:18: 74:19
+        StorageDead(_12);                // scope 2 at src/main.rs:74:18: 74:19
+        StorageDead(_10);                // scope 2 at src/main.rs:74:18: 74:19
+        StorageDead(_7);                 // scope 2 at src/main.rs:74:18: 74:19
+        drop((((*(_1.0: &mut [static generator@src/main.rs:42:58: 75:6])) as variant#3).0: impl std::future::Future)) -> [return: bb10, unwind: bb16]; // scope 1 at src/main.rs:74:18: 74:19
+    }
+
+    bb10: {
+        StorageDead(_4);                 // scope 1 at src/main.rs:75:5: 75:6
+        StorageDead(_3);                 // scope 0 at src/main.rs:75:5: 75:6
+        ((_0 as Complete).0: std::result::Result<std::option::Option<std::string::String>, ()>) = move _18; // scope 0 at src/main.rs:75:6: 75:6
+        discriminant(_0) = 1;            // scope 0 at src/main.rs:75:6: 75:6
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:42:58: 75:6]))) = 1; // scope 0 at src/main.rs:75:6: 75:6
+        return;                          // scope 0 at src/main.rs:75:6: 75:6
+    }
+
+    bb11 (cleanup): {
+        StorageDead(_13);                // scope 3 at src/main.rs:74:18: 74:19
+        goto -> bb12;                    // scope 3 at no-location
+    }
+
+    bb12 (cleanup): {
+        StorageDead(_11);                // scope 3 at src/main.rs:74:18: 74:19
+        StorageDead(_8);                 // scope 3 at src/main.rs:74:18: 74:19
+        StorageDead(_12);                // scope 2 at src/main.rs:74:18: 74:19
+        goto -> bb14;                    // scope 2 at no-location
+    }
+
+    bb13 (cleanup): {
+        StorageDead(_9);                 // scope 3 at src/main.rs:74:18: 74:19
+        StorageDead(_8);                 // scope 3 at src/main.rs:74:18: 74:19
+        goto -> bb14;                    // scope 3 at no-location
+    }
+
+    bb14 (cleanup): {
+        StorageDead(_10);                // scope 2 at src/main.rs:74:18: 74:19
+        StorageDead(_7);                 // scope 2 at src/main.rs:74:18: 74:19
+        drop((((*(_1.0: &mut [static generator@src/main.rs:42:58: 75:6])) as variant#3).0: impl std::future::Future)) -> bb16; // scope 1 at src/main.rs:74:18: 74:19
+    }
+
+    bb15 (cleanup): {
+        StorageDead(_6);                 // scope 1 at src/main.rs:72:9: 72:10
+        StorageDead(_5);                 // scope 1 at src/main.rs:72:11: 72:12
+        goto -> bb16;                    // scope 1 at no-location
+    }
+
+    bb16 (cleanup): {
+        StorageDead(_4);                 // scope 1 at src/main.rs:75:5: 75:6
+        StorageDead(_3);                 // scope 0 at src/main.rs:75:5: 75:6
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:42:58: 75:6]))) = 2; // scope 0 at src/main.rs:42:58: 75:6
+        resume;                          // scope 0 at src/main.rs:42:58: 75:6
+    }
+
+    bb17: {
+        StorageLive(_3);                 // scope 0 at src/main.rs:42:58: 75:6
+        StorageLive(_4);                 // scope 0 at src/main.rs:42:58: 75:6
+        StorageLive(_16);                // scope 0 at src/main.rs:42:58: 75:6
+        StorageLive(_17);                // scope 0 at src/main.rs:42:58: 75:6
+        _16 = move _2;                   // scope 0 at src/main.rs:42:58: 75:6
+        StorageDead(_17);                // scope 2 at src/main.rs:74:18: 74:19
+        _19 = move _16;                  // scope 2 at src/main.rs:43:9: 74:19
+        StorageDead(_16);                // scope 2 at src/main.rs:74:18: 74:19
+        goto -> bb3;                     // scope 2 at src/main.rs:43:9: 74:19
+    }
+
+    bb18: {
+        assert(const false, "`async fn` resumed after panicking") -> bb18; // scope 0 at src/main.rs:42:58: 75:6
+    }
+
+    bb19: {
+        assert(const false, "`async fn` resumed after completion") -> bb19; // scope 0 at src/main.rs:42:58: 75:6
+    }
+
+    bb20: {
+        unreachable;                     // scope 0 at src/main.rs:42:58: 75:6
+    }
+}
+
+fn <impl at src/main.rs:36:1: 76:2>::acquire::{closure#0}::{closure#0}(_1: [closure@src/main.rs:39:50: 39:78], _2: Floating) -> G {
+    debug conn => _2;                    // in scope 0 at src/main.rs:39:51: 39:55
+    debug _shared => (*(_1.0: &std::sync::Arc<SharedPool>)); // in scope 0 at src/main.rs:38:13: 38:20
+    let mut _0: G;                       // return place in scope 0 at src/main.rs:39:57: 39:57
+    let mut _3: Floating;                // in scope 0 at src/main.rs:39:57: 39:61
+    let mut _4: &std::sync::Arc<SharedPool>; // in scope 0 at src/main.rs:39:69: 39:77
+    let _5: &std::sync::Arc<SharedPool>; // in scope 0 at src/main.rs:39:69: 39:77
+
+    bb0: {
+        StorageLive(_3);                 // scope 0 at src/main.rs:39:57: 39:61
+        StorageLive(_4);                 // scope 0 at src/main.rs:39:69: 39:77
+        StorageLive(_5);                 // scope 0 at src/main.rs:39:69: 39:77
+        _5 = (_1.0: &std::sync::Arc<SharedPool>); // scope 0 at src/main.rs:39:69: 39:77
+        _4 = _5;                         // scope 0 at src/main.rs:39:69: 39:77
+        _0 = Floating::attach(move _3, move _4) -> bb1; // scope 0 at src/main.rs:39:57: 39:78
+                                         // mir::Constant
+                                         // + span: src/main.rs:39:62: 39:68
+                                         // + literal: Const { ty: for<'r> fn(Floating, &'r std::sync::Arc<SharedPool>) -> G {Floating::attach}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_5);                 // scope 0 at src/main.rs:39:77: 39:78
+        StorageDead(_4);                 // scope 0 at src/main.rs:39:77: 39:78
+        StorageDead(_3);                 // scope 0 at src/main.rs:39:77: 39:78
+        return;                          // scope 0 at src/main.rs:39:78: 39:78
+    }
+}
+
+fn <impl at src/main.rs:36:1: 76:2>::acquire(_1: &FooDb) -> impl Future {
+    debug self => _1;                    // in scope 0 at src/main.rs:37:16: 37:21
+    let mut _0: impl std::future::Future; // return place in scope 0 at src/main.rs:37:26: 37:87
+    let _2: std::sync::Arc<SharedPool>;  // in scope 0 at src/main.rs:38:13: 38:20
+    scope 1 {
+        debug _shared => _2;             // in scope 1 at src/main.rs:38:13: 38:20
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/main.rs:38:13: 38:20
+        panic(const "not yet implemented"); // scope 0 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+}
+
+fn DecrementSizeGuard(_1: PhantomData<dyn Fn(&())>) -> DecrementSizeGuard {
+    let mut _0: DecrementSizeGuard;      // return place in scope 0 at src/main.rs:34:1: 34:73
+
+    bb0: {
+        (_0.0: std::marker::PhantomData<(dyn std::ops::Fn(&()) + 'static)>) = move _1; // scope 0 at src/main.rs:34:1: 34:73
+        return;                          // scope 0 at src/main.rs:34:1: 34:73
+    }
+}
+
+// MIR FOR CTFE
+fn DecrementSizeGuard(_1: PhantomData<dyn Fn(&())>) -> DecrementSizeGuard {
+    let mut _0: DecrementSizeGuard;      // return place in scope 0 at src/main.rs:34:1: 34:73
+
+    bb0: {
+        (_0.0: std::marker::PhantomData<(dyn std::ops::Fn(&()) + 'static)>) = move _1; // scope 0 at src/main.rs:34:1: 34:73
+        return;                          // scope 0 at src/main.rs:34:1: 34:73
+    }
+}
+
+fn <impl at src/main.rs:16:1: 26:2>::acquire::{closure#0}(_1: Pin<&mut [static generator@src/main.rs:17:63: 25:6]>, _2: ResumeTy) -> GeneratorState<(), Result<Floating, Error>> {
+    debug _task_context => _17;          // in scope 0 at src/main.rs:17:63: 25:6
+    debug self => ((*(_1.0: &mut [static generator@src/main.rs:17:63: 25:6])).0: &SharedPool); // in scope 0 at src/main.rs:17:22: 17:30
+    let mut _0: std::ops::GeneratorState<(), std::result::Result<Floating, Error>>; // return place in scope 0 at src/main.rs:17:63: 25:6
+    let mut _3: impl std::future::Future; // in scope 0 at src/main.rs:18:9: 22:10
+    let mut _4: [static generator@src/main.rs:18:15: 22:10]; // in scope 0 at src/main.rs:18:15: 22:10
+    let mut _5: &&SharedPool;            // in scope 0 at src/main.rs:18:15: 22:10
+    let mut _6: std::task::Poll<()>;     // in scope 0 at src/main.rs:18:9: 23:15
+    let mut _7: std::pin::Pin<&mut impl std::future::Future>; // in scope 0 at src/main.rs:18:9: 23:15
+    let mut _8: &mut impl std::future::Future; // in scope 0 at src/main.rs:18:9: 23:15
+    let mut _9: &mut impl std::future::Future; // in scope 0 at src/main.rs:18:9: 23:15
+    let mut _10: &mut std::task::Context; // in scope 0 at src/main.rs:18:9: 23:15
+    let mut _11: &mut std::task::Context; // in scope 0 at src/main.rs:18:9: 23:15
+    let mut _12: std::future::ResumeTy;  // in scope 0 at src/main.rs:18:9: 23:15
+    let mut _13: isize;                  // in scope 0 at src/main.rs:18:9: 23:15
+    let mut _15: std::future::ResumeTy;  // in scope 0 at src/main.rs:18:9: 23:15
+    let mut _16: ();                     // in scope 0 at src/main.rs:18:9: 23:15
+    let mut _17: std::future::ResumeTy;  // in scope 0 at src/main.rs:17:63: 25:6
+    let mut _18: u32;                    // in scope 0 at src/main.rs:17:63: 25:6
+    scope 1 {
+        debug self => (((*(_1.0: &mut [static generator@src/main.rs:17:63: 25:6])) as variant#3).0: &SharedPool); // in scope 1 at src/main.rs:17:22: 17:30
+        scope 2 {
+            debug pinned => (((*(_1.0: &mut [static generator@src/main.rs:17:63: 25:6])) as variant#3).1: impl std::future::Future); // in scope 2 at src/main.rs:18:9: 23:15
+            let _14: ();                 // in scope 2 at src/main.rs:18:9: 23:15
+            scope 3 {
+            }
+            scope 4 {
+                debug result => _14;     // in scope 4 at src/main.rs:18:9: 23:15
+            }
+        }
+    }
+
+    bb0: {
+        _18 = discriminant((*(_1.0: &mut [static generator@src/main.rs:17:63: 25:6]))); // scope 0 at src/main.rs:17:63: 25:6
+        switchInt(move _18) -> [0_u32: bb1, 2_u32: bb20, 3_u32: bb19, otherwise: bb21]; // scope 0 at src/main.rs:17:63: 25:6
+    }
+
+    bb1: {
+        _17 = move _2;                   // scope 0 at src/main.rs:17:63: 25:6
+        (((*(_1.0: &mut [static generator@src/main.rs:17:63: 25:6])) as variant#3).0: &SharedPool) = ((*(_1.0: &mut [static generator@src/main.rs:17:63: 25:6])).0: &SharedPool); // scope 0 at src/main.rs:17:22: 17:30
+        StorageLive(_3);                 // scope 1 at src/main.rs:18:9: 22:10
+        StorageLive(_4);                 // scope 1 at src/main.rs:18:15: 22:10
+        StorageLive(_5);                 // scope 1 at src/main.rs:18:15: 22:10
+        _5 = &(((*(_1.0: &mut [static generator@src/main.rs:17:63: 25:6])) as variant#3).0: &SharedPool); // scope 1 at src/main.rs:18:15: 22:10
+        (_4.0: &&SharedPool) = move _5;  // scope 1 at src/main.rs:18:15: 22:10
+        discriminant(_4) = 0;            // scope 1 at src/main.rs:18:15: 22:10
+        StorageDead(_5);                 // scope 1 at src/main.rs:22:9: 22:10
+        _3 = from_generator::<[static generator@src/main.rs:18:15: 22:10]>(move _4) -> [return: bb2, unwind: bb16]; // scope 1 at src/main.rs:18:9: 22:10
+                                         // mir::Constant
+                                         // + span: src/main.rs:18:15: 22:10
+                                         // + literal: Const { ty: fn([static generator@src/main.rs:18:15: 22:10]) -> impl std::future::Future {std::future::from_generator::<[static generator@src/main.rs:18:15: 22:10]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_4);                 // scope 1 at src/main.rs:22:9: 22:10
+        (((*(_1.0: &mut [static generator@src/main.rs:17:63: 25:6])) as variant#3).1: impl std::future::Future) = move _3; // scope 1 at src/main.rs:18:9: 23:15
+        goto -> bb3;                     // scope 2 at src/main.rs:18:9: 23:15
+    }
+
+    bb3: {
+        StorageLive(_6);                 // scope 2 at src/main.rs:18:9: 23:15
+        StorageLive(_7);                 // scope 3 at src/main.rs:18:9: 23:15
+        StorageLive(_8);                 // scope 3 at src/main.rs:18:9: 23:15
+        StorageLive(_9);                 // scope 3 at src/main.rs:18:9: 23:15
+        _9 = &mut (((*(_1.0: &mut [static generator@src/main.rs:17:63: 25:6])) as variant#3).1: impl std::future::Future); // scope 3 at src/main.rs:18:9: 23:15
+        _8 = &mut (*_9);                 // scope 3 at src/main.rs:18:9: 23:15
+        _7 = Pin::<&mut impl Future>::new_unchecked(move _8) -> [return: bb4, unwind: bb14]; // scope 3 at src/main.rs:18:9: 23:15
+                                         // mir::Constant
+                                         // + span: src/main.rs:18:9: 23:15
+                                         // + literal: Const { ty: unsafe fn(&mut impl std::future::Future) -> std::pin::Pin<&mut impl std::future::Future> {std::pin::Pin::<&mut impl std::future::Future>::new_unchecked}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb4: {
+        StorageDead(_8);                 // scope 3 at src/main.rs:23:14: 23:15
+        StorageLive(_10);                // scope 3 at src/main.rs:18:9: 23:15
+        StorageLive(_11);                // scope 3 at src/main.rs:18:9: 23:15
+        StorageLive(_12);                // scope 3 at src/main.rs:18:9: 23:15
+        _12 = _17;                       // scope 3 at src/main.rs:18:9: 23:15
+        _11 = get_context(move _12) -> [return: bb5, unwind: bb12]; // scope 3 at src/main.rs:18:9: 23:15
+                                         // mir::Constant
+                                         // + span: src/main.rs:18:9: 23:15
+                                         // + literal: Const { ty: unsafe fn(std::future::ResumeTy) -> &mut std::task::Context {std::future::get_context}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb5: {
+        _10 = &mut (*_11);               // scope 3 at src/main.rs:18:9: 23:15
+        StorageDead(_12);                // scope 3 at src/main.rs:23:14: 23:15
+        _6 = <impl Future as Future>::poll(move _7, move _10) -> [return: bb6, unwind: bb13]; // scope 3 at src/main.rs:18:9: 23:15
+                                         // mir::Constant
+                                         // + span: src/main.rs:18:9: 23:15
+                                         // + literal: Const { ty: for<'r, 's, 't0> fn(std::pin::Pin<&'r mut impl std::future::Future>, &'s mut std::task::Context<'t0>) -> std::task::Poll<<impl std::future::Future as std::future::Future>::Output> {<impl std::future::Future as std::future::Future>::poll}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb6: {
+        StorageDead(_10);                // scope 3 at src/main.rs:23:14: 23:15
+        StorageDead(_7);                 // scope 3 at src/main.rs:23:14: 23:15
+        _13 = discriminant(_6);          // scope 2 at src/main.rs:18:9: 23:15
+        switchInt(move _13) -> [0_isize: bb9, 1_isize: bb7, otherwise: bb8]; // scope 2 at src/main.rs:18:9: 23:15
+    }
+
+    bb7: {
+        StorageDead(_11);                // scope 2 at src/main.rs:23:14: 23:15
+        StorageDead(_9);                 // scope 2 at src/main.rs:23:14: 23:15
+        StorageDead(_6);                 // scope 2 at src/main.rs:23:14: 23:15
+        StorageLive(_15);                // scope 2 at src/main.rs:18:9: 23:15
+        StorageLive(_16);                // scope 2 at src/main.rs:18:9: 23:15
+        ((_0 as Yielded).0: ()) = move _16; // scope 2 at src/main.rs:18:9: 23:15
+        discriminant(_0) = 0;            // scope 2 at src/main.rs:18:9: 23:15
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:17:63: 25:6]))) = 3; // scope 2 at src/main.rs:18:9: 23:15
+        return;                          // scope 2 at src/main.rs:18:9: 23:15
+    }
+
+    bb8: {
+        unreachable;                     // scope 2 at src/main.rs:18:9: 23:15
+    }
+
+    bb9: {
+        StorageLive(_14);                // scope 2 at src/main.rs:18:9: 23:15
+        _14 = ((_6 as Ready).0: ());     // scope 2 at src/main.rs:18:9: 23:15
+        StorageDead(_14);                // scope 2 at src/main.rs:23:14: 23:15
+        StorageDead(_11);                // scope 2 at src/main.rs:23:14: 23:15
+        StorageDead(_9);                 // scope 2 at src/main.rs:23:14: 23:15
+        StorageDead(_6);                 // scope 2 at src/main.rs:23:14: 23:15
+        drop((((*(_1.0: &mut [static generator@src/main.rs:17:63: 25:6])) as variant#3).1: impl std::future::Future)) -> [return: bb10, unwind: bb17]; // scope 1 at src/main.rs:23:14: 23:15
+    }
+
+    bb10: {
+        StorageDead(_3);                 // scope 1 at src/main.rs:23:15: 23:16
+        panic(const "not yet implemented") -> bb11; // scope 1 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+
+    bb11 (cleanup): {
+        goto -> bb18;                    // scope 1 at no-location
+    }
+
+    bb12 (cleanup): {
+        StorageDead(_12);                // scope 3 at src/main.rs:23:14: 23:15
+        goto -> bb13;                    // scope 3 at no-location
+    }
+
+    bb13 (cleanup): {
+        StorageDead(_10);                // scope 3 at src/main.rs:23:14: 23:15
+        StorageDead(_7);                 // scope 3 at src/main.rs:23:14: 23:15
+        StorageDead(_11);                // scope 2 at src/main.rs:23:14: 23:15
+        goto -> bb15;                    // scope 2 at no-location
+    }
+
+    bb14 (cleanup): {
+        StorageDead(_8);                 // scope 3 at src/main.rs:23:14: 23:15
+        StorageDead(_7);                 // scope 3 at src/main.rs:23:14: 23:15
+        goto -> bb15;                    // scope 3 at no-location
+    }
+
+    bb15 (cleanup): {
+        StorageDead(_9);                 // scope 2 at src/main.rs:23:14: 23:15
+        StorageDead(_6);                 // scope 2 at src/main.rs:23:14: 23:15
+        drop((((*(_1.0: &mut [static generator@src/main.rs:17:63: 25:6])) as variant#3).1: impl std::future::Future)) -> bb17; // scope 1 at src/main.rs:23:14: 23:15
+    }
+
+    bb16 (cleanup): {
+        StorageDead(_4);                 // scope 1 at src/main.rs:22:9: 22:10
+        goto -> bb17;                    // scope 1 at no-location
+    }
+
+    bb17 (cleanup): {
+        StorageDead(_3);                 // scope 1 at src/main.rs:23:15: 23:16
+        goto -> bb18;                    // scope 1 at no-location
+    }
+
+    bb18 (cleanup): {
+        discriminant((*(_1.0: &mut [static generator@src/main.rs:17:63: 25:6]))) = 2; // scope 0 at src/main.rs:17:63: 25:6
+        resume;                          // scope 0 at src/main.rs:17:63: 25:6
+    }
+
+    bb19: {
+        StorageLive(_3);                 // scope 0 at src/main.rs:17:63: 25:6
+        StorageLive(_15);                // scope 0 at src/main.rs:17:63: 25:6
+        StorageLive(_16);                // scope 0 at src/main.rs:17:63: 25:6
+        _15 = move _2;                   // scope 0 at src/main.rs:17:63: 25:6
+        StorageDead(_16);                // scope 2 at src/main.rs:23:14: 23:15
+        _17 = move _15;                  // scope 2 at src/main.rs:18:9: 23:15
+        StorageDead(_15);                // scope 2 at src/main.rs:23:14: 23:15
+        goto -> bb3;                     // scope 2 at src/main.rs:18:9: 23:15
+    }
+
+    bb20: {
+        assert(const false, "`async fn` resumed after panicking") -> bb20; // scope 0 at src/main.rs:17:63: 25:6
+    }
+
+    bb21: {
+        unreachable;                     // scope 0 at src/main.rs:17:63: 25:6
+    }
+}
+
+fn <impl at src/main.rs:105:1: 115:2>::new_service(_1: &Factory<I, T, R>, _2: ()) -> std::future::Ready<Result<Factory<I, T, R>, ()>> {
+    debug self => _1;                    // in scope 0 at src/main.rs:114:20: 114:25
+    let mut _0: std::future::Ready<std::result::Result<Factory<I, T, R>, ()>>; // return place in scope 0 at src/main.rs:114:37: 114:49
+
+    bb0: {
+        panic(const "not yet implemented"); // scope 0 at /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:39
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/panic.rs:28:9: 28:33
+                                         // + literal: Const { ty: fn(&'static str) -> ! {core::panicking::panic}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 })
+                                         // mir::Constant
+                                         // + span: /rustc/59eed8a2aac0230a8b53e89d4e99d55912ba6b35/library/core/src/macros/mod.rs:736:27: 736:48
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [110, 111, 116, 32, 121, 101, 116, 32, 105, 109, 112, 108, 101, 109, 101, 110, 116, 101, 100], relocations: Relocations(SortedMap { data: [] }), init_mask: InitMask { blocks: [524287], len: Size { raw: 19 } }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 19 }) }
+    }
+}

@@ -1,4 +1,8 @@
-use super::{mir::{LocalID, ModuledIdentifier}, operand::Operand, ty::Ty};
+use super::{
+    mir::{LocalID, ModuledIdentifier},
+    operand::Operand,
+    ty::Ty,
+};
 use std::str::FromStr;
 
 #[derive(Debug)]
@@ -11,7 +15,7 @@ pub enum Place {
     Empty,
     Index(Index),
 }
-
+ 
 #[derive(Debug)]
 pub struct Field {
     pub place: Box<Place>,

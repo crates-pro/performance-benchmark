@@ -6,7 +6,7 @@ use std::{
 use lalrpop_util::lalrpop_mod;
 
 use super::mir::MIRs;
- 
+
 lalrpop_mod!(pub mir_parser, "/mir_analyze/mir/mir.rs");
 
 pub fn parse_mir(mir_file: File) -> anyhow::Result<MIRs> {
@@ -219,27 +219,22 @@ pub const TEST_RUSTC: [TestFile; 28] = [
         name: "encoding",
         path: "test/rustperf/encoding.mir",
     },
-
     TestFile {
         name: "rayon",
         path: "test/rustperf/rayon.mir",
     },
-
     TestFile {
         name: "unicode",
         path: "test/rustperf/unicode.mir",
     },
-
     /*TestFile {
         name: "tuple_stress",
         path: "test/rustperf/tuple_stress.mir",
     },*/
-
     TestFile {
         name: "piston_image",
         path: "test/rustperf/piston_image.mir",
     },
-
     /*TestFile {
         name: "cranelift",
         path: "test/rustperf/cranelift.mir",
@@ -249,133 +244,106 @@ pub const TEST_RUSTC: [TestFile; 28] = [
         name: "diesel",
         path: "test/rustperf/diesel.mir",
     },*/
-
     TestFile {
         name: "wg_grammer",
         path: "test/rustperf/wg_grammer.mir",
     },
-
     TestFile {
         name: "many_assoc",
         path: "test/rustperf/many_assoc.mir",
     },
-
     TestFile {
         name: "serde",
         path: "test/rustperf/serde.mir",
     },
-
     TestFile {
         name: "serde_drive",
         path: "test/rustperf/serde_drive.mir",
     },
-
     /*TestFile {
         name: "coercions",
         path: "test/rustperf/coercions.mir",
     },*/
-
     TestFile {
         name: "regress",
         path: "test/rustperf/regress.mir",
     },
-
     TestFile {
         name: "regex",
         path: "test/rustperf/regex.mir",
     },
-
     TestFile {
         name: "match_stress",
         path: "test/rustperf/match_stress.mir",
     },
-    
     TestFile {
         name: "exa",
         path: "test/rustperf/exa.mir",
     },
-
     TestFile {
         name: "libc",
         path: "test/rustperf/libc.mir",
     },
-
     TestFile {
         name: "html5ever2",
         path: "test/rustperf/html5ever2.mir",
     },
-
     TestFile {
         name: "html5ever",
         path: "test/rustperf/html5ever.mir",
     },
-
     TestFile {
         name: "clap",
         path: "test/rustperf/clap.mir",
     },
-
     TestFile {
         name: "await-call-tree",
         path: "test/rustperf/await_call_tree.mir",
     },
-
     TestFile {
         name: "deeply_nested_multi",
         path: "test/rustperf/deeply_nested_multi.mir",
     },
-
     TestFile {
         name: "issue_1",
         path: "test/rustperf/issue_1.mir",
     },
-
     TestFile {
         name: "projection_caching",
         path: "test/rustperf/projection_caching.mir",
     },
-
     TestFile {
         name: "wf_projection",
         path: "test/rustperf/wf_projection.mir",
     },
-
     TestFile {
         name: "tt_munther",
         path: "test/rustperf/tt_munther.mir",
     },
-
     TestFile {
         name: "webpush",
         path: "test/rustperf/webpush.mir",
     },
-
     TestFile {
         name: "token_stream",
         path: "test/rustperf/token_stream.mir",
     },
-
     TestFile {
         name: "issue_2",
         path: "test/rustperf/issue_2.mir",
     },
-
     TestFile {
         name: "inflate",
         path: "test/rustperf/inflate.mir",
     },
-
     TestFile {
         name: "syn_1",
         path: "test/rustperf/syn_1.mir",
     },
-
     TestFile {
         name: "syn_2",
         path: "test/rustperf/syn_2.mir",
     },
-
-
 ];
 
 fn run_test(file_path: &str) {
@@ -392,7 +360,6 @@ fn test_files() {
         println!();
     }
 }
-
 
 #[test]
 fn test_rustc() {

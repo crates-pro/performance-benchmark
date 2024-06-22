@@ -214,7 +214,7 @@ pub const TEST_FILES: [TestFile; 46] = [
     },
 ];
 
-pub const TEST_RUSTC: [TestFile; 32] = [
+pub const TEST_RUSTC: [TestFile; 28] = [
     TestFile {
         name: "encoding",
         path: "test/rustperf/encoding.mir",

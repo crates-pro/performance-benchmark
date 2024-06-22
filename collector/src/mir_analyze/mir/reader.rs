@@ -6,7 +6,7 @@ use std::{
 use lalrpop_util::lalrpop_mod;
 
 use super::mir::MIRs;
-
+ 
 lalrpop_mod!(pub mir_parser, "/mir_analyze/mir/mir.rs");
 
 pub fn parse_mir(mir_file: File) -> anyhow::Result<MIRs> {

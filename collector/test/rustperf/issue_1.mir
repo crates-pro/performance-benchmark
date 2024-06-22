@@ -1,0 +1,262 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn Dummy(_1: T) -> Dummy<T> {
+    let mut _0: Dummy<T>;                // return place in scope 0 at src/lib.rs:8:1: 8:20
+
+    bb0: {
+        (_0.0: T) = move _1;             // scope 0 at src/lib.rs:8:1: 8:20
+        return;                          // scope 0 at src/lib.rs:8:1: 8:20
+    }
+}
+
+// MIR FOR CTFE
+fn Dummy(_1: T) -> Dummy<T> {
+    let mut _0: Dummy<T>;                // return place in scope 0 at src/lib.rs:8:1: 8:20
+
+    bb0: {
+        (_0.0: T) = move _1;             // scope 0 at src/lib.rs:8:1: 8:20
+        return;                          // scope 0 at src/lib.rs:8:1: 8:20
+    }
+}
+
+fn run::{closure#3}(_1: [closure@src/lib.rs:22:18: 22:32], _2: (Error, SelectNext<futures::Then<Dummy<[u8; 1]>, Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)) -> Error {
+    let mut _0: Error;                   // return place in scope 0 at src/lib.rs:22:20: 22:23
+    scope 1 {
+        debug err => _0;                 // in scope 1 at src/lib.rs:22:20: 22:23
+    }
+
+    bb0: {
+        _0 = move (_2.0: Error);         // scope 0 at src/lib.rs:22:20: 22:23
+        drop((_2.1: futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)) -> bb1; // scope 0 at src/lib.rs:22:31: 22:32
+    }
+
+    bb1: {
+        return;                          // scope 0 at src/lib.rs:22:32: 22:32
+    }
+}
+
+fn run::{closure#0}(_1: [closure@src/lib.rs:18:46: 18:60], _2: Result<[u8; 1], Error>) -> Result<i32, Error> {
+    let mut _0: std::result::Result<i32, Error>; // return place in scope 0 at src/lib.rs:18:55: 18:55
+
+    bb0: {
+        ((_0 as Ok).0: i32) = const 0_i32; // scope 0 at src/lib.rs:18:55: 18:60
+        discriminant(_0) = 0;            // scope 0 at src/lib.rs:18:55: 18:60
+        drop(_2) -> bb1;                 // scope 0 at src/lib.rs:18:59: 18:60
+    }
+
+    bb1: {
+        return;                          // scope 0 at src/lib.rs:18:60: 18:60
+    }
+}
+
+fn <impl at src/lib.rs:9:1: 15:2>::poll(_1: &mut Dummy<T>) -> Result<Async<T>, Error> {
+    debug self => _1;                    // in scope 0 at src/lib.rs:12:13: 12:22
+    let mut _0: std::result::Result<futures::Async<T>, Error>; // return place in scope 0 at src/lib.rs:12:27: 12:56
+
+    bb0: {
+        goto -> bb1;                     // scope 0 at src/lib.rs:13:9: 13:16
+    }
+
+    bb1: {
+        goto -> bb1;                     // scope 0 at src/lib.rs:13:9: 13:16
+    }
+}
+
+fn Error(_1: std::io::Error) -> Error {
+    let mut _0: Error;                   // return place in scope 0 at src/lib.rs:6:1: 6:36
+
+    bb0: {
+        (_0.0: std::io::Error) = move _1; // scope 0 at src/lib.rs:6:1: 6:36
+        return;                          // scope 0 at src/lib.rs:6:1: 6:36
+    }
+}
+
+// MIR FOR CTFE
+fn Error(_1: std::io::Error) -> Error {
+    let mut _0: Error;                   // return place in scope 0 at src/lib.rs:6:1: 6:36
+
+    bb0: {
+        (_0.0: std::io::Error) = move _1; // scope 0 at src/lib.rs:6:1: 6:36
+        return;                          // scope 0 at src/lib.rs:6:1: 6:36
+    }
+}
+
+const BUFFER_SIZE: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:5:20: 5:25
+
+    bb0: {
+        _0 = const 1_usize;              // scope 0 at src/lib.rs:5:28: 5:29
+        return;                          // scope 0 at src/lib.rs:5:1: 5:30
+    }
+}
+
+fn run::{closure#1}(_1: [closure@src/lib.rs:19:30: 19:44], _2: Result<(), Error>) -> Result<i32, Error> {
+    let mut _0: std::result::Result<i32, Error>; // return place in scope 0 at src/lib.rs:19:39: 19:39
+
+    bb0: {
+        ((_0 as Ok).0: i32) = const 0_i32; // scope 0 at src/lib.rs:19:39: 19:44
+        discriminant(_0) = 0;            // scope 0 at src/lib.rs:19:39: 19:44
+        drop(_2) -> bb1;                 // scope 0 at src/lib.rs:19:43: 19:44
+    }
+
+    bb1: {
+        return;                          // scope 0 at src/lib.rs:19:44: 19:44
+    }
+}
+
+fn run() -> Box<dyn futures::Future<Error = Error, Item = ()>> {
+    let mut _0: std::boxed::Box<dyn futures::Future<Error = Error, Item = ()>>; // return place in scope 0 at src/lib.rs:17:17: 17:58
+    let mut _1: std::boxed::Box<dyn futures::Future<Error = Error, Item = ()>>; // in scope 0 at src/lib.rs:23:5: 23:18
+    let _2: futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>; // in scope 0 at src/lib.rs:18:9: 18:12
+    let mut _3: Dummy<[u8; 1]>;          // in scope 0 at src/lib.rs:18:15: 18:40
+    let mut _4: [u8; _];                 // in scope 0 at src/lib.rs:18:21: 18:39
+    let mut _5: [closure@src/lib.rs:18:46: 18:60]; // in scope 0 at src/lib.rs:18:46: 18:60
+    let mut _7: Dummy<()>;               // in scope 0 at src/lib.rs:19:15: 19:24
+    let mut _8: [closure@src/lib.rs:19:30: 19:44]; // in scope 0 at src/lib.rs:19:30: 19:44
+    let mut _10: futures::AndThen<futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, std::result::Result<(), (Error, futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>, [closure@src/lib.rs:21:19: 21:34]>; // in scope 0 at src/lib.rs:20:15: 21:35
+    let mut _11: futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>; // in scope 0 at src/lib.rs:20:15: 20:30
+    let mut _12: futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>; // in scope 0 at src/lib.rs:20:15: 20:18
+    let mut _13: futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>; // in scope 0 at src/lib.rs:20:26: 20:29
+    let mut _14: [closure@src/lib.rs:21:19: 21:34]; // in scope 0 at src/lib.rs:21:19: 21:34
+    let mut _15: [closure@src/lib.rs:22:18: 22:32]; // in scope 0 at src/lib.rs:22:18: 22:32
+    let mut _16: std::boxed::Box<futures::MapErr<futures::AndThen<futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, std::result::Result<(), (Error, futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>, [closure@src/lib.rs:21:19: 21:34]>, [closure@src/lib.rs:22:18: 22:32]>>; // in scope 0 at src/lib.rs:23:5: 23:18
+    let mut _17: futures::MapErr<futures::AndThen<futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, std::result::Result<(), (Error, futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>, [closure@src/lib.rs:21:19: 21:34]>, [closure@src/lib.rs:22:18: 22:32]>; // in scope 0 at src/lib.rs:23:14: 23:17
+    let mut _18: bool;                   // in scope 0 at src/lib.rs:24:1: 24:2
+    scope 1 {
+        debug c2s => _2;                 // in scope 1 at src/lib.rs:18:9: 18:12
+        let _6: futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>; // in scope 1 at src/lib.rs:19:9: 19:12
+        scope 2 {
+            debug s2c => _6;             // in scope 2 at src/lib.rs:19:9: 19:12
+            let _9: futures::MapErr<futures::AndThen<futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, std::result::Result<(), (Error, futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>, [closure@src/lib.rs:21:19: 21:34]>, [closure@src/lib.rs:22:18: 22:32]>; // in scope 2 at src/lib.rs:20:9: 20:12
+            scope 3 {
+                debug fut => _9;         // in scope 3 at src/lib.rs:20:9: 20:12
+            }
+        }
+    }
+
+    bb0: {
+        _18 = const false;               // scope 0 at src/lib.rs:23:5: 23:18
+        StorageLive(_1);                 // scope 0 at src/lib.rs:23:5: 23:18
+        StorageLive(_2);                 // scope 0 at src/lib.rs:18:9: 18:12
+        StorageLive(_3);                 // scope 0 at src/lib.rs:18:15: 18:40
+        StorageLive(_4);                 // scope 0 at src/lib.rs:18:21: 18:39
+        _4 = [const 0_u8; BUFFER_SIZE];  // scope 0 at src/lib.rs:18:21: 18:39
+        (_3.0: [u8; _]) = move _4;       // scope 0 at src/lib.rs:18:15: 18:40
+        StorageDead(_4);                 // scope 0 at src/lib.rs:18:39: 18:40
+        StorageLive(_5);                 // scope 0 at src/lib.rs:18:46: 18:60
+        _18 = const true;                // scope 0 at src/lib.rs:18:15: 18:61
+        _2 = <Dummy<[u8; 1]> as futures::Future>::then::<[closure@src/lib.rs:18:46: 18:60], Result<i32, Error>>(move _3, move _5) -> bb1; // scope 0 at src/lib.rs:18:15: 18:61
+                                         // mir::Constant
+                                         // + span: src/lib.rs:18:41: 18:45
+                                         // + literal: Const { ty: fn(Dummy<[u8; 1]>, [closure@src/lib.rs:18:46: 18:60]) -> futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]> {<Dummy<[u8; 1]> as futures::Future>::then::<[closure@src/lib.rs:18:46: 18:60], std::result::Result<i32, Error>>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_5);                 // scope 0 at src/lib.rs:18:60: 18:61
+        StorageDead(_3);                 // scope 0 at src/lib.rs:18:60: 18:61
+        StorageLive(_6);                 // scope 1 at src/lib.rs:19:9: 19:12
+        StorageLive(_7);                 // scope 1 at src/lib.rs:19:15: 19:24
+        StorageLive(_8);                 // scope 1 at src/lib.rs:19:30: 19:44
+        _6 = <Dummy<()> as futures::Future>::then::<[closure@src/lib.rs:19:30: 19:44], Result<i32, Error>>(move _7, move _8) -> [return: bb2, unwind: bb9]; // scope 1 at src/lib.rs:19:15: 19:45
+                                         // mir::Constant
+                                         // + span: src/lib.rs:19:25: 19:29
+                                         // + literal: Const { ty: fn(Dummy<()>, [closure@src/lib.rs:19:30: 19:44]) -> futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]> {<Dummy<()> as futures::Future>::then::<[closure@src/lib.rs:19:30: 19:44], std::result::Result<i32, Error>>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_8);                 // scope 1 at src/lib.rs:19:44: 19:45
+        StorageDead(_7);                 // scope 1 at src/lib.rs:19:44: 19:45
+        StorageLive(_9);                 // scope 2 at src/lib.rs:20:9: 20:12
+        StorageLive(_10);                // scope 2 at src/lib.rs:20:15: 21:35
+        StorageLive(_11);                // scope 2 at src/lib.rs:20:15: 20:30
+        StorageLive(_12);                // scope 2 at src/lib.rs:20:15: 20:18
+        _18 = const false;               // scope 2 at src/lib.rs:20:15: 20:18
+        _12 = move _2;                   // scope 2 at src/lib.rs:20:15: 20:18
+        StorageLive(_13);                // scope 2 at src/lib.rs:20:26: 20:29
+        _13 = move _6;                   // scope 2 at src/lib.rs:20:26: 20:29
+        _11 = <futures::Then<Dummy<[u8; 1]>, Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]> as futures::Future>::select::<futures::Then<Dummy<()>, Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>(move _12, move _13) -> [return: bb3, unwind: bb9]; // scope 2 at src/lib.rs:20:15: 20:30
+                                         // mir::Constant
+                                         // + span: src/lib.rs:20:19: 20:25
+                                         // + literal: Const { ty: fn(futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>) -> futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, <futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]> as futures::IntoFuture>::Future> {<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]> as futures::Future>::select::<futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb3: {
+        StorageDead(_13);                // scope 2 at src/lib.rs:20:29: 20:30
+        StorageDead(_12);                // scope 2 at src/lib.rs:20:29: 20:30
+        StorageLive(_14);                // scope 2 at src/lib.rs:21:19: 21:34
+        _10 = <futures::Select<futures::Then<Dummy<[u8; 1]>, Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>> as futures::Future>::and_then::<[closure@src/lib.rs:21:19: 21:34], Result<(), (Error, SelectNext<futures::Then<Dummy<[u8; 1]>, Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>>(move _11, move _14) -> [return: bb4, unwind: bb9]; // scope 2 at src/lib.rs:20:15: 21:35
+                                         // mir::Constant
+                                         // + span: src/lib.rs:21:10: 21:18
+                                         // + literal: Const { ty: fn(futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, [closure@src/lib.rs:21:19: 21:34]) -> futures::AndThen<futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, std::result::Result<(), (Error, futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>, [closure@src/lib.rs:21:19: 21:34]> {<futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>> as futures::Future>::and_then::<[closure@src/lib.rs:21:19: 21:34], std::result::Result<(), (Error, futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb4: {
+        StorageDead(_14);                // scope 2 at src/lib.rs:21:34: 21:35
+        StorageDead(_11);                // scope 2 at src/lib.rs:21:34: 21:35
+        StorageLive(_15);                // scope 2 at src/lib.rs:22:18: 22:32
+        _9 = <futures::AndThen<futures::Select<futures::Then<Dummy<[u8; 1]>, Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, Result<(), (Error, SelectNext<futures::Then<Dummy<[u8; 1]>, Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>, [closure@src/lib.rs:21:19: 21:34]> as futures::Future>::map_err::<[closure@src/lib.rs:22:18: 22:32], Error>(move _10, move _15) -> [return: bb5, unwind: bb9]; // scope 2 at src/lib.rs:20:15: 22:33
+                                         // mir::Constant
+                                         // + span: src/lib.rs:22:10: 22:17
+                                         // + literal: Const { ty: fn(futures::AndThen<futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, std::result::Result<(), (Error, futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>, [closure@src/lib.rs:21:19: 21:34]>, [closure@src/lib.rs:22:18: 22:32]) -> futures::MapErr<futures::AndThen<futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, std::result::Result<(), (Error, futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>, [closure@src/lib.rs:21:19: 21:34]>, [closure@src/lib.rs:22:18: 22:32]> {<futures::AndThen<futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, std::result::Result<(), (Error, futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>, [closure@src/lib.rs:21:19: 21:34]> as futures::Future>::map_err::<[closure@src/lib.rs:22:18: 22:32], Error>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb5: {
+        StorageDead(_15);                // scope 2 at src/lib.rs:22:32: 22:33
+        StorageDead(_10);                // scope 2 at src/lib.rs:22:32: 22:33
+        StorageLive(_16);                // scope 3 at src/lib.rs:23:5: 23:18
+        StorageLive(_17);                // scope 3 at src/lib.rs:23:14: 23:17
+        _17 = move _9;                   // scope 3 at src/lib.rs:23:14: 23:17
+        _16 = Box::<futures::MapErr<futures::AndThen<futures::Select<futures::Then<Dummy<[u8; 1]>, Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, Result<(), (Error, SelectNext<futures::Then<Dummy<[u8; 1]>, Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>, [closure@src/lib.rs:21:19: 21:34]>, [closure@src/lib.rs:22:18: 22:32]>>::new(move _17) -> [return: bb6, unwind: bb9]; // scope 3 at src/lib.rs:23:5: 23:18
+                                         // mir::Constant
+                                         // + span: src/lib.rs:23:5: 23:13
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn(futures::MapErr<futures::AndThen<futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, std::result::Result<(), (Error, futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>, [closure@src/lib.rs:21:19: 21:34]>, [closure@src/lib.rs:22:18: 22:32]>) -> std::boxed::Box<futures::MapErr<futures::AndThen<futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, std::result::Result<(), (Error, futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>, [closure@src/lib.rs:21:19: 21:34]>, [closure@src/lib.rs:22:18: 22:32]>> {std::boxed::Box::<futures::MapErr<futures::AndThen<futures::Select<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>, std::result::Result<(), (Error, futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>, [closure@src/lib.rs:21:19: 21:34]>, [closure@src/lib.rs:22:18: 22:32]>>::new}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb6: {
+        _1 = move _16 as std::boxed::Box<dyn futures::Future<Error = Error, Item = ()>> (Pointer(Unsize)); // scope 3 at src/lib.rs:23:5: 23:18
+        StorageDead(_17);                // scope 3 at src/lib.rs:23:17: 23:18
+        StorageDead(_16);                // scope 3 at src/lib.rs:23:17: 23:18
+        StorageDead(_9);                 // scope 2 at src/lib.rs:24:1: 24:2
+        StorageDead(_6);                 // scope 1 at src/lib.rs:24:1: 24:2
+        _18 = const false;               // scope 0 at src/lib.rs:24:1: 24:2
+        StorageDead(_2);                 // scope 0 at src/lib.rs:24:1: 24:2
+        _0 = move _1 as std::boxed::Box<dyn futures::Future<Error = Error, Item = ()>> (Pointer(Unsize)); // scope 0 at src/lib.rs:23:5: 23:18
+        StorageDead(_1);                 // scope 0 at src/lib.rs:24:1: 24:2
+        return;                          // scope 0 at src/lib.rs:24:2: 24:2
+    }
+
+    bb7 (cleanup): {
+        resume;                          // scope 0 at src/lib.rs:17:1: 24:2
+    }
+
+    bb8 (cleanup): {
+        drop(_2) -> bb7;                 // scope 0 at src/lib.rs:24:1: 24:2
+    }
+
+    bb9 (cleanup): {
+        switchInt(_18) -> [false: bb7, otherwise: bb8]; // scope 0 at src/lib.rs:24:1: 24:2
+    }
+}
+
+fn run::{closure#2}(_1: [closure@src/lib.rs:21:19: 21:34], _2: (i32, SelectNext<futures::Then<Dummy<[u8; 1]>, Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)) -> Result<(), (Error, SelectNext<futures::Then<Dummy<[u8; 1]>, Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)> {
+    let mut _0: std::result::Result<(), (Error, futures::SelectNext<futures::Then<Dummy<[u8; 1]>, std::result::Result<i32, Error>, [closure@src/lib.rs:18:46: 18:60]>, futures::Then<Dummy<()>, std::result::Result<i32, Error>, [closure@src/lib.rs:19:30: 19:44]>>)>; // return place in scope 0 at src/lib.rs:21:28: 21:28
+
+    bb0: {
+        discriminant(_0) = 0;            // scope 0 at src/lib.rs:21:28: 21:34
+        drop(_2) -> bb1;                 // scope 0 at src/lib.rs:21:33: 21:34
+    }
+
+    bb1: {
+        return;                          // scope 0 at src/lib.rs:21:34: 21:34
+    }
+}
+
+run::{constant#0}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:18:27: 18:38
+
+    bb0: {
+        _0 = const BUFFER_SIZE;          // scope 0 at src/lib.rs:18:27: 18:38
+        return;                          // scope 0 at src/lib.rs:18:27: 18:38
+    }
+}

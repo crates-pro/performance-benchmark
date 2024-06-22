@@ -1,0 +1,2416 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+// MIR FOR CTFE
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+Trait::_Unused::{constant#115}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:37: 29:39
+
+    bb0: {
+        _0 = const 57_usize;             // scope 0 at src/lib.rs:29:37: 29:39
+        return;                          // scope 0 at src/lib.rs:29:37: 29:39
+    }
+}
+
+Trait::_Unused::{constant#48}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:25: 25:27
+
+    bb0: {
+        _0 = const 24_usize;             // scope 0 at src/lib.rs:25:25: 25:27
+        return;                          // scope 0 at src/lib.rs:25:25: 25:27
+    }
+}
+
+Trait::_Unused::{constant#103}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:13: 29:15
+
+    bb0: {
+        _0 = const 51_usize;             // scope 0 at src/lib.rs:29:13: 29:15
+        return;                          // scope 0 at src/lib.rs:29:13: 29:15
+    }
+}
+
+Trait::_Unused::{constant#36}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:41: 23:43
+
+    bb0: {
+        _0 = const 18_usize;             // scope 0 at src/lib.rs:23:41: 23:43
+        return;                          // scope 0 at src/lib.rs:23:41: 23:43
+    }
+}
+
+fn _::_f::<impl at src/lib.rs:8:32: 8:37>::clone(_1: &_::_f::Foo<X>) -> _::_f::Foo<X> {
+    debug self => _1;                    // in scope 0 at src/lib.rs:8:32: 8:37
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:8:32: 8:37
+    let _2: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _3: X;                       // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _4: &X;                      // in scope 0 at src/lib.rs:9:31: 9:32
+    let _5: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    scope 1 {
+        debug __self_0_0 => _2;          // in scope 1 at src/lib.rs:9:31: 9:32
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/lib.rs:9:31: 9:32
+        _2 = &((*_1).0: X);              // scope 0 at src/lib.rs:9:31: 9:32
+        StorageLive(_3);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_5);                 // scope 1 at src/lib.rs:9:31: 9:32
+        _5 = _2;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _4 = _5;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _3 = <X as Clone>::clone(move _4) -> bb1; // scope 1 at src/lib.rs:9:31: 9:32
+                                         // mir::Constant
+                                         // + span: src/lib.rs:9:31: 9:32
+                                         // + literal: Const { ty: for<'r> fn(&'r X) -> X {<X as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        (_0.0: X) = move _3;             // scope 1 at src/lib.rs:8:32: 8:37
+        StorageDead(_5);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_3);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_2);                 // scope 0 at src/lib.rs:8:36: 8:37
+        return;                          // scope 0 at src/lib.rs:8:37: 8:37
+    }
+}
+
+Trait::_Unused::{constant#158}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:45: 32:47
+
+    bb0: {
+        _0 = const 79_usize;             // scope 0 at src/lib.rs:32:45: 32:47
+        return;                          // scope 0 at src/lib.rs:32:45: 32:47
+    }
+}
+
+Trait::_Unused::{constant#91}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:29: 28:31
+
+    bb0: {
+        _0 = const 45_usize;             // scope 0 at src/lib.rs:28:29: 28:31
+        return;                          // scope 0 at src/lib.rs:28:29: 28:31
+    }
+}
+
+Trait::_Unused::{constant#24}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:17: 23:19
+
+    bb0: {
+        _0 = const 12_usize;             // scope 0 at src/lib.rs:23:17: 23:19
+        return;                          // scope 0 at src/lib.rs:23:17: 23:19
+    }
+}
+
+Trait::_Unused::{constant#146}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:21: 32:23
+
+    bb0: {
+        _0 = const 73_usize;             // scope 0 at src/lib.rs:32:21: 32:23
+        return;                          // scope 0 at src/lib.rs:32:21: 32:23
+    }
+}
+
+Trait::_Unused::{constant#79}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:45: 26:47
+
+    bb0: {
+        _0 = const 39_usize;             // scope 0 at src/lib.rs:26:45: 26:47
+        return;                          // scope 0 at src/lib.rs:26:45: 26:47
+    }
+}
+
+Trait::_Unused::{constant#12}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:33: 22:35
+
+    bb0: {
+        _0 = const 6_usize;              // scope 0 at src/lib.rs:22:33: 22:35
+        return;                          // scope 0 at src/lib.rs:22:33: 22:35
+    }
+}
+
+Trait::_Unused::{constant#134}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:37: 31:39
+
+    bb0: {
+        _0 = const 67_usize;             // scope 0 at src/lib.rs:31:37: 31:39
+        return;                          // scope 0 at src/lib.rs:31:37: 31:39
+    }
+}
+
+Trait::_Unused::{constant#67}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:21: 26:23
+
+    bb0: {
+        _0 = const 33_usize;             // scope 0 at src/lib.rs:26:21: 26:23
+        return;                          // scope 0 at src/lib.rs:26:21: 26:23
+    }
+}
+
+Trait::_Unused::{constant#0}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:9: 22:11
+
+    bb0: {
+        _0 = const 0_usize;              // scope 0 at src/lib.rs:22:9: 22:11
+        return;                          // scope 0 at src/lib.rs:22:9: 22:11
+    }
+}
+
+fn _::_f::<impl at src/lib.rs:8:32: 8:37>::clone(_1: &_::_f::Foo<X>) -> _::_f::Foo<X> {
+    debug self => _1;                    // in scope 0 at src/lib.rs:8:32: 8:37
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:8:32: 8:37
+    let _2: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _3: X;                       // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _4: &X;                      // in scope 0 at src/lib.rs:9:31: 9:32
+    let _5: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    scope 1 {
+        debug __self_0_0 => _2;          // in scope 1 at src/lib.rs:9:31: 9:32
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/lib.rs:9:31: 9:32
+        _2 = &((*_1).0: X);              // scope 0 at src/lib.rs:9:31: 9:32
+        StorageLive(_3);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_5);                 // scope 1 at src/lib.rs:9:31: 9:32
+        _5 = _2;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _4 = _5;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _3 = <X as Clone>::clone(move _4) -> bb1; // scope 1 at src/lib.rs:9:31: 9:32
+                                         // mir::Constant
+                                         // + span: src/lib.rs:9:31: 9:32
+                                         // + literal: Const { ty: for<'r> fn(&'r X) -> X {<X as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        (_0.0: X) = move _3;             // scope 1 at src/lib.rs:8:32: 8:37
+        StorageDead(_5);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_3);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_2);                 // scope 0 at src/lib.rs:8:36: 8:37
+        return;                          // scope 0 at src/lib.rs:8:37: 8:37
+    }
+}
+
+Trait::_Unused::{constant#122}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:13: 31:15
+
+    bb0: {
+        _0 = const 61_usize;             // scope 0 at src/lib.rs:31:13: 31:15
+        return;                          // scope 0 at src/lib.rs:31:13: 31:15
+    }
+}
+
+Trait::_Unused::{constant#55}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:37: 25:39
+
+    bb0: {
+        _0 = const 27_usize;             // scope 0 at src/lib.rs:25:37: 25:39
+        return;                          // scope 0 at src/lib.rs:25:37: 25:39
+    }
+}
+
+fn _::_f() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/lib.rs:7:34: 7:34
+    let mut _1: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:63
+    let mut _2: &_::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let _3: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let mut _4: <T as Trait>::X;         // in scope 0 at src/lib.rs:10:39: 10:54
+    scope 1 {
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/lib.rs:10:35: 10:63
+        StorageLive(_2);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_3);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_4);                 // scope 0 at src/lib.rs:10:39: 10:54
+        _4 = <<T as Trait>::X as Default>::default() -> bb1; // scope 0 at src/lib.rs:10:39: 10:54
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:39: 10:52
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn() -> <T as Trait>::X {<<T as Trait>::X as std::default::Default>::default}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        (_3.0: <T as Trait>::X) = move _4; // scope 0 at src/lib.rs:10:35: 10:55
+        _2 = &_3;                        // scope 0 at src/lib.rs:10:35: 10:55
+        StorageDead(_4);                 // scope 0 at src/lib.rs:10:54: 10:55
+        _1 = <_::_f::Foo<<T as Trait>::X> as Clone>::clone(move _2) -> bb2; // scope 0 at src/lib.rs:10:35: 10:63
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:56: 10:61
+                                         // + literal: Const { ty: for<'r> fn(&'r _::_f::Foo<<T as Trait>::X>) -> _::_f::Foo<<T as Trait>::X> {<_::_f::Foo<<T as Trait>::X> as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_2);                 // scope 0 at src/lib.rs:10:62: 10:63
+        StorageDead(_3);                 // scope 0 at src/lib.rs:10:63: 10:64
+        StorageDead(_1);                 // scope 0 at src/lib.rs:10:63: 10:64
+        return;                          // scope 0 at src/lib.rs:11:14: 11:14
+    }
+}
+
+Trait::_Unused::{constant#110}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:29: 29:31
+
+    bb0: {
+        _0 = const 55_usize;             // scope 0 at src/lib.rs:29:29: 29:31
+        return;                          // scope 0 at src/lib.rs:29:29: 29:31
+    }
+}
+
+Trait::_Unused::{constant#43}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:13: 25:15
+
+    bb0: {
+        _0 = const 21_usize;             // scope 0 at src/lib.rs:25:13: 25:15
+        return;                          // scope 0 at src/lib.rs:25:13: 25:15
+    }
+}
+
+fn _::_f() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/lib.rs:7:34: 7:34
+    let mut _1: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:63
+    let mut _2: &_::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let _3: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let mut _4: <T as Trait>::X;         // in scope 0 at src/lib.rs:10:39: 10:54
+    scope 1 {
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/lib.rs:10:35: 10:63
+        StorageLive(_2);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_3);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_4);                 // scope 0 at src/lib.rs:10:39: 10:54
+        _4 = <<T as Trait>::X as Default>::default() -> bb1; // scope 0 at src/lib.rs:10:39: 10:54
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:39: 10:52
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn() -> <T as Trait>::X {<<T as Trait>::X as std::default::Default>::default}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        (_3.0: <T as Trait>::X) = move _4; // scope 0 at src/lib.rs:10:35: 10:55
+        _2 = &_3;                        // scope 0 at src/lib.rs:10:35: 10:55
+        StorageDead(_4);                 // scope 0 at src/lib.rs:10:54: 10:55
+        _1 = <_::_f::Foo<<T as Trait>::X> as Clone>::clone(move _2) -> bb2; // scope 0 at src/lib.rs:10:35: 10:63
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:56: 10:61
+                                         // + literal: Const { ty: for<'r> fn(&'r _::_f::Foo<<T as Trait>::X>) -> _::_f::Foo<<T as Trait>::X> {<_::_f::Foo<<T as Trait>::X> as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_2);                 // scope 0 at src/lib.rs:10:62: 10:63
+        StorageDead(_3);                 // scope 0 at src/lib.rs:10:63: 10:64
+        StorageDead(_1);                 // scope 0 at src/lib.rs:10:63: 10:64
+        return;                          // scope 0 at src/lib.rs:11:14: 11:14
+    }
+}
+
+Trait::_Unused::{constant#98}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:45: 28:47
+
+    bb0: {
+        _0 = const 49_usize;             // scope 0 at src/lib.rs:28:45: 28:47
+        return;                          // scope 0 at src/lib.rs:28:45: 28:47
+    }
+}
+
+Trait::_Unused::{constant#31}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:29: 23:31
+
+    bb0: {
+        _0 = const 15_usize;             // scope 0 at src/lib.rs:23:29: 23:31
+        return;                          // scope 0 at src/lib.rs:23:29: 23:31
+    }
+}
+
+Trait::_Unused::{constant#153}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:33: 32:35
+
+    bb0: {
+        _0 = const 76_usize;             // scope 0 at src/lib.rs:32:33: 32:35
+        return;                          // scope 0 at src/lib.rs:32:33: 32:35
+    }
+}
+
+Trait::_Unused::{constant#86}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:21: 28:23
+
+    bb0: {
+        _0 = const 43_usize;             // scope 0 at src/lib.rs:28:21: 28:23
+        return;                          // scope 0 at src/lib.rs:28:21: 28:23
+    }
+}
+
+Trait::_Unused::{constant#19}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:45: 22:47
+
+    bb0: {
+        _0 = const 9_usize;              // scope 0 at src/lib.rs:22:45: 22:47
+        return;                          // scope 0 at src/lib.rs:22:45: 22:47
+    }
+}
+
+Trait::_Unused::{constant#141}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:9: 32:11
+
+    bb0: {
+        _0 = const 70_usize;             // scope 0 at src/lib.rs:32:9: 32:11
+        return;                          // scope 0 at src/lib.rs:32:9: 32:11
+    }
+}
+
+Trait::_Unused::{constant#74}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:37: 26:39
+
+    bb0: {
+        _0 = const 37_usize;             // scope 0 at src/lib.rs:26:37: 26:39
+        return;                          // scope 0 at src/lib.rs:26:37: 26:39
+    }
+}
+
+Trait::_Unused::{constant#7}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:21: 22:23
+
+    bb0: {
+        _0 = const 3_usize;              // scope 0 at src/lib.rs:22:21: 22:23
+        return;                          // scope 0 at src/lib.rs:22:21: 22:23
+    }
+}
+
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+// MIR FOR CTFE
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+Trait::_Unused::{constant#129}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:25: 31:27
+
+    bb0: {
+        _0 = const 64_usize;             // scope 0 at src/lib.rs:31:25: 31:27
+        return;                          // scope 0 at src/lib.rs:31:25: 31:27
+    }
+}
+
+Trait::_Unused::{constant#62}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:13: 26:15
+
+    bb0: {
+        _0 = const 31_usize;             // scope 0 at src/lib.rs:26:13: 26:15
+        return;                          // scope 0 at src/lib.rs:26:13: 26:15
+    }
+}
+
+Trait::_Unused::{constant#117}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:41: 29:43
+
+    bb0: {
+        _0 = const 58_usize;             // scope 0 at src/lib.rs:29:41: 29:43
+        return;                          // scope 0 at src/lib.rs:29:41: 29:43
+    }
+}
+
+Trait::_Unused::{constant#50}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:29: 25:31
+
+    bb0: {
+        _0 = const 25_usize;             // scope 0 at src/lib.rs:25:29: 25:31
+        return;                          // scope 0 at src/lib.rs:25:29: 25:31
+    }
+}
+
+Trait::_Unused::{constant#105}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:17: 29:19
+
+    bb0: {
+        _0 = const 52_usize;             // scope 0 at src/lib.rs:29:17: 29:19
+        return;                          // scope 0 at src/lib.rs:29:17: 29:19
+    }
+}
+
+Trait::_Unused::{constant#38}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:45: 23:47
+
+    bb0: {
+        _0 = const 19_usize;             // scope 0 at src/lib.rs:23:45: 23:47
+        return;                          // scope 0 at src/lib.rs:23:45: 23:47
+    }
+}
+
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+// MIR FOR CTFE
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+const _: () = {
+    let mut _0: ();                      // return place in scope 0 at src/lib.rs:6:18: 6:20
+    let _1: ();                          // in scope 0 at src/lib.rs:7:15: 11:15
+    let _2: ();                          // in scope 0 at src/lib.rs:7:15: 11:15
+    let _3: ();                          // in scope 0 at src/lib.rs:7:15: 11:15
+    let _4: ();                          // in scope 0 at src/lib.rs:7:15: 11:15
+    let _5: ();                          // in scope 0 at src/lib.rs:7:15: 11:15
+    let _6: ();                          // in scope 0 at src/lib.rs:7:15: 11:15
+    let _7: ();                          // in scope 0 at src/lib.rs:7:15: 11:15
+    let _8: ();                          // in scope 0 at src/lib.rs:7:15: 11:15
+    let _9: ();                          // in scope 0 at src/lib.rs:7:15: 11:15
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/lib.rs:7:15: 11:15
+        _1 = const ();                   // scope 0 at src/lib.rs:7:15: 11:15
+        StorageDead(_1);                 // scope 0 at src/lib.rs:11:14: 11:15
+        StorageLive(_2);                 // scope 0 at src/lib.rs:7:15: 11:15
+        _2 = const ();                   // scope 0 at src/lib.rs:7:15: 11:15
+        StorageDead(_2);                 // scope 0 at src/lib.rs:11:14: 11:15
+        StorageLive(_3);                 // scope 0 at src/lib.rs:7:15: 11:15
+        _3 = const ();                   // scope 0 at src/lib.rs:7:15: 11:15
+        StorageDead(_3);                 // scope 0 at src/lib.rs:11:14: 11:15
+        StorageLive(_4);                 // scope 0 at src/lib.rs:7:15: 11:15
+        _4 = const ();                   // scope 0 at src/lib.rs:7:15: 11:15
+        StorageDead(_4);                 // scope 0 at src/lib.rs:11:14: 11:15
+        StorageLive(_5);                 // scope 0 at src/lib.rs:7:15: 11:15
+        _5 = const ();                   // scope 0 at src/lib.rs:7:15: 11:15
+        StorageDead(_5);                 // scope 0 at src/lib.rs:11:14: 11:15
+        StorageLive(_6);                 // scope 0 at src/lib.rs:7:15: 11:15
+        _6 = const ();                   // scope 0 at src/lib.rs:7:15: 11:15
+        StorageDead(_6);                 // scope 0 at src/lib.rs:11:14: 11:15
+        StorageLive(_7);                 // scope 0 at src/lib.rs:7:15: 11:15
+        _7 = const ();                   // scope 0 at src/lib.rs:7:15: 11:15
+        StorageDead(_7);                 // scope 0 at src/lib.rs:11:14: 11:15
+        StorageLive(_8);                 // scope 0 at src/lib.rs:7:15: 11:15
+        _8 = const ();                   // scope 0 at src/lib.rs:7:15: 11:15
+        StorageDead(_8);                 // scope 0 at src/lib.rs:11:14: 11:15
+        StorageLive(_9);                 // scope 0 at src/lib.rs:7:15: 11:15
+        _9 = const ();                   // scope 0 at src/lib.rs:7:15: 11:15
+        StorageDead(_9);                 // scope 0 at src/lib.rs:11:14: 11:15
+        _0 = const ();                   // scope 0 at src/lib.rs:7:15: 11:15
+        return;                          // scope 0 at src/lib.rs:6:9: 12:11
+    }
+}
+
+Trait::_Unused::{constant#93}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:33: 28:35
+
+    bb0: {
+        _0 = const 46_usize;             // scope 0 at src/lib.rs:28:33: 28:35
+        return;                          // scope 0 at src/lib.rs:28:33: 28:35
+    }
+}
+
+Trait::_Unused::{constant#26}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:21: 23:23
+
+    bb0: {
+        _0 = const 13_usize;             // scope 0 at src/lib.rs:23:21: 23:23
+        return;                          // scope 0 at src/lib.rs:23:21: 23:23
+    }
+}
+
+Trait::_Unused::{constant#148}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:25: 32:27
+
+    bb0: {
+        _0 = const 74_usize;             // scope 0 at src/lib.rs:32:25: 32:27
+        return;                          // scope 0 at src/lib.rs:32:25: 32:27
+    }
+}
+
+Trait::_Unused::{constant#81}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:9: 28:11
+
+    bb0: {
+        _0 = const 40_usize;             // scope 0 at src/lib.rs:28:9: 28:11
+        return;                          // scope 0 at src/lib.rs:28:9: 28:11
+    }
+}
+
+Trait::_Unused::{constant#14}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:37: 22:39
+
+    bb0: {
+        _0 = const 7_usize;              // scope 0 at src/lib.rs:22:37: 22:39
+        return;                          // scope 0 at src/lib.rs:22:37: 22:39
+    }
+}
+
+fn _::_f::<impl at src/lib.rs:8:32: 8:37>::clone(_1: &_::_f::Foo<X>) -> _::_f::Foo<X> {
+    debug self => _1;                    // in scope 0 at src/lib.rs:8:32: 8:37
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:8:32: 8:37
+    let _2: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _3: X;                       // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _4: &X;                      // in scope 0 at src/lib.rs:9:31: 9:32
+    let _5: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    scope 1 {
+        debug __self_0_0 => _2;          // in scope 1 at src/lib.rs:9:31: 9:32
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/lib.rs:9:31: 9:32
+        _2 = &((*_1).0: X);              // scope 0 at src/lib.rs:9:31: 9:32
+        StorageLive(_3);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_5);                 // scope 1 at src/lib.rs:9:31: 9:32
+        _5 = _2;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _4 = _5;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _3 = <X as Clone>::clone(move _4) -> bb1; // scope 1 at src/lib.rs:9:31: 9:32
+                                         // mir::Constant
+                                         // + span: src/lib.rs:9:31: 9:32
+                                         // + literal: Const { ty: for<'r> fn(&'r X) -> X {<X as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        (_0.0: X) = move _3;             // scope 1 at src/lib.rs:8:32: 8:37
+        StorageDead(_5);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_3);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_2);                 // scope 0 at src/lib.rs:8:36: 8:37
+        return;                          // scope 0 at src/lib.rs:8:37: 8:37
+    }
+}
+
+Trait::_Unused::{constant#136}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:41: 31:43
+
+    bb0: {
+        _0 = const 68_usize;             // scope 0 at src/lib.rs:31:41: 31:43
+        return;                          // scope 0 at src/lib.rs:31:41: 31:43
+    }
+}
+
+Trait::_Unused::{constant#69}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:25: 26:27
+
+    bb0: {
+        _0 = const 34_usize;             // scope 0 at src/lib.rs:26:25: 26:27
+        return;                          // scope 0 at src/lib.rs:26:25: 26:27
+    }
+}
+
+Trait::_Unused::{constant#2}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:13: 22:15
+
+    bb0: {
+        _0 = const 1_usize;              // scope 0 at src/lib.rs:22:13: 22:15
+        return;                          // scope 0 at src/lib.rs:22:13: 22:15
+    }
+}
+
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+// MIR FOR CTFE
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+Trait::_Unused::{constant#124}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:17: 31:19
+
+    bb0: {
+        _0 = const 62_usize;             // scope 0 at src/lib.rs:31:17: 31:19
+        return;                          // scope 0 at src/lib.rs:31:17: 31:19
+    }
+}
+
+Trait::_Unused::{constant#57}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:41: 25:43
+
+    bb0: {
+        _0 = const 28_usize;             // scope 0 at src/lib.rs:25:41: 25:43
+        return;                          // scope 0 at src/lib.rs:25:41: 25:43
+    }
+}
+
+fn _::_f() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/lib.rs:7:34: 7:34
+    let mut _1: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:63
+    let mut _2: &_::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let _3: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let mut _4: <T as Trait>::X;         // in scope 0 at src/lib.rs:10:39: 10:54
+    scope 1 {
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/lib.rs:10:35: 10:63
+        StorageLive(_2);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_3);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_4);                 // scope 0 at src/lib.rs:10:39: 10:54
+        _4 = <<T as Trait>::X as Default>::default() -> bb1; // scope 0 at src/lib.rs:10:39: 10:54
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:39: 10:52
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn() -> <T as Trait>::X {<<T as Trait>::X as std::default::Default>::default}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        (_3.0: <T as Trait>::X) = move _4; // scope 0 at src/lib.rs:10:35: 10:55
+        _2 = &_3;                        // scope 0 at src/lib.rs:10:35: 10:55
+        StorageDead(_4);                 // scope 0 at src/lib.rs:10:54: 10:55
+        _1 = <_::_f::Foo<<T as Trait>::X> as Clone>::clone(move _2) -> bb2; // scope 0 at src/lib.rs:10:35: 10:63
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:56: 10:61
+                                         // + literal: Const { ty: for<'r> fn(&'r _::_f::Foo<<T as Trait>::X>) -> _::_f::Foo<<T as Trait>::X> {<_::_f::Foo<<T as Trait>::X> as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_2);                 // scope 0 at src/lib.rs:10:62: 10:63
+        StorageDead(_3);                 // scope 0 at src/lib.rs:10:63: 10:64
+        StorageDead(_1);                 // scope 0 at src/lib.rs:10:63: 10:64
+        return;                          // scope 0 at src/lib.rs:11:14: 11:14
+    }
+}
+
+Trait::_Unused::{constant#112}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:33: 29:35
+
+    bb0: {
+        _0 = const 56_usize;             // scope 0 at src/lib.rs:29:33: 29:35
+        return;                          // scope 0 at src/lib.rs:29:33: 29:35
+    }
+}
+
+Trait::_Unused::{constant#45}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:17: 25:19
+
+    bb0: {
+        _0 = const 22_usize;             // scope 0 at src/lib.rs:25:17: 25:19
+        return;                          // scope 0 at src/lib.rs:25:17: 25:19
+    }
+}
+
+fn _::_f::<impl at src/lib.rs:8:32: 8:37>::clone(_1: &_::_f::Foo<X>) -> _::_f::Foo<X> {
+    debug self => _1;                    // in scope 0 at src/lib.rs:8:32: 8:37
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:8:32: 8:37
+    let _2: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _3: X;                       // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _4: &X;                      // in scope 0 at src/lib.rs:9:31: 9:32
+    let _5: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    scope 1 {
+        debug __self_0_0 => _2;          // in scope 1 at src/lib.rs:9:31: 9:32
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/lib.rs:9:31: 9:32
+        _2 = &((*_1).0: X);              // scope 0 at src/lib.rs:9:31: 9:32
+        StorageLive(_3);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_5);                 // scope 1 at src/lib.rs:9:31: 9:32
+        _5 = _2;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _4 = _5;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _3 = <X as Clone>::clone(move _4) -> bb1; // scope 1 at src/lib.rs:9:31: 9:32
+                                         // mir::Constant
+                                         // + span: src/lib.rs:9:31: 9:32
+                                         // + literal: Const { ty: for<'r> fn(&'r X) -> X {<X as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        (_0.0: X) = move _3;             // scope 1 at src/lib.rs:8:32: 8:37
+        StorageDead(_5);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_3);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_2);                 // scope 0 at src/lib.rs:8:36: 8:37
+        return;                          // scope 0 at src/lib.rs:8:37: 8:37
+    }
+}
+
+fn _::_f() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/lib.rs:7:34: 7:34
+    let mut _1: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:63
+    let mut _2: &_::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let _3: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let mut _4: <T as Trait>::X;         // in scope 0 at src/lib.rs:10:39: 10:54
+    scope 1 {
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/lib.rs:10:35: 10:63
+        StorageLive(_2);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_3);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_4);                 // scope 0 at src/lib.rs:10:39: 10:54
+        _4 = <<T as Trait>::X as Default>::default() -> bb1; // scope 0 at src/lib.rs:10:39: 10:54
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:39: 10:52
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn() -> <T as Trait>::X {<<T as Trait>::X as std::default::Default>::default}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        (_3.0: <T as Trait>::X) = move _4; // scope 0 at src/lib.rs:10:35: 10:55
+        _2 = &_3;                        // scope 0 at src/lib.rs:10:35: 10:55
+        StorageDead(_4);                 // scope 0 at src/lib.rs:10:54: 10:55
+        _1 = <_::_f::Foo<<T as Trait>::X> as Clone>::clone(move _2) -> bb2; // scope 0 at src/lib.rs:10:35: 10:63
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:56: 10:61
+                                         // + literal: Const { ty: for<'r> fn(&'r _::_f::Foo<<T as Trait>::X>) -> _::_f::Foo<<T as Trait>::X> {<_::_f::Foo<<T as Trait>::X> as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_2);                 // scope 0 at src/lib.rs:10:62: 10:63
+        StorageDead(_3);                 // scope 0 at src/lib.rs:10:63: 10:64
+        StorageDead(_1);                 // scope 0 at src/lib.rs:10:63: 10:64
+        return;                          // scope 0 at src/lib.rs:11:14: 11:14
+    }
+}
+
+Trait::_Unused::{constant#100}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:9: 29:11
+
+    bb0: {
+        _0 = const 50_usize;             // scope 0 at src/lib.rs:29:9: 29:11
+        return;                          // scope 0 at src/lib.rs:29:9: 29:11
+    }
+}
+
+Trait::_Unused::{constant#33}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:33: 23:35
+
+    bb0: {
+        _0 = const 16_usize;             // scope 0 at src/lib.rs:23:33: 23:35
+        return;                          // scope 0 at src/lib.rs:23:33: 23:35
+    }
+}
+
+Trait::_Unused::{constant#155}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:37: 32:39
+
+    bb0: {
+        _0 = const 77_usize;             // scope 0 at src/lib.rs:32:37: 32:39
+        return;                          // scope 0 at src/lib.rs:32:37: 32:39
+    }
+}
+
+Trait::_Unused::{constant#88}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:25: 28:27
+
+    bb0: {
+        _0 = const 44_usize;             // scope 0 at src/lib.rs:28:25: 28:27
+        return;                          // scope 0 at src/lib.rs:28:25: 28:27
+    }
+}
+
+Trait::_Unused::{constant#21}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:9: 23:11
+
+    bb0: {
+        _0 = const 10_usize;             // scope 0 at src/lib.rs:23:9: 23:11
+        return;                          // scope 0 at src/lib.rs:23:9: 23:11
+    }
+}
+
+Trait::_Unused::{constant#143}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:13: 32:15
+
+    bb0: {
+        _0 = const 71_usize;             // scope 0 at src/lib.rs:32:13: 32:15
+        return;                          // scope 0 at src/lib.rs:32:13: 32:15
+    }
+}
+
+Trait::_Unused::{constant#76}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:41: 26:43
+
+    bb0: {
+        _0 = const 38_usize;             // scope 0 at src/lib.rs:26:41: 26:43
+        return;                          // scope 0 at src/lib.rs:26:41: 26:43
+    }
+}
+
+Trait::_Unused::{constant#9}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:25: 22:27
+
+    bb0: {
+        _0 = const 4_usize;              // scope 0 at src/lib.rs:22:25: 22:27
+        return;                          // scope 0 at src/lib.rs:22:25: 22:27
+    }
+}
+
+fn _::_f::<impl at src/lib.rs:8:32: 8:37>::clone(_1: &_::_f::Foo<X>) -> _::_f::Foo<X> {
+    debug self => _1;                    // in scope 0 at src/lib.rs:8:32: 8:37
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:8:32: 8:37
+    let _2: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _3: X;                       // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _4: &X;                      // in scope 0 at src/lib.rs:9:31: 9:32
+    let _5: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    scope 1 {
+        debug __self_0_0 => _2;          // in scope 1 at src/lib.rs:9:31: 9:32
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/lib.rs:9:31: 9:32
+        _2 = &((*_1).0: X);              // scope 0 at src/lib.rs:9:31: 9:32
+        StorageLive(_3);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_5);                 // scope 1 at src/lib.rs:9:31: 9:32
+        _5 = _2;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _4 = _5;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _3 = <X as Clone>::clone(move _4) -> bb1; // scope 1 at src/lib.rs:9:31: 9:32
+                                         // mir::Constant
+                                         // + span: src/lib.rs:9:31: 9:32
+                                         // + literal: Const { ty: for<'r> fn(&'r X) -> X {<X as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        (_0.0: X) = move _3;             // scope 1 at src/lib.rs:8:32: 8:37
+        StorageDead(_5);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_3);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_2);                 // scope 0 at src/lib.rs:8:36: 8:37
+        return;                          // scope 0 at src/lib.rs:8:37: 8:37
+    }
+}
+
+Trait::_Unused::{constant#131}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:29: 31:31
+
+    bb0: {
+        _0 = const 65_usize;             // scope 0 at src/lib.rs:31:29: 31:31
+        return;                          // scope 0 at src/lib.rs:31:29: 31:31
+    }
+}
+
+Trait::_Unused::{constant#64}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:17: 26:19
+
+    bb0: {
+        _0 = const 32_usize;             // scope 0 at src/lib.rs:26:17: 26:19
+        return;                          // scope 0 at src/lib.rs:26:17: 26:19
+    }
+}
+
+Trait::_Unused::{constant#119}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:45: 29:47
+
+    bb0: {
+        _0 = const 59_usize;             // scope 0 at src/lib.rs:29:45: 29:47
+        return;                          // scope 0 at src/lib.rs:29:45: 29:47
+    }
+}
+
+Trait::_Unused::{constant#52}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:33: 25:35
+
+    bb0: {
+        _0 = const 26_usize;             // scope 0 at src/lib.rs:25:33: 25:35
+        return;                          // scope 0 at src/lib.rs:25:33: 25:35
+    }
+}
+
+Trait::_Unused::{constant#107}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:21: 29:23
+
+    bb0: {
+        _0 = const 53_usize;             // scope 0 at src/lib.rs:29:21: 29:23
+        return;                          // scope 0 at src/lib.rs:29:21: 29:23
+    }
+}
+
+Trait::_Unused::{constant#40}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:9: 25:11
+
+    bb0: {
+        _0 = const 20_usize;             // scope 0 at src/lib.rs:25:9: 25:11
+        return;                          // scope 0 at src/lib.rs:25:9: 25:11
+    }
+}
+
+Trait::_Unused::{constant#95}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:37: 28:39
+
+    bb0: {
+        _0 = const 47_usize;             // scope 0 at src/lib.rs:28:37: 28:39
+        return;                          // scope 0 at src/lib.rs:28:37: 28:39
+    }
+}
+
+Trait::_Unused::{constant#28}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:25: 23:27
+
+    bb0: {
+        _0 = const 14_usize;             // scope 0 at src/lib.rs:23:25: 23:27
+        return;                          // scope 0 at src/lib.rs:23:25: 23:27
+    }
+}
+
+Trait::_Unused::{constant#150}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:29: 32:31
+
+    bb0: {
+        _0 = const 75_usize;             // scope 0 at src/lib.rs:32:29: 32:31
+        return;                          // scope 0 at src/lib.rs:32:29: 32:31
+    }
+}
+
+Trait::_Unused::{constant#83}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:13: 28:15
+
+    bb0: {
+        _0 = const 41_usize;             // scope 0 at src/lib.rs:28:13: 28:15
+        return;                          // scope 0 at src/lib.rs:28:13: 28:15
+    }
+}
+
+Trait::_Unused::{constant#16}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:41: 22:43
+
+    bb0: {
+        _0 = const 8_usize;              // scope 0 at src/lib.rs:22:41: 22:43
+        return;                          // scope 0 at src/lib.rs:22:41: 22:43
+    }
+}
+
+Trait::_Unused::{constant#138}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:45: 31:47
+
+    bb0: {
+        _0 = const 69_usize;             // scope 0 at src/lib.rs:31:45: 31:47
+        return;                          // scope 0 at src/lib.rs:31:45: 31:47
+    }
+}
+
+Trait::_Unused::{constant#71}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:29: 26:31
+
+    bb0: {
+        _0 = const 35_usize;             // scope 0 at src/lib.rs:26:29: 26:31
+        return;                          // scope 0 at src/lib.rs:26:29: 26:31
+    }
+}
+
+Trait::_Unused::{constant#4}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:17: 22:19
+
+    bb0: {
+        _0 = const 2_usize;              // scope 0 at src/lib.rs:22:17: 22:19
+        return;                          // scope 0 at src/lib.rs:22:17: 22:19
+    }
+}
+
+Trait::_Unused::{constant#126}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:21: 31:23
+
+    bb0: {
+        _0 = const 63_usize;             // scope 0 at src/lib.rs:31:21: 31:23
+        return;                          // scope 0 at src/lib.rs:31:21: 31:23
+    }
+}
+
+Trait::_Unused::{constant#59}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:45: 25:47
+
+    bb0: {
+        _0 = const 29_usize;             // scope 0 at src/lib.rs:25:45: 25:47
+        return;                          // scope 0 at src/lib.rs:25:45: 25:47
+    }
+}
+
+Trait::_Unused::{constant#114}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:37: 29:39
+
+    bb0: {
+        _0 = const 57_usize;             // scope 0 at src/lib.rs:29:37: 29:39
+        return;                          // scope 0 at src/lib.rs:29:37: 29:39
+    }
+}
+
+Trait::_Unused::{constant#47}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:21: 25:23
+
+    bb0: {
+        _0 = const 23_usize;             // scope 0 at src/lib.rs:25:21: 25:23
+        return;                          // scope 0 at src/lib.rs:25:21: 25:23
+    }
+}
+
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+// MIR FOR CTFE
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+fn _::_f() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/lib.rs:7:34: 7:34
+    let mut _1: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:63
+    let mut _2: &_::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let _3: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let mut _4: <T as Trait>::X;         // in scope 0 at src/lib.rs:10:39: 10:54
+    scope 1 {
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/lib.rs:10:35: 10:63
+        StorageLive(_2);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_3);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_4);                 // scope 0 at src/lib.rs:10:39: 10:54
+        _4 = <<T as Trait>::X as Default>::default() -> bb1; // scope 0 at src/lib.rs:10:39: 10:54
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:39: 10:52
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn() -> <T as Trait>::X {<<T as Trait>::X as std::default::Default>::default}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        (_3.0: <T as Trait>::X) = move _4; // scope 0 at src/lib.rs:10:35: 10:55
+        _2 = &_3;                        // scope 0 at src/lib.rs:10:35: 10:55
+        StorageDead(_4);                 // scope 0 at src/lib.rs:10:54: 10:55
+        _1 = <_::_f::Foo<<T as Trait>::X> as Clone>::clone(move _2) -> bb2; // scope 0 at src/lib.rs:10:35: 10:63
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:56: 10:61
+                                         // + literal: Const { ty: for<'r> fn(&'r _::_f::Foo<<T as Trait>::X>) -> _::_f::Foo<<T as Trait>::X> {<_::_f::Foo<<T as Trait>::X> as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_2);                 // scope 0 at src/lib.rs:10:62: 10:63
+        StorageDead(_3);                 // scope 0 at src/lib.rs:10:63: 10:64
+        StorageDead(_1);                 // scope 0 at src/lib.rs:10:63: 10:64
+        return;                          // scope 0 at src/lib.rs:11:14: 11:14
+    }
+}
+
+Trait::_Unused::{constant#102}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:13: 29:15
+
+    bb0: {
+        _0 = const 51_usize;             // scope 0 at src/lib.rs:29:13: 29:15
+        return;                          // scope 0 at src/lib.rs:29:13: 29:15
+    }
+}
+
+Trait::_Unused::{constant#35}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:37: 23:39
+
+    bb0: {
+        _0 = const 17_usize;             // scope 0 at src/lib.rs:23:37: 23:39
+        return;                          // scope 0 at src/lib.rs:23:37: 23:39
+    }
+}
+
+Trait::_Unused::{constant#157}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:41: 32:43
+
+    bb0: {
+        _0 = const 78_usize;             // scope 0 at src/lib.rs:32:41: 32:43
+        return;                          // scope 0 at src/lib.rs:32:41: 32:43
+    }
+}
+
+Trait::_Unused::{constant#90}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:29: 28:31
+
+    bb0: {
+        _0 = const 45_usize;             // scope 0 at src/lib.rs:28:29: 28:31
+        return;                          // scope 0 at src/lib.rs:28:29: 28:31
+    }
+}
+
+Trait::_Unused::{constant#23}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:13: 23:15
+
+    bb0: {
+        _0 = const 11_usize;             // scope 0 at src/lib.rs:23:13: 23:15
+        return;                          // scope 0 at src/lib.rs:23:13: 23:15
+    }
+}
+
+Trait::_Unused::{constant#145}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:17: 32:19
+
+    bb0: {
+        _0 = const 72_usize;             // scope 0 at src/lib.rs:32:17: 32:19
+        return;                          // scope 0 at src/lib.rs:32:17: 32:19
+    }
+}
+
+Trait::_Unused::{constant#78}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:45: 26:47
+
+    bb0: {
+        _0 = const 39_usize;             // scope 0 at src/lib.rs:26:45: 26:47
+        return;                          // scope 0 at src/lib.rs:26:45: 26:47
+    }
+}
+
+Trait::_Unused::{constant#11}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:29: 22:31
+
+    bb0: {
+        _0 = const 5_usize;              // scope 0 at src/lib.rs:22:29: 22:31
+        return;                          // scope 0 at src/lib.rs:22:29: 22:31
+    }
+}
+
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+// MIR FOR CTFE
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+Trait::_Unused::{constant#133}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:33: 31:35
+
+    bb0: {
+        _0 = const 66_usize;             // scope 0 at src/lib.rs:31:33: 31:35
+        return;                          // scope 0 at src/lib.rs:31:33: 31:35
+    }
+}
+
+Trait::_Unused::{constant#66}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:21: 26:23
+
+    bb0: {
+        _0 = const 33_usize;             // scope 0 at src/lib.rs:26:21: 26:23
+        return;                          // scope 0 at src/lib.rs:26:21: 26:23
+    }
+}
+
+Trait::_Unused::{constant#121}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:9: 31:11
+
+    bb0: {
+        _0 = const 60_usize;             // scope 0 at src/lib.rs:31:9: 31:11
+        return;                          // scope 0 at src/lib.rs:31:9: 31:11
+    }
+}
+
+Trait::_Unused::{constant#54}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:37: 25:39
+
+    bb0: {
+        _0 = const 27_usize;             // scope 0 at src/lib.rs:25:37: 25:39
+        return;                          // scope 0 at src/lib.rs:25:37: 25:39
+    }
+}
+
+fn _::_f::<impl at src/lib.rs:8:32: 8:37>::clone(_1: &_::_f::Foo<X>) -> _::_f::Foo<X> {
+    debug self => _1;                    // in scope 0 at src/lib.rs:8:32: 8:37
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:8:32: 8:37
+    let _2: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _3: X;                       // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _4: &X;                      // in scope 0 at src/lib.rs:9:31: 9:32
+    let _5: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    scope 1 {
+        debug __self_0_0 => _2;          // in scope 1 at src/lib.rs:9:31: 9:32
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/lib.rs:9:31: 9:32
+        _2 = &((*_1).0: X);              // scope 0 at src/lib.rs:9:31: 9:32
+        StorageLive(_3);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_5);                 // scope 1 at src/lib.rs:9:31: 9:32
+        _5 = _2;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _4 = _5;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _3 = <X as Clone>::clone(move _4) -> bb1; // scope 1 at src/lib.rs:9:31: 9:32
+                                         // mir::Constant
+                                         // + span: src/lib.rs:9:31: 9:32
+                                         // + literal: Const { ty: for<'r> fn(&'r X) -> X {<X as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        (_0.0: X) = move _3;             // scope 1 at src/lib.rs:8:32: 8:37
+        StorageDead(_5);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_3);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_2);                 // scope 0 at src/lib.rs:8:36: 8:37
+        return;                          // scope 0 at src/lib.rs:8:37: 8:37
+    }
+}
+
+Trait::_Unused::{constant#109}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:25: 29:27
+
+    bb0: {
+        _0 = const 54_usize;             // scope 0 at src/lib.rs:29:25: 29:27
+        return;                          // scope 0 at src/lib.rs:29:25: 29:27
+    }
+}
+
+Trait::_Unused::{constant#42}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:13: 25:15
+
+    bb0: {
+        _0 = const 21_usize;             // scope 0 at src/lib.rs:25:13: 25:15
+        return;                          // scope 0 at src/lib.rs:25:13: 25:15
+    }
+}
+
+Trait::_Unused::{constant#97}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:41: 28:43
+
+    bb0: {
+        _0 = const 48_usize;             // scope 0 at src/lib.rs:28:41: 28:43
+        return;                          // scope 0 at src/lib.rs:28:41: 28:43
+    }
+}
+
+Trait::_Unused::{constant#30}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:29: 23:31
+
+    bb0: {
+        _0 = const 15_usize;             // scope 0 at src/lib.rs:23:29: 23:31
+        return;                          // scope 0 at src/lib.rs:23:29: 23:31
+    }
+}
+
+Trait::_Unused::{constant#152}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:33: 32:35
+
+    bb0: {
+        _0 = const 76_usize;             // scope 0 at src/lib.rs:32:33: 32:35
+        return;                          // scope 0 at src/lib.rs:32:33: 32:35
+    }
+}
+
+Trait::_Unused::{constant#85}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:17: 28:19
+
+    bb0: {
+        _0 = const 42_usize;             // scope 0 at src/lib.rs:28:17: 28:19
+        return;                          // scope 0 at src/lib.rs:28:17: 28:19
+    }
+}
+
+Trait::_Unused::{constant#18}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:45: 22:47
+
+    bb0: {
+        _0 = const 9_usize;              // scope 0 at src/lib.rs:22:45: 22:47
+        return;                          // scope 0 at src/lib.rs:22:45: 22:47
+    }
+}
+
+fn _::_f::<impl at src/lib.rs:8:32: 8:37>::clone(_1: &_::_f::Foo<X>) -> _::_f::Foo<X> {
+    debug self => _1;                    // in scope 0 at src/lib.rs:8:32: 8:37
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:8:32: 8:37
+    let _2: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _3: X;                       // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _4: &X;                      // in scope 0 at src/lib.rs:9:31: 9:32
+    let _5: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    scope 1 {
+        debug __self_0_0 => _2;          // in scope 1 at src/lib.rs:9:31: 9:32
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/lib.rs:9:31: 9:32
+        _2 = &((*_1).0: X);              // scope 0 at src/lib.rs:9:31: 9:32
+        StorageLive(_3);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_5);                 // scope 1 at src/lib.rs:9:31: 9:32
+        _5 = _2;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _4 = _5;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _3 = <X as Clone>::clone(move _4) -> bb1; // scope 1 at src/lib.rs:9:31: 9:32
+                                         // mir::Constant
+                                         // + span: src/lib.rs:9:31: 9:32
+                                         // + literal: Const { ty: for<'r> fn(&'r X) -> X {<X as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        (_0.0: X) = move _3;             // scope 1 at src/lib.rs:8:32: 8:37
+        StorageDead(_5);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_3);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_2);                 // scope 0 at src/lib.rs:8:36: 8:37
+        return;                          // scope 0 at src/lib.rs:8:37: 8:37
+    }
+}
+
+Trait::_Unused::{constant#140}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:9: 32:11
+
+    bb0: {
+        _0 = const 70_usize;             // scope 0 at src/lib.rs:32:9: 32:11
+        return;                          // scope 0 at src/lib.rs:32:9: 32:11
+    }
+}
+
+Trait::_Unused::{constant#73}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:33: 26:35
+
+    bb0: {
+        _0 = const 36_usize;             // scope 0 at src/lib.rs:26:33: 26:35
+        return;                          // scope 0 at src/lib.rs:26:33: 26:35
+    }
+}
+
+Trait::_Unused::{constant#6}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:21: 22:23
+
+    bb0: {
+        _0 = const 3_usize;              // scope 0 at src/lib.rs:22:21: 22:23
+        return;                          // scope 0 at src/lib.rs:22:21: 22:23
+    }
+}
+
+Trait::_Unused::{constant#128}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:25: 31:27
+
+    bb0: {
+        _0 = const 64_usize;             // scope 0 at src/lib.rs:31:25: 31:27
+        return;                          // scope 0 at src/lib.rs:31:25: 31:27
+    }
+}
+
+Trait::_Unused::{constant#61}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:9: 26:11
+
+    bb0: {
+        _0 = const 30_usize;             // scope 0 at src/lib.rs:26:9: 26:11
+        return;                          // scope 0 at src/lib.rs:26:9: 26:11
+    }
+}
+
+Trait::_Unused::{constant#116}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:41: 29:43
+
+    bb0: {
+        _0 = const 58_usize;             // scope 0 at src/lib.rs:29:41: 29:43
+        return;                          // scope 0 at src/lib.rs:29:41: 29:43
+    }
+}
+
+Trait::_Unused::{constant#49}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:25: 25:27
+
+    bb0: {
+        _0 = const 24_usize;             // scope 0 at src/lib.rs:25:25: 25:27
+        return;                          // scope 0 at src/lib.rs:25:25: 25:27
+    }
+}
+
+fn _::_f() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/lib.rs:7:34: 7:34
+    let mut _1: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:63
+    let mut _2: &_::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let _3: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let mut _4: <T as Trait>::X;         // in scope 0 at src/lib.rs:10:39: 10:54
+    scope 1 {
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/lib.rs:10:35: 10:63
+        StorageLive(_2);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_3);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_4);                 // scope 0 at src/lib.rs:10:39: 10:54
+        _4 = <<T as Trait>::X as Default>::default() -> bb1; // scope 0 at src/lib.rs:10:39: 10:54
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:39: 10:52
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn() -> <T as Trait>::X {<<T as Trait>::X as std::default::Default>::default}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        (_3.0: <T as Trait>::X) = move _4; // scope 0 at src/lib.rs:10:35: 10:55
+        _2 = &_3;                        // scope 0 at src/lib.rs:10:35: 10:55
+        StorageDead(_4);                 // scope 0 at src/lib.rs:10:54: 10:55
+        _1 = <_::_f::Foo<<T as Trait>::X> as Clone>::clone(move _2) -> bb2; // scope 0 at src/lib.rs:10:35: 10:63
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:56: 10:61
+                                         // + literal: Const { ty: for<'r> fn(&'r _::_f::Foo<<T as Trait>::X>) -> _::_f::Foo<<T as Trait>::X> {<_::_f::Foo<<T as Trait>::X> as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_2);                 // scope 0 at src/lib.rs:10:62: 10:63
+        StorageDead(_3);                 // scope 0 at src/lib.rs:10:63: 10:64
+        StorageDead(_1);                 // scope 0 at src/lib.rs:10:63: 10:64
+        return;                          // scope 0 at src/lib.rs:11:14: 11:14
+    }
+}
+
+Trait::_Unused::{constant#104}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:17: 29:19
+
+    bb0: {
+        _0 = const 52_usize;             // scope 0 at src/lib.rs:29:17: 29:19
+        return;                          // scope 0 at src/lib.rs:29:17: 29:19
+    }
+}
+
+Trait::_Unused::{constant#37}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:41: 23:43
+
+    bb0: {
+        _0 = const 18_usize;             // scope 0 at src/lib.rs:23:41: 23:43
+        return;                          // scope 0 at src/lib.rs:23:41: 23:43
+    }
+}
+
+Trait::_Unused::{constant#159}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:45: 32:47
+
+    bb0: {
+        _0 = const 79_usize;             // scope 0 at src/lib.rs:32:45: 32:47
+        return;                          // scope 0 at src/lib.rs:32:45: 32:47
+    }
+}
+
+Trait::_Unused::{constant#92}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:33: 28:35
+
+    bb0: {
+        _0 = const 46_usize;             // scope 0 at src/lib.rs:28:33: 28:35
+        return;                          // scope 0 at src/lib.rs:28:33: 28:35
+    }
+}
+
+Trait::_Unused::{constant#25}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:17: 23:19
+
+    bb0: {
+        _0 = const 12_usize;             // scope 0 at src/lib.rs:23:17: 23:19
+        return;                          // scope 0 at src/lib.rs:23:17: 23:19
+    }
+}
+
+Trait::_Unused::{constant#147}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:21: 32:23
+
+    bb0: {
+        _0 = const 73_usize;             // scope 0 at src/lib.rs:32:21: 32:23
+        return;                          // scope 0 at src/lib.rs:32:21: 32:23
+    }
+}
+
+Trait::_Unused::{constant#80}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:9: 28:11
+
+    bb0: {
+        _0 = const 40_usize;             // scope 0 at src/lib.rs:28:9: 28:11
+        return;                          // scope 0 at src/lib.rs:28:9: 28:11
+    }
+}
+
+Trait::_Unused::{constant#13}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:33: 22:35
+
+    bb0: {
+        _0 = const 6_usize;              // scope 0 at src/lib.rs:22:33: 22:35
+        return;                          // scope 0 at src/lib.rs:22:33: 22:35
+    }
+}
+
+Trait::_Unused::{constant#135}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:37: 31:39
+
+    bb0: {
+        _0 = const 67_usize;             // scope 0 at src/lib.rs:31:37: 31:39
+        return;                          // scope 0 at src/lib.rs:31:37: 31:39
+    }
+}
+
+Trait::_Unused::{constant#68}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:25: 26:27
+
+    bb0: {
+        _0 = const 34_usize;             // scope 0 at src/lib.rs:26:25: 26:27
+        return;                          // scope 0 at src/lib.rs:26:25: 26:27
+    }
+}
+
+Trait::_Unused::{constant#1}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:9: 22:11
+
+    bb0: {
+        _0 = const 0_usize;              // scope 0 at src/lib.rs:22:9: 22:11
+        return;                          // scope 0 at src/lib.rs:22:9: 22:11
+    }
+}
+
+Trait::_Unused::{constant#123}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:13: 31:15
+
+    bb0: {
+        _0 = const 61_usize;             // scope 0 at src/lib.rs:31:13: 31:15
+        return;                          // scope 0 at src/lib.rs:31:13: 31:15
+    }
+}
+
+Trait::_Unused::{constant#56}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:41: 25:43
+
+    bb0: {
+        _0 = const 28_usize;             // scope 0 at src/lib.rs:25:41: 25:43
+        return;                          // scope 0 at src/lib.rs:25:41: 25:43
+    }
+}
+
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+// MIR FOR CTFE
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+Trait::_Unused::{constant#111}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:29: 29:31
+
+    bb0: {
+        _0 = const 55_usize;             // scope 0 at src/lib.rs:29:29: 29:31
+        return;                          // scope 0 at src/lib.rs:29:29: 29:31
+    }
+}
+
+Trait::_Unused::{constant#44}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:17: 25:19
+
+    bb0: {
+        _0 = const 22_usize;             // scope 0 at src/lib.rs:25:17: 25:19
+        return;                          // scope 0 at src/lib.rs:25:17: 25:19
+    }
+}
+
+Trait::_Unused::{constant#99}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:45: 28:47
+
+    bb0: {
+        _0 = const 49_usize;             // scope 0 at src/lib.rs:28:45: 28:47
+        return;                          // scope 0 at src/lib.rs:28:45: 28:47
+    }
+}
+
+Trait::_Unused::{constant#32}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:33: 23:35
+
+    bb0: {
+        _0 = const 16_usize;             // scope 0 at src/lib.rs:23:33: 23:35
+        return;                          // scope 0 at src/lib.rs:23:33: 23:35
+    }
+}
+
+Trait::_Unused::{constant#154}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:37: 32:39
+
+    bb0: {
+        _0 = const 77_usize;             // scope 0 at src/lib.rs:32:37: 32:39
+        return;                          // scope 0 at src/lib.rs:32:37: 32:39
+    }
+}
+
+Trait::_Unused::{constant#87}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:21: 28:23
+
+    bb0: {
+        _0 = const 43_usize;             // scope 0 at src/lib.rs:28:21: 28:23
+        return;                          // scope 0 at src/lib.rs:28:21: 28:23
+    }
+}
+
+Trait::_Unused::{constant#20}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:9: 23:11
+
+    bb0: {
+        _0 = const 10_usize;             // scope 0 at src/lib.rs:23:9: 23:11
+        return;                          // scope 0 at src/lib.rs:23:9: 23:11
+    }
+}
+
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+// MIR FOR CTFE
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+Trait::_Unused::{constant#142}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:13: 32:15
+
+    bb0: {
+        _0 = const 71_usize;             // scope 0 at src/lib.rs:32:13: 32:15
+        return;                          // scope 0 at src/lib.rs:32:13: 32:15
+    }
+}
+
+Trait::_Unused::{constant#75}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:37: 26:39
+
+    bb0: {
+        _0 = const 37_usize;             // scope 0 at src/lib.rs:26:37: 26:39
+        return;                          // scope 0 at src/lib.rs:26:37: 26:39
+    }
+}
+
+Trait::_Unused::{constant#8}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:25: 22:27
+
+    bb0: {
+        _0 = const 4_usize;              // scope 0 at src/lib.rs:22:25: 22:27
+        return;                          // scope 0 at src/lib.rs:22:25: 22:27
+    }
+}
+
+Trait::_Unused::{constant#130}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:29: 31:31
+
+    bb0: {
+        _0 = const 65_usize;             // scope 0 at src/lib.rs:31:29: 31:31
+        return;                          // scope 0 at src/lib.rs:31:29: 31:31
+    }
+}
+
+Trait::_Unused::{constant#63}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:13: 26:15
+
+    bb0: {
+        _0 = const 31_usize;             // scope 0 at src/lib.rs:26:13: 26:15
+        return;                          // scope 0 at src/lib.rs:26:13: 26:15
+    }
+}
+
+fn _::_f::<impl at src/lib.rs:8:32: 8:37>::clone(_1: &_::_f::Foo<X>) -> _::_f::Foo<X> {
+    debug self => _1;                    // in scope 0 at src/lib.rs:8:32: 8:37
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:8:32: 8:37
+    let _2: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _3: X;                       // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _4: &X;                      // in scope 0 at src/lib.rs:9:31: 9:32
+    let _5: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    scope 1 {
+        debug __self_0_0 => _2;          // in scope 1 at src/lib.rs:9:31: 9:32
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/lib.rs:9:31: 9:32
+        _2 = &((*_1).0: X);              // scope 0 at src/lib.rs:9:31: 9:32
+        StorageLive(_3);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_5);                 // scope 1 at src/lib.rs:9:31: 9:32
+        _5 = _2;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _4 = _5;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _3 = <X as Clone>::clone(move _4) -> bb1; // scope 1 at src/lib.rs:9:31: 9:32
+                                         // mir::Constant
+                                         // + span: src/lib.rs:9:31: 9:32
+                                         // + literal: Const { ty: for<'r> fn(&'r X) -> X {<X as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        (_0.0: X) = move _3;             // scope 1 at src/lib.rs:8:32: 8:37
+        StorageDead(_5);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_3);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_2);                 // scope 0 at src/lib.rs:8:36: 8:37
+        return;                          // scope 0 at src/lib.rs:8:37: 8:37
+    }
+}
+
+Trait::_Unused::{constant#118}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:45: 29:47
+
+    bb0: {
+        _0 = const 59_usize;             // scope 0 at src/lib.rs:29:45: 29:47
+        return;                          // scope 0 at src/lib.rs:29:45: 29:47
+    }
+}
+
+Trait::_Unused::{constant#51}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:29: 25:31
+
+    bb0: {
+        _0 = const 25_usize;             // scope 0 at src/lib.rs:25:29: 25:31
+        return;                          // scope 0 at src/lib.rs:25:29: 25:31
+    }
+}
+
+fn _::_f() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/lib.rs:7:34: 7:34
+    let mut _1: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:63
+    let mut _2: &_::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let _3: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let mut _4: <T as Trait>::X;         // in scope 0 at src/lib.rs:10:39: 10:54
+    scope 1 {
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/lib.rs:10:35: 10:63
+        StorageLive(_2);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_3);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_4);                 // scope 0 at src/lib.rs:10:39: 10:54
+        _4 = <<T as Trait>::X as Default>::default() -> bb1; // scope 0 at src/lib.rs:10:39: 10:54
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:39: 10:52
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn() -> <T as Trait>::X {<<T as Trait>::X as std::default::Default>::default}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        (_3.0: <T as Trait>::X) = move _4; // scope 0 at src/lib.rs:10:35: 10:55
+        _2 = &_3;                        // scope 0 at src/lib.rs:10:35: 10:55
+        StorageDead(_4);                 // scope 0 at src/lib.rs:10:54: 10:55
+        _1 = <_::_f::Foo<<T as Trait>::X> as Clone>::clone(move _2) -> bb2; // scope 0 at src/lib.rs:10:35: 10:63
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:56: 10:61
+                                         // + literal: Const { ty: for<'r> fn(&'r _::_f::Foo<<T as Trait>::X>) -> _::_f::Foo<<T as Trait>::X> {<_::_f::Foo<<T as Trait>::X> as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_2);                 // scope 0 at src/lib.rs:10:62: 10:63
+        StorageDead(_3);                 // scope 0 at src/lib.rs:10:63: 10:64
+        StorageDead(_1);                 // scope 0 at src/lib.rs:10:63: 10:64
+        return;                          // scope 0 at src/lib.rs:11:14: 11:14
+    }
+}
+
+Trait::_Unused::{constant#106}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:21: 29:23
+
+    bb0: {
+        _0 = const 53_usize;             // scope 0 at src/lib.rs:29:21: 29:23
+        return;                          // scope 0 at src/lib.rs:29:21: 29:23
+    }
+}
+
+Trait::_Unused::{constant#39}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:45: 23:47
+
+    bb0: {
+        _0 = const 19_usize;             // scope 0 at src/lib.rs:23:45: 23:47
+        return;                          // scope 0 at src/lib.rs:23:45: 23:47
+    }
+}
+
+fn _::_f() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/lib.rs:7:34: 7:34
+    let mut _1: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:63
+    let mut _2: &_::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let _3: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let mut _4: <T as Trait>::X;         // in scope 0 at src/lib.rs:10:39: 10:54
+    scope 1 {
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/lib.rs:10:35: 10:63
+        StorageLive(_2);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_3);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_4);                 // scope 0 at src/lib.rs:10:39: 10:54
+        _4 = <<T as Trait>::X as Default>::default() -> bb1; // scope 0 at src/lib.rs:10:39: 10:54
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:39: 10:52
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn() -> <T as Trait>::X {<<T as Trait>::X as std::default::Default>::default}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        (_3.0: <T as Trait>::X) = move _4; // scope 0 at src/lib.rs:10:35: 10:55
+        _2 = &_3;                        // scope 0 at src/lib.rs:10:35: 10:55
+        StorageDead(_4);                 // scope 0 at src/lib.rs:10:54: 10:55
+        _1 = <_::_f::Foo<<T as Trait>::X> as Clone>::clone(move _2) -> bb2; // scope 0 at src/lib.rs:10:35: 10:63
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:56: 10:61
+                                         // + literal: Const { ty: for<'r> fn(&'r _::_f::Foo<<T as Trait>::X>) -> _::_f::Foo<<T as Trait>::X> {<_::_f::Foo<<T as Trait>::X> as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_2);                 // scope 0 at src/lib.rs:10:62: 10:63
+        StorageDead(_3);                 // scope 0 at src/lib.rs:10:63: 10:64
+        StorageDead(_1);                 // scope 0 at src/lib.rs:10:63: 10:64
+        return;                          // scope 0 at src/lib.rs:11:14: 11:14
+    }
+}
+
+Trait::_Unused::{constant#94}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:37: 28:39
+
+    bb0: {
+        _0 = const 47_usize;             // scope 0 at src/lib.rs:28:37: 28:39
+        return;                          // scope 0 at src/lib.rs:28:37: 28:39
+    }
+}
+
+Trait::_Unused::{constant#27}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:21: 23:23
+
+    bb0: {
+        _0 = const 13_usize;             // scope 0 at src/lib.rs:23:21: 23:23
+        return;                          // scope 0 at src/lib.rs:23:21: 23:23
+    }
+}
+
+fn _::_f::<impl at src/lib.rs:8:32: 8:37>::clone(_1: &_::_f::Foo<X>) -> _::_f::Foo<X> {
+    debug self => _1;                    // in scope 0 at src/lib.rs:8:32: 8:37
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:8:32: 8:37
+    let _2: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _3: X;                       // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _4: &X;                      // in scope 0 at src/lib.rs:9:31: 9:32
+    let _5: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    scope 1 {
+        debug __self_0_0 => _2;          // in scope 1 at src/lib.rs:9:31: 9:32
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/lib.rs:9:31: 9:32
+        _2 = &((*_1).0: X);              // scope 0 at src/lib.rs:9:31: 9:32
+        StorageLive(_3);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_5);                 // scope 1 at src/lib.rs:9:31: 9:32
+        _5 = _2;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _4 = _5;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _3 = <X as Clone>::clone(move _4) -> bb1; // scope 1 at src/lib.rs:9:31: 9:32
+                                         // mir::Constant
+                                         // + span: src/lib.rs:9:31: 9:32
+                                         // + literal: Const { ty: for<'r> fn(&'r X) -> X {<X as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        (_0.0: X) = move _3;             // scope 1 at src/lib.rs:8:32: 8:37
+        StorageDead(_5);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_3);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_2);                 // scope 0 at src/lib.rs:8:36: 8:37
+        return;                          // scope 0 at src/lib.rs:8:37: 8:37
+    }
+}
+
+Trait::_Unused::{constant#149}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:25: 32:27
+
+    bb0: {
+        _0 = const 74_usize;             // scope 0 at src/lib.rs:32:25: 32:27
+        return;                          // scope 0 at src/lib.rs:32:25: 32:27
+    }
+}
+
+Trait::_Unused::{constant#82}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:13: 28:15
+
+    bb0: {
+        _0 = const 41_usize;             // scope 0 at src/lib.rs:28:13: 28:15
+        return;                          // scope 0 at src/lib.rs:28:13: 28:15
+    }
+}
+
+Trait::_Unused::{constant#15}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:37: 22:39
+
+    bb0: {
+        _0 = const 7_usize;              // scope 0 at src/lib.rs:22:37: 22:39
+        return;                          // scope 0 at src/lib.rs:22:37: 22:39
+    }
+}
+
+Trait::_Unused::{constant#137}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:41: 31:43
+
+    bb0: {
+        _0 = const 68_usize;             // scope 0 at src/lib.rs:31:41: 31:43
+        return;                          // scope 0 at src/lib.rs:31:41: 31:43
+    }
+}
+
+Trait::_Unused::{constant#70}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:29: 26:31
+
+    bb0: {
+        _0 = const 35_usize;             // scope 0 at src/lib.rs:26:29: 26:31
+        return;                          // scope 0 at src/lib.rs:26:29: 26:31
+    }
+}
+
+Trait::_Unused::{constant#3}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:13: 22:15
+
+    bb0: {
+        _0 = const 1_usize;              // scope 0 at src/lib.rs:22:13: 22:15
+        return;                          // scope 0 at src/lib.rs:22:13: 22:15
+    }
+}
+
+Trait::_Unused::{constant#125}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:17: 31:19
+
+    bb0: {
+        _0 = const 62_usize;             // scope 0 at src/lib.rs:31:17: 31:19
+        return;                          // scope 0 at src/lib.rs:31:17: 31:19
+    }
+}
+
+Trait::_Unused::{constant#58}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:45: 25:47
+
+    bb0: {
+        _0 = const 29_usize;             // scope 0 at src/lib.rs:25:45: 25:47
+        return;                          // scope 0 at src/lib.rs:25:45: 25:47
+    }
+}
+
+Trait::_Unused::{constant#113}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:33: 29:35
+
+    bb0: {
+        _0 = const 56_usize;             // scope 0 at src/lib.rs:29:33: 29:35
+        return;                          // scope 0 at src/lib.rs:29:33: 29:35
+    }
+}
+
+Trait::_Unused::{constant#46}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:21: 25:23
+
+    bb0: {
+        _0 = const 23_usize;             // scope 0 at src/lib.rs:25:21: 25:23
+        return;                          // scope 0 at src/lib.rs:25:21: 25:23
+    }
+}
+
+Trait::_Unused::{constant#101}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:9: 29:11
+
+    bb0: {
+        _0 = const 50_usize;             // scope 0 at src/lib.rs:29:9: 29:11
+        return;                          // scope 0 at src/lib.rs:29:9: 29:11
+    }
+}
+
+Trait::_Unused::{constant#34}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:37: 23:39
+
+    bb0: {
+        _0 = const 17_usize;             // scope 0 at src/lib.rs:23:37: 23:39
+        return;                          // scope 0 at src/lib.rs:23:37: 23:39
+    }
+}
+
+Trait::_Unused::{constant#156}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:41: 32:43
+
+    bb0: {
+        _0 = const 78_usize;             // scope 0 at src/lib.rs:32:41: 32:43
+        return;                          // scope 0 at src/lib.rs:32:41: 32:43
+    }
+}
+
+Trait::_Unused::{constant#89}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:25: 28:27
+
+    bb0: {
+        _0 = const 44_usize;             // scope 0 at src/lib.rs:28:25: 28:27
+        return;                          // scope 0 at src/lib.rs:28:25: 28:27
+    }
+}
+
+Trait::_Unused::{constant#22}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:13: 23:15
+
+    bb0: {
+        _0 = const 11_usize;             // scope 0 at src/lib.rs:23:13: 23:15
+        return;                          // scope 0 at src/lib.rs:23:13: 23:15
+    }
+}
+
+Trait::_Unused::{constant#144}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:17: 32:19
+
+    bb0: {
+        _0 = const 72_usize;             // scope 0 at src/lib.rs:32:17: 32:19
+        return;                          // scope 0 at src/lib.rs:32:17: 32:19
+    }
+}
+
+Trait::_Unused::{constant#77}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:41: 26:43
+
+    bb0: {
+        _0 = const 38_usize;             // scope 0 at src/lib.rs:26:41: 26:43
+        return;                          // scope 0 at src/lib.rs:26:41: 26:43
+    }
+}
+
+Trait::_Unused::{constant#10}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:29: 22:31
+
+    bb0: {
+        _0 = const 5_usize;              // scope 0 at src/lib.rs:22:29: 22:31
+        return;                          // scope 0 at src/lib.rs:22:29: 22:31
+    }
+}
+
+Trait::_Unused::{constant#132}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:33: 31:35
+
+    bb0: {
+        _0 = const 66_usize;             // scope 0 at src/lib.rs:31:33: 31:35
+        return;                          // scope 0 at src/lib.rs:31:33: 31:35
+    }
+}
+
+Trait::_Unused::{constant#65}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:17: 26:19
+
+    bb0: {
+        _0 = const 32_usize;             // scope 0 at src/lib.rs:26:17: 26:19
+        return;                          // scope 0 at src/lib.rs:26:17: 26:19
+    }
+}
+
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+// MIR FOR CTFE
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+Trait::_Unused::{constant#120}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:9: 31:11
+
+    bb0: {
+        _0 = const 60_usize;             // scope 0 at src/lib.rs:31:9: 31:11
+        return;                          // scope 0 at src/lib.rs:31:9: 31:11
+    }
+}
+
+Trait::_Unused::{constant#53}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:33: 25:35
+
+    bb0: {
+        _0 = const 26_usize;             // scope 0 at src/lib.rs:25:33: 25:35
+        return;                          // scope 0 at src/lib.rs:25:33: 25:35
+    }
+}
+
+fn _::_f() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/lib.rs:7:34: 7:34
+    let mut _1: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:63
+    let mut _2: &_::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let _3: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let mut _4: <T as Trait>::X;         // in scope 0 at src/lib.rs:10:39: 10:54
+    scope 1 {
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/lib.rs:10:35: 10:63
+        StorageLive(_2);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_3);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_4);                 // scope 0 at src/lib.rs:10:39: 10:54
+        _4 = <<T as Trait>::X as Default>::default() -> bb1; // scope 0 at src/lib.rs:10:39: 10:54
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:39: 10:52
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn() -> <T as Trait>::X {<<T as Trait>::X as std::default::Default>::default}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        (_3.0: <T as Trait>::X) = move _4; // scope 0 at src/lib.rs:10:35: 10:55
+        _2 = &_3;                        // scope 0 at src/lib.rs:10:35: 10:55
+        StorageDead(_4);                 // scope 0 at src/lib.rs:10:54: 10:55
+        _1 = <_::_f::Foo<<T as Trait>::X> as Clone>::clone(move _2) -> bb2; // scope 0 at src/lib.rs:10:35: 10:63
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:56: 10:61
+                                         // + literal: Const { ty: for<'r> fn(&'r _::_f::Foo<<T as Trait>::X>) -> _::_f::Foo<<T as Trait>::X> {<_::_f::Foo<<T as Trait>::X> as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_2);                 // scope 0 at src/lib.rs:10:62: 10:63
+        StorageDead(_3);                 // scope 0 at src/lib.rs:10:63: 10:64
+        StorageDead(_1);                 // scope 0 at src/lib.rs:10:63: 10:64
+        return;                          // scope 0 at src/lib.rs:11:14: 11:14
+    }
+}
+
+Trait::_Unused::{constant#108}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:29:25: 29:27
+
+    bb0: {
+        _0 = const 54_usize;             // scope 0 at src/lib.rs:29:25: 29:27
+        return;                          // scope 0 at src/lib.rs:29:25: 29:27
+    }
+}
+
+Trait::_Unused::{constant#41}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:25:9: 25:11
+
+    bb0: {
+        _0 = const 20_usize;             // scope 0 at src/lib.rs:25:9: 25:11
+        return;                          // scope 0 at src/lib.rs:25:9: 25:11
+    }
+}
+
+fn _::_f() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/lib.rs:7:34: 7:34
+    let mut _1: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:63
+    let mut _2: &_::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let _3: _::_f::Foo<<T as Trait>::X>; // in scope 0 at src/lib.rs:10:35: 10:55
+    let mut _4: <T as Trait>::X;         // in scope 0 at src/lib.rs:10:39: 10:54
+    scope 1 {
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/lib.rs:10:35: 10:63
+        StorageLive(_2);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_3);                 // scope 0 at src/lib.rs:10:35: 10:55
+        StorageLive(_4);                 // scope 0 at src/lib.rs:10:39: 10:54
+        _4 = <<T as Trait>::X as Default>::default() -> bb1; // scope 0 at src/lib.rs:10:39: 10:54
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:39: 10:52
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn() -> <T as Trait>::X {<<T as Trait>::X as std::default::Default>::default}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        (_3.0: <T as Trait>::X) = move _4; // scope 0 at src/lib.rs:10:35: 10:55
+        _2 = &_3;                        // scope 0 at src/lib.rs:10:35: 10:55
+        StorageDead(_4);                 // scope 0 at src/lib.rs:10:54: 10:55
+        _1 = <_::_f::Foo<<T as Trait>::X> as Clone>::clone(move _2) -> bb2; // scope 0 at src/lib.rs:10:35: 10:63
+                                         // mir::Constant
+                                         // + span: src/lib.rs:10:56: 10:61
+                                         // + literal: Const { ty: for<'r> fn(&'r _::_f::Foo<<T as Trait>::X>) -> _::_f::Foo<<T as Trait>::X> {<_::_f::Foo<<T as Trait>::X> as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_2);                 // scope 0 at src/lib.rs:10:62: 10:63
+        StorageDead(_3);                 // scope 0 at src/lib.rs:10:63: 10:64
+        StorageDead(_1);                 // scope 0 at src/lib.rs:10:63: 10:64
+        return;                          // scope 0 at src/lib.rs:11:14: 11:14
+    }
+}
+
+Trait::_Unused::{constant#96}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:41: 28:43
+
+    bb0: {
+        _0 = const 48_usize;             // scope 0 at src/lib.rs:28:41: 28:43
+        return;                          // scope 0 at src/lib.rs:28:41: 28:43
+    }
+}
+
+Trait::_Unused::{constant#29}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:23:25: 23:27
+
+    bb0: {
+        _0 = const 14_usize;             // scope 0 at src/lib.rs:23:25: 23:27
+        return;                          // scope 0 at src/lib.rs:23:25: 23:27
+    }
+}
+
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+// MIR FOR CTFE
+fn _::_f::Foo(_1: X) -> _::_f::Foo<X> {
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:9:17: 9:34
+
+    bb0: {
+        (_0.0: X) = move _1;             // scope 0 at src/lib.rs:9:17: 9:34
+        return;                          // scope 0 at src/lib.rs:9:17: 9:34
+    }
+}
+
+Trait::_Unused::{constant#151}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:32:29: 32:31
+
+    bb0: {
+        _0 = const 75_usize;             // scope 0 at src/lib.rs:32:29: 32:31
+        return;                          // scope 0 at src/lib.rs:32:29: 32:31
+    }
+}
+
+Trait::_Unused::{constant#84}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:28:17: 28:19
+
+    bb0: {
+        _0 = const 42_usize;             // scope 0 at src/lib.rs:28:17: 28:19
+        return;                          // scope 0 at src/lib.rs:28:17: 28:19
+    }
+}
+
+Trait::_Unused::{constant#17}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:41: 22:43
+
+    bb0: {
+        _0 = const 8_usize;              // scope 0 at src/lib.rs:22:41: 22:43
+        return;                          // scope 0 at src/lib.rs:22:41: 22:43
+    }
+}
+
+Trait::_Unused::{constant#139}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:45: 31:47
+
+    bb0: {
+        _0 = const 69_usize;             // scope 0 at src/lib.rs:31:45: 31:47
+        return;                          // scope 0 at src/lib.rs:31:45: 31:47
+    }
+}
+
+Trait::_Unused::{constant#72}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:33: 26:35
+
+    bb0: {
+        _0 = const 36_usize;             // scope 0 at src/lib.rs:26:33: 26:35
+        return;                          // scope 0 at src/lib.rs:26:33: 26:35
+    }
+}
+
+Trait::_Unused::{constant#5}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:22:17: 22:19
+
+    bb0: {
+        _0 = const 2_usize;              // scope 0 at src/lib.rs:22:17: 22:19
+        return;                          // scope 0 at src/lib.rs:22:17: 22:19
+    }
+}
+
+fn _::_f::<impl at src/lib.rs:8:32: 8:37>::clone(_1: &_::_f::Foo<X>) -> _::_f::Foo<X> {
+    debug self => _1;                    // in scope 0 at src/lib.rs:8:32: 8:37
+    let mut _0: _::_f::Foo<X>;           // return place in scope 0 at src/lib.rs:8:32: 8:37
+    let _2: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _3: X;                       // in scope 0 at src/lib.rs:9:31: 9:32
+    let mut _4: &X;                      // in scope 0 at src/lib.rs:9:31: 9:32
+    let _5: &X;                          // in scope 0 at src/lib.rs:9:31: 9:32
+    scope 1 {
+        debug __self_0_0 => _2;          // in scope 1 at src/lib.rs:9:31: 9:32
+    }
+
+    bb0: {
+        StorageLive(_2);                 // scope 0 at src/lib.rs:9:31: 9:32
+        _2 = &((*_1).0: X);              // scope 0 at src/lib.rs:9:31: 9:32
+        StorageLive(_3);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        StorageLive(_5);                 // scope 1 at src/lib.rs:9:31: 9:32
+        _5 = _2;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _4 = _5;                         // scope 1 at src/lib.rs:9:31: 9:32
+        _3 = <X as Clone>::clone(move _4) -> bb1; // scope 1 at src/lib.rs:9:31: 9:32
+                                         // mir::Constant
+                                         // + span: src/lib.rs:9:31: 9:32
+                                         // + literal: Const { ty: for<'r> fn(&'r X) -> X {<X as std::clone::Clone>::clone}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageDead(_4);                 // scope 1 at src/lib.rs:9:31: 9:32
+        (_0.0: X) = move _3;             // scope 1 at src/lib.rs:8:32: 8:37
+        StorageDead(_5);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_3);                 // scope 1 at src/lib.rs:8:36: 8:37
+        StorageDead(_2);                 // scope 0 at src/lib.rs:8:36: 8:37
+        return;                          // scope 0 at src/lib.rs:8:37: 8:37
+    }
+}
+
+Trait::_Unused::{constant#127}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:31:21: 31:23
+
+    bb0: {
+        _0 = const 63_usize;             // scope 0 at src/lib.rs:31:21: 31:23
+        return;                          // scope 0 at src/lib.rs:31:21: 31:23
+    }
+}
+
+Trait::_Unused::{constant#60}: usize = {
+    let mut _0: usize;                   // return place in scope 0 at src/lib.rs:26:9: 26:11
+
+    bb0: {
+        _0 = const 30_usize;             // scope 0 at src/lib.rs:26:9: 26:11
+        return;                          // scope 0 at src/lib.rs:26:9: 26:11
+    }
+}

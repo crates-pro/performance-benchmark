@@ -187,10 +187,6 @@ pub fn dfc(mir_file: &MIRs) -> i32 {
     let depths_count = depths.len();
     let depths_sum: usize = depths.values().sum();
 
-    if funcname_call_count == 0 {
-        return 0;
-    }
-
     let result = funcname_call_count - depths_count + depths_sum / funcname_call_count;
     // println!("Result: {}", result);
     result as i32

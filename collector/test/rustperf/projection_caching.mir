@@ -1,0 +1,397 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn main::{closure#15}(_1: &mut [closure@src/main.rs:20:21: 20:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:20:25: 20:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:20:27: 20:27
+    }
+}
+
+fn main::{closure#12}(_1: &mut [closure@src/main.rs:17:21: 17:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:17:25: 17:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:17:27: 17:27
+    }
+}
+
+fn main::{closure#9}(_1: &mut [closure@src/main.rs:14:21: 14:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:14:25: 14:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:14:27: 14:27
+    }
+}
+
+fn main::{closure#6}(_1: &mut [closure@src/main.rs:11:21: 11:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:11:25: 11:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:11:27: 11:27
+    }
+}
+
+fn main::{closure#3}(_1: &mut [closure@src/main.rs:8:21: 8:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:8:25: 8:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:8:27: 8:27
+    }
+}
+
+fn main::{closure#0}(_1: &mut [closure@src/main.rs:5:21: 5:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:5:25: 5:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:5:27: 5:27
+    }
+}
+
+fn main::{closure#17}(_1: &mut [closure@src/main.rs:22:21: 22:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:22:25: 22:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:22:27: 22:27
+    }
+}
+
+fn main::{closure#14}(_1: &mut [closure@src/main.rs:19:21: 19:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:19:25: 19:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:19:27: 19:27
+    }
+}
+
+fn main::{closure#11}(_1: &mut [closure@src/main.rs:16:21: 16:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:16:25: 16:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:16:27: 16:27
+    }
+}
+
+fn main::{closure#8}(_1: &mut [closure@src/main.rs:13:21: 13:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:13:25: 13:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:13:27: 13:27
+    }
+}
+
+fn main::{closure#5}(_1: &mut [closure@src/main.rs:10:21: 10:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:10:25: 10:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:10:27: 10:27
+    }
+}
+
+fn main::{closure#2}(_1: &mut [closure@src/main.rs:7:21: 7:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:7:25: 7:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:7:27: 7:27
+    }
+}
+
+fn main() -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:3:11: 3:11
+    let _1: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>, [closure@src/main.rs:20:21: 20:27]>, [closure@src/main.rs:21:21: 21:27]>, [closure@src/main.rs:22:21: 22:27]>; // in scope 0 at src/main.rs:4:5: 22:28
+    let mut _2: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>, [closure@src/main.rs:20:21: 20:27]>, [closure@src/main.rs:21:21: 21:27]>; // in scope 0 at src/main.rs:4:5: 21:28
+    let mut _3: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>, [closure@src/main.rs:20:21: 20:27]>; // in scope 0 at src/main.rs:4:5: 20:28
+    let mut _4: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>; // in scope 0 at src/main.rs:4:5: 19:28
+    let mut _5: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>; // in scope 0 at src/main.rs:4:5: 18:28
+    let mut _6: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>; // in scope 0 at src/main.rs:4:5: 17:28
+    let mut _7: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>; // in scope 0 at src/main.rs:4:5: 16:28
+    let mut _8: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>; // in scope 0 at src/main.rs:4:5: 15:28
+    let mut _9: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>; // in scope 0 at src/main.rs:4:5: 14:28
+    let mut _10: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>; // in scope 0 at src/main.rs:4:5: 13:28
+    let mut _11: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>; // in scope 0 at src/main.rs:4:5: 12:28
+    let mut _12: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>; // in scope 0 at src/main.rs:4:5: 11:28
+    let mut _13: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>; // in scope 0 at src/main.rs:4:5: 10:28
+    let mut _14: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>; // in scope 0 at src/main.rs:4:5: 9:28
+    let mut _15: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>; // in scope 0 at src/main.rs:4:5: 8:28
+    let mut _16: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>; // in scope 0 at src/main.rs:4:5: 7:28
+    let mut _17: futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>; // in scope 0 at src/main.rs:4:5: 6:28
+    let mut _18: futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>; // in scope 0 at src/main.rs:4:5: 5:28
+    let mut _19: futures::stream::Empty<std::result::Result<(), ()>>; // in scope 0 at src/main.rs:4:5: 4:38
+    let mut _20: [closure@src/main.rs:5:21: 5:27]; // in scope 0 at src/main.rs:5:21: 5:27
+    let mut _21: [closure@src/main.rs:6:21: 6:27]; // in scope 0 at src/main.rs:6:21: 6:27
+    let mut _22: [closure@src/main.rs:7:21: 7:27]; // in scope 0 at src/main.rs:7:21: 7:27
+    let mut _23: [closure@src/main.rs:8:21: 8:27]; // in scope 0 at src/main.rs:8:21: 8:27
+    let mut _24: [closure@src/main.rs:9:21: 9:27]; // in scope 0 at src/main.rs:9:21: 9:27
+    let mut _25: [closure@src/main.rs:10:21: 10:27]; // in scope 0 at src/main.rs:10:21: 10:27
+    let mut _26: [closure@src/main.rs:11:21: 11:27]; // in scope 0 at src/main.rs:11:21: 11:27
+    let mut _27: [closure@src/main.rs:12:21: 12:27]; // in scope 0 at src/main.rs:12:21: 12:27
+    let mut _28: [closure@src/main.rs:13:21: 13:27]; // in scope 0 at src/main.rs:13:21: 13:27
+    let mut _29: [closure@src/main.rs:14:21: 14:27]; // in scope 0 at src/main.rs:14:21: 14:27
+    let mut _30: [closure@src/main.rs:15:21: 15:27]; // in scope 0 at src/main.rs:15:21: 15:27
+    let mut _31: [closure@src/main.rs:16:21: 16:27]; // in scope 0 at src/main.rs:16:21: 16:27
+    let mut _32: [closure@src/main.rs:17:21: 17:27]; // in scope 0 at src/main.rs:17:21: 17:27
+    let mut _33: [closure@src/main.rs:18:21: 18:27]; // in scope 0 at src/main.rs:18:21: 18:27
+    let mut _34: [closure@src/main.rs:19:21: 19:27]; // in scope 0 at src/main.rs:19:21: 19:27
+    let mut _35: [closure@src/main.rs:20:21: 20:27]; // in scope 0 at src/main.rs:20:21: 20:27
+    let mut _36: [closure@src/main.rs:21:21: 21:27]; // in scope 0 at src/main.rs:21:21: 21:27
+    let mut _37: [closure@src/main.rs:22:21: 22:27]; // in scope 0 at src/main.rs:22:21: 22:27
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at src/main.rs:4:5: 22:28
+        StorageLive(_2);                 // scope 0 at src/main.rs:4:5: 21:28
+        StorageLive(_3);                 // scope 0 at src/main.rs:4:5: 20:28
+        StorageLive(_4);                 // scope 0 at src/main.rs:4:5: 19:28
+        StorageLive(_5);                 // scope 0 at src/main.rs:4:5: 18:28
+        StorageLive(_6);                 // scope 0 at src/main.rs:4:5: 17:28
+        StorageLive(_7);                 // scope 0 at src/main.rs:4:5: 16:28
+        StorageLive(_8);                 // scope 0 at src/main.rs:4:5: 15:28
+        StorageLive(_9);                 // scope 0 at src/main.rs:4:5: 14:28
+        StorageLive(_10);                // scope 0 at src/main.rs:4:5: 13:28
+        StorageLive(_11);                // scope 0 at src/main.rs:4:5: 12:28
+        StorageLive(_12);                // scope 0 at src/main.rs:4:5: 11:28
+        StorageLive(_13);                // scope 0 at src/main.rs:4:5: 10:28
+        StorageLive(_14);                // scope 0 at src/main.rs:4:5: 9:28
+        StorageLive(_15);                // scope 0 at src/main.rs:4:5: 8:28
+        StorageLive(_16);                // scope 0 at src/main.rs:4:5: 7:28
+        StorageLive(_17);                // scope 0 at src/main.rs:4:5: 6:28
+        StorageLive(_18);                // scope 0 at src/main.rs:4:5: 5:28
+        StorageLive(_19);                // scope 0 at src/main.rs:4:5: 4:38
+        _19 = futures::stream::empty::<Result<(), ()>>() -> bb1; // scope 0 at src/main.rs:4:5: 4:38
+                                         // mir::Constant
+                                         // + span: src/main.rs:4:5: 4:36
+                                         // + literal: Const { ty: fn() -> futures::stream::Empty<std::result::Result<(), ()>> {futures::stream::empty::<std::result::Result<(), ()>>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb1: {
+        StorageLive(_20);                // scope 0 at src/main.rs:5:21: 5:27
+        _18 = <futures::stream::Empty<Result<(), ()>> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:5:21: 5:27]>(move _19, move _20) -> bb2; // scope 0 at src/main.rs:4:5: 5:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:5:10: 5:20
+                                         // + literal: Const { ty: fn(futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]) -> futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]> {<futures::stream::Empty<std::result::Result<(), ()>> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:5:21: 5:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb2: {
+        StorageDead(_20);                // scope 0 at src/main.rs:5:27: 5:28
+        StorageDead(_19);                // scope 0 at src/main.rs:5:27: 5:28
+        StorageLive(_21);                // scope 0 at src/main.rs:6:21: 6:27
+        _17 = <futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:6:21: 6:27]>(move _18, move _21) -> bb3; // scope 0 at src/main.rs:4:5: 6:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:6:10: 6:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]> {<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:6:21: 6:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb3: {
+        StorageDead(_21);                // scope 0 at src/main.rs:6:27: 6:28
+        StorageDead(_18);                // scope 0 at src/main.rs:6:27: 6:28
+        StorageLive(_22);                // scope 0 at src/main.rs:7:21: 7:27
+        _16 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:7:21: 7:27]>(move _17, move _22) -> bb4; // scope 0 at src/main.rs:4:5: 7:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:7:10: 7:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:7:21: 7:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb4: {
+        StorageDead(_22);                // scope 0 at src/main.rs:7:27: 7:28
+        StorageDead(_17);                // scope 0 at src/main.rs:7:27: 7:28
+        StorageLive(_23);                // scope 0 at src/main.rs:8:21: 8:27
+        _15 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:8:21: 8:27]>(move _16, move _23) -> bb5; // scope 0 at src/main.rs:4:5: 8:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:8:10: 8:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:8:21: 8:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb5: {
+        StorageDead(_23);                // scope 0 at src/main.rs:8:27: 8:28
+        StorageDead(_16);                // scope 0 at src/main.rs:8:27: 8:28
+        StorageLive(_24);                // scope 0 at src/main.rs:9:21: 9:27
+        _14 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:9:21: 9:27]>(move _15, move _24) -> bb6; // scope 0 at src/main.rs:4:5: 9:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:9:10: 9:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:9:21: 9:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb6: {
+        StorageDead(_24);                // scope 0 at src/main.rs:9:27: 9:28
+        StorageDead(_15);                // scope 0 at src/main.rs:9:27: 9:28
+        StorageLive(_25);                // scope 0 at src/main.rs:10:21: 10:27
+        _13 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:10:21: 10:27]>(move _14, move _25) -> bb7; // scope 0 at src/main.rs:4:5: 10:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:10:10: 10:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:10:21: 10:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb7: {
+        StorageDead(_25);                // scope 0 at src/main.rs:10:27: 10:28
+        StorageDead(_14);                // scope 0 at src/main.rs:10:27: 10:28
+        StorageLive(_26);                // scope 0 at src/main.rs:11:21: 11:27
+        _12 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:11:21: 11:27]>(move _13, move _26) -> bb8; // scope 0 at src/main.rs:4:5: 11:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:11:10: 11:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:11:21: 11:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb8: {
+        StorageDead(_26);                // scope 0 at src/main.rs:11:27: 11:28
+        StorageDead(_13);                // scope 0 at src/main.rs:11:27: 11:28
+        StorageLive(_27);                // scope 0 at src/main.rs:12:21: 12:27
+        _11 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:12:21: 12:27]>(move _12, move _27) -> bb9; // scope 0 at src/main.rs:4:5: 12:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:12:10: 12:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:12:21: 12:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb9: {
+        StorageDead(_27);                // scope 0 at src/main.rs:12:27: 12:28
+        StorageDead(_12);                // scope 0 at src/main.rs:12:27: 12:28
+        StorageLive(_28);                // scope 0 at src/main.rs:13:21: 13:27
+        _10 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:13:21: 13:27]>(move _11, move _28) -> bb10; // scope 0 at src/main.rs:4:5: 13:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:13:10: 13:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:13:21: 13:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb10: {
+        StorageDead(_28);                // scope 0 at src/main.rs:13:27: 13:28
+        StorageDead(_11);                // scope 0 at src/main.rs:13:27: 13:28
+        StorageLive(_29);                // scope 0 at src/main.rs:14:21: 14:27
+        _9 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:14:21: 14:27]>(move _10, move _29) -> bb11; // scope 0 at src/main.rs:4:5: 14:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:14:10: 14:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:14:21: 14:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb11: {
+        StorageDead(_29);                // scope 0 at src/main.rs:14:27: 14:28
+        StorageDead(_10);                // scope 0 at src/main.rs:14:27: 14:28
+        StorageLive(_30);                // scope 0 at src/main.rs:15:21: 15:27
+        _8 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:15:21: 15:27]>(move _9, move _30) -> bb12; // scope 0 at src/main.rs:4:5: 15:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:15:10: 15:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:15:21: 15:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb12: {
+        StorageDead(_30);                // scope 0 at src/main.rs:15:27: 15:28
+        StorageDead(_9);                 // scope 0 at src/main.rs:15:27: 15:28
+        StorageLive(_31);                // scope 0 at src/main.rs:16:21: 16:27
+        _7 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:16:21: 16:27]>(move _8, move _31) -> bb13; // scope 0 at src/main.rs:4:5: 16:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:16:10: 16:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:16:21: 16:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb13: {
+        StorageDead(_31);                // scope 0 at src/main.rs:16:27: 16:28
+        StorageDead(_8);                 // scope 0 at src/main.rs:16:27: 16:28
+        StorageLive(_32);                // scope 0 at src/main.rs:17:21: 17:27
+        _6 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:17:21: 17:27]>(move _7, move _32) -> bb14; // scope 0 at src/main.rs:4:5: 17:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:17:10: 17:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:17:21: 17:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb14: {
+        StorageDead(_32);                // scope 0 at src/main.rs:17:27: 17:28
+        StorageDead(_7);                 // scope 0 at src/main.rs:17:27: 17:28
+        StorageLive(_33);                // scope 0 at src/main.rs:18:21: 18:27
+        _5 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:18:21: 18:27]>(move _6, move _33) -> bb15; // scope 0 at src/main.rs:4:5: 18:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:18:10: 18:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:18:21: 18:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb15: {
+        StorageDead(_33);                // scope 0 at src/main.rs:18:27: 18:28
+        StorageDead(_6);                 // scope 0 at src/main.rs:18:27: 18:28
+        StorageLive(_34);                // scope 0 at src/main.rs:19:21: 19:27
+        _4 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:19:21: 19:27]>(move _5, move _34) -> bb16; // scope 0 at src/main.rs:4:5: 19:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:19:10: 19:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:19:21: 19:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb16: {
+        StorageDead(_34);                // scope 0 at src/main.rs:19:27: 19:28
+        StorageDead(_5);                 // scope 0 at src/main.rs:19:27: 19:28
+        StorageLive(_35);                // scope 0 at src/main.rs:20:21: 20:27
+        _3 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:20:21: 20:27]>(move _4, move _35) -> bb17; // scope 0 at src/main.rs:4:5: 20:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:20:10: 20:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>, [closure@src/main.rs:20:21: 20:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>, [closure@src/main.rs:20:21: 20:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:20:21: 20:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb17: {
+        StorageDead(_35);                // scope 0 at src/main.rs:20:27: 20:28
+        StorageDead(_4);                 // scope 0 at src/main.rs:20:27: 20:28
+        StorageLive(_36);                // scope 0 at src/main.rs:21:21: 21:27
+        _2 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>, [closure@src/main.rs:20:21: 20:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:21:21: 21:27]>(move _3, move _36) -> bb18; // scope 0 at src/main.rs:4:5: 21:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:21:10: 21:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>, [closure@src/main.rs:20:21: 20:27]>, [closure@src/main.rs:21:21: 21:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>, [closure@src/main.rs:20:21: 20:27]>, [closure@src/main.rs:21:21: 21:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>, [closure@src/main.rs:20:21: 20:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:21:21: 21:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb18: {
+        StorageDead(_36);                // scope 0 at src/main.rs:21:27: 21:28
+        StorageDead(_3);                 // scope 0 at src/main.rs:21:27: 21:28
+        StorageLive(_37);                // scope 0 at src/main.rs:22:21: 22:27
+        _1 = <futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>, [closure@src/main.rs:20:21: 20:27]>, [closure@src/main.rs:21:21: 21:27]> as TryStreamExt>::inspect_ok::<[closure@src/main.rs:22:21: 22:27]>(move _2, move _37) -> bb19; // scope 0 at src/main.rs:4:5: 22:28
+                                         // mir::Constant
+                                         // + span: src/main.rs:22:10: 22:20
+                                         // + literal: Const { ty: fn(futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>, [closure@src/main.rs:20:21: 20:27]>, [closure@src/main.rs:21:21: 21:27]>, [closure@src/main.rs:22:21: 22:27]) -> futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>, [closure@src/main.rs:20:21: 20:27]>, [closure@src/main.rs:21:21: 21:27]>, [closure@src/main.rs:22:21: 22:27]> {<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::InspectOk<futures::stream::Empty<std::result::Result<(), ()>>, [closure@src/main.rs:5:21: 5:27]>, [closure@src/main.rs:6:21: 6:27]>, [closure@src/main.rs:7:21: 7:27]>, [closure@src/main.rs:8:21: 8:27]>, [closure@src/main.rs:9:21: 9:27]>, [closure@src/main.rs:10:21: 10:27]>, [closure@src/main.rs:11:21: 11:27]>, [closure@src/main.rs:12:21: 12:27]>, [closure@src/main.rs:13:21: 13:27]>, [closure@src/main.rs:14:21: 14:27]>, [closure@src/main.rs:15:21: 15:27]>, [closure@src/main.rs:16:21: 16:27]>, [closure@src/main.rs:17:21: 17:27]>, [closure@src/main.rs:18:21: 18:27]>, [closure@src/main.rs:19:21: 19:27]>, [closure@src/main.rs:20:21: 20:27]>, [closure@src/main.rs:21:21: 21:27]> as futures::TryStreamExt>::inspect_ok::<[closure@src/main.rs:22:21: 22:27]>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb19: {
+        StorageDead(_37);                // scope 0 at src/main.rs:22:27: 22:28
+        StorageDead(_2);                 // scope 0 at src/main.rs:22:27: 22:28
+        StorageDead(_1);                 // scope 0 at src/main.rs:22:28: 22:29
+        return;                          // scope 0 at src/main.rs:23:2: 23:2
+    }
+}
+
+fn main::{closure#16}(_1: &mut [closure@src/main.rs:21:21: 21:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:21:25: 21:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:21:27: 21:27
+    }
+}
+
+fn main::{closure#13}(_1: &mut [closure@src/main.rs:18:21: 18:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:18:25: 18:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:18:27: 18:27
+    }
+}
+
+fn main::{closure#10}(_1: &mut [closure@src/main.rs:15:21: 15:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:15:25: 15:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:15:27: 15:27
+    }
+}
+
+fn main::{closure#7}(_1: &mut [closure@src/main.rs:12:21: 12:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:12:25: 12:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:12:27: 12:27
+    }
+}
+
+fn main::{closure#4}(_1: &mut [closure@src/main.rs:9:21: 9:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:9:25: 9:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:9:27: 9:27
+    }
+}
+
+fn main::{closure#1}(_1: &mut [closure@src/main.rs:6:21: 6:27], _2: &()) -> () {
+    let mut _0: ();                      // return place in scope 0 at src/main.rs:6:25: 6:25
+
+    bb0: {
+        return;                          // scope 0 at src/main.rs:6:27: 6:27
+    }
+}

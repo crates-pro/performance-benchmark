@@ -51,6 +51,20 @@ promoted_function: PromotedFunction = {
                 bbs: body.3,
             }
         },
+
+    "promoted" <left_bracket: left_bracket> <id: unsinged_digit> <right_bracket: right_bracket> "in" <label: moduled_identifier> <colon: colon> <ret_ty: fn_ty> <assign: assign> <body: function_body> 
+        =>  PromotedFunction {
+            promoted_id: u32::from_str(id.as_str()).unwrap(),
+            body: Function {
+                label, 
+                params: vec![],
+                ret_ty,
+                var_debug_infos: body.0,
+                local_defs: body.1,
+                scopes: body.2,
+                bbs: body.3,
+            }
+        },
 };
 
 static_struct: StaticStruct = {
@@ -98,6 +112,21 @@ const_block: ConstBlock = {
                 bbs: body.3,
             },
         },
+
+    "const"  <const_var: moduled_identifier> <colon: colon> <ty: fn_ty> <assign: assign> <body: function_body>
+        => ConstBlock {
+            const_var: const_var.clone(),
+            ty: ty.clone(),
+            body: Function {
+                label: const_var, 
+                params: vec![],
+                ret_ty: ty,
+                var_debug_infos: body.0,
+                local_defs: body.1,
+                scopes: body.2,
+                bbs: body.3,
+            },
+        },
 };
 
 function_signature: (ModuledIdentifier, Params, Ty) = {
@@ -113,7 +142,34 @@ function_signature: (ModuledIdentifier, Params, Ty) = {
             label,
             vec![],                                           
             ret_ty,
-        ),                                                               
+        ),
+
+    <label: moduled_identifier> <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: trait_bounds_ty>
+        => (
+            label,
+            params,
+            ret_ty,
+        ),        
+
+    <label: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: trait_bounds_ty>
+        => (
+            label,
+            vec![],                                           
+            ret_ty,
+        ),
+    <op_struct: op_struct> <left_parenthesis: left_parenthesis> <params: params> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty>
+        => (
+            vec![op_struct.to_string()],
+            params,
+            ret_ty,
+        ),
+
+    <op_struct: op_struct> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty>
+        => (
+            vec![op_struct.to_string()],
+            vec![],                                           
+            ret_ty,
+        ),                                                        
 }
 
 function_body: (VarDebugInfos, LocalDefs, Scopes, BasicBlocks) = {
@@ -157,7 +213,7 @@ alloc_block: String = {
     <identifier: identifier> <lp: left_parenthesis> 
     "static:" <static_info: moduled_identifier> <c1: comma> 
     "size" <colon: colon> <size_info: unsinged_digit> <c2: comma>
-    "align:" <align_info: unsinged_digit> <rp: right_parenthesis>
+    "align" <a_colon: colon> <align_info: unsinged_digit> <rp: right_parenthesis>
     <lb: left_brace> <alloc_block_lines: alloc_block_lines> <rb: right_brace>
      => identifier + " (static: " + static_info.join("::").as_str() 
      + ", size:" + size_info.as_str() + ", " + align_info.as_str() + ") {"
@@ -165,7 +221,7 @@ alloc_block: String = {
      
     <identifier: identifier> <lp: left_parenthesis> 
     "size" <colon: colon> <size_info: unsinged_digit> <c2: comma>
-    "align:" <align_info: unsinged_digit> <rp: right_parenthesis>
+    "align" <a_colon: colon> <align_info: unsinged_digit> <rp: right_parenthesis>
     <lb: left_brace> <alloc_block_lines: alloc_block_lines> <rb: right_brace>
      => identifier + " (" + "size:" + size_info.as_str() + ", " 
      + align_info.as_str() + ") {"
@@ -173,7 +229,7 @@ alloc_block: String = {
      
     <identifier: identifier> <lp: left_parenthesis> 
     "size" <colon: colon> <size_info: unsinged_digit> <c2: comma>
-    "align:" <align_info: unsinged_digit> <rp: right_parenthesis>
+    "align" <a_colon: colon> <align_info: unsinged_digit> <rp: right_parenthesis>
     <lb: left_brace> <rb: right_brace>
      => identifier + " (" + "size:" + size_info.as_str() + ", " 
      + align_info.as_str() + ") {" + "}",
@@ -181,7 +237,7 @@ alloc_block: String = {
     <identifier: identifier> <lp: left_parenthesis> 
     "static:" <static_info: moduled_identifier> <c1: comma> 
     "size" <colon: colon> <size_info: unsinged_digit> <c2: comma>
-    "align:" <align_info: unsinged_digit> <rp: right_parenthesis>
+    "align" <a_colon: colon> <align_info: unsinged_digit> <rp: right_parenthesis>
     <lb: left_brace> <rb: right_brace>
      => identifier + " (static: " + static_info.join("::").as_str() 
      + ", size:" + size_info.as_str() + ", " + align_info.as_str() + ") {"
@@ -227,11 +283,15 @@ impl_closure: Ty = {
     <imp: "impl "> <life_cycle_parameter: life_cycle_parameter> "+" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: trait_bounds_ty> => Ty::Trait,
     <imp: "impl "> <life_cycle_parameter: life_cycle_parameter> "+" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> <trait_bounds: trait_bounds> => Ty::Trait,
     <imp: "impl "> <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> => Ty::Trait,
+    
     "dyn" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> => Ty::Trait,
+    "dyn" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis>  => Ty::Trait,
     "dyn" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> "->" <ret_ty: ty> => Ty::Trait,
+    "dyn" <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> => Ty::Trait,
 }
 
 fn_ty: Ty = {
+    "impl " <fn_ty: fn_ty> => Ty::Trait,
     "unsafe" <fn_ty: fn_ty> => fn_ty,
     "*mut" <fn_ty: fn_ty> => Ty::Mut(Box::new(fn_ty)),
     "&mut" <fn_ty: fn_ty> => Ty::Mut(Box::new(fn_ty)),
@@ -243,6 +303,7 @@ fn_ty: Ty = {
     <bitwise_and: bitwise_and> <fn_ty: fn_ty> => Ty::Ref(Box::new(fn_ty)),
     "extern" <abi :string> <fn_ty: fn_ty> => Ty::ForeignType(Box::new(fn_ty)),
     <left_bracket: left_bracket> <fn_ty: fn_ty> <right_bracket: right_bracket> => Ty::Slice(Slice { elem_ty: Box::new(fn_ty)}),
+    <left_bracket: left_bracket> <fn_ty: trait_bounds_ty> <semicolon: semicolon> <len: unsinged_digit> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(fn_ty), len: Some(u32::from_str(len.as_str()).unwrap()), }),
     <left_bracket: left_bracket> <fn_ty: fn_ty> <semicolon: semicolon> <len: unsinged_digit> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(fn_ty), len: Some(u32::from_str(len.as_str()).unwrap()), }),
     <left_bracket: left_bracket> <fn_ty: fn_ty> <semicolon: semicolon> <len: place_holder> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(fn_ty), len: None, }),
      
@@ -463,11 +524,24 @@ var_debug_info: VarDebugInfo = {
     "debug" "raw" "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: "raw".to_string(), content: VarDebugInfoContent::Local(local_id)},
     "debug" "raw" "=>" <field_access: field_access> <semicolon: semicolon> => VarDebugInfo{name: "raw".to_string(), content: VarDebugInfoContent::Field(field_access)},
     "debug" "success" "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: "success".to_string(), content: VarDebugInfoContent::Local(local_id)},
-    "debug" "size" "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: "size".to_string(), content: VarDebugInfoContent::Local(local_id)},
     "debug" "raw" "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: "raw".to_string(), content: VarDebugInfoContent::Local(local_id)},
     "debug" "raw" "=>" <field_access: field_access> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: "raw".to_string(), content: VarDebugInfoContent::Field(field_access)},
+    "debug" "align" "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: "align".to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" "align" "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: "align".to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" "unwind" "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: "unwind".to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" "unwind" "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: "unwind".to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" "nop" "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: "nop".to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" "nop" "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: "nop".to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" "constant" "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: "constant".to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" "constant" "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: "constant".to_string(), content: VarDebugInfoContent::Local(local_id)},
     "debug" "success" "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: "success".to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" "size" "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: "size".to_string(), content: VarDebugInfoContent::Local(local_id)},
     "debug" "size" "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: "size".to_string(), content: VarDebugInfoContent::Local(local_id)},
+
+    "debug" "goto" "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: "goto".to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" "goto" "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: "goto".to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" "goto" <num: unsinged_digit> "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: "goto".to_string(), content: VarDebugInfoContent::Local(local_id)},
+    "debug" "goto" <num: unsinged_digit> "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: "goto".to_string(), content: VarDebugInfoContent::Local(local_id)},
     "debug" <name: identifier> "=>" <local_id: local_id> <semicolon: semicolon> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Local(local_id)},
     "debug" <name: identifier> "=>" <local_id: local_id> <semicolon: semicolon> <comment: comment> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Local(local_id)},
     "debug" <name: identifier> "=>" <const_val: const_val> <semicolon: semicolon> => VarDebugInfo{name: name.to_string(), content: VarDebugInfoContent::Const(const_val)},
@@ -594,13 +668,17 @@ place: Place = {
     <deref: deref> => Place::Deref(deref),
     <moduled_identifier: moduled_identifier> => Place::from(moduled_identifier),
     <moduled_identifier: moduled_identifier> <left_parenthesis: left_parenthesis> <param: call_params> <right_parenthesis: right_parenthesis> => Place::from(moduled_identifier),
+
     <index: index> => Place::Index(index),
 };
 
 index: Index = {
     <place: place> <left_bracket: left_bracket> <num_place: place> <ri: right_bracket> => Index{ place: Box::new(place), },
+    <place: place> <le:left_bracket> <mynum: unsinged_digit> <ri: right_bracket> => Index { place: Box::new(place), },
     <place: place> <le:left_bracket> <mynum: unsinged_digit> "of" <allnum:unsinged_digit> <ri: right_bracket> => Index { place: Box::new(place), },
     <place: place> <le:left_bracket> <mynum: unsinged_digit> <colon:colon> <ri: right_bracket> => Index { place: Box::new(place), },
+    <place: place> <le:left_bracket> <mynum: unsinged_digit> <identifier: identifier>  <ri: right_bracket> => Index { place: Box::new(place), },
+    
 };
 
 slice: Subslice = {
@@ -661,8 +739,22 @@ deref: Deref = {
     <left_parenthesis: left_parenthesis> <place: place> " as " <ty: ty> <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
     <left_parenthesis: left_parenthesis> <place: place> " as " "Normal" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
     <left_parenthesis: left_parenthesis> <place: place> " as " "Not" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
-    <left_parenthesis: left_parenthesis> <place: place> " as " "Rem" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
-    <left_parenthesis: left_parenthesis> <place: place> " as " "Div" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    //<left_parenthesis: left_parenthesis> <place: place> " as " "Rem" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    //<left_parenthesis: left_parenthesis> <place: place> " as " "Div" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    //<left_parenthesis: left_parenthesis> <place: place> " as " "Le" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    //<left_parenthesis: left_parenthesis> <place: place> " as " "Eq" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    //<left_parenthesis: left_parenthesis> <place: place> " as " "Lt" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    //<left_parenthesis: left_parenthesis> <place: place> " as " "Shr" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    <left_parenthesis: left_parenthesis> <place: place> " as " "Neg" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    //<left_parenthesis: left_parenthesis> <place: place> " as " "Shl" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    //<left_parenthesis: left_parenthesis> <place: place> " as " "Ge" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    //<left_parenthesis: left_parenthesis> <place: place> " as " "Gt" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    <left_parenthesis: left_parenthesis> <place: place> " as " "Mul" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    <left_parenthesis: left_parenthesis> <place: place> " as " "BitXor" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    //<left_parenthesis: left_parenthesis> <place: place> " as " "Sub" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    <left_parenthesis: left_parenthesis> <place: place> " as " "BitOr" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    <left_parenthesis: left_parenthesis> <place: place> " as " "BitAnd" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
+    //<left_parenthesis: left_parenthesis> <place: place> " as " "Unsafe" <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
     <left_parenthesis: left_parenthesis> <place: place> " as " "variant#" <variant_num: unsinged_digit> <right_parenthesis: right_parenthesis> => Deref { place: Box::new(place), },
 };
 copyderef: Deref = {
@@ -785,6 +877,28 @@ call: Call = {
             unwind: Some(unwind),
         },
 
+    <recv: place> <assign: assign> "move" <callee: moduled_identifier> 
+    <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> 
+    "->"  <success: bb_id> <semicolon: semicolon>  =>
+        Call {
+            callee,
+            params: vec![],
+            recv: Some(recv),
+            success: Some(success),
+            unwind: None,
+        },
+
+    <recv: place> <assign: assign> "move" <callee: moduled_identifier> 
+    <left_parenthesis: left_parenthesis> <params: call_params> <right_parenthesis: right_parenthesis> 
+    "->"  <success: bb_id> <semicolon: semicolon>  =>
+        Call {
+            callee,
+            params,
+            recv: Some(recv),
+            success: Some(success),
+            unwind: None,
+        },
+
     <recv: place> <assign: assign> <callee: moduled_identifier> 
     <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> 
     "->" <left_bracket: left_bracket> "return" <success: bb_id> <cc: comma> "unwind" <unwind: unwind_action> <right_bracket: right_bracket> <semicolon: semicolon> =>
@@ -837,6 +951,26 @@ call: Call = {
             success: Some(success),
             unwind: None,
         },
+    <recv: place> <assign: assign> "discriminant" <path_separator: path_separator> <callee: moduled_identifier> 
+    <left_parenthesis: left_parenthesis> <params: call_params> <right_parenthesis: right_parenthesis> 
+    "->" <success: bb_id> <semicolon: semicolon> =>
+        Call {
+            callee,
+            params,
+            recv: Some(recv),
+            success: Some(success),
+            unwind: None,
+        },
+    <recv: place> <assign: assign> "discriminant" <path_separator: path_separator> <callee: moduled_identifier> 
+    <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> 
+    "->" <success: bb_id> <semicolon: semicolon> =>
+        Call {
+            callee,
+            params: vec![],
+            recv: Some(recv),
+            success: Some(success),
+            unwind: None,
+        },
     <recv: place> <assign: assign> "const" <callee: moduled_identifier> <left_parenthesis: left_parenthesis> <params: call_params> <right_parenthesis: right_parenthesis> 
     "->" <success: bb_id> <semicolon: semicolon>
      =>
@@ -857,6 +991,18 @@ call: Call = {
             success: Some(success),
             unwind: None,
         },
+
+    <callee: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> 
+    "->" <success: bb_id> <semicolon: semicolon>
+     =>
+        Call {
+            callee,
+            params: vec![],
+            recv: None,
+            success: Some(success),
+            unwind: None,
+        },
+
     <callee: moduled_identifier> <left_parenthesis: left_parenthesis> <params: call_params> <right_parenthesis: right_parenthesis> 
     <semicolon: semicolon>
      =>
@@ -944,6 +1090,14 @@ repeat: Repeat = {
         operand: Some(operand),
         size: callee.join("::"),
     },
+    <left_bracket: left_bracket> <operand: operand> <semicolon:semicolon> <left_parenthesis: left_parenthesis> "$max_bits+1" <right_parenthesis: right_parenthesis> <right_bracket: right_bracket> =>  Repeat{
+        operand: Some(operand),
+        size: "$max_bits+1".to_string(),
+    },
+    <left_bracket: left_bracket> <operand: operand> <semicolon:semicolon> "(1 + 16) * (1 + 16 + 4)" <right_bracket: right_bracket> =>  Repeat{
+        operand: Some(operand),
+        size: "(1 + 16) * (1 + 16 + 4)".to_string(),
+    },
     <left_bracket: left_bracket> <right_bracket: right_bracket> => Repeat{
         operand: None,
         size: "".to_string(),
@@ -961,6 +1115,7 @@ shallow: ShallowInitBox ={
 cast: Cast = {
     <operand: operand> " as " <ty: ty> <left_parenthesis: left_parenthesis> <cast_kind: cast_kind> <right_parenthesis: right_parenthesis> => Cast { cast_kind, operand, ty, },
     <operand: operand> " as " <ty: fn_ty> <left_parenthesis: left_parenthesis> <cast_kind: cast_kind> <right_parenthesis: right_parenthesis> => Cast { cast_kind, operand, ty, },
+    <operand: operand> " as " <ty: trait_bounds_ty> <left_parenthesis: left_parenthesis> <cast_kind: cast_kind> <right_parenthesis: right_parenthesis> => Cast { cast_kind, operand, ty, },
     <operand: operand> " as " <closure_identifier: ty> 
      <ls: left_parenthesis> <rs: right_parenthesis> "->" <ret_ty: ty>
      <left_parenthesis: left_parenthesis> <cast_kind: cast_kind> <right_parenthesis: right_parenthesis> => Cast { cast_kind, operand, ty: ret_ty, },//_28 = _29 as &dyn std::ops::Fn() -> std::string::String (PointerCoercion(Unsize));
@@ -1004,7 +1159,7 @@ aggregate: Aggregate = {
     <aggregate_coroutine: aggregate_coroutine> => aggregate_coroutine,
 };
 aggregate_array: Aggregate = {
-    <left_bracket: left_bracket> <elements: aggregate_anonymous_elements> <right_bracket: right_bracket> => Aggregate { aggregate_kind: AggregateKind::Array, elements, },
+    <left_bracket: left_bracket> <elements: aggregate_anonymous_elements> <right_bracket: right_bracket> => Aggregate { aggregate_kind: AggregateKind::Array, elements: vec![], },
 };
 aggregate_tuple: Aggregate = {
     <left_parenthesis: left_parenthesis> <elements: aggregate_anonymous_elements> <right_parenthesis: right_parenthesis> => Aggregate { aggregate_kind: AggregateKind::Tuple, elements, },
@@ -1049,6 +1204,7 @@ aggregate_anonymous_elements: Vec<Operand> = {
 reference: Ref = {
     <bitwise_and: bitwise_and> <place: place> => Ref { place, borrow_kind: BorrowKind::Shared, },
     "&mut" <place: place> => Ref { place, borrow_kind: BorrowKind::Mut, },
+    <bitwise_and: bitwise_and> "/*tls*/" <place: place> => Ref { place, borrow_kind: BorrowKind::Shared, },
 }
 
 unaryOp: UnaryOp = {
@@ -1124,6 +1280,7 @@ operand: Operand = {
 };
 
 tuple_item: Vec<String> = {
+    <val: moduled_identifier> <body: const_type_body> => vec![val.join("::") + body.as_str()], 
     "ZeroSized" <colon: colon>  <val: moduled_identifier> => vec!["ZeroSized: ".to_owned() + &val.join("::")],
     "false" => vec!["false".to_string()],
     <identifier: identifier> => vec![identifier],
@@ -1150,9 +1307,12 @@ const_val: Const = {
     "const" <left_bracket: left_bracket> <right_bracket: right_bracket> => Const {ty: Ty::UND, val: String::from("[]"), },
     "const" <floatnum: floatnum> <identifier: identifier> => Const {ty: Ty::from_str(&identifier.as_str()).unwrap(), val: floatnum + &identifier, },
     "const" <integer: unsinged_digit> <dot: dot> <decimal: unsinged_digit> <identifier: identifier> => Const {ty: Ty::from_str(&identifier.as_str()).unwrap(), val: integer + "." +  &decimal, },
+    "const" <integer: negative_digit> <dot: dot> <decimal: unsinged_digit> <identifier: identifier> => Const {ty: Ty::from_str(&identifier.as_str()).unwrap(), val: integer + "." +  &decimal, },
     "const" <lb: left_brace> <alloc_id: identifier> <colon: colon> <ty: ty> <rb: right_brace> => Const {ty: Ty::AllocTy(alloc_id.clone(), Box::new(ty)), val: alloc_id},
 
     "const" <lb: left_brace> <unsinged_digit: unsinged_digit> <identifier: identifier> " as " <ty: ty> <rb: right_brace> => Const {ty: Ty::Str, val: "{".to_owned() + &unsinged_digit + &identifier + " as " + &ty.to_string() + "}"},
+
+    "const" <lb: left_brace> <identifier: identifier> <left_parenthesis: left_parenthesis> <unsinged_digit: unsinged_digit> <id: identifier> <right_parenthesis: right_parenthesis> <colon: colon> <tar: ty> <rb: right_brace> => Const {ty: Ty::UND, val: String::from("()"), },
 };
 
 const_type_notations: String = {
@@ -1170,8 +1330,12 @@ const_type_body: String = {
 }
 const_param_ty: String = {
     <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> => "(".to_owned() + ")",
+    <left_parenthesis: left_parenthesis> <val: literal_sined_digit> <right_parenthesis: right_parenthesis> => "(".to_owned() + ")",
+    <left_parenthesis: left_parenthesis> <character_literal: character_literal> <right_parenthesis: right_parenthesis> => "(".to_owned() + ")",
     <left_parenthesis: left_parenthesis> <param_ty: call_params> <right_parenthesis: right_parenthesis> => "(".to_owned() + ")",
     <left_parenthesis: left_parenthesis> <val: moduled_identifier> <lb1: left_brace> <lb2: left_brace> <const_type_notations: const_type_notations> <rb1: right_brace> <rb2: right_brace> <right_parenthesis: right_parenthesis> => "(".to_owned() + ")",
+    <left_parenthesis: left_parenthesis> <val: moduled_identifier> <lb1: left_brace>  <const_type_notations: const_type_notations> <rb2: right_brace> <right_parenthesis: right_parenthesis> => "(".to_owned() + ")",
+    <left_parenthesis: left_parenthesis> <val: moduled_identifier>  <ls: left_parenthesis> <lb1: left_bracket>  <params: call_params> <rb2: right_bracket> <rs: right_parenthesis> <right_parenthesis: right_parenthesis> => "(".to_owned() + ")",
 }
 
 literal_sined_digit: (Ty, String) = {
@@ -1187,6 +1351,7 @@ bb_id: BasicBlockID = {
 }
 
 targert: Target = {
+    <s: moduled_identifier> <colon: colon> <identifier: identifier> => Target {line: u32::from_str(&identifier.as_str()[2..]).unwrap(), },
     <s: unsinged_digit> <colon: colon> <identifier: identifier> => Target {line: u32::from_str(&identifier.as_str()[2..]).unwrap(), },
     "otherwise" <colon: colon> <identifier: identifier> => Target {line: u32::from_str(&identifier.as_str()[2..]).unwrap(), },
     "false" <colon: colon> <identifier: identifier> => Target {line: u32::from_str(&identifier.as_str()[2..]).unwrap(), },
@@ -1199,49 +1364,20 @@ targerts: Vec<Target> = {
 };
 
 character_literal: String = {
-    <left_apostrophe: apostrophe> <right_apostrophe: apostrophe> => "''".to_string(),
-    <left_apostrophe: apostrophe> <s: r"/"> <right_apostrophe: apostrophe> => "'/'".to_string(),
-    <left_apostrophe: apostrophe> "#" <right_apostrophe: apostrophe> => "'#'".to_string(),
-    <left_apostrophe: apostrophe> <s: r"\\"> <right_apostrophe: apostrophe> => "\\".to_string(),
-    <left_apostrophe: apostrophe> <s: r"\\\\"> <right_apostrophe: apostrophe> => "\\\\".to_string(),
+    <left_apostrophe: apostrophe> <s: r"\\\\"> <right_apostrophe: apostrophe> => "\\\\".to_string(),  
     <left_apostrophe: apostrophe> <s: r"\\n"> <right_apostrophe: apostrophe> => "\\n".to_string(),
+    <left_apostrophe: apostrophe> <s: r"\\r"> <right_apostrophe: apostrophe> => "\\r".to_string(),
     <left_apostrophe: apostrophe> <s: r"\\t"> <right_apostrophe: apostrophe> => "\\t".to_string(),
-    <left_apostrophe: apostrophe> <comma:comma> <right_apostrophe: apostrophe> => ",".to_string(),
-    <left_apostrophe: apostrophe> <negative:negative> <right_apostrophe: apostrophe> => "-".to_string(),
-    <left_apostrophe: apostrophe> <left_bracket:left_bracket> <right_apostrophe: apostrophe> => "[".to_string(),
-    <left_apostrophe: apostrophe> <star: star> <right_apostrophe: apostrophe>  => "*".to_string(),
-    "'\"'" => "\"".to_string(),
-    <left_apostrophe: apostrophe> <colon:colon> <right_apostrophe: apostrophe> => ":".to_string(),
-    <left_apostrophe: apostrophe> <left_angle_bracket:left_angle_bracket> <right_apostrophe: apostrophe> => "<".to_string(),
-    <left_apostrophe: apostrophe> <right_angle_bracket:right_angle_bracket> <right_apostrophe: apostrophe> => ">".to_string(),
-    <left_apostrophe: apostrophe> "+" <right_apostrophe: apostrophe> => "+".to_string(),
-    <left_apostrophe: apostrophe> "─" <right_apostrophe: apostrophe> => "─".to_string(),
-    <left_apostrophe: apostrophe> "└" <right_apostrophe: apostrophe> => "└".to_string(),
-    <left_apostrophe: apostrophe> "├" <right_apostrophe: apostrophe> => "├".to_string(),
-    <left_apostrophe: apostrophe> "┬" <right_apostrophe: apostrophe> => "┬".to_string(),
-    <left_apostrophe: apostrophe> "@" <right_apostrophe: apostrophe> => "@".to_string(),
-    <left_apostrophe: apostrophe> "$" <right_apostrophe: apostrophe> => "$".to_string(),
-    <left_apostrophe: apostrophe> <assign: assign> <right_apostrophe: apostrophe> => "=".to_string(),
-    <left_apostrophe: apostrophe> <semicolon: semicolon> <right_apostrophe: apostrophe> => ";".to_string(),
-    <left_apostrophe: apostrophe> <left_brace: left_brace> <right_apostrophe: apostrophe> => "{".to_string(),
-    <left_apostrophe: apostrophe> <left_parenthesis: left_parenthesis> <right_apostrophe: apostrophe> => "(".to_string(),
-    <left_apostrophe: apostrophe> <right_parenthesis: right_parenthesis> <right_apostrophe: apostrophe> => ")".to_string(),
+
+
     <left_apostrophe: apostrophe> <unsinged_digit: unsinged_digit> <right_apostrophe: apostrophe> => unsinged_digit.to_string(),
-    <left_apostrophe: apostrophe> "~" <right_apostrophe: apostrophe> => "~".to_string(),
+
     <left_apostrophe: apostrophe> <identifier: identifier> <right_apostrophe: apostrophe> => identifier.to_string(),
-    <left_apostrophe: apostrophe> <right_brace: right_brace> <right_apostrophe: apostrophe> => "}".to_string(),
-    <left_apostrophe: apostrophe> "|" <right_apostrophe: apostrophe> => "|".to_string(),
-    <left_apostrophe: apostrophe> "│" <right_apostrophe: apostrophe> => "│".to_string(),
-    <left_apostrophe: apostrophe> "^" <right_apostrophe: apostrophe> => "^".to_string(),
-    <left_apostrophe: apostrophe> <bitwise_and: bitwise_and> <right_apostrophe: apostrophe> => "&".to_string(),
-    <left_apostrophe: apostrophe> <right_bracket: right_bracket> <right_apostrophe: apostrophe> => "]".to_string(),
-    <left_apostrophe: apostrophe> "?" <right_apostrophe: apostrophe> => "?".to_string(),
-    <left_apostrophe: apostrophe> "謹" <right_apostrophe: apostrophe> => "謹".to_string(),
-    <left_apostrophe: apostrophe> "﵂" <right_apostrophe: apostrophe> => "﵂".to_string(),
-    <left_apostrophe: apostrophe> <dot:dot> <right_apostrophe: apostrophe> => ":".to_string(),
+
     <left_apostrophe: apostrophe> <unicode:unicode> <right_apostrophe: apostrophe> => unicode.to_string(),
-    <left_apostrophe: apostrophe> <logic_negate:logic_negate> <right_apostrophe: apostrophe> =>"!".to_string(),
-    <left_apostrophe: apostrophe> <place_holder: place_holder> <right_apostrophe: apostrophe> => "_".to_string(),
+
+    "'\\''" => "'\\''".to_string(),
+    <unicode:spcode> => "()".to_string(),
 }
 
 
@@ -1252,18 +1388,22 @@ unwind_action: UnwindAction = {
 }
 
 tys: Vec<Ty> = {
+
     <tys: tys> <comma: comma> => tys,
     <mut tys: tys> <comma: comma> <ty: ty> => {tys.push(ty); tys},
     <mut tys: tys> <comma: comma> <fn_ty: fn_ty> => {tys.push(fn_ty); tys},
     <mut tys: tys> <comma: comma> <trait_bounds_ty: trait_bounds_ty> => {tys.push(trait_bounds_ty); tys},
     <mut tys: tys> <comma: comma> <impl_closure: impl_closure> => {tys.push(impl_closure); tys},
+    <mut tys: tys> <comma: comma> <ty: gen_ty> => {tys.push(ty); tys},
     <ty: ty> => vec![ty],
     <fn_ty: fn_ty> => vec![fn_ty],
     <trait_bounds_ty:trait_bounds_ty> => vec![trait_bounds_ty],
     <impl_closure:impl_closure> => vec![impl_closure],
+    <ty: gen_ty> => vec![ty],
 };
 
 ty: Ty = {
+    <path_separator: path_separator> <ty: ty> => ty,
     <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> => Ty::Unit,
     <left_parenthesis: left_parenthesis> <tys: tys> <right_parenthesis: right_parenthesis> => Ty::Tuple(tys),
     <moduled_identifier: moduled_identifier> => Ty::from(moduled_identifier),
@@ -1276,16 +1416,38 @@ ty: Ty = {
     <life_cycle_parameter:life_cycle_parameter> <ty: ty> => ty,
     <bitwise_and: bitwise_and> <ty: ty> => Ty::Ref(Box::new(ty)),
     <star: star> <ty: ty> => Ty::Ref(Box::new(ty)),
+    <left_bracket: left_bracket> <ty: trait_bounds_ty> <right_bracket: right_bracket> => Ty::Slice(Slice { elem_ty: Box::new(ty)}),
     <left_bracket: left_bracket> <ty: ty> <right_bracket: right_bracket> => Ty::Slice(Slice { elem_ty: Box::new(ty)}),
     <left_bracket: left_bracket> <ty: ty> <semicolon: semicolon> <len: unsinged_digit> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(ty), len: Some(u32::from_str(len.as_str()).unwrap()), }),
     <left_bracket: left_bracket> <ty: ty> <semicolon: semicolon> <len: place_holder> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(ty), len: None, }),
+    <left_bracket: left_bracket> <ty: ty> <semicolon: semicolon> <len: identifier> <right_bracket: right_bracket> => Ty::Array(Array { elem_ty: Box::new(ty), len: None, }),
     <logic_negate: logic_negate> => Ty::Unit,
     <closure_ty: closure_ty> => Ty::Closure(Box::new(closure_ty)),
     <life_closure_ty_body: life_closure_ty_body> => Ty::CoroutineClosure(Box::new(life_closure_ty_body)),
     "ZeroSized" <colon: colon> <closure_description: closure_description> => Ty::ClosureDefault,
     "false" => Ty::Bool,
     <imp: "impl "> <a: ty> => Ty::Trait,
+    <life_action: life_action>  => Ty::Unit,
+    <op_struct: op_struct> => Ty::Unit,
 };
+
+op_struct: String = {
+    "Ge"  => "Ge".to_string(),
+    "Gt"  => "Gt".to_string(),
+    "Lt"  => "Lt".to_string(),
+    "Shl"  => "Shl".to_string(),
+    "Div"  => "Div".to_string(),
+    "Shr"  => "Shr".to_string(),
+    "Sub"  => "Sub".to_string(),
+    "Unsafe"  => "Unsafe".to_string(),
+    "Rem"  => "Rem".to_string(),
+    "Eq"  => "Eq".to_string(),
+    "Le"  => "Le".to_string(),
+}
+
+gen_ty :Ty = {
+    <identifier: identifier> <assign: assign> <ty: ty> => Ty::Unit,
+}
 
 trait_bounds_ty :Ty = {
     <ty: ty> <trait_bounds: trait_bounds> => ty,
@@ -1297,6 +1459,13 @@ life_closure_ty_body: CoroutineClosure = {
             life_cycle_parameters,
             closure: closure_ty,
         },
+}
+
+life_action: String = {
+    "for" <left_angle_bracket: left_angle_bracket> <life_cycle_parameters:life_cycle_parameters> <right_angle_bracket: right_angle_bracket> <trait1: moduled_identifier> "+" "for" <ls: left_angle_bracket> <life:life_cycle_parameters> <rs: right_angle_bracket> <trait2: moduled_identifier>
+    <lb: left_brace> <opeartion: moduled_identifier> <rb: right_brace>
+     =>
+    { opeartion.join("::")}
 }
 
 closure_ty: Closure = {
@@ -1335,59 +1504,136 @@ closure_ty: Closure = {
         ret_ty: Ty::UND,
         opeartion,
     },
+
 }
 
 moduled_identifier: ModuledIdentifier = {
-    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Box" => {moduled_identifier.push("Box".to_string()); moduled_identifier},
-    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Box" <angle_brackets: angle_brackets>  => {moduled_identifier.push("Box".to_owned() + angle_brackets.as_str()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <unsinged_digit: unsinged_digit> => {moduled_identifier.push(unsinged_digit); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <identifier: identifier> => {moduled_identifier.push(identifier); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <identifier: identifier> <angle_brackets:angle_brackets> => {moduled_identifier.push(identifier + angle_brackets.as_str()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "r#static" => {moduled_identifier.push("r#static".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "nop" => {moduled_identifier.push("nop".to_string()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Fn" => {moduled_identifier.push("Fn".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Fn" <angle_brackets:angle_brackets> => {moduled_identifier.push("Fn".to_owned() + angle_brackets.as_str()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "of" => {moduled_identifier.push("of".to_string()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "promoted" <left_bracket: left_bracket> <promoted_num: unsinged_digit> <right_bracket: right_bracket> => {moduled_identifier.push("promoted".to_string() + "<" + &promoted_num + ">"); moduled_identifier},
-    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Sub" => {moduled_identifier.push("Sub".to_string()); moduled_identifier},
-    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Mul" => {moduled_identifier.push("Mul".to_string()); moduled_identifier},
-    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Mul" <angle_brackets:angle_brackets> => {moduled_identifier.push("Mul".to_owned() + angle_brackets.as_str()); moduled_identifier},
-    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Div" => {moduled_identifier.push("Div".to_string()); moduled_identifier},
-    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Div" <angle_brackets:angle_brackets> => {moduled_identifier.push("Div".to_owned() + angle_brackets.as_str()); moduled_identifier},
-    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Not" => {moduled_identifier.push("Not".to_string()); moduled_identifier},
-    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Rem" => {moduled_identifier.push("Rem".to_string()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Normal" => {moduled_identifier.push("Normal".to_string()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "drop" => {moduled_identifier.push("drop".to_string()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "debug" => {moduled_identifier.push("debug".to_string()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "success" => {moduled_identifier.push("success".to_string()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <place_holder: place_holder> => {moduled_identifier.push("_".to_string()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "size" => {moduled_identifier.push("size".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "align" => {moduled_identifier.push("align".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "unwind" => {moduled_identifier.push("unwind".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "constant" => {moduled_identifier.push("constant".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "raw" => {moduled_identifier.push("raw".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "raw" <angle_brackets: angle_brackets>  => {moduled_identifier.push("raw".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Unsafe" => {moduled_identifier.push("Unsafe".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Unsafe" <angle_brackets: angle_brackets>  => {moduled_identifier.push("Unsafe".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Box" => {moduled_identifier.push("Box".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Box" <angle_brackets: angle_brackets>  => {moduled_identifier.push("Box".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Neg" => {moduled_identifier.push("Neg".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Neg" <angle_brackets:angle_brackets> => {moduled_identifier.push("Neg".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Shr" => {moduled_identifier.push("Sub".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Shr" <angle_brackets:angle_brackets> => {moduled_identifier.push("Shr".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Mul" => {moduled_identifier.push("Mul".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Mul" <angle_brackets:angle_brackets> => {moduled_identifier.push("Mul".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Div" => {moduled_identifier.push("Div".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Div" <angle_brackets:angle_brackets> => {moduled_identifier.push("Div".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Not" => {moduled_identifier.push("Not".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Not" <angle_brackets: angle_brackets>  => {moduled_identifier.push("Not".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Rem" => {moduled_identifier.push("Rem".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Rem" <angle_brackets: angle_brackets>  => {moduled_identifier.push("Rem".to_owned() + angle_brackets.as_str()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Eq" => {moduled_identifier.push("Eq".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Eq" <angle_brackets: angle_brackets>  => {moduled_identifier.push("Eq".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Le" => {moduled_identifier.push("Le".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Le" <angle_brackets: angle_brackets>  => {moduled_identifier.push("Le".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "BitAnd" => {moduled_identifier.push("BitAnd".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "BitAnd" <angle_brackets: angle_brackets>  => {moduled_identifier.push("BitAnd".to_owned() + angle_brackets.as_str()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "BitOr" => {moduled_identifier.push("BitOr".to_string()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "BitOr" <angle_brackets: angle_brackets>  => {moduled_identifier.push("BitOr".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Lt" => {moduled_identifier.push("Lt".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Lt" <angle_brackets: angle_brackets>  => {moduled_identifier.push("Lt".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Gt" => {moduled_identifier.push("Gt".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Gt" <angle_brackets: angle_brackets>  => {moduled_identifier.push("Gt".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Shl" => {moduled_identifier.push("Shl".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Shl" <angle_brackets: angle_brackets>  => {moduled_identifier.push("Shl".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Sub" => {moduled_identifier.push("Sub".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Sub" <angle_brackets: angle_brackets>  => {moduled_identifier.push("Sub".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "BitXor" => {moduled_identifier.push("BitXor".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "BitXor" <angle_brackets: angle_brackets>  => {moduled_identifier.push("BitXor".to_owned() + angle_brackets.as_str()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Ge" => {moduled_identifier.push("Ge".to_string()); moduled_identifier},
+    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Ge" <angle_brackets: angle_brackets>  => {moduled_identifier.push("Ge".to_owned() + angle_brackets.as_str()); moduled_identifier},
 
-    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <identifier: identifier> <angle_brackets:angle_brackets> => {moduled_identifier.push(identifier + angle_brackets.as_str()); moduled_identifier},
-    <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> "Fn" <angle_brackets:angle_brackets> => {moduled_identifier.push("Fn".to_owned() + angle_brackets.as_str()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <closure_description: closure_description> => {moduled_identifier.push(closure_description); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <angle_brackets: angle_brackets> => {moduled_identifier.push(angle_brackets.to_string()); moduled_identifier},
     <mut moduled_identifier: moduled_identifier> <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => {moduled_identifier.push("constant".to_string() + &unsinged_digit); moduled_identifier},
+
     "Box" => vec!["Box".to_string()],
     "Box" <angle_brackets:angle_brackets> => vec!["Box".to_owned() + angle_brackets.as_str()],
     <identifier: identifier> => vec![identifier],
     <identifier: identifier> <angle_brackets:angle_brackets> => vec![identifier + angle_brackets.as_str()],
-    "Sub" <angle_brackets:angle_brackets> => vec!["Sub".to_owned() + angle_brackets.as_str()],
     <closure_description: closure_description> => vec![closure_description.to_string()],
     <angle_brackets: angle_brackets> => vec![angle_brackets.to_string()],
     "size" => vec!["size".to_string()],
+    "align" => vec!["align".to_string()],
+    "constant" => vec!["constant".to_string()],
+    
     "Fn" => vec!["Fn".to_string()],
     "Fn" <angle_brackets:angle_brackets> => vec!["Fn".to_owned() + angle_brackets.as_str()],
+    "raw" => vec!["raw".to_string()],
+    "raw" <angle_brackets:angle_brackets> => vec!["raw".to_owned() + angle_brackets.as_str()],
+    
     <place_holder: place_holder> => vec!["_".to_string()],
     <fn_path: fn_path> => vec![fn_path.to_string()],
     <metadata: metadata> => vec![metadata.to_string()],
     "of" => vec!["of".to_string()],
     "debug" => vec!["debug".to_string()],
-    "Shl" <angle_brackets:angle_brackets> => vec!["Shl".to_owned() + angle_brackets.as_str()],
-    "Div" <angle_brackets:angle_brackets> => vec!["Shl".to_owned() + angle_brackets.as_str()],
-    "Mul" <angle_brackets:angle_brackets> => vec!["Shl".to_owned() + angle_brackets.as_str()],
-    "Shr" <angle_brackets:angle_brackets> => vec!["Shr".to_owned() + angle_brackets.as_str()],
 
+    "Lt" <path_separator: path_separator> <angle_brackets:angle_brackets> => vec!["Lt".to_owned() + angle_brackets.as_str()],
+    "Lt" <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Lt".to_owned() + "constant" + &unsinged_digit],
+    "Lt" <path_separator: path_separator> <identifier: identifier> <pa: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Lt".to_owned() + "constant" + &unsinged_digit],
+    "Gt" <path_separator: path_separator> <angle_brackets:angle_brackets> => vec!["Gt".to_owned() + angle_brackets.as_str()],
+    "Gt" <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Gt".to_owned() + "constant" + &unsinged_digit],
+    "Gt" <path_separator: path_separator> <identifier: identifier> <pa: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Gt".to_owned() + "constant" + &unsinged_digit],
+    "Shl" <path_separator: path_separator> <angle_brackets:angle_brackets> => vec!["Shl".to_owned() + angle_brackets.as_str()],
+    "Shl" <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Shl".to_owned() + "constant" + &unsinged_digit],
+    "Shl" <path_separator: path_separator> <identifier: identifier> <pa: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Shl".to_owned() + "constant" + &unsinged_digit],
+    "Div" <path_separator: path_separator> <angle_brackets:angle_brackets> => vec!["Div".to_owned() + angle_brackets.as_str()],
+    "Div" <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Div".to_owned() + "constant" + &unsinged_digit],
+    "Div" <path_separator: path_separator> <identifier: identifier> <pa: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Div".to_owned() + "constant" + &unsinged_digit],
+    "Unsafe" <path_separator: path_separator> <angle_brackets:angle_brackets> => vec!["Unsafe".to_owned() + angle_brackets.as_str()],
+    "Unsafe" <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Unsafe".to_owned() + "constant" + &unsinged_digit],
+    "Unsafe" <path_separator: path_separator> <identifier: identifier> <pa: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Unsafe".to_owned() + "constant" + &unsinged_digit],
+    "Rem" <path_separator: path_separator> <angle_brackets:angle_brackets> => vec!["Rem".to_owned() + angle_brackets.as_str()],
+    "Rem" <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Rem".to_owned() + "constant" + &unsinged_digit],
+    "Rem" <path_separator: path_separator> <identifier: identifier> <pa: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Rem".to_owned() + "constant" + &unsinged_digit],
+    "Shr" <path_separator: path_separator> <angle_brackets:angle_brackets> => vec!["Shr".to_owned() + angle_brackets.as_str()],
+    "Shr" <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Shr".to_owned() + "constant" + &unsinged_digit],
+    "Shr" <path_separator: path_separator> <identifier: identifier> <pa: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Shr".to_owned() + "constant" + &unsinged_digit],
+    "Sub" <path_separator: path_separator> <angle_brackets:angle_brackets> => vec!["Sub".to_owned() + angle_brackets.as_str()],
+    "Sub" <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Sub".to_owned() + "constant" + &unsinged_digit],
+    "Sub" <path_separator: path_separator> <identifier: identifier> <pa: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Sub".to_owned() + "constant" + &unsinged_digit],
+    "Ge" <path_separator: path_separator> <angle_brackets:angle_brackets> => vec!["Ge".to_owned() + angle_brackets.as_str()],
+    "Ge" <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Ge".to_owned() + "constant" + &unsinged_digit],
+    "Ge" <path_separator: path_separator> <identifier: identifier> <pa: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Ge".to_owned() + "constant" + &unsinged_digit],
+    "Eq" <path_separator: path_separator> <angle_brackets:angle_brackets> => vec!["Eq".to_owned() + angle_brackets.as_str()],
+    "Eq" <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Eq".to_owned() + "constant" + &unsinged_digit],
+    "Eq" <path_separator: path_separator> <identifier: identifier> <pa: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Eq".to_owned() + "constant" + &unsinged_digit],
+    "Le" <path_separator: path_separator> <angle_brackets:angle_brackets> => vec!["Le".to_owned() + angle_brackets.as_str()],
+    "Le" <path_separator: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Le".to_owned() + "constant" + &unsinged_digit],
+    "Le" <path_separator: path_separator> <identifier: identifier> <pa: path_separator> <left_brace: left_brace> "constant" "#" <unsinged_digit: unsinged_digit> <right_brace: right_brace> => vec!["Le".to_owned() + "constant" + &unsinged_digit],
+
+    "Shl" <angle_brackets:angle_brackets> => vec!["Shl".to_owned() + angle_brackets.as_str()],
+    "Div" <angle_brackets:angle_brackets> => vec!["Div".to_owned() + angle_brackets.as_str()],
+    "Mul" <angle_brackets:angle_brackets> => vec!["Mul".to_owned() + angle_brackets.as_str()],
+    "Shr" <angle_brackets:angle_brackets> => vec!["Shr".to_owned() + angle_brackets.as_str()],
+    "Sub" <angle_brackets:angle_brackets> => vec!["Sub".to_owned() + angle_brackets.as_str()],
+    "BitAnd" <angle_brackets:angle_brackets> => vec!["BitAnd".to_owned() + angle_brackets.as_str()],
+    "Ge" <angle_brackets:angle_brackets> => vec!["Ge".to_owned() + angle_brackets.as_str()],
+    "Eq" <angle_brackets:angle_brackets> => vec!["Eq".to_owned() + angle_brackets.as_str()],
+    "Rem" <angle_brackets:angle_brackets> => vec!["Rem".to_owned() + angle_brackets.as_str()],
+    "Le" <angle_brackets:angle_brackets> => vec!["Le".to_owned() + angle_brackets.as_str()],
 };
 
 muti_trait_struct: String = {
@@ -1401,29 +1647,32 @@ muti_trait_struct: String = {
     "dyn" <closure_ty_location: moduled_identifier> <left_parenthesis: left_parenthesis> <right_parenthesis: right_parenthesis> <trait_bounds: trait_bounds> => {
         "dyn".to_string() + &closure_ty_location.join("::") + "()" + &trait_bounds
     },
+
+    <ls: left_parenthesis> "dyn" <closure_ty_location: moduled_identifier> <left_parenthesis: left_parenthesis> <tys:tys> <right_parenthesis: right_parenthesis>  <trait_bounds: trait_bounds> <rs: right_parenthesis> => {
+        "dyn".to_string() + &closure_ty_location.join("::") + "(" + tys.into_iter().map(|t| t.to_string()).collect::<Vec<String>>().join(", ").as_str() + ")"  + &trait_bounds
+    },
 }
 
 
 angle_brackets: String = {
-    <ls: left_angle_bracket> <muti_trait_struct: muti_trait_struct> <rs: right_angle_bracket> => {
-        "<".to_string() + muti_trait_struct.as_str() + ">"
+
+    <ls: left_angle_bracket> <unsinged_digit: unsinged_digit> <identifier: identifier> <rs: right_angle_bracket> => {
+        "<".to_string() + &unsinged_digit.to_string() + &identifier.to_string() + ">"
     },
 
-    <ls: left_angle_bracket> <label: identifier> <assign: assign> <ty: ty> <rs: right_angle_bracket> => {
-        "<".to_string() + &label + " = " + &ty.to_string() + ">"
+    <ls: left_angle_bracket> "nop" <rs: right_angle_bracket> => {
+        "<".to_string() + "nop" + ">"
+    },
+
+    <ls: left_angle_bracket> <muti_trait_struct: muti_trait_struct> <rs: right_angle_bracket> => {
+        "<".to_string() + muti_trait_struct.as_str() + ">"
     },
 
     <ls: left_angle_bracket> "for" <left_angle_bracket: left_angle_bracket> <life_cycle_parameters:life_cycle_parameters> <right_angle_bracket: right_angle_bracket> <label: identifier> <assign: assign> <tys: tys> <rs: right_angle_bracket> => {
         "<".to_owned() + "for<" + &life_cycle_parameters.to_string() + ">" + &label + " = " + tys.into_iter().map(|t| t.to_string()).collect::<Vec<String>>().join(", ").as_str() + ">"
     },
 
-    <ls: left_angle_bracket> <err: identifier> <assign: assign> <left_ty: ty> <comma: comma> <ok: identifier> <ra: assign> <right_ty: ty> <rs: right_angle_bracket> => {
-        "<".to_string() + &err.to_string() + "=" + &left_ty.to_string() + "," + &ok.to_string() + "=" + &right_ty.to_string() + ">"
-    },
-
-    <ls: left_angle_bracket> <err: identifier> <assign: assign> <left_ty: ty> <comma: comma> <two_lable: identifier> <ass: assign> <s_ty: ty> <co: comma> <three_lable: identifier> <assi: assign> <t_ty: ty> <comm: comma> <ok: identifier> <ra: assign> <right_ty: tys> <rs: right_angle_bracket> => {
-        "<".to_string() + &err.to_string() + "=" + &left_ty.to_string() + "," + &two_lable.to_string() + "=" + &s_ty.to_string() + "," + &three_lable.to_string() + "=" + &t_ty.to_string() + "," + &ok.to_string() + "=" + right_ty.into_iter().map(|t| t.to_string()).collect::<Vec<String>>().join(", ").as_str() + ">"
-    },
+    
 
     <ls: left_angle_bracket> <tys: tys> <rs: right_angle_bracket> => {
         "<".to_string() + tys.into_iter().map(|t| t.to_string()).collect::<Vec<String>>().join(", ").as_str() + ">"
@@ -1438,6 +1687,10 @@ angle_brackets: String = {
     },
 
     <ls: left_angle_bracket> "static" <left_parenthesis: left_parenthesis> "DefId" <le: left_parenthesis> <defid: unsinged_digit> <colon: colon> <id_num: unsinged_digit> "~" <index: index> <path_separator: path_separator> <moduled_identifier: moduled_identifier> <ri: right_parenthesis> <right_parenthesis: right_parenthesis> <rs: right_angle_bracket> => {
+        "<".to_string() + "static"  + "(DefId(" + &defid + ":" + &id_num + "~" + &moduled_identifier.join("::") + ")"  + ")" + ">"
+    },
+
+    <ls: left_angle_bracket> "static" <left_parenthesis: left_parenthesis> "DefId" <le: left_parenthesis> <defid: unsinged_digit> <colon: colon> <id_num: unsinged_digit> "~" <index: index> <path_separator: path_separator> <moduled_identifier: moduled_identifier> "#" <num: unsinged_digit> <ri: right_parenthesis> <right_parenthesis: right_parenthesis> <rs: right_angle_bracket> => {
         "<".to_string() + "static"  + "(DefId(" + &defid + ":" + &id_num + "~" + &moduled_identifier.join("::") + ")"  + ")" + ">"
     },
 
@@ -1475,41 +1728,36 @@ angle_brackets: String = {
         let s = "<".to_string() + a.to_string().as_str() + " as " + "Not" + ">";
         s
     },
+
+    <ls: left_angle_bracket> <a: ty> " as " "BitXor" <rs: right_angle_bracket> => {
+        let s = "<".to_string() + a.to_string().as_str() + " as " + "BitXor" + ">";
+        s
+    },
     <ls: left_angle_bracket> <a: ty> " as " "BitOr" <rs: right_angle_bracket> => {
         let s = "<".to_string() + a.to_string().as_str() + " as " + "BitOr" + ">";
         s
     },
-    <ls: left_angle_bracket> <a: ty> " as " "Sub" <rs: right_angle_bracket> => {
-        let s = "<".to_string() + a.to_string().as_str() + " as " + "Sub" + ">";
-        s
-    },
-    <ls: left_angle_bracket> <a: ty> " as " "Div" <rs: right_angle_bracket> => {
-        let s = "<".to_string() + a.to_string().as_str() + " as " + "Div" + ">";
-        s
-    },
+
     <ls: left_angle_bracket> <a: ty> " as " "Mul" <rs: right_angle_bracket> => {
         let s = "<".to_string() + a.to_string().as_str() + " as " + "Mul" + ">";
         s
     },
 
-    <ls: left_angle_bracket> <a: ty> " as " "Rem" <rs: right_angle_bracket> => {
-        let s = "<".to_string() + a.to_string().as_str() + " as " + "Rem" + ">";
-        s
-    },
 
     <ls: left_angle_bracket> <a: ty> " as " "BitAnd" <rs: right_angle_bracket> => {
         let s = "<".to_string() + a.to_string().as_str() + " as " + "BitAnd" + ">";
         s
     },
 
-    <ls: left_angle_bracket> <a: ty> " as " "Shl" <rs: right_angle_bracket> => {
-        let s = "<".to_string() + a.to_string().as_str() + " as " + "Shl" + ">";
-        s
-    },
 
     //unsinged_digit = num
     <ls: left_angle_bracket> <tys: tys> <unsinged_digit: unsinged_digit> <rs: right_angle_bracket> => {
         let s = "<".to_string() + tys.into_iter().map(|t| t.to_string()).collect::<Vec<String>>().join(", ").as_str() + unsinged_digit.to_string().as_str() + ">";
+        s
+    },
+
+    <ls: left_angle_bracket> <tys: tys> <unsinged_digit: unsinged_digit> <identifier: identifier> <rs: right_angle_bracket> => {
+        let s = "<".to_string() + tys.into_iter().map(|t| t.to_string()).collect::<Vec<String>>().join(", ").as_str() + unsinged_digit.to_string().as_str() + identifier.to_string().as_str() + ">";
         s
     },
 }
@@ -1555,6 +1803,9 @@ file_name: String = {
     <identifier: identifier> => identifier,
     <unsinged_digit: unsinged_digit> => unsinged_digit,
     "size" => "size".to_string(),
+    "unwind" => "unwind".to_string(),
+    "debug" => "debug".to_string(),
+    "constant" => "constant".to_string(),
 }
 
 life_cycle_parameters: String = {
@@ -1625,6 +1876,7 @@ metadata: String = {
         let s = "[".to_owned() + "static" + "generator@" + file_path.as_str() + ":" + row1.as_str() + ":" + col1.as_str()  + ":" + row2.as_str() + ":" + col2.as_str() +  "]";
         s
     },
+
 };
 
 identifier: String = {
@@ -1698,6 +1950,10 @@ unicode: String = {
     },
 }; 
 
+
+spcode: String = {
+    <s:r"'[^']'"> => s.to_string(),
+};
 
 comment: () = {
     r"// .*" => (),

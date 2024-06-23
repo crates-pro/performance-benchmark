@@ -1,4 +1,8 @@
-use super::{mir::LocalID, mir::ModuledIdentifier, ty::Ty};
+use super::{
+    mir::{LocalID, ModuledIdentifier},
+    operand::Operand,
+    ty::Ty,
+};
 use std::str::FromStr;
 
 #[derive(Debug)]

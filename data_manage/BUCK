@@ -1,0 +1,37 @@
+load("@prelude//rust:cargo_package.bzl", "cargo")
+
+# package definitions
+filegroup(
+    name = "manager-0.1.0.crate",
+    srcs = glob([
+        "src/**/*.rs",
+        "src/**/*.lalrpop",
+        "*.rs",
+    ]),
+)
+
+pkg_env = {
+    "CARGO_PKG_AUTHORS": "",
+    "CARGO_PKG_DESCRIPTION": "",
+    "CARGO_PKG_VERSION": "0.1.0",
+}
+
+pkg_deps = [
+    "//submodules/performance-benchmark:collector-lib",
+    "//third-party:anyhow",
+    "//third-party:clap",
+    "//third-party:nalgebra",
+    "//third-party:serde",
+    "//third-party:serde_json",
+]
+
+# targets
+cargo.rust_binary(
+    name = "manager",
+    srcs = [":manager-0.1.0.crate"],
+    crate_root = "manager-0.1.0.crate/src/main.rs",
+    edition = "2021",
+    env = pkg_env,
+    deps = pkg_deps,
+    visibility = ["PUBLIC"],
+)

@@ -1,0 +1,124 @@
+load("@prelude//rust:cargo_buildscript.bzl", "buildscript_run")
+load("@prelude//rust:cargo_package.bzl", "cargo")
+
+# package definitions
+filegroup(
+    name = "collector-0.1.0.crate",
+    srcs = glob([
+        "src/**/*.rs",
+        "src/**/*.lalrpop",
+        "*.rs",
+    ]),
+)
+
+pkg_env = {
+    "CARGO_PKG_AUTHORS": "",
+    "CARGO_PKG_DESCRIPTION": "",
+    "CARGO_PKG_VERSION": "0.1.0",
+    "OUT_DIR": "$(location :collector-0.1.0-build-script-run[out_dir])",
+}
+
+pkg_deps = [
+    "//third-party:anyhow",
+    "//third-party:cargo_metadata",
+    "//third-party:clap",
+    "//third-party:crossbeam-utils",
+    "//third-party:csv",
+    "//third-party:env_logger",
+    "//third-party:filetime",
+    "//third-party:jobserver",
+    "//third-party:lalrpop-util",
+    "//third-party:lazy_static",
+    "//third-party:libc",
+    "//third-party:log",
+    "//third-party:nalgebra",
+    "//third-party:plotters",
+    "//third-party:rayon",
+    "//third-party:serde",
+    "//third-party:serde_json",
+    "//third-party:tempfile",
+    "//third-party:thiserror",
+    "//third-party:regex",
+    "//third-party:walkdir",
+]
+
+# targets
+cargo.rust_library(
+    name = "collector-lib",
+    srcs = [":collector-0.1.0.crate"],
+    crate = "collector",
+    crate_root = "collector-0.1.0.crate/src/lib.rs",
+    edition = "2021",
+    env = pkg_env,
+    deps = pkg_deps,
+    visibility = ["PUBLIC"],
+)
+
+cargo.rust_binary(
+    name = "collector-bin",
+    srcs = [":collector-0.1.0.crate"],
+    crate = "collector",
+    crate_root = "collector-0.1.0.crate/src/main.rs",
+    edition = "2021",
+    env = pkg_env,
+    deps = pkg_deps,
+    visibility = ["PUBLIC"],
+)
+
+cargo.rust_binary(
+    name = "flamegraph-fake",
+    srcs = [":collector-0.1.0.crate"],
+    crate_root = "collector-0.1.0.crate/src/bin/flamegraph-fake.rs",
+    edition = "2021",
+    env = pkg_env,
+    deps = pkg_deps,
+    visibility = ["PUBLIC"],
+)
+
+cargo.rust_binary(
+    name = "muti-rustc-perf",
+    srcs = [":collector-0.1.0.crate"],
+    crate_root = "collector-0.1.0.crate/src/bin/muti-rustc-perf.rs",
+    edition = "2021",
+    env = pkg_env,
+    deps = pkg_deps,
+    visibility = ["PUBLIC"],
+)
+
+cargo.rust_binary(
+    name = "runtime-fake",
+    srcs = [":collector-0.1.0.crate"],
+    crate_root = "collector-0.1.0.crate/src/bin/runtime-fake.rs",
+    edition = "2021",
+    env = pkg_env,
+    deps = pkg_deps,
+    visibility = ["PUBLIC"],
+)
+
+cargo.rust_binary(
+    name = "rustc-fake",
+    srcs = [":collector-0.1.0.crate"],
+    crate_root = "collector-0.1.0.crate/src/bin/rustc-fake.rs",
+    edition = "2021",
+    env = pkg_env,
+    deps = pkg_deps,
+    visibility = ["PUBLIC"],
+)
+
+# build scripts
+cargo.rust_binary(
+    name = "collector-0.1.0-build-script-build",
+    srcs = [":collector-0.1.0.crate"],
+    crate = "build_script_build",
+    crate_root = "collector-0.1.0.crate/build.rs",
+    edition = "2021",
+    visibility = [],
+    deps = ["//third-party:lalrpop"],
+)
+
+buildscript_run(
+    name = "collector-0.1.0-build-script-run",
+    package_name = "collector",
+    buildscript_rule = ":collector-0.1.0-build-script-build",
+    version = "0.1.0",
+)

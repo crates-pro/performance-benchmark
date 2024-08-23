@@ -21,7 +21,7 @@ pkg_env = {
 pkg_deps = [
     "//third-party:anyhow",
     "//third-party:cargo_metadata",
-    "//third-party:clap",
+    "//third-party:clap-3",
     "//third-party:crossbeam-utils",
     "//third-party:csv",
     "//third-party:env_logger",
@@ -34,11 +34,11 @@ pkg_deps = [
     "//third-party:nalgebra",
     "//third-party:plotters",
     "//third-party:rayon",
+    "//third-party:regex",
     "//third-party:serde",
     "//third-party:serde_json",
     "//third-party:tempfile",
     "//third-party:thiserror",
-    "//third-party:regex",
     "//third-party:walkdir",
 ]
 

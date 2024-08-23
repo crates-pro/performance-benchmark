@@ -17,7 +17,7 @@ pkg_env = {
 }
 
 pkg_deps = [
-    "//submodules/performance-benchmark:collector-lib",
+    "//project/performance-benchmark:collector-lib",
     "//third-party:anyhow",
     "//third-party:clap",
     "//third-party:nalgebra",

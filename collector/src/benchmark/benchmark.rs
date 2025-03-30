@@ -1,12 +1,14 @@
 use std::{
     collections::HashMap,
     fs::{create_dir_all, read_dir, File},
+    io::BufWriter,
     mem::ManuallyDrop,
     path::{Path, PathBuf},
 };
 
 use anyhow::{bail, Context, Ok};
-use serde::Deserialize;
+use cargo_toml::Manifest;
+use serde::{Deserialize, Serialize};
 use tempfile::TempDir;
 
 use crate::{
@@ -25,6 +27,9 @@ use crate::{
 
 use super::{profile::Profile, scenario::Scenario};
 
+const CONFIG_PATH: &str = "perf-config.json";
+const CARGO_TOML: &str = "Cargo.toml";
+
 fn default_runs() -> usize {
     3
 }
@@ -37,7 +42,7 @@ pub struct Benchamrk {
 
 impl Benchamrk {
     pub fn new(name: String, path: PathBuf) -> anyhow::Result<Self> {
-        let config_path = path.join("perf-config.json");
+        let config_path = path.join(CONFIG_PATH);
         let config: BenchmarkConfig = if config_path.exists() {
             serde_json::from_reader(
                 File::open(&config_path)
@@ -45,9 +50,28 @@ impl Benchamrk {
             )
             .with_context(|| format!("failed to parse {:?}", config_path))?
         } else {
-            bail!("missing a perf-config.json file for `{}`", name);
+            log::info!("generating confige file for `{}`...", name);
+            match Self::generate_config(&path) {
+                std::result::Result::Ok(config) => config,
+                Err(e) => return Err(e),
+            }
         };
         Ok(Benchamrk { name, path, config })
+    }
+
+    /// Generate config.yaml file for a crate.
+    /// 1. Parse `Cargo.toml` of this crate
+    /// 2. Generate config.yaml
+    fn generate_config(pth: &Path) -> anyhow::Result<BenchmarkConfig> {
+        let file = File::create(pth.join(CONFIG_PATH))?;
+        let mut writer = BufWriter::new(file);
+
+        let _toml = Manifest::from_path(pth.join(CARGO_TOML))?;
+
+        let mut config = BenchmarkConfig::default();
+
+        serde_json::to_writer(writer, &config)?;
+        Ok(config)
     }
 
     pub fn measure_compile_time(
@@ -559,7 +583,7 @@ impl Benchamrk {
     }
 }
 
-#[derive(Debug, Clone, serde::Deserialize, Default)]
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize, Default)]
 pub struct BenchmarkConfig {
     pub cargo_opts: Option<String>,
     pub cargo_rustc_opts: Option<String>,
@@ -584,7 +608,7 @@ pub struct BenchmarkConfig {
     pub runs: usize,
 }
 
-#[derive(Debug, Clone, Deserialize, Default)]
+#[derive(Debug, Clone, Deserialize, Serialize, Default)]
 pub enum RuntimeTestType {
     #[default]
     Test,
@@ -594,7 +618,7 @@ pub enum RuntimeTestType {
     Bench,
 }
 
-#[derive(Debug, Clone, Deserialize, Default)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
 pub enum CompileTimeType {
     #[default]
     Single,
@@ -614,5 +638,21 @@ impl BenchmarkSuit {
             names = names + " " + b.path.to_str().unwrap().as_ref();
         }
         names
+    }
+}
+
+#[cfg(test)]
+mod test_benchmark {
+    use std::path::PathBuf;
+
+    use super::Benchamrk;
+
+    #[test]
+    fn test_generate_config() {
+        let benchmark = Benchamrk::new(
+            "test_generate_config".to_string(),
+            PathBuf::from("../benchmarks/demo-compile-time/helloworld-no-config"),
+        )
+        .unwrap();
     }
 }

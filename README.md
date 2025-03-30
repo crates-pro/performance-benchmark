@@ -17,12 +17,7 @@ https://blog.eastonman.com/blog/2021/02/use-perf/
 > cargo install flamegraph
 ```
 
-3. Libraries needed on Linux
-```
-> apt install libfontconfig1-dev
-```
-
-4. Relative dependancies
+3. Relative dependancies
 python3
 kaleido, matplotlib (can be installed with pip...
 ```
